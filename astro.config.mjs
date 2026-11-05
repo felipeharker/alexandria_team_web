@@ -6,7 +6,7 @@ import starlight from '@astrojs/starlight';
 // Pages are Markdown or MDX in src/content/docs; the sidebar below is the site's table of contents.
 // tools/sync.py writes everything under docs/, src/generated and src/data from alexandria_phoenix.
 export default defineConfig({
-	// site: 'https://<the new domain>',  // set once the domain is live, for canonical links
+	site: 'https://alexdesignlab.org',
 	integrations: [
 		starlight({
 			title: 'Alexandria',

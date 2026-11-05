@@ -1,5 +1,6 @@
 # Render Blueprint for the Alexandria hub: one static site, built from this repository's main branch.
-# The custom domain goes under `domains` once it's set up at Porkbun (a CNAME to the onrender.com address).
+# Render created it as alexandria-hub-21kp (alexandria-hub-21kp.onrender.com). At Porkbun, alexdesignlab.org
+# is an ALIAS and www a CNAME to that address; Render redirects www to the root.
 services:
   - type: web
     name: alexandria-hub
@@ -8,6 +9,8 @@ services:
     branch: main
     buildCommand: npm ci && npm run build
     staticPublishPath: dist
+    domains:
+      - alexdesignlab.org
     envVars:
       - key: NODE_VERSION
         value: "24"                # Astro 7 needs Node 22.23.4 or later
