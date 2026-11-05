@@ -45,12 +45,19 @@ export default defineConfig({
 					],
 				},
 				{
-					label: 'Tools',
+					label: 'Quick Guides',
 					items: [
 						{ label: 'Rhino Tools', slug: 'rhino' },
 						{ label: 'Grasshopper Components', slug: 'grasshopper' },
-						{ label: 'Material Estimator Guide', slug: 'estimator/guide' },
-						{ label: 'Open the Material Estimator', link: '/estimator/' },
+						{ label: 'Material Estimator', slug: 'estimator/guide' },
+						{ label: 'Color Matcher', slug: 'colors/guide' },
+						{ label: 'Color Library', slug: 'colors/library/guide' },
+					],
+				},
+				{
+					label: 'Tools',
+					items: [
+						{ label: 'Material Estimator', link: '/estimator/' },
 						{ label: 'Color Matcher', link: '/colors/' },
 						{ label: 'Color Library', link: '/colors/library/' },
 						{ label: 'All Office Tools', slug: 'tools' },
