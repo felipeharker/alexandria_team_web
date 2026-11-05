@@ -1,0 +1,556 @@
+/* The Alexandria style: one plain look for the hub, the quick guides and the office tools.
+
+   Greys for everything, one green for buttons, and colour only where it codes something
+   (the toolbar groups in the guides). Inter for reading, IBM Plex Mono for commands and numbers.
+   The Material Estimator (alexandria_office/public/styles.css) uses the same values. */
+
+:root {
+	--sl-font: 'Inter Variable', 'Inter', 'Segoe UI', system-ui, sans-serif;
+	--sl-font-mono: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
+
+	/* dark */
+	--sl-color-white: #ffffff;
+	--sl-color-gray-1: #e7eaee;
+	--sl-color-gray-2: #c5cbd3;
+	--sl-color-gray-3: #9aa3ae;
+	--sl-color-gray-4: #6b737e;
+	--sl-color-gray-5: #2b3036;
+	--sl-color-gray-6: #1b1f24;
+	--sl-color-black: #131619;
+	--sl-color-accent-low: #22272d; /* Starlight's accent is grey: links, the current page, search */
+	--sl-color-accent: #9aa3ae;
+	--sl-color-accent-high: #e7eaee;
+	--ax-button: #8cba00; /* the one colour: buttons */
+	--ax-button-text: #131619;
+	--ax-tint: #1b1f24;
+	--ax-rule: #2b3036;
+	--ax-rule-strong: #3a4048;
+	--ax-radius: 8px;
+}
+
+:root[data-theme='light'] {
+	--sl-color-white: #1b1f24;
+	--sl-color-gray-1: #24292f;
+	--sl-color-gray-2: #3a4048;
+	--sl-color-gray-3: #5d6570;
+	--sl-color-gray-4: #8a929c;
+	--sl-color-gray-5: #cdd2d8;
+	--sl-color-gray-6: #eceff2;
+	--sl-color-gray-7: #f6f7f9;
+	--sl-color-black: #ffffff;
+	--sl-color-accent-low: #eceff2;
+	--sl-color-accent: #3a4048;
+	--sl-color-accent-high: #1b1f24;
+	--ax-button: #4f7a00;
+	--ax-button-text: #ffffff;
+	--ax-tint: #f6f7f9;
+	--ax-rule: #e2e5e9;
+	--ax-rule-strong: #cdd2d8;
+}
+
+/* ---------------------------------------------------------------- frame */
+header.header {
+	border-bottom: 1px solid var(--ax-rule);
+}
+:root[data-theme='light'] header.header {
+	background: var(--sl-color-black);
+}
+.site-title {
+	font-size: 1.05rem;
+	font-weight: 600;
+	letter-spacing: -0.01em;
+	color: var(--sl-color-white);
+}
+.sidebar-content .group-label .large {
+	font-size: 0.72rem;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--sl-color-gray-3);
+}
+.sidebar-content a {
+	border-radius: 6px;
+}
+.sidebar-content a[aria-current='page'],
+.sidebar-content a[aria-current='page']:hover,
+.sidebar-content a[aria-current='page']:focus {
+	background: var(--sl-color-gray-6);
+	color: var(--sl-color-white);
+	font-weight: 600;
+}
+
+/* ---------------------------------------------------------------- type */
+h1#_top,
+.hero h1 {
+	font-weight: 700;
+	letter-spacing: -0.02em;
+	line-height: 1.15;
+}
+.sl-markdown-content :is(h2, h3, h4):not(:where(.not-content *)) {
+	letter-spacing: -0.01em;
+	font-weight: 600;
+}
+.sl-markdown-content h2:not(:where(.not-content *)) {
+	font-size: var(--sl-text-2xl);
+}
+.sl-markdown-content h3:not(:where(.not-content *)) {
+	font-size: var(--sl-text-xl);
+}
+.sl-markdown-content a:not(.not-content *, .sl-link-button, .sl-link-card *) {
+	color: var(--sl-color-white);
+	text-decoration-color: var(--sl-color-gray-4);
+	text-underline-offset: 3px;
+	text-decoration-thickness: 1px;
+}
+.sl-markdown-content a:not(.not-content *, .sl-link-button, .sl-link-card *):hover {
+	text-decoration-color: currentColor;
+}
+.sl-markdown-content code:not(pre code) {
+	background: var(--ax-tint);
+	border: 1px solid var(--ax-rule);
+	border-radius: 4px;
+	padding: 0.05em 0.3em;
+	font-size: 0.86em;
+}
+.sl-markdown-content table:not(.not-content *) {
+	font-size: var(--sl-text-sm);
+}
+.sl-markdown-content th:not(.not-content *) {
+	font-size: 0.72rem;
+	font-weight: 600;
+	letter-spacing: 0.07em;
+	text-transform: uppercase;
+	color: var(--sl-color-gray-3);
+	background: transparent;
+	border-bottom: 1px solid var(--ax-rule-strong);
+}
+.sl-markdown-content :is(th, td):not(.not-content *) {
+	border-inline: 0;
+}
+
+/* ---------------------------------------------------------------- buttons: the one colour */
+.sl-link-button {
+	border-radius: var(--ax-radius);
+	font-weight: 600;
+}
+.sl-link-button.primary,
+.sl-link-button.primary:hover {
+	background: var(--ax-button);
+	border-color: var(--ax-button);
+	color: var(--ax-button-text);
+}
+.sl-link-button.primary:hover {
+	filter: brightness(1.08);
+}
+.sl-link-button.secondary {
+	border-color: var(--ax-rule-strong);
+}
+.sl-link-button.secondary:hover {
+	border-color: var(--sl-color-gray-3);
+}
+.sl-link-card,
+.card,
+.starlight-aside {
+	border-radius: var(--ax-radius);
+}
+
+/* ---------------------------------------------------------------- the hub's own parts */
+.ax-eyebrow {
+	font-size: 0.72rem;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--sl-color-gray-3);
+	margin: 0;
+}
+
+/* the home page: a short intro, then sections */
+:root[data-has-hero] {
+	--sl-content-width: 64rem;
+}
+.hero {
+	padding-block: 2.5rem 1.5rem !important;
+}
+.hero h1 {
+	font-size: clamp(2.25rem, 1.75rem + 2vw, 3rem);
+}
+.hero .tagline {
+	color: var(--sl-color-gray-3);
+	font-size: var(--sl-text-lg);
+	max-width: 46ch;
+}
+.hero .actions {
+	gap: 0.75rem 1.5rem;
+}
+.hero .sl-link-button {
+	font-size: var(--sl-text-sm);
+	padding: 0.65rem 1.1rem;
+}
+.hero .sl-link-button.minimal {
+	padding-inline: 0;
+}
+
+.ax-section {
+	margin-top: 2.75rem;
+}
+.ax-section > header {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 1rem;
+	margin-bottom: 0.9rem;
+}
+.ax-section > header h2 {
+	font-size: var(--sl-text-lg);
+	font-weight: 600;
+	letter-spacing: -0.01em;
+	margin: 0;
+	color: var(--sl-color-white);
+}
+.ax-section > header a {
+	font-size: var(--sl-text-sm);
+	color: var(--sl-color-gray-3);
+	text-decoration: none;
+	white-space: nowrap;
+}
+.ax-section > header a:hover {
+	color: var(--sl-color-white);
+}
+
+.ax-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(min(100%, 14rem), 1fr));
+	gap: 12px;
+}
+
+/* a card: an icon, a title, a line, where it goes */
+.ax-card {
+	display: grid;
+	grid-template-columns: 40px minmax(0, 1fr);
+	gap: 12px;
+	align-items: start;
+	padding: 14px;
+	border: 1px solid var(--ax-rule);
+	border-radius: var(--ax-radius);
+	background: var(--sl-color-black);
+	color: var(--sl-color-gray-2);
+	text-decoration: none;
+	transition: border-color 0.15s;
+}
+.ax-card:hover,
+.ax-card:focus-visible {
+	border-color: var(--sl-color-gray-4);
+}
+.ax-card .tile {
+	width: 40px;
+	height: 40px;
+	border-radius: 8px;
+	background: var(--ax-tint);
+	display: grid;
+	place-items: center;
+	color: var(--sl-color-gray-3);
+}
+.ax-card .tile img {
+	width: 28px;
+	height: 28px;
+}
+.ax-card .tile svg {
+	width: 22px;
+	height: 22px;
+}
+.ax-card b {
+	display: block;
+	color: var(--sl-color-white);
+	font-size: var(--sl-text-sm);
+	font-weight: 600;
+	line-height: 1.35;
+}
+.ax-card small {
+	display: block;
+	margin-top: 2px;
+	font-size: var(--sl-text-sm);
+	line-height: 1.45;
+	color: var(--sl-color-gray-3);
+}
+.ax-card .meta {
+	display: block;
+	margin-top: 6px;
+	font-size: var(--sl-text-xs);
+	color: var(--sl-color-gray-4);
+}
+
+/* the release card */
+.ax-release {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) auto;
+	gap: 14px 28px;
+	align-items: center;
+	padding: 18px 20px;
+	border: 1px solid var(--ax-rule);
+	border-radius: var(--ax-radius);
+	background: var(--ax-tint);
+}
+.ax-release h3 {
+	margin: 2px 0 6px;
+	font-size: var(--sl-text-xl);
+	font-weight: 600;
+	letter-spacing: -0.01em;
+	color: var(--sl-color-white);
+}
+.ax-release dl {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 4px 22px;
+	margin: 0;
+	font-size: var(--sl-text-sm);
+}
+.ax-release dl div {
+	display: flex;
+	gap: 6px;
+}
+.ax-release dt {
+	color: var(--sl-color-gray-3);
+}
+.ax-release dd {
+	margin: 0;
+	color: var(--sl-color-gray-1);
+	font-variant-numeric: tabular-nums;
+}
+.ax-release dd code {
+	font-family: var(--sl-font-mono);
+	font-size: 0.85em;
+}
+.ax-release .actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+.ax-release .actions .sl-link-button {
+	margin: 0;
+	font-size: var(--sl-text-sm);
+	padding: 0.6rem 1rem;
+}
+@media (max-width: 44rem) {
+	.ax-release {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}
+
+/* What's new */
+.ax-log {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: grid;
+	border-top: 1px solid var(--ax-rule);
+}
+.ax-log li {
+	display: grid;
+	grid-template-columns: 3.5rem 7.5rem minmax(0, 1fr);
+	gap: 2px 14px;
+	padding: 10px 0;
+	margin: 0;
+	border-bottom: 1px solid var(--ax-rule);
+	align-items: baseline;
+	font-size: var(--sl-text-sm);
+}
+.ax-log .v {
+	font-weight: 600;
+	color: var(--sl-color-white);
+	font-variant-numeric: tabular-nums;
+}
+.ax-log .d {
+	color: var(--sl-color-gray-3);
+	font-variant-numeric: tabular-nums;
+}
+.ax-log .s {
+	color: var(--sl-color-gray-1);
+}
+.ax-log .b {
+	display: block;
+	font-family: var(--sl-font-mono);
+	font-size: 0.72rem;
+	color: var(--sl-color-gray-4);
+}
+@media (max-width: 40rem) {
+	.ax-log li {
+		grid-template-columns: 3.5rem minmax(0, 1fr);
+	}
+	.ax-log .s {
+		grid-column: 1 / -1;
+	}
+}
+
+/* reference links */
+.ax-links {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: grid;
+	border-top: 1px solid var(--ax-rule);
+}
+.ax-links li {
+	margin: 0;
+	border-bottom: 1px solid var(--ax-rule);
+}
+.ax-links a {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) auto;
+	gap: 2px 16px;
+	padding: 10px 2px;
+	text-decoration: none;
+	color: var(--sl-color-white);
+}
+.ax-links a b {
+	font-weight: 600;
+	font-size: var(--sl-text-sm);
+}
+.ax-links a small {
+	grid-column: 1;
+	color: var(--sl-color-gray-3);
+	font-size: var(--sl-text-sm);
+}
+.ax-links a .host {
+	grid-row: 1 / span 2;
+	grid-column: 2;
+	align-self: center;
+	font-family: var(--sl-font-mono);
+	font-size: 0.75rem;
+	color: var(--sl-color-gray-4);
+}
+.ax-links a:hover b {
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+
+/* ---------------------------------------------------------------- the quick guides inside the hub */
+/* guides.css is the guides' own, written by tools/sync.py; this lines it up with the hub. */
+.qg-page {
+	container: qg / inline-size;
+	max-width: none;
+	margin: 0;
+	padding: 0;
+	background: transparent;
+	--font-body: var(--sl-font);
+	--font-mono: var(--sl-font-mono);
+	--paper: var(--sl-color-black);
+	--rule: var(--ax-rule);
+	--tint: var(--ax-tint);
+}
+.qg-page > header {
+	margin-top: 0;
+}
+.qg-page > header + section {
+	margin-top: 36px;
+}
+.qg-page .qg-section-head {
+	border-top: 1px solid var(--ax-rule-strong);
+}
+/* a guide wants the width: no table of contents, a wider column */
+:root:has(.qg-page) {
+	--sl-content-width: 68rem;
+}
+
+/* icons drawn as lines, in a card's tile or a step of the order */
+.qg-page .qg-tile svg,
+.qg-page .ax-shape svg {
+	width: 24px;
+	height: 24px;
+	fill: none;
+	stroke: var(--g);
+	stroke-width: 1.7;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+.qg-page .ax-shape {
+	width: 34px;
+	height: 34px;
+	border-radius: 6px;
+	border: 1px solid var(--rule);
+	background: var(--tile);
+	display: grid;
+	place-items: center;
+}
+.qg-page .ax-shape svg {
+	width: 20px;
+	height: 20px;
+}
+
+/* the Material Estimator's diagram: greys, and its one green button */
+.qg-page svg.ax-est {
+	min-width: 640px;
+}
+.qg-page svg .ax-win { fill: var(--paper); stroke: var(--rule); }
+.qg-page svg .ax-line { stroke: var(--rule); }
+.qg-page svg .ax-tint { fill: var(--tint); }
+.qg-page svg .ax-edge { stroke: var(--rule); }
+.qg-page svg .ax-mark { fill: var(--ink); }
+.qg-page svg .ax-on-mark { fill: var(--paper); }
+.qg-page svg .ax-field { fill: var(--paper); stroke: var(--muted); stroke-width: 0.8; }
+.qg-page svg .ax-primary { fill: var(--ax-button); }
+.qg-page svg .ax-on-primary { fill: var(--ax-button-text); }
+.qg-page svg .ax-dash { fill: none; stroke: var(--muted); stroke-dasharray: 4 3; }
+.qg-page svg .ax-b { font-weight: 600; }
+.qg-page svg .ax-mono { font-family: var(--font-mono); }
+.qg-page svg .ax-total { font-weight: 700; }
+.qg-page svg .ax-head { font-weight: 600; letter-spacing: 0.08em; fill: var(--muted); }
+.qg-page svg .ax-callout circle { fill: var(--ink); }
+.qg-page svg .ax-callout text { fill: var(--paper); font-weight: 700; }
+
+/* the numbered list under a diagram */
+.qg-page .ax-keys {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	counter-reset: key;
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 10px 18px;
+	font-size: 14px;
+}
+.qg-page .ax-keys li {
+	counter-increment: key;
+	display: grid;
+	grid-template-columns: 22px minmax(0, 1fr);
+	gap: 8px;
+	align-items: baseline;
+}
+.qg-page .ax-keys li::before {
+	content: counter(key);
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background: var(--ink);
+	color: var(--paper);
+	font-size: 11px;
+	font-weight: 700;
+	display: grid;
+	place-items: center;
+	transform: translateY(4px);
+}
+.qg-page .ax-code {
+	margin: 0;
+	padding: 12px 14px;
+	overflow-x: auto;
+	background: var(--paper);
+	border: 1px solid var(--rule);
+	border-radius: 8px;
+	font-family: var(--font-mono);
+	font-size: 12px;
+	line-height: 1.6;
+	white-space: pre;
+}
+.qg-page .ax-sub {
+	font-size: 15px;
+	margin-bottom: 10px;
+}
+.qg-page .ax-units td:first-child {
+	font-family: var(--font-mono);
+	font-size: 13px;
+}
+@container qg (max-width: 860px) {
+	.qg-page .ax-keys { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@container qg (max-width: 640px) {
+	.qg-page .ax-keys { grid-template-columns: minmax(0, 1fr); }
+}

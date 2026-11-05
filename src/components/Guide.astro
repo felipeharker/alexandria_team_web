@@ -1,0 +1,12 @@
+---
+// A quick guide inside a hub page: the guide's HTML (written by tools/sync.py, or the page's own
+// slot), kept out of Starlight's Markdown styles and laid out by guides.css.
+interface Props {
+	html?: string;
+}
+const { html } = Astro.props;
+---
+
+<div class="not-content">
+	{html ? <Fragment set:html={html} /> : <div class="qg-page"><slot /></div>}
+</div>

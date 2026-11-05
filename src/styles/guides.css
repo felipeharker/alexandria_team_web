@@ -1,0 +1,185 @@
+/* Written by tools/sync.py from alexandria_phoenix/guides/src/base.css and gh.css,
+   every rule scoped to .qg-page. Edit them there; the hub's own overrides are in theme.css. */
+.qg-page {
+  --paper: #ffffff;
+  --ink: #1b1f24;
+  --muted: #5d6570;
+  --rule: #e2e5e9;
+  --tint: #f4f6f8;
+  --tile: #ffffff;
+  --project: #f26522;
+  --model: #34a05c;
+  --render: #c98f00;
+  --standard: #7a5cc8;
+  --layout: #2876d6;
+  --files: #707c8a;
+  --aria: #8cba00;
+  --wall: #d9dce0;
+  --glow: #ffd84d;
+  --font-body: "Inter", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", Consolas, "Courier New", monospace;
+  --font-sheet: "Oswald", "Arial Narrow", sans-serif;}
+:root[data-theme="dark"] .qg-page {
+  --paper: #131619; --ink: #e7eaee; --muted: #9aa3ae; --rule: #2b3036; --tint: #1b1f24; --tile: #f4f6f8;
+  --project: #ff8148; --model: #4fc07a; --render: #e7b53a; --standard: #a98cf0; --layout: #5a9cf0; --files: #9aa6b4;
+  --aria: #a6d42a; --wall: #3a4048; --glow: #ffd84d; color-scheme: dark;}
+.qg-page { background: var(--paper); color: var(--ink); font: 15px/1.55 var(--font-body);}
+.qg-page { max-width: 1040px; margin: 0 auto; padding-block: 40px 64px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));}
+.qg-page h1, .qg-page h2, .qg-page h3 { text-wrap: balance; margin: 0;}
+.qg-page h1 { font-size: 34px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.15;}
+.qg-page h2 { font-size: 21px; font-weight: 600; letter-spacing: -0.01em;}
+.qg-page h3 { font-size: 16px; font-weight: 600;}
+.qg-page p { margin: 0;}
+.qg-page code, .qg-page .qg-mono { font-family: var(--font-mono); font-size: 0.86em;}
+.qg-page code { background: var(--tint); border: 1px solid var(--rule); border-radius: 4px; padding: 0 4px; white-space: nowrap;}
+.qg-page .qg-eyebrow { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted);}
+.qg-page .qg-lede { color: var(--muted); max-width: 62ch; margin-top: 10px;}
+.qg-page section { margin-top: 56px; display: grid; gap: 18px;}
+.qg-page .qg-section-head { display: grid; gap: 4px; border-top: 2px solid var(--ink); padding-top: 12px;}
+.qg-page .qg-section-head p { color: var(--muted); max-width: 64ch;}
+.qg-page .qg-toolbar { display: flex; flex-wrap: wrap; gap: 14px; padding: 14px; background: var(--tint); border: 1px solid var(--rule); border-radius: 10px;}
+.qg-page .qg-group { display: grid; gap: 8px; padding-right: 14px; border-right: 1px solid var(--rule);}
+.qg-page .qg-group:last-child { border-right: 0; padding-right: 0;}
+.qg-page .qg-group-name { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--g); display: flex; align-items: center; gap: 6px;}
+.qg-page .qg-group-name::before { content: ""; width: 8px; height: 8px; border-radius: 2px; background: var(--g);}
+.qg-page .qg-buttons { display: flex; gap: 6px;}
+.qg-page .qg-btn { display: grid; justify-items: center; gap: 4px; width: 66px; text-decoration: none; color: var(--ink);}
+.qg-page .qg-btn .qg-tile { position: relative; width: 44px; height: 44px; border-radius: 7px; background: var(--tile); border: 1px solid var(--rule); display: grid; place-items: center;}
+.qg-page .qg-btn img { width: 30px; height: 30px;}
+.qg-page .qg-btn .qg-tile.qg-right::after { content: ""; position: absolute; right: -4px; bottom: -4px; width: 12px; height: 12px; border-radius: 50%; background: var(--paper); border: 2px solid var(--g);}
+.qg-page .qg-btn span { font-size: 11px; line-height: 1.25; text-align: center; color: var(--muted); text-transform: none; letter-spacing: 0; overflow-wrap: anywhere;}
+.qg-page .qg-btn:hover .qg-tile, .qg-page .qg-btn:focus-visible .qg-tile { border-color: var(--g);}
+.qg-page .qg-btn:focus-visible { outline: none;}
+.qg-page .qg-legend { display: flex; flex-wrap: wrap; gap: 18px; font-size: 13px; color: var(--muted);}
+.qg-page .qg-legend i { display: inline-block; width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--muted); vertical-align: -2px; margin-right: 6px;}
+.qg-page .qg-g-project { --g: var(--project);}
+.qg-page .qg-g-model { --g: var(--model);}
+.qg-page .qg-g-render { --g: var(--render);}
+.qg-page .qg-g-standard { --g: var(--standard);}
+.qg-page .qg-g-layout { --g: var(--layout);}
+.qg-page .qg-g-files { --g: var(--files);}
+.qg-page .qg-flow { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; counter-reset: step;}
+.qg-page .qg-flow li { counter-increment: step; display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: 10px; align-items: start; padding: 12px; border: 1px solid var(--rule); border-top: 3px solid var(--g); border-radius: 8px;}
+.qg-page .qg-flow img { width: 34px; height: 34px; background: var(--tile); border-radius: 6px; padding: 3px; border: 1px solid var(--rule);}
+.qg-page .qg-flow b { display: block; font-size: 14px;}
+.qg-page .qg-flow b::before { content: counter(step) ". "; color: var(--g);}
+.qg-page .qg-flow small { display: block; font-size: 13px; color: var(--muted); line-height: 1.4; margin-top: 2px;}
+.qg-page .qg-flow .qg-model-step { --g: var(--ink);}
+.qg-page .qg-flow .qg-model-step .qg-shape { width: 34px; height: 34px; border-radius: 6px; border: 1px solid var(--rule); background: var(--tile); display: grid; place-items: center;}
+.qg-page .qg-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px;}
+.qg-page .qg-card { display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 14px; padding: 16px; border: 1px solid var(--rule); border-left: 4px solid var(--g); border-radius: 8px; scroll-margin-top: 16px;}
+.qg-page .qg-card .qg-tile { width: 52px; height: 52px; border-radius: 8px; background: var(--tile); border: 1px solid var(--rule); display: grid; place-items: center;}
+.qg-page .qg-card .qg-tile img { width: 36px; height: 36px;}
+.qg-page .qg-card h3 { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px;}
+.qg-page .qg-card h3 .qg-mono { font-size: 12px; font-weight: 400; color: var(--muted);}
+.qg-page .qg-card dl { margin: 8px 0 0; display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 4px 10px; font-size: 14px;}
+.qg-page .qg-card dt { font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--g); padding-top: 2px;}
+.qg-page .qg-card dd { margin: 0;}
+.qg-page .qg-card .qg-tip { margin-top: 8px; font-size: 13px; color: var(--muted);}
+.qg-page .qg-wide { grid-column: 1 / -1;}
+.qg-page .qg-figure { border: 1px solid var(--rule); border-radius: 10px; padding: 18px; background: var(--tint); display: grid; gap: 12px;}
+.qg-page .qg-figure svg { width: 100%; height: auto; display: block;}
+.qg-page .qg-figure figcaption, .qg-page .qg-caption { font-size: 13px; color: var(--muted);}
+.qg-page .qg-diagram-scroll { overflow-x: auto;}
+.qg-page .qg-two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px;}
+.qg-page .qg-lights { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px;}
+.qg-page .qg-light { border: 1px solid var(--rule); border-radius: 8px; padding: 12px; display: grid; gap: 8px; background: var(--paper);}
+.qg-page .qg-light svg { width: 100%; height: auto;}
+.qg-page .qg-light b { font-size: 13px;}
+.qg-page .qg-light small { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums;}
+.qg-page svg text { font-family: var(--font-body); fill: var(--ink);}
+.qg-page svg .qg-t-muted { fill: var(--muted);}
+.qg-page svg .qg-t-sheet { font-family: var(--font-sheet);}
+.qg-page svg .qg-stroke { stroke: var(--ink); fill: none;}
+.qg-page svg .qg-thin { stroke: var(--muted); fill: none;}
+.qg-page svg .qg-wall { fill: var(--wall);}
+.qg-page svg .qg-ink { fill: var(--ink);}
+.qg-page svg .qg-glow { fill: var(--glow);}
+.qg-page svg .qg-paper { fill: var(--paper);}
+.qg-page svg .qg-aria { fill: var(--aria);}
+.qg-page svg .qg-layoutc { stroke: var(--layout); fill: none;}
+.qg-page svg .qg-layoutf { fill: var(--layout);}
+.qg-page svg .qg-projectf { fill: var(--project);}
+.qg-page .qg-parts { width: 100%; border-collapse: collapse; font-size: 14px;}
+.qg-page .qg-parts th, .qg-page .qg-parts td { text-align: left; padding: 9px 10px 9px 0; border-bottom: 1px solid var(--rule); vertical-align: top;}
+.qg-page .qg-parts th { font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted);}
+.qg-page .qg-parts td:first-child { font-weight: 600; white-space: nowrap;}
+.qg-page .qg-pill { display: inline-block; font-size: 12px; padding: 1px 8px; margin: 2px 4px 2px 0; border-radius: 999px; border: 1px solid var(--layout); color: var(--layout); white-space: nowrap;}
+.qg-page .qg-table-scroll { overflow-x: auto;}
+.qg-page .qg-layers td:first-child { font-family: var(--font-mono); font-size: 13px; font-weight: 400;}
+.qg-page .qg-qg-foot { margin-top: 56px; padding-top: 14px; border-top: 1px solid var(--rule); font-size: 13px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px 18px;}
+@container qg (max-width: 860px) {
+.qg-page .qg-flow { grid-template-columns: repeat(2, minmax(0, 1fr));}
+.qg-page .qg-lights { grid-template-columns: repeat(2, minmax(0, 1fr));}
+}
+@container qg (max-width: 640px) {
+.qg-page h1 { font-size: 28px;}
+.qg-page .qg-cards, .qg-page .qg-two, .qg-page .qg-flow { grid-template-columns: minmax(0, 1fr);}
+.qg-page .qg-group { border-right: 0; padding-right: 0;}
+}
+@media (prefers-reduced-motion: no-preference) {
+.qg-page .qg-btn .qg-tile { transition: border-color 0.15s;}
+}
+.qg-page .qg-other { margin-top: 12px; font-size: 14px;}
+.qg-page .qg-other a, .qg-page .qg-qg-foot a { color: var(--ink); text-underline-offset: 3px;}
+.qg-page .qg-f-make { --g: var(--layout);}
+.qg-page .qg-f-values { --g: var(--project);}
+.qg-page .qg-f-act { --g: var(--model);}
+.qg-page .qg-f-fab { --g: var(--render);}
+.qg-page .qg-f-out { --g: var(--files);}
+.qg-page .qg-gh-tab { gap: 12px 14px;}
+.qg-page .qg-gh-tab .qg-group { padding-right: 12px;}
+.qg-page .qg-gh-tab .qg-btn { width: 64px;}
+.qg-page .qg-gh-tab .qg-btn .qg-tile { width: 40px; height: 40px;}
+.qg-page .qg-gh-tab .qg-btn img { width: 28px; height: 28px;}
+.qg-page .qg-gh-tab .qg-btn span { font-size: 10.5px; letter-spacing: 0;}
+.qg-page .qg-legend .qg-fam { display: inline-flex; align-items: center; gap: 6px;}
+.qg-page .qg-legend .qg-fam::before { content: ""; width: 10px; height: 10px; border-radius: 2px; background: var(--g);}
+.qg-page .qg-chain { min-width: 960px;}
+.qg-page .qg-chain .qg-node { fill: var(--tile); stroke: var(--g); stroke-width: 1.6;}
+.qg-page .qg-chain .qg-head { fill: var(--g);}
+.qg-page .qg-chain .qg-nick { font-size: 12px; font-weight: 600; fill: #fff;}
+.qg-page .qg-chain .qg-port { font-size: 10.5px; font-family: var(--font-mono); fill: #2a2f35;}
+.qg-page .qg-chain .qg-dot { fill: var(--tile); stroke: #5d6570; stroke-width: 1.2;}
+.qg-page .qg-chain .qg-wire { fill: none; stroke: var(--muted); stroke-width: 1.6;}
+.qg-page .qg-chain .qg-cell { fill: var(--g);}
+.qg-page .qg-chain .qg-cell-soft { fill: none; stroke: var(--g); stroke-width: 1;}
+.qg-page .qg-chain .qg-frame { fill: none; stroke: var(--muted); stroke-width: 1;}
+.qg-page .qg-chain .qg-attractor { fill: none; stroke: var(--ink); stroke-width: 1.6; stroke-dasharray: 4 3;}
+.qg-page .qg-chain .qg-label { font-size: 11px; fill: var(--muted);}
+.qg-page .qg-swap { display: grid; grid-template-columns: minmax(0, 1fr) 28px minmax(0, 1fr) 28px minmax(0, 1fr); gap: 10px; align-items: stretch;}
+.qg-page .qg-swap .qg-col { border: 1px solid var(--rule); border-top: 3px solid var(--g); border-radius: 8px; padding: 12px; display: grid; gap: 8px; align-content: start;}
+.qg-page .qg-swap .qg-col b { font-size: 13px;}
+.qg-page .qg-swap .qg-col small { color: var(--muted); font-size: 12px;}
+.qg-page .qg-swap .qg-chips { display: flex; flex-wrap: wrap; gap: 6px;}
+.qg-page .qg-chip { display: inline-flex; align-items: center; gap: 6px; padding: 3px 8px 3px 4px; border: 1px solid var(--rule); border-radius: 999px; font-size: 12px; background: var(--paper); text-decoration: none; color: var(--ink); white-space: nowrap;}
+.qg-page .qg-chip img { width: 18px; height: 18px; background: var(--tile); border-radius: 4px;}
+.qg-page .qg-swap .qg-arrow { display: grid; place-items: center; color: var(--muted); font-size: 20px;}
+.qg-page .qg-swap .qg-arrow span { writing-mode: horizontal-tb;}
+.qg-page .qg-sections { display: grid; gap: 22px;}
+.qg-page .qg-sec { display: grid; gap: 10px;}
+.qg-page .qg-sec-name { display: flex; align-items: baseline; gap: 10px; font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--g); border-bottom: 1px solid var(--rule); padding-bottom: 4px;}
+.qg-page .qg-sec-name small { font-weight: 400; letter-spacing: 0; text-transform: none; color: var(--muted); font-size: 12px;}
+.qg-page .qg-mini { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px;}
+.qg-page .qg-mini .qg-card { grid-template-columns: 40px minmax(0, 1fr); gap: 12px; padding: 12px; border-left-width: 3px;}
+.qg-page .qg-mini .qg-card .qg-tile { width: 40px; height: 40px;}
+.qg-page .qg-mini .qg-card .qg-tile img { width: 28px; height: 28px;}
+.qg-page .qg-mini .qg-card h3 { font-size: 14px;}
+.qg-page .qg-mini .qg-card p { font-size: 13px; color: var(--muted); margin-top: 2px; line-height: 1.4;}
+.qg-page .qg-ports { margin-top: 6px; font-family: var(--font-mono); font-size: 11px; line-height: 1.5; color: var(--ink);}
+.qg-page .qg-ports .qg-opt { color: var(--muted);}
+.qg-page .qg-ports .qg-to { color: var(--g); padding: 0 4px;}
+.qg-page .qg-run { display: flex; flex-wrap: wrap; align-items: center; gap: 6px;}
+.qg-page .qg-run .qg-sep { color: var(--muted);}
+.qg-page .qg-run .qg-file { font-family: var(--font-mono); font-size: 12px; padding: 3px 8px; border: 1px dashed var(--muted); border-radius: 6px;}
+.qg-page .qg-figure h3 { font-size: 15px;}
+.qg-page .qg-habits { margin: 0; padding-left: 18px; display: grid; gap: 6px; max-width: 80ch;}
+@container qg (max-width: 860px) {
+.qg-page .qg-mini { grid-template-columns: repeat(2, minmax(0, 1fr));}
+}
+@container qg (max-width: 640px) {
+.qg-page .qg-mini { grid-template-columns: minmax(0, 1fr);}
+.qg-page .qg-swap { grid-template-columns: minmax(0, 1fr);}
+.qg-page .qg-swap .qg-arrow span { display: inline-block; transform: rotate(90deg);}
+}

@@ -1,0 +1,27 @@
+---
+// Each Alexandria release, newest first, from alexandria_phoenix's "Packages ..." commits.
+import releases from '../data/releases.json';
+
+interface Props {
+	limit?: number;
+}
+const { limit } = Astro.props;
+const shown = limit ? releases.slice(0, limit) : releases;
+const day = (iso: string) =>
+	new Date(iso + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+---
+
+<ol class="ax-log not-content">
+	{
+		shown.map((r) => (
+			<li>
+				<span class="v">{r.version}</span>
+				<span class="d">
+					{day(r.date)}
+					<span class="b">{r.build}</span>
+				</span>
+				<span class="s">{r.summary}</span>
+			</li>
+		))
+	}
+</ol>

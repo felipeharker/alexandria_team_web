@@ -1,0 +1,179 @@
+<!-- Written by tools/sync.py from alexandria_phoenix/guides/src. Edit it there. -->
+<div class="qg-page">
+  <header>
+    <p class="qg-eyebrow">Alexandria Rhino Tools 2.17 &middot; Rhino 8</p>
+    <p class="qg-lede">Thirteen buttons that take a sign from an empty model to a finished design package. Left click does the main job; a button with a ring has a second job on right click.</p>
+  </header>
+
+  <section aria-labelledby="toolbar">
+    <div class="qg-section-head"><h2 id="toolbar">The toolbar</h2><p>Grouped in the order you work, each group in its own colour. Click a button for its card.</p></div>
+    <nav class="qg-toolbar" aria-label="Alexandria Tools toolbar">
+      <div class="qg-group qg-g-project"><div class="qg-group-name">Project</div><div class="qg-buttons">
+        <a class="qg-btn" href="#setup"><div class="qg-tile qg-right"><img alt="" src="/guides/icons/setup.png"></div><span>Alexandria Setup</span></a>
+        <a class="qg-btn" href="#create-project"><div class="qg-tile"><img alt="" src="/guides/icons/create_project.png"></div><span>Create Project</span></a>
+      </div></div>
+      <div class="qg-group qg-g-model"><div class="qg-group-name">Model</div><div class="qg-buttons">
+        <a class="qg-btn" href="#populate-model"><div class="qg-tile"><img alt="" src="/guides/icons/populate_model.png"></div><span>Populate Model</span></a>
+        <a class="qg-btn" href="#set-material"><div class="qg-tile"><img alt="" src="/guides/icons/set_material.png"></div><span>Set Material</span></a>
+        <a class="qg-btn" href="#set-light"><div class="qg-tile"><img alt="" src="/guides/icons/set_light.png"></div><span>Set Light</span></a>
+      </div></div>
+      <div class="qg-group qg-g-render"><div class="qg-group-name">Render</div><div class="qg-buttons">
+        <a class="qg-btn" href="#day"><div class="qg-tile qg-right"><img alt="" src="/guides/icons/day_render.png"></div><span>Day Settings</span></a>
+        <a class="qg-btn" href="#night"><div class="qg-tile qg-right"><img alt="" src="/guides/icons/night_render.png"></div><span>Night Settings</span></a>
+      </div></div>
+      <div class="qg-group qg-g-standard"><div class="qg-group-name">Standard drawings</div><div class="qg-buttons">
+        <a class="qg-btn" href="#populate-detail"><div class="qg-tile"><img alt="" src="/guides/icons/populate_detail.png"></div><span>Populate Detail</span></a>
+        <a class="qg-btn" href="#populate-block"><div class="qg-tile"><img alt="" src="/guides/icons/populate_block.png"></div><span>Populate Block</span></a>
+      </div></div>
+      <div class="qg-group qg-g-layout"><div class="qg-group-name">Drawings &amp; layout</div><div class="qg-buttons">
+        <a class="qg-btn" href="#dimension"><div class="qg-tile qg-right"><img alt="" src="/guides/icons/standard_dimension.png"></div><span>Standard Dimension</span></a>
+        <a class="qg-btn" href="#layout-manager"><div class="qg-tile"><img alt="" src="/guides/icons/layout_manager.png"></div><span>Layout Manager</span></a>
+      </div></div>
+      <div class="qg-group qg-g-files"><div class="qg-group-name">Files</div><div class="qg-buttons">
+        <a class="qg-btn" href="#save-as"><div class="qg-tile"><img alt="" src="/guides/icons/save_as_r7.png"></div><span>Save as Rhino 7</span></a>
+        <a class="qg-btn" href="#save-as"><div class="qg-tile"><img alt="" src="/guides/icons/save_as_r8.png"></div><span>Save as Rhino 8</span></a>
+      </div></div>
+    </nav>
+    <div class="qg-legend"><span><i></i>Right click for a second job</span><span>First time: type <code>AlexandriaSetup</code> to add the tab</span></div>
+  </section>
+
+  <section aria-labelledby="order">
+    <div class="qg-section-head"><h2 id="order">From model to package</h2><p>The usual order. Skip any step a job doesn't need.</p></div>
+    <ol class="qg-flow">
+      <li class="qg-g-project"><img alt="" src="/guides/icons/create_project.png"><div><b>Create Project</b><small>Name it, pick a folder. Your model moves into <code>models</code>.</small></div></li>
+      <li class="qg-g-model"><img alt="" src="/guides/icons/populate_model.png"><div><b>Populate Model</b><small>Layers, styles, the render backdrop and light.</small></div></li>
+      <li class="qg-model-step"><div class="qg-shape"><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><rect x="3" y="6" width="16" height="10" rx="1" class="qg-stroke" stroke-width="1.6"/><path d="M7 16v3M15 16v3" class="qg-stroke" stroke-width="1.6"/></svg></div><div><b>Model the sign</b><small>Full size in inches, at the origin, facing &minus;Y, on <code>DESIGN</code> sublayers.</small></div></li>
+      <li class="qg-g-model"><img alt="" src="/guides/icons/set_light.png"><div><b>Materials &amp; light</b><small>Set Material on <code>DESIGN</code>, Set Light on lit faces.</small></div></li>
+      <li class="qg-g-render"><img alt="" src="/guides/icons/day_render.png"><div><b>Render</b><small>Right click Day, then Night: saves <code>day_#.jpg</code> and <code>night_#.jpg</code>.</small></div></li>
+      <li class="qg-g-standard"><img alt="" src="/guides/icons/populate_detail.png"><div><b>Standard drawings</b><small>Details and blocks from the libraries.</small></div></li>
+      <li class="qg-g-layout"><img alt="" src="/guides/icons/standard_dimension.png"><div><b>Draw &amp; dimension</b><small>Elevations flat in Top view, Standard Dimension.</small></div></li>
+      <li class="qg-g-layout"><img alt="" src="/guides/icons/layout_manager.png"><div><b>Lay out pages</b><small>Create Document, pages, drawings, details, renders.</small></div></li>
+      <li class="qg-g-layout"><img alt="" src="/guides/icons/layout_manager.png"><div><b>Export PDF</b><small><code>DESIGN_&lt;project&gt;_v#.pdf</code> in <code>design_package</code>.</small></div></li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="buttons">
+    <div class="qg-section-head"><h2 id="buttons">The buttons</h2><p>What each one does, in a line or two.</p></div>
+    <div class="qg-cards">
+      <article class="qg-card qg-g-project" id="setup"><div class="qg-tile"><img alt="" src="/guides/icons/setup.png"></div><div><h3>Alexandria Setup <span class="qg-mono">AlexandriaSetup</span></h3>
+        <dl><dt>Click</dt><dd>Adds the Alexandria Tools tab and installs the DM display modes. Run once after installing.</dd><dt>Right</dt><dd><b>Set Panels</b>: arranges the right-hand panels to the standard.</dd></dl></div></article>
+      <article class="qg-card qg-g-project" id="create-project"><div class="qg-tile"><img alt="" src="/guides/icons/create_project.png"></div><div><h3>Create Project</h3>
+        <dl><dt>Click</dt><dd>Name the project and choose a folder. Copies the project template there and saves your model as <code>&lt;project&gt;_model_v1.3dm</code>.</dd></dl>
+        <p class="qg-tip">Never writes over an existing folder.</p></div></article>
+      <article class="qg-card qg-g-model" id="populate-model"><div class="qg-tile"><img alt="" src="/guides/icons/populate_model.png"></div><div><h3>Populate Model</h3>
+        <dl><dt>Click</dt><dd>Inches and tolerances, the <code>DESIGN</code> and <code>DETAILS</code> layers, the annotation styles, the render backdrop and the world light.</dd></dl>
+        <p class="qg-tip">Safe to click again: it only adds what's missing.</p></div></article>
+      <article class="qg-card qg-g-model" id="set-material"><div class="qg-tile"><img alt="" src="/guides/icons/set_material.png"></div><div><h3>Set Material</h3>
+        <dl><dt>Click</dt><dd>Pick a parent layer. Each sublayer gets a plaster material in its layer colour: <code>MAT_1</code>, <code>MAT_2</code>&hellip;</dd></dl>
+        <p class="qg-tip">Recolour a layer, click again, and its material follows.</p></div></article>
+      <article class="qg-card qg-g-model" id="set-light"><div class="qg-tile"><img alt="" src="/guides/icons/set_light.png"></div><div><h3>Set Light</h3>
+        <dl><dt>Click</dt><dd>Select faces or solids, then choose a light type (below). They become one shared V-Ray light on <code>DESIGN::ILLUMS::&lt;type&gt;</code>.</dd></dl>
+        <p class="qg-tip">Day and Night switch these lights for you.</p></div></article>
+      <article class="qg-card qg-g-render" id="day"><div class="qg-tile"><img alt="" src="/guides/icons/day_render.png"></div><div><h3>Apply Day Settings</h3>
+        <dl><dt>Click</dt><dd>Light blue sky, neutral light, sign lights down to daylight, 4K output.</dd><dt>Right</dt><dd><b>Render Day and Save</b>: asks <b>Save with sky</b> (a JPEG with it, or a transparent PNG), then renders the active view to the renders folder as <code>day_#</code>.</dd></dl></div></article>
+      <article class="qg-card qg-g-render" id="night"><div class="qg-tile"><img alt="" src="/guides/icons/night_render.png"></div><div><h3>Apply Night Settings</h3>
+        <dl><dt>Click</dt><dd>Navy to mauve sky, dim light, sign lights back on.</dd><dt>Right</dt><dd><b>Render Night and Save</b>: the same, as <code>night_#.jpg</code>.</dd></dl>
+        <p class="qg-tip">Neither button hides layers: show or hide the wall, ground and figure yourself.</p></div></article>
+      <article class="qg-card qg-g-standard" id="populate-detail"><div class="qg-tile"><img alt="" src="/guides/icons/populate_detail.png"></div><div><h3>Populate Detail</h3>
+        <dl><dt>Click</dt><dd>Pick a detail from the library (<code>DTL-01</code> to <code>DTL-13</code>) and click where it goes. It arrives grouped, in the standard layers and styles.</dd></dl>
+        <p class="qg-tip">Fill in its blanks (paint, LED colour) once, in the model.</p></div></article>
+      <article class="qg-card qg-g-standard" id="populate-block"><div class="qg-tile"><img alt="" src="/guides/icons/populate_block.png"></div><div><h3>Populate Block</h3>
+        <dl><dt>Click</dt><dd>Pick a north arrow, section indicator, dot callout, graphic scale, person, car or tree, and click where it goes. Symbols come in at paper size on a page and at the annotation scale in a model, numbered for you; the rest at true size.</dd></dl>
+        <p class="qg-tip">Change a callout's number by editing its text.</p></div></article>
+      <article class="qg-card qg-g-layout" id="dimension"><div class="qg-tile"><img alt="" src="/guides/icons/standard_dimension.png"></div><div><h3>Standard Dimension</h3>
+        <dl><dt>Click</dt><dd>A dimension in the Alexandria style, on <code>DETAILS::ANNOTATIONS::DIMENSIONS</code>.</dd><dt>Right</dt><dd><b>Standard Leader</b>: a callout, on <code>&hellip;::CALLOUTS</code>.</dd></dl></div></article>
+      <article class="qg-card qg-g-layout" id="layout-manager"><div class="qg-tile"><img alt="" src="/guides/icons/layout_manager.png"></div><div><h3>Layout Manager</h3>
+        <dl><dt>Click</dt><dd>One window for the whole design package: pages, project and client details, drawings, details, colors and materials, renders, the PDF and the project facts. See its parts below.</dd></dl></div></article>
+      <article class="qg-card qg-g-files qg-wide" id="save-as"><div class="qg-tile"><img alt="" src="/guides/icons/save_as_r7.png"></div><div><h3>Save as Rhino 7 &middot; Save as Rhino 8</h3>
+        <dl><dt>Click</dt><dd>Writes a copy next to the model as <code>&lt;name&gt;_r7.3dm</code> or <code>&lt;name&gt;_r8.3dm</code>. You keep working in the original.</dd></dl></div></article>
+    </div>
+  </section>
+
+  <section aria-labelledby="setup-model">
+    <div class="qg-section-head"><h2 id="setup-model">Where the sign goes</h2><p>Populate Model's backdrop expects the sign at the origin, its face on the wall's plane, facing &minus;Y.</p></div>
+    <div class="qg-two">
+      <figure class="qg-figure" style="margin:0">
+        <svg viewBox="0 0 420 260" role="img" aria-label="Plan: wall face on y = 0, sign at the origin facing minus Y, scale figure in front">
+          <rect x="20" y="40" width="380" height="70" class="qg-wall"/>
+          <text x="30" y="62" font-size="12" class="qg-t-muted">RENDER::WALL</text>
+          <text x="30" y="78" font-size="11" class="qg-t-muted">face on y = 0</text>
+          <line x1="20" y1="110" x2="400" y2="110" class="qg-stroke" stroke-width="1.5"/>
+          <rect x="160" y="104" width="100" height="10" class="qg-ink"/>
+          <text x="210" y="96" font-size="12" text-anchor="middle">sign, at the origin</text>
+          <circle cx="292" cy="150" r="7" class="qg-projectf"/>
+          <text x="304" y="154" font-size="11" class="qg-t-muted">scale figure, 5'-6"</text>
+          <text x="304" y="168" font-size="11" class="qg-t-muted">x 200", y &minus;52"</text>
+          <path d="M210 128 v62" class="qg-stroke" stroke-width="1.6"/>
+          <path d="M204 182 l6 10 l6 -10" class="qg-stroke" stroke-width="1.6"/>
+          <text x="218" y="176" font-size="12">faces &minus;Y</text>
+          <path d="M40 230 h44 M40 230 v-44" class="qg-thin" stroke-width="1.4"/>
+          <text x="90" y="234" font-size="11" class="qg-t-muted">X</text>
+          <text x="36" y="180" font-size="11" class="qg-t-muted">Y</text>
+          <text x="400" y="234" font-size="11" text-anchor="end" class="qg-t-muted">Plan &middot; ground top at z = 0</text>
+        </svg>
+        <figcaption>Model in inches, full size. Hide the wall to put the sign on the sky; show it to see the sign on a wall.</figcaption>
+      </figure>
+      <figure class="qg-figure" style="margin:0">
+        <svg viewBox="0 0 420 260" role="img" aria-label="A doc page: info box top left, logo top right, the drawing area across the page, view title bottom left">
+          <rect x="10" y="10" width="400" height="240" fill="none" class="qg-thin" stroke-width="1"/>
+          <rect x="358" y="18" width="44" height="18" class="qg-aria" opacity="0.85"/>
+          <rect x="18" y="18" width="150" height="34" class="qg-paper" style="stroke:var(--rule)"/>
+          <rect x="18" y="18" width="150" height="9" class="qg-aria"/>
+          <text x="22" y="25.5" font-size="7" fill="#fff" class="qg-t-sheet">PAGE NAME</text>
+          <text x="22" y="40" font-size="6.5" class="qg-t-muted qg-t-sheet">SCOPE OF WORK</text>
+          <rect x="30" y="62" width="360" height="156" fill="none" class="qg-layoutc" stroke-dasharray="5 4" stroke-width="1.4"/>
+          <text x="210" y="144" font-size="12" text-anchor="middle" style="fill:var(--layout)">drawing, detail or render</text>
+          <text x="18" y="232" font-size="9" class="qg-t-sheet">FRONT ELEVATION</text>
+          <line x1="18" y1="235" x2="90" y2="235" class="qg-stroke" stroke-width="0.8"/>
+          <text x="18" y="243" font-size="6.5" class="qg-t-muted qg-t-sheet">3/8" = 1'-0"</text>
+        </svg>
+        <figcaption>A doc page, 17 &times; 11". The green bar shows the page's name; red text is set per project and turns grey when final. No project bar: the design gets the full width.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section aria-labelledby="lights">
+    <div class="qg-section-head"><h2 id="lights">Set Light's four types</h2><p>Section through a letter, wall on the left. Yellow is what glows.</p></div>
+    <div class="qg-lights">
+      <div class="qg-light"><svg viewBox="0 0 120 90" aria-hidden="true"><rect x="0" y="0" width="16" height="90" class="qg-wall"/><rect x="34" y="18" width="40" height="54" class="qg-paper" style="stroke:var(--ink)" stroke-width="2"/><rect x="74" y="18" width="6" height="54" class="qg-glow"/><path d="M86 30 l18 -8 M86 45 h20 M86 60 l18 8" style="stroke:var(--render)" stroke-width="2"/></svg><b>Front lit channel</b><small>Face lights forward &middot; 4, white</small></div>
+      <div class="qg-light"><svg viewBox="0 0 120 90" aria-hidden="true"><rect x="0" y="0" width="16" height="90" class="qg-wall"/><ellipse cx="18" cy="45" rx="10" ry="40" class="qg-glow" opacity="0.7"/><rect x="30" y="20" width="6" height="50" class="qg-glow"/><rect x="36" y="18" width="44" height="54" class="qg-ink"/><path d="M28 18 l-8 -8 M28 72 l-8 8" style="stroke:var(--render)" stroke-width="2"/></svg><b>Reverse lit channel</b><small>Halo on the wall behind &middot; 4, white</small></div>
+      <div class="qg-light"><svg viewBox="0 0 120 90" aria-hidden="true"><rect x="0" y="0" width="16" height="90" class="qg-wall"/><rect x="34" y="18" width="46" height="54" class="qg-glow"/><path d="M86 30 l18 -8 M86 45 h20 M86 60 l18 8" style="stroke:var(--render)" stroke-width="2"/></svg><b>Push through body</b><small>The whole solid glows &middot; 2, white</small></div>
+      <div class="qg-light"><svg viewBox="0 0 120 90" aria-hidden="true"><rect x="0" y="0" width="16" height="90" class="qg-wall"/><rect x="34" y="18" width="40" height="54" class="qg-paper" style="stroke:var(--ink)" stroke-width="2"/><rect x="74" y="18" width="6" height="54" fill="#2d2d30"/><path d="M86 38 l12 -4 M86 52 l12 4" style="stroke:var(--muted)" stroke-width="2"/></svg><b>Push through face</b><small>A dark face, faintly lit &middot; 0.5, charcoal</small></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="layout">
+    <div class="qg-section-head"><h2 id="layout">Inside the Layout Manager</h2><p>Choose a part under <b>Manage</b>. Each has a list, its options and its buttons. Double click an entry for the main button.</p></div>
+    <div class="qg-table-scroll">
+      <table class="qg-parts">
+        <thead><tr><th>Part</th><th>Buttons</th><th>What it's for</th></tr></thead>
+        <tbody>
+          <tr><td>Document</td><td><span class="qg-pill">Create Document</span><span class="qg-pill">Add Page</span><span class="qg-pill">Rename Page</span><span class="qg-pill">Remove Page</span></td><td>The pages. Starts with <code>TITLE</code> and <code>PAGE 1</code>; a page's name is its title.</td></tr>
+          <tr><td>Project Details</td><td><span class="qg-pill">Edit Details</span><span class="qg-pill">Add Info Page</span></td><td>Project, client and revisions, set once. The <code>PROJECT INFO</code> page, after the title, shows them with the copyright and the sign-off.</td></tr>
+          <tr><td>Drawings</td><td><span class="qg-pill">Add Drawing</span><span class="qg-pill">Edit Drawing</span><span class="qg-pill">Delete Drawing</span><span class="qg-pill">Place on Page</span><span class="qg-pill">Remove from Page</span></td><td>Save a selection as a drawing, then place it on a page at a scale. <i>Largest That Fits</i> picks the scale.</td></tr>
+          <tr><td>Details</td><td><span class="qg-pill">Place on Page</span><span class="qg-pill">Remove from Page</span></td><td>Library details, straight onto a page.</td></tr>
+          <tr><td>CMF</td><td><span class="qg-pill">Add Item</span><span class="qg-pill">Edit Item</span><span class="qg-pill">Remove Item</span><span class="qg-pill">Add CMF Page</span></td><td>Paint, vinyl, materials and electrical, each with a code (<code>P1</code>, <code>V1</code>&hellip;) and a swatch. The <code>COLORS, MATERIALS &amp; FINISHES</code> page lists them and follows every change.</td></tr>
+          <tr><td>Renders</td><td><span class="qg-pill">Set Render</span><span class="qg-pill">Clear Render</span></td><td>Give a page a render and a day or night sky.</td></tr>
+          <tr><td>Images</td><td><span class="qg-pill">Add Image</span><span class="qg-pill">Remove Image</span></td><td>Put an image from a file on a page: click two corners, or type @6,0 for 6" wide.</td></tr>
+          <tr><td>Export</td><td><span class="qg-pill">Export PDF</span><span class="qg-pill">Export Facts</span></td><td>Every page, in order, to <code>DESIGN_&lt;project&gt;_v#.pdf</code>. The facts (client, paint, vinyl, electrical, details used) to <code>FACTS_&lt;project&gt;_v#.html</code>. Never overwrites.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="layers">
+    <div class="qg-section-head"><h2 id="layers">Layers you'll see</h2></div>
+    <div class="qg-table-scroll">
+      <table class="qg-parts qg-layers">
+        <tbody>
+          <tr><td>DESIGN::&lt;part&gt;</td><td>The sign's parts. Set Material colours them.</td></tr>
+          <tr><td>DESIGN::ILLUMS::&lt;type&gt;</td><td>Lit faces from Set Light.</td></tr>
+          <tr><td>DETAILS::2D</td><td>2D detail linework: <code>CUT</code>, <code>VISIBLE</code>, <code>FILL-&hellip;</code></td></tr>
+          <tr><td>DETAILS::ANNOTATIONS</td><td><code>DIMENSIONS</code> and <code>CALLOUTS</code>.</td></tr>
+          <tr><td>RENDER::&hellip;</td><td>Wall, ground, scale figure and the world light. Off in every placed view.</td></tr>
+          <tr><td>LAYOUT::&hellip;</td><td>The pages' parts. <code>VARIABLE</code> is the red per-project text.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>

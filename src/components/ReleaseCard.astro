@@ -1,0 +1,28 @@
+---
+// The latest release: what's in the shared alexandria_packages folder, as tools/sync.py last saw it.
+import { LinkButton } from '@astrojs/starlight/components';
+import release from '../data/release.json';
+
+const date = new Date(release.date + 'T12:00:00').toLocaleDateString('en-US', {
+	month: 'long',
+	day: 'numeric',
+	year: 'numeric',
+});
+---
+
+<div class="ax-release not-content">
+	<div>
+		<p class="ax-eyebrow">Latest release</p>
+		<h3>Alexandria {release.version}</h3>
+		<dl>
+			<div><dt>Released</dt><dd>{date}</dd></div>
+			<div><dt>Rhino Tools</dt><dd><code>{release.rhino}</code></dd></div>
+			<div><dt>Grasshopper Tools</dt><dd><code>{release.grasshopper}</code></dd></div>
+			<div><dt>Needs</dt><dd>Rhino 8 for Windows</dd></div>
+		</dl>
+	</div>
+	<div class="actions">
+		<LinkButton href={release.url} icon="download" iconPlacement="start">Download zip · {release.size} MB</LinkButton>
+		<LinkButton href="/start/download/" variant="secondary">How to install</LinkButton>
+	</div>
+</div>

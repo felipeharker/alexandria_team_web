@@ -1,0 +1,56 @@
+[
+  {
+    "version": "2.17",
+    "build": "9805+21359",
+    "date": "2026-11-05",
+    "summary": "Populate Block, Save with sky, Layout Manager images"
+  },
+  {
+    "version": "2.16",
+    "build": "9805+35012",
+    "date": "2026-11-04",
+    "summary": "A render fills its page"
+  },
+  {
+    "version": "2.15",
+    "build": "9805+33527",
+    "date": "2026-11-04",
+    "summary": "No project bar, sign locations, renders framed on the design"
+  },
+  {
+    "version": "2.14",
+    "build": "9805+32002",
+    "date": "2026-11-04",
+    "summary": "Project info page, CMF page and Export Facts; quick guides and PDF docs in every release"
+  },
+  {
+    "version": "2.13",
+    "build": "9805+26914",
+    "date": "2026-11-04",
+    "summary": "The Layout Manager, built in Rhino 8"
+  },
+  {
+    "version": "2.12",
+    "build": "9803+29203",
+    "date": "2026-11-02",
+    "summary": "The project template carries the layout pages"
+  },
+  {
+    "version": "2.12",
+    "build": "9803+28686",
+    "date": "2026-11-02",
+    "summary": "Right-click renders save as day_# and night_#"
+  },
+  {
+    "version": "2.11",
+    "build": "9803+28279",
+    "date": "2026-11-02",
+    "summary": "Blank layout pages and Page Blocks"
+  },
+  {
+    "version": "2.10",
+    "build": "9803+27766",
+    "date": "2026-11-02",
+    "summary": "The Rhino 8 layout, sun and file-format fixes"
+  }
+]

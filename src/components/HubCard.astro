@@ -1,0 +1,22 @@
+---
+// A card that goes somewhere: an icon, a title, a line about it, and a short note.
+interface Props {
+	href: string;
+	title: string;
+	icon?: string; // an image path; or put an <svg> in the "icon" slot
+	meta?: string;
+	external?: boolean;
+}
+const { href, title, icon, meta, external } = Astro.props;
+---
+
+<a class="ax-card" href={href} {...(external ? { target: '_blank', rel: 'noopener' } : {})}>
+	<span class="tile" aria-hidden="true">
+		{icon ? <img src={icon} alt="" width="28" height="28" /> : <slot name="icon" />}
+	</span>
+	<span>
+		<b>{title}</b>
+		<small><slot /></small>
+		{meta && <span class="meta">{meta}{external ? ' ↗' : ''}</span>}
+	</span>
+</a>

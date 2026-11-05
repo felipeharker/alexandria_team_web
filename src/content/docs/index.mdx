@@ -1,0 +1,61 @@
+---
+title: Home
+description: The office's Rhino and Grasshopper tools, the guides that go with them, and the standards behind every drawing.
+template: splash
+hero:
+  title: Alexandria
+  tagline: The office's Rhino and Grasshopper tools, the guides that go with them, and the standards behind every drawing.
+  actions:
+    - text: Get the latest release
+      link: /start/download/
+    - text: Your first day
+      link: /start/first-day/
+      icon: right-arrow
+      variant: minimal
+---
+
+import HubCard from '../../components/HubCard.astro';
+import ReleaseCard from '../../components/ReleaseCard.astro';
+import WhatsNew from '../../components/WhatsNew.astro';
+
+<ReleaseCard />
+
+<section class="ax-section not-content">
+<header><h2>Quick guides</h2><a href="/guides/rhino-tools/">All guides →</a></header>
+<div class="ax-grid">
+<HubCard href="/guides/rhino-tools/" title="Alexandria Tools" icon="/guides/icons/layout_manager.png" meta="Rhino toolbar">Every button, from an empty model to a finished design package.</HubCard>
+<HubCard href="/guides/grasshopper-components/" title="Alexandria Phoenix" icon="/guides/icons/square_grid.png" meta="Grasshopper tab">Make cells, give them values, act on the values, then fabricate.</HubCard>
+<HubCard href="/guides/material-estimator/" title="Material Estimator" meta="Office tool">Price a project's materials by the foot, the yard or the piece.<svg slot="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M4 3h16v3.5h-6v11h6V21H4v-3.5h6v-11H4z"/></svg></HubCard>
+</div>
+</section>
+
+<section class="ax-section not-content">
+<header><h2>Office tools</h2><a href="/tools/">All office tools →</a></header>
+<div class="ax-grid">
+<HubCard href="https://alexandria-office.onrender.com" external title="Material Estimator" meta="Open the app">Runs in your browser. Sheets move between people as CSV files.<svg slot="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M4 3h16v3.5h-6v11h6V21H4v-3.5h6v-11H4z"/></svg></HubCard>
+</div>
+</section>
+
+<section class="ax-section not-content">
+<header><h2>Start here</h2></header>
+<div class="ax-grid">
+<HubCard href="/start/first-day/" title="Your first day" meta="Start">Install, set up, and the guides to read first.<svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4h11l-2 4 2 4H5"/></svg></HubCard>
+<HubCard href="/docs/install/" title="Install and update" meta="Docs">The two packages in Rhino's Package Manager, and how updates arrive.<svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M4 19h16"/></svg></HubCard>
+<HubCard href="/start/troubleshooting/" title="Troubleshooting" meta="Help">A missing toolbar, a package that won't show up, and the other usual fixes.<svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M9.6 9.4a2.5 2.5 0 1 1 3.4 2.3c-.6.3-1 .8-1 1.5v.4M12 16.6v.2"/></svg></HubCard>
+<HubCard href="/docs/standards/" title="Standards" meta="Docs">Layers, styles, drawings and projects: the rules the tools apply.<svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3.5" width="16" height="17" rx="1.5"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></HubCard>
+</div>
+</section>
+
+<section class="ax-section not-content">
+<header><h2>What's new</h2><a href="/start/whats-new/">Every release →</a></header>
+<WhatsNew limit={4} />
+</section>
+
+<section class="ax-section not-content">
+<header><h2>Reference</h2><a href="/reference/links/">All links →</a></header>
+<ul class="ax-links">
+<li><a href="https://docs.mcneel.com/rhino/8/help/en-us/index.htm" target="_blank" rel="noopener"><b>Rhino 8 help</b><small>Every command, with what it asks for.</small><span class="host">docs.mcneel.com</span></a></li>
+<li><a href="https://discourse.mcneel.com/" target="_blank" rel="noopener"><b>McNeel forum</b><small>Rhino and Grasshopper questions, answered by McNeel and other users.</small><span class="host">discourse.mcneel.com</span></a></li>
+<li><a href="https://documentation.chaos.com/space/VRHINO" target="_blank" rel="noopener"><b>V-Ray for Rhino</b><small>Lights, materials and render settings.</small><span class="host">documentation.chaos.com</span></a></li>
+</ul>
+</section>

@@ -1,0 +1,24 @@
+{
+  "version": "2.17",
+  "rhino": "2.17.9805+21361",
+  "grasshopper": "2.17.9805+21359",
+  "date": "2026-11-05",
+  "size": 4.5,
+  "tag": "v2.17.9805-21361",
+  "url": "https://github.com/felipeharker/alexandria_team_web/releases/download/v2.17.9805-21361/alexandria_packages.zip",
+  "contents": [
+    "INSTALL.md",
+    "INSTALL.pdf",
+    "README.md",
+    "README.pdf",
+    "STANDARDS.md",
+    "STANDARDS.pdf",
+    "alexandria grasshopper tools-2.17.9805+21359-rh8-any.yak",
+    "alexandria rhino tools-2.17.9805+21361-rh8-any.yak",
+    "alexandria_phoenix_quick_guide.html",
+    "alexandria_phoenix_quick_guide.pdf",
+    "alexandria_tools_quick_guide.html",
+    "alexandria_tools_quick_guide.pdf",
+    "project_template/"
+  ]
+}
