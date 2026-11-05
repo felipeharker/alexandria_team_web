@@ -1,6 +1,10 @@
-# Render Blueprint for the Alexandria hub: one static site, built from this repository's main branch.
-# Render created it as alexandria-hub-21kp (alexandria-hub-21kp.onrender.com). At Porkbun, alexdesignlab.org
-# is an ALIAS and www a CNAME to that address; Render redirects www to the root.
+# Render Blueprint for this repository's two static sites, both built from main:
+#
+# - alexandria-hub: the hub at alexdesignlab.org (Render named it alexandria-hub-21kp). At Porkbun,
+#   alexdesignlab.org is an ALIAS and www a CNAME to its onrender.com address; Render redirects www
+#   to the root.
+# - phoenix-guides: the two quick guides at phoenix.alexdesignlab.org/rhino and /grasshopper, written
+#   by tools/build_phoenix.mjs. Its domain is added in Render once phoenix has a CNAME at Porkbun.
 services:
   - type: web
     name: alexandria-hub
@@ -18,6 +22,27 @@ services:
       - path: /*
         name: X-Robots-Tag
         value: noindex, nofollow   # public for now, but not for search engines
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: Referrer-Policy
+        value: same-origin
+
+  - type: web
+    name: phoenix-guides
+    runtime: static
+    repo: https://github.com/felipeharker/alexandria_team_web
+    branch: main
+    buildCommand: npm ci && npm run build:phoenix
+    staticPublishPath: dist-phoenix
+    envVars:
+      - key: NODE_VERSION
+        value: "24"
+    headers:
+      - path: /*
+        name: X-Robots-Tag
+        value: noindex, nofollow
       - path: /*
         name: X-Content-Type-Options
         value: nosniff

@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 # the release zip tools/sync.py builds (it goes to GitHub releases, not the repo)
 release/
+
+# the Phoenix guides site tools/build_phoenix.mjs writes (Render builds it)
+dist-phoenix/

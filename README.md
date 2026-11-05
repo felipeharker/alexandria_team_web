@@ -14,6 +14,9 @@ Public for now, but kept out of search engines (`noindex` on every page and in `
 | `src/components/` | The release card, What's new, the hub's cards, and the wrapper the guides sit in. |
 | `src/guides/` | Guides written for the hub (the Material Estimator's). |
 | `tools/sync.py` | Brings in everything that comes from `alexandria_phoenix` and the shared packages folder. |
+| `tools/build_phoenix.mjs` | Writes the Phoenix guides site (phoenix.alexdesignlab.org: `/rhino/` and `/grasshopper/`) into `dist-phoenix/`, from the same guides, with `src/styles/phoenix.css`. |
+
+`render.yaml` publishes two Render sites from this repo: the hub (`npm run build`, `dist/`) and the Phoenix guides (`npm run build:phoenix`, `dist-phoenix/`). The office tools (the Material Estimator at office.alexdesignlab.org/estimator/) live in the alexandria_office repo.
 
 Written by `tools/sync.py`, so edit the source, not these: `src/content/docs/docs/`, `src/generated/`, `src/data/`, `src/styles/guides.css` and `public/guides/icons/`.
 
