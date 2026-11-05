@@ -1,10 +1,12 @@
-# Render Blueprint for this repository's two static sites, both built from main:
+# Render Blueprint for the Alexandria hub: one static site, alexandria-hub, in the Alexandria project,
+# built from this repository's main branch and served only at alexdesignlab.org (Render redirects www
+# to it). At Porkbun, alexdesignlab.org is an ALIAS and www a CNAME to the site's onrender.com address,
+# which is otherwise switched off.
 #
-# - alexandria-hub: the hub at alexdesignlab.org (Render named it alexandria-hub-21kp). At Porkbun,
-#   alexdesignlab.org is an ALIAS and www a CNAME to its onrender.com address; Render redirects www
-#   to the root.
-# - phoenix-guides: the two quick guides at phoenix.alexdesignlab.org/rhino and /grasshopper, written
-#   by tools/build_phoenix.mjs. Its domain is added in Render once phoenix has a CNAME at Porkbun.
+# Every tool lives under the one domain: /rhino, /grasshopper, /estimator/guide are hub pages, and
+# /estimator/ is the Material Estimator itself, served from the alexandria-office site (the
+# alexandria_office repo) through the rewrite below, so it still deploys from its own repo. Render
+# applies a rule only where the hub has no page, so /estimator/guide stays the hub's.
 services:
   - type: web
     name: alexandria-hub
@@ -15,34 +17,21 @@ services:
     staticPublishPath: dist
     domains:
       - alexdesignlab.org
+    renderSubdomainPolicy: disabled
     envVars:
       - key: NODE_VERSION
         value: "24"                # Astro 7 needs Node 22.23.4 or later
+    routes:
+      - type: redirect
+        source: /estimator
+        destination: /estimator/
+      - type: rewrite
+        source: /estimator/*
+        destination: https://alexandria-office.onrender.com/estimator/*
     headers:
       - path: /*
         name: X-Robots-Tag
         value: noindex, nofollow   # public for now, but not for search engines
-      - path: /*
-        name: X-Content-Type-Options
-        value: nosniff
-      - path: /*
-        name: Referrer-Policy
-        value: same-origin
-
-  - type: web
-    name: phoenix-guides
-    runtime: static
-    repo: https://github.com/felipeharker/alexandria_team_web
-    branch: main
-    buildCommand: npm ci && npm run build:phoenix
-    staticPublishPath: dist-phoenix
-    envVars:
-      - key: NODE_VERSION
-        value: "24"
-    headers:
-      - path: /*
-        name: X-Robots-Tag
-        value: noindex, nofollow
       - path: /*
         name: X-Content-Type-Options
         value: nosniff

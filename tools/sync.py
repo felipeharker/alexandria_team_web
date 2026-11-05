@@ -38,7 +38,7 @@ ASSET = "alexandria_packages.zip"
 SKIP = {"desktop.ini", "thumbs.db", ".ds_store"}
 
 DOCS = [  # source in alexandria_phoenix, hub page, title, description
-    ("INSTALL.md", "install", "Install and update",
+    ("INSTALL.md", "install", "Install and Update",
      "Install the two Alexandria packages in Rhino 8, keep them updated, and fix what's missing."),
     ("README.md", "phoenix", "Alexandria Phoenix",
      "Every Grasshopper component and Rhino button, the master definition and how the repo is laid out."),
@@ -62,6 +62,70 @@ def read(name):
         return handle.read()
 
 
+# ------------------------------------------------------------------ Title Case
+# Every title on the hub is in Title Case (the user, 2026-11-05). The Phoenix sources write theirs
+# in sentence case, so the sync recases their headings and labels on the way in.
+MINOR = {"a", "an", "the", "and", "but", "or", "nor", "for", "so", "yet", "as", "at", "by", "in", "of", "off",
+         "on", "per", "to", "via", "vs", "with", "from", "into", "onto", "than"}
+
+
+def title_case(text):
+    """Title Case for a title's words; words with capitals or digits inside (CMF, DM-WORKING, 2D) stay."""
+    words = re.split(r"(\s+)", text)
+    real = [i for i, w in enumerate(words) if w.strip()]
+    for n, i in enumerate(real):
+        word = words[i]
+        if re.match(r"^&#?\w+;$", word):  # an HTML entity, like &amp; or &middot;
+            continue
+        core = re.match(r"^([^\w]*)(\w[\w'’]*)(.*)$", word)
+        if not core:
+            continue
+        lead, body, tail = core.groups()
+        if any(c.isupper() for c in body[1:]) or any(c.isdigit() for c in body) or "::" in word:
+            continue
+        first_or_last = n in (0, len(real) - 1) or (n > 0 and words[real[n - 1]].endswith(":"))
+        if body.lower() in MINOR and not first_or_last:
+            body = body.lower()
+        else:
+            body = body[:1].upper() + body[1:]
+        words[i] = lead + body + tail
+    return "".join(words)
+
+
+def title_case_markdown(text):
+    """Every Markdown heading in Title Case, outside code blocks."""
+    out, fenced = [], False
+    for line in text.split("\n"):
+        if line.lstrip().startswith("```"):
+            fenced = not fenced
+        heading = None if fenced else re.match(r"^(#{1,6} )(.*)$", line)
+        out.append(heading.group(1) + title_case_text(heading.group(2)) if heading else line)
+    return "\n".join(out)
+
+
+def title_case_text(text):
+    """Title Case outside `code` spans."""
+    return "".join(part if part.startswith("`") else title_case(part) for part in re.split(r"(`[^`]*`)", text))
+
+
+def title_case_html(body):
+    """Title Case for a guide's titles: its headings, the steps of its order of work, its group and family
+    names and its labelled figures. Running text, and the Rhino and Grasshopper names inside it, stay."""
+    def recase(match):
+        return match.group(1) + re.sub(r">([^<]+)<", lambda m: ">" + title_case(m.group(1)) + "<",
+                                       ">" + match.group(2) + "<")[1:-1] + match.group(3)
+    patterns = [r"(<h[1-3][^>]*>)(.*?)(</h[1-3]>)",
+                r"(<div><b>)([^<]*)(</b><small>)",                      # a step of the order of work
+                r"(</svg><b>)([^<]*)(</b><small>)",                     # a light type
+                r'(<div class="qg-group-name">)([^<]*)(</div>)',        # a toolbar group
+                r'(<span class="qg-fam [^"]*">)([^<]*)(</span>)',       # a component family
+                r'(<div class="qg-col [^"]*"><b>)([^<]*)(</b>)',        # a swap column
+                r'(<div class="qg-sec-name">)([^<]*)(<small>)']         # a tab section
+    for pattern in patterns:
+        body = re.sub(pattern, recase, body, flags=re.S)
+    return body
+
+
 # ------------------------------------------------------------------ docs
 def relink(text):
     def swap(match):
@@ -75,7 +139,8 @@ def docs():
         text = read(source)
         text = re.sub(r"\A# .*\n+", "", text)  # the page title comes from the front matter
         front = "---\ntitle: %s\ndescription: %s\n---\n\n" % (json.dumps(title), json.dumps(description))
-        write("src/content/docs/docs/%s.md" % slug, front + NOTE % source + relink(text).rstrip() + "\n")
+        text = title_case_markdown(relink(text))
+        write("src/content/docs/docs/%s.md" % slug, front + NOTE % source + text.rstrip() + "\n")
     install = relink(read("INSTALL.md"))
     missing = re.search(r"^## If something's missing\n+(.*?)(?=^## |\Z)", install, re.S | re.M)
     claude = re.search(r"^If it doesn't work:\n+(.*?)(?=^## |\Z)", install, re.S | re.M)
@@ -173,7 +238,7 @@ def guides(version):
         for name in names:
             body = body.replace("{{%s}}" % name, "/guides/icons/%s.png" % name)
         body = re.sub(r'(stroke|fill)="var\((--[a-z]+)\)"', r'style="\1:var(\2)"', body)
-        body = mg.prefix_html(body)
+        body = title_case_html(mg.prefix_html(body))
         write("src/generated/guides/%s.html" % which,
               "<!-- Written by tools/sync.py from alexandria_phoenix/guides/src. Edit it there. -->\n" + body)
 

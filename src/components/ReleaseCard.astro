@@ -12,7 +12,7 @@ const date = new Date(release.date + 'T12:00:00').toLocaleDateString('en-US', {
 
 <div class="ax-release not-content">
 	<div>
-		<p class="ax-eyebrow">Latest release</p>
+		<p class="ax-eyebrow">Latest Release</p>
 		<h3>Alexandria {release.version}</h3>
 		<dl>
 			<div><dt>Released</dt><dd>{date}</dd></div>
@@ -22,7 +22,7 @@ const date = new Date(release.date + 'T12:00:00').toLocaleDateString('en-US', {
 		</dl>
 	</div>
 	<div class="actions">
-		<LinkButton href={release.url} icon="download" iconPlacement="start">Download zip · {release.size} MB</LinkButton>
-		<LinkButton href="/start/download/" variant="secondary">How to install</LinkButton>
+		<LinkButton href={release.url} icon="download" iconPlacement="start">Download Zip · {release.size} MB</LinkButton>
+		<LinkButton href="/start/download/" variant="secondary">How to Install</LinkButton>
 	</div>
 </div>

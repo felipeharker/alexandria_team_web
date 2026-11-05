@@ -5,8 +5,16 @@ import starlight from '@astrojs/starlight';
 // The Alexandria hub: guides, the latest release, the office tools and the standards, in one place.
 // Pages are Markdown or MDX in src/content/docs; the sidebar below is the site's table of contents.
 // tools/sync.py writes everything under docs/, src/generated and src/data from alexandria_phoenix.
+// Every tool has a short address: /rhino, /grasshopper, /estimator (the app itself comes from the
+// alexandria_office site, through the rewrite in render.yaml) and /estimator/guide.
 export default defineConfig({
 	site: 'https://alexdesignlab.org',
+	redirects: {
+		// the guides' first addresses, from the day the hub went up
+		'/guides/rhino-tools': '/rhino/',
+		'/guides/grasshopper-components': '/grasshopper/',
+		'/guides/material-estimator': '/estimator/guide/',
+	},
 	integrations: [
 		starlight({
 			title: 'Alexandria',
@@ -28,30 +36,28 @@ export default defineConfig({
 			],
 			sidebar: [
 				{
-					label: 'Start here',
+					label: 'Quick Reference',
 					items: [
-						{ label: 'Your first day', slug: 'start/first-day' },
+						{ label: 'Your First Day', slug: 'start/first-day' },
 						{ label: 'Download', slug: 'start/download' },
-						{ label: 'What’s new', slug: 'start/whats-new' },
+						{ label: 'What’s New', slug: 'start/whats-new' },
 						{ label: 'Troubleshooting', slug: 'start/troubleshooting' },
 					],
 				},
 				{
-					label: 'Quick guides',
+					label: 'Tools',
 					items: [
-						{ label: 'Rhino tools', slug: 'guides/rhino-tools' },
-						{ label: 'Grasshopper components', slug: 'guides/grasshopper-components' },
-						{ label: 'Material Estimator', slug: 'guides/material-estimator' },
+						{ label: 'Rhino Tools', slug: 'rhino' },
+						{ label: 'Grasshopper Components', slug: 'grasshopper' },
+						{ label: 'Material Estimator Guide', slug: 'estimator/guide' },
+						{ label: 'Open the Material Estimator', link: '/estimator/' },
+						{ label: 'All Office Tools', slug: 'tools' },
 					],
-				},
-				{
-					label: 'Office tools',
-					items: [{ label: 'All office tools', slug: 'tools' }],
 				},
 				{
 					label: 'Documentation',
 					items: [
-						{ label: 'Install and update', slug: 'docs/install' },
+						{ label: 'Install and Update', slug: 'docs/install' },
 						{ label: 'Alexandria Phoenix', slug: 'docs/phoenix' },
 						{ label: 'Standards', slug: 'docs/standards' },
 					],

@@ -6,41 +6,32 @@ hero:
   title: Alexandria
   tagline: The office's design tools, the guides that go with them, and the standards behind them.
   actions:
-    - text: Your first day
+    - text: Your First Day
       link: /start/first-day/
-    - text: What's new
-      link: /start/whats-new/
-      icon: right-arrow
-      variant: minimal
 ---
 
 import HubCard from '../../components/HubCard.astro';
 import ToolCard from '../../components/ToolCard.astro';
-import WhatsNew from '../../components/WhatsNew.astro';
 import release from '../../data/release.json';
 
-{/* Every solution gets the same card here, in the order they were made. Add a new one as another ToolCard. */}
+{/* Every tool gets the same card here, in the order they were made. Add a new one as another ToolCard.
+    Titles, labels and links are in Title Case. */}
 
 <section class="ax-section not-content">
-<header><h2>Tools</h2><a href="/tools/">All office tools →</a></header>
+<header><h2>Tools</h2><a href="/tools/">All Office Tools →</a></header>
 <div class="ax-tools">
-<ToolCard title="Alexandria Tools" kind="Rhino 8 toolbar" icon="/guides/icons/layout_manager.png" links={[{ label: `Download ${release.version}`, href: '/start/download/' }, { label: 'Quick guide', href: '/guides/rhino-tools/' }, { label: 'Standards', href: '/docs/standards/' }]}>From an empty model to a finished design package: the project, materials and lights, day and night renders, details, and the layout.</ToolCard>
-<ToolCard title="Alexandria Phoenix" kind="Grasshopper tab" icon="/guides/icons/square_grid.png" links={[{ label: `Download ${release.version}`, href: '/start/download/' }, { label: 'Quick guide', href: '/guides/grasshopper-components/' }, { label: 'Components', href: '/docs/phoenix/' }]}>Patterns in a region: make cells, give each one a value, act on the values, then fabricate or bake them.</ToolCard>
-<ToolCard title="Material Estimator" kind="Web app" links={[{ label: 'Open', href: 'https://alexandria-office.onrender.com/estimator/', external: true }, { label: 'Quick guide', href: '/guides/material-estimator/' }]}>Price a project's materials by the foot, the yard or the piece, and share the sheet as a CSV that opens in Excel.<svg slot="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M4 3h16v3.5h-6v11h6V21H4v-3.5h6v-11H4z"/></svg></ToolCard>
+<ToolCard title="Alexandria Tools" kind="Rhino 8 Toolbar" icon="/guides/icons/layout_manager.png" links={[{ label: `Download ${release.version}`, href: '/start/download/' }, { label: 'Quick Guide', href: '/rhino/' }]}>From an empty model to a finished design package: the project, materials and lights, day and night renders, details, and the layout.</ToolCard>
+<ToolCard title="Alexandria Phoenix" kind="Grasshopper Tab" icon="/guides/icons/square_grid.png" links={[{ label: `Download ${release.version}`, href: '/start/download/' }, { label: 'Quick Guide', href: '/grasshopper/' }]}>Patterns in a region: make cells, give each one a value, act on the values, then fabricate or bake them.</ToolCard>
+<ToolCard title="Material Estimator" kind="Web App" links={[{ label: 'Open', href: '/estimator/' }, { label: 'Quick Guide', href: '/estimator/guide/' }]}>Price a project's materials by the foot, the yard or the piece, and share the sheet as a CSV that opens in Excel.<svg slot="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M4 3h16v3.5h-6v11h6V21H4v-3.5h6v-11H4z"/></svg></ToolCard>
 </div>
 </section>
 
 <section class="ax-section not-content">
-<header><h2>Start here</h2></header>
+<header><h2>Quick Reference</h2></header>
 <div class="ax-grid">
-<HubCard href="/start/first-day/" title="Your first day" meta="Start">Install, set up, and the guides to read first.<svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4h11l-2 4 2 4H5"/></svg></HubCard>
-<HubCard href="/docs/install/" title="Install and update" meta="Docs">The Rhino and Grasshopper packages, and how updates arrive.<svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M4 19h16"/></svg></HubCard>
+<HubCard href="/start/first-day/" title="Your First Day" meta="Start">Install, set up, and the guides to read first.<svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4h11l-2 4 2 4H5"/></svg></HubCard>
+<HubCard href="/docs/install/" title="Install and Update" meta="Docs">The Rhino and Grasshopper packages, and how updates arrive.<svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M4 19h16"/></svg></HubCard>
 <HubCard href="/start/troubleshooting/" title="Troubleshooting" meta="Help">A missing toolbar, a package that won't show up, and the other usual fixes.<svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M9.6 9.4a2.5 2.5 0 1 1 3.4 2.3c-.6.3-1 .8-1 1.5v.4M12 16.6v.2"/></svg></HubCard>
-<HubCard href="/reference/links/" title="Reference links" meta="Links">Rhino, Grasshopper, CorelDRAW and V-Ray documentation.<svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1 1M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1-1"/></svg></HubCard>
+<HubCard href="/reference/links/" title="Reference Links" meta="Links">Rhino, Grasshopper, CorelDRAW and V-Ray documentation.<svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1 1M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1-1"/></svg></HubCard>
 </div>
-</section>
-
-<section class="ax-section not-content">
-<header><h2>What's new</h2><a href="/start/whats-new/">Every release →</a></header>
-<WhatsNew limit={4} />
 </section>

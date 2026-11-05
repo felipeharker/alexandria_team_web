@@ -102,7 +102,7 @@ Choose what to manage at the top of the window. Every part works the same way: a
 
 The render settings change V-Ray's environment, sun, camera and image size, and switch the design's own lighting: every V-Ray light but the world light and the sun. The sky is only ever the background: the objects in front of it get a neutral light, so it doesn't tint them. Only lights change: layers, objects and materials stay as you leave them, so show or hide the wall, ground and scale figure yourself. The drawing and render standards behind the buttons are in [STANDARDS.md](/docs/standards/#drawings).
 
-## Master definition
+## Master Definition
 
 `alexandria_phoenix_master_v1.0.gh` with `alexandria_phoenix_master_v1.0.3dm` is the template definition. Along the top it runs a 144 × 96 in region through Square Grid, Curve Remap, Scale by Values and Percent Cull to a Material Preview, and is laid out the way every Phoenix definition should be. See [STANDARDS.md](/docs/standards/).
 

@@ -275,7 +275,7 @@ A render page shows its render over its sky in the PDF. During the export the sk
 
 **Icons** are drawn by `make_toolbar.py` in the Phoenix palette and saved to `toolbar/icons/`, and the toolbar is written to `toolbar/alexandria_tools.rui`, which the build ships in the package's `shared/` folder as `Alexandria Tools.rui`. *Alexandria Setup* copies it to `UI\Plug-ins\` in Rhino's data folder, opens it there and adds the toolbar as a tab of Rhino's Standard toolbars, and every command's `_toolbar_file` keeps that copy current. Rhino can write the toolbar it holds in memory back over that file when it closes, so a copy made while the toolbar is open doesn't last. So Setup closes the toolbar and opens it again from the current copy, which shows new buttons at once. Closing drops the tab, so Setup notes where it was and puts it back, and the tab keeps its place through updates. The file has no toolbar group, so it never opens a row of its own; Rhino has no public way to add a toolbar to a container, so Setup's `add_tab` uses Rhino.UI's internals and, if a Rhino update changes them, says how to show the toolbar instead. A toolbar named like the plugin would open from the package's versioned folder instead, and Rhino drops it from wherever it was docked at every update. The toolbar's GUIDs are fixed in the generator, so a new version replaces the installed toolbar instead of adding a second one. Run `python tools/make_toolbar.py` after adding a button or changing an icon or a script's first docstring line, then build.
 
-## Sources of truth
+## Sources of Truth
 
 What the tools bring into a model comes from Rhino files, which ship in the Rhino Tools package. Edit the file and build, and the tools follow.
 
@@ -298,7 +298,7 @@ The Rhino files are Rhino 8 files. Edit them in Rhino 8, or save one edited in a
 
 A model already in use keeps what it has until asked. *Populate Model* adds what's missing and sets the annotation styles back to the file's, keeping each style's model space scale, which is set per drawing. A layer's look, a block or a detail already in the model stays as it is. `layouts.3dm` keeps its styles at scale 1 for the same reason, so that scale is the one thing that differs from the styles file.
 
-## Build and release
+## Build and Release
 
 1. Edit a script in `src/` or `toolbar/`. To iterate on a component, paste it into a Python 3 Script component; the signature recreates the inputs. A toolbar script runs as it is with `_-RunPythonScript`.
 2. Run `tools/build.py` in Rhino 8 (`_-RunPythonScript`). It builds both packages for Rhino 8 (`rh8`), against the latest RhinoCommon 8, each from a script project in `build/` that the Script Editor can open: *Alexandria Grasshopper Tools* from `src/` and *Alexandria Rhino Tools* from `toolbar/`, with the toolbar and display modes added. It copies them to `dist/`, replacing the older ones, and installs them in this Rhino. Rhino 9 installs and runs the same packages.

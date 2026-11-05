@@ -1,5 +1,5 @@
 ---
-title: "Install and update"
+title: "Install and Update"
 description: "Install the two Alexandria packages in Rhino 8, keep them updated, and fix what's missing."
 ---
 
@@ -16,7 +16,7 @@ The packages live in the office's Alexandria packages folder, `\\aria-design\Ari
 
 Alexandria needs Rhino 8.
 
-## 1. Add the Alexandria folder to the Package Manager
+## 1. Add the Alexandria Folder to the Package Manager
 
 Once per computer.
 
@@ -31,7 +31,7 @@ Once per computer.
    That's McNeel's server, which Rhino uses by default, followed by the Alexandria folder. If the old value listed anything besides `https://yak.rhino3d.com`, add it back at the end, after another `;`.
 4. Click **OK**.
 
-## 2. Install the packages
+## 2. Install the Packages
 
 1. Run `PackageManager` (**Tools › Package Manager**).
 2. Search for `Alexandria`. Both packages appear.
@@ -78,7 +78,7 @@ After an update, restart Rhino and click **Alexandria Setup** once more. New but
 
 To see which version you have, look at the **Installed** tab of the Package Manager.
 
-## Moving from the old install
+## Moving from the Old Install
 
 Before the packages, the components came as a package named **Alexandria Phoenix**, and the toolbar was a file dragged onto Rhino.
 
@@ -90,7 +90,7 @@ Before the packages, the components came as a package named **Alexandria Phoenix
 
 In the Package Manager's **Installed** tab, select the package, click **Uninstall** and restart Rhino. The display modes stay; delete them in **Tools › Options › View › Display Modes** if you no longer want them.
 
-## If something's missing
+## If Something's Missing
 
 - **The packages don't show up in the search.** Check that File Explorer opens the folder, and that the sources value matches the one in step 1 exactly.
 - **The toolbar doesn't appear.** Type `AlexandriaSetup`. If it's open but hidden, run `Toolbar`, pick **Alexandria Tools** in the list of toolbar files and tick **Alexandria Tools**.
@@ -138,6 +138,6 @@ If it doesn't work:
 - **Claude needs sign-in.** Type `/login` in the panel again.
 - **"No agent available."** In `/settings`, select **Claude** and tick **Enabled**.
 
-## With a copy of this repo
+## With a Copy of This Repo
 
 The repo's `dist/` folder holds the same two packages as the shared folder, as of the last commit. Adding your clone's `dist` folder to the sources instead of the shared folder works the same way, but updates arrive only when you pull.

@@ -590,13 +590,15 @@ h1#_top,
 }
 .qg-page .ax-keys li {
 	counter-increment: key;
-	display: grid;
-	grid-template-columns: 22px minmax(0, 1fr);
-	gap: 8px;
-	align-items: baseline;
+	position: relative;
+	padding-left: 30px;
+	line-height: 1.5;
 }
 .qg-page .ax-keys li::before {
 	content: counter(key);
+	position: absolute;
+	left: 0;
+	top: 1px;
 	width: 20px;
 	height: 20px;
 	border-radius: 50%;
@@ -606,7 +608,6 @@ h1#_top,
 	font-weight: 700;
 	display: grid;
 	place-items: center;
-	transform: translateY(4px);
 }
 .qg-page .ax-code {
 	margin: 0;
