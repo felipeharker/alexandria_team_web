@@ -30,6 +30,13 @@ services:
       - type: rewrite
         source: /estimator/*
         destination: https://alexandria-office.onrender.com/estimator/*
+      # the Color Matcher (/colors) and the Color Library (/colors/library), also from alexandria_office
+      - type: rewrite
+        source: /colors
+        destination: https://alexandria-office.onrender.com/colors/
+      - type: rewrite
+        source: /colors/*
+        destination: https://alexandria-office.onrender.com/colors/*
     headers:
       - path: /*
         name: X-Robots-Tag

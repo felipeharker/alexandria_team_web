@@ -5,8 +5,8 @@ import starlight from '@astrojs/starlight';
 // The Alexandria hub: guides, the latest release, the office tools and the standards, in one place.
 // Pages are Markdown or MDX in src/content/docs; the sidebar below is the site's table of contents.
 // tools/sync.py writes everything under docs/, src/generated and src/data from alexandria_phoenix.
-// Every tool has a short address: /rhino, /grasshopper, /estimator (the app itself comes from the
-// alexandria_office site, through the rewrite in render.yaml) and /estimator/guide.
+// Every tool has a short address: /rhino, /grasshopper, /estimator/guide here, and /estimator, /colors
+// (the Color Matcher) and /colors/library from the alexandria_office site, through rewrites in render.yaml.
 export default defineConfig({
 	site: 'https://alexdesignlab.org',
 	redirects: {
@@ -51,6 +51,8 @@ export default defineConfig({
 						{ label: 'Grasshopper Components', slug: 'grasshopper' },
 						{ label: 'Material Estimator Guide', slug: 'estimator/guide' },
 						{ label: 'Open the Material Estimator', link: '/estimator/' },
+						{ label: 'Color Matcher', link: '/colors/' },
+						{ label: 'Color Library', link: '/colors/library/' },
 						{ label: 'All Office Tools', slug: 'tools' },
 					],
 				},
