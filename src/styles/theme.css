@@ -279,6 +279,86 @@ h1#_top,
 	color: var(--sl-color-gray-4);
 }
 
+/* the home page's tools: one card each, all the same size */
+.ax-tools {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+	gap: 12px;
+}
+.ax-tool {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	padding: 18px;
+	border: 1px solid var(--ax-rule);
+	border-radius: var(--ax-radius);
+	background: var(--sl-color-black);
+}
+.ax-tool > header {
+	display: grid;
+	grid-template-columns: 44px minmax(0, 1fr);
+	gap: 12px;
+	align-items: center;
+}
+.ax-tool .tile {
+	width: 44px;
+	height: 44px;
+	border-radius: 8px;
+	background: var(--ax-tint);
+	display: grid;
+	place-items: center;
+	color: var(--sl-color-gray-3);
+}
+.ax-tool .tile img {
+	width: 30px;
+	height: 30px;
+}
+.ax-tool .tile svg {
+	width: 24px;
+	height: 24px;
+}
+.ax-tool b {
+	display: block;
+	font-size: var(--sl-text-base);
+	font-weight: 600;
+	color: var(--sl-color-white);
+	line-height: 1.3;
+}
+.ax-tool header small {
+	display: block;
+	font-size: var(--sl-text-xs);
+	color: var(--sl-color-gray-3);
+}
+.ax-tool p {
+	margin: 0;
+	font-size: var(--sl-text-sm);
+	line-height: 1.5;
+	color: var(--sl-color-gray-2);
+}
+.ax-tool nav {
+	margin-top: auto;
+	padding-top: 12px;
+	border-top: 1px solid var(--ax-rule);
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px 18px;
+	font-size: var(--sl-text-sm);
+}
+.ax-tool nav a {
+	color: var(--sl-color-gray-2);
+	text-decoration: none;
+	white-space: nowrap;
+}
+.ax-tool nav a:first-child {
+	color: var(--sl-color-white);
+	font-weight: 600;
+}
+.ax-tool nav a:hover {
+	color: var(--sl-color-white);
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+
 /* the release card */
 .ax-release {
 	display: grid;

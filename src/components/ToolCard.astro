@@ -1,0 +1,39 @@
+---
+// One of the office's solutions on the home page. Every one gets the same card, whatever it is:
+// a name, what kind of thing it is, a line about it, and its links (the first is the main one).
+interface Link {
+	label: string;
+	href: string;
+	external?: boolean;
+}
+interface Props {
+	title: string;
+	kind: string;
+	icon?: string; // an image path; or put an <svg> in the "icon" slot
+	links: Link[];
+}
+const { title, kind, icon, links } = Astro.props;
+---
+
+<article class="ax-tool">
+	<header>
+		<span class="tile" aria-hidden="true">
+			{icon ? <img src={icon} alt="" width="30" height="30" /> : <slot name="icon" />}
+		</span>
+		<span>
+			<b>{title}</b>
+			<small>{kind}</small>
+		</span>
+	</header>
+	<p><slot /></p>
+	<nav aria-label={title}>
+		{
+			links.map((link) => (
+				<a href={link.href} {...(link.external ? { target: '_blank', rel: 'noopener' } : {})}>
+					{link.label}
+					{link.external ? ' ↗' : ' →'}
+				</a>
+			))
+		}
+	</nav>
+</article>
