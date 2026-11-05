@@ -36,7 +36,7 @@ export default defineConfig({
 			],
 			sidebar: [
 				{
-					label: 'Quick Reference',
+					label: 'Starting Out',
 					items: [
 						{ label: 'Your First Day', slug: 'start/first-day' },
 						{ label: 'Download', slug: 'start/download' },
@@ -72,7 +72,7 @@ export default defineConfig({
 					],
 				},
 				{
-					label: 'Reference',
+					label: 'External Ref.',
 					items: [{ label: 'Links', slug: 'reference/links' }],
 				},
 			],
