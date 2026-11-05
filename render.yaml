@@ -22,9 +22,11 @@ services:
       - key: NODE_VERSION
         value: "24"                # Astro 7 needs Node 22.23.4 or later
     routes:
-      - type: redirect
+      # Render matches /estimator and /estimator/ alike, so the page gets its own rewrite (a redirect
+      # between them loops); the Estimator's <base href="/estimator/"> keeps its files loading either way.
+      - type: rewrite
         source: /estimator
-        destination: /estimator/
+        destination: https://alexandria-office.onrender.com/estimator/
       - type: rewrite
         source: /estimator/*
         destination: https://alexandria-office.onrender.com/estimator/*
