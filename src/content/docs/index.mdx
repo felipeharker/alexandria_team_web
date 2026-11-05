@@ -14,18 +14,27 @@ import HubCard from '../../components/HubCard.astro';
 import ToolCard from '../../components/ToolCard.astro';
 import release from '../../data/release.json';
 
-{/* Every tool gets the same card here, in the order they were made. Add a new one as another ToolCard.
-    Titles, labels and links are in Title Case. */}
+{/* Every tool gets the same card here, a row per family: the Alexandria Rhino and Grasshopper tools, the Site Plan,
+    the color tools, the Material Estimator (the user's order). Add a new tool as a ToolCard in its family's row, or a
+    row of its own. Titles, labels and links are in Title Case. */}
 
 <section class="ax-section not-content">
 <header><h2>Tools</h2><a href="/tools/">All Office Tools →</a></header>
+<div class="ax-tool-rows">
 <div class="ax-tools">
 <ToolCard title="Alexandria Tools" kind="Rhino/Grasshopper" icon="/guides/icons/layout_manager.png" links={[{ label: `Download ${release.version}`, href: '/start/download/' }, { label: 'Quick Guide', href: '/rhino/' }]}>From an empty model to a finished design package: the project, materials and lights, day and night renders, details, and the layout.</ToolCard>
 <ToolCard title="Alexandria Phoenix" kind="Rhino/Grasshopper" icon="/guides/icons/square_grid.png" links={[{ label: `Download ${release.version}`, href: '/start/download/' }, { label: 'Quick Guide', href: '/grasshopper/' }]}>Patterns in a region: make cells, give each one a value, act on the values, then fabricate or bake them.</ToolCard>
-<ToolCard title="Material Estimator" kind="Web" links={[{ label: 'Open', href: '/estimator/' }, { label: 'Quick Guide', href: '/estimator/guide/' }]}>Price a project's materials by the foot, the yard or the piece, and share the sheet as a CSV that opens in Excel.<svg slot="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M4 3h16v3.5h-6v11h6V21H4v-3.5h6v-11H4z"/></svg></ToolCard>
+</div>
+<div class="ax-tools">
+<ToolCard title="Site Plan" kind="Web" links={[{ label: 'Open', href: '/site-plan/' }, { label: 'Quick Guide', href: '/site-plan/guide/' }]}>Find an address, place the sign, and export a greyscale site plan with its location circled in red.<svg slot="icon" viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd"><path d="M12 2.5a9.5 9.5 0 1 0 0 19 9.5 9.5 0 0 0 0-19zm0 2a7.5 7.5 0 1 1 0 15 7.5 7.5 0 0 1 0-15zm0 4.5a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg></ToolCard>
+</div>
+<div class="ax-tools">
 <ToolCard title="Color Matcher" kind="Web" links={[{ label: 'Open', href: '/colors/' }, { label: 'Quick Guide', href: '/colors/guide/' }]}>Turn any hex code into its nearest Sherwin-Williams, Pantone and 3M Scotchcal 3630 colors, with a percent match and the formulas on file.<svg slot="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c3.4 4.3 6 7.7 6 10.7a6 6 0 0 1-12 0C6 10.7 8.6 7.3 12 3z"/></svg></ToolCard>
 <ToolCard title="Color Library" kind="Web" links={[{ label: 'Open', href: '/colors/library/' }, { label: 'Quick Guide', href: '/colors/library/guide/' }]}>Every Matthews Paint formula the office has on file, by color system, with its colorants in grams per gallon.<svg slot="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M5 5h4v14H5zM10.5 5h4v14h-4zM16 6l3.7 1.5-4.4 11.3V6.9z"/></svg></ToolCard>
-<ToolCard title="Site Plan" kind="Web" links={[{ label: 'Open', href: '/site-plan/' }, { label: 'Quick Guide', href: '/site-plan/guide/' }]}>Find an address, place the sign, and export a greyscale site plan with its location circled in red.<svg slot="icon" viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd"><path d="M12 2.5a9.5 9.5 0 1 0 0 19 9.5 9.5 0 0 0 0-19zm0 2a7.5 7.5 0 1 1 0 15 7.5 7.5 0 0 1 0-15zm0 4.5a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg></ToolCard>
+</div>
+<div class="ax-tools">
+<ToolCard title="Material Estimator" kind="Web" links={[{ label: 'Open', href: '/estimator/' }, { label: 'Quick Guide', href: '/estimator/guide/' }]}>Price a project's materials by the foot, the yard or the piece, and share the sheet as a CSV that opens in Excel.<svg slot="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M4 3h16v3.5h-6v11h6V21H4v-3.5h6v-11H4z"/></svg></ToolCard>
+</div>
 </div>
 </section>
 
@@ -33,6 +42,7 @@ import release from '../../data/release.json';
 <header><h2>Starting Out</h2></header>
 <div class="ax-grid">
 <HubCard href="/start/first-day/" title="Your First Day" meta="Start">Install, set up, and the guides to read first.<svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4h11l-2 4 2 4H5"/></svg></HubCard>
+<HubCard href="/docs/office-tools/" title="How the Office Tools Work" meta="Docs">Saving, sharing and the data behind the web tools.<svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 8h18M8 21h8"/></svg></HubCard>
 <HubCard href="/docs/install/" title="Install and Update" meta="Docs">The Rhino and Grasshopper packages, and how updates arrive.<svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M4 19h16"/></svg></HubCard>
 <HubCard href="/start/troubleshooting/" title="Troubleshooting" meta="Help">A missing toolbar, a package that won't show up, and the other usual fixes.<svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M9.6 9.4a2.5 2.5 0 1 1 3.4 2.3c-.6.3-1 .8-1 1.5v.4M12 16.6v.2"/></svg></HubCard>
 <HubCard href="/reference/links/" title="Reference Links" meta="Links">Rhino, Grasshopper, CorelDRAW and V-Ray documentation.<svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1 1M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1-1"/></svg></HubCard>

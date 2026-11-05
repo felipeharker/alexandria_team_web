@@ -1,10 +1,20 @@
 ---
 title: Troubleshooting
-description: The usual problems installing, updating and running Alexandria, and how to fix them.
+description: The usual problems with the web tools, and with installing, updating and running the Rhino tools, and how to fix them.
 ---
 
 import { Content as Install } from '../../../generated/troubleshooting-install.md';
 import { Content as Claude } from '../../../generated/troubleshooting-claude.md';
+
+## The Web Tools
+
+- **My sheet, list or plan is gone.** The tools save in the browser you used. Another browser, another computer, a private window or clearing the browser's site data starts empty. Import the CSV you exported, or start again; from now on, export into the project's folder.
+- **A tool looks out of date or half drawn.** Reload the page to get the newest version.
+- **The Color Matcher says the libraries didn't load.** Reload the page; if it keeps happening, check the connection.
+- **An import skipped rows or filled in values.** The message after an import says which. Compare the file with the tool's [CSV template](/templates/estimator/): the Estimator needs a Material column, the Color Matcher a Hex column.
+- **The Site Plan finds nothing for an address.** Add the city and state, or zoom there yourself and click the map. The search allows one press a second.
+- **Part of the Site Plan's map is blank.** Its map comes from a free public service: move the map a little or reload. If it stays blank, try again later.
+- **The Site Plan's export fails.** Make the browser window smaller, or set the browser's zoom back to 100%, and export again.
 
 ## Installing and the Toolbar
 

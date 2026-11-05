@@ -1,11 +1,24 @@
 ---
 title: Your First Day with Alexandria
-description: Install the tools, set up Rhino, and the guides to read first.
+description: The web tools to bookmark, the Rhino tools to install, and the guides to read first.
 ---
 
 import { Steps } from '@astrojs/starlight/components';
 
-Alexandria is the office's set of tools for sign design in Rhino 8: a toolbar that takes a sign from an empty model to a finished design package, Grasshopper components for patterns, and office tools like the Material Estimator. This page gets you set up and points you at the right guides.
+Alexandria is the office's set of tools in two halves. **On the web**, at alexdesignlab.org, are the office tools for the work around a design: pricing materials, matching and mixing colors, and drawing site plans. **In Rhino 8** are the Alexandria tools, a toolbar that takes a sign from an empty model to a finished design package, and Alexandria Phoenix, Grasshopper components for patterns. This page gets you started with both.
+
+## On the Web: Nothing to Install
+
+The office tools open in any browser, on any computer or phone, and are always the newest version. Bookmark the ones you'll use:
+
+- **[Site Plan](/site-plan/)** finds an address and draws the office's greyscale site plan around it, with the sign's location circled in red, ready for the design package.
+- **[Color Matcher](/colors/)** turns a client's hex code into its nearest Sherwin-Williams, Pantone and 3M vinyl colors, with a percent match.
+- **[Color Library](/colors/library/)** has every Matthews Paint formula the office has on file, with its colorants.
+- **[Material Estimator](/estimator/)** prices a project's materials by the foot, the yard or the piece.
+
+Each has a quick guide under **Quick Guides**, about two minutes to read. Two habits to start with: name the project at the top of a tool, since it names what you export, and **export** your work (a CSV or a PNG) into the project's folder. The tools save as you go, but only in the browser you used. [Office Tools](/docs/office-tools/) covers how they work underneath.
+
+## In Rhino: Set Up Once
 
 <Steps>
 
@@ -15,16 +28,15 @@ Alexandria is the office's set of tools for sign design in Rhino 8: a toolbar th
 
 3. **Read the Rhino tools guide.** [Alexandria Tools](/rhino/) shows every button in the order you'll use it, from Create Project to the finished PDF.
 
-4. **Try it on a practice project.** In a new model, click **Create Project** and pick a scratch folder of your own. Then **Populate Model**, model a simple sign at the origin facing −Y, and try **Set Material** and **Apply Day Settings**. Nothing you do there touches a real project.
+4. **Try it on a practice project.** In a new model, click **Create Project** and pick a scratch folder of your own. Then **Populate Model**, model a simple sign at the origin facing −Y, and try **Set Material** and **Apply Day Settings**. Nothing you do there touches a real project. The [Sample Project](/sample-project/) shows where it leads: a finished design package made with the tools.
 
 5. **Open Grasshopper when a job calls for a pattern.** [Alexandria Phoenix](/grasshopper/) shows the basic chain: cells, a value for each, then scale, cull or fold them.
-
-6. **Bookmark the office tools.** The [Material Estimator](/estimator/) prices a project's materials.
 
 </Steps>
 
 ## Good to Know
 
-- **Updates install themselves** when Rhino starts, if you ticked automatic updates while installing. After one arrives, restart Rhino and click **Alexandria Setup** once more. [What's New](/start/whats-new/) lists every release.
-- **The standards are built in.** Layers, annotation styles and page layouts come from the tools, so you rarely need to set them by hand. [Standards](/docs/standards/) explains them when you want to know why.
-- **Stuck?** [Troubleshooting](/start/troubleshooting/) covers the usual problems. For anything else, ask the Alexandria team for now; a form for questions and suggestions is on its way.
+- **The web tools update themselves:** every visit gets the newest version, with nothing to install.
+- **The Rhino tools update themselves too,** when Rhino starts, if you ticked automatic updates while installing. After one arrives, restart Rhino and click **Alexandria Setup** once more. [What's New](/start/whats-new/) lists every release.
+- **The standards are built in.** Layers, annotation styles and page layouts come from the Rhino tools, and the map style from the Site Plan, so you rarely set them by hand.
+- **Stuck?** [Troubleshooting](/start/troubleshooting/) covers the usual problems, on the web and in Rhino. For anything else, ask the Alexandria team for now; a form for questions and suggestions is on its way.

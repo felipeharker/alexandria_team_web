@@ -1,0 +1,90 @@
+---
+title: Office Tools
+description: The web tools for the office's everyday work, the Material Estimator, Color Matcher, Color Library and Site Plan, and how they save, share and get updated.
+---
+
+{/* Written by hand, unlike the Phoenix docs beside it, which tools/sync.py copies from alexandria_phoenix. The tools
+    themselves are in the alexandria_office repository; keep this page in step when one changes. */}
+
+The office tools are four small web apps at alexdesignlab.org, for the work around a design rather than in Rhino: pricing materials, matching and mixing colors, and drawing site plans. They open in any browser, on any computer or phone, with nothing to install and no account, and every visit gets the newest version. Each has a quick guide for its buttons, under Quick Guides; this page covers how they work underneath.
+
+| Tool | For | Saves | Shares As |
+|---|---|---|---|
+| [Material Estimator](/estimator/) | A project's material costs, by the foot, the yard or the piece | In your browser | CSV, which opens in Excel |
+| [Color Matcher](/colors/) | The nearest Sherwin-Williams, Pantone and 3M vinyl colors to any hex code | In your browser | CSV |
+| [Color Library](/colors/library/) | The Matthews Paint formulas the office has on file | Nothing to save | A link to a formula |
+| [Site Plan](/site-plan/) | A greyscale site plan with the sign's location circled in red | In your browser | PNG, about 4,800 px across |
+
+## Saving and Sharing
+
+- **Your work saves as you go, in the browser you use.** It's per person and per browser: another browser, another computer, a private window or clearing the browser's site data starts empty. Nothing is kept on a server.
+- **Export to keep it.** A CSV or PNG saved with the project's files is the real record. Import a CSV to pick up where you left off, or to pass a sheet or a color list to someone else.
+- **The project name at the top** names every export, so name it before you export.
+- **Start from a template.** The [CSV Templates](/templates/estimator/) show the columns each tool reads, with a file to download.
+
+## Material Estimator
+
+A sheet of materials, one row each, priced by unit: the Estimator multiplies unit price by quantity and totals the sheet by line, by pricing unit and by category.
+
+| Unit | Priced By | Typical Use |
+|---|---|---|
+| `LF` | Linear foot | Extrusions, trim, pipe |
+| `SF` | Square foot | Panels, sheathing, roofing |
+| `SY` | Square yard | Carpet, geotextile |
+| `CF`, `CY` | Cubic foot, cubic yard | Grout and fill; concrete, gravel |
+| `EA` | Each | Anchors, fixtures |
+| `LB`, `TON` | Pound, ton | Fasteners; rebar, aggregate |
+| `GAL` | Gallon | Coatings, sealants |
+| `LS` | Lump sum | Allowances |
+
+Imports are forgiving: headers such as Item, Qty or UOM, units written out (sq ft, cubic yards), dollar signs and thousands separators all read correctly, and the import says what it had to fill in. **Print / Save as PDF** in the ⋯ menu prints the sheet for a submittal. See its [quick guide](/estimator/guide/) and [CSV template](/templates/estimator/).
+
+## Color Matcher
+
+Each color on the list gets its three nearest colors in three libraries:
+
+| Library | Colors | From |
+|---|---|---|
+| Sherwin-Williams | 1,729 | Sherwin-Williams' published colors, through PaintDB |
+| Pantone Solid Coated | 1,344 | The PANTONE+ guide's Lab values |
+| 3M Scotchcal 3630 (translucent vinyl) | 78 | 3M's digital color card, which shows the film unlit |
+
+The match is CIEDE2000 (ΔE), the industry's measure of how different two colors look, shown as a percent: 100% less 2.5% for each ΔE.
+
+| ΔE | Reads As |
+|---|---|
+| 1 or less | Indistinguishable |
+| Up to 2 | Very close |
+| Up to 4 | Close |
+| Up to 8 | Noticeable |
+| Over 8 | Different |
+
+**Formula on File** marks a match the office already has a Matthews Paint formula for, linked to the Color Library. Every swatch is an on-screen approximation: confirm against a physical swatch or a printed guide before ordering. See its [quick guide](/colors/guide/) and [CSV template](/templates/color-matcher/).
+
+## Color Library
+
+Every Matthews Paint formula sheet the office has, 96 of them, searchable by code, name or Matthews number and grouped by color system: Sherwin-Williams, Pantone, Matthews Paint, Benjamin Moore and Behr. Each opens to its colorants in grams per gallon, with a link to its matches in the Color Matcher. The sheets are filed by color as `Company_Code_Name.pdf`, never by client or job. See its [quick guide](/colors/library/guide/).
+
+## Site Plan
+
+Find the address, click where the sign goes, size the circle, and export. The map is drawn the same way on every project, to the office's site plan style:
+
+- **The map:** very light flat greys, buildings a shade darker with a fine edge, white streets at their real width with a thin grey edge, no labels. **Street Names** adds dark grey street names; **Shadows** adds a soft shadow down and to the right of every building.
+- **The sign's location:** a dashed red circle, the red of the sign location boxes on the design package's plans, with *SIGN LOCATION* in Oswald inside, sized with the circle. The radius is set in feet.
+- **Highlighted buildings:** **Highlight Buildings** darkens the buildings you click, such as the client's.
+- **The export:** the map as shown, north up, about 4,800 px across, which prints at 300 dpi across a 17 x 11 page's drawing area, with *© OpenStreetMap contributors* in the corner, as the map data's licence asks.
+
+The map is OpenStreetMap, which can miss a new building or keep a torn-down one: compare it with the architect's site plan before it goes in a package. See its [quick guide](/site-plan/guide/).
+
+## Privacy
+
+There are no accounts, and the tools keep nothing on a server. The Color Matcher and Color Library load their color data from this site. The Site Plan sends the address you search to [Nominatim](https://nominatim.openstreetmap.org/), OpenStreetMap's address search, and loads its map from [OpenFreeMap](https://openfreemap.org/); nothing else leaves your browser. The site is public for now but kept out of search engines, and it will move behind a sign-in later.
+
+## Changing a Tool
+
+The tools live in the private **alexandria_office** repository, one folder each under `public/`, and pushing its main branch puts a change live in a minute or two. [System Architecture](/docs/architecture/) shows how it connects to the rest.
+
+- **A tool's code or look:** its folder, `public/estimator/`, `public/colors/` or `public/site-plan/`. They share the hub's style: greys, one green for buttons, Inter and IBM Plex Mono.
+- **The color libraries:** `tools/build_colors.py` rebuilds them. Add a formula sheet to `paint-formulas/`, named as above, then run it.
+- **The site plan style:** `public/site-plan/map-style.json`, the standard the Site Plan loads, described in the repository's README.
+- **Quick guides and these pages:** in the hub's own repository, alexandria_team_web. The hub's copies of the CSV templates come across with its `tools/sync.py`.

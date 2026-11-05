@@ -82,8 +82,10 @@ export default defineConfig({
 					items: [
 						{ label: 'Install and Update', slug: 'docs/install' },
 						{ label: 'Alexandria Phoenix', slug: 'docs/phoenix' },
-						{ label: 'Standards', slug: 'docs/standards' },
+						{ label: 'Office Tools', slug: 'docs/office-tools' },
 						{ label: 'System Architecture', slug: 'docs/architecture' },
+						// Standards (docs/standards, from STANDARDS.md) stays built for the Phoenix docs' links, but out of
+						// the sidebar until it covers the office's standards beyond the Rhino tools (user, 2026-11-05).
 					],
 				},
 				{
