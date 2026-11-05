@@ -1,0 +1,63 @@
+---
+title: System Architecture
+description: How the Alexandria tools, their repositories and the services they run on fit together, and what updates on its own.
+tableOfContents: false
+---
+
+import ArchitectureDiagram from '../../../components/ArchitectureDiagram.astro';
+
+{/* Written by hand, unlike the other pages here, which tools/sync.py copies from alexandria_phoenix. Keep it in step
+    when a tool, repository or service is added. */}
+
+Alexandria is four GitHub repositories, two static sites on Render, a release folder on the office network and a few free public services. Everyone reaches the web side at **alexdesignlab.org**, and the Rhino side through Rhino's Package Manager.
+
+<ArchitectureDiagram />
+
+<ol class="ax-arch-keys">
+<li><b>The domain.</b> Porkbun's DNS points alexdesignlab.org at the hub on Render.</li>
+<li><b>Rewrites.</b> The hub passes /estimator, /colors (with /colors/library) and /site-plan to the alexandria-office site, so every tool is at one address.</li>
+<li><b>Map data.</b> The Site Plan reads map tiles from OpenFreeMap and addresses from Nominatim, straight from the browser.</li>
+<li><b>The hub deploys.</b> Pushing alexandria_team_web's main branch makes Render build and publish the hub, from its <code>render.yaml</code> Blueprint.</li>
+<li><b>The office tools deploy.</b> Pushing alexandria_office's main branch makes Render publish its <code>public/</code> folder. There's no build step.</li>
+<li><b>CSV templates.</b> <code>tools/sync.py</code> copies the Material Estimator's and the Color Matcher's templates into the hub.</li>
+<li><b>Sample project.</b> <code>web/make_web.py</code> renders the newest design package's pages; <code>tools/sync.py</code> copies them, the renders and the PDF into the hub.</li>
+<li><b>Docs and guides.</b> <code>tools/sync.py</code> copies README, INSTALL and STANDARDS, the Rhino and Grasshopper quick guides, What's New and the parameters template from alexandria_phoenix.</li>
+<li><b>Releases.</b> Pushing a release of alexandria_phoenix runs its pre-push hook, which copies the packages and docs to the shared folder.</li>
+<li><b>Rhino updates.</b> Rhino 8 installs a newer package from the shared folder the next time it starts.</li>
+<li><b>The download.</b> <code>tools/sync.py --publish</code> reads the release in the shared folder, zips it and uploads it as the hub repository's GitHub release.</li>
+<li><b>Download page.</b> The hub's Download page links to that zip.</li>
+</ol>
+
+## What Updates on Its Own
+
+Pushing a repository updates what it deploys straight away. What the hub copies from the other repositories waits until someone runs `tools/sync.py` in alexandria_team_web and pushes the result.
+
+| When You Change | It Reaches alexdesignlab.org |
+|---|---|
+| An office tool, in alexandria_office | On its own: push, and Render redeploys it in a minute or two. Two things don't follow: its quick guide, written in alexandria_team_web, and the hub's copy of its CSV template, which `tools/sync.py` copies. |
+| A hub page, in alexandria_team_web | On its own: push, and Render rebuilds the hub. |
+| The Rhino or Grasshopper tools, in alexandria_phoenix | Rhino gets the release on its own, through the shared folder. The hub doesn't: run `python tools/sync.py --publish` in alexandria_team_web for the docs, quick guides, What's New, the version and the zip, then commit and push. |
+| The sample project | Run `python web/make_web.py` in the project, then `python tools/sync.py` in alexandria_team_web, then commit and push. |
+
+`tools/sync.py` needs the four repositories side by side in one folder, and the shared folder reachable for the release. Without `--publish` it updates everything but the zip.
+
+## The Repositories
+
+| Repository | Holds | Goes To |
+|---|---|---|
+| alexandria_phoenix (private) | The Alexandria Rhino tools and Grasshopper components, their build, docs, standards and quick guides | The shared packages folder, for Rhino; the hub, through `tools/sync.py` |
+| alexandria_office (private) | The Material Estimator, Color Matcher, Color Library and Site Plan, with the paint formula sheets and the Site Plan's map style | Render's alexandria-office site, shown through the hub |
+| alexandria_team_web (public) | The hub: every page here, the office tools' quick guides, and `tools/sync.py` | Render's alexandria-hub site, at alexdesignlab.org |
+| alexandria_sample_project (private) | The Alexandria Design Lab, a test project made with the tools, and its `web/` previews | The hub's [Sample Project](/sample-project/) page, through `tools/sync.py` |
+
+## Online
+
+| Where | What It Is |
+|---|---|
+| alexdesignlab.org | The hub, Render's alexandria-hub static site. Kept out of search engines, and to be put behind a sign-in later. |
+| /estimator, /colors, /colors/library, /site-plan | The office tools, from Render's alexandria-office static site, through the hub's rewrites. |
+| GitHub release | The current packages as one zip, on the public alexandria_team_web repository. |
+| Porkbun | The domain alexdesignlab.org and its DNS. |
+| OpenFreeMap, Nominatim | Free map tiles and address search for the Site Plan, from OpenStreetMap data. No account or key. |
+| Shared packages folder | Not online: it's on the office network. Rhino's Package Manager installs from it. |
+| Render's alexandria-phoenix | The older Phoenix docs site, built by alexandria_phoenix's own tools. Left as it is for now. |

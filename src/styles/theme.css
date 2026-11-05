@@ -687,3 +687,91 @@ h1#_top,
 	font-weight: 500;
 	color: var(--sl-color-gray-4);
 }
+
+/* the system architecture diagram (ArchitectureDiagram.astro): greys only; dashed lines are run by hand */
+.ax-arch {
+	/* wider than the text where the page has room, up to the drawing's own width, centred on the text */
+	--ax-arch-w: max(100%, min(990px, calc(100vw - var(--sl-sidebar-width) - 3rem)));
+	width: var(--ax-arch-w);
+	margin: 1.5rem calc((100% - var(--ax-arch-w)) / 2) 0;
+}
+@media (max-width: 50rem) {
+	.ax-arch { width: auto; margin-inline: 0; }
+}
+.ax-arch-scroll {
+	overflow-x: auto;
+	border: 1px solid var(--ax-rule);
+	border-radius: var(--ax-radius);
+	background: var(--sl-color-black);
+}
+.ax-arch svg {
+	display: block;
+	width: 100%;
+	min-width: 720px;
+	height: auto;
+	font-family: var(--sl-font);
+}
+.ax-arch .band { fill: var(--ax-tint); }
+.ax-arch .band-label { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; fill: var(--sl-color-gray-4); }
+.ax-arch .node { fill: var(--sl-color-black); stroke: var(--ax-rule-strong); }
+.ax-arch .eyebrow { font-size: 9px; font-weight: 600; letter-spacing: 0.08em; fill: var(--sl-color-gray-4); }
+.ax-arch .title { font-size: 13px; font-weight: 600; fill: var(--sl-color-white); }
+.ax-arch .title.mono { font-family: var(--sl-font-mono); font-size: 11.5px; }
+.ax-arch .sub { font-size: 11px; fill: var(--sl-color-gray-3); }
+.ax-arch .pill { font-size: 10.5px; fill: var(--sl-color-gray-2); }
+.ax-arch .edge { fill: none; stroke: var(--sl-color-gray-3); stroke-width: 1.5; }
+.ax-arch .edge.hand { stroke-dasharray: 5 4; }
+.ax-arch .arrow { fill: var(--sl-color-gray-3); }
+.ax-arch .num circle { fill: var(--sl-color-white); }
+.ax-arch .num text { font-size: 10.5px; font-weight: 700; fill: var(--sl-color-black); }
+.ax-arch figcaption {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px 20px;
+	margin-top: 8px;
+	font-size: var(--sl-text-xs);
+	color: var(--sl-color-gray-3);
+}
+.ax-arch figcaption span {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+}
+.ax-arch figcaption svg {
+	width: 28px;
+	min-width: 0;
+	height: 8px;
+}
+
+/* the architecture page's numbered list, matching the diagram's numbers */
+.ax-arch-keys {
+	list-style: none;
+	padding: 0 !important;
+	counter-reset: arch;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr));
+	gap: 8px 20px;
+	font-size: var(--sl-text-sm);
+}
+.ax-arch-keys li {
+	counter-increment: arch;
+	position: relative;
+	margin: 0 !important;
+	padding-left: 30px;
+	line-height: 1.5;
+}
+.ax-arch-keys li::before {
+	content: counter(arch);
+	position: absolute;
+	left: 0;
+	top: 1px;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background: var(--sl-color-white);
+	color: var(--sl-color-black);
+	font-size: 11px;
+	font-weight: 700;
+	display: grid;
+	place-items: center;
+}

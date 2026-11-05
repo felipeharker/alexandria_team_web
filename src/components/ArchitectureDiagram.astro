@@ -1,0 +1,91 @@
+---
+// How the Alexandria repositories, sites and services connect, for docs/architecture.
+// Four columns: the office tools, the hub, the release and sample project, the Rhino tools. Rows: who uses it,
+// where it runs, and the GitHub repository it comes from. Solid lines happen on their own; dashed ones are a script
+// someone runs. The numbers match the list on the page. Colours come from theme.css (.ax-arch), so it follows the theme.
+const cols = { A: 25, B: 270, C: 515, D: 760 };
+const W = 205;
+type Node = { col: keyof typeof cols; y: number; h?: number; eyebrow: string; title: string; mono?: boolean; lines?: string[] };
+const nodes: Node[] = [
+	{ col: 'B', y: 30, h: 64, eyebrow: 'COLLEAGUES', title: 'A Browser', lines: ['Any computer or phone'] },
+	{ col: 'D', y: 30, h: 64, eyebrow: 'COLLEAGUES', title: 'Rhino 8', lines: ['Installs updates at start'] },
+	{ col: 'A', y: 180, eyebrow: 'FREE PUBLIC SERVICES', title: 'OpenFreeMap, Nominatim', lines: ['The Site Plan’s map tiles', 'and address search'] },
+	{ col: 'B', y: 180, eyebrow: 'RENDER · STATIC SITE', title: 'alexandria-hub', mono: true, lines: ['alexdesignlab.org: guides,', 'docs, templates, downloads'] },
+	{ col: 'C', y: 180, eyebrow: 'GITHUB RELEASE', title: 'alexandria_packages.zip', mono: true, lines: ['On alexandria_team_web,', 'for the Download page'] },
+	{ col: 'D', y: 180, eyebrow: 'OFFICE NETWORK', title: 'Shared Packages Folder', lines: ['The current release, and', 'the docs and guides as PDFs'] },
+	{ col: 'A', y: 300, eyebrow: 'RENDER · STATIC SITE', title: 'alexandria-office', mono: true, lines: ['/estimator, /colors,', '/colors/library, /site-plan'] },
+	{ col: 'A', y: 440, eyebrow: 'GITHUB · PRIVATE', title: 'alexandria_office', mono: true, lines: ['Estimator, Color Matcher,', 'Color Library, Site Plan'] },
+	{ col: 'B', y: 440, eyebrow: 'GITHUB · PUBLIC', title: 'alexandria_team_web', mono: true, lines: ['The hub’s pages,', 'tools/sync.py'] },
+	{ col: 'C', y: 440, eyebrow: 'GITHUB · PRIVATE', title: 'alexandria_sample_project', mono: true, lines: ['Alexandria Design Lab,', 'web/make_web.py'] },
+	{ col: 'D', y: 440, eyebrow: 'GITHUB · PRIVATE', title: 'alexandria_phoenix', mono: true, lines: ['Rhino tools, Grasshopper', 'components, docs, standards'] },
+];
+// [number, path, by hand?, where the number sits]
+const edges: [number, string, boolean, [number, number]][] = [
+	[1, 'M372.5 150 V178', false, [372.5, 165]],
+	[2, 'M300 264 V342 H232', false, [266, 342]],
+	[3, 'M127.5 300 V266', false, [127.5, 283]],
+	[4, 'M410 440 V266', false, [410, 402]],
+	[5, 'M127.5 440 V386', false, [127.5, 413]],
+	[6, 'M230 482 H268', true, [249, 482]],
+	[7, 'M515 482 H477', true, [496, 482]],
+	[8, 'M862.5 524 V566 H372.5 V526', true, [617.5, 566]],
+	[9, 'M862.5 440 V266', false, [862.5, 352]],
+	[10, 'M862.5 180 V96', false, [862.5, 137]],
+	[11, 'M760 222 H722', true, [741, 222]],
+	[12, 'M475 222 H513', false, [494, 222]],
+];
+const bands = [
+	{ y: 10, h: 95, label: 'USING IT' },
+	{ y: 110, h: 285, label: 'ONLINE, AND ON THE OFFICE NETWORK' },
+	{ y: 400, h: 200, label: 'SOURCE: GITHUB REPOSITORIES' },
+];
+---
+
+<figure class="ax-arch not-content">
+	<div class="ax-arch-scroll">
+		<svg viewBox="0 0 990 610" role="img" aria-labelledby="ax-arch-title">
+			<title id="ax-arch-title">How the Alexandria repositories, sites and services connect. Numbered lines are explained below the diagram.</title>
+			<defs>
+				<marker id="ax-arch-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+					<path d="M0 0 L10 5 L0 10 z" class="arrow" />
+				</marker>
+			</defs>
+			{bands.map((b) => (
+				<g>
+					<rect x="8" y={b.y} width="974" height={b.h} rx="10" class="band" />
+					<text x="22" y={b.y + 18} class="band-label">{b.label}</text>
+				</g>
+			))}
+			<rect x="270" y="120" width={W} height="30" rx="15" class="node" />
+			<text x="372.5" y="139" text-anchor="middle" class="pill">Porkbun DNS · alexdesignlab.org</text>
+			<path d="M372.5 94 V118" class="edge" marker-end="url(#ax-arch-arrow)" />
+			{edges.map(([, d, hand]) => (
+				<path d={d} class={hand ? 'edge hand' : 'edge'} marker-end="url(#ax-arch-arrow)" />
+			))}
+			{nodes.map((n) => {
+				const x = cols[n.col];
+				const h = n.h ?? 84;
+				return (
+					<g>
+						<rect x={x} y={n.y} width={W} height={h} rx="8" class="node" />
+						<text x={x + 12} y={n.y + 19} class="eyebrow">{n.eyebrow}</text>
+						<text x={x + 12} y={n.y + 39} class={n.mono ? 'title mono' : 'title'}>{n.title}</text>
+						{(n.lines ?? []).map((line, i) => (
+							<text x={x + 12} y={n.y + 57 + i * 15} class="sub">{line}</text>
+						))}
+					</g>
+				);
+			})}
+			{edges.map(([num, , , [x, y]]) => (
+				<g class="num">
+					<circle cx={x} cy={y} r="9" />
+					<text x={x} y={y + 3.8} text-anchor="middle">{num}</text>
+				</g>
+			))}
+		</svg>
+	</div>
+	<figcaption>
+		<span><svg viewBox="0 0 28 8" aria-hidden="true"><path d="M1 4h26" class="edge" /></svg>Happens on its own</span>
+		<span><svg viewBox="0 0 28 8" aria-hidden="true"><path d="M1 4h26" class="edge hand" /></svg>A script someone runs</span>
+	</figcaption>
+</figure>

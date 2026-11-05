@@ -6,7 +6,7 @@ import starlight from '@astrojs/starlight';
 // Pages are Markdown or MDX in src/content/docs; the sidebar below is the site's table of contents.
 // tools/sync.py writes everything under docs/, src/generated and src/data from alexandria_phoenix.
 // Every tool has a short address: /rhino, /grasshopper, /estimator/guide here, and /estimator, /colors
-// (the Color Matcher) and /colors/library from the alexandria_office site, through rewrites in render.yaml.
+// (the Color Matcher), /colors/library and /site-plan from the alexandria_office site, through rewrites in render.yaml.
 export default defineConfig({
 	site: 'https://alexdesignlab.org',
 	redirects: {
@@ -52,6 +52,7 @@ export default defineConfig({
 						{ label: 'Material Estimator', slug: 'estimator/guide' },
 						{ label: 'Color Matcher', slug: 'colors/guide' },
 						{ label: 'Color Library', slug: 'colors/library/guide' },
+						{ label: 'Site Plan', slug: 'site-plan/guide' },
 					],
 				},
 				{
@@ -60,6 +61,7 @@ export default defineConfig({
 						{ label: 'Material Estimator', link: '/estimator/' },
 						{ label: 'Color Matcher', link: '/colors/' },
 						{ label: 'Color Library', link: '/colors/library/' },
+						{ label: 'Site Plan', link: '/site-plan/' },
 						{ label: 'All Office Tools', slug: 'tools' },
 					],
 				},
@@ -81,6 +83,7 @@ export default defineConfig({
 						{ label: 'Install and Update', slug: 'docs/install' },
 						{ label: 'Alexandria Phoenix', slug: 'docs/phoenix' },
 						{ label: 'Standards', slug: 'docs/standards' },
+						{ label: 'System Architecture', slug: 'docs/architecture' },
 					],
 				},
 				{
