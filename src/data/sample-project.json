@@ -1,0 +1,58 @@
+{
+ "package": "DESIGN_ALEXANDRIA_DESIGN_LAB_v4.pdf",
+ "page_size": "17 x 11 in",
+ "pages": [
+  {
+   "file": "page-01.jpg",
+   "title": "Title"
+  },
+  {
+   "file": "page-02.jpg",
+   "title": "Project Info"
+  },
+  {
+   "file": "page-03.jpg",
+   "title": "Day Render"
+  },
+  {
+   "file": "page-04.jpg",
+   "title": "Night Render"
+  },
+  {
+   "file": "page-05.jpg",
+   "title": "Sign Location"
+  },
+  {
+   "file": "page-06.jpg",
+   "title": "Building Plan"
+  },
+  {
+   "file": "page-07.jpg",
+   "title": "Building Elevations"
+  },
+  {
+   "file": "page-08.jpg",
+   "title": "Sign Elevation"
+  },
+  {
+   "file": "page-09.jpg",
+   "title": "Sign Details"
+  },
+  {
+   "file": "page-10.jpg",
+   "title": "Colors, Materials & Finishes"
+  }
+ ],
+ "renders": [
+  {
+   "file": "day.jpg",
+   "title": "Day Render",
+   "source": "day_2.jpg"
+  },
+  {
+   "file": "night.jpg",
+   "title": "Night Render",
+   "source": "night_2.jpg"
+  }
+ ]
+}

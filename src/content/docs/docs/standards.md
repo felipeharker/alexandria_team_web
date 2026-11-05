@@ -75,6 +75,7 @@ Write the signature exactly as Rhino writes it, one argument per line with a 12-
 - **Preview is off everywhere except Material Preview components**, which show only what the user needs to see.
 - **No panels or scribbles.** Names, groups and layout carry the explanation.
 - **Rhino files** have one layer per referenced input (`Region`, `Attractor Curves`), named objects, and no unused layers.
+- **Parameters CSV.** Export Parameters writes, and Apply Parameters reads, one row per input with the columns `input name, type, value, section`. Types are `float`, `int`, `bool`, `string`, `color` (`R,G,B,A` in quotes) and `crv`, `pt`, `geo`, `brep` or `srf`, whose value names the Rhino parameter to rewire to. Each section is one variant (`Default`, `Dense`). `standards/parameters_template.csv` is a blank to start from.
 
 ## Drawings
 

@@ -635,3 +635,55 @@ h1#_top,
 @container qg (max-width: 640px) {
 	.qg-page .ax-keys { grid-template-columns: minmax(0, 1fr); }
 }
+
+/* the sample project: two renders side by side, then the package's pages */
+.ax-renders {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+	gap: 12px;
+	margin-block: 1.5rem;
+}
+.ax-renders figure {
+	margin: 0;
+}
+.ax-renders img,
+.ax-pages img {
+	display: block;
+	width: 100%;
+	height: auto;
+	border: 1px solid var(--ax-rule);
+	border-radius: var(--ax-radius);
+	transition: border-color 0.15s;
+}
+.ax-renders a:hover img,
+.ax-pages a:hover img,
+.ax-renders a:focus-visible img,
+.ax-pages a:focus-visible img {
+	border-color: var(--sl-color-gray-4);
+}
+.ax-renders figcaption {
+	margin-top: 6px;
+	font-size: var(--sl-text-xs);
+	color: var(--sl-color-gray-3);
+}
+.ax-pages {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(min(100%, 13rem), 1fr));
+	gap: 16px 12px;
+	margin: 1.25rem 0 0;
+	padding: 0;
+	list-style: none;
+}
+.ax-pages span {
+	display: flex;
+	gap: 8px;
+	margin-top: 6px;
+	font-size: var(--sl-text-xs);
+	line-height: 1.4;
+	color: var(--sl-color-gray-2);
+}
+.ax-pages b {
+	font-family: var(--sl-font-mono);
+	font-weight: 500;
+	color: var(--sl-color-gray-4);
+}

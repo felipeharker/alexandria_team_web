@@ -1,0 +1,46 @@
+---
+title: Sample Project
+description: The Alexandria Design Lab, a made-up building taken from an empty model to a design package with the Alexandria tools.
+---
+
+import { LinkButton } from '@astrojs/starlight/components';
+import SampleProject from '../../components/SampleProject.astro';
+import project from '../../data/sample-project.json';
+
+{/* tools/sync.py copies the previews and the PDF from alexandria_testing_sample_project/Alexandria/web (its make_web.py makes them). */}
+
+The **Alexandria Design Lab** is the office's test project: a made-up mid-century modern midrise with one building sign, taken from an empty model to a finished design package with the Alexandria tools and nothing else. Alexandria is the client, so there are no real client or brand names in it. Use it to see what the tools make and what a finished package looks like.
+
+<LinkButton href={`/sample-project/${project.package}`} icon="document" iconPlacement="start">Open the Design Package</LinkButton>
+
+<SampleProject part="renders" />
+
+## The Project
+
+| Project | Alexandria Design Lab |
+|---|---|
+| Client | Alexandria |
+| Location | 1955 Meridian Avenue, Anytown, ST 00000 (made up) |
+| Scope | One set of halo-lit reverse channel letters, *Alexandria Design Lab*, centred on the podium band over the entrance |
+| Sign | 4'-0" capitals in Gotham Medium, 64'-5 13/16" long, baseline 25'-6" above grade, 4" returns on 2-1/2" standoffs (DTL-05) |
+| Podium | 210' x 90': a 20'-0" glass ground floor set back under a solid 15'-0" band, on round pilotis |
+| Tower | 150' x 60': seven 15'-0" floors of vision glass and spandrel between solid end bays, 140'-0" overall |
+
+The building is context, kept clean and simple on a 5'-0" module so it can be a blank canvas for signage studies: the podium band, the tower's end bays, the curtain wall and the storefront are all surfaces to design on.
+
+## How It Was Made
+
+Claude built it in Rhino 8 by running the Alexandria toolbar's own scripts, as a test of the tools from start to finish, in the order the [Rhino Tools Quick Guide](/rhino/#order) gives:
+
+1. **Create Project** copied the project template and saved the model.
+2. **Populate Model** set the units and added the DESIGN and DETAILS layers, the annotation styles, the render backdrop and the world light. The building and the letters were modeled on those layers.
+3. **Set Light** made the halo behind each letter, and **Set Material** gave each layer its material.
+4. The plan, the elevations, the sign elevation and the sign location axonometric were drawn flat, below the building.
+5. The **Layout Manager** made the package's pages and placed the drawings and the letter section, DTL-05, on them.
+6. **Render Day and Save** and **Render Night and Save** (a right click on the day and night buttons) made the two renders above, and the Layout Manager put them on their pages and exported the PDF.
+
+## The Design Package
+
+{project.pages.length} pages at {project.page_size}, exported as <code>{project.package}</code>. Click a page to open it in the PDF.
+
+<SampleProject part="pages" />

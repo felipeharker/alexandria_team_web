@@ -1,0 +1,38 @@
+---
+// The sample project's renders or its design package's pages, from src/data/sample-project.json
+// (tools/sync.py copies it and the images from alexandria_testing_sample_project/Alexandria/web).
+import project from '../data/sample-project.json';
+
+interface Props {
+	part: 'renders' | 'pages';
+}
+const { part } = Astro.props;
+const base = '/sample-project/';
+const pdf = base + project.package;
+---
+
+{
+	part === 'renders' ? (
+		<div class="ax-renders not-content">
+			{project.renders.map((r) => (
+				<figure>
+					<a href={base + 'renders/' + r.file}>
+						<img src={base + 'renders/' + r.file} alt={`The Alexandria Design Lab, ${r.title.toLowerCase()}`} loading="lazy" />
+					</a>
+					<figcaption>{r.title}</figcaption>
+				</figure>
+			))}
+		</div>
+	) : (
+		<ol class="ax-pages not-content">
+			{project.pages.map((p, i) => (
+				<li>
+					<a href={`${pdf}#page=${i + 1}`} title={`Open page ${i + 1} of the PDF`}>
+						<img src={base + 'pages/' + p.file} alt={`Page ${i + 1}: ${p.title}`} loading="lazy" width="1600" height="1036" />
+					</a>
+					<span><b>{String(i + 1).padStart(2, '0')}</b>{p.title}</span>
+				</li>
+			))}
+		</ol>
+	)
+}

@@ -1,0 +1,31 @@
+---
+title: Material Estimator CSV Template
+description: The columns a Material Estimator sheet reads and writes, and a template to start one from.
+---
+
+import { Code, LinkButton } from '@astrojs/starlight/components';
+import csv from '../../../generated/templates/material-sheet-template.csv?raw';
+
+{/* tools/sync.py copies the template from alexandria_office (public/estimator/material-sheet-template.csv). */}
+
+The [Material Estimator](/estimator/) saves and opens sheets as CSV files, one row per material. Fill in the template in Excel or Google Sheets, save it as CSV, then drop it on the Estimator or press **Import**.
+
+<LinkButton href="/templates/material-sheet-template.csv" download icon="download" iconPlacement="start">Download the Template</LinkButton>
+
+## The Columns
+
+| Column | What Goes in It |
+|---|---|
+| Material | The material's name. A row without one is skipped. |
+| Category | A group to total by, such as Metals or Concrete. |
+| Unit | How it's priced: `LF`, `SF`, `SY`, `CF`, `CY`, `EA`, `LB`, `TON`, `GAL` or `LS`. Written-out units (linear feet, sq ft, cubic yards) work too; a blank becomes `EA`. |
+| Unit Price | Dollars per unit, with or without the `$`. |
+| Quantity | How many units. |
+| Line Total | Unit Price × Quantity. The Estimator works it out, so an import ignores it. |
+| Notes | Anything else: a spec, a supplier, an allowance for waste. |
+
+Only Material is required, and the headers can be worded loosely: Item, Qty, UOM, Price and Comments are read as well. A few title rows above the header row are fine.
+
+## The Template
+
+<Code code={csv} lang="csv" title="material-sheet-template.csv" />

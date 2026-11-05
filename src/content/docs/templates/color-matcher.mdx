@@ -1,0 +1,31 @@
+---
+title: Color Matcher CSV Template
+description: The columns a Color Matcher list reads, what an export adds, and a template to start one from.
+---
+
+import { Code, LinkButton } from '@astrojs/starlight/components';
+import csv from '../../../generated/templates/color-list-template.csv?raw';
+
+{/* tools/sync.py copies the template from alexandria_office (public/colors/color-list-template.csv). */}
+
+The [Color Matcher](/colors/) takes a list of colors as a CSV file, one row per color, and finds each one's closest Sherwin-Williams, Pantone and 3M 3630 matches. Fill in the template, save it as CSV, then drop it on the Color Matcher or press **Import**.
+
+<LinkButton href="/templates/color-list-template.csv" download icon="download" iconPlacement="start">Download the Template</LinkButton>
+
+## The Columns
+
+| Column | What Goes in It |
+|---|---|
+| Name | What the color is, such as Logo Red. Optional. |
+| Hex | The color: `#C8102E`, `C8102E` or the short `#C12`. A row without a hex code is skipped. |
+| Notes | Anything for whoever reads the file. The Color Matcher doesn't read it. |
+
+Only Hex is required, and Color or Code works as its header too. A file with no header row works as long as each row has a hex code, with the name before it.
+
+## What an Export Adds
+
+**Export** writes the same Name and Hex, then each library's match: its code, name, hex and match % for Sherwin-Williams and 3M 3630, the code, hex and match % for Pantone, and a last column naming any formula the office has on file. An exported list imports again as it is.
+
+## The Template
+
+<Code code={csv} lang="csv" title="color-list-template.csv" />

@@ -64,6 +64,18 @@ export default defineConfig({
 					],
 				},
 				{
+					label: 'CSV Templates',
+					items: [
+						{ label: 'Material Estimator', slug: 'templates/estimator' },
+						{ label: 'Color Matcher', slug: 'templates/color-matcher' },
+						{ label: 'Grasshopper Parameters', slug: 'templates/grasshopper' },
+					],
+				},
+				{
+					label: 'Sample Project',
+					items: [{ label: 'Alexandria Design Lab', slug: 'sample-project' }],
+				},
+				{
 					label: 'Documentation',
 					items: [
 						{ label: 'Install and Update', slug: 'docs/install' },

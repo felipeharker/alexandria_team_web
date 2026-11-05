@@ -1,0 +1,38 @@
+---
+title: Grasshopper Parameters CSV Template
+description: The parameters CSV that Export Parameters writes and Apply Parameters reads, and a template to start one from.
+---
+
+import { Code, LinkButton } from '@astrojs/starlight/components';
+import csv from '../../../generated/templates/parameters-template.csv?raw';
+
+{/* tools/sync.py copies the template from alexandria_phoenix (standards/parameters_template.csv). */}
+
+A Grasshopper definition's inputs can live in a CSV file, so one canvas can run several variants. **Export Parameters** writes a canvas's inputs to the file and **Apply Parameters** sets them from it, both in Alexandria Phoenix's Document group (see the [Grasshopper Quick Guide](/grasshopper/)).
+
+<LinkButton href="/templates/parameters-template.csv" download icon="download" iconPlacement="start">Download the Template</LinkButton>
+
+## The Columns
+
+| Column | What Goes in It |
+|---|---|
+| input name | The input's nickname on the canvas. A row naming nothing on the canvas is skipped and reported. |
+| type | What kind of input it is (below). |
+| value | The value to set. For a geometry type, the nickname of the Rhino parameter to wire it to. |
+| section | The variant the row belongs to, such as `Default` or `Dense`. |
+
+| Type | Value |
+|---|---|
+| `float`, `int` | A number. |
+| `bool` | `True` or `False`. |
+| `string` | Text. |
+| `color` | `R,G,B,A` in quotes, such as `"242,101,34,255"`. |
+| `crv`, `pt`, `geo`, `brep`, `srf` | The Rhino parameter to rewire the input to. |
+
+## Applying It
+
+Give Apply Parameters the file's path (relative paths start at the `.gh` file) and a Section to apply only that variant's rows; leave Section empty to apply every row. Press a Button on its Apply input to set the values, and its Report says what was set or skipped. The template has the same eight inputs in two sections, Default and Dense, which differ only in Square Size.
+
+## The Template
+
+<Code code={csv} lang="csv" title="parameters-template.csv" />

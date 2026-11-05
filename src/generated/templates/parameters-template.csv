@@ -1,0 +1,17 @@
+input name,type,value,section
+Square Region,crv,Rhino Square Region,Default
+Square Size,float,10,Default
+Threshold,float,0.3,Default
+Percent,float,0.5,Default
+Seed,int,7,Default
+Invert,bool,False,Default
+Kept Color,color,"242,101,34,255",Default
+Points Layer,string,Attractor Points,Default
+Square Region,crv,Rhino Square Region,Dense
+Square Size,float,6,Dense
+Threshold,float,0.3,Dense
+Percent,float,0.5,Dense
+Seed,int,7,Dense
+Invert,bool,False,Dense
+Kept Color,color,"242,101,34,255",Dense
+Points Layer,string,Attractor Points,Dense

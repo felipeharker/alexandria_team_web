@@ -15,6 +15,12 @@ one (or ALEXANDRIA_PHOENIX) and the shared alexandria_packages folder, and write
   tools/make_guides.py and scoped to .qg-page so they sit inside the hub's pages.
 - src/data/release.json: the shared folder's version, date and contents.
 - src/data/releases.json: every "Packages ..." commit in alexandria_phoenix, for What's new.
+- public/templates/ and src/generated/templates/: the CSV templates, from alexandria_office
+  (the Material Estimator's and the Color Matcher's) and alexandria_phoenix (the Grasshopper
+  parameters, standards/parameters_template.csv), to download and to show on their pages.
+- public/sample-project/ and src/data/sample-project.json: the sample project's newest design
+  package and its previews (alexandria_testing_sample_project/Alexandria/web, made by its
+  web/make_web.py), for the Sample Project page.
 - release/alexandria_packages.zip: the shared folder, zipped as it is (not committed).
 
 --publish uploads the zip to a release on GitHub named after the Rhino Tools package's
@@ -33,6 +39,13 @@ import zipfile
 
 HUB = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PHOENIX = os.environ.get("ALEXANDRIA_PHOENIX") or os.path.join(os.path.dirname(HUB), "alexandria_phoenix")
+OFFICE = os.path.join(os.path.dirname(HUB), "alexandria_office")
+SAMPLE = os.path.join(os.path.dirname(HUB), "alexandria_testing_sample_project", "Alexandria")
+TEMPLATES = [  # hub file, source
+    ("material-sheet-template.csv", os.path.join(OFFICE, "public", "estimator", "material-sheet-template.csv")),
+    ("color-list-template.csv", os.path.join(OFFICE, "public", "colors", "color-list-template.csv")),
+    ("parameters-template.csv", os.path.join(PHOENIX, "standards", "parameters_template.csv")),
+]
 REPO = "felipeharker/alexandria_team_web"  # where the zip is published
 ASSET = "alexandria_packages.zip"
 SKIP = {"desktop.ini", "thumbs.db", ".ds_store"}
@@ -333,6 +346,30 @@ def publish(facts, zipped):
                     % (facts["rhino"], facts["grasshopper"])], check=True)
 
 
+def templates():
+    for name, source in TEMPLATES:
+        if not os.path.exists(source):
+            raise SystemExit("sync: no CSV template at " + source)
+        with open(source, encoding="utf-8-sig") as f:
+            text = f.read().replace("\r\n", "\n")
+        write("public/templates/" + name, text.replace("\n", "\r\n"))  # CRLF opens cleanly in Excel
+        write("src/generated/templates/" + name, text)                  # the page shows it
+
+
+def sample_project():
+    web = os.path.join(SAMPLE, "web")
+    with open(os.path.join(web, "project.json"), encoding="utf-8") as f:
+        facts = json.load(f)
+    out = os.path.join(HUB, "public", "sample-project")
+    if os.path.isdir(out):
+        shutil.rmtree(out)
+    for folder in ("pages", "renders"):
+        shutil.copytree(os.path.join(web, folder), os.path.join(out, folder))
+    shutil.copyfile(os.path.join(SAMPLE, "design_package", facts["package"]), os.path.join(out, facts["package"]))
+    print("wrote public/sample-project/ (%d pages, 2 renders, %s)" % (len(facts["pages"]), facts["package"]))
+    write("src/data/sample-project.json", json.dumps(facts, indent=1) + "\n")
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     parser.add_argument("--publish", action="store_true", help="upload the zip as a GitHub release")
@@ -343,6 +380,8 @@ def main():
     docs()
     guides(version)
     history()
+    templates()
+    sample_project()
     facts, zipped = release()
     if args.publish:
         publish(facts, zipped)
