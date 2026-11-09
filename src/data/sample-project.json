@@ -1,5 +1,5 @@
 {
- "package": "DESIGN_ALEXANDRIA_DESIGN_LAB_v4.pdf",
+ "package": "DESIGN_ALEXANDRIA_DESIGN_LAB_v5.pdf",
  "page_size": "17 x 11 in",
  "pages": [
   {
@@ -24,7 +24,7 @@
   },
   {
    "file": "page-06.jpg",
-   "title": "Building Plan"
+   "title": "Site Plan"
   },
   {
    "file": "page-07.jpg",
@@ -47,12 +47,12 @@
   {
    "file": "day.jpg",
    "title": "Day Render",
-   "source": "day_2.jpg"
+   "source": "day_3.jpg"
   },
   {
    "file": "night.jpg",
    "title": "Night Render",
-   "source": "night_2.jpg"
+   "source": "night_3.jpg"
   }
  ]
 }
