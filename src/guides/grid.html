@@ -118,7 +118,7 @@
       <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 3h14v14H3zM3 10h14M10 3v14"/></svg></span><div><b>Choose the Grid</b><small>Square, Hex or Triangle, the cell size, and Whole or Clipped.</small></div></li>
       <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6"/><circle cx="10" cy="10" r="1.5"/></svg></span><div><b>Place the Attractor</b><small>Click the preview for a point, or switch to Curve and click out its points.</small></div></li>
       <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="3" y="12" width="4" height="4"/><rect x="10" y="5" width="7" height="7"/></svg></span><div><b>Set the Scale</b><small>Min and Max for the smallest and largest cells, and Reach for how far the change spreads.</small></div></li>
-      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="3" y="3" width="5" height="5"/><rect x="12" y="3" width="5" height="5" stroke-dasharray="2 2"/><rect x="3" y="12" width="5" height="5" stroke-dasharray="2 2"/><rect x="12" y="12" width="5" height="5"/></svg></span><div><b>Cull, If Wanted</b><small>Random Cull takes a share of the cells out at random from a Start distance on, like Grasshopper's Random Reduce.</small></div></li>
+      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="3" y="3" width="5" height="5"/><rect x="12" y="3" width="5" height="5" stroke-dasharray="2 2"/><rect x="3" y="12" width="5" height="5" stroke-dasharray="2 2"/><rect x="12" y="12" width="5" height="5"/></svg></span><div><b>Cull, If Wanted</b><small>Random Cull takes a share of the farthest cells out at random, like Grasshopper's Random Reduce.</small></div></li>
       <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v10m0 0-4-4m4 4 4-4M4 16h12"/></svg></span><div><b>Download SVG</b><small>Into the project's folder, then import it into Rhino, CorelDRAW or Illustrator.</small></div></li>
     </ol>
   </section>
@@ -128,7 +128,7 @@
     <ul class="qg-habits">
       <li><b>Full size.</b> The SVG is in the region's units, so it imports at its real size. Feet come out as inches and meters as centimeters, since SVG has neither.</li>
       <li><b>Clean linework.</b> One closed shape per cell and the boundary, with no fills, in groups named Region and Cells. Tick <b>Include the Attractor in the SVG</b> to add it too.</li>
-      <li><b>Random Cull.</b> Of the cells at least <b>Start</b> from the attractor (empty means all of them), <b>Cull</b> percent are taken out at random. The same <b>Seed</b> always takes out the same cells, and they stay put while you move the attractor; change it for another pick.</li>
+      <li><b>Random Cull.</b> Both run from 0 to 1. <b>Start</b> leaves the cells nearest the attractor alone: at 0.33, the cull works on the farthest 67%. <b>Cull</b> is the share of those taken out at random. The same <b>Seed</b> always takes out the same cells, and they stay put while you move the attractor; change it for another pick.</li>
       <li><b>Clipped edges.</b> A clipped cell's cut side lies on the boundary, so that line is there twice: delete one before cutting.</li>
       <li><b>Settings stay.</b> Everything, the attractor too, is remembered in this browser.</li>
     </ul>

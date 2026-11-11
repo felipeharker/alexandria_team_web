@@ -95,7 +95,7 @@ Set the region, choose the grid, and place the attractor on the preview; the cel
 - **The grid:** square, hex or triangle cells of a given side length, centred on the region. **Whole** keeps the cells that fit; **Clipped** fills the region and cuts the edge cells at its boundary.
 - **The scale:** each cell is scaled about its own centre, from **Min** at the attractor to **Max** at the **Reach** distance and beyond, or the other way round. Min and Max run from 0 to 1.
 - **The attractor:** a point, or a curve of clicked points, straight or smooth, moved by dragging.
-- **Random cull:** takes a percent of the cells out at random from a Start distance on, like Grasshopper's Random Reduce, with a Seed to pick another set.
+- **Random cull:** past a Start share of the cells nearest the attractor, takes a Cull share of the rest out at random (both 0 to 1), like Grasshopper's Random Reduce, with a Seed to pick another set.
 - **The SVG:** the boundary and one closed shape per cell, no fills, in the region's units, so it imports into Rhino, CorelDRAW and Illustrator at full size.
 
 See its [quick guide](/grid/guide/).
