@@ -4,7 +4,7 @@
 # which is otherwise switched off.
 #
 # Every tool lives under the one domain: /rhino, /grasshopper, /estimator/guide are hub pages, and
-# /estimator/ is the Material Estimator itself (and /colors and /site-plan the other office tools), served from the alexandria-office site (the
+# /estimator/ is the Material Estimator itself (and /colors, /site-plan and /vectorizer the other office tools), served from the alexandria-office site (the
 # alexandria_office repo) through the rewrite below, so it still deploys from its own repo. Render
 # applies a rule only where the hub has no page, so /estimator/guide stays the hub's.
 services:
@@ -44,6 +44,13 @@ services:
       - type: rewrite
         source: /site-plan/*
         destination: https://alexandria-office.onrender.com/site-plan/*
+      # the Vectorizer (/vectorizer), also from alexandria_office
+      - type: rewrite
+        source: /vectorizer
+        destination: https://alexandria-office.onrender.com/vectorizer/
+      - type: rewrite
+        source: /vectorizer/*
+        destination: https://alexandria-office.onrender.com/vectorizer/*
     headers:
       - path: /*
         name: X-Robots-Tag

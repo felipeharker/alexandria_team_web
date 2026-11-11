@@ -6,7 +6,8 @@ import starlight from '@astrojs/starlight';
 // Pages are Markdown or MDX in src/content/docs; the sidebar below is the site's table of contents.
 // tools/sync.py writes everything under docs/, src/generated and src/data from alexandria_phoenix.
 // Every tool has a short address: /rhino, /grasshopper, /estimator/guide here, and /estimator, /colors
-// (the Color Matcher), /colors/library and /site-plan from the alexandria_office site, through rewrites in render.yaml.
+// (the Color Matcher), /colors/library, /site-plan and /vectorizer from the alexandria_office site, through rewrites in
+// render.yaml.
 export default defineConfig({
 	site: 'https://alexdesignlab.org',
 	redirects: {
@@ -53,6 +54,7 @@ export default defineConfig({
 						{ label: 'Color Matcher', slug: 'colors/guide' },
 						{ label: 'Color Library', slug: 'colors/library/guide' },
 						{ label: 'Site Plan', slug: 'site-plan/guide' },
+						{ label: 'Vectorizer', slug: 'vectorizer/guide' },
 					],
 				},
 				{
@@ -62,6 +64,7 @@ export default defineConfig({
 						{ label: 'Color Matcher', link: '/colors/' },
 						{ label: 'Color Library', link: '/colors/library/' },
 						{ label: 'Site Plan', link: '/site-plan/' },
+						{ label: 'Vectorizer', link: '/vectorizer/' },
 						{ label: 'All Office Tools', slug: 'tools' },
 					],
 				},

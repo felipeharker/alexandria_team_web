@@ -1,12 +1,12 @@
 ---
 title: Office Tools
-description: The web tools for the office's everyday work, the Material Estimator, Color Matcher, Color Library and Site Plan, and how they save, share and get updated.
+description: The web tools for the office's everyday work, the Material Estimator, Color Matcher, Color Library, Site Plan and Vectorizer, and how they save, share and get updated.
 ---
 
 {/* Written by hand, unlike the Phoenix docs beside it, which tools/sync.py copies from alexandria_phoenix. The tools
     themselves are in the alexandria_office repository; keep this page in step when one changes. */}
 
-The office tools are four small web apps at alexdesignlab.org, for the work around a design rather than in Rhino: pricing materials, matching and mixing colors, and drawing site plans. They open in any browser, on any computer or phone, with nothing to install and no account, and every visit gets the newest version. Each has a quick guide for its buttons, under Quick Guides; this page covers how they work underneath.
+The office tools are five small web apps at alexdesignlab.org, for the work around a design rather than in Rhino: pricing materials, matching and mixing colors, drawing site plans and turning images into vectors. They open in any browser, on any computer or phone, with nothing to install and no account, and every visit gets the newest version. Each has a quick guide for its buttons, under Quick Guides; this page covers how they work underneath.
 
 | Tool | For | Saves | Shares As |
 |---|---|---|---|
@@ -14,6 +14,7 @@ The office tools are four small web apps at alexdesignlab.org, for the work arou
 | [Color Matcher](/colors/) | The nearest Sherwin-Williams, Pantone and 3M vinyl colors to any hex code | In your browser | CSV |
 | [Color Library](/colors/library/) | The Matthews Paint formulas the office has on file | Nothing to save | A link to a formula |
 | [Site Plan](/site-plan/) | A greyscale site plan with the sign's location circled in red | In your browser | PNG, about 4,800 px across |
+| [Vectorizer](/vectorizer/) | An SVG of vector shapes traced from a PNG or JPG, one layer per color | Its settings, in your browser | SVG |
 
 ## Saving and Sharing
 
@@ -76,15 +77,25 @@ Find the address, click where the sign goes, size the circle, and export. The ma
 
 The map is OpenStreetMap, which can miss a new building or keep a torn-down one: compare it with the architect's site plan before it goes in a package. See its [quick guide](/site-plan/guide/).
 
+## Vectorizer
+
+Open, drop or paste an image, and the Vectorizer finds its colors and traces each one as filled vector shapes:
+
+- **Colors:** it finds up to the number set under **Colors**, leaving out the in-between shades that anti-aliasing and JPEG compression leave along edges. Ticked colors are kept, unticked ones merge into the nearest kept color, and **Omit** leaves a color empty, such as a white background. **Keep a Color** and **Omit a Color** pick a color off the image.
+- **Precision:** from 1, fewer and smoother curves that ignore specks, to 10, a close fit that keeps small detail. Corners stay sharp and straight edges stay straight at every setting.
+- **The SVG:** one compound path per color, at the image's pixel size. Neighbouring colors share the same border, so they meet with no gaps or overlaps, and each color can be cut as its own layer. It opens in Rhino, CorelDRAW and Illustrator; scale it to size there.
+
+A trace is only as good as the image: start from the largest, cleanest file the client has. See its [quick guide](/vectorizer/guide/).
+
 ## Privacy
 
-There are no accounts, and the tools keep nothing on a server. The Color Matcher and Color Library load their color data from this site. The Site Plan sends the address you search to [Nominatim](https://nominatim.openstreetmap.org/), OpenStreetMap's address search, and loads its map from [OpenFreeMap](https://openfreemap.org/); nothing else leaves your browser. The site is public for now but kept out of search engines, and it will move behind a sign-in later.
+There are no accounts, and the tools keep nothing on a server. The Color Matcher and Color Library load their color data from this site. The Site Plan sends the address you search to [Nominatim](https://nominatim.openstreetmap.org/), OpenStreetMap's address search, and loads its map from [OpenFreeMap](https://openfreemap.org/). The Vectorizer traces images in your browser and never uploads them. Nothing else leaves your browser. The site is public for now but kept out of search engines, and it will move behind a sign-in later.
 
 ## Changing a Tool
 
 The tools live in the private **alexandria_office** repository, one folder each under `public/`, and pushing its main branch puts a change live in a minute or two. [System Architecture](/docs/architecture/) shows how it connects to the rest.
 
-- **A tool's code or look:** its folder, `public/estimator/`, `public/colors/` or `public/site-plan/`. They share the hub's style: greys, one green for buttons, Inter and IBM Plex Mono.
+- **A tool's code or look:** its folder, `public/estimator/`, `public/colors/`, `public/site-plan/` or `public/vectorizer/`. They share the hub's style: greys, one green for buttons, Inter and IBM Plex Mono.
 - **The color libraries:** `tools/build_colors.py` rebuilds them. Add a formula sheet to `paint-formulas/`, named as above, then run it.
 - **The site plan style:** `public/site-plan/map-style.json`, the standard the Site Plan loads, described in the repository's README.
 - **Quick guides and these pages:** in the hub's own repository, alexandria_team_web. The hub's copies of the CSV templates come across with its `tools/sync.py`.

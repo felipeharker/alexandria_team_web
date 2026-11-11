@@ -15,6 +15,8 @@ import { Content as Claude } from '../../../generated/troubleshooting-claude.md'
 - **The Site Plan finds nothing for an address.** Add the city and state, or zoom there yourself and click the map. The search allows one press a second.
 - **Part of the Site Plan's map is blank.** Its map comes from a free public service: move the map a little or reload. If it stays blank, try again later.
 - **The Site Plan's export fails.** Make the browser window smaller, or set the browser's zoom back to 100%, and export again.
+- **The Vectorizer's shapes are lumpy, or small details are missing.** Raise **Precision** for a closer fit, or lower it for smoother curves. Start from the largest, cleanest file the client has: a small or heavily compressed JPG traces poorly.
+- **The Vectorizer outlines shapes in an extra color, or misses one.** Untick the extra color so it merges into its neighbour, or raise **Colors** and trace again.
 
 ## Installing and the Toolbar
 
