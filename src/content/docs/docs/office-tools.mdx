@@ -83,7 +83,8 @@ The map is OpenStreetMap, which can miss a new building or keep a torn-down one:
 Open, drop or paste an image, and the Vectorizer finds its colors and traces each one as filled vector shapes:
 
 - **Colors:** it finds up to the number set under **Colors**, leaving out the in-between shades that anti-aliasing and JPEG compression leave along edges. Ticked colors are kept, unticked ones merge into the nearest kept color, and **Omit** leaves a color empty, such as a white background. **Keep a Color** and **Omit a Color** pick a color off the image.
-- **Precision:** from 1, fewer and smoother curves that ignore specks, to 10, a close fit that keeps small detail. Corners stay sharp and straight edges stay straight at every setting.
+- **Precision:** from 1, fewer and smoother curves that ignore specks, to 10, a close fit that keeps small detail. Corners stay sharp and straight edges stay straight at every setting, and edges land where the image's own soft edges put them, to a small fraction of a pixel, so even a small logo traces true and thin lines keep their width.
+- **Clean Geometry:** makes nearly level and plumb edges exact and near-circles true circles, for artwork drawn with a ruler and compass.
 - **The SVG:** one compound path per color, at the image's pixel size. Neighbouring colors share the same border, so they meet with no gaps or overlaps, and each color can be cut as its own layer. It opens in Rhino, CorelDRAW and Illustrator; scale it to size there.
 
 A trace is only as good as the image: start from the largest, cleanest file the client has. See its [quick guide](/vectorizer/guide/).
