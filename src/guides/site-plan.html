@@ -66,7 +66,7 @@
         <text x="24" y="53" font-size="11">Union Station, Denver</text>
         <rect x="162" y="36" width="44" height="26" rx="5" class="ax-field"/>
         <text x="184" y="53" font-size="10.5" text-anchor="middle" class="ax-b">Search</text>
-        <text x="16" y="88" font-size="9" class="ax-head">SIGN LOCATION</text>
+        <text x="16" y="88" font-size="9" class="ax-head">SIGNS</text>
         <text x="16" y="106" font-size="11">1701 Wynkoop Street, Denver</text>
         <text x="16" y="121" font-size="10" class="ax-mono">39.753228, -105.000094</text>
         <text x="16" y="148" font-size="9" class="ax-head">CIRCLE RADIUS</text>
@@ -104,12 +104,12 @@
     </figure>
     <ol class="ax-keys">
       <li><b>Address.</b> Type it and press Search. When several places match, they list below it: pick the right one.</li>
-      <li><b>Sign Location.</b> The address found, or <i>Placed on the Map</i> after a click, with its coordinates.</li>
-      <li><b>Circle Radius.</b> In feet, true to the map's scale: drag, or type up to 5,000.</li>
+      <li><b>Signs.</b> Each sign's address, or <i>Placed on the Map</i> after a click, with its coordinates. <b>Add Sign</b> places another with the next click or search. With more than one, click a sign here, or its label on the map, to select it: clicks and searches move the selected sign, and its Label and radius are the ones you edit. The &times; removes one.</li>
+      <li><b>Circle Radius.</b> In feet, true to the map's scale: drag, or type up to 5,000. The <b>Label</b> above it names the circle (<i>SIGN LOCATION</i> to start).</li>
       <li><b>Highlight Buildings.</b> Press it, then click buildings to darken them, like the one in the circle; click one again to undo. <b>Done</b> when finished.</li>
       <li><b>Street Names, Shadows.</b> Off for the plain figure-ground look; on to name the streets, or to give the buildings soft shadows.</li>
       <li><b>Export PNG.</b> Saves what the map shows, named after the project at the top.</li>
-      <li><b>The Circle.</b> Dashed red, with <i>SIGN LOCATION</i> inside. The label grows and shrinks with the circle.</li>
+      <li><b>The Circle.</b> Dashed red, with its label inside, one per sign. The label grows and shrinks with the circle.</li>
     </ol>
   </section>
 
@@ -117,7 +117,7 @@
     <div class="qg-section-head"><h2 id="order">Make a Site Plan</h2><p>The usual order.</p></div>
     <ol class="qg-flow">
       <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="5"/><path d="M13 13l4 4"/></svg></span><div><b>Find the Address</b><small>Street, city and state. The map goes there and places the sign on it.</small></div></li>
-      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s5-5 5-9a5 5 0 0 0-10 0c0 4 5 9 5 9z"/><circle cx="10" cy="8" r="1.6"/></svg></span><div><b>Place the Sign</b><small>Click the map where the sign really goes: the facade, not the parcel's middle.</small></div></li>
+      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s5-5 5-9a5 5 0 0 0-10 0c0 4 5 9 5 9z"/><circle cx="10" cy="8" r="1.6"/></svg></span><div><b>Place the Sign</b><small>Click the map where the sign really goes: the facade, not the parcel's middle. More than one? Add Sign, then click or search for each.</small></div></li>
       <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="7" stroke-dasharray="3 2"/><path d="M10 10h7"/></svg></span><div><b>Size the Circle</b><small>Big enough to read at the plan's scale, small enough to point at one building.</small></div></li>
       <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 16V7l6-3 6 3v9z"/><path d="M8 16v-4h4v4"/></svg></span><div><b>Highlight the Building</b><small>If it helps: darken the client's building, or a whole campus, with Highlight Buildings.</small></div></li>
       <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 7V3h4M13 3h4v4M17 13v4h-4M7 17H3v-4"/></svg></span><div><b>Frame It</b><small>Zoom and pan until the map shows what the page should: the export is the map as you see it.</small></div></li>

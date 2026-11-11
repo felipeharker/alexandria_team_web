@@ -72,7 +72,7 @@ Every Matthews Paint formula sheet the office has, 96 of them, searchable by cod
 Find the address, click where the sign goes, size the circle, and export. The map is drawn the same way on every project, to the office's site plan style:
 
 - **The map:** very light flat greys, buildings a shade darker with a fine edge, white streets at their real width with a thin grey edge, no labels. **Street Names** adds dark grey street names; **Shadows** adds a soft shadow down and to the right of every building.
-- **The sign's location:** a dashed red circle, the red of the sign location boxes on the design package's plans, with *SIGN LOCATION* in Oswald inside, sized with the circle. The radius is set in feet.
+- **The sign's location:** a dashed red circle, the red of the sign location boxes on the design package's plans, with *SIGN LOCATION* in Oswald inside, sized with the circle. The radius is set in feet. **Add Sign** places more than one, each with its own circle and label.
 - **Highlighted buildings:** **Highlight Buildings** darkens the buildings you click, such as the client's.
 - **The export:** the map as shown, north up, about 4,800 px across, which prints at 300 dpi across a 17 x 11 page's drawing area, with *© OpenStreetMap contributors* in the corner, as the map data's licence asks.
 
@@ -95,6 +95,7 @@ Set the region, choose the grid, and place the attractor on the preview; the cel
 - **The grid:** square, hex or triangle cells of a given side length, centred on the region. **Whole** keeps the cells that fit; **Clipped** fills the region and cuts the edge cells at its boundary.
 - **The scale:** each cell is scaled about its own centre, from **Min** at the attractor to **Max** at the **Reach** distance and beyond, or the other way round. Min and Max run from 0 to 1.
 - **The attractor:** a point, or a curve of clicked points, straight or smooth, moved by dragging.
+- **Random cull:** takes a percent of the cells out at random from a Start distance on, like Grasshopper's Random Reduce, with a Seed to pick another set.
 - **The SVG:** the boundary and one closed shape per cell, no fills, in the region's units, so it imports into Rhino, CorelDRAW and Illustrator at full size.
 
 See its [quick guide](/grid/guide/).
