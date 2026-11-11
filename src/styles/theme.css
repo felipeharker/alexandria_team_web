@@ -20,8 +20,10 @@
 	--sl-color-accent-low: #22272d; /* Starlight's accent is grey: links, the current page, search */
 	--sl-color-accent: #9aa3ae;
 	--sl-color-accent-high: #e7eaee;
-	--ax-button: #8cba00; /* the one colour: buttons */
+	--ax-button: #8cba00; /* the one colour: buttons, and the Beta tag */
 	--ax-button-text: #131619;
+	--ax-button-soft: #222d0a; /* a wash of it behind the Beta tag */
+	--ax-current: #2b3036; /* the current page in the sidebar */
 	--ax-tint: #1b1f24;
 	--ax-rule: #2b3036;
 	--ax-rule-strong: #3a4048;
@@ -43,6 +45,8 @@
 	--sl-color-accent-high: #1b1f24;
 	--ax-button: #4f7a00;
 	--ax-button-text: #ffffff;
+	--ax-button-soft: #edf5d6;
+	--ax-current: #e2e5e9;
 	--ax-tint: #f6f7f9;
 	--ax-rule: #e2e5e9;
 	--ax-rule-strong: #cdd2d8;
@@ -71,10 +75,12 @@ header.header {
 .sidebar-content a {
 	border-radius: 6px;
 }
+/* the page you're on, in grey (no green highlights in the sidebar, user 2026-11-05), but a grey that
+   stands off the sidebar: gray-6 is the sidebar's own background in the dark theme */
 .sidebar-content a[aria-current='page'],
 .sidebar-content a[aria-current='page']:hover,
 .sidebar-content a[aria-current='page']:focus {
-	background: var(--sl-color-gray-6);
+	background: var(--ax-current);
 	color: var(--sl-color-white);
 	font-weight: 600;
 }
@@ -338,22 +344,22 @@ h1#_top,
 	color: var(--sl-color-gray-3);
 }
 
-/* a tag for a tool still being built ("Beta"): grey, in the cards and the sidebar alike */
+/* a tag for a tool still being built ("Beta"): a bubble in the accent, in the cards and the sidebar alike */
 .ax-badge,
 .sidebar-content .sl-badge.default {
 	display: inline-block;
 	margin-left: 8px;
 	padding: 1px 6px;
-	border: 1px solid var(--ax-rule-strong);
+	border: 1px solid var(--ax-button);
 	border-radius: 4px;
-	background: transparent;
+	background: var(--ax-button-soft);
 	font-family: var(--sl-font);
 	font-size: 0.68rem;
 	font-weight: 600;
 	line-height: 1.4;
 	letter-spacing: 0.06em;
 	text-transform: uppercase;
-	color: var(--sl-color-gray-3);
+	color: var(--ax-button);
 	vertical-align: 2px;
 }
 .ax-badge:first-child {

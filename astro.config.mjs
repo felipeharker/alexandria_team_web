@@ -26,6 +26,9 @@ export default defineConfig({
 			head: [
 				// Public for now, but not for search engines: it's the office's hub.
 				{ tag: 'meta', attrs: { name: 'robots', content: 'noindex, nofollow' } },
+				// Every sidebar group is collapsed and only the one holding this page opens (user, 2026-11-11).
+				// Starlight would reopen the groups opened on the last page from session storage; forget them first.
+				{ tag: 'script', content: "try { sessionStorage.removeItem('sl-sidebar-state'); } catch {}" },
 			],
 			customCss: [
 				'@fontsource-variable/inter',
@@ -38,6 +41,7 @@ export default defineConfig({
 			sidebar: [
 				{
 					label: 'Starting Out',
+					collapsed: true,
 					items: [
 						{ label: 'Your First Day', slug: 'start/first-day' },
 						{ label: 'Download', slug: 'start/download' },
@@ -47,6 +51,7 @@ export default defineConfig({
 				},
 				{
 					label: 'Quick Guides',
+					collapsed: true,
 					// in the tool categories' order below
 					items: [
 						{ label: 'Rhino Tools', slug: 'rhino' },
@@ -63,6 +68,7 @@ export default defineConfig({
 				// The Rhino and Grasshopper packages open on their quick guides; the web tools open themselves.
 				{
 					label: 'Rhino/Grasshopper Tools',
+					collapsed: true,
 					items: [
 						{ label: 'Alexandria Tools', link: '/rhino/' },
 						{ label: 'Alexandria Phoenix', link: '/grasshopper/' },
@@ -70,6 +76,7 @@ export default defineConfig({
 				},
 				{
 					label: 'Design Tools',
+					collapsed: true,
 					items: [
 						{ label: 'Site Plan', link: '/site-plan/' },
 						{ label: 'Vectorizer', link: '/vectorizer/' },
@@ -78,6 +85,7 @@ export default defineConfig({
 				},
 				{
 					label: 'Fabrication Tools',
+					collapsed: true,
 					items: [
 						{ label: 'Color Matcher', link: '/colors/' },
 						{ label: 'Color Library', link: '/colors/library/' },
@@ -87,6 +95,7 @@ export default defineConfig({
 				},
 				{
 					label: 'CSV Templates',
+					collapsed: true,
 					items: [
 						{ label: 'Material Estimator', slug: 'templates/estimator' },
 						{ label: 'Color Matcher', slug: 'templates/color-matcher' },
@@ -95,10 +104,12 @@ export default defineConfig({
 				},
 				{
 					label: 'Sample Project',
+					collapsed: true,
 					items: [{ label: 'Alexandria Design Lab', slug: 'sample-project' }],
 				},
 				{
 					label: 'Documentation',
+					collapsed: true,
 					items: [
 						{ label: 'Install and Update', slug: 'docs/install' },
 						{ label: 'Alexandria Phoenix', slug: 'docs/phoenix' },
@@ -110,6 +121,7 @@ export default defineConfig({
 				},
 				{
 					label: 'External Ref.',
+					collapsed: true,
 					items: [{ label: 'Links', slug: 'reference/links' }],
 				},
 			],
