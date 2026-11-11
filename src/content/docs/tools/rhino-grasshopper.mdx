@@ -1,0 +1,32 @@
+---
+title: Rhino/Grasshopper Tools
+description: "The two Alexandria packages for Rhino 8: the Alexandria Tools toolbar and the Alexandria Phoenix components for Grasshopper."
+---
+
+import HubCard from '../../../components/HubCard.astro';
+import release from '../../../data/release.json';
+
+{/* One page per tool category (user, 2026-11-11), each the Overview in its sidebar group and the home section's Details link.
+    The sidebar's Alexandria Tools and Alexandria Phoenix entries point at the two sections below (#alexandria-tools,
+    #alexandria-phoenix), so keep those headings as they are. */}
+
+Two packages for Rhino 8, installed together and updated from the office drive. See [Install and Update](/docs/install/).
+
+## Alexandria Tools
+
+The Rhino toolbar that takes a project from an empty model to a finished design package: the project, materials and lights, day and night renders, details, and the layout.
+
+<div class="ax-grid not-content">
+<HubCard href="/start/download/" title={`Download ${release.version}`} meta="Download" icon="/guides/icons/layout_manager.png">Both packages, the docs and the project template, in one zip.</HubCard>
+<HubCard href="/rhino/" title="Its Quick Guide" meta="Guide">Every button on the toolbar, in the order you use them.<svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C6.5 4 9.5 4 12 5.5v14c-2.5-1.5-5.5-1.5-8 0zM20 5.5C17.5 4 14.5 4 12 5.5v14c2.5-1.5 5.5-1.5 8 0z"/></svg></HubCard>
+</div>
+
+## Alexandria Phoenix
+
+The Grasshopper components for patterns in a region: make cells, give each one a value, act on the values, then fabricate or bake them.
+
+<div class="ax-grid not-content">
+<HubCard href="/start/download/" title={`Download ${release.version}`} meta="Download" icon="/guides/icons/square_grid.png">Both packages, the docs and the project template, in one zip.</HubCard>
+<HubCard href="/grasshopper/" title="Its Quick Guide" meta="Guide">Every component on the tab, the basic chain, and how they swap.<svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C6.5 4 9.5 4 12 5.5v14c-2.5-1.5-5.5-1.5-8 0zM20 5.5C17.5 4 14.5 4 12 5.5v14c2.5-1.5 5.5-1.5 8 0z"/></svg></HubCard>
+<HubCard href="/templates/grasshopper/" title="Its CSV Template" meta="Template">The parameters CSV that Export Parameters writes and Apply Parameters reads.<svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M4 19h16"/></svg></HubCard>
+</div>

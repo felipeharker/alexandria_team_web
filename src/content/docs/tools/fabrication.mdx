@@ -1,0 +1,41 @@
+---
+title: Fabrication Tools
+description: "Web tools for building it: matching colors to paint and vinyl, the office's paint formulas, and pricing the materials."
+---
+
+import HubCard from '../../../components/HubCard.astro';
+
+{/* One page per tool category (user, 2026-11-11), each the Overview in its sidebar group and the home section's Details link. */}
+
+Web tools for building it: matching colors to paint and vinyl, the office's paint formulas, and pricing the materials. They run in your browser, with nothing to install.
+
+## Color Matcher
+
+Turns any hex code into its nearest Sherwin-Williams, Pantone (Solid Coated) and 3M Scotchcal 3630 colors, each with a percent match based on how alike the two colors look (CIEDE2000). Where the office already has a Matthews Paint formula for the matched color, it says so. Lists import and export as CSV.
+
+<div class="ax-grid not-content">
+<HubCard href="/colors/" title="Open the Color Matcher" meta="alexdesignlab.org/colors">Runs in your browser, with nothing to install.<svg slot="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c3.4 4.3 6 7.7 6 10.7a6 6 0 0 1-12 0C6 10.7 8.6 7.3 12 3z"/></svg></HubCard>
+<HubCard href="/colors/guide/" title="Its Quick Guide" meta="Guide">The matches, the match %, the libraries and sharing a list.<svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C6.5 4 9.5 4 12 5.5v14c-2.5-1.5-5.5-1.5-8 0zM20 5.5C17.5 4 14.5 4 12 5.5v14c2.5-1.5 5.5-1.5 8 0z"/></svg></HubCard>
+<HubCard href="/templates/color-matcher/" title="Its CSV Template" meta="Template">A Name and a Hex column, with three example colors.<svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M4 19h16"/></svg></HubCard>
+</div>
+
+## Color Library
+
+Every Matthews Paint formula the office has on file, by color system (Sherwin-Williams, Pantone, Matthews Paint, Benjamin Moore and Behr), with each one's colorants in grams per gallon and a link to find its closest matches.
+
+<div class="ax-grid not-content">
+<HubCard href="/colors/library/" title="Open the Color Library" meta="alexdesignlab.org/colors/library">Search by code, name or Matthews number.<svg slot="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M5 5h4v14H5zM10.5 5h4v14h-4zM16 6l3.7 1.5-4.4 11.3V6.9z"/></svg></HubCard>
+<HubCard href="/colors/library/guide/" title="Its Quick Guide" meta="Guide">Finding a formula, reading its colorants, and where the swatches come from.<svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C6.5 4 9.5 4 12 5.5v14c-2.5-1.5-5.5-1.5-8 0zM20 5.5C17.5 4 14.5 4 12 5.5v14c2.5-1.5 5.5-1.5 8 0z"/></svg></HubCard>
+</div>
+
+## Material Estimator
+
+<span class="ax-badge">Beta</span> Still being built, so some of it may change or not work yet.
+
+Prices a project's materials. Add a line per material, pick how it's priced (linear feet, square feet, cubic yards and the rest), and enter the unit price and the quantity: the sheet totals it all by line, by pricing unit and by category. Sheets save in your browser and move between people as CSV files, which open in Excel too.
+
+<div class="ax-grid not-content">
+<HubCard href="/estimator/" title="Open the Material Estimator" meta="alexdesignlab.org/estimator">Runs in your browser, with nothing to install.<svg slot="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M4 3h16v3.5h-6v11h6V21H4v-3.5h6v-11H4z"/></svg></HubCard>
+<HubCard href="/estimator/guide/" title="Its Quick Guide" meta="Guide">The sheet, the buttons, the pricing units and sharing a sheet.<svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C6.5 4 9.5 4 12 5.5v14c-2.5-1.5-5.5-1.5-8 0zM20 5.5C17.5 4 14.5 4 12 5.5v14c2.5-1.5 5.5-1.5 8 0z"/></svg></HubCard>
+<HubCard href="/templates/estimator/" title="Its CSV Template" meta="Template">Material, Category, Unit, Unit Price, Quantity and Notes columns, with three example lines.<svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M4 19h16"/></svg></HubCard>
+</div>
