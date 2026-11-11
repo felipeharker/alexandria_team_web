@@ -337,6 +337,29 @@ h1#_top,
 	font-size: var(--sl-text-xs);
 	color: var(--sl-color-gray-3);
 }
+
+/* a tag for a tool still being built ("Beta"): grey, in the cards and the sidebar alike */
+.ax-badge,
+.sidebar-content .sl-badge.default {
+	display: inline-block;
+	margin-left: 8px;
+	padding: 1px 6px;
+	border: 1px solid var(--ax-rule-strong);
+	border-radius: 4px;
+	background: transparent;
+	font-family: var(--sl-font);
+	font-size: 0.68rem;
+	font-weight: 600;
+	line-height: 1.4;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--sl-color-gray-3);
+	vertical-align: 2px;
+}
+.ax-badge:first-child {
+	margin-left: 0;
+	margin-right: 4px;
+}
 .ax-tool p {
 	margin: 0;
 	font-size: var(--sl-text-sm);

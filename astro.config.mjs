@@ -47,27 +47,42 @@ export default defineConfig({
 				},
 				{
 					label: 'Quick Guides',
+					// in the tool categories' order below
 					items: [
 						{ label: 'Rhino Tools', slug: 'rhino' },
 						{ label: 'Grasshopper Components', slug: 'grasshopper' },
-						{ label: 'Material Estimator', slug: 'estimator/guide' },
-						{ label: 'Color Matcher', slug: 'colors/guide' },
-						{ label: 'Color Library', slug: 'colors/library/guide' },
 						{ label: 'Site Plan', slug: 'site-plan/guide' },
 						{ label: 'Vectorizer', slug: 'vectorizer/guide' },
 						{ label: 'Parametric Grid', slug: 'grid/guide' },
+						{ label: 'Color Matcher', slug: 'colors/guide' },
+						{ label: 'Color Library', slug: 'colors/library/guide' },
+						{ label: 'Material Estimator', slug: 'estimator/guide' },
+					],
+				},
+				// The tools in three categories, as on the home page and the All Tools page (/tools) (user, 2026-11-11).
+				// The Rhino and Grasshopper packages open on their quick guides; the web tools open themselves.
+				{
+					label: 'Rhino/Grasshopper Tools',
+					items: [
+						{ label: 'Alexandria Tools', link: '/rhino/' },
+						{ label: 'Alexandria Phoenix', link: '/grasshopper/' },
 					],
 				},
 				{
-					label: 'Tools',
+					label: 'Design Tools',
 					items: [
-						{ label: 'Material Estimator', link: '/estimator/' },
-						{ label: 'Color Matcher', link: '/colors/' },
-						{ label: 'Color Library', link: '/colors/library/' },
 						{ label: 'Site Plan', link: '/site-plan/' },
 						{ label: 'Vectorizer', link: '/vectorizer/' },
 						{ label: 'Parametric Grid', link: '/grid/' },
-						{ label: 'All Office Tools', slug: 'tools' },
+					],
+				},
+				{
+					label: 'Fabrication Tools',
+					items: [
+						{ label: 'Color Matcher', link: '/colors/' },
+						{ label: 'Color Library', link: '/colors/library/' },
+						// still being built
+						{ label: 'Material Estimator', link: '/estimator/', badge: 'Beta' },
 					],
 				},
 				{

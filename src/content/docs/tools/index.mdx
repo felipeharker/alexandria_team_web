@@ -1,24 +1,74 @@
 ---
-title: Office Tools
-description: Small web tools for the office's everyday work, beside the Rhino and Grasshopper tools.
+title: All Tools
+description: Every Alexandria tool, by category, with its quick guide and template.
 ---
 
-import { LinkButton } from '@astrojs/starlight/components';
 import HubCard from '../../../components/HubCard.astro';
+import release from '../../../data/release.json';
 
-Web tools for the office's everyday work. They run in your browser, with nothing to install.
+{/* The same three categories as the home page and the sidebar (user, 2026-11-11). A new tool goes in its category. */}
 
-## Material Estimator
+Every Alexandria tool, in three categories. The Rhino and Grasshopper tools install as packages; the design and fabrication tools run in your browser, with nothing to install.
 
-Prices a project's materials. Add a line per material, pick how it's priced (linear feet, square feet, cubic yards and the rest), and enter the unit price and the quantity: the sheet totals it all by line, by pricing unit and by category. Sheets save in your browser and move between people as CSV files, which open in Excel too.
+## Rhino/Grasshopper Tools
+
+Two packages for Rhino 8, installed together and updated from the office drive. See [Install and Update](/docs/install/).
+
+### Alexandria Tools
+
+The Rhino toolbar that takes a project from an empty model to a finished design package: the project, materials and lights, day and night renders, details, and the layout.
 
 <div class="ax-grid not-content">
-<HubCard href="/estimator/" title="Open the Material Estimator" meta="alexdesignlab.org/estimator">Runs in your browser, with nothing to install.<svg slot="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M4 3h16v3.5h-6v11h6V21H4v-3.5h6v-11H4z"/></svg></HubCard>
-<HubCard href="/templates/estimator/" title="Its CSV Template" meta="Template">Material, Category, Unit, Unit Price, Quantity and Notes columns, with three example lines.<svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M4 19h16"/></svg></HubCard>
-<HubCard href="/estimator/guide/" title="Its Quick Guide" meta="Guide">The sheet, the buttons, the pricing units and sharing a sheet.<svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C6.5 4 9.5 4 12 5.5v14c-2.5-1.5-5.5-1.5-8 0zM20 5.5C17.5 4 14.5 4 12 5.5v14c2.5-1.5 5.5-1.5 8 0z"/></svg></HubCard>
+<HubCard href="/start/download/" title={`Download ${release.version}`} meta="Download" icon="/guides/icons/layout_manager.png">Both packages, the docs and the project template, in one zip.</HubCard>
+<HubCard href="/rhino/" title="Its Quick Guide" meta="Guide">Every button on the toolbar, in the order you use them.<svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C6.5 4 9.5 4 12 5.5v14c-2.5-1.5-5.5-1.5-8 0zM20 5.5C17.5 4 14.5 4 12 5.5v14c2.5-1.5 5.5-1.5 8 0z"/></svg></HubCard>
 </div>
 
-## Color Matcher
+### Alexandria Phoenix
+
+The Grasshopper components for patterns in a region: make cells, give each one a value, act on the values, then fabricate or bake them.
+
+<div class="ax-grid not-content">
+<HubCard href="/start/download/" title={`Download ${release.version}`} meta="Download" icon="/guides/icons/square_grid.png">Both packages, the docs and the project template, in one zip.</HubCard>
+<HubCard href="/grasshopper/" title="Its Quick Guide" meta="Guide">Every component on the tab, the basic chain, and how they swap.<svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C6.5 4 9.5 4 12 5.5v14c-2.5-1.5-5.5-1.5-8 0zM20 5.5C17.5 4 14.5 4 12 5.5v14c2.5-1.5 5.5-1.5 8 0z"/></svg></HubCard>
+<HubCard href="/templates/grasshopper/" title="Its CSV Template" meta="Template">The parameters CSV that Export Parameters writes and Apply Parameters reads.<svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M4 19h16"/></svg></HubCard>
+</div>
+
+## Design Tools
+
+Web tools for the design package's graphics: the site plan, a client's logo as vectors, and patterned panels.
+
+### Site Plan
+
+Finds an address and draws the office's greyscale site plan around it: buildings, streets, parks and water from OpenStreetMap, in one standard style. Place the sign with a click, size a dashed red circle around it with *SIGN LOCATION* inside, and export the map as a PNG for the design package.
+
+<div class="ax-grid not-content">
+<HubCard href="/site-plan/" title="Open the Site Plan" meta="alexdesignlab.org/site-plan">Runs in your browser, with nothing to install.<svg slot="icon" viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd"><path d="M12 2.5a9.5 9.5 0 1 0 0 19 9.5 9.5 0 0 0 0-19zm0 2a7.5 7.5 0 1 1 0 15 7.5 7.5 0 0 1 0-15zm0 4.5a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg></HubCard>
+<HubCard href="/site-plan/guide/" title="Its Quick Guide" meta="Guide">Finding the address, placing the sign, sizing the circle and the export.<svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C6.5 4 9.5 4 12 5.5v14c-2.5-1.5-5.5-1.5-8 0zM20 5.5C17.5 4 14.5 4 12 5.5v14c2.5-1.5 5.5-1.5 8 0z"/></svg></HubCard>
+</div>
+
+### Vectorizer
+
+Turns a PNG or JPG, such as a client's logo, into an SVG of clean vector shapes, one layer per color. Keep the colors you want, leave out the background, set the precision, and download the SVG for Rhino, CorelDRAW or fabrication. The image never leaves your browser.
+
+<div class="ax-grid not-content">
+<HubCard href="/vectorizer/" title="Open the Vectorizer" meta="alexdesignlab.org/vectorizer">Runs in your browser, with nothing to install.<svg slot="icon" viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd"><path d="M12 2.5l7 7-3 10H8l-3-10zM11.35 6.5h1.3v4.6h-1.3zM12 11.6a1.4 1.4 0 1 0 .01 0zM8 20.8h8v1.5H8z"/></svg></HubCard>
+<HubCard href="/vectorizer/guide/" title="Its Quick Guide" meta="Guide">Opening an image, choosing colors, setting the precision and the SVG.<svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C6.5 4 9.5 4 12 5.5v14c-2.5-1.5-5.5-1.5-8 0zM20 5.5C17.5 4 14.5 4 12 5.5v14c2.5-1.5 5.5-1.5 8 0z"/></svg></HubCard>
+</div>
+
+### Parametric Grid
+
+Lays out a square, hex or triangle grid on a panel and scales each cell toward a point or a curve you place on the preview, from a Min size at the attractor to a Max size away from it. Download the linework as an SVG at full size, one shape per cell, for Rhino, CorelDRAW or fabrication.
+
+<div class="ax-grid not-content">
+<HubCard href="/grid/" title="Open the Parametric Grid" meta="alexdesignlab.org/grid">Runs in your browser, with nothing to install.<svg slot="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M4.1 4.1h2v2h-2zM10.1 3.6h3v3h-3zM16 3h4.2v4.2H16zM3.6 10.1h3v3h-3zM9.75 9.75h3.7v3.7h-3.7zM15.75 9.25h4.7v4.7h-4.7zM3 16h4.2v4.2H3zM9.25 15.75h4.7v4.7h-4.7zM15.4 15.4h5.4v5.4h-5.4z"/></svg></HubCard>
+<HubCard href="/grid/guide/" title="Its Quick Guide" meta="Guide">The region, the grid, the scale, placing the attractor and the SVG.<svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C6.5 4 9.5 4 12 5.5v14c-2.5-1.5-5.5-1.5-8 0zM20 5.5C17.5 4 14.5 4 12 5.5v14c2.5-1.5 5.5-1.5 8 0z"/></svg></HubCard>
+</div>
+
+## Fabrication Tools
+
+Web tools for building it: matching colors to paint and vinyl, the office's paint formulas, and pricing the materials.
+
+### Color Matcher
 
 Turns any hex code into its nearest Sherwin-Williams, Pantone (Solid Coated) and 3M Scotchcal 3630 colors, each with a percent match based on how alike the two colors look (CIEDE2000). Where the office already has a Matthews Paint formula for the matched color, it says so. Lists import and export as CSV.
 
@@ -28,7 +78,7 @@ Turns any hex code into its nearest Sherwin-Williams, Pantone (Solid Coated) and
 <HubCard href="/templates/color-matcher/" title="Its CSV Template" meta="Template">A Name and a Hex column, with three example colors.<svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M4 19h16"/></svg></HubCard>
 </div>
 
-## Color Library
+### Color Library
 
 Every Matthews Paint formula the office has on file, by color system (Sherwin-Williams, Pantone, Matthews Paint, Benjamin Moore and Behr), with each one's colorants in grams per gallon and a link to find its closest matches.
 
@@ -37,29 +87,14 @@ Every Matthews Paint formula the office has on file, by color system (Sherwin-Wi
 <HubCard href="/colors/library/guide/" title="Its Quick Guide" meta="Guide">Finding a formula, reading its colorants, and where the swatches come from.<svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C6.5 4 9.5 4 12 5.5v14c-2.5-1.5-5.5-1.5-8 0zM20 5.5C17.5 4 14.5 4 12 5.5v14c2.5-1.5 5.5-1.5 8 0z"/></svg></HubCard>
 </div>
 
-## Site Plan
+### Material Estimator
 
-Finds an address and draws the office's greyscale site plan around it: buildings, streets, parks and water from OpenStreetMap, in one standard style. Place the sign with a click, size a dashed red circle around it with *SIGN LOCATION* inside, and export the map as a PNG for the design package.
+<span class="ax-badge">Beta</span> Still being built, so some of it may change or not work yet.
 
-<div class="ax-grid not-content">
-<HubCard href="/site-plan/" title="Open the Site Plan" meta="alexdesignlab.org/site-plan">Runs in your browser, with nothing to install.<svg slot="icon" viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd"><path d="M12 2.5a9.5 9.5 0 1 0 0 19 9.5 9.5 0 0 0 0-19zm0 2a7.5 7.5 0 1 1 0 15 7.5 7.5 0 0 1 0-15zm0 4.5a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg></HubCard>
-<HubCard href="/site-plan/guide/" title="Its Quick Guide" meta="Guide">Finding the address, placing the sign, sizing the circle and the export.<svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C6.5 4 9.5 4 12 5.5v14c-2.5-1.5-5.5-1.5-8 0zM20 5.5C17.5 4 14.5 4 12 5.5v14c2.5-1.5 5.5-1.5 8 0z"/></svg></HubCard>
-</div>
-
-## Vectorizer
-
-Turns a PNG or JPG, such as a client's logo, into an SVG of clean vector shapes, one layer per color. Keep the colors you want, leave out the background, set the precision, and download the SVG for Rhino, CorelDRAW or fabrication. The image never leaves your browser.
+Prices a project's materials. Add a line per material, pick how it's priced (linear feet, square feet, cubic yards and the rest), and enter the unit price and the quantity: the sheet totals it all by line, by pricing unit and by category. Sheets save in your browser and move between people as CSV files, which open in Excel too.
 
 <div class="ax-grid not-content">
-<HubCard href="/vectorizer/" title="Open the Vectorizer" meta="alexdesignlab.org/vectorizer">Runs in your browser, with nothing to install.<svg slot="icon" viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd"><path d="M12 2.5l7 7-3 10H8l-3-10zM11.35 6.5h1.3v4.6h-1.3zM12 11.6a1.4 1.4 0 1 0 .01 0zM8 20.8h8v1.5H8z"/></svg></HubCard>
-<HubCard href="/vectorizer/guide/" title="Its Quick Guide" meta="Guide">Opening an image, choosing colors, setting the precision and the SVG.<svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C6.5 4 9.5 4 12 5.5v14c-2.5-1.5-5.5-1.5-8 0zM20 5.5C17.5 4 14.5 4 12 5.5v14c2.5-1.5 5.5-1.5 8 0z"/></svg></HubCard>
-</div>
-
-## Parametric Grid
-
-Lays out a square, hex or triangle grid on a panel and scales each cell toward a point or a curve you place on the preview, from a Min size at the attractor to a Max size away from it. Download the linework as an SVG at full size, one shape per cell, for Rhino, CorelDRAW or fabrication.
-
-<div class="ax-grid not-content">
-<HubCard href="/grid/" title="Open the Parametric Grid" meta="alexdesignlab.org/grid">Runs in your browser, with nothing to install.<svg slot="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M4.1 4.1h2v2h-2zM10.1 3.6h3v3h-3zM16 3h4.2v4.2H16zM3.6 10.1h3v3h-3zM9.75 9.75h3.7v3.7h-3.7zM15.75 9.25h4.7v4.7h-4.7zM3 16h4.2v4.2H3zM9.25 15.75h4.7v4.7h-4.7zM15.4 15.4h5.4v5.4h-5.4z"/></svg></HubCard>
-<HubCard href="/grid/guide/" title="Its Quick Guide" meta="Guide">The region, the grid, the scale, placing the attractor and the SVG.<svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C6.5 4 9.5 4 12 5.5v14c-2.5-1.5-5.5-1.5-8 0zM20 5.5C17.5 4 14.5 4 12 5.5v14c2.5-1.5 5.5-1.5 8 0z"/></svg></HubCard>
+<HubCard href="/estimator/" title="Open the Material Estimator" meta="alexdesignlab.org/estimator">Runs in your browser, with nothing to install.<svg slot="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M4 3h16v3.5h-6v11h6V21H4v-3.5h6v-11H4z"/></svg></HubCard>
+<HubCard href="/estimator/guide/" title="Its Quick Guide" meta="Guide">The sheet, the buttons, the pricing units and sharing a sheet.<svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C6.5 4 9.5 4 12 5.5v14c-2.5-1.5-5.5-1.5-8 0zM20 5.5C17.5 4 14.5 4 12 5.5v14c2.5-1.5 5.5-1.5 8 0z"/></svg></HubCard>
+<HubCard href="/templates/estimator/" title="Its CSV Template" meta="Template">Material, Category, Unit, Unit Price, Quantity and Notes columns, with three example lines.<svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M4 19h16"/></svg></HubCard>
 </div>

@@ -11,8 +11,9 @@ interface Props {
 	kind: string;
 	icon?: string; // an image path; or put an <svg> in the "icon" slot
 	links: Link[];
+	badge?: string; // a tag beside the title, such as "Beta" for a tool still being built
 }
-const { title, kind, icon, links } = Astro.props;
+const { title, kind, icon, links, badge } = Astro.props;
 ---
 
 <article class="ax-tool">
@@ -21,7 +22,7 @@ const { title, kind, icon, links } = Astro.props;
 			{icon ? <img src={icon} alt="" width="30" height="30" /> : <slot name="icon" />}
 		</span>
 		<span>
-			<b>{title}</b>
+			<b>{title}{badge && <span class="ax-badge">{badge}</span>}</b>
 			<small>{kind}</small>
 		</span>
 	</header>
