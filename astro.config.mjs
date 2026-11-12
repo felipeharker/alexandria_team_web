@@ -7,7 +7,7 @@ import starlight from '@astrojs/starlight';
 // tools/sync.py writes everything under docs/, src/generated and src/data from alexandria_phoenix.
 // Every tool has a short address: /rhino, /grasshopper, /estimator/guide here, and /estimator, /materials (the
 // Material Library), /colors (the Color Matcher), /colors/library, /site-plan, /vectorizer, /grid (the Parametric Grid)
-// and /braille (the Braille Lettering Designer) from the alexandria_office site, through rewrites in render.yaml.
+// and /braille (the Braille Lettering Designer) from the alexandria_office repo, served beside these pages by server/gate.mjs.
 
 // Runs in every page's head (see the sidebar notes in `head` below): moves the sidebar's highlight to an
 // entry for a section of this page when the address shows that section, and back to the page's own entry

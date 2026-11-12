@@ -1,112 +1,34 @@
-# Render Blueprint for the Alexandria hub: one static site, alexandria-hub, in the Alexandria project,
-# built from this repository's main branch and served only at alexdesignlab.org (Render redirects www
-# to it). At Porkbun, alexdesignlab.org is an ALIAS and www a CNAME to the site's onrender.com address,
-# which is otherwise switched off.
+# Render Blueprint for the Alexandria hub: one web service, alexandria-gate, in the Harker-Hub workspace, built
+# from this repository's main branch and served at alexdesignlab.org (Render redirects www to it). At Porkbun,
+# alexdesignlab.org is an ALIAS and www a CNAME to alexandria-gate.onrender.com, which is gated the same way.
 #
-# Every tool lives under the one domain: /rhino, /grasshopper, /estimator/guide are hub pages, and
-# /estimator/ is the Material Estimator itself (and /materials, /colors, /site-plan, /vectorizer, /grid and /braille the other office tools), served from the alexandria-office site (the
-# alexandria_office repo) through the rewrite below, so it still deploys from its own repo. Render
-# applies a rule only where the hub has no page, so /estimator/guide stays the hub's.
+# server/gate.mjs serves the built hub (dist/) and the office tools only to the people in HUB_USERS, who sign in
+# once at /signin and stay signed in for 30 days; everyone else gets the sign-in page. The office tools (/estimator,
+# /materials, /colors, /site-plan, /vectorizer, /grid, /braille) come from the private alexandria_office repo through
+# server/office.mjs, at build time and then every two minutes, so a push there shows up without a hub deploy. A hub
+# page wins over an office tool at the same address, so /estimator/guide stays the hub's.
 #
-# Moving behind a sign-in (2026-11-12): alexandria-gate, the web service at the end, serves the same build
-# and the office tools itself, only to the usernames and passcodes in its HUB_USERS (server/gate.mjs). Once
-# alexdesignlab.org moves to it, this static site and alexandria-office's onrender address are retired.
+# Until 2026-11-12 the hub was a public static site, alexandria-hub, with rewrites to the alexandria-office static
+# site. Both are retired (suspended on Render, out of this file); nothing here points at them any more.
 services:
-  - type: web
-    name: alexandria-hub
-    runtime: static
-    repo: https://github.com/felipeharker/alexandria_team_web
-    branch: main
-    buildCommand: npm ci && npm run build
-    staticPublishPath: dist
-    domains:
-      - alexdesignlab.org
-    renderSubdomainPolicy: disabled
-    envVars:
-      - key: NODE_VERSION
-        value: "24"                # Astro 7 needs Node 22.23.4 or later
-    routes:
-      # Render matches /estimator and /estimator/ alike, so the page gets its own rewrite (a redirect
-      # between them loops); the Estimator's <base href="/estimator/"> keeps its files loading either way.
-      - type: rewrite
-        source: /estimator
-        destination: https://alexandria-office.onrender.com/estimator/
-      - type: rewrite
-        source: /estimator/*
-        destination: https://alexandria-office.onrender.com/estimator/*
-      # the Color Matcher (/colors) and the Color Library (/colors/library), also from alexandria_office
-      - type: rewrite
-        source: /colors
-        destination: https://alexandria-office.onrender.com/colors/
-      - type: rewrite
-        source: /colors/*
-        destination: https://alexandria-office.onrender.com/colors/*
-      # the Site Plan (/site-plan), also from alexandria_office
-      - type: rewrite
-        source: /site-plan
-        destination: https://alexandria-office.onrender.com/site-plan/
-      - type: rewrite
-        source: /site-plan/*
-        destination: https://alexandria-office.onrender.com/site-plan/*
-      # the Vectorizer (/vectorizer), also from alexandria_office
-      - type: rewrite
-        source: /vectorizer
-        destination: https://alexandria-office.onrender.com/vectorizer/
-      - type: rewrite
-        source: /vectorizer/*
-        destination: https://alexandria-office.onrender.com/vectorizer/*
-      # the Parametric Grid (/grid), also from alexandria_office
-      - type: rewrite
-        source: /grid
-        destination: https://alexandria-office.onrender.com/grid/
-      - type: rewrite
-        source: /grid/*
-        destination: https://alexandria-office.onrender.com/grid/*
-      # the Material Library (/materials), also from alexandria_office; the Estimator reads /materials/materials.csv
-      - type: rewrite
-        source: /materials
-        destination: https://alexandria-office.onrender.com/materials/
-      - type: rewrite
-        source: /materials/*
-        destination: https://alexandria-office.onrender.com/materials/*
-      # the Braille Lettering Designer (/braille), also from alexandria_office
-      - type: rewrite
-        source: /braille
-        destination: https://alexandria-office.onrender.com/braille/
-      - type: rewrite
-        source: /braille/*
-        destination: https://alexandria-office.onrender.com/braille/*
-    headers:
-      - path: /*
-        name: X-Robots-Tag
-        value: noindex, nofollow   # public for now, but not for search engines
-      - path: /*
-        name: X-Content-Type-Options
-        value: nosniff
-      - path: /*
-        name: Referrer-Policy
-        value: same-origin
-
-  # The hub behind a sign-in: server/gate.mjs serves dist/ and the office tools (fetched from the private
-  # alexandria_office repo by server/office.mjs at build time, then every two minutes) to the people in HUB_USERS.
-  # Both secrets are set in this service's Environment on Render, never here: HUB_USERS as `name:passcode, name:passcode`,
-  # GITHUB_TOKEN as a fine-grained token for alexandria_office with Contents: read-only. Always on (Starter), so
-  # there's no wait for a sleeping instance. alexdesignlab.org moves here from the static site above.
   - type: web
     name: alexandria-gate
     runtime: node
-    plan: starter
+    plan: starter                  # always on, so there's no wait for a sleeping instance
     repo: https://github.com/felipeharker/alexandria_team_web
     branch: main
     buildCommand: npm ci && npm run build && node server/office.mjs
     startCommand: node server/gate.mjs
     healthCheckPath: /healthz
+    domains:
+      - alexdesignlab.org
     envVars:
       - key: NODE_VERSION
         value: "24"                # Astro 7 needs Node 22.23.4 or later
+      # The secrets are set in this service's Environment on Render, never here.
       - key: HUB_USERS
-        sync: false                # set on Render, not in this file
+        sync: false                # `name:passcode, name:passcode`; edit there to add or remove someone
       - key: GITHUB_TOKEN
-        sync: false                # set on Render, not in this file
+        sync: false                # fine-grained, alexandria_office only, Contents read-only; expires 2027-11-12
       - key: SESSION_SECRET
         generateValue: true        # Render makes it once; it signs the 30-day sign-ins
