@@ -23,3 +23,6 @@ pnpm-debug.log*
 # the release zip tools/sync.py builds (it goes to GitHub releases, not the repo)
 release/
 
+
+# the office tools the gate downloads from alexandria_office (server/office.mjs)
+office/

@@ -7,6 +7,10 @@
 # /estimator/ is the Material Estimator itself (and /materials, /colors, /site-plan, /vectorizer, /grid and /braille the other office tools), served from the alexandria-office site (the
 # alexandria_office repo) through the rewrite below, so it still deploys from its own repo. Render
 # applies a rule only where the hub has no page, so /estimator/guide stays the hub's.
+#
+# Moving behind a sign-in (2026-11-12): alexandria-gate, the web service at the end, serves the same build
+# and the office tools itself, only to the usernames and passcodes in its HUB_USERS (server/gate.mjs). Once
+# alexdesignlab.org moves to it, this static site and alexandria-office's onrender address are retired.
 services:
   - type: web
     name: alexandria-hub
@@ -82,3 +86,25 @@ services:
       - path: /*
         name: Referrer-Policy
         value: same-origin
+
+  # The hub behind a sign-in: server/gate.mjs serves dist/ and the office tools (fetched from the private
+  # alexandria_office repo by server/office.mjs at build time, then every two minutes) to the people in HUB_USERS.
+  # Both secrets are set in this service's Environment on Render, never here: HUB_USERS as `name:passcode, name:passcode`,
+  # GITHUB_TOKEN as a fine-grained token for alexandria_office with Contents: read-only. Always on (Starter), so
+  # there's no wait for a sleeping instance. alexdesignlab.org moves here from the static site above.
+  - type: web
+    name: alexandria-gate
+    runtime: node
+    plan: starter
+    repo: https://github.com/felipeharker/alexandria_team_web
+    branch: main
+    buildCommand: npm ci && npm run build && node server/office.mjs
+    startCommand: node server/gate.mjs
+    healthCheckPath: /healthz
+    envVars:
+      - key: NODE_VERSION
+        value: "24"                # Astro 7 needs Node 22.23.4 or later
+      - key: HUB_USERS
+        sync: false                # set on Render, not in this file
+      - key: GITHUB_TOKEN
+        sync: false                # set on Render, not in this file
