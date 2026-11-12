@@ -14,7 +14,6 @@ one (or ALEXANDRIA_PHOENIX) and the shared alexandria_packages folder, and write
   public/guides/icons/: the two quick guides, built by alexandria_phoenix's
   tools/make_guides.py and scoped to .qg-page so they sit inside the hub's pages.
 - src/data/release.json: the shared folder's version, date and contents.
-- src/data/releases.json: every "Packages ..." commit in alexandria_phoenix, for What's new.
 - public/templates/ and src/generated/templates/: the CSV templates, from alexandria_office
   (the Material Estimator's, the Material Library's and the Color Matcher's) and alexandria_phoenix (the Grasshopper
   parameters, standards/parameters_template.csv), to download and to show on their pages.
@@ -322,20 +321,6 @@ def release():
     return facts, zipped
 
 
-def history():
-    log = subprocess.run(["git", "-C", PHOENIX, "log", "--format=%ad%x09%s", "--date=short"],
-                         capture_output=True, text=True, encoding="utf-8", check=True).stdout
-    entries = []
-    for line in log.splitlines():
-        date, subject = line.split("\t", 1)
-        match = re.match(r"Packages (\d+\.\d+)\.(\S+?)(?: and \S+|/\S+)?: (.+)$", subject)
-        if match:
-            summary = match.group(3)
-            entries.append({"version": match.group(1), "build": match.group(2), "date": date,
-                            "summary": summary[:1].upper() + summary[1:]})
-    write("src/data/releases.json", json.dumps(entries, indent=2) + "\n")
-
-
 def publish(facts, zipped):
     exists = subprocess.run(["gh", "release", "view", facts["tag"], "--repo", REPO], capture_output=True).returncode == 0
     if exists:
@@ -380,7 +365,6 @@ def main():
     version = open(os.path.join(PHOENIX, "VERSION")).read().strip()
     docs()
     guides(version)
-    history()
     templates()
     sample_project()
     facts, zipped = release()

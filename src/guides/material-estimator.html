@@ -90,7 +90,7 @@
       <li><b>Add Material.</b> A new line at the bottom.</li>
       <li><b>Import and Export CSV.</b> How sheets move between people.</li>
       <li><b>More.</b> A blank template, an example sheet, print or save as PDF, and clear.</li>
-      <li><b>A Line.</b> Material, category, pricing unit, unit price and quantity; its total follows.</li>
+      <li><b>A Line.</b> Material, category, pricing unit, unit price and quantity; its total follows. Typing in the Material field lists the <a href="/materials/">Material Library</a>'s materials: pick one and its category, unit, price and notes fill in.</li>
       <li><b>Totals.</b> The project's, then by pricing unit and by category, largest first.</li>
     </ol>
   </section>
@@ -100,7 +100,7 @@
     <ol class="qg-flow">
       <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3.5 4.5h7l6 6-6 6-7-7z"/><circle cx="7.5" cy="8.5" r="1"/></svg></span><div><b>Name It</b><small>Type the project's name at the top. The CSV takes it.</small></div></li>
       <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4v12M4 10h12"/></svg></span><div><b>Add a Line per Material</b><small><strong>Add Material</strong>, or <code>Enter</code> on the last row.</small></div></li>
-      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 13.5 13.5 3l3.5 3.5L6.5 17zM6 10.5l1.5 1.5M8.5 8l1.5 1.5M11 5.5l1.5 1.5"/></svg></span><div><b>Price Each Line</b><small>Its pricing unit, unit price, and the quantity the project needs.</small></div></li>
+      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 13.5 13.5 3l3.5 3.5L6.5 17zM6 10.5l1.5 1.5M8.5 8l1.5 1.5M11 5.5l1.5 1.5"/></svg></span><div><b>Price Each Line</b><small>Its pricing unit, unit price, and the quantity the project needs. A material picked from the Material Library comes priced.</small></div></li>
       <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 13V3m0 0L6 7m4-4 4 4M4 16h12"/></svg></span><div><b>Export the CSV</b><small>Keep it with the project's files, where teammates can import it.</small></div></li>
     </ol>
   </section>
@@ -189,6 +189,7 @@ Ready-mix concrete,Concrete,CY,165,42,6930.00,5% waste</pre>
     <div class="qg-section-head"><h2 id="habits">Good to Know</h2></div>
     <ul class="qg-habits">
       <li><b>The sheet lives in this browser.</b> It saves as you type, but another browser or computer starts empty, and clearing the browser's data clears it. Export a CSV to keep it.</li>
+      <li><b>From the Material Library.</b> Its <b>Add to Estimator</b> link opens the Estimator with that material on a new line, priced, named by its material, thickness and finish, with its size and supplier in the notes. <b>Material Library</b> in the top bar goes there. The library is in beta and still being filled in.</li>
       <li><b>Nothing leaves your computer.</b> The Estimator has no server: CSV files are the only way a sheet goes anywhere.</li>
       <li><b>Two tabs stay in step.</b> An edit in one shows up in the other.</li>
       <li><b>Exports are safe in Excel.</b> A cell that starts with <code>=</code>, <code>+</code>, <code>-</code> or <code>@</code> gets a leading <code>'</code> so it stays text; import takes it off again.</li>

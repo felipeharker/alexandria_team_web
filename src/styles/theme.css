@@ -453,49 +453,26 @@ h1#_top,
 	}
 }
 
-/* What's new */
-.ax-log {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	display: grid;
+/* What's new: the newest updates, each a section with its date and area above its title */
+.ax-update {
+	margin-top: 2.5rem;
+	padding-top: 1.75rem;
 	border-top: 1px solid var(--ax-rule);
 }
-.ax-log li {
-	display: grid;
-	grid-template-columns: 3.5rem 7.5rem minmax(0, 1fr);
-	gap: 2px 14px;
-	padding: 10px 0;
+.ax-update:first-of-type {
+	margin-top: 2rem;
+}
+.sl-markdown-content .ax-update-meta {
 	margin: 0;
-	border-bottom: 1px solid var(--ax-rule);
-	align-items: baseline;
 	font-size: var(--sl-text-sm);
-}
-.ax-log .v {
-	font-weight: 600;
-	color: var(--sl-color-white);
-	font-variant-numeric: tabular-nums;
-}
-.ax-log .d {
 	color: var(--sl-color-gray-3);
 	font-variant-numeric: tabular-nums;
 }
-.ax-log .s {
-	color: var(--sl-color-gray-1);
+.sl-markdown-content .ax-update > h2 {
+	margin-top: 0.25rem;
 }
-.ax-log .b {
-	display: block;
-	font-family: var(--sl-font-mono);
-	font-size: 0.72rem;
-	color: var(--sl-color-gray-4);
-}
-@media (max-width: 40rem) {
-	.ax-log li {
-		grid-template-columns: 3.5rem minmax(0, 1fr);
-	}
-	.ax-log .s {
-		grid-column: 1 / -1;
-	}
+.sl-markdown-content .ax-update h3 {
+	margin-top: 1.75rem;
 }
 
 /* reference links */

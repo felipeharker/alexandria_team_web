@@ -1,27 +1,26 @@
 ---
-// Each Alexandria release, newest first, from alexandria_phoenix's "Packages ..." commits.
-import releases from '../data/releases.json';
+// What's New: the newest updates, to the Rhino and Grasshopper packages or to the web tools, newest first. Each is a
+// Markdown file in src/content/updates/, written by hand when it ships (content.config.ts has its fields).
+import { getCollection, render } from 'astro:content';
 
 interface Props {
 	limit?: number;
 }
-const { limit } = Astro.props;
-const shown = limit ? releases.slice(0, limit) : releases;
-const day = (iso: string) =>
-	new Date(iso + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+const { limit = 3 } = Astro.props;
+const updates = (await getCollection('updates')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0, limit);
+const shown = await Promise.all(updates.map(async (u) => ({ ...u, Content: (await render(u)).Content })));
+const day = (d: Date) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
 ---
 
-<ol class="ax-log not-content">
-	{
-		shown.map((r) => (
-			<li>
-				<span class="v">{r.version}</span>
-				<span class="d">
-					{day(r.date)}
-					<span class="b">{r.build}</span>
-				</span>
-				<span class="s">{r.summary}</span>
-			</li>
-		))
-	}
-</ol>
+{
+	shown.map(({ id, data, Content }) => (
+		<section class="ax-update" aria-labelledby={`update-${id}`}>
+			<p class="ax-update-meta">
+				{day(data.date)} · {data.area}
+				{data.version && ` ${data.version}`}
+			</p>
+			<h2 id={`update-${id}`}>{data.title}</h2>
+			<Content />
+		</section>
+	))
+}

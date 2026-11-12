@@ -17,6 +17,9 @@ import { Content as Claude } from '../../../generated/troubleshooting-claude.md'
 - **The Site Plan's export fails.** Make the browser window smaller, or set the browser's zoom back to 100%, and export again.
 - **The Vectorizer's shapes are lumpy, or small details are missing.** Raise **Precision** for a closer fit, or lower it for smoother curves. Start from the largest, cleanest file the client has: a small or heavily compressed JPG traces poorly.
 - **The Vectorizer outlines shapes in an extra color, or misses one.** Untick the extra color so it merges into its neighbour, or raise **Colors** and trace again.
+- **The Braille Lettering Designer stays on "Loading the Grade 2 translator".** It loads once, the first time you use Grade 2: check the connection and reload. Grade 1 works without it.
+- **The braille has capital signs everywhere.** Type the text as it should read, *Restroom*, not *RESTROOM*: braille capitalizes only the start of a sentence, names and acronyms.
+- **A material isn't in the Estimator's list.** The list comes from the [Material Library](/materials/), which is still being filled in. Type the material in by hand for now.
 
 ## Installing and the Toolbar
 
@@ -28,7 +31,7 @@ import { Content as Claude } from '../../../generated/troubleshooting-claude.md'
 - **New buttons are missing after an update.** Click **Alexandria Setup** once. With more than one Rhino open, close the others first: the last Rhino to close decides what the toolbar looks like next time.
 - **A definition says "Input parameter chunk is missing".** It was saved before one of its components gained an input. Save it again and the message goes.
 
-To see which version you have, open the **Installed** tab of the Package Manager and compare it with [What's New](/start/whats-new/).
+To see which version you have, open the **Installed** tab of the Package Manager and compare it with the newest release on [Download](/start/download/).
 
 ## Installing from the Zip
 

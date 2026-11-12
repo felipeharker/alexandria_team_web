@@ -5,20 +5,22 @@ description: The web tools to bookmark, the Rhino tools to install, and the guid
 
 import { Steps } from '@astrojs/starlight/components';
 
-Alexandria is the office's set of tools in two halves. **On the web**, at alexdesignlab.org, are the office tools for the work around a design: pricing materials, matching and mixing colors, drawing site plans, turning images into vectors and laying out patterns of cells. **In Rhino 8** are the Alexandria tools, a toolbar that takes a sign from an empty model to a finished design package, and Alexandria Phoenix, Grasshopper components for patterns. This page gets you started with both.
+Alexandria is the office's set of tools in two halves. **On the web**, at alexdesignlab.org, are the office tools for the work around a design: pricing materials, matching and mixing colors, drawing site plans, turning images into vectors, laying out patterns of cells and setting braille. **In Rhino 8** are the Alexandria tools, a toolbar that takes a sign from an empty model to a finished design package, and Alexandria Phoenix, Grasshopper components for patterns. This page gets you started with both.
 
 ## On the Web: Nothing to Install
 
 The office tools open in any browser, on any computer or phone, and are always the newest version. Bookmark the ones you'll use:
 
-- **[Site Plan](/site-plan/)** finds an address and draws the office's greyscale site plan around it, with the sign's location circled in red, ready for the design package.
+- **[Site Plan](/site-plan/)** finds an address and draws the office's greyscale site plan around it, with the sign's location circled in red, a north arrow and a scale bar, ready for the design package.
 - **[Vectorizer](/vectorizer/)** turns a client's PNG or JPG logo into an SVG of clean vector shapes, one layer per color, ready for Rhino, CorelDRAW or fabrication.
 - **[Parametric Grid](/grid/)** lays out a square, hex or triangle grid whose cells scale toward a point or a curve, and saves it as full-size SVG linework.
+- **[Braille Lettering Designer](/braille/)** turns a sign's text into Grade 2 braille, as ADA signs need, and saves the dots as a full-size SVG.
 - **[Color Matcher](/colors/)** turns a client's hex code into its nearest Sherwin-Williams, Pantone and 3M vinyl colors, with a percent match.
 - **[Color Library](/colors/library/)** has every Matthews Paint formula the office has on file, with its colorants.
 - **[Material Estimator](/estimator/)** prices a project's materials by the foot, the yard or the piece.
+- **[Material Library](/materials/)** lists the office's stock materials with their sizes and prices, ready to add to an Estimator sheet. It's in beta and still being filled in.
 
-Each has a quick guide under **Quick Guides**, about two minutes to read. Two habits to start with: name the project at the top of a tool, since it names what you export, and **export** your work (a CSV or a PNG) into the project's folder. The tools save as you go, but only in the browser you used. [Office Tools](/docs/office-tools/) covers how they work underneath.
+Each has a quick guide under **Quick Guides**, about two minutes to read. Two habits to start with: name the project at the top of a tool, since it names what you export, and **export** your work (a CSV, PNG or SVG) into the project's folder. The tools save as you go, but only in the browser you used. [Office Tools](/docs/office-tools/) covers how they work underneath.
 
 ## In Rhino: Set Up Once
 
@@ -39,6 +41,6 @@ Each has a quick guide under **Quick Guides**, about two minutes to read. Two ha
 ## Good to Know
 
 - **The web tools update themselves:** every visit gets the newest version, with nothing to install.
-- **The Rhino tools update themselves too,** when Rhino starts, if you ticked automatic updates while installing. After one arrives, restart Rhino and click **Alexandria Setup** once more. [What's New](/start/whats-new/) lists every release.
+- **The Rhino tools update themselves too,** when Rhino starts, if you ticked automatic updates while installing. After one arrives, restart Rhino and click **Alexandria Setup** once more. [What's New](/start/whats-new/) describes the latest updates, in Rhino and on the web.
 - **The standards are built in.** Layers, annotation styles and page layouts come from the Rhino tools, and the map style from the Site Plan, so you rarely set them by hand.
 - **Stuck?** [Troubleshooting](/start/troubleshooting/) covers the usual problems, on the web and in Rhino. For anything else, ask the Alexandria team for now; a form for questions and suggestions is on its way.
