@@ -1,17 +1,22 @@
-// The Alexandria hub behind a sign-in. Render runs this as the alexandria-gate web service (render.yaml): it serves
-// the built hub (dist/) and the office tools (office.mjs) to the people in HUB_USERS, and nothing to anyone else.
+// The Alexandria hub behind a sign-in. Render runs this as the alexandria-gate web service (render.yaml), at
+// alexdesignlab.org: it serves the built hub (dist/) and the office tools (office.mjs) to the people in HUB_USERS,
+// and only its sign-in page to anyone else.
 //
 // HUB_USERS is set in the service's Environment on Render, never in this repository: one username:passcode pair
 // per person, separated by commas, such as `ana:Character_1900, ben:Character_2000`. Usernames ignore case,
 // passcodes don't. To add or remove someone, edit it there and save; the service restarts with the new list.
-// Browsers show their own sign-in box and remember it until they're closed. After 10 wrong tries in 15 minutes
-// from one address, that address gets nothing until the 15 minutes are up.
+//
+// Signing in at /signin keeps a person signed in on that browser for 30 days, renewed as they use the site, and
+// /signout ends it. The sign-in is a signed cookie whose key comes from SESSION_SECRET (Render makes one, see
+// render.yaml) and the person's passcode, so changing someone's passcode or taking them out of HUB_USERS signs them
+// out everywhere. After 10 wrong tries in 15 minutes from one address, that address waits out the 15 minutes.
 //
 // Addresses work as they did on the static site: the hub's pages first, then the office tools (/estimator,
 // /materials, /colors, /site-plan, /vectorizer, /grid, /braille) wherever the hub has no page, so /estimator/guide
-// stays the hub's. Run it locally with `node --env-file=<file> server/gate.mjs` (PORT and HUB_USERS in the file).
+// stays the hub's. Run it locally with `node --env-file=<file> server/gate.mjs` (PORT, HUB_USERS and SESSION_SECRET
+// in the file).
 
-import { createHash, timingSafeEqual } from 'node:crypto';
+import { createHash, createHmac, timingSafeEqual } from 'node:crypto';
 import { createReadStream } from 'node:fs';
 import { readFile, stat } from 'node:fs/promises';
 import { createServer } from 'node:http';
@@ -24,6 +29,9 @@ import { office, startOfficeSync } from './office.mjs';
 const HUB = fileURLToPath(new URL('../dist', import.meta.url));
 const PORT = Number(process.env.PORT) || 10000;
 const OFFICE_TOOLS = new Set(['estimator', 'materials', 'colors', 'site-plan', 'vectorizer', 'grid', 'braille']);
+const DAY = 24 * 60 * 60 * 1000;
+const SESSION_DAYS = 30;
+const SESSION_COOKIE = 'alexandria_session';
 const MAX_TRIES = 10;
 const TRY_WINDOW = 15 * 60 * 1000;
 
@@ -67,24 +75,54 @@ const COMPRESSIBLE = /^(text\/|application\/(json|xml|manifest\+json|wasm)|image
 
 // --- who may come in ---
 
+// Without SESSION_SECRET (a first deploy, or a local run) the key comes from the other secrets, so it still holds.
+const SECRET =
+	process.env.SESSION_SECRET ||
+	createHash('sha256').update(`alexandria-gate\0${process.env.HUB_USERS || ''}\0${process.env.GITHUB_TOKEN || ''}`).digest('hex');
 const digest = (text) => createHash('sha256').update(text, 'utf8').digest();
-const users = new Map();
+const hmac = (key, text) => createHmac('sha256', key).update(text, 'utf8').digest();
+
+const users = new Map(); // username -> { passcode: its digest, key: signs this person's sign-ins }
 for (const pair of (process.env.HUB_USERS || '').split(/[,;\n]/)) {
 	const colon = pair.indexOf(':');
-	if (colon > 0) users.set(pair.slice(0, colon).trim().toLowerCase(), digest(pair.slice(colon + 1).trim()));
+	if (colon < 1) continue;
+	const name = pair.slice(0, colon).trim().toLowerCase();
+	const passcode = pair.slice(colon + 1).trim();
+	users.set(name, { passcode: digest(passcode), key: hmac(SECRET, `${name}\0${passcode}`) });
 }
 
-// 'none' (no sign-in sent yet), 'ok', or 'wrong'
-function signIn(req) {
-	const basic = /^Basic\s+(\S+)$/i.exec(req.headers.authorization || '');
-	if (!basic) return 'none';
-	const text = Buffer.from(basic[1], 'base64').toString('utf8');
-	const colon = text.indexOf(':');
-	const name = text.slice(0, Math.max(colon, 0)).trim().toLowerCase();
-	const given = digest(text.slice(colon + 1));
-	const wanted = users.get(name);
-	return colon > 0 && wanted && timingSafeEqual(wanted, given) ? 'ok' : 'wrong';
+function passcodeMatches(name, passcode) {
+	const user = users.get(name);
+	const given = digest(passcode);
+	return Boolean(user) && timingSafeEqual(user.passcode, given);
 }
+
+function cookie(req, wanted) {
+	for (const part of String(req.headers.cookie || '').split(';')) {
+		const eq = part.indexOf('=');
+		if (eq > 0 && part.slice(0, eq).trim() === wanted) return part.slice(eq + 1).trim();
+	}
+	return '';
+}
+
+// A sign-in cookie is base64url("name\nexpiry") + "." + its signature with that person's key.
+function newSession(name) {
+	const payload = Buffer.from(`${name}\n${Date.now() + SESSION_DAYS * DAY}`).toString('base64url');
+	return `${payload}.${hmac(users.get(name).key, payload).toString('base64url')}`;
+}
+
+function readSession(req) {
+	const [payload, signature] = cookie(req, SESSION_COOKIE).split('.');
+	if (!payload || !signature) return null;
+	const [name, expires] = Buffer.from(payload, 'base64url').toString('utf8').split('\n');
+	const user = users.get(name);
+	if (!user || !(Number(expires) > Date.now())) return null;
+	const wanted = hmac(user.key, payload);
+	const given = Buffer.from(signature, 'base64url');
+	return given.length === wanted.length && timingSafeEqual(given, wanted) ? { name, expires: Number(expires) } : null;
+}
+
+const sessionCookie = (value, maxAge) => `${SESSION_COOKIE}=${value}; Path=/; Max-Age=${maxAge}; HttpOnly; Secure; SameSite=Lax`;
 
 const tries = new Map(); // address -> { count, since }
 const clientAddress = (req) =>
@@ -102,6 +140,13 @@ const wrongTry = (address) => {
 setInterval(() => {
 	for (const [address, t] of tries) if (Date.now() - t.since >= TRY_WINDOW) tries.delete(address);
 }, TRY_WINDOW).unref();
+
+// Where to go after signing in: an address on this site, never another site's, never the sign-in itself.
+function nextAddress(value) {
+	const next = String(value || '');
+	if (!next.startsWith('/') || next.startsWith('//') || next.startsWith('/\\') || next.length > 2000) return '/';
+	return /^\/sign(in|out)\b/.test(next) ? '/' : next;
+}
 
 // --- finding a file ---
 
@@ -177,28 +222,113 @@ async function sendFile(req, res, { file, info, headers }, status = 200) {
 	createReadStream(file).on('error', () => res.destroy()).pipe(res);
 }
 
-const note = (title, text) => `<!doctype html>
+const escape = (text) =>
+	String(text).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+
+// The hub's colours (src/styles/theme.css): greys, and its one green for the button.
+const STYLE = `
+	:root { color-scheme: dark; --bg: #131619; --panel: #1b1f24; --ink: #e7eaee; --soft: #9aa3ae; --rule: #2b3036;
+		--field: #131619; --button: #8cba00; --button-ink: #131619; --error: #ff8b85; }
+	@media (prefers-color-scheme: light) { :root { color-scheme: light; --bg: #f6f7f9; --panel: #ffffff; --ink: #1b1f24;
+		--soft: #5d6570; --rule: #e2e5e9; --field: #ffffff; --button: #4f7a00; --button-ink: #ffffff; --error: #b42318; } }
+	* { box-sizing: border-box; }
+	body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 16px; background: var(--bg); color: var(--ink);
+		font: 16px/1.5 Inter, system-ui, -apple-system, 'Segoe UI', sans-serif; }
+	main { width: 100%; max-width: 22rem; padding: 2rem 1.75rem; background: var(--panel); border: 1px solid var(--rule); border-radius: 8px; }
+	img { display: block; margin-bottom: 1.25rem; }
+	h1 { font-size: 1.25rem; line-height: 1.3; margin: 0 0 0.25rem; }
+	p { margin: 0; color: var(--soft); }
+	form { display: grid; gap: 1rem; margin-top: 1.5rem; }
+	label { display: grid; gap: 0.35rem; font-size: 0.875rem; font-weight: 600; }
+	input { font: inherit; font-size: 1rem; font-weight: 400; color: var(--ink); background: var(--field); border: 1px solid var(--rule);
+		border-radius: 6px; padding: 0.55rem 0.7rem; }
+	input:focus { outline: 2px solid var(--soft); outline-offset: 1px; }
+	button { font: inherit; font-weight: 600; color: var(--button-ink); background: var(--button); border: 0; border-radius: 6px;
+		padding: 0.65rem 1rem; cursor: pointer; margin-top: 0.25rem; }
+	.message { margin-top: 1.25rem; color: var(--error); font-size: 0.9375rem; }
+	.message.plain { color: var(--soft); }
+	.note { margin-top: 1rem; font-size: 0.8125rem; }
+`;
+
+const page = (title, body) => `<!doctype html>
 <html lang="en">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>${title}</title>
-<style>
-	:root { color-scheme: light dark; --bg: #f4f4f4; --ink: #222; --soft: #5c5c5c; }
-	@media (prefers-color-scheme: dark) { :root { --bg: #1b1b1b; --ink: #eee; --soft: #a8a8a8; } }
-	body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: var(--bg); color: var(--ink); font: 16px/1.5 system-ui, sans-serif; }
-	main { max-width: 26rem; padding: 1.5rem; }
-	h1 { font-size: 1.25rem; margin: 0 0 0.5rem; }
-	p { margin: 0; color: var(--soft); }
-</style>
-<main><h1>${title}</h1><p>${text}</p></main>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>${STYLE}</style>
+<main>${body}</main>
 </html>
 `;
 
-function sendNote(res, status, title, text) {
-	const body = Buffer.from(note(title, text));
-	res.writeHead(status, { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store', 'Content-Length': body.length });
+function send(res, status, html, headers = {}) {
+	const body = Buffer.from(html);
+	res.writeHead(status, { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store', 'Content-Length': body.length, ...headers });
 	res.end(body);
+}
+
+const sendNote = (res, status, title, text) => send(res, status, page(title, `<h1>${title}</h1><p>${text}</p>`));
+
+function sendSignIn(res, status, { next = '/', name = '', message = '', plain = false } = {}) {
+	const body = `
+<img src="/favicon.svg" alt="" width="40" height="40">
+<h1>Sign In to Alexandria</h1>
+<p>The office's tools, guides and standards.</p>
+${message ? `<p class="message${plain ? ' plain' : ''}" role="alert">${message}</p>` : ''}
+<form method="post" action="/signin">
+	<input type="hidden" name="next" value="${escape(next)}">
+	<label>Username <input name="username" autocomplete="username" autocapitalize="none" spellcheck="false" required value="${escape(name)}"${name ? '' : ' autofocus'}></label>
+	<label>Passcode <input name="passcode" type="password" autocomplete="current-password" required${name ? ' autofocus' : ''}></label>
+	<button type="submit">Sign In</button>
+</form>
+<p class="note">You’ll stay signed in on this browser for 30 days.</p>`;
+	send(res, status, page('Sign In to Alexandria', body));
+}
+
+const redirect = (res, location, headers = {}) =>
+	res.writeHead(303, { Location: location, 'Cache-Control': 'no-store', ...headers }).end();
+
+function readForm(req) {
+	return new Promise((done, fail) => {
+		let text = '';
+		req.setEncoding('utf8');
+		req.on('data', (chunk) => {
+			text += chunk;
+			if (text.length > 4096) fail(new Error('form too large'));
+		});
+		req.on('end', () => done(new URLSearchParams(text)));
+		req.on('error', fail);
+	});
+}
+
+async function signIn(req, res, url) {
+	if (req.method === 'GET' || req.method === 'HEAD') {
+		const next = nextAddress(url.searchParams.get('next'));
+		if (readSession(req)) return redirect(res, next);
+		const out = url.searchParams.has('out');
+		return sendSignIn(res, 200, { next, message: out ? 'You’re signed out.' : '', plain: out });
+	}
+	if (req.method !== 'POST') return sendNote(res, 405, 'Not Allowed', 'This page only takes the sign-in form.');
+
+	const address = clientAddress(req);
+	const form = await readForm(req).catch(() => new URLSearchParams());
+	const next = nextAddress(form.get('next'));
+	const name = String(form.get('username') || '').trim().toLowerCase();
+	if (tooMany(address)) {
+		return sendSignIn(res, 429, { next, name, message: 'Too many wrong tries from this address. Try again in 15 minutes.' });
+	}
+	if (!passcodeMatches(name, String(form.get('passcode') || '').trim())) {
+		wrongTry(address);
+		console.log(`wrong sign-in for "${name.slice(0, 40)}" from ${address}`);
+		const message = tooMany(address)
+			? 'Too many wrong tries from this address. Try again in 15 minutes.'
+			: 'That username and passcode don’t match. Try again.';
+		return sendSignIn(res, tooMany(address) ? 429 : 401, { next, name, message });
+	}
+	tries.delete(address);
+	console.log(`signed in: ${name} from ${address}`);
+	return redirect(res, next, { 'Set-Cookie': sessionCookie(newSession(name), (SESSION_DAYS * DAY) / 1000) });
 }
 
 async function handle(req, res) {
@@ -206,19 +336,23 @@ async function handle(req, res) {
 	if (url.pathname === '/healthz') return res.writeHead(200, { 'Content-Type': 'text/plain' }).end('ok');
 	for (const [name, value] of Object.entries(HUB_HEADERS)) res.setHeader(name, value);
 
-	const address = clientAddress(req);
-	if (tooMany(address)) return sendNote(res, 429, 'Too Many Tries', 'Too many wrong passcodes from this address. Try again in 15 minutes.');
-	const signedIn = signIn(req);
-	if (signedIn !== 'ok') {
-		if (signedIn === 'wrong') {
-			wrongTry(address);
-			console.log(`wrong sign-in from ${address}`);
-			if (tooMany(address)) return sendNote(res, 429, 'Too Many Tries', 'Too many wrong passcodes from this address. Try again in 15 minutes.');
-		}
-		res.setHeader('WWW-Authenticate', 'Basic realm="Alexandria", charset="UTF-8"');
-		return sendNote(res, 401, 'Sign In to Alexandria', 'This site is for the Alexandria office. Reload the page to sign in with your username and passcode.');
+	if (url.pathname === '/signin') return signIn(req, res, url);
+	if (url.pathname === '/signout') return redirect(res, '/signin?out', { 'Set-Cookie': sessionCookie('', 0) });
+	if (url.pathname === '/favicon.svg') {
+		const icon = await find(HUB, '/favicon.svg');
+		if (icon) return sendFile(req, res, { ...icon, headers: { 'Cache-Control': 'public, max-age=86400' } });
 	}
-	tries.delete(address);
+
+	const session = readSession(req);
+	if (!session) {
+		if (req.method !== 'GET' && req.method !== 'HEAD') return sendNote(res, 401, 'Sign In First', 'Sign in to use this site.');
+		const here = url.pathname + url.search;
+		return redirect(res, here === '/' ? '/signin' : `/signin?next=${encodeURIComponent(here)}`);
+	}
+	// keep it going for another 30 days from today, once a day at most
+	if (session.expires - Date.now() < (SESSION_DAYS - 1) * DAY) {
+		res.setHeader('Set-Cookie', sessionCookie(newSession(session.name), (SESSION_DAYS * DAY) / 1000));
+	}
 
 	if (req.method !== 'GET' && req.method !== 'HEAD') {
 		res.setHeader('Allow', 'GET, HEAD');
@@ -253,5 +387,6 @@ startOfficeSync();
 server.listen(PORT, () => {
 	const names = [...users.keys()];
 	console.log(`gate on port ${PORT}; ${names.length ? `users: ${names.join(', ')}` : 'no users yet: set HUB_USERS, nobody can sign in'}`);
+	if (!process.env.SESSION_SECRET) console.log('no SESSION_SECRET: sign-ins are signed with a key made from the other settings');
 });
 process.on('SIGTERM', () => server.close(() => process.exit(0)));

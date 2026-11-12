@@ -108,3 +108,5 @@ services:
         sync: false                # set on Render, not in this file
       - key: GITHUB_TOKEN
         sync: false                # set on Render, not in this file
+      - key: SESSION_SECRET
+        generateValue: true        # Render makes it once; it signs the 30-day sign-ins
