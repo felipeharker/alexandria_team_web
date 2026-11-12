@@ -1,0 +1,32 @@
+---
+// One sign type on the Typical Signage Types page: a letter A lit at night (tools/render_signs.py) beside its
+// detail drawing from the library (tools/sync.py, from alexandria_phoenix docs/details), and the drawing's callouts.
+import data from '../data/signage-types.json';
+
+interface Props {
+	name: string;
+}
+const { name } = Astro.props;
+const detail = data.details.find((d) => d.name === name);
+if (!detail) throw new Error(`SignType: no ${name} in src/data/signage-types.json; run tools/sync.py`);
+const base = '/wiki/signage-types/' + name;
+---
+
+<div class="ax-sign not-content">
+	<figure>
+		<a href={base + '.jpg'} title="Open the render">
+			<img src={base + '.jpg'} alt={`${detail.title}: a letter A, lit at night`} width="1600" height="1200" loading="lazy" />
+		</a>
+		<figcaption>At night</figcaption>
+	</figure>
+	<figure>
+		<a href={base + '.svg'} title="Open the drawing" class="ax-sign-drawing">
+			<img src={base + '.svg'} alt={`Detail ${name}, ${detail.title}`} width={detail.size[0]} height={detail.size[1]} loading="lazy" />
+		</a>
+		<figcaption><b>{name}</b> {detail.title} · <a href={base + '.pdf'}>PDF</a></figcaption>
+	</figure>
+</div>
+<details class="ax-sign-notes">
+	<summary>Callouts on {name}</summary>
+	<ul>{detail.notes.map((note) => <li>{note}</li>)}</ul>
+</details>

@@ -1,0 +1,107 @@
+---
+title: Typical Signage Types
+description: The sign types the office details, each as a letter A lit at night beside its detail from the Alexandria detail library.
+---
+
+import { LinkButton } from '@astrojs/starlight/components';
+import SignType from '../../../components/SignType.astro';
+
+{/* The renders: tools/render_signs.py (tools/sign_types/render.html). The drawings and their callouts: tools/sync.py, from alexandria_phoenix docs/details (its tools/make_details.py prints them from standards/sign_details.3dm). The Rhino model: tools/sign_types/make_model.py. */}
+
+The sign types the office details, each shown as a 24" letter A lit at night beside its detail from the Alexandria detail library, *DTL-01* to *DTL-13*. In Rhino, *Populate Detail* adds a detail's drawing to a model and the *Layout Manager*'s *Details* tab places one on a page; fill in its blanks (paint, vinyl, colour temperature) for the project. Click a render or a drawing to open it full size.
+
+<LinkButton href="/wiki/signage-types/typical_signage_types.3dm" icon="download" iconPlacement="start">Download the Rhino Model</LinkButton>
+
+The model has the thirteen letters, each on its own layer with a named view, built as their details draw them, and their lit parts in emissive materials for the Raytraced mode.
+
+## Front-Lit Channel Letters
+
+Each letter is an aluminum can with a white acrylic face, lit by LEDs inside. The returns and the trim cap stay dark, so the face reads as the letter.
+
+### Flush Wall Mount
+
+Each letter is fastened to the wall on its own, with the power supply behind the wall.
+
+<SignType name="DTL-01" />
+
+### Raceway Mount
+
+The letters sit on a painted raceway that carries the wiring and the power supply, so they go up as one piece with few holes in the wall. Paint the raceway to match the wall.
+
+<SignType name="DTL-02" />
+
+### On a Cloud Backer
+
+The letters sit on an aluminum backer cut to follow their outline, a painted shape that sets them off from a busy wall. The backer isn't lit.
+
+<SignType name="DTL-03" />
+
+### On a Pan Backer
+
+The letters sit on a pan, a formed aluminum box mounted to the wall. The pan isn't lit.
+
+<SignType name="DTL-04" />
+
+## Halo-Lit Reverse Channel Letters
+
+A reverse channel letter turns the can around: an opaque painted aluminum face and returns, open at the back behind clear polycarbonate. LEDs inside shine back onto the wall, so the letter reads as a dark shape in a ring of light.
+
+### On Standoffs
+
+2-1/2" standoffs hold each letter off the wall, room for the light to spread.
+
+<SignType name="DTL-05" />
+
+### On a Backer
+
+The letters stand off a painted backer instead of the wall, so the halo falls on a surface chosen for it.
+
+<SignType name="DTL-06" />
+
+## Front and Back-Lit Channel Letters
+
+A routed aluminum face with white acrylic pushed through it, lit from inside, and RGB LEDs at the back that throw a halo of any colour onto the wall, shown here in blue.
+
+<SignType name="DTL-11" />
+
+## Cabinets
+
+### Push-Thru Cabinet
+
+A lit cabinet with an opaque, routed aluminum face. The letter is 3/4" clear acrylic pushed through the opening and backed with white translucent vinyl, so only the letter glows, edges and all.
+
+<SignType name="DTL-07" />
+
+### Front-Lit Acrylic Cabinet
+
+A cabinet with a white acrylic face lit evenly from inside. The letter is translucent vinyl on the face, so the whole face glows and the letter shows in its colour.
+
+<SignType name="DTL-13" />
+
+## Exposed Light
+
+The light source is the letter, seen directly.
+
+### Open-Face Channel Letters, Exposed LEDs
+
+A can with no face: LED bulbs on its back, marquee style, light up the inside of the can.
+
+<SignType name="DTL-08" />
+
+### Open-Face Channel Letters, LED Rope
+
+A can with no face and 5" returns, with LED rope run around the inside of each stroke.
+
+<SignType name="DTL-10" />
+
+### LED Neon on a Clear Backer
+
+Flexible LED neon (Aurora Flex) bent to a single-line letter and fixed to a 3/4" clear acrylic backer. The line glows like neon and the backer all but disappears.
+
+<SignType name="DTL-09" />
+
+## Non-Illuminated Dimensional Letters
+
+Solid letters, painted, pinned flush to the wall on threaded studs. They have no light of their own and read by whatever falls on them, so this one is shown at dusk.
+
+<SignType name="DTL-12" />

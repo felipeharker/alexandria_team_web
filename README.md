@@ -20,7 +20,9 @@ Everything is at alexdesignlab.org, one short address per tool: `/rhino`, `/gras
 
 **Sign-in (2026-11-12).** `server/gate.mjs` is the hub behind a username and passcode: the `alexandria-gate` web service in `render.yaml` (Starter, always on) serves `dist/` and the office tools to the people in its `HUB_USERS` setting, and only its sign-in page to anyone else. People sign in once at `/signin` and stay signed in on that browser for 30 days (`/signout` ends it); the cookie is signed with `SESSION_SECRET`, which Render generates. The office tools come from the private alexandria_office repo through `server/office.mjs`, which reads it with `GITHUB_TOKEN` (read-only, that repo only) at build time and then every two minutes, so a push there still shows up on its own. Both settings live in the service's Environment on Render, never in this repo. To add or remove someone, edit `HUB_USERS` there (`name:passcode, name:passcode`) and save.
 
-Written by `tools/sync.py`, so edit the source, not these: `src/content/docs/docs/`, `src/generated/`, `src/data/`, `src/styles/guides.css` and `public/guides/icons/`.
+**Typical Signage Types** (the Wiki, `/wiki/signage-types`) shows each sign type in the detail library as a letter A lit at night beside its detail. In `public/wiki/signage-types/`: the drawings (`DTL-NN.svg` and `.pdf`) come from alexandria_phoenix's `docs/details/` through `tools/sync.py` (printed there in Rhino by its `tools/make_details.py`); the renders (`DTL-NN.jpg`) from `python tools/render_signs.py`, which screenshots `tools/sign_types/render.html` (three.js, from jsDelivr) in headless Chrome; and the Rhino model (`typical_signage_types.3dm`) from `tools/sign_types/make_model.py`, run in an empty Rhino 8 model. The render page and the model script build the same letters, so change both.
+
+Written by `tools/sync.py`, so edit the source, not these: `src/content/docs/docs/`, `src/generated/`, `src/data/`, `src/styles/guides.css`, `public/guides/icons/` and the drawings in `public/wiki/signage-types/`.
 
 ## After an Alexandria release
 

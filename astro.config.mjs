@@ -146,6 +146,11 @@ export default defineConfig({
 					items: [{ label: 'Alexandria Design Lab', slug: 'sample-project' }],
 				},
 				{
+					label: 'Wiki',
+					collapsed: true,
+					items: [{ label: 'Typical Signage Types', slug: 'wiki/signage-types' }],
+				},
+				{
 					label: 'Documentation',
 					collapsed: true,
 					items: [

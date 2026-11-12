@@ -702,6 +702,56 @@ h1#_top,
 	color: var(--sl-color-gray-4);
 }
 
+/* a sign type on the Typical Signage Types page (SignType.astro): its render beside its detail drawing */
+.ax-sign {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+	gap: 12px;
+	align-items: start;
+	margin-block: 1rem 0.5rem;
+}
+.ax-sign figure {
+	margin: 0;
+}
+.ax-sign img {
+	display: block;
+	width: 100%;
+	height: auto;
+	border: 1px solid var(--ax-rule);
+	border-radius: var(--ax-radius);
+	transition: border-color 0.15s;
+}
+.ax-sign .ax-sign-drawing img {
+	background: #fff; /* the drawing is black linework on paper, in both themes */
+}
+.ax-sign a:hover img,
+.ax-sign a:focus-visible img {
+	border-color: var(--sl-color-gray-4);
+}
+.ax-sign figcaption {
+	margin-top: 6px;
+	font-size: var(--sl-text-xs);
+	color: var(--sl-color-gray-3);
+}
+.ax-sign figcaption a {
+	color: var(--sl-color-gray-2);
+}
+.ax-sign figcaption b {
+	font-family: var(--sl-font-mono);
+	font-weight: 500;
+	color: var(--sl-color-gray-2);
+}
+.ax-sign-notes {
+	font-size: var(--sl-text-xs);
+	color: var(--sl-color-gray-3);
+}
+.ax-sign-notes summary {
+	cursor: pointer;
+}
+.ax-sign-notes ul {
+	margin: 0.4rem 0 0;
+}
+
 /* the system architecture diagram (ArchitectureDiagram.astro): greys only; dashed lines are run by hand */
 .ax-arch {
 	/* wider than the text where the page has room, up to the drawing's own width, centred on the text */

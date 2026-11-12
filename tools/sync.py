@@ -20,6 +20,10 @@ one (or ALEXANDRIA_PHOENIX) and the shared alexandria_packages folder, and write
 - public/sample-project/ and src/data/sample-project.json: the sample project's newest design
   package and its previews (alexandria_testing_sample_project/Alexandria/web, made by its
   web/make_web.py), for the Sample Project page.
+- public/wiki/signage-types/DTL-NN.svg and .pdf, and src/data/signage-types.json: the sign detail
+  library's drawings for the Typical Signage Types page, from alexandria_phoenix docs/details (printed by its
+  tools/make_details.py in Rhino), each PDF turned into an SVG with PyMuPDF. The page's renders and Rhino
+  model in that folder are made here, by tools/render_signs.py and tools/sign_types/make_model.py.
 - release/alexandria_packages.zip: the shared folder, zipped as it is (not committed).
 
 --publish uploads the zip to a release on GitHub named after the Rhino Tools package's
@@ -356,6 +360,55 @@ def sample_project():
     write("src/data/sample-project.json", json.dumps(facts, indent=1) + "\n")
 
 
+def detail_title(lines):
+    """A detail's title in Title Case, its lines joined: FRONT-LIT CHANNEL LETTERS / FLUSH WALL MOUNT ->
+    Front-Lit Channel Letters, Flush Wall Mount. LED, LEDs, RGB and DMX stay in capitals."""
+    acronyms = {"led": "LED", "leds": "LEDs", "rgb": "RGB", "dmx": "DMX"}
+
+    def recase(line):
+        words = []
+        for n, word in enumerate(line.lower().split()):
+            parts = []
+            for part in word.split("-"):
+                lead, core, tail = re.match(r"^(\W*)(\w*)(\W*)$", part).groups()
+                if core in acronyms:
+                    core = acronyms[core]
+                elif not (core in MINOR and n > 0):
+                    core = core[:1].upper() + core[1:]
+                parts.append(lead + core + tail)
+            words.append("-".join(parts))
+        return " ".join(words)
+    return ", ".join(recase(line) for line in lines)
+
+
+def signage_types():
+    """The detail library's drawings, as SVGs and PDFs, and their facts for the Typical Signage Types page."""
+    import pymupdf  # PyMuPDF: pip install pymupdf
+    source = os.path.join(PHOENIX, "docs", "details")
+    with open(os.path.join(source, "details.json"), encoding="utf-8") as f:
+        library = json.load(f)
+    out = os.path.join(HUB, "public", "wiki", "signage-types")
+    os.makedirs(out, exist_ok=True)
+    names = set(d["name"] for d in library["details"])
+    for old in os.listdir(out):  # a detail taken out of the library; the renders and the model stay
+        if old.endswith((".svg", ".pdf")) and os.path.splitext(old)[0] not in names:
+            os.remove(os.path.join(out, old))
+    details = []
+    for detail in library["details"]:
+        name = detail["name"]
+        shutil.copyfile(os.path.join(source, detail["pdf"]), os.path.join(out, name + ".pdf"))
+        with pymupdf.open(os.path.join(source, detail["pdf"])) as pdf:
+            page = pdf[0]
+            svg = page.get_svg_image(text_as_path=True)
+            size = [round(page.rect.width), round(page.rect.height)]
+        with open(os.path.join(out, name + ".svg"), "w", encoding="utf-8", newline="\n") as f:
+            f.write(svg)
+        details.append({"name": name, "title": detail_title(detail["title"]), "notes": detail["notes"],
+                        "size": size})
+    print("wrote public/wiki/signage-types/ (%d drawings, as SVG and PDF)" % len(details))
+    write("src/data/signage-types.json", json.dumps({"scale": library["scale"], "details": details}, indent=1) + "\n")
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     parser.add_argument("--publish", action="store_true", help="upload the zip as a GitHub release")
@@ -367,6 +420,7 @@ def main():
     guides(version)
     templates()
     sample_project()
+    signage_types()
     facts, zipped = release()
     if args.publish:
         publish(facts, zipped)

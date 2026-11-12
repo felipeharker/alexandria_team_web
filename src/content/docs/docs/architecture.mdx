@@ -20,7 +20,7 @@ Alexandria is four GitHub repositories, one web service on Render, a release fol
 <li><b>The hub deploys.</b> Pushing alexandria_team_web's main branch makes Render rebuild the hub and restart the gate, from its <code>render.yaml</code> Blueprint.</li>
 <li><b>CSV templates.</b> <code>tools/sync.py</code> copies the Material Estimator's, the Material Library's and the Color Matcher's templates into the hub.</li>
 <li><b>Sample project.</b> <code>web/make_web.py</code> renders the newest design package's pages; <code>tools/sync.py</code> copies them, the renders and the PDF into the hub.</li>
-<li><b>Docs and guides.</b> <code>tools/sync.py</code> copies README, INSTALL and STANDARDS, the Rhino and Grasshopper quick guides and the parameters template from alexandria_phoenix. What's New is written by hand in the hub, one file per update in <code>src/content/updates/</code>.</li>
+<li><b>Docs and guides.</b> <code>tools/sync.py</code> copies README, INSTALL and STANDARDS, the Rhino and Grasshopper quick guides, the parameters template and the sign detail drawings (for the Wiki's <a href="/wiki/signage-types/">Typical Signage Types</a>) from alexandria_phoenix. What's New is written by hand in the hub, one file per update in <code>src/content/updates/</code>.</li>
 <li><b>Releases.</b> Pushing a release of alexandria_phoenix runs its pre-push hook, which copies the packages and docs to the shared folder.</li>
 <li><b>Rhino updates.</b> Rhino 8 installs a newer package from the shared folder the next time it starts.</li>
 <li><b>The download.</b> <code>tools/sync.py --publish</code> reads the release in the shared folder, zips it and uploads it as the hub repository's GitHub release.</li>
@@ -37,6 +37,7 @@ Pushing a repository updates what it deploys straight away. What the hub copies 
 | A hub page, in alexandria_team_web | On its own: push, and Render rebuilds the hub in a few minutes. |
 | The Rhino or Grasshopper tools, in alexandria_phoenix | Rhino gets the release on its own, through the shared folder. The hub doesn't: run `python tools/sync.py --publish` in alexandria_team_web for the docs, quick guides, the version and the zip, add a What's New entry in `src/content/updates/`, then commit and push. |
 | The sample project | Run `python web/make_web.py` in the project, then `python tools/sync.py` in alexandria_team_web, then commit and push. |
+| The sign detail library, `standards/sign_details.3dm` | Open it in Rhino 8 and run alexandria_phoenix's `tools/make_details.py`, then `python tools/sync.py` in alexandria_team_web, then commit and push. A new sign type also needs its letter A in the hub's `tools/sign_types/render.html` and `make_model.py`, and a section on the page; `python tools/render_signs.py` renders it. |
 
 `tools/sync.py` needs the four repositories side by side in one folder, and the shared folder reachable for the release. Without `--publish` it updates everything but the zip.
 

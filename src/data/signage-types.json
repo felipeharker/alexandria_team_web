@@ -1,0 +1,239 @@
+{
+ "scale": "3\" = 1'-0\"",
+ "details": [
+  {
+   "name": "DTL-01",
+   "title": "Illuminated Front-Lit Channel Letters, Flush Wall Mount",
+   "notes": [
+    "PLYWOOD BLOCKING TO BE PROVIDED BY OTHERS",
+    "WALLS: 4\" ALUMINUM SIDEWALLS PAINTED ______________",
+    "FACE: 3/16\" 7328 WHITE ACRYLIC WITH ______________ 3M VINYL",
+    "ILLUMINATION: 12V WHITE LEDS (______ K)",
+    "BACK: .063\" ALUMINUM PAINTED WHITE",
+    "MOUNTED: INDIVIDUALLY TO THE WALL USING 3/8\" X 5\" LAG BOLT FASTENERS PER CODE",
+    "POWER SUPPLY: LED LOW VLTG",
+    "EDGE TRIM: 1\" ______________ JEWELITE",
+    "120 V, 20 AMP CIRCUIT SERVICE PROVIDED BY OTHERS"
+   ],
+   "size": [
+    740,
+    615
+   ]
+  },
+  {
+   "name": "DTL-02",
+   "title": "Illuminated Front-Lit Channel Letters, Raceway Mount",
+   "notes": [
+    "PLYWOOD BLOCKING TO BE PROVIDED BY OTHERS",
+    "WALLS: 4\" ALUMINUM SIDEWALLS PAINTED ______________",
+    "FACE: 3/16\" 7328 WHITE ACRYLIC WITH ______________ 3M VINYL",
+    "ILLUMINATION: 12V WHITE LEDS (______ K)",
+    "MOUNTED: RACEWAY MOUNTED TO THE WALL USING 3/8\" X 5\" LAG BOLT FASTENERS PER CODE",
+    "POWER SUPPLY: LED LOW VLTG",
+    "BACK: .063\" ALUMINUM PAINTED WHITE",
+    "EDGE TRIM: 1\" ______________ JEWELITE",
+    "120 V, 20 AMP CIRCUIT SERVICE PROVIDED BY OTHERS"
+   ],
+   "size": [
+    810,
+    615
+   ]
+  },
+  {
+   "name": "DTL-03",
+   "title": "Illuminated Front-Lit Channel Letters, On Cloud Backer",
+   "notes": [
+    "PLYWOOD BLOCKING TO BE PROVIDED BY OTHERS",
+    "WALLS: 4\" ALUMINUM SIDEWALLS PAINTED ______________",
+    "FACE: 3/16\" 7328 WHITE ACRYLIC WITH ______________ 3M VINYL",
+    "ILLUMINATION: 12V WHITE LEDS (______ K)",
+    "MOUNTED: RACEWAY MOUNTED TO THE WALL USING 3/8\" X 5\" LAG BOLT FASTENERS PER CODE",
+    "POWER SUPPLY: LED LOW VLTG",
+    "BACK: .063\" ALUMINUM PAINTED WHITE",
+    "EDGE TRIM: 1\" ______________ JEWELITE",
+    "120 V, 20 AMP CIRCUIT SERVICE PROVIDED BY OTHERS",
+    "BACKER: 1/8\" ALUMINUM CLOUD BACKER PAINTED ______________"
+   ],
+   "size": [
+    812,
+    795
+   ]
+  },
+  {
+   "name": "DTL-04",
+   "title": "Illuminated Front-Lit Channel Letters, On Pan Backer",
+   "notes": [
+    "PLYWOOD BLOCKING TO BE PROVIDED BY OTHERS",
+    "MOUNTED: BACKER MOUNTED TO THE WALL USING 3/8\" X 5\" LAG BOLT FASTENERS PER CODE",
+    "BACKER: __\" ALUMINUM PAN BACKER PAINTED ______________",
+    "WALLS: 4\" ALUMINUM SIDEWALLS PAINTED ______________",
+    "FACE: 3/16\" 7328 WHITE ACRYLIC WITH ______________ 3M VINYL",
+    "ILLUMINATION: 12V WHITE LEDS (______ K)",
+    "BACK: .063\" ALUMINUM PAINTED WHITE",
+    "POWER SUPPLY: LED LOW VLTG",
+    "EDGE TRIM: 1\" ______________ JEWELITE",
+    "120 V, 20 AMP CIRCUIT SERVICE PROVIDED BY OTHERS"
+   ],
+   "size": [
+    786,
+    831
+   ]
+  },
+  {
+   "name": "DTL-05",
+   "title": "Illuminated Reverse Channel Letters, Standoff Mount (Halo-Lit)",
+   "notes": [
+    "PLYWOOD BLOCKING TO BE PROVIDED BY OTHERS",
+    "WALLS: 4\" SIDEWALLS .063\" ALUMINUM PAINTED ______________",
+    "FACE: .125\" ALUMINUM PAINTED ______________",
+    "ILLUMINATION: 12V WHITE LEDS (______ K)",
+    "BACK: .25\" CLEAR POLYCARBONATE",
+    "POWER SUPPLY: LED LOW VLTG",
+    "MOUNTED: INDIVIDUALLY TO THE WALL WITH 2.5\" STANDOFFS USING 3/8\" X 5\" FASTENERS PER CODE",
+    "120 V, 20 AMP CIRCUIT SERVICE PROVIDED BY OTHERS"
+   ],
+   "size": [
+    783,
+    617
+   ]
+  },
+  {
+   "name": "DTL-06",
+   "title": "Illuminated Reverse Channel Letters, On Backer (Halo-Lit)",
+   "notes": [
+    "PLYWOOD BLOCKING TO BE PROVIDED BY OTHERS",
+    "BACKER: __\" ALUMINUM PAINTED ______________",
+    "WALLS: 3\"-4\" SIDEWALLS .063\" ALUMINUM PAINTED ______________",
+    "FACE: .125\" ALUMINUM PAINTED ______________",
+    "ILLUMINATION: 12V WHITE LEDS (______ K)",
+    "BACK: .25\" CLEAR POLYCARBONATE",
+    "POWER SUPPLY: LED LOW VLTG",
+    "MOUNTED: INDIVIDUALLY TO THE BACKER WITH 2.5\" STANDOFFS USING 3/8\" X 5\" FASTENERS PER CODE",
+    "120 V, 20 AMP CIRCUIT SERVICE PROVIDED BY OTHERS"
+   ],
+   "size": [
+    774,
+    833
+   ]
+  },
+  {
+   "name": "DTL-07",
+   "title": "Illuminated Push-Thru Cabinet",
+   "notes": [
+    "PLYWOOD BLOCKING TO BE PROVIDED BY OTHERS",
+    "WALLS: 4\" SIDEWALLS .063\" ALUMINUM PAINTED ______________",
+    "FACE: .125\" CNC ROUTED ALUMINUM PAINTED ______________",
+    "ILLUMINATION: 12V WHITE LEDS (______ K)",
+    "PUSH-THRU: 3/4\" CLEAR ACRYLIC BACKED WITH WHITE TRANSLUCENT VINYL, AND ______________ TRANSLUCENT VINYL APPLIED TO FACE",
+    "BACK: .063\" ALUMINUM PAINTED WHITE",
+    "MOUNTED: TO THE WALL USING 3/8\" X 5\" LAG BOLT FASTENERS PER CODE",
+    "POWER SUPPLY: LED LOW VLTG",
+    "120 V, 20 AMP CIRCUIT SERVICE PROVIDED BY OTHERS"
+   ],
+   "size": [
+    748,
+    703
+   ]
+  },
+  {
+   "name": "DTL-08",
+   "title": "Illuminated Open-Face Channel Letters, Exposed LEDs",
+   "notes": [
+    "PLYWOOD BLOCKING TO BE PROVIDED BY OTHERS",
+    "WALLS: 4\" SIDEWALLS PAINTED ______________",
+    "MOUNTED: INDIVIDUALLY TO THE WALL USING 3/8\" X 5\" FASTENERS PER CODE",
+    "ILLUMINATION: 12V WHITE LEDS (______ K)",
+    "BACK: 1/8\" ALUMINUM PAINTED ______________",
+    "POWER SUPPLY: LED LOW VLTG",
+    "120 V, 20 AMP CIRCUIT SERVICE PROVIDED BY OTHERS"
+   ],
+   "size": [
+    738,
+    615
+   ]
+  },
+  {
+   "name": "DTL-09",
+   "title": "Illuminated Exposed LED Letters, Aurora Flex Neon on Clear Backer",
+   "notes": [
+    "PLYWOOD BLOCKING TO BE PROVIDED BY OTHERS",
+    "MOUNTED: INDIVIDUALLY TO THE WALL USING 3/8\" X 5\" FASTENERS PER CODE",
+    "ILLUMINATION: 12V WHITE AURORA FLEX LED",
+    "BACK: 3/4\" CLEAR ACRYLIC",
+    "POWER SUPPLY: LED LOW VLTG",
+    "120 V, 20 AMP CIRCUIT SERVICE PROVIDED BY OTHERS"
+   ],
+   "size": [
+    688,
+    723
+   ]
+  },
+  {
+   "name": "DTL-10",
+   "title": "Illuminated Open-Face Channel Letters, LED Rope",
+   "notes": [
+    "PLYWOOD BLOCKING TO BE PROVIDED BY OTHERS",
+    "WALLS: 5\" SIDEWALLS PAINTED ______________",
+    "MOUNTED: INDIVIDUALLY TO THE WALL USING 3/8\" X 5\" FASTENERS PER CODE",
+    "ILLUMINATION: 12V ______________ LED ROPES",
+    "BACK: .063\" ALUMINUM PAINTED ______________",
+    "POWER SUPPLY: LED LOW VLTG",
+    "120 V, 20 AMP CIRCUIT SERVICE PROVIDED BY OTHERS"
+   ],
+   "size": [
+    755,
+    615
+   ]
+  },
+  {
+   "name": "DTL-11",
+   "title": "Illuminated Front & Back-Lit Channel Letters",
+   "notes": [
+    "WALLS: 3\" SIDEWALLS PAINTED ______________",
+    "PLYWOOD BLOCKING TO BE PROVIDED BY OTHERS",
+    "FACE: 1/8\" CNC ROUTED ALUMINUM PAINTED ______________ BACKED WITH 3/16\" 7328 WHITE ACRYLIC",
+    "ILLUMINATION: RGB DMX LEDS FOR BACK-LIT",
+    "ILLUMINATION: 12V WHITE LEDS (______ K) FOR FRONT-LIT",
+    "PUSH-THRU: 1/2\" WHITE ACRYLIC WITH ______________ 3M VINYL",
+    "BACK: .063\" ALUMINUM PAINTED WHITE BACKED WITH WHITE PVC",
+    "POWER SUPPLY: LED LOW VLTG",
+    "MOUNTED: INDIVIDUALLY TO THE WALL USING 3/8\" X 5\" FASTENERS PER CODE",
+    "120 V, 20 AMP CIRCUIT SERVICE PROVIDED BY OTHERS"
+   ],
+   "size": [
+    766,
+    595
+   ]
+  },
+  {
+   "name": "DTL-12",
+   "title": "Non-Illuminated Dimensional Letters",
+   "notes": [
+    "LETTERS: __\" THICK ______________ PAINTED ______________",
+    "MOUNTED: FLUSH TO THE WALL USING __\" THREADED STUDS PER CODE"
+   ],
+   "size": [
+    482,
+    487
+   ]
+  },
+  {
+   "name": "DTL-13",
+   "title": "Illuminated Front-Lit Acrylic Cabinet",
+   "notes": [
+    "PLYWOOD BLOCKING TO BE PROVIDED BY OTHERS",
+    "WALLS: 4\" SIDEWALLS .063\" ALUMINUM PAINTED ______________",
+    "ILLUMINATION: 12V WHITE LEDS (______ K)",
+    "FACE: 3/16\" 7328 WHITE ACRYLIC WITH ______________ 3M VINYL",
+    "BACK: .063\" ALUMINUM PAINTED WHITE",
+    "POWER SUPPLY: LED LOW VLTG",
+    "MOUNTED: TO THE WALL USING 3/8\" X 5\" FASTENERS PER CODE",
+    "120 V, 20 AMP CIRCUIT SERVICE PROVIDED BY OTHERS"
+   ],
+   "size": [
+    724,
+    703
+   ]
+  }
+ ]
+}

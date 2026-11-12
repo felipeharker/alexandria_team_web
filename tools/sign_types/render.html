@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Sign Type Render</title>
+<!--
+  A lit letter A for one typical sign type, at night: render.html?type=DTL-05&w=1600&h=1200.
+  tools/render_signs.py opens it in headless Chrome for each type and saves the screenshot.
+  Each sign is built as its detail in the library draws it (alexandria_phoenix standards/sign_details.3dm):
+  the can, face, backer or cabinet, and where the light comes from. Lit faces, LEDs and neon are emissive and
+  bloom; the light they throw on the wall or backer is a blurred map of the letter, added over it.
+  Sign space is three.js space: x to the right, y up, z out of the wall, in inches. The letter is 24" tall.
+-->
+<style>html, body { margin: 0; background: #0c0e14; overflow: hidden; } canvas { display: block; }</style>
+<script type="importmap">
+{ "imports": {
+	"three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+	"three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+} }
+</script>
+</head>
+<body>
+<script type="module">
+import * as THREE from 'three';
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+
+const query = new URLSearchParams(location.search);
+const TYPE = query.get('type') || 'DTL-01';
+const W = Number(query.get('w')) || 1600;
+const H = Number(query.get('h')) || 1200;
+
+// ------------------------------------------------------------------ the letter, counter-clockwise
+const OUTLINE = [[0, 0], [5.5, 0], [22 / 3, 5.5], [44 / 3, 5.5], [16.5, 0], [22, 0], [14, 24], [8, 24]];
+const COUNTER = [[5.5 + 10 / 3, 10], [16.5 - 10 / 3, 10], [11, 16.5]];
+const STROKE = [[[3, 0.4], [11, 23], [19, 0.4]], [[5.9, 8.3], [16.1, 8.3]]]; // a single-line A, for neon
+const LEGS = [[[2.75, 0.9], [10.4, 23.1]], [[19.25, 0.9], [11.6, 23.1]], [[8.6, 7.75], [13.4, 7.75]]]; // stroke centres
+const rect = (x0, y0, x1, y1) => [[x0, y0], [x1, y0], [x1, y1], [x0, y1]];
+
+// The polygon offset outward by d (inward when d < 0), mitred, or rounded at its outward corners.
+function offset(points, d, round = false) {
+	const n = points.length, out = [];
+	const normal = (a, b) => {
+		const dx = b[0] - a[0], dy = b[1] - a[1], l = Math.hypot(dx, dy);
+		return [dy / l, -dx / l];
+	};
+	for (let i = 0; i < n; i++) {
+		const p = points[(i - 1 + n) % n], v = points[i], q = points[(i + 1) % n];
+		const n1 = normal(p, v), n2 = normal(v, q);
+		const convex = (v[0] - p[0]) * (q[1] - v[1]) - (v[1] - p[1]) * (q[0] - v[0]) > 0;
+		if (round && d > 0 && convex) {
+			const a0 = Math.atan2(n1[1], n1[0]);
+			let a1 = Math.atan2(n2[1], n2[0]);
+			while (a1 < a0) a1 += 2 * Math.PI;
+			const steps = Math.max(2, Math.ceil((a1 - a0) / (Math.PI / 18)));
+			for (let s = 0; s <= steps; s++) {
+				const a = a0 + ((a1 - a0) * s) / steps;
+				out.push([v[0] + d * Math.cos(a), v[1] + d * Math.sin(a)]);
+			}
+		} else {
+			const k = d / (1 + n1[0] * n2[0] + n1[1] * n2[1]);
+			out.push([v[0] + (n1[0] + n2[0]) * k, v[1] + (n1[1] + n2[1]) * k]);
+		}
+	}
+	return out;
+}
+
+// ------------------------------------------------------------------ materials
+const std = (color, roughness = 0.6, metalness = 0, extra = {}) =>
+	new THREE.MeshStandardMaterial({ color, roughness, metalness, ...extra });
+const lit = (color, emissive, intensity) => std(color, 0.35, 0, { emissive, emissiveIntensity: intensity });
+const M = {
+	hidden: new THREE.MeshBasicMaterial({ visible: false }),
+	wall: std(0x8a8a86, 0.92),
+	returns: std(0x3a322b, 0.45, 0.1), // painted aluminum: returns, trim caps, cabinets
+	dark: std(0x262628, 0.5), // painted backers and cabinet faces
+	light: std(0xbdbdb9, 0.7), // a light backer for a halo to fall on
+	raceway: std(0x6e6e6a, 0.6),
+	white: std(0xe2e2de, 0.6), // the inside of an open can
+	bronze: std(0xa8865e, 0.42, 0.3),
+	metal: std(0xc0c0c0, 0.3, 0.9), // standoffs
+	clear: std(0xffffff, 0.05, 0, { transparent: true, opacity: 0.14 }), // clear acrylic
+	face: lit(0xf5f5f0, 0xfff3e2, 1.25), // lit white acrylic
+	cabinetFace: lit(0xf5f5f0, 0xfff3e2, 1.15),
+	led: lit(0xffffff, 0xfff0dc, 4), // LEDs and neon
+	warm: lit(0xffe2b8, 0xffbe70, 3.5), // LED rope
+	vinyl: lit(0xa01408, 0xe01206, 1.05), // translucent vinyl on a lit face
+};
+const WARM = new THREE.Color(0xffe6c4), RGB = new THREE.Color(0x3c6cff), AMBER = new THREE.Color(0xffb560);
+
+// ------------------------------------------------------------------ geometry
+const scene = new THREE.Scene();
+
+function shape(outer, holes = []) {
+	const s = new THREE.Shape(outer.map(([x, y]) => new THREE.Vector2(x, y)));
+	for (const hole of holes) s.holes.push(new THREE.Path(hole.map(([x, y]) => new THREE.Vector2(x, y))));
+	return s;
+}
+
+function add(geometry, material, shadows = true) {
+	const mesh = new THREE.Mesh(geometry, material);
+	mesh.castShadow = mesh.receiveShadow = shadows;
+	scene.add(mesh);
+	return mesh;
+}
+
+// The region inside outer and outside holes, from z0 to z1. cap: the two ends' material; side: the sides'.
+function prism(outer, holes, z0, z1, cap, side = cap) {
+	const geometry = new THREE.ExtrudeGeometry(shape(outer, holes), { depth: z1 - z0, bevelEnabled: false, curveSegments: 24 });
+	geometry.translate(0, 0, z0);
+	return add(geometry, [cap, side]);
+}
+
+function flat(outer, holes, z, material) {
+	const geometry = new THREE.ShapeGeometry(shape(outer, holes), 24);
+	geometry.translate(0, 0, z);
+	return add(geometry, material);
+}
+
+function cylinder(x, y, z0, z1, r, material = M.metal) {
+	const geometry = new THREE.CylinderGeometry(r, r, z1 - z0, 24);
+	geometry.rotateX(Math.PI / 2);
+	geometry.translate(x, y, (z0 + z1) / 2);
+	return add(geometry, material);
+}
+
+function sphere(x, y, z, r, material) {
+	const geometry = new THREE.SphereGeometry(r, 20, 14);
+	geometry.translate(x, y, z);
+	return add(geometry, material, false);
+}
+
+function tube(points, z, r, material, closed = false) {
+	const path = new THREE.CurvePath();
+	const pts = points.map(([x, y]) => new THREE.Vector3(x, y, z));
+	if (closed) pts.push(pts[0]);
+	for (let i = 0; i < pts.length - 1; i++) path.add(new THREE.LineCurve3(pts[i], pts[i + 1]));
+	add(new THREE.TubeGeometry(path, pts.length * 40, r, 14, false), material, false);
+	for (const p of closed ? [] : [pts[0], pts[pts.length - 1]]) sphere(p.x, p.y, p.z, r, material);
+}
+
+function point(x, y, z, color, intensity, distance) {
+	const light = new THREE.PointLight(color, intensity, distance, 2);
+	light.position.set(x, y, z);
+	scene.add(light);
+}
+
+// Light thrown on a surface at z: draw(ctx) traces the light's shape in sign space; it's blurred at a few radii
+// (inches) and added over the surface, so it falls off softly from the source.
+function glow(bounds, z, color, strength, draw, layers = [[0.4, 0.5], [1.5, 0.35], [4, 0.3]]) {
+	const [x0, y0, x1, y1] = bounds, ppi = 20;
+	const canvas = document.createElement('canvas');
+	canvas.width = Math.round((x1 - x0) * ppi);
+	canvas.height = Math.round((y1 - y0) * ppi);
+	const ctx = canvas.getContext('2d');
+	ctx.setTransform(ppi, 0, 0, -ppi, -x0 * ppi, y1 * ppi);
+	ctx.fillStyle = ctx.strokeStyle = '#fff';
+	draw(ctx);
+	ctx.setTransform(1, 0, 0, 1, 0, 0);
+	// Each layer is the source blurred by three box blurs (close to a Gaussian), in floats, then dithered to 8 bits
+	// so the faint edges don't band into steps.
+	const w = canvas.width, h = canvas.height, pixels = ctx.getImageData(0, 0, w, h);
+	const source = new Float32Array(w * h), total = new Float32Array(w * h);
+	for (let i = 0; i < w * h; i++) source[i] = pixels.data[i * 4 + 3] / 255;
+	const boxBlur = (from, r) => {
+		const to = new Float32Array(w * h);
+		const pass = (count, length, stride, step) => {
+			for (let line = 0; line < count; line++) {
+				const base = line * stride;
+				let sum = 0;
+				for (let k = -r; k <= r; k++) sum += from[base + Math.min(length - 1, Math.max(0, k)) * step];
+				for (let k = 0; k < length; k++) {
+					to[base + k * step] = sum / (2 * r + 1);
+					sum += from[base + Math.min(length - 1, k + r + 1) * step] - from[base + Math.max(0, k - r) * step];
+				}
+			}
+		};
+		pass(h, w, w, 1); // rows
+		from.set(to);
+		pass(w, h, 1, w); // columns
+		return to;
+	};
+	for (const [blur, weight] of layers) {
+		const r = Math.max(1, Math.round((blur * ppi) / 1.7));
+		let layer = Float32Array.from(source);
+		for (let k = 0; k < 3; k++) layer = boxBlur(layer, r);
+		for (let i = 0; i < w * h; i++) total[i] += layer[i] * weight;
+	}
+	for (let i = 0; i < w * h; i++) {
+		const v = Math.max(0, Math.min(255, total[i] * 255 + Math.random() - 0.5));
+		pixels.data[i * 4] = pixels.data[i * 4 + 1] = pixels.data[i * 4 + 2] = v;
+		pixels.data[i * 4 + 3] = 255;
+	}
+	ctx.putImageData(pixels, 0, 0);
+	const texture = new THREE.CanvasTexture(canvas);
+	texture.colorSpace = THREE.SRGBColorSpace;
+	const material = new THREE.MeshBasicMaterial({
+		map: texture, color: color.clone().multiplyScalar(strength), transparent: true,
+		blending: THREE.AdditiveBlending, depthWrite: false,
+	});
+	const geometry = new THREE.PlaneGeometry(x1 - x0, y1 - y0);
+	geometry.translate((x0 + x1) / 2, (y0 + y1) / 2, z);
+	add(geometry, material, false);
+}
+
+const trace = (ctx, points) => {
+	ctx.moveTo(points[0][0], points[0][1]);
+	for (const [x, y] of points.slice(1)) ctx.lineTo(x, y);
+	ctx.closePath();
+};
+const letter = (ctx) => { ctx.beginPath(); trace(ctx, OUTLINE); trace(ctx, COUNTER); ctx.fill('evenodd'); };
+const lines = (paths, width, closed = false) => (ctx) => {
+	ctx.lineWidth = width;
+	ctx.lineCap = ctx.lineJoin = 'round';
+	for (const path of paths) {
+		ctx.beginPath();
+		ctx.moveTo(path[0][0], path[0][1]);
+		for (const [x, y] of path.slice(1)) ctx.lineTo(x, y);
+		if (closed) ctx.closePath();
+		ctx.stroke();
+	}
+};
+const AROUND = [-16, -16, 38, 40]; // the wall around the letter
+const HALO = [[0.6, 0.35], [2, 0.6], [5, 1.0]]; // a halo's falloff: blur in inches, weight
+
+// ------------------------------------------------------------------ the parts the signs share
+// A front-lit channel letter z0 off the wall: returns, a lit white acrylic face and its trim cap.
+function channel(z0, depth) {
+	const front = z0 + depth;
+	prism(OUTLINE, [COUNTER], z0, front, M.returns, M.returns);
+	prism(OUTLINE, [COUNTER], front, front + 0.1875, M.face);
+	prism(offset(OUTLINE, 0.08), [OUTLINE], front - 0.75, front + 0.25, M.returns);
+	prism(COUNTER, [offset(COUNTER, -0.08)], front - 0.75, front + 0.25, M.returns);
+}
+
+// A reverse channel letter on standoffs, z0 off a surface at base, lit from its open back onto that surface.
+function reverse(base, z0, depth, color, strength) {
+	for (const [x, y] of [[2.9, 2.5], [19.1, 2.5], [11, 21.5], [11, 7.75]]) cylinder(x, y, base, z0, 0.3);
+	prism(OUTLINE, [COUNTER], z0, z0 + depth, M.returns);
+	glow(AROUND, base + 0.02, color, strength, letter, HALO);
+}
+
+function cabinet() {
+	const box = rect(-7, -5, 29, 29);
+	prism(box, [], 0, 4, M.hidden, M.returns);
+	prism(offset(box, 0.75), [box], 3.4, 4.4, M.returns);
+	return box;
+}
+
+function openCan(depth) {
+	prism(OUTLINE, [COUNTER], 0, depth, M.hidden, M.returns);
+	flat(OUTLINE, [COUNTER], 0.05, M.white);
+}
+
+// ------------------------------------------------------------------ the signs
+const SIGNS = {
+	'DTL-01': () => channel(0, 4), // front-lit channel letters, flush wall mount
+	'DTL-02': () => { prism(rect(-4, 9, 26, 15), [], 0, 4, M.raceway); channel(4, 4); }, // raceway mount
+	'DTL-03': () => { prism(offset(OUTLINE, 3.5, true), [], 0, 1.5, M.dark); channel(1.5, 4); }, // cloud backer
+	'DTL-04': () => { prism(rect(-6, -5, 28, 29), [], 0, 3, M.dark); channel(3, 4); }, // pan backer
+	'DTL-05': () => reverse(0, 2.5, 4, WARM, 2.2), // reverse channel, halo-lit on standoffs
+	'DTL-06': () => { prism(rect(-6, -5, 28, 29), [], 0, 1, M.light); reverse(1, 3.5, 4, WARM, 1.8); }, // on a backer
+	'DTL-07': () => { // push-thru cabinet
+		const box = cabinet();
+		prism(box, [OUTLINE], 3.875, 4, M.dark);
+		prism(COUNTER, [], 3.875, 4, M.dark);
+		prism(OUTLINE, [COUNTER], 3.25, 4.5, M.face);
+		glow([-7, -5, 29, 29], 4.01, WARM, 0.35, letter, [[0.3, 0.6], [1.2, 0.4]]);
+	},
+	'DTL-08': () => { // open-face channel letters, exposed LEDs
+		openCan(4);
+		const bulbs = [];
+		for (const [[x0, y0], [x1, y1]] of LEGS) {
+			const steps = Math.max(1, Math.round(Math.hypot(x1 - x0, y1 - y0) / 2.6));
+			for (let i = 0; i <= steps; i++) bulbs.push([x0 + ((x1 - x0) * i) / steps, y0 + ((y1 - y0) * i) / steps]);
+		}
+		for (const [x, y] of bulbs) sphere(x, y, 1.1, 0.45, M.led);
+		glow([-2, -2, 24, 26], 0.07, WARM, 0.9, (ctx) => { for (const [x, y] of bulbs) { ctx.beginPath(); ctx.arc(x, y, 0.8, 0, 7); ctx.fill(); } },
+			[[0.4, 0.6], [1.4, 0.5]]);
+		for (const [[x0, y0], [x1, y1]] of LEGS) point((x0 + x1) / 2, (y0 + y1) / 2, 2.5, 0xfff0dc, 40, 14);
+	},
+	'DTL-09': () => { // exposed LED neon on a clear backer
+		prism(rect(-4, -4, 26, 28), [], 1, 1.75, M.clear);
+		for (const [x, y] of [[-2.5, -2.5], [24.5, -2.5], [-2.5, 26.5], [24.5, 26.5]]) cylinder(x, y, 0, 2.1, 0.4);
+		for (const stroke of STROKE) tube(stroke, 2.05, 0.3, M.led);
+		glow(AROUND, 0.02, WARM, 0.9, lines(STROKE, 0.8), [[0.6, 0.6], [2, 0.45], [5, 0.3]]);
+	},
+	'DTL-10': () => { // open-face channel letters, LED rope
+		openCan(5);
+		const ropes = [offset(OUTLINE, -1.4), offset(COUNTER, 1.4)];
+		for (const rope of ropes) tube(rope, 1.6, 0.3, M.warm, true);
+		glow([-2, -2, 24, 26], 0.07, AMBER, 0.9, lines(ropes, 0.9, true), [[0.5, 0.6], [1.5, 0.5]]);
+		for (const [[x0, y0], [x1, y1]] of LEGS) point((x0 + x1) / 2, (y0 + y1) / 2, 2.5, 0xffc078, 35, 14);
+	},
+	'DTL-11': () => { // front and back-lit channel letters
+		const inset = offset(OUTLINE, -1.2), insetCounter = offset(COUNTER, 1.2);
+		for (const [x, y] of [[2.9, 2.5], [19.1, 2.5], [11, 21.5], [11, 7.75]]) cylinder(x, y, 0, 1.5, 0.3);
+		prism(OUTLINE, [COUNTER], 1.5, 4.5, M.returns);
+		prism(OUTLINE, [inset], 4.5, 4.625, M.returns);
+		prism(insetCounter, [COUNTER], 4.5, 4.625, M.returns);
+		prism(inset, [insetCounter], 4.0, 5.0, M.face);
+		glow(AROUND, 0.02, RGB, 3.6, letter, HALO);
+	},
+	'DTL-12': () => { // non-illuminated dimensional letters, seen by whatever light is about
+		prism(OUTLINE, [COUNTER], 0.25, 1.25, M.bronze);
+		return { moon: 1.1, environment: 0.3 };
+	},
+	'DTL-13': () => { // front-lit acrylic cabinet
+		const box = cabinet();
+		prism(box, [], 3.8125, 4, M.cabinetFace);
+		flat(OUTLINE, [COUNTER], 4.01, M.vinyl);
+	},
+};
+
+// ------------------------------------------------------------------ the scene, at night
+const wall = new THREE.PlaneGeometry(400, 300);
+wall.translate(11, 12, 0);
+add(wall, M.wall);
+const look = (SIGNS[TYPE] || SIGNS['DTL-01'])() || {};
+
+const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
+renderer.setPixelRatio(1);
+renderer.setSize(W, H);
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.0;
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+document.body.appendChild(renderer.domElement);
+
+// a dim, cool night: a little sky in the reflections and a soft moonlight from the upper left
+scene.background = new THREE.Color(0x0c0e14);
+scene.environment = new THREE.PMREMGenerator(renderer).fromScene(new RoomEnvironment(), 0.04).texture;
+scene.environmentIntensity = look.environment ?? 0.07;
+const moon = new THREE.DirectionalLight(0xb8c6e6, look.moon ?? 0.32);
+moon.position.set(-40, 70, 80);
+moon.target.position.set(11, 12, 0);
+moon.castShadow = true;
+moon.shadow.mapSize.set(2048, 2048);
+Object.assign(moon.shadow.camera, { left: -40, right: 40, top: 40, bottom: -40, near: 1, far: 300 });
+moon.shadow.bias = -0.0005;
+scene.add(moon, moon.target);
+
+const camera = new THREE.PerspectiveCamera(28, W / H, 1, 2000);
+camera.position.set(-30, 21, 76);
+camera.lookAt(11, 12, 2);
+
+const target = new THREE.WebGLRenderTarget(W, H, { type: THREE.HalfFloatType, samples: 8 });
+const composer = new EffectComposer(renderer, target);
+composer.addPass(new RenderPass(scene, camera));
+composer.addPass(new UnrealBloomPass(new THREE.Vector2(W, H), 0.3, 0.3, 0.92));
+composer.addPass(new OutputPass());
+composer.render();
+document.title = 'done ' + TYPE;
+</script>
+</body>
+</html>
