@@ -1,21 +1,23 @@
 ---
 title: Office Tools
-description: The web tools for the office's everyday work, the Material Estimator, Color Matcher, Color Library, Site Plan, Vectorizer and Parametric Grid, and how they save, share and get updated.
+description: The web tools for the office's everyday work, the Material Estimator, Material Library, Color Matcher, Color Library, Site Plan, Vectorizer, Parametric Grid and Braille Lettering Designer, and how they save, share and get updated.
 ---
 
 {/* Written by hand, unlike the Phoenix docs beside it, which tools/sync.py copies from alexandria_phoenix. The tools
     themselves are in the alexandria_office repository; keep this page in step when one changes. */}
 
-The office tools are six small web apps at alexdesignlab.org, for the work around a design rather than in Rhino: pricing materials, matching and mixing colors, drawing site plans, turning images into vectors and laying out patterns of cells. They open in any browser, on any computer or phone, with nothing to install and no account, and every visit gets the newest version. Each has a quick guide for its buttons, under Quick Guides; this page covers how they work underneath.
+The office tools are eight small web apps at alexdesignlab.org, for the work around a design rather than in Rhino: pricing materials, matching and mixing colors, drawing site plans, turning images into vectors, laying out patterns of cells and setting braille. They open in any browser, on any computer or phone, with nothing to install and no account, and every visit gets the newest version. Each has a quick guide for its buttons, under Quick Guides; this page covers how they work underneath.
 
 | Tool | For | Saves | Shares As |
 |---|---|---|---|
 | [Material Estimator](/estimator/) | A project's material costs, by the foot, the yard or the piece | In your browser | CSV, which opens in Excel |
+| [Material Library](/materials/) | The office's stock materials, with sizes and prices, for the Estimator | Nothing to save | A row on an Estimator sheet |
 | [Color Matcher](/colors/) | The nearest Sherwin-Williams, Pantone and 3M vinyl colors to any hex code | In your browser | CSV |
 | [Color Library](/colors/library/) | The Matthews Paint formulas the office has on file | Nothing to save | A link to a formula |
-| [Site Plan](/site-plan/) | A greyscale site plan with the sign's location circled in red | In your browser | PNG, about 4,800 px across |
+| [Site Plan](/site-plan/) | A greyscale site plan with the sign's location circled in red, a north arrow and a scale bar | In your browser | PNG, about 4,800 px across |
 | [Vectorizer](/vectorizer/) | An SVG of vector shapes traced from a PNG or JPG, one layer per color | Its settings, in your browser | SVG |
 | [Parametric Grid](/grid/) | A grid of cells that scale toward a point or a curve, as linework | In your browser | SVG, at full size |
+| [Braille Lettering Designer](/braille/) | A sign's braille, as dots at the ADA's sizes | In your browser | SVG, in inches |
 
 ## Saving and Sharing
 
@@ -39,7 +41,11 @@ A sheet of materials, one row each, priced by unit: the Estimator multiplies uni
 | `GAL` | Gallon | Coatings, sealants |
 | `LS` | Lump sum | Allowances |
 
-Imports are forgiving: headers such as Item, Qty or UOM, units written out (sq ft, cubic yards), dollar signs and thousands separators all read correctly, and the import says what it had to fill in. **Print / Save as PDF** in the ⋯ menu prints the sheet for a submittal. See its [quick guide](/estimator/guide/) and [CSV template](/templates/estimator/).
+Imports are forgiving: headers such as Item, Qty or UOM, units written out (sq ft, cubic yards), dollar signs and thousands separators all read correctly, and the import says what it had to fill in. **Print / Save as PDF** in the ⋯ menu prints the sheet for a submittal. A row's Material field lists the [Material Library](/materials/)'s materials: pick one and its category, unit, price and notes fill in. See its [quick guide](/estimator/guide/) and [CSV template](/templates/estimator/).
+
+## Material Library
+
+<span class="ax-badge">Beta</span> The office's stock materials, still being filled in, grouped by category: what each one is, its thickness, finish and size, its pricing unit and price, and its supplier. **Add to Estimator** opens the Material Estimator with that material on a new row, priced; on the sheet it's named by its material, thickness and finish, with its size and supplier in the Notes. Prices are a guide: check them with the supplier before a quote. The library is one CSV file in the office tools repository, with the columns of its [CSV template](/templates/material-library/). See its [quick guide](/materials/guide/).
 
 ## Color Matcher
 
@@ -72,9 +78,9 @@ Every Matthews Paint formula sheet the office has, 96 of them, searchable by cod
 Find the address, click where the sign goes, size the circle, and export. The map is drawn the same way on every project, to the office's site plan style:
 
 - **The map:** very light flat greys, buildings a shade darker with a fine edge, white streets at their real width with a thin grey edge, no labels. **Street Names** adds dark grey street names; **Shadows** adds a soft shadow down and to the right of every building.
-- **The sign's location:** a dashed red circle, the red of the sign location boxes on the design package's plans, with *SIGN LOCATION* in Oswald inside, sized with the circle. The radius is set in feet. **Add Sign** places more than one, each with its own circle and label.
+- **The sign's location:** a dashed red circle, the red of the sign location boxes on the design package's plans, with *SIGN LOCATION* in Oswald inside, sized with the circle. The radius is set in feet. **Add Sign** places more than one, each with its own circle, label and color: **Circle Color** gives a sign another color, its label's too.
 - **Highlighted buildings:** **Highlight Buildings** darkens the buildings you click, such as the client's.
-- **The export:** the map as shown, north up, about 4,800 px across, which prints at 300 dpi across a 17 x 11 page's drawing area, with *© OpenStreetMap contributors* in the corner, as the map data's licence asks.
+- **The export:** the map as shown, north up, about 4,800 px across, which prints at 300 dpi across a 17 x 11 page's drawing area, with a north arrow and a scale bar in feet bottom left (either can be left off), and *© OpenStreetMap contributors* in the corner, as the map data's licence asks.
 
 The map is OpenStreetMap, which can miss a new building or keep a torn-down one: compare it with the architect's site plan before it goes in a package. See its [quick guide](/site-plan/guide/).
 
@@ -101,15 +107,26 @@ Set the region, choose the grid, and place the attractor on the preview; the cel
 
 See its [quick guide](/grid/guide/).
 
+## Braille Lettering Designer
+
+Type a sign's text, one braille line per line, and download it:
+
+- **The braille:** Unified English Braille, the code US signs use, spelled out letter by letter (Grade 1), with UEB's capital, number and punctuation signs. ADA signs use contracted braille (Grade 2): a line of braille characters pasted from a braille translator, such as ⠠⠗⠑⠌⠗⠕⠕⠍, is used as it is.
+- **The sizes:** dots, cells and lines at the middle of the ADA's ranges (703.3.1), centre to centre: 0.06 in dots, 0.1 in apart in a cell, cells 0.25 in apart, lines 0.4 in apart. Others can be typed; any outside the ADA's ranges is flagged.
+- **The SVG:** one circle per raised dot, in inches, a group per line, so it imports into Rhino, CorelDRAW and Illustrator at full size.
+
+Type the text as it should read, *Restroom* not *RESTROOM*: braille capitalizes only the start of a sentence, names and acronyms. See its [quick guide](/braille/guide/).
+
 ## Privacy
 
-There are no accounts, and the tools keep nothing on a server. The Color Matcher and Color Library load their color data from this site. The Site Plan sends the address you search to [Nominatim](https://nominatim.openstreetmap.org/), OpenStreetMap's address search, and loads its map from [OpenFreeMap](https://openfreemap.org/). The Vectorizer traces images in your browser and never uploads them. Nothing else leaves your browser. The site is public for now but kept out of search engines, and it will move behind a sign-in later.
+There are no accounts, and the tools keep nothing on a server. The Color Matcher and Color Library load their color data from this site, and the Material Library and Estimator their materials. The Site Plan sends the address you search to [Nominatim](https://nominatim.openstreetmap.org/), OpenStreetMap's address search, and loads its map from [OpenFreeMap](https://openfreemap.org/). The Vectorizer traces images in your browser and never uploads them. Nothing else leaves your browser. The site is public for now but kept out of search engines, and it will move behind a sign-in later.
 
 ## Changing a Tool
 
 The tools live in the private **alexandria_office** repository, one folder each under `public/`, and pushing its main branch puts a change live in a minute or two. [System Architecture](/docs/architecture/) shows how it connects to the rest.
 
-- **A tool's code or look:** its folder, `public/estimator/`, `public/colors/`, `public/site-plan/`, `public/vectorizer/` or `public/grid/`. They share the hub's style: greys, one green for buttons, Inter and IBM Plex Mono.
+- **A tool's code or look:** its folder, `public/estimator/`, `public/materials/`, `public/colors/`, `public/site-plan/`, `public/vectorizer/`, `public/grid/` or `public/braille/`. They share the hub's style: greys, one green for buttons, Inter and IBM Plex Mono.
 - **The color libraries:** `tools/build_colors.py` rebuilds them. Add a formula sheet to `paint-formulas/`, named as above, then run it.
+- **The Material Library:** `public/materials/materials.csv`. Add rows with the template's columns and push.
 - **The site plan style:** `public/site-plan/map-style.json`, the standard the Site Plan loads, described in the repository's README.
 - **Quick guides and these pages:** in the hub's own repository, alexandria_team_web. The hub's copies of the CSV templates come across with its `tools/sync.py`.

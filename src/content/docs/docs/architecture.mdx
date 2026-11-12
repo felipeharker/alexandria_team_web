@@ -15,11 +15,11 @@ Alexandria is four GitHub repositories, two static sites on Render, a release fo
 
 <ol class="ax-arch-keys">
 <li><b>The domain.</b> Porkbun's DNS points alexdesignlab.org at the hub on Render.</li>
-<li><b>Rewrites.</b> The hub passes /estimator, /colors (with /colors/library), /site-plan, /vectorizer and /grid to the alexandria-office site, so every tool is at one address.</li>
+<li><b>Rewrites.</b> The hub passes /estimator, /materials, /colors (with /colors/library), /site-plan, /vectorizer, /grid and /braille to the alexandria-office site, so every tool is at one address.</li>
 <li><b>Map data.</b> The Site Plan reads map tiles from OpenFreeMap and addresses from Nominatim, straight from the browser.</li>
 <li><b>The hub deploys.</b> Pushing alexandria_team_web's main branch makes Render build and publish the hub, from its <code>render.yaml</code> Blueprint.</li>
 <li><b>The office tools deploy.</b> Pushing alexandria_office's main branch makes Render publish its <code>public/</code> folder. There's no build step.</li>
-<li><b>CSV templates.</b> <code>tools/sync.py</code> copies the Material Estimator's and the Color Matcher's templates into the hub.</li>
+<li><b>CSV templates.</b> <code>tools/sync.py</code> copies the Material Estimator's, the Material Library's and the Color Matcher's templates into the hub.</li>
 <li><b>Sample project.</b> <code>web/make_web.py</code> renders the newest design package's pages; <code>tools/sync.py</code> copies them, the renders and the PDF into the hub.</li>
 <li><b>Docs and guides.</b> <code>tools/sync.py</code> copies README, INSTALL and STANDARDS, the Rhino and Grasshopper quick guides, What's New and the parameters template from alexandria_phoenix.</li>
 <li><b>Releases.</b> Pushing a release of alexandria_phoenix runs its pre-push hook, which copies the packages and docs to the shared folder.</li>
@@ -46,7 +46,7 @@ Pushing a repository updates what it deploys straight away. What the hub copies 
 | Repository | Holds | Goes To |
 |---|---|---|
 | alexandria_phoenix (private) | The Alexandria Rhino tools and Grasshopper components, their build, docs, standards and quick guides | The shared packages folder, for Rhino; the hub, through `tools/sync.py` |
-| alexandria_office (private) | The Material Estimator, Color Matcher, Color Library, Site Plan, Vectorizer and Parametric Grid, with the paint formula sheets and the Site Plan's map style | Render's alexandria-office site, shown through the hub |
+| alexandria_office (private) | The Material Estimator, Material Library, Color Matcher, Color Library, Site Plan, Vectorizer, Parametric Grid and Braille Lettering Designer, with the paint formula sheets, the materials and the Site Plan's map style | Render's alexandria-office site, shown through the hub |
 | alexandria_team_web (public) | The hub: every page here, the office tools' quick guides, and `tools/sync.py` | Render's alexandria-hub site, at alexdesignlab.org |
 | alexandria_sample_project (private) | The Alexandria Design Lab, a test project made with the tools, and its `web/` previews | The hub's [Sample Project](/sample-project/) page, through `tools/sync.py` |
 
@@ -55,7 +55,7 @@ Pushing a repository updates what it deploys straight away. What the hub copies 
 | Where | What It Is |
 |---|---|
 | alexdesignlab.org | The hub, Render's alexandria-hub static site. Kept out of search engines, and to be put behind a sign-in later. |
-| /estimator, /colors, /colors/library, /site-plan, /vectorizer, /grid | The office tools, from Render's alexandria-office static site, through the hub's rewrites. |
+| /estimator, /materials, /colors, /colors/library, /site-plan, /vectorizer, /grid, /braille | The office tools, from Render's alexandria-office static site, through the hub's rewrites. |
 | GitHub release | The current packages as one zip, on the public alexandria_team_web repository. |
 | Porkbun | The domain alexdesignlab.org and its DNS. |
 | OpenFreeMap, Nominatim | Free map tiles and address search for the Site Plan, from OpenStreetMap data. No account or key. |

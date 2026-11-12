@@ -1,13 +1,13 @@
 ---
 title: Fabrication Tools
-description: "Web tools for building it: matching colors to paint and vinyl, the office's paint formulas, and pricing the materials."
+description: "Web tools for building it: matching colors to paint and vinyl, the office's paint formulas, its stock materials, and pricing them."
 ---
 
 import HubCard from '../../../components/HubCard.astro';
 
 {/* One page per tool category (user, 2026-11-11), each the Overview in its sidebar group and the home section's Details link. */}
 
-Web tools for building it: matching colors to paint and vinyl, the office's paint formulas, and pricing the materials. They run in your browser, with nothing to install.
+Web tools for building it: matching colors to paint and vinyl, the office's paint formulas, its stock materials, and pricing them. They run in your browser, with nothing to install.
 
 ## Color Matcher
 
@@ -38,4 +38,16 @@ Prices a project's materials. Add a line per material, pick how it's priced (lin
 <HubCard href="/estimator/" title="Open the Material Estimator" meta="alexdesignlab.org/estimator">Runs in your browser, with nothing to install.<svg slot="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M4 3h16v3.5h-6v11h6V21H4v-3.5h6v-11H4z"/></svg></HubCard>
 <HubCard href="/estimator/guide/" title="Its Quick Guide" meta="Guide">The sheet, the buttons, the pricing units and sharing a sheet.<svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C6.5 4 9.5 4 12 5.5v14c-2.5-1.5-5.5-1.5-8 0zM20 5.5C17.5 4 14.5 4 12 5.5v14c2.5-1.5 5.5-1.5 8 0z"/></svg></HubCard>
 <HubCard href="/templates/estimator/" title="Its CSV Template" meta="Template">Material, Category, Unit, Unit Price, Quantity and Notes columns, with three example lines.<svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M4 19h16"/></svg></HubCard>
+</div>
+
+## Material Library
+
+<span class="ax-badge">Beta</span> Still being filled in.
+
+The office's stock materials, by category: what each one is, its thickness, finish and size, how it's priced and who supplies it. **Add to Estimator** puts one on a Material Estimator sheet, priced, and a row's Material field on the Estimator lists them too.
+
+<div class="ax-grid not-content">
+<HubCard href="/materials/" title="Open the Material Library" meta="alexdesignlab.org/materials">Search by material, finish or supplier.<svg slot="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l9 4.5-9 4.5-9-4.5zM3 11.3l9 4.5 9-4.5v2.2l-9 4.5-9-4.5zM3 15.6l9 4.5 9-4.5v2.2l-9 4.5-9-4.5z"/></svg></HubCard>
+<HubCard href="/materials/guide/" title="Its Quick Guide" meta="Guide">A material's row, adding it to the Estimator, and the columns.<svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C6.5 4 9.5 4 12 5.5v14c-2.5-1.5-5.5-1.5-8 0zM20 5.5C17.5 4 14.5 4 12 5.5v14c2.5-1.5 5.5-1.5 8 0z"/></svg></HubCard>
+<HubCard href="/templates/material-library/" title="Its CSV Template" meta="Template">Material, Category, Thickness, Finish, Size, Unit, Unit Price, Supplier and Notes, with three examples.<svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M4 19h16"/></svg></HubCard>
 </div>

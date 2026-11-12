@@ -1,0 +1,33 @@
+---
+title: Material Library CSV Template
+description: The columns of the Material Library, and a template to add materials with.
+---
+
+import { Code, LinkButton } from '@astrojs/starlight/components';
+import csv from '../../../generated/templates/material-library-template.csv?raw';
+
+{/* tools/sync.py copies the template from alexandria_office (public/materials/material-library-template.csv). */}
+
+The [Material Library](/materials/) is a CSV file, one row per material. To add materials, fill in the template in Excel or Google Sheets, one row each, save it as CSV and send it in.
+
+<LinkButton href="/templates/material-library-template.csv" download icon="download" iconPlacement="start">Download the Template</LinkButton>
+
+## The Columns
+
+| Column | What Goes in It |
+|---|---|
+| Material | What it is, such as Aluminum Sheet 5052-H32. A row without one is skipped. |
+| Category | A group for the library and the Estimator's totals, such as Metals, Plastics or Vinyl. |
+| Thickness | With its unit, such as `0.125 in`. |
+| Finish | Such as Mill, Clear or Color to match. |
+| Size | The stock size, such as `4 ft x 8 ft` or `48 in x 50 yd roll`. |
+| Unit | How it's priced: `LF`, `SF`, `SY`, `CF`, `CY`, `EA`, `LB`, `TON`, `GAL` or `LS`, as in the [Estimator](/templates/estimator/). |
+| Unit Price | Dollars per unit, with or without the `$`. |
+| Supplier | Who it comes from. |
+| Notes | Anything else. |
+
+Only Material is required. On an Estimator sheet, a library material is named by its Material, Thickness and Finish, and its Size, Supplier and Notes go in the row's Notes.
+
+## The Template
+
+<Code code={csv} lang="csv" title="material-library-template.csv" />

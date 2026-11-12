@@ -16,7 +16,7 @@ one (or ALEXANDRIA_PHOENIX) and the shared alexandria_packages folder, and write
 - src/data/release.json: the shared folder's version, date and contents.
 - src/data/releases.json: every "Packages ..." commit in alexandria_phoenix, for What's new.
 - public/templates/ and src/generated/templates/: the CSV templates, from alexandria_office
-  (the Material Estimator's and the Color Matcher's) and alexandria_phoenix (the Grasshopper
+  (the Material Estimator's, the Material Library's and the Color Matcher's) and alexandria_phoenix (the Grasshopper
   parameters, standards/parameters_template.csv), to download and to show on their pages.
 - public/sample-project/ and src/data/sample-project.json: the sample project's newest design
   package and its previews (alexandria_testing_sample_project/Alexandria/web, made by its
@@ -44,6 +44,7 @@ SAMPLE = os.path.join(os.path.dirname(HUB), "alexandria_testing_sample_project",
 TEMPLATES = [  # hub file, source
     ("material-sheet-template.csv", os.path.join(OFFICE, "public", "estimator", "material-sheet-template.csv")),
     ("color-list-template.csv", os.path.join(OFFICE, "public", "colors", "color-list-template.csv")),
+    ("material-library-template.csv", os.path.join(OFFICE, "public", "materials", "material-library-template.csv")),
     ("parameters-template.csv", os.path.join(PHOENIX, "standards", "parameters_template.csv")),
 ]
 REPO = "felipeharker/alexandria_team_web"  # where the zip is published

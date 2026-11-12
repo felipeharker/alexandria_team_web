@@ -1,0 +1,79 @@
+<!-- The Material Library quick guide, written for the hub in the quick guides' own classes (qg-…, from guides.css) and a
+     few of the hub's (ax-…, in theme.css). The library itself is in the alexandria_office repo, at public/materials/, and
+     its data is public/materials/materials.csv (README: Material Library). -->
+<div class="qg-page">
+  <header>
+    <p class="qg-eyebrow">Office Tools &middot; Runs in Your Browser &middot; Beta</p>
+    <p class="qg-lede">The office's stock materials in one list: what each one is, its thickness, finish and size, how it's priced and who supplies it. Any of them goes onto a Material Estimator sheet in one click, already priced.</p>
+    <p class="qg-other"><a href="/materials/">Open the Material Library &rarr;</a></p>
+  </header>
+
+  <section aria-labelledby="row">
+    <div class="qg-section-head"><h2 id="row">A Material</h2><p>One row per material, grouped by category.</p></div>
+    <figure class="qg-figure">
+      <div class="qg-diagram-scroll">
+      <svg class="ax-est" viewBox="0 0 760 132" role="img" aria-label="A row of the Material Library under Metals: Aluminum Sheet 5052-H32, 0.125 inches, Mill, 4 feet by 8 feet, 165 dollars each, the supplier, a note, and an Add to Estimator link">
+        <rect x="0.5" y="0.5" width="759" height="131" rx="10" class="ax-win"/>
+        <text x="16" y="26" font-size="9" class="ax-head">METALS</text>
+        <g font-size="9" class="ax-head"><text x="16" y="56">MATERIAL</text><text x="196" y="56">THICKNESS</text><text x="278" y="56">FINISH</text><text x="336" y="56">SIZE</text><text x="500" y="56" text-anchor="end">PRICE</text><text x="516" y="56">SUPPLIER</text></g>
+        <line x1="0.5" y1="66" x2="759.5" y2="66" class="ax-line"/>
+        <g font-size="11.5">
+          <text x="16" y="92" class="ax-b">Aluminum Sheet 5052-H32</text>
+          <text x="196" y="92" class="ax-mono">0.125 in</text>
+          <text x="278" y="92">Mill</text>
+          <text x="336" y="92">4 ft x 8 ft</text>
+          <text x="500" y="92" text-anchor="end" class="ax-mono">$165.00 / EA</text>
+          <text x="516" y="92">Supplier Name</text>
+          <text x="744" y="92" text-anchor="end" class="ax-b">Add to Estimator →</text>
+        </g>
+        <g class="ax-callout" font-size="10.5" text-anchor="middle">
+          <circle cx="86" cy="22" r="9"/><text x="86" y="26">1</text>
+          <circle cx="110" cy="112" r="9"/><text x="110" y="116">2</text>
+          <circle cx="462" cy="112" r="9"/><text x="462" y="116">3</text>
+          <circle cx="680" cy="112" r="9"/><text x="680" y="116">4</text>
+        </g>
+      </svg>
+      </div>
+      <figcaption>A row, with the template's example material. The numbers match the list below.</figcaption>
+    </figure>
+    <ol class="ax-keys">
+      <li><b>Category.</b> Each one is a table of its own, and a button above to show only it.</li>
+      <li><b>The Material.</b> What it is, its thickness, finish and stock size.</li>
+      <li><b>Price.</b> Per pricing unit: <code>EA</code> for a sheet, <code>SF</code>, <code>LF</code> and the Estimator's other units.</li>
+      <li><b>Add to Estimator.</b> Opens the Material Estimator with the material on a new row, priced. Enter the quantity.</li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="estimator">
+    <div class="qg-section-head"><h2 id="estimator">With the Estimator</h2><p>Two ways in.</p></div>
+    <ol class="qg-flow">
+      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h10m0 0-4-4m4 4-4 4M17 4v12"/></svg></span><div><b>From the Library</b><small>Add to Estimator on any material.</small></div></li>
+      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 5h14v10H3z"/><path d="M6 10h8"/></svg></span><div><b>On the Sheet</b><small>Start typing in a row's Material field and pick from the list: its category, unit, price and notes fill in.</small></div></li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="columns">
+    <div class="qg-section-head"><h2 id="columns">The Columns</h2><p>The library is a CSV file with these columns; the <a href="/templates/material-library/">CSV template</a> has three examples.</p></div>
+    <div class="qg-table-scroll">
+      <table class="qg-parts">
+        <tbody>
+          <tr><td>Material</td><td>What it is, such as <code>Cast Acrylic Sheet</code>. The only column needed.</td></tr>
+          <tr><td>Category</td><td>Groups the library: <code>Metals</code>, <code>Plastics</code>, <code>Vinyl</code>.</td></tr>
+          <tr><td>Thickness, Finish, Size</td><td>With their units: <code>0.25 in</code>, <code>Clear</code>, <code>4 ft x 8 ft</code>.</td></tr>
+          <tr><td>Unit, Unit Price</td><td>How it's priced, in the Estimator's units, and the dollars for one.</td></tr>
+          <tr><td>Supplier, Notes</td><td>Who it comes from, and anything else.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="habits">
+    <div class="qg-section-head"><h2 id="habits">Good to Know</h2></div>
+    <ul class="qg-habits">
+      <li><b>Beta.</b> The library is still being filled in.</li>
+      <li><b>Prices are a guide.</b> Check them with the supplier before a quote.</li>
+      <li><b>On the sheet.</b> A library material is named by its material, thickness and finish; its size, supplier and notes go in the row's Notes.</li>
+      <li><b>A material to add?</b> Fill a row of the CSV template and send it in.</li>
+    </ul>
+  </section>
+</div>

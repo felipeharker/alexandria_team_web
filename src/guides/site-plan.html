@@ -13,7 +13,7 @@
     <div class="qg-section-head"><h2 id="screen">The Screen</h2><p>Controls on the left, the map on the right.</p></div>
     <figure class="qg-figure">
       <div class="qg-diagram-scroll">
-      <svg class="ax-est" viewBox="0 0 760 360" role="img" aria-label="The Site Plan: on the left an address search, the sign's location and coordinates, a circle radius slider in feet, a Highlight Buildings button, Street Names and Shadows checkboxes and an Export PNG button; on the right a light grey map of city blocks with edged white streets, soft shadows, one dark highlighted building and a dashed red circle labelled SIGN LOCATION">
+      <svg class="ax-est" viewBox="0 0 760 360" role="img" aria-label="The Site Plan: on the left an address search, the sign's location and coordinates, a circle radius slider in feet, a Highlight Buildings button, Street Names and Shadows checkboxes and an Export PNG button; on the right a light grey map of city blocks with edged white streets, soft shadows, one dark highlighted building, a dashed red circle labelled SIGN LOCATION, and a north arrow and scale bar bottom left">
         <defs>
           <clipPath id="qg-site-plan-window"><rect x="0.5" y="0.5" width="759" height="359" rx="10"/></clipPath>
           <g id="qg-site-plan-buildings">
@@ -51,11 +51,18 @@
         <!-- map controls -->
         <rect x="729" y="10" width="20" height="38" rx="4" fill="#ffffff" stroke="#cdd2d8"/>
         <path d="M735 19h8M739 15v8M735 39h8" stroke="#1b1f24" stroke-width="1.4"/>
-        <g font-size="8.5" fill="#5d6570">
-          <rect x="241" y="338" width="44" height="12" fill="#ffffff" fill-opacity="0.85" stroke="#5d6570" stroke-width="0.8"/>
-          <text x="245" y="347">100 ft</text>
-          <text x="749" y="350" text-anchor="end">© OpenStreetMap</text>
+        <!-- the north arrow and the scale bar, on their white plate -->
+        <rect x="241" y="312" width="132" height="38" rx="3" fill="#ffffff"/>
+        <g fill="#1a1a1a" style="font-family: 'Oswald Variable', Oswald, sans-serif; font-weight: 500">
+          <text x="252" y="324" font-size="9" text-anchor="middle">N</text>
+          <path d="M252 327l-5 16 5-3.5z"/>
+          <path d="M252 327l5 16-5-3.5z" fill="#ffffff" stroke="#1a1a1a" stroke-width="0.8"/>
+          <rect x="266" y="339" width="21" height="4"/><rect x="308" y="339" width="21" height="4"/>
+          <rect x="266" y="339" width="84" height="4" fill="none" stroke="#1a1a1a" stroke-width="0.8"/>
+          <g font-size="7.5" text-anchor="middle"><text x="266" y="335">0</text><text x="308" y="335">100</text><text x="350" y="335">200</text></g>
+          <text x="354" y="343" font-size="7.5">FT</text>
         </g>
+        <text x="749" y="350" font-size="8.5" fill="#5d6570" text-anchor="end">© OpenStreetMap</text>
 
         <!-- the panel -->
         <rect x="0" y="0" width="231" height="360" class="ax-win" style="stroke: none"/>
@@ -105,11 +112,11 @@
     <ol class="ax-keys">
       <li><b>Address.</b> Type it and press Search. When several places match, they list below it: pick the right one.</li>
       <li><b>Signs.</b> Each sign's address, or <i>Placed on the Map</i> after a click, with its coordinates. <b>Add Sign</b> places another with the next click or search. With more than one, click a sign here, or its label on the map, to select it: clicks and searches move the selected sign, and its Label and radius are the ones you edit. The &times; removes one.</li>
-      <li><b>Circle Radius.</b> In feet, true to the map's scale: drag, or type up to 5,000. The <b>Label</b> above it names the circle (<i>SIGN LOCATION</i> to start).</li>
+      <li><b>Circle Radius.</b> In feet, true to the map's scale: drag, or type up to 5,000. Above it, the <b>Label</b> names the circle (<i>SIGN LOCATION</i> to start), and <b>Circle Color</b> colors the circle and its label: red to start, any color picked or typed as a hex code, one per sign. <b>Reset to Red</b> goes back.</li>
       <li><b>Highlight Buildings.</b> Press it, then click buildings to darken them, like the one in the circle; click one again to undo. <b>Done</b> when finished.</li>
-      <li><b>Street Names, Shadows.</b> Off for the plain figure-ground look; on to name the streets, or to give the buildings soft shadows.</li>
-      <li><b>Export PNG.</b> Saves what the map shows, named after the project at the top.</li>
-      <li><b>The Circle.</b> Dashed red, with its label inside, one per sign. The label grows and shrinks with the circle.</li>
+      <li><b>Street Names, Shadows.</b> Off for the plain figure-ground look; on to name the streets, or to give the buildings soft shadows. Below them, <b>North Arrow</b> and <b>Scale Bar</b> are on: untick either to leave it off the plan.</li>
+      <li><b>Export PNG.</b> Saves what the map shows, named after the project at the top, with the north arrow and scale bar bottom left.</li>
+      <li><b>The Circle.</b> Dashed, with its label inside in the same color, one per sign. The label grows and shrinks with the circle.</li>
     </ol>
   </section>
 
@@ -135,7 +142,8 @@
           <tr><td>Streets</td><td>White with a thin grey edge, at their real width, so they keep their size against the buildings as you zoom.</td></tr>
           <tr><td>Shadows</td><td>Off unless Shadows is on: a soft shadow down and to the right of every building.</td></tr>
           <tr><td>Labels</td><td>None, unless Street Names is on: dark grey capitals along the streets.</td></tr>
-          <tr><td>Sign Location</td><td>The one color: red, as the sign's location on the design package's plans.</td></tr>
+          <tr><td>Sign Location</td><td>The one color: red, as the sign's location on the design package's plans, unless a sign is given another color.</td></tr>
+          <tr><td>North Arrow, Scale Bar</td><td>Bottom left, in black on a white plate. The bar is a round length in feet (miles past a mile), measured on the map.</td></tr>
         </tbody>
       </table>
     </div>

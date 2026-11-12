@@ -5,9 +5,9 @@ import starlight from '@astrojs/starlight';
 // The Alexandria hub: guides, the latest release, the office tools and the standards, in one place.
 // Pages are Markdown or MDX in src/content/docs; the sidebar below is the site's table of contents.
 // tools/sync.py writes everything under docs/, src/generated and src/data from alexandria_phoenix.
-// Every tool has a short address: /rhino, /grasshopper, /estimator/guide here, and /estimator, /colors
-// (the Color Matcher), /colors/library, /site-plan, /vectorizer and /grid (the Parametric Grid) from the alexandria_office
-// site, through rewrites in render.yaml.
+// Every tool has a short address: /rhino, /grasshopper, /estimator/guide here, and /estimator, /materials (the
+// Material Library), /colors (the Color Matcher), /colors/library, /site-plan, /vectorizer, /grid (the Parametric Grid)
+// and /braille (the Braille Lettering Designer) from the alexandria_office site, through rewrites in render.yaml.
 
 // Runs in every page's head (see the sidebar notes in `head` below): moves the sidebar's highlight to an
 // entry for a section of this page when the address shows that section, and back to the page's own entry
@@ -86,9 +86,11 @@ export default defineConfig({
 						{ label: 'Site Plan', slug: 'site-plan/guide' },
 						{ label: 'Vectorizer', slug: 'vectorizer/guide' },
 						{ label: 'Parametric Grid', slug: 'grid/guide' },
+						{ label: 'Braille Lettering Designer', slug: 'braille/guide' },
 						{ label: 'Color Matcher', slug: 'colors/guide' },
 						{ label: 'Color Library', slug: 'colors/library/guide' },
 						{ label: 'Material Estimator', slug: 'estimator/guide' },
+						{ label: 'Material Library', slug: 'materials/guide' },
 					],
 				},
 				// The tools in three categories, as on the home page (user, 2026-11-11). Each opens with its category's
@@ -112,6 +114,7 @@ export default defineConfig({
 						{ label: 'Site Plan', link: '/site-plan/' },
 						{ label: 'Vectorizer', link: '/vectorizer/' },
 						{ label: 'Parametric Grid', link: '/grid/' },
+						{ label: 'Braille Lettering Designer', link: '/braille/' },
 					],
 				},
 				{
@@ -123,6 +126,8 @@ export default defineConfig({
 						{ label: 'Color Library', link: '/colors/library/' },
 						// still being built
 						{ label: 'Material Estimator', link: '/estimator/', badge: 'Beta' },
+						// still being filled in
+						{ label: 'Material Library', link: '/materials/', badge: 'Beta' },
 					],
 				},
 				{
@@ -130,6 +135,7 @@ export default defineConfig({
 					collapsed: true,
 					items: [
 						{ label: 'Material Estimator', slug: 'templates/estimator' },
+						{ label: 'Material Library', slug: 'templates/material-library' },
 						{ label: 'Color Matcher', slug: 'templates/color-matcher' },
 						{ label: 'Grasshopper Parameters', slug: 'templates/grasshopper' },
 					],

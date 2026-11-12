@@ -1,6 +1,6 @@
 ---
 title: Design Tools
-description: "Web tools for the design package's graphics: the site plan, a client's logo as vectors, and patterned panels."
+description: "Web tools for the design package's graphics: the site plan, a client's logo as vectors, patterned panels and braille."
 ---
 
 import HubCard from '../../../components/HubCard.astro';
@@ -11,7 +11,7 @@ Web tools for the design package's graphics. They run in your browser, with noth
 
 ## Site Plan
 
-Finds an address and draws the office's greyscale site plan around it: buildings, streets, parks and water from OpenStreetMap, in one standard style. Place the sign with a click, size a dashed red circle around it with *SIGN LOCATION* inside, and export the map as a PNG for the design package.
+Finds an address and draws the office's greyscale site plan around it: buildings, streets, parks and water from OpenStreetMap, in one standard style. Place the sign with a click, size a dashed circle around it with *SIGN LOCATION* inside (red, or a color of your own per sign), and export the map as a PNG for the design package, with a north arrow and scale bar.
 
 <div class="ax-grid not-content">
 <HubCard href="/site-plan/" title="Open the Site Plan" meta="alexdesignlab.org/site-plan">Runs in your browser, with nothing to install.<svg slot="icon" viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd"><path d="M12 2.5a9.5 9.5 0 1 0 0 19 9.5 9.5 0 0 0 0-19zm0 2a7.5 7.5 0 1 1 0 15 7.5 7.5 0 0 1 0-15zm0 4.5a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg></HubCard>
@@ -34,4 +34,13 @@ Lays out a square, hex or triangle grid on a panel and scales each cell toward a
 <div class="ax-grid not-content">
 <HubCard href="/grid/" title="Open the Parametric Grid" meta="alexdesignlab.org/grid">Runs in your browser, with nothing to install.<svg slot="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M4.1 4.1h2v2h-2zM10.1 3.6h3v3h-3zM16 3h4.2v4.2H16zM3.6 10.1h3v3h-3zM9.75 9.75h3.7v3.7h-3.7zM15.75 9.25h4.7v4.7h-4.7zM3 16h4.2v4.2H3zM9.25 15.75h4.7v4.7h-4.7zM15.4 15.4h5.4v5.4h-5.4z"/></svg></HubCard>
 <HubCard href="/grid/guide/" title="Its Quick Guide" meta="Guide">The region, the grid, the scale, placing the attractor and the SVG.<svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C6.5 4 9.5 4 12 5.5v14c-2.5-1.5-5.5-1.5-8 0zM20 5.5C17.5 4 14.5 4 12 5.5v14c2.5-1.5 5.5-1.5 8 0z"/></svg></HubCard>
+</div>
+
+## Braille Lettering Designer
+
+Type a sign's text and download its braille as an SVG: one circle per raised dot, in inches, at the ADA's sizes, to place below the raised lettering in Rhino, CorelDRAW or Illustrator. It writes uncontracted (Grade 1) braille; ADA signs use contracted (Grade 2), which can be pasted in as braille characters from a braille translator.
+
+<div class="ax-grid not-content">
+<HubCard href="/braille/" title="Open the Braille Lettering Designer" meta="alexdesignlab.org/braille">Runs in your browser, with nothing to install.<svg slot="icon" viewBox="0 0 24 24" fill="currentColor"><circle cx="8.5" cy="5.5" r="2.3"/><circle cx="8.5" cy="12" r="2.3"/><circle cx="8.5" cy="18.5" r="2.3"/><circle cx="15.5" cy="5.5" r="2.3"/><circle cx="15.5" cy="12" r="2.3"/><circle cx="15.5" cy="18.5" r="2.3"/></svg></HubCard>
+<HubCard href="/braille/guide/" title="Its Quick Guide" meta="Guide">The cells, Grade 2 for ADA, the ADA's sizes and the SVG.<svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C6.5 4 9.5 4 12 5.5v14c-2.5-1.5-5.5-1.5-8 0zM20 5.5C17.5 4 14.5 4 12 5.5v14c2.5-1.5 5.5-1.5 8 0z"/></svg></HubCard>
 </div>
