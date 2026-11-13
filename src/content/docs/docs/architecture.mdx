@@ -15,7 +15,7 @@ Alexandria is four GitHub repositories, one web service on Render, a release fol
 
 <ol class="ax-arch-keys">
 <li><b>The domain and the sign-in.</b> Porkbun's DNS points alexdesignlab.org at alexandria-gate on Render, which shows its sign-in page to anyone not signed in. A sign-in lasts 30 days on that browser.</li>
-<li><b>The office tools.</b> The gate fetches alexandria_office's <code>public/</code> folder itself, with a read-only GitHub key, and serves /estimator, /materials, /colors (with /colors/library), /site-plan, /vectorizer, /grid and /braille beside the hub's pages. A push there shows up within two minutes, with no build step.</li>
+<li><b>The office tools.</b> The gate fetches alexandria_office's <code>public/</code> folder itself, with a read-only GitHub key, and serves /estimator, /materials, /colors (with /colors/library), /site-plan, /vectorizer, /grid, /braille and /sign-package beside the hub's pages. A push there shows up within two minutes, with no build step.</li>
 <li><b>Map data.</b> The Site Plan reads map tiles from OpenFreeMap and addresses from Nominatim, straight from the browser.</li>
 <li><b>The hub deploys.</b> Pushing alexandria_team_web's main branch makes Render rebuild the hub and restart the gate, from its <code>render.yaml</code> Blueprint.</li>
 <li><b>CSV templates.</b> <code>tools/sync.py</code> copies the Material Estimator's, the Material Library's and the Color Matcher's templates into the hub.</li>
@@ -46,7 +46,7 @@ Pushing a repository updates what it deploys straight away. What the hub copies 
 | Repository | Holds | Goes To |
 |---|---|---|
 | alexandria_phoenix (private) | The Alexandria Rhino tools and Grasshopper components, their build, docs, standards and quick guides | The shared packages folder, for Rhino; the hub, through `tools/sync.py` |
-| alexandria_office (private) | The Material Estimator, Material Library, Color Matcher, Color Library, Site Plan, Vectorizer, Parametric Grid and Braille Lettering Designer, with the paint formula sheets, the materials and the Site Plan's map style | The gate, which fetches it every two minutes |
+| alexandria_office (private) | The Material Estimator, Material Library, Color Matcher, Color Library, Site Plan, Vectorizer, Parametric Grid, Braille Lettering Designer and Sign Package Maker, with the paint formula sheets, the materials and the Site Plan's map style | The gate, which fetches it every two minutes |
 | alexandria_team_web (public) | The hub: every page here, the office tools' quick guides, and `tools/sync.py` | Render's alexandria-gate web service, at alexdesignlab.org |
 | alexandria_sample_project (private) | The Alexandria Design Lab, a test project made with the tools, and its `web/` previews | The hub's [Sample Project](/sample-project/) page, through `tools/sync.py` |
 
@@ -55,7 +55,7 @@ Pushing a repository updates what it deploys straight away. What the hub copies 
 | Where | What It Is |
 |---|---|
 | alexdesignlab.org | The hub and the office tools, served by Render's alexandria-gate web service (Starter, always on) to the usernames and passcodes in its `HUB_USERS` setting. Kept out of search engines. |
-| /estimator, /materials, /colors, /colors/library, /site-plan, /vectorizer, /grid, /braille | The office tools, from alexandria_office, served by the gate. |
+| /estimator, /materials, /colors, /colors/library, /site-plan, /vectorizer, /grid, /braille, /sign-package | The office tools, from alexandria_office, served by the gate. |
 | GitHub release | The current packages as one zip, on the public alexandria_team_web repository. |
 | Porkbun | The domain alexdesignlab.org and its DNS. |
 | OpenFreeMap, Nominatim | Free map tiles and address search for the Site Plan, from OpenStreetMap data. No account or key. |

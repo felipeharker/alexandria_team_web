@@ -16,7 +16,7 @@ import release from '../../data/release.json';
 
 {/* Every tool gets the same card here, in three categories (user, 2026-11-11), each a section of its own, as in the
     sidebar, with a page each under /tools that its Details link opens: Rhino/Grasshopper Tools; Design Tools (the Site Plan, the Vectorizer, the
-    Parametric Grid and the Braille Lettering Designer); Fabrication Tools (the Color Matcher, the Color Library, and the Material Estimator and
+    Parametric Grid, the Braille Lettering Designer and the Sign Package Maker, in beta); Fabrication Tools (the Color Matcher, the Color Library, and the Material Estimator and
     Material Library, both in beta). Add a new tool
     as a ToolCard in its category. Titles, labels and links are in Title Case. */}
 
@@ -35,6 +35,7 @@ import release from '../../data/release.json';
 <ToolCard title="Vectorizer" kind="Web" links={[{ label: 'Open', href: '/vectorizer/' }, { label: 'Quick Guide', href: '/vectorizer/guide/' }]}>Turn a PNG or JPG into an SVG of clean vector shapes: keep the colors you want, leave out the background, set the precision.<svg slot="icon" viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd"><path d="M12 2.5l7 7-3 10H8l-3-10zM11.35 6.5h1.3v4.6h-1.3zM12 11.6a1.4 1.4 0 1 0 .01 0zM8 20.8h8v1.5H8z"/></svg></ToolCard>
 <ToolCard title="Parametric Grid" kind="Web" links={[{ label: 'Open', href: '/grid/' }, { label: 'Quick Guide', href: '/grid/guide/' }]}>Lay out a square, hex or triangle grid whose cells scale toward a point or a curve, and download the linework as an SVG.<svg slot="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M4.1 4.1h2v2h-2zM10.1 3.6h3v3h-3zM16 3h4.2v4.2H16zM3.6 10.1h3v3h-3zM9.75 9.75h3.7v3.7h-3.7zM15.75 9.25h4.7v4.7h-4.7zM3 16h4.2v4.2H3zM9.25 15.75h4.7v4.7h-4.7zM15.4 15.4h5.4v5.4h-5.4z"/></svg></ToolCard>
 <ToolCard title="Braille Lettering Designer" kind="Web" links={[{ label: 'Open', href: '/braille/' }, { label: 'Quick Guide', href: '/braille/guide/' }]}>Type a sign's text and download its braille as an SVG of dots at ADA sizes, in inches.<svg slot="icon" viewBox="0 0 24 24" fill="currentColor"><circle cx="8.5" cy="5.5" r="2.3"/><circle cx="8.5" cy="12" r="2.3"/><circle cx="8.5" cy="18.5" r="2.3"/><circle cx="15.5" cy="5.5" r="2.3"/><circle cx="15.5" cy="12" r="2.3"/><circle cx="15.5" cy="18.5" r="2.3"/></svg></ToolCard>
+<ToolCard title="Sign Package Maker" badge="Beta" kind="Web" links={[{ label: 'Open', href: '/sign-package/' }, { label: 'Quick Guide', href: '/sign-package/guide/' }]}>Put your drawings, images and project details into the standard sign package, dimension and call them out to the standard, and export the PDF and 1:1 linework.<svg slot="icon" viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd"><path d="M3 5h18v14H3zM5 7v10h14V7zM6.5 8.5h6v1.8h-6zM6.5 15h4v1h-4zM13.5 11.5h4v4.5h-4z"/></svg></ToolCard>
 </div>
 </section>
 

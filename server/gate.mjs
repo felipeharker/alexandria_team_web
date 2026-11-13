@@ -12,7 +12,7 @@
 // out everywhere. After 10 wrong tries in 15 minutes from one address, that address waits out the 15 minutes.
 //
 // Addresses work as they did on the static site: the hub's pages first, then the office tools (/estimator,
-// /materials, /colors, /site-plan, /vectorizer, /grid, /braille) wherever the hub has no page, so /estimator/guide
+// /materials, /colors, /site-plan, /vectorizer, /grid, /braille, /sign-package) wherever the hub has no page, so /estimator/guide
 // stays the hub's. Run it locally with `node --env-file=<file> server/gate.mjs` (PORT, HUB_USERS and SESSION_SECRET
 // in the file).
 
@@ -28,7 +28,7 @@ import { office, startOfficeSync } from './office.mjs';
 
 const HUB = fileURLToPath(new URL('../dist', import.meta.url));
 const PORT = Number(process.env.PORT) || 10000;
-const OFFICE_TOOLS = new Set(['estimator', 'materials', 'colors', 'site-plan', 'vectorizer', 'grid', 'braille']);
+const OFFICE_TOOLS = new Set(['estimator', 'materials', 'colors', 'site-plan', 'vectorizer', 'grid', 'braille', 'sign-package']);
 const DAY = 24 * 60 * 60 * 1000;
 const SESSION_DAYS = 30;
 const SESSION_COOKIE = 'alexandria_session';

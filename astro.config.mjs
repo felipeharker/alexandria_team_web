@@ -7,7 +7,8 @@ import starlight from '@astrojs/starlight';
 // tools/sync.py writes everything under docs/, src/generated and src/data from alexandria_phoenix.
 // Every tool has a short address: /rhino, /grasshopper, /estimator/guide here, and /estimator, /materials (the
 // Material Library), /colors (the Color Matcher), /colors/library, /site-plan, /vectorizer, /grid (the Parametric Grid)
-// and /braille (the Braille Lettering Designer) from the alexandria_office repo, served beside these pages by server/gate.mjs.
+// /braille (the Braille Lettering Designer) and /sign-package (the Sign Package Maker) from the alexandria_office repo,
+// served beside these pages by server/gate.mjs.
 
 // Runs in every page's head (see the sidebar notes in `head` below): moves the sidebar's highlight to an
 // entry for a section of this page when the address shows that section, and back to the page's own entry
@@ -87,6 +88,7 @@ export default defineConfig({
 						{ label: 'Vectorizer', slug: 'vectorizer/guide' },
 						{ label: 'Parametric Grid', slug: 'grid/guide' },
 						{ label: 'Braille Lettering Designer', slug: 'braille/guide' },
+						{ label: 'Sign Package Maker', slug: 'sign-package/guide' },
 						{ label: 'Color Matcher', slug: 'colors/guide' },
 						{ label: 'Color Library', slug: 'colors/library/guide' },
 						{ label: 'Material Estimator', slug: 'estimator/guide' },
@@ -115,6 +117,8 @@ export default defineConfig({
 						{ label: 'Vectorizer', link: '/vectorizer/' },
 						{ label: 'Parametric Grid', link: '/grid/' },
 						{ label: 'Braille Lettering Designer', link: '/braille/' },
+						// new, and its DWG hasn't been opened in AutoCAD yet
+						{ label: 'Sign Package Maker', link: '/sign-package/', badge: 'Beta' },
 					],
 				},
 				{

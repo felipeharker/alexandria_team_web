@@ -1,12 +1,12 @@
 ---
 title: Office Tools
-description: The web tools for the office's everyday work, the Material Estimator, Material Library, Color Matcher, Color Library, Site Plan, Vectorizer, Parametric Grid and Braille Lettering Designer, and how they save, share and get updated.
+description: The web tools for the office's everyday work, the Material Estimator, Material Library, Color Matcher, Color Library, Site Plan, Vectorizer, Parametric Grid, Braille Lettering Designer and Sign Package Maker, and how they save, share and get updated.
 ---
 
 {/* Written by hand, unlike the Phoenix docs beside it, which tools/sync.py copies from alexandria_phoenix. The tools
     themselves are in the alexandria_office repository; keep this page in step when one changes. */}
 
-The office tools are eight small web apps at alexdesignlab.org, for the work around a design rather than in Rhino: pricing materials, matching and mixing colors, drawing site plans, turning images into vectors, laying out patterns of cells and setting braille. They open in any browser, on any computer or phone, with nothing to install and no account, and every visit gets the newest version. Each has a quick guide for its buttons, under Quick Guides; this page covers how they work underneath.
+The office tools are nine small web apps at alexdesignlab.org, for the work around a design rather than in Rhino: pricing materials, matching and mixing colors, drawing site plans, turning images into vectors, laying out patterns of cells, setting braille and putting a sign package together. They open in any browser, on any computer or phone, with nothing to install and no account, and every visit gets the newest version. Each has a quick guide for its buttons, under Quick Guides; this page covers how they work underneath.
 
 | Tool | For | Saves | Shares As |
 |---|---|---|---|
@@ -18,6 +18,7 @@ The office tools are eight small web apps at alexdesignlab.org, for the work aro
 | [Vectorizer](/vectorizer/) | An SVG of vector shapes traced from a PNG or JPG, one layer per color | Its settings, in your browser | SVG |
 | [Parametric Grid](/grid/) | A grid of cells that scale toward a point or a curve, as linework | In your browser | SVG, at full size |
 | [Braille Lettering Designer](/braille/) | A sign's braille, as dots at the ADA's sizes | In your browser | SVG, in inches |
+| [Sign Package Maker](/sign-package/) | The standard sign package, from your own drawings, images and project details | In your browser | PDF; a package file; 1:1 linework as DXF, DWG or PDF |
 
 ## Saving and Sharing
 
@@ -117,16 +118,32 @@ Type a sign's text, one braille line per line, and download it:
 
 Type the text as it should read, *Restroom* not *RESTROOM*: braille capitalizes only the start of a sentence, names and acronyms. See its [quick guide](/braille/guide/).
 
+## Sign Package Maker
+
+<span class="ax-badge">Beta</span> The design package without Rhino, for a package built from drawings made elsewhere: CorelDRAW, Illustrator, a PDF from an architect, a render. It starts as the template's four pages and holds everything on them to the same standard the Layout Manager does:
+
+- **The pages:** the title page, PROJECT INFO, design pages (`PAGE 1` and on) and COLORS, MATERIALS & FINISHES, each 17 x 11 in, measured from the template itself. A check in its repository compares the tool's blank package with the template's PDF: text starts within 0.02 in and every size, color and line matches.
+- **What's yours:** the project's and client's details, each page's quantity and scope of work, the client's logo (drawn as the title page's light grey mark), the CMF items, and the drawings and images you place. Anything still empty shows the template's words in red, and **Export** lists it before it writes the PDF.
+- **A drawing's scale:** an SVG or a PDF has a real size, so it goes on the page at a standard scale, the largest that fits unless you pick one. **Drawn At** is for a file that wasn't drawn full size. A picture has no size until you type the **Real Width** it shows.
+- **Dimensions and callouts:** drawn in *Alexandria Dimension* and *Alexandria Leader*, with nothing to set. A dimension reads its drawing's real size in feet and inches to 1/16", snaps to the drawing's own points, and sits in steps of 1/4" so stacked ones land 1/2" apart. Both move with their drawing.
+- **The PDF:** `DESIGN_<project>_v#.pdf`, as the Layout Manager names it. Lines stay lines: a placed PDF goes in as it is, an SVG as vectors, text as text. An SVG with text or effects in it goes in as a picture at 300 dpi.
+- **Linework at 1:1:** one drawing's lines and curves at full size, in inches, as `LINEWORK_<project>_<drawing>_v#`: a DXF like the Fabrication Manager's (R12, lines and arcs within 0.001"), the same as an AutoCAD 2000 DWG, or a PDF for drawings up to 200 in. It's for bringing artwork into CAD at true size; the fab team still cuts from the Fabrication Manager's files.
+- **The package file:** **Save Package File** writes `PACKAGE_<project>.json`, the whole package with its drawings inside. Keep it with the project: it's how a package moves to another computer or another person.
+
+The title page's company name is set in Futura Bk BT, read from your computer when you allow it (Chrome or Edge), and in Jost, a close stand-in, until then. See its [quick guide](/sign-package/guide/).
+
 ## Privacy
 
-The site is behind a sign-in: each person has a username and passcode, and a sign-in lasts 30 days on that browser. Beyond that the tools keep nothing on a server. The Color Matcher and Color Library load their color data from this site, and the Material Library and Estimator their materials. The Site Plan sends the address you search to [Nominatim](https://nominatim.openstreetmap.org/), OpenStreetMap's address search, and loads its map from [OpenFreeMap](https://openfreemap.org/). The Vectorizer traces images in your browser and never uploads them, and the Braille Lettering Designer translates in your browser too. Nothing else leaves your browser. The site is also kept out of search engines.
+The site is behind a sign-in: each person has a username and passcode, and a sign-in lasts 30 days on that browser. Beyond that the tools keep nothing on a server. The Color Matcher and Color Library load their color data from this site, and the Material Library and Estimator their materials. The Site Plan sends the address you search to [Nominatim](https://nominatim.openstreetmap.org/), OpenStreetMap's address search, and loads its map from [OpenFreeMap](https://openfreemap.org/). The Vectorizer traces images in your browser and never uploads them, the Braille Lettering Designer translates in your browser too, and the Sign Package Maker keeps its drawings and makes its files there. Nothing else leaves your browser. The site is also kept out of search engines.
 
 ## Changing a Tool
 
 The tools live in the private **alexandria_office** repository, one folder each under `public/`, and pushing its main branch puts a change live in a minute or two. [System Architecture](/docs/architecture/) shows how it connects to the rest.
 
-- **A tool's code or look:** its folder, `public/estimator/`, `public/materials/`, `public/colors/`, `public/site-plan/`, `public/vectorizer/`, `public/grid/` or `public/braille/`. They share the hub's style: greys, one green for buttons, Inter and IBM Plex Mono.
+- **A tool's code or look:** its folder, `public/estimator/`, `public/materials/`, `public/colors/`, `public/site-plan/`, `public/vectorizer/`, `public/grid/`, `public/braille/` or `public/sign-package/`. They share the hub's style: greys, one green for buttons, Inter and IBM Plex Mono.
 - **The color libraries:** `tools/build_colors.py` rebuilds them. Add a formula sheet to `paint-formulas/`, named as above, then run it.
 - **The Material Library:** `public/materials/materials.csv`. Add rows with the template's columns and push.
 - **The site plan style:** `public/site-plan/map-style.json`, the standard the Site Plan loads, described in the repository's README.
+- **The sign package standard:** `public/sign-package/standard.js`, the design package's numbers, kept in step with alexandria_phoenix's STANDARDS.md and its template. The repository's README says how to rebuild and check it after the template changes.
+- **A new tool's address:** its folder's name also goes in `OFFICE_TOOLS` in this hub's `server/gate.mjs`, or the gate won't serve it.
 - **Quick guides and these pages:** in the hub's own repository, alexandria_team_web. The hub's copies of the CSV templates come across with its `tools/sync.py`.

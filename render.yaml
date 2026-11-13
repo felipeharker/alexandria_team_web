@@ -4,7 +4,7 @@
 #
 # server/gate.mjs serves the built hub (dist/) and the office tools only to the people in HUB_USERS, who sign in
 # once at /signin and stay signed in for 30 days; everyone else gets the sign-in page. The office tools (/estimator,
-# /materials, /colors, /site-plan, /vectorizer, /grid, /braille) come from the private alexandria_office repo through
+# /materials, /colors, /site-plan, /vectorizer, /grid, /braille, /sign-package) come from the private alexandria_office repo through
 # server/office.mjs, at build time and then every two minutes, so a push there shows up without a hub deploy. A hub
 # page wins over an office tool at the same address, so /estimator/guide stays the hub's.
 #

@@ -1,13 +1,13 @@
 ---
 title: Design Tools
-description: "Web tools for the design package's graphics: the site plan, a client's logo as vectors, patterned panels and braille."
+description: "Web tools for the design package and its graphics: the site plan, a client's logo as vectors, patterned panels, braille, and the package itself."
 ---
 
 import HubCard from '../../../components/HubCard.astro';
 
 {/* One page per tool category (user, 2026-11-11), each the Overview in its sidebar group and the home section's Details link. */}
 
-Web tools for the design package's graphics. They run in your browser, with nothing to install.
+Web tools for the design package and its graphics. They run in your browser, with nothing to install.
 
 ## Site Plan
 
@@ -43,4 +43,15 @@ Type a sign's text and download its braille as an SVG: one circle per raised dot
 <div class="ax-grid not-content">
 <HubCard href="/braille/" title="Open the Braille Lettering Designer" meta="alexdesignlab.org/braille">Runs in your browser, with nothing to install.<svg slot="icon" viewBox="0 0 24 24" fill="currentColor"><circle cx="8.5" cy="5.5" r="2.3"/><circle cx="8.5" cy="12" r="2.3"/><circle cx="8.5" cy="18.5" r="2.3"/><circle cx="15.5" cy="5.5" r="2.3"/><circle cx="15.5" cy="12" r="2.3"/><circle cx="15.5" cy="18.5" r="2.3"/></svg></HubCard>
 <HubCard href="/braille/guide/" title="Its Quick Guide" meta="Guide">The cells, Grade 2 for ADA, the ADA's sizes and the SVG.<svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C6.5 4 9.5 4 12 5.5v14c-2.5-1.5-5.5-1.5-8 0zM20 5.5C17.5 4 14.5 4 12 5.5v14c2.5-1.5 5.5-1.5 8 0z"/></svg></HubCard>
+</div>
+
+## Sign Package Maker
+
+<span class="ax-badge">Beta</span> New, so some of it may change.
+
+The design package without Rhino. It starts as the standard template, the title page, the project info, a design page and the CMF page, and takes your own drawings and images (SVG, PDF, PNG or JPG), the project's details and the colors and materials. Dimensions and callouts are drawn to the Alexandria standard, with nothing to set: the fonts, sizes, colors and line weights are the standard's. It exports the package as a PDF, named as the Layout Manager names it, and a drawing's linework at full size as a DXF, DWG or PDF.
+
+<div class="ax-grid not-content">
+<HubCard href="/sign-package/" title="Open the Sign Package Maker" meta="alexdesignlab.org/sign-package">Runs in your browser, with nothing to install.<svg slot="icon" viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd"><path d="M3 5h18v14H3zM5 7v10h14V7zM6.5 8.5h6v1.8h-6zM6.5 15h4v1h-4zM13.5 11.5h4v4.5h-4z"/></svg></HubCard>
+<HubCard href="/sign-package/guide/" title="Its Quick Guide" meta="Guide">The pages, the details, placing and scaling a drawing, dimensions, callouts and the exports.<svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C6.5 4 9.5 4 12 5.5v14c-2.5-1.5-5.5-1.5-8 0zM20 5.5C17.5 4 14.5 4 12 5.5v14c2.5-1.5 5.5-1.5 8 0z"/></svg></HubCard>
 </div>

@@ -19,6 +19,10 @@ import { Content as Claude } from '../../../generated/troubleshooting-claude.md'
 - **The Vectorizer outlines shapes in an extra color, or misses one.** Untick the extra color so it merges into its neighbour, or raise **Colors** and trace again.
 - **The Braille Lettering Designer stays on "Loading the Grade 2 translator".** It loads once, the first time you use Grade 2: check the connection and reload. Grade 1 works without it.
 - **The braille has capital signs everywhere.** Type the text as it should read, *Restroom*, not *RESTROOM*: braille capitalizes only the start of a sentence, names and acronyms.
+- **The Sign Package Maker's title page isn't in Futura.** Futura Bk BT can't be sent with the tool, so it's read from your computer: under **Export**, press **Use Futura from This Computer** and allow it (Chrome or Edge). Until then the company name is in Jost, a close stand-in.
+- **A drawing in the Sign Package Maker can't be dimensioned.** It needs a scale: select it and, under **Page**, type the **Real Width** it shows. An SVG or a PDF has one already; set **Drawn At** if the file wasn't drawn full size.
+- **A dimension in the Sign Package Maker reads slightly off.** Click on the drawing's own points: the pink square shows a point it has snapped to. A picture has only its corners and middles to snap to, so place an SVG or a PDF where the number matters.
+- **AutoCAD asks to recover a DWG from the Sign Package Maker.** Export the **DXF** instead: it's the office's standard linework file, and holds the same lines.
 - **A material isn't in the Estimator's list.** The list comes from the [Material Library](/materials/), which is still being filled in. Type the material in by hand for now.
 
 ## Installing and the Toolbar
