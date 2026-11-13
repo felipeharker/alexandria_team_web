@@ -131,6 +131,12 @@ export default defineConfig({
 					],
 				},
 				{
+					label: 'Permitting Tools',
+					collapsed: true,
+					// a fourth category with no tools yet (user, 2026-11-12); its one entry is a placeholder page
+					items: [{ label: 'Under Development', slug: 'tools/permitting' }],
+				},
+				{
 					label: 'CSV Templates',
 					collapsed: true,
 					items: [
