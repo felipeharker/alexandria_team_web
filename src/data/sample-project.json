@@ -1,5 +1,5 @@
 {
- "package": "DESIGN_ALEXANDRIA_DESIGN_LAB_v5.pdf",
+ "package": "DESIGN_ALEXANDRIA_DESIGN_LAB_v6.pdf",
  "page_size": "17 x 11 in",
  "pages": [
   {
@@ -20,26 +20,14 @@
   },
   {
    "file": "page-05.jpg",
-   "title": "Sign Location"
-  },
-  {
-   "file": "page-06.jpg",
-   "title": "Site Plan"
-  },
-  {
-   "file": "page-07.jpg",
-   "title": "Building Elevations"
-  },
-  {
-   "file": "page-08.jpg",
    "title": "Sign Elevation"
   },
   {
-   "file": "page-09.jpg",
+   "file": "page-06.jpg",
    "title": "Sign Details"
   },
   {
-   "file": "page-10.jpg",
+   "file": "page-07.jpg",
    "title": "Colors, Materials & Finishes"
   }
  ],
@@ -47,12 +35,12 @@
   {
    "file": "day.jpg",
    "title": "Day Render",
-   "source": "day_3.jpg"
+   "source": "day_4.jpg"
   },
   {
    "file": "night.jpg",
    "title": "Night Render",
-   "source": "night_3.jpg"
+   "source": "night_4.jpg"
   }
  ]
 }

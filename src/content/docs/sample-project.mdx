@@ -1,6 +1,6 @@
 ---
 title: Sample Project
-description: The Alexandria Design Lab, a made-up building taken from an empty model to a design package with the Alexandria tools.
+description: The Alexandria Design Lab, a sign on the template wall taken from an empty model to a design package with the Alexandria tools.
 ---
 
 import { LinkButton } from '@astrojs/starlight/components';
@@ -9,7 +9,7 @@ import project from '../../data/sample-project.json';
 
 {/* tools/sync.py copies the previews and the PDF from alexandria_testing_sample_project/Alexandria/web (its make_web.py makes them). */}
 
-The **Alexandria Design Lab** is the office's test project: a made-up modernist midrise on a simple site, with one building sign, taken from an empty model to a finished design package with the Alexandria tools and nothing else. Alexandria is the client, so there are no real client or brand names in it. Use it to see what the tools make and what a finished package looks like.
+The **Alexandria Design Lab** is the office's test project: one halo-lit sign on the blank wall Populate Model brings, taken from an empty model to a finished design package with the Alexandria tools and nothing else. It shows what every Alexandria model starts from: the wall, the ground and a scale figure, with the sign designed on the wall. Alexandria is the client, so there are no real client or brand names in it. Use it to see what the tools make and what a finished package looks like.
 
 <LinkButton href={`/sample-project/${project.package}`} icon="document" iconPlacement="start">Open the Design Package</LinkButton>
 
@@ -21,23 +21,19 @@ The **Alexandria Design Lab** is the office's test project: a made-up modernist 
 |---|---|
 | Client | Alexandria |
 | Location | 1955 Meridian Avenue, Anytown, ST 00000 (made up) |
-| Scope | One set of halo-lit reverse channel letters, *Alexandria Design Lab*, centred on the podium band over the entrance |
+| Scope | One set of halo-lit reverse channel letters, *Alexandria Design Lab*, centred on the template wall |
 | Sign | 4'-0" capitals in Gotham Medium, 64'-5 13/16" long, baseline 25'-6" above grade, 4" returns on 2-1/2" standoffs (DTL-05) |
-| Podium | 210' x 90': a 20'-0" glass lobby set back under a solid 15'-0" white precast band with a bronze coping, on round pilotis, with a teak soffit and downlights over the colonnade and a glass-railed roof terrace |
-| Tower | 150' x 60': seven 15'-0" floors of vision glass and bronze spandrel glass behind bronze I-section fins, between jointed white precast end bays with glazed slots, under a bronze parapet and a louvered penthouse, 152'-0" overall |
-| Site | A granite plaza with two reflecting pools, benches and trees, lawns with a grove either side, the sidewalk, street trees and the street |
-
-The building is context for the sign, on a 5'-0" module and 30'-0" bays: the podium band, the end bays and the plaza are the surfaces to design on, and every size is a named number in the model's build script, so a study can change one and build again.
+| Context | Populate Model's wall (its face the y = 0 plane), ground and 5'-6" scale figure, and nothing else |
 
 ## How It Was Made
 
 Claude built it in Rhino 8 by running the Alexandria toolbar's own scripts, as a test of the tools from start to finish, in the order the [Rhino Tools Quick Guide](/rhino/#order) gives:
 
 1. **Create Project** copied the project template and saved the model.
-2. **Populate Model** set the units and added the DESIGN and DETAILS layers, the annotation styles, the render backdrop and the world light. The building, its site and the letters were modeled on their own layers.
-3. **Set Light** made the halo behind each letter, and **Set Material** gave each layer its material.
-4. The site plan, the elevations, the sign elevation and the sign location axonometric were drawn flat, below the building.
-5. The **Layout Manager** made the package's pages and placed the drawings and the letter section, DTL-05, on them.
+2. **Populate Model** set the units and added the standard layers, the annotation styles, the wall, the ground, the scale figure and the world light. The letters were modeled on the wall, on their own DESIGN layer.
+3. **Set Light** made the halo behind each letter, and **Set Material** gave the letters their material.
+4. The sign elevation was drawn flat, below the wall, with the scale figure for scale.
+5. The **Layout Manager** made the package's pages and placed the sign elevation and the letter section, DTL-05, on them.
 6. **Render Day and Save** and **Render Night and Save** (a right click on the day and night buttons) made the two renders above, and the Layout Manager put them on their pages and exported the PDF.
 
 ## The Design Package
