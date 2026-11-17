@@ -286,8 +286,9 @@ h1#_top,
 }
 
 /* the home page's tools (user, 2026-11-17: more visual, less text): a card each, led by a line drawing of what the
-   tool makes (ToolArt.astro), with its sheet number, its name, one line and its links. Four to a row; a section of two
-   lays its pair out wide, the drawing beside the words. The whole card opens the tool. */
+   tool makes (ToolArt.astro), with its sheet number, its name, one line and its links. Every card is the same: the
+   drawing above the words, four to a row, so a section of fewer leaves the rest of its row empty (user, 2026-11-17).
+   The whole card opens the tool. */
 .ax-section {
 	container-type: inline-size;
 }
@@ -296,15 +297,11 @@ h1#_top,
 	grid-template-columns: repeat(4, minmax(0, 1fr));
 	gap: 14px;
 }
-.ax-tools:has(> :nth-child(2):last-child) {
-	grid-template-columns: repeat(2, minmax(0, 1fr));
-}
 @container (max-width: 50rem) {
 	.ax-tools { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @container (max-width: 28rem) {
-	.ax-tools,
-	.ax-tools:has(> :nth-child(2):last-child) { grid-template-columns: minmax(0, 1fr); }
+	.ax-tools { grid-template-columns: minmax(0, 1fr); }
 }
 .ax-tool {
 	position: relative;
@@ -320,13 +317,6 @@ h1#_top,
 .ax-tool:focus-within {
 	border-color: var(--sl-color-gray-4);
 }
-.ax-tools:has(> :nth-child(2):last-child) .ax-tool {
-	display: grid;
-	grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
-}
-@container (max-width: 50rem) {
-	.ax-tools:has(> :nth-child(2):last-child) .ax-tool { display: flex; }
-}
 
 /* the drawing, on the tint */
 .ax-tool-art {
@@ -339,20 +329,6 @@ h1#_top,
 	--art-fine: var(--sl-color-gray-4);
 	--art-tone: var(--sl-color-gray-5);
 	--art-paper: var(--sl-color-black);
-}
-.ax-tools:has(> :nth-child(2):last-child) .ax-tool-art {
-	aspect-ratio: auto;
-	min-height: 11rem;
-	border-bottom: 0;
-	border-right: 1px solid var(--ax-rule);
-}
-@container (max-width: 50rem) {
-	.ax-tools:has(> :nth-child(2):last-child) .ax-tool-art {
-		aspect-ratio: 16 / 9;
-		min-height: 0;
-		border-right: 0;
-		border-bottom: 1px solid var(--ax-rule);
-	}
 }
 .ax-art {
 	position: absolute;
