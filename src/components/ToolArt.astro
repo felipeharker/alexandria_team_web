@@ -1,0 +1,395 @@
+---
+// The drawing at the top of each tool's card on the home page: what the tool makes, drawn as a plain line drawing in
+// the hub's greys (theme.css, "the tool cards"), so a tool reads at a glance. One drawing per `name`, all on the same
+// 320 × 180 sheet. The Parametric Grid's, the Image Grid's and Alexandria Phoenix's cells are worked out here, the
+// way those tools work them out, so they're true to what the tools make.
+interface Props {
+	name: string;
+}
+const { name } = Astro.props;
+
+const r1 = (v: number) => Math.round(v * 10) / 10;
+const SQRT3 = Math.sqrt(3);
+type Pt = [number, number];
+
+/** Pointy-top hexes of side s whose whole cell fits in the box: their centres. */
+function hexCentres(s: number, x0: number, y0: number, x1: number, y1: number): Pt[] {
+	const out: Pt[] = [];
+	const w = SQRT3 * s;
+	for (let j = 0, cy = y0 + s; cy + s <= y1; j++, cy += 1.5 * s) {
+		for (let cx = x0 + w / 2 + (j % 2 ? w / 2 : 0); cx + w / 2 <= x1; cx += w) out.push([cx, cy]);
+	}
+	// centred in the box
+	const xs = out.map((p) => p[0]), ys = out.map((p) => p[1]);
+	const dx = (x0 + x1 - (Math.min(...xs) + Math.max(...xs))) / 2, dy = (y0 + y1 - (Math.min(...ys) + Math.max(...ys))) / 2;
+	return out.map(([x, y]) => [x + dx, y + dy]);
+}
+const hexPath = ([cx, cy]: Pt, s: number) => {
+	const w = (SQRT3 / 2) * s;
+	const p: Pt[] = [[cx, cy - s], [cx + w, cy - s / 2], [cx + w, cy + s / 2], [cx, cy + s], [cx - w, cy + s / 2], [cx - w, cy - s / 2]];
+	return `M${p.map(([x, y]) => `${r1(x)} ${r1(y)}`).join('L')}z`;
+};
+const circlePath = ([cx, cy]: Pt, r: number) => `M${r1(cx - r)} ${r1(cy)}a${r1(r)} ${r1(r)} 0 1 0 ${r1(2 * r)} 0a${r1(r)} ${r1(r)} 0 1 0 ${r1(-2 * r)} 0z`;
+const clamp01 = (v: number) => Math.min(1, Math.max(0, v));
+
+/** Points along a cubic Bézier. */
+function cubic(p0: Pt, p1: Pt, p2: Pt, p3: Pt, steps = 24): Pt[] {
+	const out: Pt[] = [];
+	for (let i = 0; i <= steps; i++) {
+		const t = i / steps, u = 1 - t;
+		const a = u * u * u, b = 3 * u * u * t, c = 3 * u * t * t, d = t * t * t;
+		out.push([a * p0[0] + b * p1[0] + c * p2[0] + d * p3[0], a * p0[1] + b * p1[1] + c * p2[1] + d * p3[1]]);
+	}
+	return out;
+}
+
+let cells = '';
+let extra = '';
+
+if (name === 'parametric-grid') {
+	// hexes scaled by their distance to the nearest of a point and a curve, small at the attractors
+	const point: Pt = [104, 104];
+	const curve = [...cubic([198, 18], [214, 58], [236, 84], [258, 98]), ...cubic([258, 98], [280, 112], [290, 136], [298, 164])];
+	const reach = 74;
+	const s = 11.5;
+	cells = hexCentres(s, 18, 12, 302, 168)
+		.map((c) => {
+			const d = Math.min(Math.hypot(c[0] - point[0], c[1] - point[1]), ...curve.map((q) => Math.hypot(c[0] - q[0], c[1] - q[1])));
+			const f = 0.14 + 0.78 * clamp01(d / reach);
+			return hexPath(c, s * f);
+		})
+		.join('');
+	extra = `M198 18C214 58 236 84 258 98S290 136 298 164`;
+}
+
+if (name === 'image-grid') {
+	// circles on a hex lattice, each sized by how dark a lit sphere and its shadow are there, as a halftone
+	const s = 7.4, inr = (SQRT3 / 2) * s;
+	const L = [-0.52, -0.62, 0.59];
+	const dark = ([x, y]: Pt) => {
+		const cx = 132, cy = 82, R = 64;
+		const dx = (x - cx) / R, dy = (y - cy) / R, rr = dx * dx + dy * dy;
+		if (rr < 1) {
+			const nz = Math.sqrt(1 - rr);
+			const lambert = Math.max(0, dx * L[0] + dy * L[1] + nz * L[2]);
+			return 1 - (0.04 + 0.96 * Math.pow(lambert, 1.3));
+		}
+		const sx = (x - 178) / 86, sy = (y - 152) / 14;
+		const shadow = clamp01(1 - sx * sx - sy * sy) * 0.75;
+		return Math.max(shadow, 0.04 + 0.08 * (y / 180));
+	};
+	cells = hexCentres(s, 14, 8, 306, 172)
+		.map((c) => {
+			const r = inr * (0.08 + 0.88 * dark(c));
+			return r < 0.8 ? '' : circlePath(c, r);
+		})
+		.join('');
+}
+
+if (name === 'alexandria-phoenix') {
+	// a region of squares scaled by a remap, the end of a small definition
+	const n = 5, x0 = 214, y0 = 46, size = 88, cell = size / n;
+	const out: string[] = [];
+	for (let i = 0; i < n; i++)
+		for (let j = 0; j < n; j++) {
+			const f = 0.22 + 0.7 * clamp01((i + j) / (2 * (n - 1)));
+			const c: Pt = [x0 + (i + 0.5) * cell, y0 + (j + 0.5) * cell], h = (cell * f) / 2;
+			out.push(`M${r1(c[0] - h)} ${r1(c[1] - h)}h${r1(2 * h)}v${r1(2 * h)}h${r1(-2 * h)}z`);
+		}
+	cells = out.join('');
+}
+
+let pixels = '';
+if (name === 'vectorizer') {
+	// a ring as pixels, then as two clean circles
+	const out: string[] = [];
+	const p = 8, cx = 82, cy = 90;
+	for (let x = cx - 56; x < cx + 56; x += p)
+		for (let y = cy - 56; y < cy + 56; y += p) {
+			const d = Math.hypot(x + p / 2 - cx, y + p / 2 - cy);
+			if (d <= 46 && d >= 20) out.push(`M${x} ${y}h${p}v${p}h${-p}z`);
+		}
+	pixels = out.join('');
+}
+
+// braille: SIGN in Grade 1 (s 2-3-4, i 2-4, g 1-2-4-5, n 1-3-4-5); dots 1-3 down the left, 4-6 down the right
+const braille = [[2, 3, 4], [2, 4], [1, 2, 4, 5], [1, 3, 4, 5]];
+const dotAt = (cell: number, dot: number): Pt => [100 + cell * 40 + (dot > 3 ? 16 : 0), 82 + ((dot - 1) % 3) * 16];
+
+// color library: a fan of chips about one pin
+const fan = [-60, -40, -20, 0, 20, 40, 60].map((a, i) => ({ a, tone: [1, 0.82, 0.66, 0.52, 0.4, 0.28, 0.18][i] }));
+
+// material library: slabs of different thicknesses, stacked
+const slabs = (() => {
+	const list = [
+		{ t: 5, label: 'ACM 4 MM' },
+		{ t: 8, label: 'ALUM 0.125' },
+		{ t: 14, label: 'ACRYLIC 1/2"' },
+		{ t: 9, label: 'PVC 6 MM' },
+	];
+	let y = 52;
+	return list.map((s) => {
+		const out = { ...s, y };
+		y += s.t + 18;
+		return out;
+	});
+})();
+---
+
+<svg class="ax-art" viewBox="0 0 320 180" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
+	{
+		name === 'alexandria-tools' && (
+			<g>
+				<line class="fine" x1="34" y1="146" x2="286" y2="146" />
+				<rect class="tone ln" x="118" y="130" width="92" height="16" />
+				<polygon class="paper ln" points="96,60 110,50 246,50 232,60" />
+				<polygon class="tone ln" points="232,60 246,50 246,120 232,130" />
+				<rect class="paper ln" x="96" y="60" width="136" height="70" />
+				<rect class="ink" x="110" y="74" width="20" height="20" />
+				<rect class="ink" x="138" y="76" width="80" height="7" />
+				<rect class="tone" x="138" y="88" width="54" height="4" />
+				<rect class="tone" x="110" y="106" width="108" height="4" />
+				<rect class="tone" x="110" y="114" width="70" height="4" />
+				<g class="ln">
+					<path d="M96 54V30M232 54V30M96 36H232M92 40l8-8M228 40l8-8" />
+					<path d="M262 60H272M262 146H272M268 60V146M264 64l8-8M264 150l8-8" />
+				</g>
+				<text class="txt" x="164" y="31" text-anchor="middle">8'-0"</text>
+				<text class="txt" x="284" y="106" text-anchor="middle" transform="rotate(-90 284 103)">6'-6"</text>
+				<g class="tone">
+					<rect x="22" y="18" width="8" height="8" />
+					<rect x="22" y="30" width="8" height="8" />
+					<rect x="22" y="42" width="8" height="8" />
+				</g>
+				<rect class="ink" x="22" y="54" width="8" height="8" />
+			</g>
+		)
+	}
+	{
+		name === 'alexandria-phoenix' && (
+			<g>
+				<path class="ln" d="M96 54C114 54 112 82 130 82M96 126C114 126 112 98 130 98M194 90C204 90 204 90 210 90" />
+				<g class="paper ln">
+					<rect x="28" y="36" width="68" height="36" rx="4" />
+					<rect x="28" y="108" width="68" height="36" rx="4" />
+					<rect x="130" y="70" width="64" height="40" rx="4" />
+				</g>
+				<g class="ink">
+					<circle cx="96" cy="54" r="3" />
+					<circle cx="96" cy="126" r="3" />
+					<circle cx="130" cy="82" r="3" />
+					<circle cx="130" cy="98" r="3" />
+					<circle cx="194" cy="90" r="3" />
+				</g>
+				<text class="txt" x="62" y="58" text-anchor="middle">GRID</text>
+				<text class="txt" x="62" y="130" text-anchor="middle">REMAP</text>
+				<text class="txt" x="162" y="94" text-anchor="middle">SCALE</text>
+				<rect class="dash" x="214" y="46" width="88" height="88" />
+				<path class="ink" d={cells} />
+			</g>
+		)
+	}
+	{
+		name === 'site-plan' && (
+			<g>
+				<g class="tone">
+					<rect x="14" y="12" width="64" height="52" rx="2" />
+					<rect x="90" y="12" width="60" height="52" rx="2" />
+					<rect x="234" y="12" width="72" height="52" rx="2" />
+					<rect x="14" y="76" width="64" height="40" rx="2" />
+					<rect x="90" y="76" width="60" height="40" rx="2" />
+					<rect x="162" y="128" width="60" height="40" rx="2" />
+					<rect x="234" y="76" width="72" height="40" rx="2" />
+					<rect x="234" y="128" width="72" height="40" rx="2" />
+				</g>
+				<rect class="paper fine" x="162" y="12" width="60" height="52" rx="2" />
+				<rect class="tone" x="162" y="76" width="60" height="40" rx="2" />
+				<g class="fine">
+					<path d="M170 20l12 12M182 20l12 12M194 20l12 12M206 20l8 8M170 32l12 12M182 32l12 12M194 32l12 12M206 32l8 8M170 44l12 12M182 44l12 12M194 44l12 12" />
+				</g>
+				<rect class="ink" x="176" y="84" width="32" height="22" />
+				<circle class="ring" cx="192" cy="95" r="36" />
+				<rect class="paper" x="14" y="130" width="138" height="38" rx="2" />
+				<g class="ink">
+					<rect x="24" y="148" width="20" height="5" />
+					<rect x="64" y="148" width="40" height="5" />
+				</g>
+				<rect class="ln" x="24" y="148" width="80" height="5" />
+				<text class="txt" x="24" y="164">0</text>
+				<text class="txt" x="64" y="164" text-anchor="middle">50</text>
+				<text class="txt" x="104" y="164" text-anchor="middle">100 FT</text>
+				<text class="txt" x="24" y="141">SITE PLAN</text>
+				<circle class="paper ln" cx="282" cy="38" r="13" />
+				<polygon class="ink" points="282,27 276,45 282,41 288,45" />
+			</g>
+		)
+	}
+	{
+		name === 'vectorizer' && (
+			<g>
+				<path class="ink" d={pixels} />
+				<path class="ln" d="M150 90H174M168 84l6 6-6 6" />
+				<circle class="ln" cx="240" cy="90" r="46" />
+				<circle class="ln" cx="240" cy="90" r="20" />
+				<path class="fine" d="M214.6 44H265.4M286 64.6V115.4" />
+				<g class="paper ln">
+					<rect x="237" y="41" width="6" height="6" />
+					<rect x="283" y="87" width="6" height="6" />
+					<rect x="237" y="133" width="6" height="6" />
+					<rect x="191" y="87" width="6" height="6" />
+					<rect x="237" y="67" width="6" height="6" />
+				</g>
+				<g class="ink">
+					<circle cx="214.6" cy="44" r="2.5" />
+					<circle cx="265.4" cy="44" r="2.5" />
+					<circle cx="286" cy="64.6" r="2.5" />
+					<circle cx="286" cy="115.4" r="2.5" />
+				</g>
+			</g>
+		)
+	}
+	{
+		name === 'braille' && (
+			<g>
+				<text class="letters" x="160" y="52" text-anchor="middle">SIGN</text>
+				{braille.map((dots, cell) => [1, 2, 3, 4, 5, 6].map((dot) => {
+					const [x, y] = dotAt(cell, dot);
+					return dots.includes(dot) ? <circle class="ink" cx={x} cy={y} r="5" /> : <circle class="tone" cx={x} cy={y} r="2" />;
+				}))}
+				<g class="ln">
+					<path d="M100 126V140M140 126V140M100 136H140M96 140l8-8M136 140l8-8" />
+					<path d="M180 126V140M196 126V140M180 136H196M176 140l8-8M192 140l8-8" />
+				</g>
+				<text class="txt" x="120" y="156" text-anchor="middle">0.25"</text>
+				<text class="txt" x="188" y="156" text-anchor="middle">0.1"</text>
+			</g>
+		)
+	}
+	{
+		name === 'sign-package' && (
+			<g>
+				<rect class="paper ln" x="44" y="16" width="232" height="150" />
+				<path class="ln" d="M240 16V166M240 44H276M240 120H276M240 140H276" />
+				<g class="tone">
+					<rect x="246" y="24" width="24" height="12" />
+					<rect x="246" y="126" width="20" height="4" />
+					<rect x="246" y="146" width="24" height="4" />
+					<rect x="246" y="154" width="16" height="4" />
+				</g>
+				<rect class="ln" x="76" y="62" width="112" height="56" />
+				<rect class="ink" x="88" y="74" width="16" height="16" />
+				<rect class="ink" x="110" y="76" width="64" height="6" />
+				<rect class="tone" x="110" y="86" width="42" height="4" />
+				<rect class="tone" x="88" y="100" width="86" height="4" />
+				<rect class="tone ln" x="112" y="118" width="40" height="10" />
+				<g class="ln">
+					<path d="M76 58V42M188 58V42M76 48H188M72 52l8-8M184 52l8-8" />
+					<path d="M188 70L212 54H228" />
+				</g>
+				<text class="txt" x="132" y="43" text-anchor="middle">9'-4"</text>
+				<g class="ln">
+					<rect x="58" y="142" width="10" height="10" class="ink" />
+					<rect x="98" y="142" width="10" height="10" class="tone" />
+					<rect x="138" y="142" width="10" height="10" class="paper" />
+				</g>
+				<text class="txt" x="72" y="151">P1</text>
+				<text class="txt" x="112" y="151">V1</text>
+				<text class="txt" x="152" y="151">M1</text>
+				<circle class="paper ln" cx="228" cy="54" r="7" />
+				<text class="txt" x="228" y="57.5" text-anchor="middle">P1</text>
+			</g>
+		)
+	}
+	{
+		name === 'parametric-grid' && (
+			<g>
+				<rect class="fine" x="18" y="12" width="284" height="156" />
+				<path class="ln" d={cells} />
+				<path class="dash" d={extra} />
+				<circle class="paper ln" cx="104" cy="104" r="7" />
+				<circle class="ink" cx="104" cy="104" r="2.2" />
+			</g>
+		)
+	}
+	{
+		name === 'image-grid' && (
+			<g>
+				<rect class="fine" x="14" y="8" width="292" height="164" />
+				<path class="ink" d={cells} />
+			</g>
+		)
+	}
+	{
+		name === 'color-matcher' && (
+			<g>
+				<rect class="paper ln" x="22" y="72" width="96" height="36" rx="6" />
+				<text class="code" x="70" y="95" text-anchor="middle">#4F7A00</text>
+				<path class="ln" d="M126 90H150M144 84l6 6-6 6" />
+				{[0, 1, 2].map((i) => (
+					<g>
+						<rect class="ink" x="166" y={34 + i * 42} width="30" height="30" rx="3" opacity={[1, 0.78, 0.6][i]} />
+						<text class="txt" x="206" y={46 + i * 42}>{['SW 6719', 'PMS 364 C', '3M 3630-26'][i]}</text>
+						<rect class="tone" x="206" y={52 + i * 42} width={[70, 54, 62][i]} height="4" />
+						<text class="txt" x="298" y={46 + i * 42} text-anchor="end">{['98%', '96%', '93%'][i]}</text>
+					</g>
+				))}
+			</g>
+		)
+	}
+	{
+		name === 'color-library' && (
+			<g>
+				{fan.map(({ a, tone }) => (
+					<g transform={`rotate(${a} 160 160)`}>
+						<rect class="paper ln" x="146" y="30" width="28" height="130" rx="3" />
+						<rect class="ink" x="146" y="30" width="28" height="44" rx="3" opacity={tone} />
+						<rect class="tone" x="151" y="82" width="18" height="3" />
+						<rect class="tone" x="151" y="89" width="12" height="3" />
+					</g>
+				))}
+				<circle class="ink" cx="160" cy="150" r="5" />
+			</g>
+		)
+	}
+	{
+		name === 'material-estimator' && (
+			<g>
+				<rect class="paper ln" x="28" y="18" width="264" height="144" rx="3" />
+				<rect class="tone" x="28.5" y="18.5" width="263" height="18" />
+				<g class="fine">
+					<path d="M28 58H292M28 80H292M28 102H292M28 124H292M150 18V146M196 18V146M236 18V146" />
+				</g>
+				<path class="ln" d="M28 146H292" />
+				{[0, 1, 2, 3, 4].map((i) => (
+					<g>
+						<rect class="tone" x="38" y={44 + i * 22} width={[84, 66, 92, 58, 74][i]} height="5" />
+						<text class="txt" x="173" y={50 + i * 22} text-anchor="middle">{['LF', 'SF', 'SF', 'CY', 'EA'][i]}</text>
+						<text class="txt" x="230" y={50 + i * 22} text-anchor="end">{['120', '64', '32', '2.5', '18'][i]}</text>
+						<text class="txt" x="284" y={50 + i * 22} text-anchor="end">{['1,140', '2,048', '896', '412', '324'][i]}</text>
+					</g>
+				))}
+				<text class="txt strong" x="38" y="158">TOTAL</text>
+				<text class="txt strong" x="284" y="158" text-anchor="end">$4,820</text>
+			</g>
+		)
+	}
+	{
+		name === 'material-library' && (
+			<g>
+				{[...slabs].reverse().map(({ t, y }) => (
+					<g>
+						<polygon class="paper ln" points={`60,${y} 92,${y - 20} 222,${y - 20} 190,${y}`} />
+						<polygon class="side ln" points={`190,${y} 222,${y - 20} 222,${y - 20 + t} 190,${y + t}`} />
+						<rect class="tone ln" x="60" y={y} width="130" height={t} />
+					</g>
+				))}
+				{slabs.map(({ t, y, label }) => (
+					<g>
+						<path class="fine" d={`M226 ${y - 20 + t / 2}H240`} />
+						<text class="txt" x="244" y={y - 17 + t / 2}>{label}</text>
+					</g>
+				))}
+			</g>
+		)
+	}
+</svg>

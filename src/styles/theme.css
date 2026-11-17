@@ -285,63 +285,156 @@ h1#_top,
 	color: var(--sl-color-gray-4);
 }
 
-/* the home page's tools: one card each, all the same size */
-.ax-tool-rows {
-	display: grid;
-	gap: 12px;
+/* the home page's tools (user, 2026-11-17: more visual, less text): a card each, led by a line drawing of what the
+   tool makes (ToolArt.astro), with its sheet number, its name, one line and its links. Four to a row; a section of two
+   lays its pair out wide, the drawing beside the words. The whole card opens the tool. */
+.ax-section {
+	container-type: inline-size;
 }
-/* a row per family of tools: two cards side by side, a lone card at the same width */
 .ax-tools {
 	display: grid;
-	grid-template-columns: repeat(2, minmax(0, 1fr));
-	gap: 12px;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: 14px;
 }
-@media (max-width: 40rem) {
-	.ax-tools { grid-template-columns: minmax(0, 1fr); }
+.ax-tools:has(> :nth-child(2):last-child) {
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+@container (max-width: 50rem) {
+	.ax-tools { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@container (max-width: 28rem) {
+	.ax-tools,
+	.ax-tools:has(> :nth-child(2):last-child) { grid-template-columns: minmax(0, 1fr); }
 }
 .ax-tool {
+	position: relative;
 	display: flex;
 	flex-direction: column;
-	gap: 12px;
-	padding: 18px;
 	border: 1px solid var(--ax-rule);
 	border-radius: var(--ax-radius);
 	background: var(--sl-color-black);
+	overflow: hidden;
+	transition: border-color 0.15s;
 }
-.ax-tool > header {
+.ax-tool:hover,
+.ax-tool:focus-within {
+	border-color: var(--sl-color-gray-4);
+}
+.ax-tools:has(> :nth-child(2):last-child) .ax-tool {
 	display: grid;
-	grid-template-columns: 44px minmax(0, 1fr);
-	gap: 12px;
-	align-items: center;
+	grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
 }
-.ax-tool .tile {
-	width: 44px;
-	height: 44px;
-	border-radius: 8px;
+@container (max-width: 50rem) {
+	.ax-tools:has(> :nth-child(2):last-child) .ax-tool { display: flex; }
+}
+
+/* the drawing, on the tint */
+.ax-tool-art {
+	position: relative;
+	aspect-ratio: 16 / 9;
 	background: var(--ax-tint);
-	display: grid;
-	place-items: center;
+	border-bottom: 1px solid var(--ax-rule);
+	--art-ink: var(--sl-color-gray-1);
+	--art-line: var(--sl-color-gray-3);
+	--art-fine: var(--sl-color-gray-4);
+	--art-tone: var(--sl-color-gray-5);
+	--art-paper: var(--sl-color-black);
+}
+.ax-tools:has(> :nth-child(2):last-child) .ax-tool-art {
+	aspect-ratio: auto;
+	min-height: 11rem;
+	border-bottom: 0;
+	border-right: 1px solid var(--ax-rule);
+}
+@container (max-width: 50rem) {
+	.ax-tools:has(> :nth-child(2):last-child) .ax-tool-art {
+		aspect-ratio: 16 / 9;
+		min-height: 0;
+		border-right: 0;
+		border-bottom: 1px solid var(--ax-rule);
+	}
+}
+.ax-art {
+	position: absolute;
+	top: 6px;
+	left: 6px;
+	width: calc(100% - 12px);
+	height: calc(100% - 12px);
+}
+.ax-art * { vector-effect: non-scaling-stroke; }
+.ax-art .ln { fill: none; stroke: var(--art-line); stroke-width: 1.25; stroke-linecap: round; stroke-linejoin: round; }
+.ax-art .fine { fill: none; stroke: var(--art-fine); stroke-width: 1; }
+.ax-art .dash { fill: none; stroke: var(--art-line); stroke-width: 1.25; stroke-dasharray: 5 4; }
+.ax-art .ring { fill: none; stroke: var(--art-ink); stroke-width: 1.5; stroke-dasharray: 6 4; }
+.ax-art .ink { fill: var(--art-ink); }
+.ax-art .tone { fill: var(--art-tone); }
+.ax-art .side { fill: var(--art-fine); }
+.ax-art .paper { fill: var(--art-paper); }
+.ax-art .ln.paper, .ax-art .paper.ln { fill: var(--art-paper); }
+.ax-art .ln.tone, .ax-art .tone.ln { fill: var(--art-tone); }
+.ax-art .ln.side { fill: var(--art-fine); }
+.ax-art .txt { fill: var(--art-line); font-family: var(--sl-font-mono); font-size: 10px; letter-spacing: 0.02em; }
+.ax-art .txt.strong { fill: var(--art-ink); font-weight: 500; }
+.ax-art .code { fill: var(--art-ink); font-family: var(--sl-font-mono); font-size: 13px; font-weight: 500; }
+.ax-art .letters { fill: none; stroke: var(--art-line); stroke-width: 1.25; font-family: var(--sl-font); font-size: 34px; font-weight: 700; letter-spacing: 0.12em; }
+.ax-tool-head {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 10px;
+}
+.ax-tool-code {
+	flex: none;
+	font-family: var(--sl-font-mono);
+	font-size: 0.7rem;
+	font-weight: 500;
+	letter-spacing: 0.04em;
 	color: var(--sl-color-gray-3);
 }
-.ax-tool .tile img {
-	width: 30px;
-	height: 30px;
+
+/* the words: a name, one line, and the links */
+.ax-tool-text {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	gap: 4px;
+	padding: 12px 14px 12px;
 }
-.ax-tool .tile svg {
-	width: 24px;
-	height: 24px;
-}
-.ax-tool b {
-	display: block;
+.ax-tool h3 {
+	margin: 0;
 	font-size: var(--sl-text-base);
 	font-weight: 600;
-	color: var(--sl-color-white);
 	line-height: 1.3;
+	letter-spacing: -0.01em;
+	color: var(--sl-color-white);
 }
-.ax-tool header small {
-	display: block;
-	font-size: var(--sl-text-xs);
-	color: var(--sl-color-gray-3);
+.ax-tool-main {
+	color: inherit;
+	text-decoration: none;
+}
+/* the name's link covers the card, so the whole card opens the tool */
+.ax-tool-main::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+}
+.ax-tool-main:focus-visible {
+	outline: none;
+}
+.ax-tool:has(.ax-tool-main:focus-visible) {
+	outline: 2px solid var(--sl-color-white);
+	outline-offset: 2px;
+}
+.ax-tool-art .ax-badge {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	margin: 0;
+}
+/* room for the tag: the drawing sits a little lower and smaller */
+.ax-tool-art:has(.ax-badge) .ax-art {
+	top: 30px;
+	height: calc(100% - 36px);
 }
 
 /* a tag for a tool still being built ("Beta"): a bubble in the accent, in the cards and the sidebar alike */
@@ -369,26 +462,28 @@ h1#_top,
 .ax-tool p {
 	margin: 0;
 	font-size: var(--sl-text-sm);
-	line-height: 1.5;
-	color: var(--sl-color-gray-2);
+	line-height: 1.45;
+	color: var(--sl-color-gray-3);
 }
 .ax-tool nav {
 	margin-top: auto;
-	padding-top: 12px;
-	border-top: 1px solid var(--ax-rule);
+	padding-top: 10px;
 	display: flex;
 	flex-wrap: wrap;
-	gap: 6px 18px;
-	font-size: var(--sl-text-sm);
+	gap: 4px 16px;
+	font-size: var(--sl-text-xs);
+	font-weight: 600;
+	letter-spacing: 0.02em;
 }
 .ax-tool nav a {
-	color: var(--sl-color-gray-2);
+	position: relative; /* above the card's own link */
+	z-index: 1;
+	color: var(--sl-color-gray-3);
 	text-decoration: none;
 	white-space: nowrap;
 }
 .ax-tool nav a:first-child {
 	color: var(--sl-color-white);
-	font-weight: 600;
 }
 .ax-tool nav a:hover {
 	color: var(--sl-color-white);

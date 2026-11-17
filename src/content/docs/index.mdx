@@ -18,41 +18,43 @@ import release from '../../data/release.json';
     sidebar, with a page each under /tools that its Details link opens: Rhino/Grasshopper Tools; Design Tools (the Site Plan, the Vectorizer,
     the Braille Lettering Designer and the Sign Package Maker, in beta); Parametric Tools (the Parametric Grid and the Image Grid, in beta,
     split from Design Tools on 2026-11-17); Fabrication Tools (the Color Matcher, the Color Library, and the Material Estimator and
-    Material Library, both in beta). Add a new tool as a ToolCard in its category. Titles, labels and links are in Title Case. */}
+    Material Library, both in beta). Add a new tool as a ToolCard in its category, with a drawing of what it makes in ToolArt.astro and the next sheet
+    number in its category (R, D, P or F). Since 2026-11-17 a card is mostly its drawing: keep its line short. Titles,
+    labels and links are in Title Case. */}
 
 <section class="ax-section not-content">
 <header><h2>Rhino/Grasshopper Tools</h2><a href="/tools/rhino-grasshopper/">Details →</a></header>
 <div class="ax-tools">
-<ToolCard title="Alexandria Tools" kind="Rhino/Grasshopper" icon="/guides/icons/layout_manager.png" links={[{ label: `Download ${release.version}`, href: '/start/download/' }, { label: 'Quick Guide', href: '/rhino/' }]}>From an empty model to a finished design package: the project, materials and lights, day and night renders, details, and the layout.</ToolCard>
-<ToolCard title="Alexandria Phoenix" kind="Rhino/Grasshopper" icon="/guides/icons/square_grid.png" links={[{ label: `Download ${release.version}`, href: '/start/download/' }, { label: 'Quick Guide', href: '/grasshopper/' }]}>Patterns in a region: make cells, give each one a value, act on the values, then fabricate or bake them.</ToolCard>
+<ToolCard title="Alexandria Tools" art="alexandria-tools" code="R-01" links={[{ label: `Download ${release.version}`, href: '/start/download/' }, { label: 'Guide', href: '/rhino/' }]}>The Rhino toolbar, from an empty model to a finished design package.</ToolCard>
+<ToolCard title="Alexandria Phoenix" art="alexandria-phoenix" code="R-02" links={[{ label: `Download ${release.version}`, href: '/start/download/' }, { label: 'Guide', href: '/grasshopper/' }]}>Grasshopper components for patterns in a region.</ToolCard>
 </div>
 </section>
 
 <section class="ax-section not-content">
 <header><h2>Design Tools</h2><a href="/tools/design/">Details →</a></header>
 <div class="ax-tools">
-<ToolCard title="Site Plan" kind="Web" links={[{ label: 'Open', href: '/site-plan/' }, { label: 'Quick Guide', href: '/site-plan/guide/' }]}>Find an address, place the sign, and export a greyscale site plan with its location circled, a north arrow and a scale bar.<svg slot="icon" viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd"><path d="M12 2.5a9.5 9.5 0 1 0 0 19 9.5 9.5 0 0 0 0-19zm0 2a7.5 7.5 0 1 1 0 15 7.5 7.5 0 0 1 0-15zm0 4.5a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg></ToolCard>
-<ToolCard title="Vectorizer" kind="Web" links={[{ label: 'Open', href: '/vectorizer/' }, { label: 'Quick Guide', href: '/vectorizer/guide/' }]}>Turn a PNG or JPG into an SVG of clean vector shapes: keep the colors you want, leave out the background, set the precision.<svg slot="icon" viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd"><path d="M12 2.5l7 7-3 10H8l-3-10zM11.35 6.5h1.3v4.6h-1.3zM12 11.6a1.4 1.4 0 1 0 .01 0zM8 20.8h8v1.5H8z"/></svg></ToolCard>
-<ToolCard title="Braille Lettering Designer" kind="Web" links={[{ label: 'Open', href: '/braille/' }, { label: 'Quick Guide', href: '/braille/guide/' }]}>Type a sign's text and download its braille as an SVG of dots at ADA sizes, in inches.<svg slot="icon" viewBox="0 0 24 24" fill="currentColor"><circle cx="8.5" cy="5.5" r="2.3"/><circle cx="8.5" cy="12" r="2.3"/><circle cx="8.5" cy="18.5" r="2.3"/><circle cx="15.5" cy="5.5" r="2.3"/><circle cx="15.5" cy="12" r="2.3"/><circle cx="15.5" cy="18.5" r="2.3"/></svg></ToolCard>
-<ToolCard title="Sign Package Maker" badge="Beta" kind="Web" links={[{ label: 'Open', href: '/sign-package/' }, { label: 'Quick Guide', href: '/sign-package/guide/' }]}>Put your drawings, images and project details into the standard sign package, dimension and call them out to the standard, and export the PDF and 1:1 linework.<svg slot="icon" viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd"><path d="M3 5h18v14H3zM5 7v10h14V7zM6.5 8.5h6v1.8h-6zM6.5 15h4v1h-4zM13.5 11.5h4v4.5h-4z"/></svg></ToolCard>
+<ToolCard title="Site Plan" art="site-plan" code="D-01" links={[{ label: 'Open', href: '/site-plan/' }, { label: 'Guide', href: '/site-plan/guide/' }]}>A greyscale site plan with the sign located.</ToolCard>
+<ToolCard title="Vectorizer" art="vectorizer" code="D-02" links={[{ label: 'Open', href: '/vectorizer/' }, { label: 'Guide', href: '/vectorizer/guide/' }]}>A PNG or JPG traced into clean vector shapes.</ToolCard>
+<ToolCard title="Braille Lettering Designer" art="braille" code="D-03" links={[{ label: 'Open', href: '/braille/' }, { label: 'Guide', href: '/braille/guide/' }]}>A sign’s braille as dots, at ADA sizes.</ToolCard>
+<ToolCard title="Sign Package Maker" badge="Beta" art="sign-package" code="D-04" links={[{ label: 'Open', href: '/sign-package/' }, { label: 'Guide', href: '/sign-package/guide/' }]}>The standard sign package, from your own drawings.</ToolCard>
 </div>
 </section>
 
 <section class="ax-section not-content">
 <header><h2>Parametric Tools</h2><a href="/tools/parametric/">Details →</a></header>
 <div class="ax-tools">
-<ToolCard title="Parametric Grid" kind="Web" links={[{ label: 'Open', href: '/grid/' }, { label: 'Quick Guide', href: '/grid/guide/' }]}>Lay out a square, hex or triangle grid whose cells scale toward a point or a curve, and download the linework as an SVG.<svg slot="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M4.1 4.1h2v2h-2zM10.1 3.6h3v3h-3zM16 3h4.2v4.2H16zM3.6 10.1h3v3h-3zM9.75 9.75h3.7v3.7h-3.7zM15.75 9.25h4.7v4.7h-4.7zM3 16h4.2v4.2H3zM9.25 15.75h4.7v4.7h-4.7zM15.4 15.4h5.4v5.4h-5.4z"/></svg></ToolCard>
-<ToolCard title="Image Grid" badge="Beta" kind="Web" links={[{ label: 'Open', href: '/image-grid/' }, { label: 'Quick Guide', href: '/image-grid/guide/' }]}>Lay out a square, hex or triangle grid whose cells are sized by an image's brightness, and download the linework as an SVG.<svg slot="icon" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="5" r="0.9"/><circle cx="12" cy="5" r="1.45"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="12" r="1.45"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2.55"/><circle cx="5" cy="19" r="2"/><circle cx="12" cy="19" r="2.55"/><circle cx="19" cy="19" r="3.1"/></svg></ToolCard>
+<ToolCard title="Parametric Grid" art="parametric-grid" code="P-01" links={[{ label: 'Open', href: '/grid/' }, { label: 'Guide', href: '/grid/guide/' }]}>Cells that scale toward points and curves.</ToolCard>
+<ToolCard title="Image Grid" badge="Beta" art="image-grid" code="P-02" links={[{ label: 'Open', href: '/image-grid/' }, { label: 'Guide', href: '/image-grid/guide/' }]}>Cells sized by an image, like a halftone.</ToolCard>
 </div>
 </section>
 
 <section class="ax-section not-content">
 <header><h2>Fabrication Tools</h2><a href="/tools/fabrication/">Details →</a></header>
 <div class="ax-tools">
-<ToolCard title="Color Matcher" kind="Web" links={[{ label: 'Open', href: '/colors/' }, { label: 'Quick Guide', href: '/colors/guide/' }]}>Turn any hex code into its nearest Sherwin-Williams, Pantone and 3M Scotchcal 3630 colors, with a percent match and the formulas on file.<svg slot="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c3.4 4.3 6 7.7 6 10.7a6 6 0 0 1-12 0C6 10.7 8.6 7.3 12 3z"/></svg></ToolCard>
-<ToolCard title="Color Library" kind="Web" links={[{ label: 'Open', href: '/colors/library/' }, { label: 'Quick Guide', href: '/colors/library/guide/' }]}>Every Matthews Paint formula the office has on file, by color system, with its colorants in grams per gallon.<svg slot="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M5 5h4v14H5zM10.5 5h4v14h-4zM16 6l3.7 1.5-4.4 11.3V6.9z"/></svg></ToolCard>
-<ToolCard title="Material Estimator" badge="Beta" kind="Web" links={[{ label: 'Open', href: '/estimator/' }, { label: 'Quick Guide', href: '/estimator/guide/' }]}>Price a project's materials by the foot, the yard or the piece, and share the sheet as a CSV that opens in Excel.<svg slot="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M4 3h16v3.5h-6v11h6V21H4v-3.5h6v-11H4z"/></svg></ToolCard>
-<ToolCard title="Material Library" badge="Beta" kind="Web" links={[{ label: 'Open', href: '/materials/' }, { label: 'Quick Guide', href: '/materials/guide/' }]}>The office's stock materials, with thickness, finish, size and price, ready to add to the Material Estimator.<svg slot="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l9 4.5-9 4.5-9-4.5zM3 11.3l9 4.5 9-4.5v2.2l-9 4.5-9-4.5zM3 15.6l9 4.5 9-4.5v2.2l-9 4.5-9-4.5z"/></svg></ToolCard>
+<ToolCard title="Color Matcher" art="color-matcher" code="F-01" links={[{ label: 'Open', href: '/colors/' }, { label: 'Guide', href: '/colors/guide/' }]}>Any hex code to its nearest paint and vinyl.</ToolCard>
+<ToolCard title="Color Library" art="color-library" code="F-02" links={[{ label: 'Open', href: '/colors/library/' }, { label: 'Guide', href: '/colors/library/guide/' }]}>The office’s Matthews Paint formulas.</ToolCard>
+<ToolCard title="Material Estimator" badge="Beta" art="material-estimator" code="F-03" links={[{ label: 'Open', href: '/estimator/' }, { label: 'Guide', href: '/estimator/guide/' }]}>A project’s materials, priced by the unit.</ToolCard>
+<ToolCard title="Material Library" badge="Beta" art="material-library" code="F-04" links={[{ label: 'Open', href: '/materials/' }, { label: 'Guide', href: '/materials/guide/' }]}>The office’s stock materials, with prices.</ToolCard>
 </div>
 </section>
 

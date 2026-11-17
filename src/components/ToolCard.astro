@@ -1,6 +1,10 @@
 ---
-// One of the office's solutions on the home page. Every one gets the same card, whatever it is:
-// a name, what kind of thing it is, a line about it, and its links (the first is the main one).
+// One of the office's tools on the home page (user, 2026-11-17: more visual, less text). Every one gets the same card:
+// a drawing of what it makes (ToolArt), tagged Beta in its corner if it is, its name, its sheet number, as on a drawing set (R for Rhino/Grasshopper,
+// D for Design, P for Parametric, F for Fabrication), a line about it, and its links. The whole card opens the first
+// link; the others sit on top of it.
+import ToolArt from './ToolArt.astro';
+
 interface Link {
 	label: string;
 	href: string;
@@ -8,33 +12,39 @@ interface Link {
 }
 interface Props {
 	title: string;
-	kind: string;
-	icon?: string; // an image path; or put an <svg> in the "icon" slot
+	art: string; // a drawing's name in ToolArt
+	code: string; // its sheet number, such as D-01
 	links: Link[];
 	badge?: string; // a tag beside the title, such as "Beta" for a tool still being built
 }
-const { title, kind, icon, links, badge } = Astro.props;
+const { title, art, code, links, badge } = Astro.props;
+const [main, ...more] = links;
+const target = (link: Link) => (link.external ? { target: '_blank', rel: 'noopener' } : {});
 ---
 
 <article class="ax-tool">
-	<header>
-		<span class="tile" aria-hidden="true">
-			{icon ? <img src={icon} alt="" width="30" height="30" /> : <slot name="icon" />}
-		</span>
-		<span>
-			<b>{title}{badge && <span class="ax-badge">{badge}</span>}</b>
-			<small>{kind}</small>
-		</span>
-	</header>
-	<p><slot /></p>
-	<nav aria-label={title}>
-		{
-			links.map((link) => (
-				<a href={link.href} {...(link.external ? { target: '_blank', rel: 'noopener' } : {})}>
-					{link.label}
-					{link.external ? ' ↗' : ' →'}
-				</a>
-			))
-		}
-	</nav>
+	<div class="ax-tool-art">
+		<ToolArt name={art} />
+		{badge && <span class="ax-badge">{badge}</span>}
+	</div>
+	<div class="ax-tool-text">
+		<div class="ax-tool-head">
+			<h3>
+				<a class="ax-tool-main" href={main.href} {...target(main)}>{title}{badge && <span class="sr-only"> ({badge})</span>}</a>
+			</h3>
+			<span class="ax-tool-code">{code}</span>
+		</div>
+		<p><slot /></p>
+		<nav aria-label={title}>
+			<a href={main.href} {...target(main)} tabindex="-1" aria-hidden="true">{main.label} →</a>
+			{
+				more.map((link) => (
+					<a href={link.href} {...target(link)}>
+						{link.label}
+						{link.external ? ' ↗' : ' →'}
+					</a>
+				))
+			}
+		</nav>
+	</div>
 </article>
