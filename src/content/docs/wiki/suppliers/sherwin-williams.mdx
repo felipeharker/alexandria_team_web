@@ -1,0 +1,64 @@
+---
+title: Sherwin-Williams
+description: The paint numbers buildings are specified in. Its color collections, how an SW number reads, how we match sign paint to one, and every ColorSnap color with its hex code.
+---
+
+import SupplierChart from '../../../../components/SupplierChart.astro';
+
+{/* One of the supplier pages, all with the same sections in the same order. The chart: tools/suppliers/extract.py → src/suppliers/sherwin-williams.json. The source documents live in alexandria_office (public/sources/suppliers/), served here at /sources/suppliers/. */}
+
+## At a Glance
+
+| | |
+|---|---|
+| **Supplier** | Sherwin-Williams |
+| **What It Is** | Architectural paint. Its color numbers are how architects, landlords and brands name the colors of a building. |
+| **We Use It For** | Reading a wall, fascia or brand color, then matching sign paint to it. The sign itself is sprayed in [Matthews Paint](/wiki/suppliers/matthews-paint/). |
+| **A Code Looks Like** | `SW 7069 Iron Ore` |
+| **Website** | [sherwin-williams.com](https://www.sherwin-williams.com/) |
+
+## Product Lines
+
+The chart is Sherwin-Williams' ColorSnap list. Its numbers fall into a few runs.
+
+| Numbers | What They Are |
+|---|---|
+| SW 0001 to SW 0080 | Historic colors. They have no place on the store display, so no locator number. |
+| SW 6000 to SW 7757 | The main ColorSnap collection, and most of what a building is specified in. |
+| SW 9001 to SW 9186 | Colors added to the collection later. |
+| Some between SW 1015 and SW 2865, and SW 8917 | Older and historic colors still on the list. |
+
+## Reading a Code
+
+- **`SW` and four digits, then a name:** `SW 7069 Iron Ore`. The number is what counts; names repeat across paint brands.
+- **The locator number,** such as `251-C7`, says where the chip sits on the ColorSnap display in a store. Use it to find the chip, never to order paint.
+- **Red, green and blue,** and the **hex code** made from them, are Sherwin-Williams' own screen values for the color, the kind of value the [Color Matcher](/colors/) compares.
+
+## How We Use It
+
+- **Matching a building.** A landlord's criteria or an architect's elevations give the wall or fascia as an SW number. A raceway, a backer or a cabinet that should disappear is painted to match it.
+- **Finding the paint.** Look the SW number up in the [Color Library](/colors/library/): the office's Matthews formulas are listed by the color they match, Sherwin-Williams among them.
+- **Finding the nearest.** With only a hex code or a photo's color, the [Color Matcher](/colors/) returns the closest Sherwin-Williams colors, each with a percent match.
+- **On a drawing,** give the SW number and name, then the Matthews formula that stands in for it, as in *PAINTED TO MATCH SW 7069 IRON ORE*.
+
+## Finishes and Notes
+
+- The chart gives colors only. Sheen (flat, satin, semi-gloss, gloss) belongs to the paint product, and on a sign it's the Matthews gloss level that's called out.
+- The same color in house paint and in sign paint won't look identical side by side: the gloss, and the surface under it, change how it reads. Ask for a sprayed sample when the match matters.
+- The list is from 2019, in a copy saved in 2021. Sherwin-Williams adds and retires colors every year, so check a number that isn't here on its site.
+- Every swatch below is drawn from the chart's own hex code. Pick from a real chip, never from this page.
+
+## The Chart
+
+Every color on the ColorSnap list, in number order.
+
+### ColorSnap Colors
+
+<SupplierChart from="sherwin-williams" group="ColorSnap Colors" columns={[{ key: 'code', label: 'Number', mono: true }, { key: 'name', label: 'Name' }, { key: 'hex', label: 'Hex', mono: true }, { key: 'locator', label: 'Locator', mono: true }]} />
+
+## Sources
+
+<ul class="ax-links not-content">
+<li><a href="/sources/suppliers/sherwin-williams-colorsnap-swatches.pdf"><b>Sherwin-Williams ColorSnap Color Swatches</b><small>Sixty-four pages: each color's number, name, locator number, RGB and hex.</small><span class="host">PDF · 0.4 MB</span></a></li>
+<li><a href="https://www.sherwin-williams.com/en-us/color" target="_blank" rel="noopener"><b>Sherwin-Williams Colors</b><small>Every current color, with its chip and its data.</small><span class="host">sherwin-williams.com</span></a></li>
+</ul>

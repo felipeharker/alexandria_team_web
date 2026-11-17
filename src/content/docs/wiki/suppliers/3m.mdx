@@ -1,0 +1,92 @@
+---
+title: 3M Films
+description: The vinyl on the office's sign faces. 3M's opaque and translucent film series, how a film number reads, how we call it out, and every color on the two 3M charts with its Pantone match.
+---
+
+import SupplierChart from '../../../../components/SupplierChart.astro';
+
+{/* One of the supplier pages, all with the same sections in the same order. The chart: tools/suppliers/extract.py → src/suppliers/3m.json. The source documents live in alexandria_office (public/sources/suppliers/), served here at /sources/suppliers/. */}
+
+## At a Glance
+
+| | |
+|---|---|
+| **Supplier** | 3M |
+| **What It Is** | Colored vinyl film with adhesive on the back, cut to shape and applied to a sign face |
+| **We Use It For** | Translucent film on lit acrylic faces and push-thru letters; opaque film for graphics that aren't lit from behind |
+| **A Code Looks Like** | `3630-33 Red` |
+| **Website** | [3m.com, Graphics and Signage](https://www.3m.com/3M/en_US/graphics-signage-us/) |
+
+## Product Lines
+
+Two families: translucent films, which light passes through, and opaque films, which block it.
+
+| Series | Family | What It Is |
+|---|---|---|
+| Scotchcal Translucent 3630 | Translucent | The standard film for lit faces. Vinyl, 2 mil thick, with a clear permanent adhesive. |
+| Envision Translucent 3730 | Translucent | Made for faces lit by LEDs. Its color numbers end in `L`. |
+| Scotchcal ElectroCut 7725 | Opaque | Cut graphics with a permanent adhesive. Cuts and weeds down to 1/4" letters. |
+| Scotchcal ElectroCut 7125 | Opaque | Like 7725. Cuts and weeds down to 3/8" letters. |
+| Controltac with Comply 180mC | Opaque | Slides into place before it's pressed down, and lets trapped air out. For large graphics and wraps. |
+| Scotchcal Series 50 | Opaque | A separate, shorter color range with its own numbers. |
+| Fluorescent 7725SE | Opaque | Five fluorescent colors, in this series only. |
+
+## Reading a Code
+
+- **Series, a dash, then the color number:** `3630-33` is Scotchcal Translucent 3630 in Red.
+- **A color keeps its number across the series that share a chart.** Black is 12 in 7725, 7125 and 180mC alike: `7725-12`, `180mC-12`. The translucent pair share numbers too: `3630-33` and `3730-33L` are both Red. They aren't the same color, though: the chart gives the two a different Pantone match.
+- **`L` at the end** of a 3730 number means the color is tuned for LED light.
+- **Series 50 has its own numbers.** Its Burgundy is 49; the other opaque films' Burgundy is 58.
+- **White is 10** in 7725, 7125 and 180mC, and each has its own white film, as the chart notes.
+
+## How We Use It
+
+- **On a detail,** a blank that reads *WITH ______ 3M VINYL* takes a translucent film: the full number and the name, as in *3/16" 7328 WHITE ACRYLIC WITH 3630-33 RED 3M VINYL*. The [Typical Signage Types](/wiki/signage-types/) show where those blanks are.
+- **Lit faces take translucent film, always.** Opaque film on a lit face shows as a dark shape. That is the point when a letter should read black at night, and a mistake otherwise.
+- **Push-thru letters** are backed with white translucent film (White is `3630-20`), with the color on the face.
+- **For a brand color,** read the Pantone column below for the film 3M matched to it, or give the [Color Matcher](/colors/) a hex code: it returns the nearest 3630 colors with a percent match.
+- **Paint and film rarely match exactly.** Where a film sits beside a [Matthews](/wiki/suppliers/matthews-paint/) color, compare real samples.
+
+## Finishes and Notes
+
+- **A translucent film has two colors:** one lit from behind at night, one by daylight. The charts show it unlit. Check a film lit before promising a color.
+- **3630 and 3730 go on** acrylic, polycarbonate and flexible sign faces, wet or dry. Applied by hand, wet is safer: dry leaves streaks and bubbles that show when lit.
+- **3730 lets more light through:** 3M's chart says most graphics in 3730 on its diffuser film 3735-50 pass more light than 3630 on diffuser film 3635-30.
+- **The opaque chart names its finishes** where a color has one: Matte White, Matte Black, Satin Aluminum, Satin Gold and the metallics.
+- The translucent chart is 3M's European one from 2017, and the opaque chart its United States one from 2016. Colors come and go by region and year, so confirm a film with the vinyl supplier before it goes on a drawing.
+- A Pantone number beside a film is the closest standard 3M names, a simulation and nothing more.
+- Every swatch below is the chart's color as a screen shows it. Pick from a 3M swatch book, never from this page.
+
+## The Chart
+
+The colors on the two 3M charts, each series in the chart's own order. *Pantone* is the match printed on the chart, where there is one.
+
+### Scotchcal Translucent 3630
+
+<SupplierChart from="3m" group="Scotchcal Translucent 3630" columns={[{ key: 'code', label: 'Film', mono: true }, { key: 'name', label: 'Name' }, { key: 'match', label: 'Pantone' }]} />
+
+### Envision Translucent 3730
+
+<SupplierChart from="3m" group="Envision Translucent 3730" columns={[{ key: 'code', label: 'Film', mono: true }, { key: 'name', label: 'Name' }, { key: 'match', label: 'Pantone' }]} />
+
+### Opaque 7725, 7125 and 180mC
+
+The number is the color's; put the series before it, as in `7725-58`.
+
+<SupplierChart from="3m" group="7125, 7725 and 180mC" columns={[{ key: 'code', label: 'Color', mono: true }, { key: 'name', label: 'Name' }, { key: 'match', label: 'Pantone' }, { key: 'note', label: 'Note' }]} />
+
+### Opaque Series 50
+
+<SupplierChart from="3m" group="Series 50" prefix="50-" columns={[{ key: 'code', label: 'Film', mono: true }, { key: 'name', label: 'Name' }, { key: 'match', label: 'Pantone' }]} />
+
+### Fluorescent 7725SE
+
+<SupplierChart from="3m" group="7725SE Fluorescent" prefix="7725SE-" columns={[{ key: 'code', label: 'Film', mono: true }, { key: 'name', label: 'Name' }]} />
+
+## Sources
+
+<ul class="ax-links not-content">
+<li><a href="/sources/suppliers/3m-translucent-films-3630-3730-poster.pdf"><b>3M Coloured Translucent Films</b><small>The 3630 and 3730 poster, with each film's Pantone match. European edition, April 2017.</small><span class="host">PDF · 1.7 MB</span></a></li>
+<li><a href="/sources/suppliers/3m-opaque-graphic-films-poster.pdf"><b>3M Opaque Graphic Films</b><small>The 7725, 7125, 180mC, Series 50 and 7725SE poster. United States edition, April 2016.</small><span class="host">PDF · 0.2 MB</span></a></li>
+<li><a href="https://www.3m.com/3M/en_US/graphics-signage-us/" target="_blank" rel="noopener"><b>3M Graphics and Signage</b><small>Product bulletins, the current color cards and warranties.</small><span class="host">3m.com</span></a></li>
+</ul>

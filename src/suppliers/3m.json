@@ -1,0 +1,1227 @@
+{
+	"groups": [
+		{
+			"title": "7125, 7725 and 180mC",
+			"colors": [
+				{
+					"code": "114",
+					"name": "Transparent",
+					"hex": "#DFE0E2"
+				},
+				{
+					"code": "10",
+					"name": "White",
+					"hex": "#FFFFFF",
+					"note": "180mC only."
+				},
+				{
+					"code": "10",
+					"name": "White",
+					"hex": "#FFFFFF",
+					"note": "7125 and 7725 only."
+				},
+				{
+					"code": "20",
+					"name": "Matte White",
+					"hex": "#FFFFFF"
+				},
+				{
+					"code": "90",
+					"name": "Antique White",
+					"hex": "#EAE8D6"
+				},
+				{
+					"code": "11",
+					"name": "Pearl Gray",
+					"hex": "#D3D0CE",
+					"match": "PANTONE Cool Gray 2 C"
+				},
+				{
+					"code": "121",
+					"name": "Light Gray",
+					"hex": "#BBC0C1"
+				},
+				{
+					"code": "81",
+					"name": "Stone Gray",
+					"hex": "#ABAB9B"
+				},
+				{
+					"code": "31",
+					"name": "Medium Gray",
+					"hex": "#999899",
+					"match": "PANTONE Cool Gray 7 C"
+				},
+				{
+					"code": "61",
+					"name": "Mid Gray",
+					"hex": "#8A8A8D",
+					"match": "PANTONE Cool Gray 8 C"
+				},
+				{
+					"code": "151",
+					"name": "Traffic Gray",
+					"hex": "#70797A"
+				},
+				{
+					"code": "91",
+					"name": "Dove Gray",
+					"hex": "#7E7771"
+				},
+				{
+					"code": "41",
+					"name": "Dark Gray",
+					"hex": "#4C5252"
+				},
+				{
+					"code": "101",
+					"name": "Nimbus Gray",
+					"hex": "#394144"
+				},
+				{
+					"code": "69",
+					"name": "Duranodic",
+					"hex": "#372D28"
+				},
+				{
+					"code": "12",
+					"name": "Black",
+					"hex": "#231F20",
+					"match": "PANTONE Process Black C"
+				},
+				{
+					"code": "22",
+					"name": "Matte Black",
+					"hex": "#2E2A25",
+					"match": "PANTONE Black C"
+				},
+				{
+					"code": "19",
+					"name": "Deep Mahogany Brown",
+					"hex": "#512C1D",
+					"match": "PANTONE 4625 C"
+				},
+				{
+					"code": "29",
+					"name": "Russet Brown",
+					"hex": "#6E3628",
+					"match": "PANTONE 175 C"
+				},
+				{
+					"code": "39",
+					"name": "Tan",
+					"hex": "#BD955B"
+				},
+				{
+					"code": "59",
+					"name": "Putty",
+					"hex": "#7B6569"
+				},
+				{
+					"code": "89",
+					"name": "Sandstone",
+					"hex": "#D0B5A8"
+				},
+				{
+					"code": "49",
+					"name": "Beige",
+					"hex": "#CDBC9F"
+				},
+				{
+					"code": "99",
+					"name": "Fawn",
+					"hex": "#D6BC8E"
+				},
+				{
+					"code": "103",
+					"name": "Magenta",
+					"hex": "#E8417A",
+					"match": "PANTONE 205 C"
+				},
+				{
+					"code": "273",
+					"name": "Process Magenta",
+					"hex": "#D51968",
+					"match": "PANTONE 214 C"
+				},
+				{
+					"code": "263",
+					"name": "Perfect Match Red",
+					"hex": "#D0202E",
+					"match": "PANTONE 186 C"
+				},
+				{
+					"code": "13",
+					"name": "Tomato Red",
+					"hex": "#D9272D",
+					"match": "PANTONE 1795 C"
+				},
+				{
+					"code": "293",
+					"name": "Atomic Red",
+					"hex": "#CD3420"
+				},
+				{
+					"code": "63",
+					"name": "Geranium",
+					"hex": "#A1101D"
+				},
+				{
+					"code": "53",
+					"name": "Cardinal Red",
+					"hex": "#AC1F2D"
+				},
+				{
+					"code": "93",
+					"name": "Imperial Red",
+					"hex": "#B11F24"
+				},
+				{
+					"code": "23",
+					"name": "Deep Red",
+					"hex": "#80061E"
+				},
+				{
+					"code": "58",
+					"name": "Burgundy",
+					"hex": "#711D45"
+				},
+				{
+					"code": "24",
+					"name": "Terra Cotta",
+					"hex": "#A95626"
+				},
+				{
+					"code": "74",
+					"name": "Red Orange",
+					"hex": "#E14C21"
+				},
+				{
+					"code": "14",
+					"name": "Bright Orange",
+					"hex": "#F05423",
+					"match": "PANTONE Orange 021 C"
+				},
+				{
+					"code": "64",
+					"name": "Apricot",
+					"hex": "#FAA21B"
+				},
+				{
+					"code": "54",
+					"name": "Light Orange",
+					"hex": "#F58220"
+				},
+				{
+					"code": "105",
+					"name": "Harvest Gold",
+					"hex": "#C8893A",
+					"match": "PANTONE 7510 C"
+				},
+				{
+					"code": "25",
+					"name": "Sunflower",
+					"hex": "#FCB525",
+					"match": "PANTONE 1235 C"
+				},
+				{
+					"code": "15",
+					"name": "Bright Yellow",
+					"hex": "#FFD100",
+					"match": "PANTONE 109 C"
+				},
+				{
+					"code": "65",
+					"name": "Light Lemon Yellow",
+					"hex": "#E0C522"
+				},
+				{
+					"code": "136",
+					"name": "Lime Green",
+					"hex": "#A8C235"
+				},
+				{
+					"code": "196",
+					"name": "Apple Green",
+					"hex": "#62A844"
+				},
+				{
+					"code": "46",
+					"name": "Kelly Green",
+					"hex": "#00994C"
+				},
+				{
+					"code": "186",
+					"name": "Bright Green",
+					"hex": "#008445",
+					"match": "PANTONE 348 C"
+				},
+				{
+					"code": "56",
+					"name": "Dark Green",
+					"hex": "#006241",
+					"match": "PANTONE 3425 C"
+				},
+				{
+					"code": "276",
+					"name": "Bottle Green",
+					"hex": "#034537"
+				},
+				{
+					"code": "16",
+					"name": "Khaki Green",
+					"hex": "#3B4E23"
+				},
+				{
+					"code": "66",
+					"name": "Forest Green",
+					"hex": "#004C45",
+					"match": "PANTONE 3302 C"
+				},
+				{
+					"code": "357",
+					"name": "Bermuda Blue",
+					"hex": "#005F62",
+					"match": "PANTONE 323 C"
+				},
+				{
+					"code": "96",
+					"name": "Teal",
+					"hex": "#007278",
+					"match": "PANTONE 322 C"
+				},
+				{
+					"code": "307",
+					"name": "Dark Aqua",
+					"hex": "#00A99C"
+				},
+				{
+					"code": "86",
+					"name": "Robin Egg Blue",
+					"hex": "#9AD1DC"
+				},
+				{
+					"code": "77",
+					"name": "Peacock Blue",
+					"hex": "#43B4E4",
+					"match": "PANTONE 298 C"
+				},
+				{
+					"code": "97",
+					"name": "Soft Blue",
+					"hex": "#44ABCE"
+				},
+				{
+					"code": "107",
+					"name": "Light Blue",
+					"hex": "#0098CE"
+				},
+				{
+					"code": "57",
+					"name": "Olympic Blue",
+					"hex": "#007CBB",
+					"match": "PANTONE 7461 C"
+				},
+				{
+					"code": "117",
+					"name": "Persian Blue",
+					"hex": "#0063AB"
+				},
+				{
+					"code": "47",
+					"name": "Intense Blue",
+					"hex": "#004E7D",
+					"match": "PANTONE 301 C"
+				},
+				{
+					"code": "17",
+					"name": "Vivid Blue",
+					"hex": "#0F4B91"
+				},
+				{
+					"code": "37",
+					"name": "Sapphire Blue",
+					"hex": "#232D69",
+					"match": "PANTONE 2747 C"
+				},
+				{
+					"code": "397",
+					"name": "Dark Blue",
+					"hex": "#133A65"
+				},
+				{
+					"code": "187",
+					"name": "Wedgewood Blue",
+					"hex": "#708A99"
+				},
+				{
+					"code": "177",
+					"name": "Shadow Blue",
+					"hex": "#50748A"
+				},
+				{
+					"code": "197",
+					"name": "Light Navy",
+					"hex": "#0C223F",
+					"match": "PANTONE 289 C"
+				},
+				{
+					"code": "27",
+					"name": "Indigo",
+					"hex": "#13284B",
+					"match": "PANTONE 2767 C"
+				},
+				{
+					"code": "127",
+					"name": "Boat Blue",
+					"hex": "#2B3242"
+				},
+				{
+					"code": "38",
+					"name": "Royal Purple",
+					"hex": "#37236A"
+				},
+				{
+					"code": "48",
+					"name": "Purple",
+					"hex": "#532D6D"
+				},
+				{
+					"code": "78",
+					"name": "Plum",
+					"hex": "#592C5F",
+					"match": "PANTONE 525 C"
+				},
+				{
+					"code": "98",
+					"name": "Dark Violet",
+					"hex": "#543D82"
+				},
+				{
+					"code": "217",
+					"name": "Dark Blue Metallic",
+					"hex": "#161745"
+				},
+				{
+					"code": "227",
+					"name": "Bright Blue Metallic",
+					"hex": "#15406D"
+				},
+				{
+					"code": "247",
+					"name": "Petroleum Blue Metallic",
+					"hex": "#2B3242"
+				},
+				{
+					"code": "120",
+					"name": "Satin Aluminum",
+					"hex": "#8F9090",
+					"match": "PANTONE 877 C"
+				},
+				{
+					"code": "201",
+					"name": "Slate Metallic",
+					"hex": "#272522"
+				},
+				{
+					"code": "211",
+					"name": "Charcoal Metallic",
+					"hex": "#342F2C"
+				},
+				{
+					"code": "239",
+					"name": "Chocolate Brown Metallic",
+					"hex": "#332619"
+				},
+				{
+					"code": "249",
+					"name": "Champagne Metallic",
+					"hex": "#95846A"
+				},
+				{
+					"code": "131",
+					"name": "Satin Gold",
+					"hex": "#8D734A",
+					"match": "PANTONE 872 C"
+				},
+				{
+					"code": "241",
+					"name": "Gold Metallic",
+					"hex": "#A77C2D"
+				},
+				{
+					"code": "229",
+					"name": "Copper Metallic",
+					"hex": "#723B19"
+				},
+				{
+					"code": "243",
+					"name": "Steampunk Red Metallic",
+					"hex": "#6A1C17"
+				}
+			]
+		},
+		{
+			"title": "Series 50",
+			"colors": [
+				{
+					"code": "11",
+					"name": "Transparent",
+					"hex": "#E4E5E6"
+				},
+				{
+					"code": "10",
+					"name": "White",
+					"hex": "#DFE8EC"
+				},
+				{
+					"code": "100",
+					"name": "Matte White",
+					"hex": "#E2E7ED"
+				},
+				{
+					"code": "94",
+					"name": "Light Gray",
+					"hex": "#888E8B"
+				},
+				{
+					"code": "97",
+					"name": "Nimbus Gray",
+					"hex": "#4C4F54",
+					"match": "PANTONE 7540 C"
+				},
+				{
+					"code": "58",
+					"name": "Silver",
+					"hex": "#8F9090",
+					"match": "PANTONE 877 C"
+				},
+				{
+					"code": "12",
+					"name": "Black",
+					"hex": "#2E2A25",
+					"match": "PANTONE Black C"
+				},
+				{
+					"code": "120",
+					"name": "Matte Black",
+					"hex": "#30363A"
+				},
+				{
+					"code": "92",
+					"name": "Brown",
+					"hex": "#3B2218"
+				},
+				{
+					"code": "54",
+					"name": "Gold",
+					"hex": "#8D734A",
+					"match": "PANTONE 872 C"
+				},
+				{
+					"code": "914",
+					"name": "Beige",
+					"hex": "#D6BC8E"
+				},
+				{
+					"code": "64",
+					"name": "Pink",
+					"hex": "#D51968",
+					"match": "PANTONE 214 C"
+				},
+				{
+					"code": "44",
+					"name": "Light Red",
+					"hex": "#E12726",
+					"match": "PANTONE 485 C"
+				},
+				{
+					"code": "483",
+					"name": "Dark Red",
+					"hex": "#A1101E"
+				},
+				{
+					"code": "49",
+					"name": "Burgundy",
+					"hex": "#74253D",
+					"match": "PANTONE 209 C"
+				},
+				{
+					"code": "34",
+					"name": "Bright Orange",
+					"hex": "#F05023",
+					"match": "PANTONE 1655 C"
+				},
+				{
+					"code": "27",
+					"name": "Sunflower",
+					"hex": "#FDB714",
+					"match": "PANTONE 7549 C"
+				},
+				{
+					"code": "24",
+					"name": "Lemon Yellow",
+					"hex": "#FBE444",
+					"match": "PANTONE 106 C"
+				},
+				{
+					"code": "73",
+					"name": "Grass Green",
+					"hex": "#4CAC44"
+				},
+				{
+					"code": "745",
+					"name": "Bright Green",
+					"hex": "#00954C",
+					"match": "PANTONE 355 C"
+				},
+				{
+					"code": "76",
+					"name": "Medium Green",
+					"hex": "#00764A",
+					"match": "PANTONE 3415 C"
+				},
+				{
+					"code": "78",
+					"name": "Dark Green",
+					"hex": "#00573F",
+					"match": "PANTONE 7484 C"
+				},
+				{
+					"code": "79",
+					"name": "Teal",
+					"hex": "#008C95",
+					"match": "PANTONE 321 C"
+				},
+				{
+					"code": "82",
+					"name": "Light Blue",
+					"hex": "#0098CE"
+				},
+				{
+					"code": "84",
+					"name": "Azure Blue",
+					"hex": "#005DA6",
+					"match": "PANTONE 2935 C"
+				},
+				{
+					"code": "88",
+					"name": "Sapphire Blue",
+					"hex": "#203D7C",
+					"match": "PANTONE 287 C"
+				},
+				{
+					"code": "90",
+					"name": "Deep Navy Blue",
+					"hex": "#182852",
+					"match": "PANTONE 655 C"
+				},
+				{
+					"code": "66",
+					"name": "Purple",
+					"hex": "#5E4797"
+				}
+			]
+		},
+		{
+			"title": "7725SE Fluorescent",
+			"colors": [
+				{
+					"code": "404",
+					"name": "Yellow Orange",
+					"hex": "#EF482B"
+				},
+				{
+					"code": "414",
+					"name": "Red Orange",
+					"hex": "#ED2726"
+				},
+				{
+					"code": "413",
+					"name": "Fuchsia",
+					"hex": "#ED1D36"
+				},
+				{
+					"code": "405",
+					"name": "Yellow",
+					"hex": "#F3ED68"
+				},
+				{
+					"code": "406",
+					"name": "Green",
+					"hex": "#50B848"
+				}
+			]
+		},
+		{
+			"title": "Scotchcal Translucent 3630",
+			"colors": [
+				{
+					"code": "3630-015",
+					"name": "Yellow",
+					"hex": "#FBC508",
+					"match": "PANTONE 116 C"
+				},
+				{
+					"code": "3630-75",
+					"name": "Marigold",
+					"hex": "#F8A40D",
+					"match": "PANTONE 7549 C"
+				},
+				{
+					"code": "3630-25",
+					"name": "Sunflower",
+					"hex": "#F89C0E",
+					"match": "PANTONE 130 C"
+				},
+				{
+					"code": "3630-125",
+					"name": "Golden Yellow",
+					"hex": "#F8A40D",
+					"match": "PANTONE 1235 C"
+				},
+				{
+					"code": "3630-235",
+					"name": "Autumn Yellow",
+					"hex": "#FAB60A"
+				},
+				{
+					"code": "3630-135",
+					"name": "Yellow Rose",
+					"hex": "#FAB810"
+				},
+				{
+					"code": "3630-144",
+					"name": "Poppy Orange",
+					"hex": "#F79920"
+				},
+				{
+					"code": "3630-74",
+					"name": "Kumquat Orange",
+					"hex": "#F47224",
+					"match": "PANTONE 151 C"
+				},
+				{
+					"code": "3630-84",
+					"name": "Tangerine",
+					"hex": "#F36435",
+					"match": "PANTONE 1575 C"
+				},
+				{
+					"code": "3630-44",
+					"name": "Orange",
+					"hex": "#F14535"
+				},
+				{
+					"code": "3630-124",
+					"name": "Burnt Orange",
+					"hex": "#F04337"
+				},
+				{
+					"code": "3630-43",
+					"name": "Light Tomato Red",
+					"hex": "#EE2934"
+				},
+				{
+					"code": "3630-143",
+					"name": "Poppy Red",
+					"hex": "#EE2934",
+					"match": "PANTONE 485 C"
+				},
+				{
+					"code": "3630-163",
+					"name": "Scarlet",
+					"hex": "#EE2541"
+				},
+				{
+					"code": "3630-93",
+					"name": "Fire Engine Red",
+					"hex": "#EA2434"
+				},
+				{
+					"code": "3630-33",
+					"name": "Red",
+					"hex": "#E62436",
+					"match": "PANTONE 1797 C"
+				},
+				{
+					"code": "3630-73",
+					"name": "Dark Red",
+					"hex": "#D82838",
+					"match": "PANTONE 7621 C"
+				},
+				{
+					"code": "3630-53",
+					"name": "Cardinal Red",
+					"hex": "#D72936",
+					"match": "PANTONE 187 C"
+				},
+				{
+					"code": "3630-83",
+					"name": "Regal Red",
+					"hex": "#DF2540"
+				},
+				{
+					"code": "3630-49",
+					"name": "Burgundy",
+					"hex": "#932537"
+				},
+				{
+					"code": "3630-328",
+					"name": "Berry Burgundy",
+					"hex": "#952C4D"
+				},
+				{
+					"code": "3630-118",
+					"name": "Intense Magenta",
+					"hex": "#C52A84",
+					"match": "PANTONE 241 C"
+				},
+				{
+					"code": "3630-38",
+					"name": "Fuchsia",
+					"hex": "#EC2595"
+				},
+				{
+					"code": "3630-133",
+					"name": "Raspberry",
+					"hex": "#D4165C",
+					"match": "PANTONE 220 C"
+				},
+				{
+					"code": "3630-98",
+					"name": "Electric Pink",
+					"hex": "#E71065"
+				},
+				{
+					"code": "3630-78",
+					"name": "Vivid Rose",
+					"hex": "#EE2155",
+					"match": "PANTONE 206 C"
+				},
+				{
+					"code": "3630-128",
+					"name": "Plum Purple",
+					"hex": "#683A6A",
+					"match": "PANTONE 525 C"
+				},
+				{
+					"code": "3630-158",
+					"name": "Bright Violet",
+					"hex": "#583272"
+				},
+				{
+					"code": "3630-77",
+					"name": "Indigo",
+					"hex": "#3B3F87"
+				},
+				{
+					"code": "3630-87",
+					"name": "Royal Blue",
+					"hex": "#3A3181",
+					"match": "PANTONE 2745 C"
+				},
+				{
+					"code": "3630-27",
+					"name": "Electric Blue",
+					"hex": "#2646A1"
+				},
+				{
+					"code": "3630-36",
+					"name": "Blue",
+					"hex": "#293E74",
+					"match": "PANTONE 281 C"
+				},
+				{
+					"code": "3630-47",
+					"name": "Patriot Blue",
+					"hex": "#274FA4"
+				},
+				{
+					"code": "3630-157",
+					"name": "Sultan Blue",
+					"hex": "#274FA4",
+					"match": "PANTONE 287 C"
+				},
+				{
+					"code": "3630-217",
+					"name": "Deep Sea Blue",
+					"hex": "#2C72C2"
+				},
+				{
+					"code": "3630-227",
+					"name": "Azure",
+					"hex": "#6DA8DE"
+				},
+				{
+					"code": "3630-147",
+					"name": "Light European Blue",
+					"hex": "#1082C0",
+					"match": "PANTONE 7690 C"
+				},
+				{
+					"code": "3630-57",
+					"name": "Olympic Blue",
+					"hex": "#0E88C1"
+				},
+				{
+					"code": "3630-337",
+					"name": "Process Blue",
+					"hex": "#127CC9"
+				},
+				{
+					"code": "3630-127",
+					"name": "Intense Blue",
+					"hex": "#1770B7",
+					"match": "PANTONE 300 C"
+				},
+				{
+					"code": "3630-167",
+					"name": "Bright Blue",
+					"hex": "#1D5FA6",
+					"match": "PANTONE 2945 C"
+				},
+				{
+					"code": "3630-97",
+					"name": "Bristol Blue",
+					"hex": "#21559F"
+				},
+				{
+					"code": "3630-37",
+					"name": "Sapphire",
+					"hex": "#1E5DAD"
+				},
+				{
+					"code": "3630-287",
+					"name": "Marine Blue",
+					"hex": "#21507F"
+				},
+				{
+					"code": "3630-297",
+					"name": "Twilight Blue",
+					"hex": "#294584"
+				},
+				{
+					"code": "3630-187",
+					"name": "Infinity Blue",
+					"hex": "#313F72"
+				},
+				{
+					"code": "3630-137",
+					"name": "European Blue",
+					"hex": "#2E3E6E",
+					"match": "PANTONE 2757 C"
+				},
+				{
+					"code": "3630-56",
+					"name": "Glacial Green",
+					"hex": "#1A5365"
+				},
+				{
+					"code": "3630-216",
+					"name": "Blue Coral",
+					"hex": "#126D85"
+				},
+				{
+					"code": "3630-246",
+					"name": "Teal Green",
+					"hex": "#0C8892",
+					"match": "PANTONE 321 C"
+				},
+				{
+					"code": "3630-236",
+					"name": "Turquoise",
+					"hex": "#069990",
+					"match": "PANTONE 3282 C"
+				},
+				{
+					"code": "3630-86",
+					"name": "Blue Lagoon",
+					"hex": "#069B81"
+				},
+				{
+					"code": "3630-316",
+					"name": "Jade Green",
+					"hex": "#0F5B58"
+				},
+				{
+					"code": "3630-126",
+					"name": "Dark Emerald Green",
+					"hex": "#0D5F45",
+					"match": "PANTONE 3425 C"
+				},
+				{
+					"code": "3630-26",
+					"name": "Green",
+					"hex": "#0C6E43",
+					"match": "PANTONE 7727 C"
+				},
+				{
+					"code": "3630-76",
+					"name": "Holly Green",
+					"hex": "#0E583C",
+					"match": "PANTONE 7734 C"
+				},
+				{
+					"code": "3630-276",
+					"name": "Kentucky Blue Grass",
+					"hex": "#0A8254"
+				},
+				{
+					"code": "3630-196",
+					"name": "Forest",
+					"hex": "#0A8357"
+				},
+				{
+					"code": "3630-146",
+					"name": "Light Kelly Green",
+					"hex": "#00A772",
+					"match": "PANTONE 340 C"
+				},
+				{
+					"code": "3630-156",
+					"name": "Vivid Green",
+					"hex": "#088E4B"
+				},
+				{
+					"code": "3630-136",
+					"name": "Lime Green",
+					"hex": "#2CB342",
+					"match": "PANTONE 360 C"
+				},
+				{
+					"code": "3630-106",
+					"name": "Brilliant Green",
+					"hex": "#33B540",
+					"match": "PANTONE 368 C"
+				},
+				{
+					"code": "3630-115",
+					"name": "Light Lemon Yellow",
+					"hex": "#E3DC0B"
+				},
+				{
+					"code": "3630-005",
+					"name": "Ivory",
+					"hex": "#FBC9A2",
+					"match": "PANTONE 7500 C"
+				},
+				{
+					"code": "3630-149",
+					"name": "Light Beige",
+					"hex": "#D3BC9C"
+				},
+				{
+					"code": "3630-39",
+					"name": "Warm Beige",
+					"hex": "#FCD098"
+				},
+				{
+					"code": "3630-63",
+					"name": "Rust Brown",
+					"hex": "#853839",
+					"match": "PANTONE 7610 C"
+				},
+				{
+					"code": "3630-59",
+					"name": "Dark Brown",
+					"hex": "#563D39"
+				},
+				{
+					"code": "3630-69",
+					"name": "Duranodic",
+					"hex": "#514844",
+					"match": "PANTONE Black 7 C"
+				},
+				{
+					"code": "3630-121",
+					"name": "Silver",
+					"hex": "#BABAB9",
+					"match": "PANTONE 877 C"
+				},
+				{
+					"code": "3630-141",
+					"name": "Gold Nugget",
+					"hex": "#C89341"
+				},
+				{
+					"code": "3630-131",
+					"name": "Gold Metallic",
+					"hex": "#B49268",
+					"match": "PANTONE 872 C"
+				},
+				{
+					"code": "3630-111",
+					"name": "Dover White",
+					"hex": "#FBF9EA"
+				},
+				{
+					"code": "3630-20",
+					"name": "White",
+					"hex": "#FCFAEF"
+				},
+				{
+					"code": "3630-71",
+					"name": "Shadow Gray",
+					"hex": "#968D88",
+					"match": "PANTONE Warm Gray 7 C"
+				},
+				{
+					"code": "3630-51",
+					"name": "Silver Gray",
+					"hex": "#85928D"
+				},
+				{
+					"code": "3630-61",
+					"name": "Slate Gray",
+					"hex": "#5C727E"
+				},
+				{
+					"code": "3630-22",
+					"name": "Black",
+					"hex": "#373635",
+					"match": "PANTONE Black C"
+				}
+			]
+		},
+		{
+			"title": "Envision Translucent 3730",
+			"colors": [
+				{
+					"code": "3730-015L",
+					"name": "Yellow",
+					"hex": "#FCD006",
+					"match": "PANTONE 116 C"
+				},
+				{
+					"code": "3730-125L",
+					"name": "Golden Yellow",
+					"hex": "#F9AB0C",
+					"match": "PANTONE 1235 C"
+				},
+				{
+					"code": "3730-44L",
+					"name": "Orange",
+					"hex": "#F04031"
+				},
+				{
+					"code": "3730-43L",
+					"name": "Light Tomato Red",
+					"hex": "#EE2737",
+					"match": "PANTONE 1795 C"
+				},
+				{
+					"code": "3730-33L",
+					"name": "Red",
+					"hex": "#EC2238",
+					"match": "PANTONE 186 C"
+				},
+				{
+					"code": "3730-73L",
+					"name": "Dark Red",
+					"hex": "#D72938",
+					"match": "PANTONE 7621 C"
+				},
+				{
+					"code": "3730-53L",
+					"name": "Cardinal Red",
+					"hex": "#DC2136",
+					"match": "PANTONE 200 C"
+				},
+				{
+					"code": "3730-83L",
+					"name": "Regal Red",
+					"hex": "#DC2136"
+				},
+				{
+					"code": "3730-49L",
+					"name": "Burgundy",
+					"hex": "#8F2737"
+				},
+				{
+					"code": "3730-133L",
+					"name": "Raspberry",
+					"hex": "#DB1368"
+				},
+				{
+					"code": "3730-128L",
+					"name": "Plum Purple",
+					"hex": "#6B3569"
+				},
+				{
+					"code": "3730-36L",
+					"name": "Blue",
+					"hex": "#233E73"
+				},
+				{
+					"code": "3730-157L",
+					"name": "Sultan Blue",
+					"hex": "#294994"
+				},
+				{
+					"code": "3730-57L",
+					"name": "Olympic Blue",
+					"hex": "#0D89C3"
+				},
+				{
+					"code": "3730-337L",
+					"name": "Process Blue",
+					"hex": "#127CC7"
+				},
+				{
+					"code": "3730-127L",
+					"name": "Intense Blue",
+					"hex": "#176FB9"
+				},
+				{
+					"code": "3730-167L",
+					"name": "Bright Blue",
+					"hex": "#1B65B4",
+					"match": "PANTONE 2935 C"
+				},
+				{
+					"code": "3730-97L",
+					"name": "Bristol Blue",
+					"hex": "#1F5BA4"
+				},
+				{
+					"code": "3730-137L",
+					"name": "European Blue",
+					"hex": "#2A4074"
+				},
+				{
+					"code": "3730-246L",
+					"name": "Teal Green",
+					"hex": "#0C8690"
+				},
+				{
+					"code": "3730-76L",
+					"name": "Holly Green",
+					"hex": "#13573D"
+				},
+				{
+					"code": "3730-26L",
+					"name": "Green",
+					"hex": "#0A8043",
+					"match": "PANTONE 7727 C"
+				},
+				{
+					"code": "3730-156L",
+					"name": "Vivid Green",
+					"hex": "#05994D",
+					"match": "PANTONE 348 C"
+				},
+				{
+					"code": "3730-106L",
+					"name": "Brilliant Green",
+					"hex": "#3BB83D"
+				},
+				{
+					"code": "3730-20L",
+					"name": "White",
+					"hex": "#FAF8E3"
+				}
+			]
+		}
+	]
+}

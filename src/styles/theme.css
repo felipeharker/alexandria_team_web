@@ -889,6 +889,105 @@ h1#_top,
 	margin: 0.4rem 0 0;
 }
 
+/* a supplier's chart on a Wiki page (SupplierChart.astro): a plain table, a swatch per row where there's a colour.
+   The swatch is the one place colour shows, and it's the chart's own. A long chart scrolls in its own frame. */
+.ax-chart {
+	margin-block: 1rem 1.5rem;
+	font-size: var(--sl-text-sm);
+}
+.ax-chart-scroll {
+	overflow-x: auto;
+	border: 1px solid var(--ax-rule);
+	border-radius: var(--ax-radius);
+}
+.ax-chart-long .ax-chart-scroll {
+	max-height: 30rem;
+	overflow-y: auto;
+}
+.ax-chart table {
+	width: 100%;
+	border-collapse: collapse;
+}
+.ax-chart th,
+.ax-chart td {
+	padding: 7px 12px;
+	text-align: left;
+	vertical-align: middle;
+	border-bottom: 1px solid var(--ax-rule);
+}
+.ax-chart tbody tr:last-child td {
+	border-bottom: 0;
+}
+.ax-chart th {
+	position: sticky;
+	top: 0;
+	z-index: 1;
+	background: var(--ax-tint);
+	font-size: 0.6875rem;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--sl-color-gray-3);
+	white-space: nowrap;
+	box-shadow: 0 1px 0 var(--ax-rule);
+}
+.ax-chart .swatch {
+	width: 1%;
+	padding-right: 0;
+}
+.ax-chart .swatch i {
+	display: block;
+	width: 44px;
+	height: 22px;
+	border-radius: 4px;
+	border: 1px solid var(--ax-rule-strong);
+	/* no colour to show: the striped swatch the Color Library uses */
+	background: repeating-linear-gradient(135deg, var(--ax-tint) 0 4px, var(--ax-rule-strong) 4px 5px);
+}
+.ax-chart .mono {
+	font-family: var(--sl-font-mono);
+	font-size: 0.8125rem;
+	white-space: nowrap;
+	color: var(--sl-color-white);
+}
+.ax-chart .end {
+	text-align: right;
+	font-variant-numeric: tabular-nums;
+}
+.ax-chart td {
+	color: var(--sl-color-gray-2);
+}
+.ax-chart-find {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin-bottom: 8px;
+	color: var(--sl-color-gray-3);
+}
+.ax-chart-find span {
+	font-weight: 600;
+	color: var(--sl-color-gray-2);
+}
+.ax-chart-find input {
+	flex: 1 1 12rem;
+	min-width: 0;
+	max-width: 20rem;
+	font: inherit;
+	color: var(--sl-color-white);
+	background: var(--sl-color-black);
+	border: 1px solid var(--ax-rule-strong);
+	border-radius: 6px;
+	padding: 6px 10px;
+}
+.ax-chart-find input:focus-visible {
+	outline: 2px solid var(--sl-color-gray-3);
+	outline-offset: 1px;
+}
+.ax-chart-find output {
+	font-size: var(--sl-text-xs);
+	white-space: nowrap;
+}
+
 /* the system architecture diagram (ArchitectureDiagram.astro): greys only; dashed lines are run by hand */
 .ax-arch {
 	/* wider than the text where the page has room, up to the drawing's own width, centred on the text */

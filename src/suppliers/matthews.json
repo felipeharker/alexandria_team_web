@@ -1,0 +1,722 @@
+{
+	"groups": [
+		{
+			"title": "Standard Colors",
+			"colors": [
+				{
+					"code": "MP24846",
+					"name": "Rally Red",
+					"hex": "#8F171A",
+					"lrv": 10.1
+				},
+				{
+					"code": "MP23966",
+					"name": "Crimson Red",
+					"hex": "#C51E24",
+					"lrv": 14.9
+				},
+				{
+					"code": "MP24069",
+					"name": "Fire Red",
+					"hex": "#EF3B23",
+					"lrv": 17.2
+				},
+				{
+					"code": "MP26434",
+					"name": "Tangerine",
+					"hex": "#F04923",
+					"lrv": 20.8
+				},
+				{
+					"code": "MP58765",
+					"name": "Persimmon",
+					"hex": "#B61E23",
+					"lrv": 15
+				},
+				{
+					"code": "MP29732",
+					"name": "Napa Merlot",
+					"hex": "#7A0E2F",
+					"lrv": 9.6
+				},
+				{
+					"code": "MP25248",
+					"name": "Rose Magenta",
+					"hex": "#871440",
+					"lrv": 10.9
+				},
+				{
+					"code": "MP26452",
+					"name": "Cerise Lipstick",
+					"hex": "#BE1E5D",
+					"lrv": 16.9
+				},
+				{
+					"code": "MP29653",
+					"name": "Navel Orange",
+					"hex": "#ED7E22",
+					"lrv": 32.7
+				},
+				{
+					"code": "MP29633",
+					"name": "Fiesta Orange",
+					"hex": "#F36F21",
+					"lrv": 33.1
+				},
+				{
+					"code": "MP23906",
+					"name": "Bright Orange",
+					"hex": "#F15D22",
+					"lrv": 28.1
+				},
+				{
+					"code": "MP28239",
+					"name": "Orange Flare",
+					"hex": "#E25225",
+					"lrv": 24.6
+				},
+				{
+					"code": "MP56966",
+					"name": "Orange County",
+					"hex": "#EB3E24",
+					"lrv": 22.9
+				},
+				{
+					"code": "MP58094",
+					"name": "Peach Blossom",
+					"hex": "#C95847",
+					"lrv": 26.5
+				},
+				{
+					"code": "MP29496",
+					"name": "Apricot",
+					"hex": "#EF7F57",
+					"lrv": 37.8
+				},
+				{
+					"code": "MP29214",
+					"name": "Coral",
+					"hex": "#F26141",
+					"lrv": 31.3
+				},
+				{
+					"code": "MP25616",
+					"name": "Salmon",
+					"hex": "#F6938A",
+					"lrv": 44.6
+				},
+				{
+					"code": "MP10211",
+					"name": "Citrus Yellow",
+					"hex": "#FFE100",
+					"lrv": 62.9
+				},
+				{
+					"code": "MP29464",
+					"name": "Jonquil Yellow",
+					"hex": "#FDEF38",
+					"lrv": 72.1
+				},
+				{
+					"code": "MP29545",
+					"name": "Citron Glace",
+					"hex": "#FBF06E",
+					"lrv": 79.4
+				},
+				{
+					"code": "MP25026",
+					"name": "Chartreuse Yellow",
+					"hex": "#E4D81B",
+					"lrv": 56.5
+				},
+				{
+					"code": "MP25890",
+					"name": "Yellow Petal",
+					"hex": "#E5E652",
+					"lrv": 64.5
+				},
+				{
+					"code": "MP55149",
+					"name": "Schoolbus Yellow",
+					"hex": "#F1A71E",
+					"lrv": 39.3
+				},
+				{
+					"code": "MP28240",
+					"name": "Yellow Corn",
+					"hex": "#F8BF14",
+					"lrv": 49.2
+				},
+				{
+					"code": "MP28153",
+					"name": "Mustard",
+					"hex": "#E2A625",
+					"lrv": 41.8
+				},
+				{
+					"code": "MP26406",
+					"name": "Pastel Orange",
+					"hex": "#FBAC36",
+					"lrv": 49.6
+				},
+				{
+					"code": "MP25900",
+					"name": "Canterbury Cream",
+					"hex": "#FFF9C0",
+					"lrv": 77.5
+				},
+				{
+					"code": "MP24510",
+					"name": "Deep Green",
+					"hex": "#00100E",
+					"lrv": 6.4
+				},
+				{
+					"code": "MP55690",
+					"name": "Forest Green",
+					"hex": "#00351C",
+					"lrv": 6.9
+				},
+				{
+					"code": "MP24502",
+					"name": "Country Club Green",
+					"hex": "#00674D",
+					"lrv": 17.5
+				},
+				{
+					"code": "MP25066",
+					"name": "Green Jewel",
+					"hex": "#008D45",
+					"lrv": 21.4
+				},
+				{
+					"code": "MP58098",
+					"name": "Sea Green",
+					"hex": "#55BE8D",
+					"lrv": 35.4
+				},
+				{
+					"code": "MP56060",
+					"name": "Prickly Pear",
+					"hex": "#3C471D",
+					"lrv": 8
+				},
+				{
+					"code": "MP25899",
+					"name": "Kryptonite Green",
+					"hex": "#359444",
+					"lrv": 21.7
+				},
+				{
+					"code": "MP26749",
+					"name": "Spring Green",
+					"hex": "#4CB748",
+					"lrv": 28.3
+				},
+				{
+					"code": "MP28434",
+					"name": "Granny Smith",
+					"hex": "#8AC63F",
+					"lrv": 39
+				},
+				{
+					"code": "MP55396",
+					"name": "Moonlit Pond",
+					"hex": "#002030",
+					"lrv": 8.4
+				},
+				{
+					"code": "MP25771",
+					"name": "Bayou Blue",
+					"hex": "#00596F",
+					"lrv": 15
+				},
+				{
+					"code": "MP24340",
+					"name": "Mardi Gras Teal",
+					"hex": "#3095A4",
+					"lrv": 27.8
+				},
+				{
+					"code": "MP29439",
+					"name": "Tropic Turquoise",
+					"hex": "#32A59B",
+					"lrv": 31.4
+				},
+				{
+					"code": "MP25837",
+					"name": "Stormy Blue",
+					"hex": "#061524",
+					"lrv": 6.8
+				},
+				{
+					"code": "MP23708",
+					"name": "North Sea Blue",
+					"hex": "#44647F",
+					"lrv": 17.2
+				},
+				{
+					"code": "MP56851",
+					"name": "Blue Smoke",
+					"hex": "#587B9A",
+					"lrv": 24.1
+				},
+				{
+					"code": "MP20498",
+					"name": "Mediterranean Sky",
+					"hex": "#ACC3D2",
+					"lrv": 51.7
+				},
+				{
+					"code": "MP43348",
+					"name": "Lake George",
+					"hex": "#E5F0F2",
+					"lrv": 71
+				},
+				{
+					"code": "MP55697",
+					"name": "Bluest Blue",
+					"hex": "#11215A",
+					"lrv": 6.8
+				},
+				{
+					"code": "MP25808",
+					"name": "Bicycle Blue",
+					"hex": "#204085",
+					"lrv": 10.6
+				},
+				{
+					"code": "MP28073",
+					"name": "American Blue",
+					"hex": "#0D4AA0",
+					"lrv": 13.9
+				},
+				{
+					"code": "MP24100",
+					"name": "Electrical Blue",
+					"hex": "#498FCC",
+					"lrv": 31.1
+				},
+				{
+					"code": "MP55795",
+					"name": "Bluetooth",
+					"hex": "#001644",
+					"lrv": 6.7
+				},
+				{
+					"code": "MP29320",
+					"name": "Marina Blue",
+					"hex": "#284BA0",
+					"lrv": 14
+				},
+				{
+					"code": "MP25956",
+					"name": "Royal Purple",
+					"hex": "#1D1D5D",
+					"lrv": 7.4
+				},
+				{
+					"code": "MP30493",
+					"name": "Scandinavian Blue",
+					"hex": "#2D3385",
+					"lrv": 9.6
+				},
+				{
+					"code": "MP25854",
+					"name": "Lily Morada",
+					"hex": "#6C72A8",
+					"lrv": 22.8
+				},
+				{
+					"code": "MP25834",
+					"name": "Taco Bell Violet 2",
+					"hex": "#1B094C",
+					"lrv": 7.4
+				},
+				{
+					"code": "MP25542",
+					"name": "Amethyst Violet",
+					"hex": "#492874",
+					"lrv": 10.2
+				},
+				{
+					"code": "MP25502",
+					"name": "Very Violet",
+					"hex": "#5E59A6",
+					"lrv": 18.7
+				},
+				{
+					"code": "MP25550",
+					"name": "Deep Purple",
+					"hex": "#3C0F4F",
+					"lrv": 7.8
+				},
+				{
+					"code": "MP25867",
+					"name": "Graceful Grape",
+					"hex": "#8E639D",
+					"lrv": 22.7
+				},
+				{
+					"code": "MP29705",
+					"name": "Grape Jello",
+					"hex": "#631955",
+					"lrv": 10.3
+				},
+				{
+					"code": "MP23446",
+					"name": "Country Red",
+					"hex": "#682910",
+					"lrv": 7.8
+				},
+				{
+					"code": "MP23647",
+					"name": "Fire Weed Red",
+					"hex": "#A55747",
+					"lrv": 15.2
+				},
+				{
+					"code": "MP22823",
+					"name": "Savannah Clay",
+					"hex": "#D49879",
+					"lrv": 29.6
+				},
+				{
+					"code": "MP10217",
+					"name": "Rich Brown",
+					"hex": "#230D07",
+					"lrv": 5.8
+				},
+				{
+					"code": "MP25839",
+					"name": "Clay Basket Brown",
+					"hex": "#8D7D66",
+					"lrv": 19.5
+				},
+				{
+					"code": "MP12257",
+					"name": "Cabot Trail",
+					"hex": "#A69E85",
+					"lrv": 28.5
+				},
+				{
+					"code": "MP25849",
+					"name": "Durango Grey",
+					"hex": "#919486",
+					"lrv": 24.6
+				},
+				{
+					"code": "MP55840",
+					"name": "Cool Gray",
+					"hex": "#C8CBC4",
+					"lrv": 47.2
+				},
+				{
+					"code": "MP25829",
+					"name": "Taos Sand Beige",
+					"hex": "#ECD9AE",
+					"lrv": 60.6
+				},
+				{
+					"code": "MP25833",
+					"name": "Bone White",
+					"hex": "#F6F2D9",
+					"lrv": 68.7
+				},
+				{
+					"code": "MP55685",
+					"name": "Snowflake",
+					"hex": "#FFFEF4",
+					"lrv": 78.7
+				},
+				{
+					"code": "MP25836",
+					"name": "Cicada Grey",
+					"hex": "#9AB1AA",
+					"lrv": 32.8
+				},
+				{
+					"code": "MP34412",
+					"name": "Smoke Screen",
+					"hex": "#BECBCA",
+					"lrv": 47
+				}
+			]
+		},
+		{
+			"title": "Metallic Selections",
+			"colors": [
+				{
+					"code": "MP16771",
+					"name": "Champagne Grey Metallic",
+					"hex": "#A39E89",
+					"lrv": 43.9
+				},
+				{
+					"code": "MP33172",
+					"name": "Silver Surfer Metallic",
+					"hex": "#A7A79B",
+					"lrv": 57
+				},
+				{
+					"code": "MP41279",
+					"name": "Pale Bronze Metallic",
+					"hex": "#8D7E53",
+					"lrv": 30.9
+				},
+				{
+					"code": "MP28448",
+					"name": "Umbra Grey Metallic",
+					"hex": "#75776B",
+					"lrv": 31.5
+				},
+				{
+					"code": "MP55753",
+					"name": "Sunrise Silver Metallic",
+					"hex": "#BAB493",
+					"lrv": 54.3
+				},
+				{
+					"code": "MP32195",
+					"name": "Staid Gray Metallic",
+					"hex": "#4C4D41",
+					"lrv": 16.7
+				},
+				{
+					"code": "MP19757",
+					"name": "Burgundy Metallic",
+					"hex": "#572111",
+					"lrv": 9
+				},
+				{
+					"code": "MP19759",
+					"name": "Raspberry Metallic",
+					"hex": "#982541",
+					"lrv": 11.6
+				},
+				{
+					"code": "MP21843",
+					"name": "Old Orchid Metallic",
+					"hex": "#682C6D",
+					"lrv": 14.8
+				},
+				{
+					"code": "MP47128",
+					"name": "Rose Quartz Metallic",
+					"hex": "#A28F88",
+					"lrv": 44
+				},
+				{
+					"code": "MP27540",
+					"name": "Balsam Green Metallic",
+					"hex": "#002E1F",
+					"lrv": 10.5
+				},
+				{
+					"code": "MP30043",
+					"name": "Fern Green Metallic",
+					"hex": "#6D9C60",
+					"lrv": 30.5
+				},
+				{
+					"code": "MP42868",
+					"name": "Moss Green Metallic",
+					"hex": "#81907A",
+					"lrv": 42.4
+				},
+				{
+					"code": "MP50184",
+					"name": "Royal Blue Metallic",
+					"hex": "#0A1229",
+					"lrv": 5.4
+				},
+				{
+					"code": "MP24661",
+					"name": "Hapsburg Blue Metallic",
+					"hex": "#021A46",
+					"lrv": 7.8
+				},
+				{
+					"code": "MP45612",
+					"name": "Baby Blue Metallic",
+					"hex": "#7885A5",
+					"lrv": 37.2
+				}
+			]
+		},
+		{
+			"title": "Proseco Collection and Other Factory Mixed Colors",
+			"colors": [
+				{
+					"code": "48101SP",
+					"name": "Proseco Gold Standard",
+					"hex": "#C4C1B8",
+					"lrv": 61.2
+				},
+				{
+					"code": "48102SP",
+					"name": "Proseco Silver Rose",
+					"hex": "#B6ABA1",
+					"lrv": 58.8
+				},
+				{
+					"code": "48103SP",
+					"name": "Proseco Brass Alloy",
+					"hex": "#A9A892",
+					"lrv": 61.4
+				},
+				{
+					"code": "481042SP",
+					"name": "Proseco Polished Pewter",
+					"hex": "#909090",
+					"lrv": 40.8,
+					"note": "Printed as 481042SP on the chart."
+				},
+				{
+					"code": "48105SP",
+					"name": "Proseco Bronze Hint",
+					"hex": "#AF9F92",
+					"lrv": 54.2
+				},
+				{
+					"code": "48107SP",
+					"name": "Proseco Golden Glow",
+					"hex": "#AEA387",
+					"lrv": 60
+				},
+				{
+					"code": "48108SP",
+					"name": "Proseco Blue Steel",
+					"hex": "#9BA7B0",
+					"lrv": 44.4
+				},
+				{
+					"code": "42212SP",
+					"name": "Scarlet Red",
+					"hex": "#AA1B1F",
+					"lrv": 11.6
+				},
+				{
+					"code": "42214SP",
+					"name": "Mexicali Red",
+					"hex": "#6D0D0E",
+					"lrv": 9.4
+				},
+				{
+					"code": "42215SP",
+					"name": "Burgundy Maroon",
+					"hex": "#2E0E11",
+					"lrv": 6.4
+				},
+				{
+					"code": "42218SP",
+					"name": "Sundance Yellow",
+					"hex": "#F6C611"
+				},
+				{
+					"code": "42259SP",
+					"name": "Federal Green",
+					"hex": "#004F27",
+					"lrv": 12
+				},
+				{
+					"code": "42219SP",
+					"name": "Capri Blue",
+					"hex": "#021340",
+					"lrv": 7.3
+				},
+				{
+					"code": "SOA202SP",
+					"name": "Natural White",
+					"hex": "#FEFEFC",
+					"lrv": 89.3
+				},
+				{
+					"code": "6422SP",
+					"name": "Gloss Hi-Hide White",
+					"hex": "#F9FCFE",
+					"lrv": 91.7,
+					"note": "Shares its swatch with 6525SP / SVOC1304SP Satin Hi-Hide White, LRV 88.5 (starred on the chart)."
+				},
+				{
+					"code": "42204SP",
+					"name": "Gloss Black",
+					"hex": "#000101",
+					"lrv": 4.2
+				},
+				{
+					"code": "41335SP",
+					"name": "Anodic Black",
+					"hex": "#040502",
+					"lrv": 4.3,
+					"note": "Starred on the chart."
+				},
+				{
+					"code": "41306SP",
+					"name": "Signal Jet Black",
+					"hex": "#101A17",
+					"lrv": 4.2,
+					"note": "Starred on the chart."
+				},
+				{
+					"code": "41342SP",
+					"name": "Brushed Aluminum",
+					"hex": "#D4D6D7",
+					"lrv": 68.2,
+					"note": "Starred on the chart."
+				},
+				{
+					"code": "46258SP",
+					"name": "Tucson Gold",
+					"hex": "#C89F3A",
+					"lrv": 34.6
+				},
+				{
+					"code": "46253SP",
+					"name": "Copper",
+					"hex": "#C07733",
+					"lrv": 25.5
+				},
+				{
+					"code": "41312SP",
+					"name": "Medium Bronze",
+					"hex": "#7C6340",
+					"lrv": 14.8
+				},
+				{
+					"code": "41313SP",
+					"name": "Dark Bronze",
+					"hex": "#272010",
+					"lrv": 10.1
+				},
+				{
+					"code": "41314SP",
+					"name": "Old Copper",
+					"hex": "#3D2F18",
+					"lrv": 11.6
+				},
+				{
+					"code": "46400SP",
+					"name": "Brilliant Gold",
+					"hex": "#E1C452",
+					"lrv": 55.5,
+					"note": "Sprayed over MP28645 base color. Starred on the chart."
+				},
+				{
+					"code": "46401SP",
+					"name": "Aztec Gold",
+					"hex": "#DB9E46",
+					"lrv": 39.7,
+					"note": "Sprayed over MP34132 base color. Starred on the chart."
+				},
+				{
+					"code": "46402SP",
+					"name": "Aztec Copper",
+					"hex": "#BA5E2C",
+					"lrv": 19.4,
+					"note": "Sprayed over MP32759 base color. Starred on the chart."
+				}
+			]
+		}
+	]
+}

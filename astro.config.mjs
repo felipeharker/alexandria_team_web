@@ -96,63 +96,70 @@ export default defineConfig({
 						{ label: 'Material Library', slug: 'materials/guide' },
 					],
 				},
-				// The tools by category, as on the home page (user, 2026-11-11). Each opens with its category's
-				// page (tools/*.mdx, the home section's Details link). The web tools open themselves; the Rhino and
-				// Grasshopper packages open on their sections of the category page, as their quick guides already
-				// have entries above and a page with two entries would open two groups.
+				// The tools, under one heading with a group per category, as on the home page (user, 2026-11-11 and
+				// 2026-11-17). Each category opens with its page (tools/*.mdx, the home section's Details link). The web
+				// tools open themselves; the Rhino and Grasshopper packages open on their sections of the category page,
+				// as their quick guides already have entries above and a page with two entries would open two groups.
 				{
-					label: 'Rhino/Grasshopper Tools',
+					label: 'Tools',
 					collapsed: true,
 					items: [
-						{ label: 'Overview', slug: 'tools/rhino-grasshopper' },
-						{ label: 'Alexandria Tools', link: '/tools/rhino-grasshopper/#alexandria-tools' },
-						{ label: 'Alexandria Phoenix', link: '/tools/rhino-grasshopper/#alexandria-phoenix' },
+						{
+							label: 'Rhino/Grasshopper',
+							collapsed: true,
+							items: [
+								{ label: 'Overview', slug: 'tools/rhino-grasshopper' },
+								{ label: 'Alexandria Tools', link: '/tools/rhino-grasshopper/#alexandria-tools' },
+								{ label: 'Alexandria Phoenix', link: '/tools/rhino-grasshopper/#alexandria-phoenix' },
+							],
+						},
+						{
+							label: 'Design',
+							collapsed: true,
+							items: [
+								{ label: 'Overview', slug: 'tools/design' },
+								{ label: 'Site Plan', link: '/site-plan/' },
+								{ label: 'Vectorizer', link: '/vectorizer/' },
+								{ label: 'Braille Lettering Designer', link: '/braille/' },
+								// new, and its DWG hasn't been opened in AutoCAD yet
+								{ label: 'Sign Package Maker', link: '/sign-package/', badge: 'Beta' },
+							],
+						},
+						{
+							label: 'Parametric',
+							collapsed: true,
+							// split from Design Tools (user, 2026-11-17): grids of cells, each sized by a rule
+							items: [
+								{ label: 'Overview', slug: 'tools/parametric' },
+								{ label: 'Parametric Grid', link: '/grid/' },
+								// new
+								{ label: 'Image Grid', link: '/image-grid/', badge: 'Beta' },
+							],
+						},
+						{
+							label: 'Fabrication',
+							collapsed: true,
+							items: [
+								{ label: 'Overview', slug: 'tools/fabrication' },
+								{ label: 'Color Matcher', link: '/colors/' },
+								{ label: 'Color Library', link: '/colors/library/' },
+								// still being built
+								{ label: 'Material Estimator', link: '/estimator/', badge: 'Beta' },
+								// still being filled in
+								{ label: 'Material Library', link: '/materials/', badge: 'Beta' },
+							],
+						},
+						{
+							label: 'Permitting',
+							collapsed: true,
+							// a category with no tools yet (user, 2026-11-12); its one entry is a placeholder page
+							items: [{ label: 'Under Development', slug: 'tools/permitting' }],
+						},
 					],
 				},
 				{
-					label: 'Design Tools',
-					collapsed: true,
-					items: [
-						{ label: 'Overview', slug: 'tools/design' },
-						{ label: 'Site Plan', link: '/site-plan/' },
-						{ label: 'Vectorizer', link: '/vectorizer/' },
-						{ label: 'Braille Lettering Designer', link: '/braille/' },
-						// new, and its DWG hasn't been opened in AutoCAD yet
-						{ label: 'Sign Package Maker', link: '/sign-package/', badge: 'Beta' },
-					],
-				},
-				{
-					label: 'Parametric Tools',
-					collapsed: true,
-					// split from Design Tools (user, 2026-11-17): grids of cells, each sized by a rule
-					items: [
-						{ label: 'Overview', slug: 'tools/parametric' },
-						{ label: 'Parametric Grid', link: '/grid/' },
-						// new
-						{ label: 'Image Grid', link: '/image-grid/', badge: 'Beta' },
-					],
-				},
-				{
-					label: 'Fabrication Tools',
-					collapsed: true,
-					items: [
-						{ label: 'Overview', slug: 'tools/fabrication' },
-						{ label: 'Color Matcher', link: '/colors/' },
-						{ label: 'Color Library', link: '/colors/library/' },
-						// still being built
-						{ label: 'Material Estimator', link: '/estimator/', badge: 'Beta' },
-						// still being filled in
-						{ label: 'Material Library', link: '/materials/', badge: 'Beta' },
-					],
-				},
-				{
-					label: 'Permitting Tools',
-					collapsed: true,
-					// a fourth category with no tools yet (user, 2026-11-12); its one entry is a placeholder page
-					items: [{ label: 'Under Development', slug: 'tools/permitting' }],
-				},
-				{
-					label: 'CSV Templates',
+					// "CSV Templates" until 2026-11-17 (user): the pages keep their names, as each is still a CSV file
+					label: 'Templates',
 					collapsed: true,
 					items: [
 						{ label: 'Material Estimator', slug: 'templates/estimator' },
@@ -169,7 +176,22 @@ export default defineConfig({
 				{
 					label: 'Wiki',
 					collapsed: true,
-					items: [{ label: 'Typical Signage Types', slug: 'wiki/signage-types' }],
+					items: [
+						{ label: 'Typical Signage Types', slug: 'wiki/signage-types' },
+						// One page per supplier, all with the same sections (wiki/suppliers/*.mdx): paint and colour first,
+						// then film, then metal. Their charts come from the suppliers' own documents (tools/suppliers/extract.py).
+						{
+							label: 'Suppliers',
+							collapsed: true,
+							items: [
+								{ label: 'Matthews Paint', slug: 'wiki/suppliers/matthews-paint' },
+								{ label: 'Sherwin-Williams', slug: 'wiki/suppliers/sherwin-williams' },
+								{ label: 'Pantone', slug: 'wiki/suppliers/pantone' },
+								{ label: '3M Films', slug: 'wiki/suppliers/3m' },
+								{ label: 'Eastern Metal Supply', slug: 'wiki/suppliers/eastern-metal-supply' },
+							],
+						},
+					],
 				},
 				{
 					label: 'Documentation',
