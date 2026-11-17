@@ -1,0 +1,98 @@
+---
+// A supplier's chart on a Wiki page (wiki/suppliers/*.mdx): one group of src/suppliers/<file>.json as a table, with a
+// swatch per row where the rows have a colour. tools/suppliers/extract.py reads the JSON out of the suppliers' own
+// documents. A long table gets a box to find a row in and scrolls inside its own frame, so the page stays short.
+import matthews from '../suppliers/matthews.json';
+import pantone from '../suppliers/pantone.json';
+import sherwin from '../suppliers/sherwin-williams.json';
+import films from '../suppliers/3m.json';
+import eastern from '../suppliers/eastern-metal-supply.json';
+
+type Row = Record<string, string | number | undefined>;
+type Group = { title: string; colors?: Row[]; rows?: Row[] };
+const files: Record<string, { groups: Group[] }> = {
+	matthews,
+	pantone,
+	'sherwin-williams': sherwin,
+	'3m': films,
+	'eastern-metal-supply': eastern,
+};
+
+interface Props {
+	/** the JSON file's name, without .json */
+	from: string;
+	/** the group's title in that file */
+	group: string;
+	/** the columns, in order: a row's key and the heading over it; `mono` sets it as a code, `end` aligns it right */
+	columns: { key: string; label: string; mono?: boolean; end?: boolean }[];
+	/** put before every code, such as the film's series */
+	prefix?: string;
+}
+const { from, group, columns, prefix = '' } = Astro.props;
+const found = files[from]?.groups.find((g) => g.title === group);
+if (!found) throw new Error(`SupplierChart: no "${group}" in src/suppliers/${from}.json; run tools/suppliers/extract.py`);
+const rows = found.colors ?? found.rows ?? [];
+const swatches = rows.some((row) => row.hex);
+const long = rows.length > 40;
+const text = (row: Row, key: string) => (key === 'code' ? prefix : '') + (row[key] ?? '');
+---
+
+<div class:list={['ax-chart', 'not-content', { 'ax-chart-long': long }]}>
+	{
+		long && (
+			<label class="ax-chart-find">
+				<span>Find</span>
+				<input type="search" placeholder="A code or a name" autocomplete="off" spellcheck="false" />
+				<output aria-live="polite">{rows.length.toLocaleString('en-US')} rows</output>
+			</label>
+		)
+	}
+	<div class="ax-chart-scroll" tabindex={long ? 0 : undefined}>
+		<table>
+			<thead>
+				<tr>
+					{swatches && <th class="swatch"><span class="sr-only">Swatch</span></th>}
+					{columns.map((column) => <th class:list={{ end: column.end }}>{column.label}</th>)}
+				</tr>
+			</thead>
+			<tbody>
+				{
+					rows.map((row) => (
+						<tr data-find={columns.map((column) => text(row, column.key)).join(' ').toLowerCase()}>
+							{swatches && (
+								<td class="swatch">
+									<i style={row.hex ? `background:${row.hex}` : undefined} />
+								</td>
+							)}
+							{columns.map((column) => (
+								<td class:list={{ mono: column.mono, end: column.end }}>{text(row, column.key)}</td>
+							))}
+						</tr>
+					))
+				}
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<script>
+	// the Find box: show the rows holding every word typed, and say how many
+	for (const chart of document.querySelectorAll('.ax-chart-long')) {
+		const input = chart.querySelector('input');
+		const count = chart.querySelector('output');
+		const rows = [...chart.querySelectorAll<HTMLTableRowElement>('tbody tr')];
+		if (!input || !count) continue;
+		const all = count.textContent;
+		input.addEventListener('input', () => {
+			const words = input.value.toLowerCase().split(/\s+/).filter(Boolean);
+			let shown = 0;
+			for (const row of rows) {
+				const find = row.dataset.find || '';
+				const hit = words.every((word) => find.includes(word));
+				row.hidden = !hit;
+				if (hit) shown += 1;
+			}
+			count.textContent = words.length ? `${shown.toLocaleString('en-US')} of ${rows.length.toLocaleString('en-US')}` : all;
+		});
+	}
+</script>

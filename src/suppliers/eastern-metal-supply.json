@@ -1,0 +1,1460 @@
+{
+	"groups": [
+		{
+			"title": "5052-H32 Mill Finish",
+			"rows": [
+				{
+					"code": "50-03-103",
+					"size": ".032 x 48 x 120",
+					"weight": "17.88"
+				},
+				{
+					"code": "50-03-135",
+					"size": ".032 x 48 x 144",
+					"weight": "21.456"
+				},
+				{
+					"code": "50-03-137",
+					"size": ".040 x 48 x 120",
+					"weight": "22.35"
+				},
+				{
+					"code": "50-03-137LPVC",
+					"size": ".040 x 48 x 120 (Laser PVC)",
+					"weight": "22.35"
+				},
+				{
+					"code": "50-03-140",
+					"size": ".040 x 48 x 144",
+					"weight": "26.83"
+				},
+				{
+					"code": "50-03-487",
+					"size": ".050 x 48 x 120",
+					"weight": "27.92"
+				},
+				{
+					"code": "50-03-144",
+					"size": ".050 x 60 x 144",
+					"weight": "41.88"
+				},
+				{
+					"code": "50-03-144PVC",
+					"size": ".050 x 60 x 144 (PVC One Side)",
+					"weight": "41.88"
+				},
+				{
+					"code": "50-03-146",
+					"size": ".063 x 48 x 96",
+					"weight": "28.16"
+				},
+				{
+					"code": "50-03-149",
+					"size": ".063 x 48 x 120",
+					"weight": "35.2"
+				},
+				{
+					"code": "50-03-150",
+					"size": ".063 x 48 x 144",
+					"weight": "42.24"
+				},
+				{
+					"code": "50-03-150PVC",
+					"size": ".063 x 48 x 144 (PVC One Side)",
+					"weight": "42.24"
+				},
+				{
+					"code": "50-03-154",
+					"size": ".063 x 60 x 120",
+					"weight": "44"
+				},
+				{
+					"code": "50-03-155",
+					"size": ".063 x 60 x 144",
+					"weight": "52.8"
+				},
+				{
+					"code": "50-03-155PVC",
+					"size": ".063 x 60 x 144 (PVC One Side)",
+					"weight": "52.8"
+				},
+				{
+					"code": "50-03-161",
+					"size": ".080 x 48 x 96",
+					"weight": "35.52"
+				},
+				{
+					"code": "50-03-159",
+					"size": ".080 x 48 x 120",
+					"weight": "44.4"
+				},
+				{
+					"code": "50-03-160",
+					"size": ".080 x 48 x 144",
+					"weight": "53.28"
+				},
+				{
+					"code": "50-03-760",
+					"size": ".080 x 60 x 96",
+					"weight": "44.4"
+				},
+				{
+					"code": "50-03-792",
+					"size": ".080 x 60 x 120",
+					"weight": "55.5"
+				},
+				{
+					"code": "50-03-158",
+					"size": ".080 x 60 x 144",
+					"weight": "66.6"
+				},
+				{
+					"code": "50-03-600",
+					"size": ".080 x 72 x 120",
+					"weight": "66.6"
+				},
+				{
+					"code": "50-03-630",
+					"size": ".080 x 72 x 144",
+					"weight": "79.92"
+				},
+				{
+					"code": "50-03-168",
+					"size": ".090 x 48 x 96",
+					"weight": "40.32"
+				},
+				{
+					"code": "50-03-164",
+					"size": ".090 x 48 x 120",
+					"weight": "50.4"
+				},
+				{
+					"code": "50-03-164PVC",
+					"size": ".090 x 48 x 120 (PVC One Side)",
+					"weight": "50.4"
+				},
+				{
+					"code": "50-03-165",
+					"size": ".090 x 48 x 144",
+					"weight": "60.48"
+				},
+				{
+					"code": "50-03-358",
+					"size": ".090 x 60 x 96",
+					"weight": "50.4"
+				},
+				{
+					"code": "50-03-368",
+					"size": ".090 x 60 x 120",
+					"weight": "63"
+				},
+				{
+					"code": "50-03-170",
+					"size": ".090 x 60 x 144",
+					"weight": "75.6"
+				},
+				{
+					"code": "50-03-171",
+					"size": ".090 x 72 x 144",
+					"weight": "90.72"
+				},
+				{
+					"code": "50-03-369",
+					"size": ".100 x 48 x 120",
+					"weight": "55.88"
+				},
+				{
+					"code": "50-03-100596",
+					"size": ".100 x 60 x 96",
+					"weight": "55.88"
+				},
+				{
+					"code": "50-03-100510",
+					"size": ".100 x 60 x 120",
+					"weight": "69.85"
+				},
+				{
+					"code": "50-03-173",
+					"size": ".125 x 48 x 96",
+					"weight": "56"
+				},
+				{
+					"code": "50-03-173PVC",
+					"size": ".125 x 48 x 96 (PVC One Side)",
+					"weight": "56"
+				},
+				{
+					"code": "50-03-174",
+					"size": ".125 x 48 x 120",
+					"weight": "70"
+				},
+				{
+					"code": "50-03-174PVC",
+					"size": ".125 x 48 x 120 (PVC One Side)",
+					"weight": "70"
+				},
+				{
+					"code": "50-03-175",
+					"size": ".125 x 48 x 144",
+					"weight": "84"
+				},
+				{
+					"code": "50-03-175PVC",
+					"size": ".125 x 48 x 144 (PVC One Side)",
+					"weight": "84"
+				},
+				{
+					"code": "50-03-176",
+					"size": ".125 x 48 x 168 (PVC One Side)",
+					"weight": "98"
+				},
+				{
+					"code": "50-03-178",
+					"size": ".125 x 48 x 192 (PVC One Side)",
+					"weight": "112"
+				},
+				{
+					"code": "50-03-12548240",
+					"size": ".125 x 48 x 240",
+					"weight": "140"
+				},
+				{
+					"code": "50-03-179",
+					"size": ".125 x 60 x 96",
+					"weight": "70"
+				},
+				{
+					"code": "50-03-177",
+					"size": ".125 x 60 x 96",
+					"weight": "70"
+				},
+				{
+					"code": "50-03-962",
+					"size": ".125 x 60 x 96",
+					"weight": "70"
+				},
+				{
+					"code": "50-03-181",
+					"size": ".125 x 60 x 120",
+					"weight": "87.5"
+				},
+				{
+					"code": "50-03-180",
+					"size": ".125 x 60 x 144",
+					"weight": "105"
+				},
+				{
+					"code": "50-03-182",
+					"size": ".125 x 60 x 192 (PVC One Side)",
+					"weight": "140"
+				},
+				{
+					"code": "50-03-12572120",
+					"size": ".125 x 72 x 120",
+					"weight": "105"
+				},
+				{
+					"code": "50-03-652",
+					"size": ".125 x 72 x 120",
+					"weight": "105"
+				},
+				{
+					"code": "50-03-184",
+					"size": ".125 x 72 x 144",
+					"weight": "126"
+				},
+				{
+					"code": "50-5052-4896",
+					"size": ".190 x 48 x 96",
+					"weight": "85.12"
+				},
+				{
+					"code": "50-03-189",
+					"size": ".190 x 48 x 96",
+					"weight": "85.12"
+				},
+				{
+					"code": "50-52-48120",
+					"size": ".190 x 48 x 120",
+					"weight": "106.4"
+				},
+				{
+					"code": "50-03-183",
+					"size": ".190 x 48 x 120",
+					"weight": "106.4"
+				},
+				{
+					"code": "50-03-185",
+					"size": ".190 x 48 x 144",
+					"weight": "127.68"
+				},
+				{
+					"code": "50-03-1906096",
+					"size": ".190 x 60 x 96",
+					"weight": "106.4"
+				},
+				{
+					"code": "50-03-186",
+					"size": ".190 x 60 x 120",
+					"weight": "133"
+				},
+				{
+					"code": "50-03-215",
+					"size": ".190 x 60 x 120",
+					"weight": "133"
+				},
+				{
+					"code": "50-03-187",
+					"size": ".190 x 60 x 144",
+					"weight": "159.6"
+				},
+				{
+					"code": "50-03-19072144",
+					"size": ".190 x 72 x 144",
+					"weight": "191.52"
+				},
+				{
+					"code": "50-03-189 NC",
+					"size": ".190 x 72 x 144",
+					"weight": "191.52"
+				},
+				{
+					"code": "50-03-300",
+					"size": ".250 x 48 x 96",
+					"weight": "111.68"
+				},
+				{
+					"code": "50-03-188",
+					"size": ".250 x 48 x 120",
+					"weight": "139.6"
+				},
+				{
+					"code": "50-03-190",
+					"size": ".250 x 48 x 144",
+					"weight": "167.52"
+				},
+				{
+					"code": "50-03-617",
+					"size": ".250 x 60 x 120",
+					"weight": "174.5"
+				},
+				{
+					"code": "50-52-60120",
+					"size": ".250 x 60 x 120",
+					"weight": "174.5"
+				},
+				{
+					"code": "50-03-191",
+					"size": ".250 x 60 x 144",
+					"weight": "209.4"
+				},
+				{
+					"code": "50-5052-375",
+					"size": ".375 x 48 x 96",
+					"weight": "167.68"
+				},
+				{
+					"code": "50-03-031",
+					"size": ".375 x 48 x 96",
+					"weight": "167.68"
+				},
+				{
+					"code": "50-00-48144",
+					"size": ".375 x 48 x 144",
+					"weight": "251.52"
+				},
+				{
+					"code": "50-00-60120",
+					"size": ".375 x 60 x 120",
+					"weight": "262"
+				},
+				{
+					"code": "50-03-688",
+					"size": ".500 x 48 x 96",
+					"weight": "223.36"
+				},
+				{
+					"code": "50-03-647",
+					"size": ".500 x 48 x 144",
+					"weight": "335.04"
+				},
+				{
+					"code": "50-03-50060120",
+					"size": ".500 x 60 x 120",
+					"weight": "349"
+				},
+				{
+					"code": "50-03-50060144",
+					"size": ".500 x 60 x 144",
+					"weight": "418.8"
+				}
+			]
+		},
+		{
+			"title": "3003-H14 Mill Finish",
+			"rows": [
+				{
+					"code": "50-03-090",
+					"size": ".032 x 48 x 96",
+					"weight": "14.59"
+				},
+				{
+					"code": "50-03-100",
+					"size": ".032 x 48 x 120",
+					"weight": "18.24"
+				},
+				{
+					"code": "50-03-104",
+					"size": ".040 x 48 x 96",
+					"weight": "18.24"
+				},
+				{
+					"code": "50-03-105",
+					"size": ".040 x 48 x 120",
+					"weight": "22.80"
+				},
+				{
+					"code": "50-03-109",
+					"size": ".050 x 48 x 96",
+					"weight": "22.816"
+				},
+				{
+					"code": "50-03-110",
+					"size": ".050 x 48 x 120",
+					"weight": "28.52"
+				},
+				{
+					"code": "50-03-110PVC",
+					"size": ".050 x 48 x 120 (PVC One Side)",
+					"weight": "28.52"
+				},
+				{
+					"code": "50-03-114",
+					"size": ".063 x 48 x 96",
+					"weight": "28.736"
+				},
+				{
+					"code": "50-03-114PVC",
+					"size": ".063 x 48 x 96 (PVC One Side)",
+					"weight": "28.736"
+				},
+				{
+					"code": "50-03-115",
+					"size": ".063 x 48 x 120",
+					"weight": "35.92"
+				},
+				{
+					"code": "50-03-120",
+					"size": ".063 x 48 x 144",
+					"weight": "43.10"
+				},
+				{
+					"code": "88-00-263",
+					"size": ".063 x 60 x 120",
+					"weight": "44.90"
+				},
+				{
+					"code": "88-00-634",
+					"size": ".063 x 60 x 144",
+					"weight": "53.88"
+				},
+				{
+					"code": "50-03-124",
+					"size": ".080 x 48 x 96",
+					"weight": "36.48"
+				},
+				{
+					"code": "50-03-125",
+					"size": ".080 x 48 x 120",
+					"weight": "45.60"
+				},
+				{
+					"code": "50-03-126",
+					"size": ".080 x 48 x 144",
+					"weight": "54.76"
+				},
+				{
+					"code": "50-03-214",
+					"size": ".080 x 60 x 120",
+					"weight": "57.00"
+				},
+				{
+					"code": "50-03-304",
+					"size": ".080 x 60 x 144",
+					"weight": "68.40"
+				},
+				{
+					"code": "50-03-780",
+					"size": ".080 x 72 x 144",
+					"weight": "82.08"
+				},
+				{
+					"code": "50-03-129",
+					"size": ".090 x 48 x 96",
+					"weight": "41.28"
+				},
+				{
+					"code": "50-03-163",
+					"size": ".090 x 48 x 96",
+					"weight": "41.28"
+				},
+				{
+					"code": "50-03-130",
+					"size": ".090 x 48 x 120",
+					"weight": "51.60"
+				},
+				{
+					"code": "50-03-767",
+					"size": ".090 x 48 x 144",
+					"weight": "61.92"
+				},
+				{
+					"code": "88-00-367",
+					"size": ".090 x 60 x 120",
+					"weight": "64.50"
+				},
+				{
+					"code": "88-00-240",
+					"size": ".090 x 60 x 144",
+					"weight": "77.40"
+				},
+				{
+					"code": "50-03-113",
+					"size": ".100 x 48 x 120",
+					"weight": "57.04"
+				},
+				{
+					"code": "50-03-132",
+					"size": ".125 x 48 x 96",
+					"weight": "56.96"
+				},
+				{
+					"code": "50-03-096",
+					"size": ".125 x 48 x 96",
+					"weight": "56.96"
+				},
+				{
+					"code": "50-03-132PVC",
+					"size": ".125 x 48 x 96 (PVC One Side)",
+					"weight": "56.96"
+				},
+				{
+					"code": "50-03-131",
+					"size": ".125 x 48 x 120",
+					"weight": "71.20"
+				},
+				{
+					"code": "50-03-131PVC",
+					"size": ".125 x 48 x 120 (PVC One Side)",
+					"weight": "71.20"
+				},
+				{
+					"code": "50-03-039",
+					"size": ".125 x 48 x 144",
+					"weight": "85.44"
+				},
+				{
+					"code": "51-00-48144",
+					"size": ".125 x 48 x 144",
+					"weight": "85.44"
+				},
+				{
+					"code": "88-00-666",
+					"size": ".125 x 60 x 120",
+					"weight": "89.00"
+				},
+				{
+					"code": "88-00-799",
+					"size": ".125 x 60 x 144",
+					"weight": "106.80"
+				},
+				{
+					"code": "88-00-220",
+					"size": ".125 x 72 x 144",
+					"weight": "128.16"
+				},
+				{
+					"code": "50-03-1339",
+					"size": ".1875 x 48 x 96",
+					"weight": "86.72"
+				},
+				{
+					"code": "50-03-1340",
+					"size": ".1875 x 48 x 120",
+					"weight": "108.4"
+				},
+				{
+					"code": "50-03-1360",
+					"size": ".1875 x 60 x 120",
+					"weight": "135.5"
+				},
+				{
+					"code": "50-03-1359",
+					"size": ".190 x 60 x 96",
+					"weight": "108.40"
+				},
+				{
+					"code": "50-03-1380",
+					"size": ".190 x 60 x 144",
+					"weight": "162.54"
+				},
+				{
+					"code": "50-03-222",
+					"size": ".250 x 48 x 96",
+					"weight": "113.92"
+				},
+				{
+					"code": "50-3003-48144",
+					"size": ".250 x 48 x 144",
+					"weight": "170.88"
+				}
+			]
+		},
+		{
+			"title": "6061-T6 Mill Finish",
+			"rows": [
+				{
+					"code": "50-03-533",
+					"size": ".063 x 48 x 144",
+					"weight": "42.50"
+				},
+				{
+					"code": "50-61-144",
+					"size": ".125 x 48 x 144",
+					"weight": "84.48"
+				},
+				{
+					"code": "50-6061-190",
+					"size": ".190 x 48 x 144",
+					"weight": "128.64"
+				},
+				{
+					"code": "50-61-2504896",
+					"size": ".250 x 48.5 x 96.5",
+					"weight": "114.82"
+				},
+				{
+					"code": "50-61-128",
+					"size": ".250 x 48.5 x 96.5",
+					"weight": "114.82"
+				},
+				{
+					"code": "50-6061-250",
+					"size": ".250 x 48.5 x 144.5",
+					"weight": "171.80"
+				},
+				{
+					"code": "50-60-4896",
+					"size": ".375 x 48.5 x 96.5",
+					"weight": "176.62"
+				},
+				{
+					"code": "50-61-120",
+					"size": ".375 x 48.5 x 96.5",
+					"weight": "177.00"
+				},
+				{
+					"code": "50-6061-375",
+					"size": ".375 x 48.5 x 144.5",
+					"weight": "257.94"
+				},
+				{
+					"code": "50-61-271",
+					"size": ".375 x 60.5 x 144.5",
+					"weight": "328.00"
+				},
+				{
+					"code": "50-61-048",
+					"size": ".500 x 48.5 x 96.5",
+					"weight": "232.00"
+				},
+				{
+					"code": "50-6061-500",
+					"size": ".500 x 48.5 x 144.5",
+					"weight": "343.11"
+				}
+			]
+		},
+		{
+			"title": "5005 Anodized, PVC One Side",
+			"rows": [
+				{
+					"code": "50-CA-99",
+					"size": ".032 x 48 x 96",
+					"weight": "14.45",
+					"finish": "Clear"
+				},
+				{
+					"code": "50-CA-100",
+					"size": ".032 x 48 x 120",
+					"weight": "18.00",
+					"finish": "Clear"
+				},
+				{
+					"code": "50-CA-104",
+					"size": ".040 x 48 x 96",
+					"weight": "17.98",
+					"finish": "Clear"
+				},
+				{
+					"code": "50-ANOD-140",
+					"size": ".040 x 48 x 96",
+					"weight": "17.98",
+					"finish": "Clear"
+				},
+				{
+					"code": "50-CA-105",
+					"size": ".040 x 48 x 120",
+					"weight": "22.80",
+					"finish": "Clear"
+				},
+				{
+					"code": "50-03-179 NC",
+					"size": ".040 x 48 x 120",
+					"weight": "22.80",
+					"finish": "Clear"
+				},
+				{
+					"code": "50-CL-105P",
+					"size": ".040 x 48 x 120",
+					"weight": "23.40",
+					"finish": "Clear"
+				},
+				{
+					"code": "50-CA-114",
+					"size": ".063 x 48 x 96",
+					"weight": "28.44",
+					"finish": "Clear"
+				},
+				{
+					"code": "50-CA-149",
+					"size": ".063 x 48 x 120",
+					"weight": "35.40",
+					"finish": "Clear"
+				},
+				{
+					"code": "50-CL-235P",
+					"size": ".063 x 48 x 120",
+					"weight": "35.40",
+					"finish": "Clear"
+				},
+				{
+					"code": "50-CA-150",
+					"size": ".063 x 48 x 144",
+					"weight": "42.70",
+					"finish": "Clear"
+				},
+				{
+					"code": "50-CA-125",
+					"size": ".080 x 48 x 120",
+					"weight": "45.60",
+					"finish": "Clear"
+				},
+				{
+					"code": "50-CA-131",
+					"size": ".125 x 48 x 120",
+					"weight": "70.40",
+					"finish": "Clear"
+				},
+				{
+					"code": "50-BRZ-317",
+					"size": ".040 x 48 x 120",
+					"weight": "23.00",
+					"finish": "Bronze"
+				},
+				{
+					"code": "50-LADB-105",
+					"size": ".040 x 48 x 120",
+					"weight": "22.80",
+					"finish": "Extra Dark"
+				}
+			]
+		},
+		{
+			"title": "5052-H38 Alodine Pretreated",
+			"rows": [
+				{
+					"code": "50-06-106",
+					"size": ".080 x 30 x 96",
+					"weight": "22.57"
+				},
+				{
+					"code": "50-06-107",
+					"size": ".080 x 30 x 120",
+					"weight": "28.22"
+				},
+				{
+					"code": "50-06-108",
+					"size": ".080 x 30 x 144",
+					"weight": "33.86"
+				},
+				{
+					"code": "50-06-109",
+					"size": ".080 x 36 x 96",
+					"weight": "27.09"
+				},
+				{
+					"code": "50-06-110",
+					"size": ".080 x 36 x 120",
+					"weight": "33.86"
+				},
+				{
+					"code": "50-06-111",
+					"size": ".080 x 36 x 144",
+					"weight": "40.64"
+				},
+				{
+					"code": "50-06-112A",
+					"size": ".080 x 48 x 96",
+					"weight": "36.13"
+				},
+				{
+					"code": "50-06-113A",
+					"size": ".080 x 48 x 120",
+					"weight": "46.10"
+				},
+				{
+					"code": "50-06-114",
+					"size": ".080 x 48 x 144",
+					"weight": "53.51"
+				},
+				{
+					"code": "50-06-115",
+					"size": ".125 x 30 x 96",
+					"weight": "35.28"
+				},
+				{
+					"code": "50-06-116",
+					"size": ".125 x 30 x 120",
+					"weight": "44.10"
+				},
+				{
+					"code": "50-06-117",
+					"size": ".125 x 30 x 144",
+					"weight": "52.92"
+				},
+				{
+					"code": "50-06-118",
+					"size": ".125 x 36 x 96",
+					"weight": "41.65"
+				},
+				{
+					"code": "50-06-119",
+					"size": ".125 x 36 x 120",
+					"weight": "52.07"
+				},
+				{
+					"code": "50-06-120",
+					"size": ".125 x 36 x 144",
+					"weight": "62.48"
+				},
+				{
+					"code": "50-06-121",
+					"size": ".125 x 48 x 96",
+					"weight": "56.44"
+				},
+				{
+					"code": "50-06-122",
+					"size": ".125 x 48 x 120",
+					"weight": "70.56"
+				},
+				{
+					"code": "50-06-123",
+					"size": ".125 x 48 x 144",
+					"weight": "84.67"
+				}
+			]
+		},
+		{
+			"title": "3003-H22/24 Tread Brite",
+			"rows": [
+				{
+					"code": "51-00-225",
+					"size": ".045 x 48 x 96",
+					"weight": "24.454"
+				},
+				{
+					"code": "51-00-230",
+					"size": ".045 x 48 x 120",
+					"weight": "30.56"
+				},
+				{
+					"code": "50-03-520",
+					"size": ".063 x 48 x 96",
+					"weight": "33.31"
+				},
+				{
+					"code": "50-03-220",
+					"size": ".063 x 48 x 120",
+					"weight": "42.80"
+				},
+				{
+					"code": "50-03-199",
+					"size": ".063 x 48 x 144",
+					"weight": "9.75"
+				},
+				{
+					"code": "50-03-250",
+					"size": ".080 x 48 x 84",
+					"weight": "36.17"
+				},
+				{
+					"code": "50-03-252",
+					"size": ".080 x 48 x 96",
+					"weight": "40.50"
+				},
+				{
+					"code": "50-03-251",
+					"size": ".080 x 48 x 120",
+					"weight": "51.668"
+				},
+				{
+					"code": "50-03-195",
+					"size": ".080 x 48 x 144",
+					"weight": "61.30"
+				},
+				{
+					"code": "50-03-203",
+					"size": ".100 x 48 x 96",
+					"weight": "46.03"
+				},
+				{
+					"code": "50-03-194",
+					"size": ".100 x 48 x 144",
+					"weight": "75.08"
+				},
+				{
+					"code": "50-03-198",
+					"size": ".125 x 48 x 96",
+					"weight": "61.46"
+				},
+				{
+					"code": "50-03-196",
+					"size": ".125 x 48 x 120",
+					"weight": "77.36"
+				},
+				{
+					"code": "51-00-193",
+					"size": ".125 x 48 x 144",
+					"weight": "92.19"
+				},
+				{
+					"code": "50-03-197",
+					"size": ".125 x 48 x 192",
+					"weight": "122.91"
+				},
+				{
+					"code": "50-03-204",
+					"size": ".125 x 60 x 120",
+					"weight": "96.708"
+				},
+				{
+					"code": "51-00-214",
+					"size": ".125 x 60 x 120",
+					"weight": "96.708"
+				},
+				{
+					"code": "50-00-198",
+					"size": ".125 x 60 x 144",
+					"weight": "112.80"
+				},
+				{
+					"code": "50-03-210",
+					"size": ".125 x 60 x 192",
+					"weight": "154.73"
+				},
+				{
+					"code": "50-03-578",
+					"size": ".190 x 48 x 96",
+					"weight": "91.24"
+				},
+				{
+					"code": "51-03-193",
+					"size": ".190 x 48 x 120",
+					"weight": "113.048"
+				},
+				{
+					"code": "51-00-235",
+					"size": ".190 x 48 x 120",
+					"weight": "112.91"
+				},
+				{
+					"code": "50-03-577",
+					"size": ".190 x 48 x 144",
+					"weight": "137.50"
+				},
+				{
+					"code": "50-03-193",
+					"size": ".190 x 48 x 192",
+					"weight": "182.48"
+				},
+				{
+					"code": "50-03-224",
+					"size": ".190 x 60 x 120",
+					"weight": "139.17"
+				},
+				{
+					"code": "50-03-226",
+					"size": ".190 x 60 x 144",
+					"weight": "171.07"
+				},
+				{
+					"code": "50-03-230",
+					"size": ".250 x 48 x 96",
+					"weight": "115.19"
+				},
+				{
+					"code": "50-03-231",
+					"size": ".250 x 48 x 120",
+					"weight": "143.99"
+				}
+			]
+		},
+		{
+			"title": "Painted Sheet, with PVC",
+			"rows": [
+				{
+					"code": "50-03-090W",
+					"size": ".032 x 48 x 96",
+					"weight": "14.60",
+					"finish": "White/White"
+				},
+				{
+					"code": "50-03-100W",
+					"size": ".032 x 48 x 120",
+					"weight": "18.25",
+					"finish": "White/White"
+				},
+				{
+					"code": "50-03-095W",
+					"size": ".032 x 48 x 144",
+					"weight": "22.66",
+					"finish": "White/White"
+				},
+				{
+					"code": "50-03-103W",
+					"size": ".040 x 48 x 96",
+					"weight": "18.25",
+					"finish": "White/White"
+				},
+				{
+					"code": "50-WH-108P",
+					"size": ".040 x 48 x 96",
+					"weight": "18.25",
+					"finish": "White/White"
+				},
+				{
+					"code": "50-03-105W",
+					"size": ".040 x 48 x 120",
+					"weight": "23.40",
+					"finish": "White/White"
+				},
+				{
+					"code": "50-WH-105P",
+					"size": ".040 x 48 x 120",
+					"weight": "23.40",
+					"finish": "White/White"
+				},
+				{
+					"code": "50-03-48144W",
+					"size": ".040 x 48 x 144",
+					"weight": "28.00",
+					"finish": "White/White"
+				},
+				{
+					"code": "50-WH-112",
+					"size": ".040 x 48 x 144",
+					"weight": "28.00",
+					"finish": "White/White"
+				},
+				{
+					"code": "50-WH-285P",
+					"size": ".040 x 48 x 144",
+					"weight": "28.00",
+					"finish": "White/White"
+				},
+				{
+					"code": "50-03-108W",
+					"size": ".040 x 60 x 120",
+					"weight": "28.22",
+					"finish": "White/White"
+				},
+				{
+					"code": "50-WH-236",
+					"size": ".040 x 60 x 120",
+					"weight": "28.22",
+					"finish": "White/White"
+				},
+				{
+					"code": "50-WH-109",
+					"size": ".050 x 48 x 96",
+					"weight": "23.02",
+					"finish": "White/White"
+				},
+				{
+					"code": "50-WH-109P",
+					"size": ".050 x 48 x 96",
+					"weight": "23.02",
+					"finish": "White/White"
+				},
+				{
+					"code": "50-03-110W",
+					"size": ".050 x 48 x 120",
+					"weight": "28.51",
+					"finish": "White/White"
+				},
+				{
+					"code": "50-WH-200P",
+					"size": ".050 x 48 x 120",
+					"weight": "28.51",
+					"finish": "White/White"
+				},
+				{
+					"code": "50-03-406",
+					"size": ".050 x 48 x 120",
+					"weight": "28.51",
+					"finish": "White/White"
+				},
+				{
+					"code": "50-WH-699",
+					"size": ".050 x 48 x 144",
+					"weight": "33.50",
+					"finish": "White/White"
+				},
+				{
+					"code": "50-03-114W",
+					"size": ".063 x 48 x 96",
+					"weight": "29.00",
+					"finish": "White/White"
+				},
+				{
+					"code": "50-WH-245P",
+					"size": ".063 x 48 x 96",
+					"weight": "29.00",
+					"finish": "White/White"
+				},
+				{
+					"code": "50-03-115W",
+					"size": ".063 x 48 x 120",
+					"weight": "35.93",
+					"finish": "White/White"
+				},
+				{
+					"code": "50-WH-235P",
+					"size": ".063 x 48 x 120",
+					"weight": "35.93",
+					"finish": "White/White"
+				},
+				{
+					"code": "50-03-121W",
+					"size": ".063 x 60 x 120",
+					"weight": "44.40",
+					"finish": "White/White"
+				},
+				{
+					"code": "50-WH-237P",
+					"size": ".063 x 60 x 120",
+					"weight": "44.40",
+					"finish": "White/White"
+				},
+				{
+					"code": "50-WH-124",
+					"size": ".080 x 48 x 96",
+					"weight": "36.48",
+					"finish": "White/White"
+				},
+				{
+					"code": "50-WH-279P",
+					"size": ".080 x 48 x 96",
+					"weight": "36.48",
+					"finish": "White/White"
+				},
+				{
+					"code": "50-03-125W",
+					"size": ".080 x 48 x 120",
+					"weight": "46.00",
+					"finish": "White/White"
+				},
+				{
+					"code": "50-WH-125P",
+					"size": ".080 x 48 x 120",
+					"weight": "46.00",
+					"finish": "White/White"
+				},
+				{
+					"code": "50-03-126W",
+					"size": ".080 x 48 x 144",
+					"weight": "55.20",
+					"finish": "White/White"
+				},
+				{
+					"code": "50-03-100B",
+					"size": ".032 x 48 x 120",
+					"weight": "18.25",
+					"finish": "Bronze/White"
+				},
+				{
+					"code": "50-03-105B",
+					"size": ".040 x 48 x 120",
+					"weight": "23.40",
+					"finish": "Bronze/White"
+				},
+				{
+					"code": "50-BW-105P",
+					"size": ".040 x 48 x 120",
+					"weight": "23.40",
+					"finish": "Bronze/White"
+				},
+				{
+					"code": "50-03-115BRW",
+					"size": ".063 x 48 x 120",
+					"weight": "35.92",
+					"finish": "Bronze/White"
+				},
+				{
+					"code": "50-BW-235P",
+					"size": ".063 x 48 x 120",
+					"weight": "35.92",
+					"finish": "Bronze/White"
+				},
+				{
+					"code": "50-03-105R",
+					"size": ".040 x 48 x 120",
+					"weight": "23.40",
+					"finish": "Red/White"
+				},
+				{
+					"code": "50-RED-240",
+					"size": ".040 x 48 x 120",
+					"weight": "23.40",
+					"finish": "Red/White"
+				},
+				{
+					"code": "50-RWH-105",
+					"size": ".040 x 48 x 120",
+					"weight": "23.40",
+					"finish": "Red/White"
+				},
+				{
+					"code": "50-YEL-105",
+					"size": ".040 x 48 x 120",
+					"weight": "22.58",
+					"finish": "Yellow/White",
+					"note": "Mill order."
+				},
+				{
+					"code": "50-BL-298",
+					"size": ".040 x 48 x 96",
+					"weight": "18.43",
+					"finish": "Gloss Black/Gloss White"
+				},
+				{
+					"code": "50-BKW-108P",
+					"size": ".040 x 48 x 96",
+					"weight": "18.43",
+					"finish": "Gloss Black/Gloss White"
+				},
+				{
+					"code": "50-03-105BK",
+					"size": ".040 x 48 x 120",
+					"weight": "23.40",
+					"finish": "Gloss Black/Gloss White"
+				},
+				{
+					"code": "50-GBW-105P",
+					"size": ".040 x 48 x 120",
+					"weight": "23.40",
+					"finish": "Gloss Black/Gloss White"
+				},
+				{
+					"code": "50-GBW-245P",
+					"size": ".063 x 48 x 96",
+					"weight": "29.00",
+					"finish": "Gloss Black/Gloss White"
+				},
+				{
+					"code": "50-03-115BK",
+					"size": ".063 x 48 x 120",
+					"weight": "35.93",
+					"finish": "Gloss Black/Gloss White"
+				},
+				{
+					"code": "50-GBW-235P",
+					"size": ".063 x 48 x 120",
+					"weight": "35.93",
+					"finish": "Gloss Black/Gloss White"
+				},
+				{
+					"code": "50-BLK-303",
+					"size": ".040 x 48 x 120",
+					"weight": "23.40",
+					"finish": "Matte Black/Matte White"
+				},
+				{
+					"code": "50-BKW-245P",
+					"size": ".063 x 48 x 96",
+					"weight": "29.00",
+					"finish": "Matte Black/Matte White"
+				},
+				{
+					"code": "50-BKW-235P",
+					"size": ".063 x 48 x 120",
+					"weight": "35.93",
+					"finish": "Matte Black/Matte White"
+				},
+				{
+					"code": "50-03-428",
+					"size": ".040 x 48 x 120",
+					"weight": "23.40",
+					"finish": "Gloss Black/Gloss Black"
+				}
+			]
+		},
+		{
+			"title": "ACM Panels",
+			"rows": [
+				{
+					"code": "50-AC-100",
+					"product": "EMS ACM",
+					"size": "3mm x 4' x 8'",
+					"finish": "White/White",
+					"note": ".006\" skin, matte finish"
+				},
+				{
+					"code": "50-AC-115",
+					"product": "EMS ACM",
+					"size": "3mm x 4' x 10'",
+					"finish": "White/White",
+					"note": ".006\" skin, matte finish"
+				},
+				{
+					"code": "50-AC-125",
+					"product": "EMS ACM",
+					"size": "3mm x 5' x 10'",
+					"finish": "White/White",
+					"note": ".006\" skin, matte finish"
+				},
+				{
+					"code": "50-PM-100",
+					"product": "PolyMetal",
+					"size": "3mm x 4' x 8'",
+					"finish": "White/White",
+					"note": ".008\" skin, 55° gloss"
+				},
+				{
+					"code": "50-PM-105",
+					"product": "PolyMetal",
+					"size": "3mm x 4' x 8'",
+					"finish": "Black/Black",
+					"note": ".008\" skin, 55° gloss"
+				},
+				{
+					"code": "50-PM-110",
+					"product": "PolyMetal",
+					"size": "3mm x 4' x 8'",
+					"finish": "White One Side",
+					"note": ".008\" skin, 55° gloss"
+				},
+				{
+					"code": "50-PM-115",
+					"product": "PolyMetal",
+					"size": "3mm x 4' x 10'",
+					"finish": "White/White",
+					"note": ".008\" skin, 55° gloss"
+				},
+				{
+					"code": "50-PM-120",
+					"product": "PolyMetal",
+					"size": "3mm x 4' x 10'",
+					"finish": "Black/Black",
+					"note": ".008\" skin, 55° gloss"
+				},
+				{
+					"code": "50-PM-125",
+					"product": "PolyMetal",
+					"size": "3mm x 5' x 10'",
+					"finish": "White/White",
+					"note": ".008\" skin, 55° gloss"
+				},
+				{
+					"code": "50-PM-130",
+					"product": "PolyMetal",
+					"size": "6mm x 4' x 8'",
+					"finish": "White/White",
+					"note": ".008\" skin, 55° gloss"
+				},
+				{
+					"code": "50-PM-135",
+					"product": "PolyMetal",
+					"size": "6mm x 4' x 8'",
+					"finish": "Black/Black",
+					"note": ".008\" skin, 55° gloss"
+				},
+				{
+					"code": "50-PM-140",
+					"product": "PolyMetal",
+					"size": "6mm x 4' x 10'",
+					"finish": "White/White",
+					"note": ".008\" skin, 55° gloss"
+				},
+				{
+					"code": "50-VM-100",
+					"product": "ValuMetal",
+					"size": "3mm x 4' x 8'",
+					"finish": "White/White",
+					"note": ".004\" skin, 55° gloss"
+				}
+			]
+		},
+		{
+			"title": "Channel Letter Coil",
+			"rows": [
+				{
+					"code": "49-WH-004",
+					"finish": "White/White",
+					"size": ".040 x 5.50 (5.3\") x 270'"
+				},
+				{
+					"code": "49-DB-004",
+					"finish": "Bronze/White",
+					"size": ".040 x 5.50 (5.3\") x 270'"
+				},
+				{
+					"code": "49-RD-004",
+					"finish": "Red/White",
+					"size": ".040 x 5.50 (5.3\") x 270'"
+				},
+				{
+					"code": "49-BK-004",
+					"finish": "Black/White",
+					"size": ".040 x 5.50 (5.3\") x 270'"
+				},
+				{
+					"code": "49-MF-007",
+					"finish": "Mill Finish (no PVC mask)",
+					"size": ".063 x 2.00 x 270'"
+				},
+				{
+					"code": "49-MF-005",
+					"finish": "Mill Finish (no PVC mask)",
+					"size": ".063 x 3.00 x 270'"
+				},
+				{
+					"code": "49-MF-006",
+					"finish": "Mill Finish (no PVC mask)",
+					"size": ".063 x 3.50 x 270'"
+				},
+				{
+					"code": "49-MF-008",
+					"finish": "Mill Finish (no PVC mask)",
+					"size": ".063 x 4.00 x 270'"
+				},
+				{
+					"code": "49-MF-009",
+					"finish": "Mill Finish (no PVC mask)",
+					"size": ".063 x 6.00 x 270'"
+				}
+			]
+		}
+	]
+}

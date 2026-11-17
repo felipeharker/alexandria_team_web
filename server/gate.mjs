@@ -13,7 +13,8 @@
 //
 // Addresses work as they did on the static site: the hub's pages first, then the office tools (/estimator,
 // /materials, /colors, /site-plan, /vectorizer, /grid, /image-grid, /braille, /sign-package) wherever the hub has no page,
-// so /estimator/guide stays the hub's. Run it locally with `node --env-file=<file> server/gate.mjs` (PORT, HUB_USERS and
+// so /estimator/guide stays the hub's. /sources comes from the office repo the same way: the suppliers' documents the
+// Wiki links to. Run it locally with `node --env-file=<file> server/gate.mjs` (PORT, HUB_USERS and
 // SESSION_SECRET in the file, and OFFICE_DIR=../alexandria_office to serve the office tools from that checkout).
 
 import { createHash, createHmac, timingSafeEqual } from 'node:crypto';
@@ -28,7 +29,9 @@ import { office, startOfficeSync } from './office.mjs';
 
 const HUB = fileURLToPath(new URL('../dist', import.meta.url));
 const PORT = Number(process.env.PORT) || 10000;
-const OFFICE_TOOLS = new Set(['estimator', 'materials', 'colors', 'site-plan', 'vectorizer', 'grid', 'image-grid', 'braille', 'sign-package']);
+// the office tools, and `sources`: the suppliers' own documents the Wiki's supplier pages link to (kept in the
+// private alexandria_office repo, not this public one, as they are other people's documents)
+const OFFICE_TOOLS = new Set(['estimator', 'materials', 'colors', 'site-plan', 'vectorizer', 'grid', 'image-grid', 'braille', 'sign-package', 'sources']);
 const DAY = 24 * 60 * 60 * 1000;
 const SESSION_DAYS = 30;
 const SESSION_COOKIE = 'alexandria_session';
