@@ -12,7 +12,7 @@
     <div class="qg-section-head"><h2 id="screen">The Screen</h2><p>The package's parts on the left, the open page on the right.</p></div>
     <figure class="qg-figure">
       <div class="qg-diagram-scroll">
-      <svg class="ax-est" viewBox="0 0 760 360" role="img" aria-label="The Sign Package Maker: on the left the five parts, Document, Details, Page, CMF and Export, and the list of pages; on the right the Select, Dimension, Callout and Text tools above the open page, which has its info box at the top left, the logo at the top right, a drawing of a sign with a dimension under it, a callout above it and its own view label below it, and the page's view title at the bottom left">
+      <svg class="ax-est" viewBox="0 0 760 360" role="img" aria-label="The Sign Package Maker: on the left the five parts, Document, Details, Page, CMF and Export, and the list of pages; on the right the Select, Dimension, Callout, Text and Shape tools above the open page, which has its info box at the top left, the logo at the top right, a drawing of a sign with a dimension under it, a callout above it and its own view label below it, and the page's view title at the bottom left">
         <rect x="0.5" y="0.5" width="759" height="359" rx="10" class="ax-win"/>
         <!-- the panel -->
         <line x1="222" y1="0" x2="222" y2="360" class="ax-line"/>
@@ -36,13 +36,14 @@
         <rect x="114" y="220" width="94" height="20" rx="5" class="ax-field"/><text x="161" y="233.5" font-size="8.5" text-anchor="middle">Open Package File</text>
         <!-- the tools -->
         <line x1="222" y1="38" x2="760" y2="38" class="ax-line"/>
-        <rect x="234" y="9" width="184" height="20" rx="5" class="ax-field"/>
+        <rect x="234" y="9" width="222" height="20" rx="5" class="ax-field"/>
         <rect x="236" y="11" width="40" height="16" rx="4" class="ax-mark"/>
         <text x="256" y="22.5" font-size="8.5" text-anchor="middle" class="ax-on-mark">Select</text>
         <text x="307" y="22.5" font-size="8.5" text-anchor="middle" class="qg-t-muted">Dimension</text>
         <text x="358" y="22.5" font-size="8.5" text-anchor="middle" class="qg-t-muted">Callout</text>
         <text x="398" y="22.5" font-size="8.5" text-anchor="middle" class="qg-t-muted">Text</text>
-        <rect x="428" y="9" width="112" height="20" rx="5" class="ax-field"/><text x="484" y="22.5" font-size="8.5" text-anchor="middle">Add Drawing or Image</text>
+        <text x="432" y="22.5" font-size="8.5" text-anchor="middle" class="qg-t-muted">Shape</text>
+        <rect x="466" y="9" width="112" height="20" rx="5" class="ax-field"/><text x="522" y="22.5" font-size="8.5" text-anchor="middle">Add Drawing or Image</text>
         <text x="746" y="23" font-size="9" text-anchor="end" class="ax-mono qg-t-muted">3 of 4</text>
         <!-- the page -->
         <rect x="222.5" y="38.5" width="537" height="321" class="ax-tint"/>
@@ -85,7 +86,7 @@
     </figure>
     <ol class="ax-keys">
       <li><b>The Parts.</b> <b>Document</b>, <b>Details</b>, <b>Page</b>, <b>CMF</b> and <b>Export</b>, in the order of work. Each shows its own controls underneath.</li>
-      <li><b>The Tools.</b> <b>Select</b> picks, moves and sizes what's on the page. <b>Dimension</b>, <b>Callout</b> and <b>Text</b> draw one each.</li>
+      <li><b>The Tools.</b> <b>Select</b> picks, moves and sizes what's on the page. <b>Dimension</b>, <b>Callout</b>, <b>Text</b> and <b>Shape</b> draw one each.</li>
       <li><b>The Info Box.</b> The page's name, quantity and scope of work, set under <b>Page</b>. It grows to fit a longer scope.</li>
       <li><b>A Drawing.</b> Your own SVG, PDF or image, as large as fits the page's open area. Drag a corner to size it.</li>
       <li><b>A Dimension.</b> Reads <b>X'-X"</b> in red until the drawing has a real size. Type one dimension's real length and the rest fill in to match.</li>
@@ -116,7 +117,8 @@
           <tr><td>Text</td><td>Oswald, in capitals, at the standard's sizes. Futura on the title page</td></tr>
           <tr><td>A Dimension</td><td>Feet and inches to 1/16 in, such as 21'-9" or 2 7/8". Level text on the line, no arrowheads, 3/8 in extension lines, grey</td></tr>
           <tr><td>A Callout</td><td>A dot, one leg at any angle, a 1/4 in level landing and the text beside it, on the side the leg runs to</td></tr>
-          <tr><td>Text</td><td>A callout's text with no leader</td></tr>
+          <tr><td>Text</td><td>A callout's text with no leader, in the standard's sizes: small, text, heading or large, regular or bold</td></tr>
+          <tr><td>A Sign Location</td><td>A red box at 0.35 mm, filled in a pale red, the size of the sign's extent on a plan or an elevation</td></tr>
           <tr><td>A View Label</td><td>The view title's own style: the title over a 3 in rule, and under it SCALED PROPORTIONALLY, or the scale the drawing is held at</td></tr>
           <tr><td>A Drawing's Scale</td><td>Scaled proportionally unless you hold it at one of the Layout Manager's scales, from 12" = 1'-0" to 1/32" = 1'-0", and 1" = 20'-0" to 1" = 200'-0" for large plans</td></tr>
           <tr><td>The Client's Logo</td><td>On the title page in light grey, as a watermark, never in its own colors</td></tr>
@@ -151,6 +153,24 @@
     </ul>
   </section>
 
+  <section aria-labelledby="layout">
+    <div class="qg-section-head"><h2 id="layout">Laying Out a Page</h2><p>Crop, fade, line up, and draw what a page needs beside the drawings.</p></div>
+    <div class="qg-table-scroll">
+      <table class="qg-parts">
+        <thead><tr><th>To</th><th>Do This</th></tr></thead>
+        <tbody>
+          <tr><td>Crop a drawing or a picture</td><td>Select it and press <b>Crop</b>. Drag the frame's handles, or drag inside the frame to slide it, then press Enter. <b>Clear the Crop</b> shows all of it again. A PDF from an architect crops down to the one elevation you need</td></tr>
+          <tr><td>Fade a picture</td><td><b>Opacity</b>, under the drawing: 75%, 50% or 25%. For a site photo behind a proposed sign</td></tr>
+          <tr><td>Line things up</td><td>Select one and <b>Arrange</b> lines it up with the page's open area. Select several and it lines them up with each other</td></tr>
+          <tr><td>Space things evenly</td><td>Select three or more and press <b>Space Across</b> or <b>Space Down</b></td></tr>
+          <tr><td>Locate a sign on a plan or an elevation</td><td>The <b>Shape</b> tool: drag a box over where the sign goes. It's a <b>Sign Location</b>, the standard's red box. Add a callout to the sign's own page</td></tr>
+          <tr><td>Draw a box, an ellipse, a line or an arrow</td><td>Drag with the <b>Shape</b> tool, then pick its <b>Kind</b>, <b>Line</b> and <b>Fill</b>. A fill can be one of the package's CMF swatches, and a white box covers what's under it. Shift keeps a box square and a line level, plumb or at 45°</td></tr>
+          <tr><td>Set a heading or a large title</td><td>The <b>Text</b> tool, then <b>Size</b> and <b>Weight</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
   <section aria-labelledby="linework">
     <div class="qg-section-head"><h2 id="linework">Linework at 1:1</h2><p>Under Export: one drawing's lines at full size, in inches.</p></div>
     <div class="qg-table-scroll">
@@ -172,6 +192,8 @@
       <li><b>Click on the drawing's own points.</b> A pink square shows where a click will snap: an end of a line, a corner or a middle. That's what makes a dimension exact.</li>
       <li><b>Click twice to type.</b> A second click on a dimension goes to its length, on a callout or text to its words, on a drawing to its overall width.</li>
       <li><b>Lining up.</b> A drawing you move catches on the open area's edges and middle, and on the page's other drawings: a pink line shows what it caught. Hold Alt to move it freely.</li>
+      <li><b>Several at once.</b> Shift-click, or drag a box over the page, to select several drawings, texts and shapes; Ctrl+A takes them all. Drag one and they all move. <b>Arrange</b> lines them up with each other and evens out the gaps between three or more.</li>
+      <li><b>Panning.</b> Dragging the background selects, so hold Space and drag to move around the page, or use the middle button. Scroll to zoom.</li>
       <li><b>Copies.</b> Ctrl+D duplicates what's selected: a drawing takes its dimensions, callouts and view label along. Ctrl+C and Ctrl+V carry it to another page, and <b>Duplicate Page</b> copies a whole design page.</li>
       <li><b>CMF codes in a callout.</b> With a callout or text selected, <b>CMF Code</b> lists the package's colors and materials: pick one and its code, such as P1, goes into the text.</li>
       <li><b>Which way a dimension runs.</b> Move above or below the two points for the level distance, left or right for the plumb one. Hold Shift to measure point to point, and Alt to place the line freely.</li>

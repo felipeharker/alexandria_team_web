@@ -1,5 +1,5 @@
 ---
-title: The Sign Package Maker Stops Asking for a Scale
+title: The Sign Package Maker Lays Out Pages, and Stops Asking for a Scale
 date: 2026-11-17T14:00
 area: Web Tools
 ---
@@ -13,5 +13,9 @@ The [Sign Package Maker](/sign-package/) no longer needs to know what scale a fi
 - **View labels and text.** **Add View Label** gives a drawing its own title, such as FRONT VIEW, with its scale or SCALED PROPORTIONALLY under it. The new **Text** tool sets a note with no leader.
 - **CMF codes in a callout.** With a callout or text selected, **CMF Code** puts in a code from the package's colors and materials, such as P1.
 - **Copies.** Ctrl+D duplicates what's selected, a drawing with its dimensions and callouts. Ctrl+C and Ctrl+V carry it to another page, and **Duplicate Page** copies a whole design page.
+- **Several at once.** Shift-click, or drag a box over the page, to select several things. Drag one and they all move, and **Arrange** lines them up and spaces them evenly. Dragging the background now selects, so hold Space and drag to move around the page.
+- **Crop and fade.** **Crop** puts a frame over a drawing or a picture: drag its handles, press Enter, and the page shows only that part. **Opacity** fades a picture, such as a site photo behind a proposed sign.
+- **Shapes.** The new **Shape** tool draws a **Sign Location**, the standard's red box for locating a sign on a plan or an elevation, and boxes, ellipses, lines and arrows. A fill can be one of the package's CMF swatches.
+- **Text sizes.** Text set with the **Text** tool can be small, regular, a heading or large, and bold.
 
 A package you saved before opens as it was, its drawings at the scale they had. See the [quick guide](/sign-package/guide/).
