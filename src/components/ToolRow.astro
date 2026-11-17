@@ -1,0 +1,28 @@
+---
+// A tool in a list (Your First Day): the home page card's drawing, small, beside the tool's name, a line or two on
+// what it's for, and its quick guide. The name opens the tool.
+import ToolArt from './ToolArt.astro';
+
+interface Props {
+	title: string;
+	art: string; // a drawing's name in ToolArt
+	href: string; // the tool
+	guide?: string; // its quick guide
+	badge?: string; // such as "Beta"
+}
+const { title, art, href, guide, badge } = Astro.props;
+---
+
+<article class="ax-tool-row">
+	<a class="ax-tool-row-art" href={href} tabindex="-1" aria-hidden="true">
+		<ToolArt name={art} />
+	</a>
+	<div>
+		<h3>
+			<a href={href}>{title}</a>
+			{badge && <span class="ax-badge">{badge}</span>}
+		</h3>
+		<p><slot /></p>
+		{guide && <a class="ax-tool-row-guide" href={guide}>Quick Guide →</a>}
+	</div>
+</article>

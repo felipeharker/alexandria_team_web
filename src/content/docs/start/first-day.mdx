@@ -1,30 +1,24 @@
 ---
 title: Your First Day with Alexandria
-description: The web tools to bookmark, the Rhino tools to install, and the guides to read first.
+description: The office's tools by category, what each is for, the Rhino tools to install, and the guides to read first.
 ---
 
 import { Steps } from '@astrojs/starlight/components';
+import ToolRow from '../../../components/ToolRow.astro';
 
-Alexandria is the office's set of tools in two halves. **On the web**, at alexdesignlab.org, are the office tools for the work around a design: pricing materials, matching and mixing colors, drawing site plans, turning images into vectors, laying out patterns of cells from points, curves or an image, setting braille and putting a sign package together. **In Rhino 8** are the Alexandria tools, a toolbar that takes a sign from an empty model to a finished design package, and Alexandria Phoenix, Grasshopper components for patterns. This page gets you started with both.
+{/* By category, as on the home page and in the sidebar (user, 2026-11-17: "for visual ease of use"): Rhino/Grasshopper,
+    Design, Parametric and Fabrication, each tool a ToolRow with its home page drawing. Add a new tool to its category. */}
 
-## On the Web: Nothing to Install
+Alexandria is the office's set of tools, in four categories. The **Rhino/Grasshopper** tools are installed once and run inside Rhino 8. The **Design**, **Parametric** and **Fabrication** tools are on the web at alexdesignlab.org: they open in any browser, on any computer or phone, with nothing to install, and every visit gets the newest version. Bookmark the ones you'll use.
 
-The office tools open in any browser, on any computer or phone, and are always the newest version. Bookmark the ones you'll use:
+## Rhino/Grasshopper Tools
 
-- **[Site Plan](/site-plan/)** finds an address and draws the office's greyscale site plan around it, with the sign's location circled in red, a north arrow and a scale bar, ready for the design package.
-- **[Vectorizer](/vectorizer/)** turns a client's PNG or JPG logo into an SVG of clean vector shapes, one layer per color, ready for Rhino, CorelDRAW or fabrication.
-- **[Parametric Grid](/grid/)** lays out a square, hex or triangle grid whose cells scale toward a point or a curve, and saves it as full-size SVG linework.
-- **[Image Grid](/image-grid/)** lays out the same grids with each cell sized by an image's brightness, like a halftone, and saves it as full-size SVG linework. It's in beta.
-- **[Braille Lettering Designer](/braille/)** turns a sign's text into Grade 2 braille, as ADA signs need, and saves the dots as a full-size SVG.
-- **[Sign Package Maker](/sign-package/)** puts your own drawings, images and project details into the standard sign package, with dimensions and callouts to the standard, and exports the PDF. It's in beta.
-- **[Color Matcher](/colors/)** turns a client's hex code into its nearest Sherwin-Williams, Pantone and 3M vinyl colors, with a percent match.
-- **[Color Library](/colors/library/)** has every Matthews Paint formula the office has on file, with its colorants.
-- **[Material Estimator](/estimator/)** prices a project's materials by the foot, the yard or the piece.
-- **[Material Library](/materials/)** lists the office's stock materials with their sizes and prices, ready to add to an Estimator sheet. It's in beta and still being filled in.
+For modeling the sign and producing its design package. Set them up once:
 
-Each has a quick guide under **Quick Guides**, about two minutes to read. Two habits to start with: name the project at the top of a tool, since it names what you export, and **export** your work (a CSV, PNG, SVG or package file) into the project's folder. The tools save as you go, but only in the browser you used. [Office Tools](/docs/office-tools/) covers how they work underneath.
-
-## In Rhino: Set Up Once
+<div class="ax-tool-list not-content">
+<ToolRow title="Alexandria Tools" art="alexandria-tools" href="/rhino/" guide="/rhino/">A toolbar that takes a sign from an empty model to a finished design package: the project, materials and lights, day and night renders, details and the layout.</ToolRow>
+<ToolRow title="Alexandria Phoenix" art="alexandria-phoenix" href="/grasshopper/" guide="/grasshopper/">Grasshopper components for patterns in a region: cells, a value for each, then scale, cull or fold them.</ToolRow>
+</div>
 
 <Steps>
 
@@ -40,8 +34,41 @@ Each has a quick guide under **Quick Guides**, about two minutes to read. Two ha
 
 </Steps>
 
+## Design Tools
+
+For the design package and its graphics.
+
+<div class="ax-tool-list not-content">
+<ToolRow title="Site Plan" art="site-plan" href="/site-plan/" guide="/site-plan/guide/">Finds an address and draws the office's greyscale site plan around it, with the sign's location circled, a north arrow and a scale bar, ready for the design package.</ToolRow>
+<ToolRow title="Vectorizer" art="vectorizer" href="/vectorizer/" guide="/vectorizer/guide/">Turns a client's PNG or JPG logo into an SVG of clean vector shapes, one layer per color, ready for Rhino, CorelDRAW or fabrication.</ToolRow>
+<ToolRow title="Braille Lettering Designer" art="braille" href="/braille/" guide="/braille/guide/">Turns a sign's text into Grade 2 braille, as ADA signs need, and saves the dots as a full-size SVG.</ToolRow>
+<ToolRow title="Sign Package Maker" art="sign-package" href="/sign-package/" guide="/sign-package/guide/" badge="Beta">Puts your own drawings, images and project details into the standard sign package, with dimensions and callouts to the standard, and exports the PDF.</ToolRow>
+</div>
+
+## Parametric Tools
+
+For patterned panels, saved as full-size SVG linework.
+
+<div class="ax-tool-list not-content">
+<ToolRow title="Parametric Grid" art="parametric-grid" href="/grid/" guide="/grid/guide/">A square, hex or triangle grid whose cells scale toward points and curves you place.</ToolRow>
+<ToolRow title="Image Grid" art="image-grid" href="/image-grid/" guide="/image-grid/guide/" badge="Beta">The same grids with each cell sized by an image's brightness, like a halftone.</ToolRow>
+</div>
+
+## Fabrication Tools
+
+For building it: colors, paint and materials.
+
+<div class="ax-tool-list not-content">
+<ToolRow title="Color Matcher" art="color-matcher" href="/colors/" guide="/colors/guide/">Turns a client's hex code into its nearest Sherwin-Williams, Pantone and 3M vinyl colors, with a percent match.</ToolRow>
+<ToolRow title="Color Library" art="color-library" href="/colors/library/" guide="/colors/library/guide/">Every Matthews Paint formula the office has on file, with its colorants.</ToolRow>
+<ToolRow title="Material Estimator" art="material-estimator" href="/estimator/" guide="/estimator/guide/" badge="Beta">Prices a project's materials by the foot, the yard or the piece.</ToolRow>
+<ToolRow title="Material Library" art="material-library" href="/materials/" guide="/materials/guide/" badge="Beta">The office's stock materials with their sizes and prices, ready to add to an Estimator sheet. Still being filled in.</ToolRow>
+</div>
+
 ## Good to Know
 
+- **Read the quick guide first.** Every tool has one, about two minutes to read, linked above and under **Quick Guides**.
+- **Name it, then export it.** In a web tool, name the project at the top, since it names what you export, and **export** your work (a CSV, PNG, SVG or package file) into the project's folder. The web tools save as you go, but only in the browser you used. [Office Tools](/docs/office-tools/) covers how they work underneath.
 - **The web tools update themselves:** every visit gets the newest version, with nothing to install.
 - **The Rhino tools update themselves too,** when Rhino starts, if you ticked automatic updates while installing. After one arrives, restart Rhino and click **Alexandria Setup** once more. [What's New](/start/whats-new/) describes the latest updates, in Rhino and on the web.
 - **The standards are built in.** Layers, annotation styles and page layouts come from the Rhino tools, and the map style from the Site Plan, so you rarely set them by hand.
