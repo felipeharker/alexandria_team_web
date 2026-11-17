@@ -4,7 +4,7 @@
 <div class="qg-page">
   <header>
     <p class="qg-eyebrow">Office Tools &middot; Runs in Your Browser</p>
-    <p class="qg-lede">Put your own drawings, images and project details into the standard sign package, dimension and call them out to the Alexandria standard, and export the package as a PDF and a drawing's linework at full size.</p>
+    <p class="qg-lede">Put your own drawings, images and project details into the standard sign package, give them their real size with one dimension, call them out to the Alexandria standard, and export the package as a PDF and a drawing's linework at full size.</p>
     <p class="qg-other"><a href="/sign-package/">Open the Sign Package Maker &rarr;</a></p>
   </header>
 
@@ -12,7 +12,7 @@
     <div class="qg-section-head"><h2 id="screen">The Screen</h2><p>The package's parts on the left, the open page on the right.</p></div>
     <figure class="qg-figure">
       <div class="qg-diagram-scroll">
-      <svg class="ax-est" viewBox="0 0 760 360" role="img" aria-label="The Sign Package Maker: on the left the five parts, Document, Details, Page, CMF and Export, and the list of pages; on the right the Select, Dimension and Callout tools above the open page, which has its info box at the top left, the logo at the top right, a drawing of a sign with a dimension under it and a callout above it, and the view title at the bottom left">
+      <svg class="ax-est" viewBox="0 0 760 360" role="img" aria-label="The Sign Package Maker: on the left the five parts, Document, Details, Page, CMF and Export, and the list of pages; on the right the Select, Dimension, Callout and Text tools above the open page, which has its info box at the top left, the logo at the top right, a drawing of a sign with a dimension under it, a callout above it and its own view label below it, and the page's view title at the bottom left">
         <rect x="0.5" y="0.5" width="759" height="359" rx="10" class="ax-win"/>
         <!-- the panel -->
         <line x1="222" y1="0" x2="222" y2="360" class="ax-line"/>
@@ -36,12 +36,13 @@
         <rect x="114" y="220" width="94" height="20" rx="5" class="ax-field"/><text x="161" y="233.5" font-size="8.5" text-anchor="middle">Open Package File</text>
         <!-- the tools -->
         <line x1="222" y1="38" x2="760" y2="38" class="ax-line"/>
-        <rect x="234" y="9" width="150" height="20" rx="5" class="ax-field"/>
+        <rect x="234" y="9" width="184" height="20" rx="5" class="ax-field"/>
         <rect x="236" y="11" width="40" height="16" rx="4" class="ax-mark"/>
         <text x="256" y="22.5" font-size="8.5" text-anchor="middle" class="ax-on-mark">Select</text>
         <text x="307" y="22.5" font-size="8.5" text-anchor="middle" class="qg-t-muted">Dimension</text>
         <text x="358" y="22.5" font-size="8.5" text-anchor="middle" class="qg-t-muted">Callout</text>
-        <rect x="394" y="9" width="112" height="20" rx="5" class="ax-field"/><text x="450" y="22.5" font-size="8.5" text-anchor="middle">Add Drawing or Image</text>
+        <text x="398" y="22.5" font-size="8.5" text-anchor="middle" class="qg-t-muted">Text</text>
+        <rect x="428" y="9" width="112" height="20" rx="5" class="ax-field"/><text x="484" y="22.5" font-size="8.5" text-anchor="middle">Add Drawing or Image</text>
         <text x="746" y="23" font-size="9" text-anchor="end" class="ax-mono qg-t-muted">3 of 4</text>
         <!-- the page -->
         <rect x="222.5" y="38.5" width="537" height="321" class="ax-tint"/>
@@ -63,6 +64,9 @@
         <circle cx="458" cy="170" r="1.8" class="ax-mark"/>
         <text x="490" y="253.5" font-size="9" text-anchor="middle" class="ax-mono">20'-0"</text>
         <text x="524" y="121" font-size="7.5" class="qg-t-muted">ROUTED ALUMINUM FACE, PAINTED P1</text>
+        <text x="330" y="278" font-size="6" class="qg-t-muted">FRONT VIEW</text>
+        <line x1="330" y1="280.5" x2="414" y2="280.5" class="ax-line"/>
+        <text x="330" y="286" font-size="4" class="qg-t-muted">SCALED PROPORTIONALLY</text>
         <text x="258" y="336" font-size="6" class="qg-t-muted">PROPOSED SIGNAGE</text>
         <line x1="258" y1="338.5" x2="342" y2="338.5" class="ax-line"/>
         <text x="258" y="344" font-size="4" class="qg-t-muted">SCALED PROPORTIONALLY</text>
@@ -73,6 +77,7 @@
           <circle cx="664" cy="188" r="9"/><text x="664" y="192">4</text>
           <circle cx="412" cy="266" r="9"/><text x="412" y="270">5</text>
           <circle cx="700" cy="118" r="9"/><text x="700" y="122">6</text>
+          <circle cx="436" cy="280" r="9"/><text x="436" y="284">7</text>
         </g>
       </svg>
       </div>
@@ -80,11 +85,12 @@
     </figure>
     <ol class="ax-keys">
       <li><b>The Parts.</b> <b>Document</b>, <b>Details</b>, <b>Page</b>, <b>CMF</b> and <b>Export</b>, in the order of work. Each shows its own controls underneath.</li>
-      <li><b>The Tools.</b> <b>Select</b> picks and moves what's on the page. <b>Dimension</b> and <b>Callout</b> draw one each.</li>
+      <li><b>The Tools.</b> <b>Select</b> picks, moves and sizes what's on the page. <b>Dimension</b>, <b>Callout</b> and <b>Text</b> draw one each.</li>
       <li><b>The Info Box.</b> The page's name, quantity and scope of work, set under <b>Page</b>. It grows to fit a longer scope.</li>
-      <li><b>A Drawing.</b> Your own SVG, PDF or image, placed at a scale inside the page's open area.</li>
-      <li><b>A Dimension.</b> Reads the drawing's real size, in feet and inches. It follows the drawing when that moves or changes scale.</li>
+      <li><b>A Drawing.</b> Your own SVG, PDF or image, as large as fits the page's open area. Drag a corner to size it.</li>
+      <li><b>A Dimension.</b> Reads <b>X'-X"</b> in red until the drawing has a real size. Type one dimension's real length and the rest fill in to match.</li>
       <li><b>A Callout.</b> A dot on what it points at, one leg, and its text in capitals.</li>
+      <li><b>A View Label.</b> A drawing's own title, with a note under it. It goes where the drawing goes.</li>
     </ol>
   </section>
 
@@ -93,8 +99,8 @@
     <ol class="qg-flow">
       <li class="qg-g-project"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 5h12M4 10h12M4 15h7"/></svg></span><div><b>Fill In the Details</b><small>The project, the client, the company name and the client's logo. Red on the page is still the template's words.</small></div></li>
       <li class="qg-g-layout"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="3" y="4" width="14" height="12" rx="1.5"/><path d="M10 7v6M7 10h6"/></svg></span><div><b>Add Pages and Drawings</b><small>A design page per view. <b>Add Drawing or Image</b>, or drop the files on the page.</small></div></li>
-      <li class="qg-g-layout"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 14h14M3 11v6M17 11v6M7 12.5v3M10 12.5v3M13 12.5v3"/></svg></span><div><b>Set the Scale</b><small><b>Largest That Fits</b> to start, or a standard scale. A picture needs its <b>Real Width</b> first.</small></div></li>
-      <li class="qg-g-standard"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h14M3 7v6M17 7v6"/></svg></span><div><b>Dimension and Call Out</b><small>Two points and a side for a dimension; a point and a place for a callout's text.</small></div></li>
+      <li class="qg-g-layout"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 14h14M3 11v6M17 11v6M7 12.5v3M10 12.5v3M13 12.5v3"/></svg></span><div><b>Give It a Real Size</b><small>Click a red dimension and type its real length, such as 21'-9". Every other dimension on the drawing fills in.</small></div></li>
+      <li class="qg-g-standard"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h14M3 7v6M17 7v6"/></svg></span><div><b>Dimension and Call Out</b><small>Two points and a side for a dimension; a point and a place for a callout's text. <b>Add View Label</b> titles a drawing.</small></div></li>
       <li class="qg-g-model"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="3" y="5" width="6" height="4"/><path d="M11 6h6M11 8.5h4M3 14h6M11 13h6M11 15.5h4"/></svg></span><div><b>List the CMF</b><small>Paint, vinyl, materials and electrical, each with a code, where it's used and a swatch.</small></div></li>
       <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v10m0 0-4-4m4 4 4-4M4 16h12"/></svg></span><div><b>Export PDF</b><small><b>Export</b> lists what's unfinished first. Then <b>Save Package File</b>, and keep both with the project.</small></div></li>
     </ol>
@@ -110,7 +116,9 @@
           <tr><td>Text</td><td>Oswald, in capitals, at the standard's sizes. Futura on the title page</td></tr>
           <tr><td>A Dimension</td><td>Feet and inches to 1/16 in, such as 21'-9" or 2 7/8". Level text on the line, no arrowheads, 3/8 in extension lines, grey</td></tr>
           <tr><td>A Callout</td><td>A dot, one leg at any angle, a 1/4 in level landing and the text beside it, on the side the leg runs to</td></tr>
-          <tr><td>A Drawing's Scale</td><td>The Layout Manager's scales, from 12" = 1'-0" to 1/32" = 1'-0", and 1" = 20'-0" to 1" = 200'-0" for large plans</td></tr>
+          <tr><td>Text</td><td>A callout's text with no leader</td></tr>
+          <tr><td>A View Label</td><td>The view title's own style: the title over a 3 in rule, and under it SCALED PROPORTIONALLY, or the scale the drawing is held at</td></tr>
+          <tr><td>A Drawing's Scale</td><td>Scaled proportionally unless you hold it at one of the Layout Manager's scales, from 12" = 1'-0" to 1/32" = 1'-0", and 1" = 20'-0" to 1" = 200'-0" for large plans</td></tr>
           <tr><td>The Client's Logo</td><td>On the title page in light grey, as a watermark, never in its own colors</td></tr>
           <tr><td>File Names</td><td><code>DESIGN_Project_v1.pdf</code> for the package, <code>LINEWORK_Project_Drawing_v1.dxf</code> for linework</td></tr>
         </tbody>
@@ -118,18 +126,29 @@
     </div>
   </section>
 
-  <section aria-labelledby="scale">
-    <div class="qg-section-head"><h2 id="scale">Drawings and Their Scale</h2><p>What you place decides what you can do with it.</p></div>
+  <section aria-labelledby="size">
+    <div class="qg-section-head"><h2 id="size">A Drawing's Real Size</h2><p>The tool never asks what scale a file was drawn at. One real dimension is enough.</p></div>
+    <ol class="ax-keys">
+      <li><b>Add the drawing.</b> It lands as large as fits, with no real size. Linework comes with its overall width and height dimensions already drawn, reading <b>X'-X"</b> in red.</li>
+      <li><b>Draw any other dimensions you need.</b> They read <b>X'-X"</b> too.</li>
+      <li><b>Type one real length.</b> Click a dimension you know, type its length under <b>Real Length</b>, such as 21'-9", and press Enter. The drawing's <b>Overall Width</b> or <b>Overall Height</b> does the same.</li>
+      <li><b>The rest fill in.</b> Every other dimension on that drawing now reads its own length, in proportion. Type a different length into any of them later and they all follow again.</li>
+    </ol>
     <div class="qg-table-scroll">
       <table class="qg-parts">
-        <thead><tr><th>File</th><th>On the Page</th><th>Dimensions</th><th>In the PDF</th><th>Linework at 1:1</th></tr></thead>
+        <thead><tr><th>File</th><th>Its Overall Size Is Measured</th><th>Dimensions</th><th>In the PDF</th><th>Linework at 1:1</th></tr></thead>
         <tbody>
-          <tr><td>SVG</td><td>At a scale. Set <b>Drawn At</b> if the file wasn't drawn full size</td><td>Yes, snapping to its points</td><td>As lines</td><td>Yes</td></tr>
-          <tr><td>PDF</td><td>At a scale, any one of its pages. Set <b>Drawn At</b> to the scale it was printed at</td><td>Yes, snapping to its points</td><td>As it is</td><td>Its lines, not its text</td></tr>
-          <tr><td>PNG, JPG</td><td>Any size: drag its corner. Type its <b>Real Width</b> to give it a scale</td><td>Once it has a scale</td><td>As a picture</td><td>No: trace it in the Vectorizer first</td></tr>
+          <tr><td>SVG</td><td>Across its linework, whatever the page it was drawn on</td><td>Snap to its points</td><td>As lines</td><td>Yes, once it has a real size</td></tr>
+          <tr><td>PDF</td><td>Across its linework, on any one of its pages. Across the whole page if it has text or pictures in it</td><td>Snap to its points</td><td>As it is</td><td>Its lines, not its text</td></tr>
+          <tr><td>PNG, JPG</td><td>Across the whole picture. <b>Add Overall Dimensions</b> draws them</td><td>Snap to its corners and middles</td><td>As a picture</td><td>No: trace it in the Vectorizer first</td></tr>
         </tbody>
       </table>
     </div>
+    <ul class="qg-habits">
+      <li><b>Drawn full size already?</b> <b>Use the File's Size</b> takes an SVG's or a PDF's own inches as real. Nothing is assumed until you press it.</li>
+      <li><b>Size on the page is separate.</b> Drag a corner, or press <b>Fit to Page</b>: the dimensions keep reading the same. <b>Size on the Page</b> can hold a drawing at a standard scale once it has a real size.</li>
+      <li><b>A red dimension never prints.</b> Export tells you which drawings still have no real size, and leaves their dimensions out of the PDF.</li>
+    </ul>
   </section>
 
   <section aria-labelledby="linework">
@@ -149,8 +168,12 @@
   <section aria-labelledby="habits">
     <div class="qg-section-head"><h2 id="habits">Good to Know</h2></div>
     <ul class="qg-habits">
-      <li><b>Red means not yet.</b> A detail still empty shows the template's words in red. It never prints red: it prints as a dash, and Export tells you first.</li>
+      <li><b>Red means not yet.</b> A detail still empty shows the template's words in red, and a dimension with no real size reads X'-X" in red. Neither prints red: a detail prints as a dash, a dimension is left out, and Export tells you first.</li>
       <li><b>Click on the drawing's own points.</b> A pink square shows where a click will snap: an end of a line, a corner or a middle. That's what makes a dimension exact.</li>
+      <li><b>Click twice to type.</b> A second click on a dimension goes to its length, on a callout or text to its words, on a drawing to its overall width.</li>
+      <li><b>Lining up.</b> A drawing you move catches on the open area's edges and middle, and on the page's other drawings: a pink line shows what it caught. Hold Alt to move it freely.</li>
+      <li><b>Copies.</b> Ctrl+D duplicates what's selected: a drawing takes its dimensions, callouts and view label along. Ctrl+C and Ctrl+V carry it to another page, and <b>Duplicate Page</b> copies a whole design page.</li>
+      <li><b>CMF codes in a callout.</b> With a callout or text selected, <b>CMF Code</b> lists the package's colors and materials: pick one and its code, such as P1, goes into the text.</li>
       <li><b>Which way a dimension runs.</b> Move above or below the two points for the level distance, left or right for the plumb one. Hold Shift to measure point to point, and Alt to place the line freely.</li>
       <li><b>Stacked dimensions.</b> A dimension's line sits in steps of 1/4 in, so two of them land 1/2 in apart, as the standard asks.</li>
       <li><b>The same scope on every page.</b> Set it on one page and press <b>Use on Every Page</b>.</li>
