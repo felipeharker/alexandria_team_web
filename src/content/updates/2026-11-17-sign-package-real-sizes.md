@@ -18,4 +18,4 @@ The [Sign Package Maker](/sign-package/) no longer needs to know what scale a fi
 - **Shapes.** The new **Shape** tool draws a **Sign Location**, the standard's red box for locating a sign on a plan or an elevation, and boxes, ellipses, lines and arrows. A fill can be one of the package's CMF swatches.
 - **Text sizes.** Text set with the **Text** tool can be small, regular, a heading or large, and bold.
 
-A package you saved before opens as it was, its drawings at the scale they had. See the [quick guide](/sign-package/guide/).
+A package you saved before opens as it was, its drawings at the scale they had. The tool is still in beta, so some of this may change. See the [quick guide](/sign-package/guide/).
