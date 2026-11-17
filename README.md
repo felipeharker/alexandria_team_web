@@ -46,6 +46,10 @@ npm run dev
 
 The dev server runs at http://localhost:4321. Search works only in a build (`npm run build`, then `npm run preview`).
 
+To try the whole site as the gate serves it, office tools and sign-in included, build it, then run
+`node --env-file=<file> server/gate.mjs` with `PORT`, `HUB_USERS` and `OFFICE_DIR=../alexandria_office` in the file: the
+office tools then come from that checkout as it is, on whatever branch it's on, instead of from GitHub.
+
 ## Add a page
 
 Add a `.md` or `.mdx` file under `src/content/docs/` with a `title` and `description` at the top, then add it to the sidebar in `astro.config.mjs`. A future Standards section goes in `src/content/docs/standards/`, one page per topic, with screenshots in `src/assets/`.

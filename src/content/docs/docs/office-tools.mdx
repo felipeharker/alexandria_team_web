@@ -1,12 +1,12 @@
 ---
 title: Office Tools
-description: The web tools for the office's everyday work, the Material Estimator, Material Library, Color Matcher, Color Library, Site Plan, Vectorizer, Parametric Grid, Braille Lettering Designer and Sign Package Maker, and how they save, share and get updated.
+description: The web tools for the office's everyday work, the Material Estimator, Material Library, Color Matcher, Color Library, Site Plan, Vectorizer, Parametric Grid, Image Grid, Braille Lettering Designer and Sign Package Maker, and how they save, share and get updated.
 ---
 
 {/* Written by hand, unlike the Phoenix docs beside it, which tools/sync.py copies from alexandria_phoenix. The tools
     themselves are in the alexandria_office repository; keep this page in step when one changes. */}
 
-The office tools are nine small web apps at alexdesignlab.org, for the work around a design rather than in Rhino: pricing materials, matching and mixing colors, drawing site plans, turning images into vectors, laying out patterns of cells, setting braille and putting a sign package together. They open in any browser, on any computer or phone, with nothing to install and no account, and every visit gets the newest version. Each has a quick guide for its buttons, under Quick Guides; this page covers how they work underneath.
+The office tools are ten small web apps at alexdesignlab.org, for the work around a design rather than in Rhino: pricing materials, matching and mixing colors, drawing site plans, turning images into vectors, laying out patterns of cells from points, curves or an image, setting braille and putting a sign package together. They open in any browser, on any computer or phone, with nothing to install and no account, and every visit gets the newest version. Each has a quick guide for its buttons, under Quick Guides; this page covers how they work underneath.
 
 | Tool | For | Saves | Shares As |
 |---|---|---|---|
@@ -17,6 +17,7 @@ The office tools are nine small web apps at alexdesignlab.org, for the work arou
 | [Site Plan](/site-plan/) | A greyscale site plan with the sign's location circled in red, a north arrow and a scale bar | In your browser | PNG, about 4,800 px across |
 | [Vectorizer](/vectorizer/) | An SVG of vector shapes traced from a PNG or JPG, one layer per color | Its settings, in your browser | SVG |
 | [Parametric Grid](/grid/) | A grid of cells that scale toward a point or a curve, as linework | In your browser | SVG, at full size |
+| [Image Grid](/image-grid/) | A grid of cells sized by an image's brightness, as linework | In your browser, the image too | SVG, at full size |
 | [Braille Lettering Designer](/braille/) | A sign's braille, as dots at the ADA's sizes | In your browser | SVG, in inches |
 | [Sign Package Maker](/sign-package/) | The standard sign package, from your own drawings, images and project details | In your browser | PDF; a package file; 1:1 linework as DXF, DWG or PDF |
 
@@ -108,6 +109,17 @@ Set the region, choose the grid, and place the attractor on the preview; the cel
 
 See its [quick guide](/grid/guide/).
 
+## Image Grid
+
+<span class="ax-badge">Beta</span> The Parametric Grid's square, hex and triangle grids, with each cell sized by the image under it instead of by attractors, as Grasshopper's Image Sampler does:
+
+- **The image:** a PNG, JPG, WebP, GIF or SVG, chosen, dropped or pasted, read at up to 1,200 px along its long side. It's kept in your browser and never uploaded.
+- **The scale:** each cell is scaled about its centre from **Max** where the image is darkest to **Min** where it's lightest, or the other way round, as a halftone does. A cell at 0 is left out.
+- **Simple and Standard:** Simple shows the essentials and the height follows the image's proportions. Standard adds what to read (brightness, red, green, blue or opacity), the average over the cell or the point at its centre, Fill or Stretch for another height, Clipped edges, circles in place of the cells, tone (black and white points and midtones), a set number of **Sizes** for the punches or drills on hand, and the Parametric Grid's random cull.
+- **The SVG:** the boundary and one closed shape per cell, no fills, in the region's units, with a group per size when Sizes is set. The cells are the Parametric Grid's: the same settings give the same cells.
+
+See its [quick guide](/image-grid/guide/).
+
 ## Braille Lettering Designer
 
 Type a sign's text, one braille line per line, and download it:
@@ -136,13 +148,13 @@ The title page's company name is set in Futura Bk BT, read from your computer wh
 
 ## Privacy
 
-The site is behind a sign-in: each person has a username and passcode, and a sign-in lasts 30 days on that browser. Beyond that the tools keep nothing on a server. The Color Matcher and Color Library load their color data from this site, and the Material Library and Estimator their materials. The Site Plan sends the address you search to [Nominatim](https://nominatim.openstreetmap.org/), OpenStreetMap's address search, and loads its map from [OpenFreeMap](https://openfreemap.org/). The Vectorizer traces images in your browser and never uploads them, the Braille Lettering Designer translates in your browser too, and the Sign Package Maker keeps its drawings and makes its files there. Nothing else leaves your browser. The site is also kept out of search engines.
+The site is behind a sign-in: each person has a username and passcode, and a sign-in lasts 30 days on that browser. Beyond that the tools keep nothing on a server. The Color Matcher and Color Library load their color data from this site, and the Material Library and Estimator their materials. The Site Plan sends the address you search to [Nominatim](https://nominatim.openstreetmap.org/), OpenStreetMap's address search, and loads its map from [OpenFreeMap](https://openfreemap.org/). The Vectorizer traces images in your browser and never uploads them, as the Image Grid reads them, the Braille Lettering Designer translates in your browser too, and the Sign Package Maker keeps its drawings and makes its files there. Nothing else leaves your browser. The site is also kept out of search engines.
 
 ## Changing a Tool
 
 The tools live in the private **alexandria_office** repository, one folder each under `public/`, and pushing its main branch puts a change live in a minute or two. [System Architecture](/docs/architecture/) shows how it connects to the rest.
 
-- **A tool's code or look:** its folder, `public/estimator/`, `public/materials/`, `public/colors/`, `public/site-plan/`, `public/vectorizer/`, `public/grid/`, `public/braille/` or `public/sign-package/`. They share the hub's style: greys, one green for buttons, Inter and IBM Plex Mono.
+- **A tool's code or look:** its folder, `public/estimator/`, `public/materials/`, `public/colors/`, `public/site-plan/`, `public/vectorizer/`, `public/grid/`, `public/image-grid/` (which uses the Parametric Grid's cells and look, from `public/grid/`), `public/braille/` or `public/sign-package/`. They share the hub's style: greys, one green for buttons, Inter and IBM Plex Mono.
 - **The color libraries:** `tools/build_colors.py` rebuilds them. Add a formula sheet to `paint-formulas/`, named as above, then run it.
 - **The Material Library:** `public/materials/materials.csv`. Add rows with the template's columns and push.
 - **The site plan style:** `public/site-plan/map-style.json`, the standard the Site Plan loads, described in the repository's README.

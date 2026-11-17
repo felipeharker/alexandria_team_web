@@ -6,8 +6,8 @@ import starlight from '@astrojs/starlight';
 // Pages are Markdown or MDX in src/content/docs; the sidebar below is the site's table of contents.
 // tools/sync.py writes everything under docs/, src/generated and src/data from alexandria_phoenix.
 // Every tool has a short address: /rhino, /grasshopper, /estimator/guide here, and /estimator, /materials (the
-// Material Library), /colors (the Color Matcher), /colors/library, /site-plan, /vectorizer, /grid (the Parametric Grid)
-// /braille (the Braille Lettering Designer) and /sign-package (the Sign Package Maker) from the alexandria_office repo,
+// Material Library), /colors (the Color Matcher), /colors/library, /site-plan, /vectorizer, /grid (the Parametric Grid),
+// /image-grid (the Image Grid), /braille (the Braille Lettering Designer) and /sign-package (the Sign Package Maker) from the alexandria_office repo,
 // served beside these pages by server/gate.mjs.
 
 // Runs in every page's head (see the sidebar notes in `head` below): moves the sidebar's highlight to an
@@ -86,16 +86,17 @@ export default defineConfig({
 						{ label: 'Grasshopper Components', slug: 'grasshopper' },
 						{ label: 'Site Plan', slug: 'site-plan/guide' },
 						{ label: 'Vectorizer', slug: 'vectorizer/guide' },
-						{ label: 'Parametric Grid', slug: 'grid/guide' },
 						{ label: 'Braille Lettering Designer', slug: 'braille/guide' },
 						{ label: 'Sign Package Maker', slug: 'sign-package/guide' },
+						{ label: 'Parametric Grid', slug: 'grid/guide' },
+						{ label: 'Image Grid', slug: 'image-grid/guide' },
 						{ label: 'Color Matcher', slug: 'colors/guide' },
 						{ label: 'Color Library', slug: 'colors/library/guide' },
 						{ label: 'Material Estimator', slug: 'estimator/guide' },
 						{ label: 'Material Library', slug: 'materials/guide' },
 					],
 				},
-				// The tools in three categories, as on the home page (user, 2026-11-11). Each opens with its category's
+				// The tools by category, as on the home page (user, 2026-11-11). Each opens with its category's
 				// page (tools/*.mdx, the home section's Details link). The web tools open themselves; the Rhino and
 				// Grasshopper packages open on their sections of the category page, as their quick guides already
 				// have entries above and a page with two entries would open two groups.
@@ -115,10 +116,20 @@ export default defineConfig({
 						{ label: 'Overview', slug: 'tools/design' },
 						{ label: 'Site Plan', link: '/site-plan/' },
 						{ label: 'Vectorizer', link: '/vectorizer/' },
-						{ label: 'Parametric Grid', link: '/grid/' },
 						{ label: 'Braille Lettering Designer', link: '/braille/' },
 						// new, and its DWG hasn't been opened in AutoCAD yet
 						{ label: 'Sign Package Maker', link: '/sign-package/', badge: 'Beta' },
+					],
+				},
+				{
+					label: 'Parametric Tools',
+					collapsed: true,
+					// split from Design Tools (user, 2026-11-17): grids of cells, each sized by a rule
+					items: [
+						{ label: 'Overview', slug: 'tools/parametric' },
+						{ label: 'Parametric Grid', link: '/grid/' },
+						// new
+						{ label: 'Image Grid', link: '/image-grid/', badge: 'Beta' },
 					],
 				},
 				{

@@ -1,0 +1,151 @@
+<!-- The Image Grid quick guide, written for the hub in the quick guides' own classes (qg-…, from guides.css) and a few
+     of the hub's (ax-…, in theme.css). The tool itself is in the alexandria_office repo, at public/image-grid/, and is
+     described in that repo's README (Image Grid). The cells in the diagram come from the tool's own image-map.js, in
+     Simple: its sample image (the soft letter A) on a 48 × 36 in region of 1.75 in hexes, Min 0.1 and Max 0.9. -->
+<div class="qg-page">
+  <header>
+    <p class="qg-eyebrow">Office Tools &middot; Runs in Your Browser &middot; Beta</p>
+    <p class="qg-lede">Lay out a square, hex or triangle grid on a panel, size each cell by the image under it, and download the linework as an SVG at full size. Grasshopper's Image Sampler, without opening Grasshopper.</p>
+    <p class="qg-other"><a href="/image-grid/">Open the Image Grid &rarr;</a></p>
+  </header>
+
+  <section aria-labelledby="screen">
+    <div class="qg-section-head"><h2 id="screen">The Screen</h2><p>Controls on the left, the preview on the right. This is Simple.</p></div>
+    <figure class="qg-figure">
+      <div class="qg-diagram-scroll">
+      <svg class="ax-est" viewBox="0 0 760 360" role="img" aria-label="The Image Grid in Simple: on the left Simple and Standard, Choose Image, the Region's width, its height following the image, and units, the Grid type with Hex chosen and the Cell Size, the Min and Max scale sliders, Largest Where the Image Is Light, and Download SVG and Copy SVG buttons; on the right a panel of filled hexagons, large where the sample image's letter A is dark and small where it's light, so the A shows in the grid">
+        <defs>
+          <clipPath id="qg-image-grid-window"><rect x="0.5" y="0.5" width="759" height="359" rx="10"/></clipPath>
+        </defs>
+        <g clip-path="url(#qg-image-grid-window)">
+        <!-- the preview: the region and its cells, filled -->
+        <rect x="231" y="38" width="529" height="322" class="ax-tint"/>
+        <rect x="231" y="0" width="529" height="38" class="qg-paper"/>
+        <line x1="231" y1="38" x2="760" y2="38" class="ax-line"/>
+        <text x="245" y="23" font-size="10" class="qg-t-muted">Drop or paste an image anywhere on the page.</text>
+        <rect x="562" y="14" width="10" height="10" rx="2" class="ax-field"/>
+        <text x="577" y="23" font-size="10" class="qg-t-muted">Image</text>
+        <rect x="615" y="14" width="10" height="10" rx="2" class="ax-mark"/>
+        <text x="630" y="23" font-size="10" class="qg-t-muted">Filled</text>
+        <text x="746" y="23" font-size="10" text-anchor="end" class="ax-mono qg-t-muted">X 20   Y 18 in</text>
+        <rect x="313.1" y="62.2" width="364.8" height="273.6" class="qg-paper"/>
+        <path class="ax-mark" d="M328.5 75.3L332 77.3L332 81.3L328.5 83.3L325 81.3L325 77.3zM351.5 75.5L354.8 77.4L354.8 81.2L351.5 83.1L348.3 81.2L348.3 77.4zM374.6 75.8L377.6 77.5L377.6 81.1L374.6 82.8L371.5 81.1L371.5 77.5zM397.6 76L400.5 77.6L400.5 81L397.6 82.6L394.7 81L394.7 77.6zM420.6 76.2L423.3 77.7L423.3 80.9L420.6 82.4L417.9 80.9L417.9 77.7zM443.7 76.3L446.2 77.8L446.2 80.8L443.7 82.3L441.1 80.8L441.1 77.8zM466.7 76.4L469.2 77.9L469.2 80.7L466.7 82.2L464.2 80.7L464.2 77.9zM489.7 76.5L492.2 77.9L492.2 80.7L489.7 82.1L487.3 80.7L487.3 77.9zM512.8 76.5L515.2 77.9L515.2 80.7L512.8 82.1L510.3 80.7L510.3 77.9zM535.8 76.4L538.3 77.8L538.3 80.8L535.8 82.2L533.3 80.8L533.3 77.8zM558.8 76.3L561.5 77.8L561.5 80.8L558.8 82.3L556.2 80.8L556.2 77.8zM581.9 76.1L584.7 77.7L584.7 80.9L581.9 82.5L579.1 80.9L579.1 77.7zM604.9 75.9L607.9 77.6L607.9 81L604.9 82.7L602 81L602 77.6zM628 75.6L631.1 77.5L631.1 81.1L628 83L624.8 81.1L624.8 77.5zM651 75.4L654.4 77.4L654.4 81.2L651 83.2L647.6 81.2L647.6 77.4zM340 95.5L343.2 97.4L343.2 101.1L340 103L336.8 101.1L336.8 97.4zM363 95.8L366.1 97.5L366.1 101L363 102.7L360 101L360 97.5zM386.1 96L388.9 97.6L388.9 100.9L386.1 102.5L383.3 100.9L383.3 97.6zM409.1 96.2L411.7 97.7L411.7 100.8L409.1 102.3L406.5 100.8L406.5 97.7zM432.2 96.4L434.6 97.8L434.6 100.7L432.2 102.1L429.7 100.7L429.7 97.8zM455.2 96.6L457.5 97.9L457.5 100.6L455.2 101.9L452.9 100.6L452.9 97.9zM478.2 96.7L480.4 98L480.4 100.5L478.2 101.8L476 100.5L476 98zM501.3 96.7L503.5 98L503.5 100.5L501.3 101.8L499.1 100.5L499.1 98zM524.3 96.7L526.5 98L526.5 100.5L524.3 101.8L522 100.5L522 98zM547.3 96.5L549.7 97.9L549.7 100.6L547.3 102L545 100.6L545 97.9zM570.4 96.3L572.9 97.8L572.9 100.7L570.4 102.2L567.9 100.7L567.9 97.8zM593.4 96.1L596.1 97.7L596.1 100.8L593.4 102.4L590.7 100.8L590.7 97.7zM616.4 95.9L619.3 97.6L619.3 100.9L616.4 102.6L613.5 100.9L613.5 97.6zM639.5 95.6L642.6 97.4L642.6 101.1L639.5 102.9L636.4 101.1L636.4 97.4zM662.5 95.4L665.9 97.3L665.9 101.2L662.5 103.1L659.2 101.2L659.2 97.3zM328.5 115.4L331.7 117.3L331.7 121.1L328.5 123L325.2 121.1L325.2 117.3zM351.5 115.7L354.5 117.5L354.5 120.9L351.5 122.7L348.5 120.9L348.5 117.5zM374.6 116L377.3 117.6L377.3 120.8L374.6 122.4L371.8 120.8L371.8 117.6zM397.6 116.3L400.1 117.7L400.1 120.7L397.6 122.1L395 120.7L395 117.7zM420.6 116.5L423 117.8L423 120.6L420.6 121.9L418.3 120.6L418.3 117.8zM443.7 116.7L445.8 118L445.8 120.4L443.7 121.7L441.5 120.4L441.5 118zM466.7 113.6L471.5 116.4L471.5 122L466.7 124.8L461.9 122L461.9 116.4zM489.7 111.6L496.3 115.4L496.3 123L489.7 126.8L483.1 123L483.1 115.4zM512.8 112.3L518.8 115.7L518.8 122.7L512.8 126.1L506.8 122.7L506.8 115.7zM535.8 116.6L538 117.9L538 120.5L535.8 121.8L533.6 120.5L533.6 117.9zM558.8 116.6L561.1 117.9L561.1 120.5L558.8 121.8L556.6 120.5L556.6 117.9zM581.9 116.4L584.3 117.8L584.3 120.6L581.9 122L579.4 120.6L579.4 117.8zM604.9 116.1L607.6 117.7L607.6 120.7L604.9 122.3L602.3 120.7L602.3 117.7zM628 115.9L630.8 117.5L630.8 120.9L628 122.5L625.1 120.9L625.1 117.5zM651 115.6L654.1 117.4L654.1 121L651 122.8L647.9 121L647.9 117.4zM340 135.6L343 137.4L343 140.9L340 142.7L337 140.9L337 137.4zM363 135.9L365.8 137.5L365.8 140.8L363 142.4L360.3 140.8L360.3 137.5zM386.1 136.2L388.6 137.7L388.6 140.6L386.1 142.1L383.5 140.6L383.5 137.7zM409.1 136.5L411.4 137.8L411.4 140.5L409.1 141.8L406.8 140.5L406.8 137.8zM432.2 136.7L434.2 137.9L434.2 140.4L432.2 141.6L430.1 140.4L430.1 137.9zM455.2 134.6L459.2 136.9L459.2 141.4L455.2 143.7L451.2 141.4L451.2 136.9zM478.2 129.3L486.7 134.2L486.7 144.1L478.2 149L469.7 144.1L469.7 134.2zM501.3 130.1L509.1 134.6L509.1 143.7L501.3 148.2L493.4 143.7L493.4 134.6zM524.3 132.1L530.4 135.6L530.4 142.7L524.3 146.2L518.2 142.7L518.2 135.6zM547.3 136.9L549.3 138L549.3 140.3L547.3 141.4L545.3 140.3L545.3 138zM570.4 136.6L572.6 137.9L572.6 140.4L570.4 141.7L568.2 140.4L568.2 137.9zM593.4 136.4L595.8 137.8L595.8 140.5L593.4 141.9L591 140.5L591 137.8zM616.4 136.1L619.1 137.6L619.1 140.7L616.4 142.2L613.8 140.7L613.8 137.6zM639.5 135.8L642.4 137.5L642.4 140.8L639.5 142.5L636.6 140.8L636.6 137.5zM662.5 135.5L665.7 137.3L665.7 141L662.5 142.8L659.3 141L659.3 137.3zM328.5 155.5L331.6 157.3L331.6 160.9L328.5 162.7L325.4 160.9L325.4 157.3zM351.5 155.8L354.4 157.5L354.4 160.7L351.5 162.4L348.7 160.7L348.7 157.5zM374.6 156.1L377.1 157.6L377.1 160.6L374.6 162.1L372 160.6L372 157.6zM397.6 156.4L399.9 157.8L399.9 160.4L397.6 161.8L395.3 160.4L395.3 157.8zM420.6 156.7L422.7 157.9L422.7 160.3L420.6 161.5L418.6 160.3L418.6 157.9zM443.7 156.1L446.2 157.6L446.2 160.6L443.7 162.1L441.1 160.6L441.1 157.6zM466.7 149.1L475.4 154.1L475.4 164.1L466.7 169.1L458 164.1L458 154.1zM489.7 151.8L496 155.5L496 162.7L489.7 166.4L483.4 162.7L483.4 155.5zM512.8 150.3L520.4 154.7L520.4 163.5L512.8 167.9L505.2 163.5L505.2 154.7zM535.8 153.6L540.5 156.4L540.5 161.8L535.8 164.6L531.1 161.8L531.1 156.4zM558.8 156.8L560.8 158L560.8 160.2L558.8 161.4L556.9 160.2L556.9 158zM581.9 156.6L584.1 157.8L584.1 160.4L581.9 161.6L579.7 160.4L579.7 157.8zM604.9 156.3L607.4 157.7L607.4 160.5L604.9 161.9L602.5 160.5L602.5 157.7zM628 156L630.7 157.5L630.7 160.7L628 162.2L625.2 160.7L625.2 157.5zM651 155.7L654 157.4L654 160.8L651 162.5L648 160.8L648 157.4zM340 175.7L342.9 177.4L342.9 180.7L340 182.4L337.1 180.7L337.1 177.4zM363 176L365.7 177.5L365.7 180.6L363 182.1L360.4 180.6L360.4 177.5zM386.1 176.3L388.5 177.7L388.5 180.4L386.1 181.8L383.7 180.4L383.7 177.7zM409.1 176.6L411.3 177.8L411.3 180.3L409.1 181.5L407 180.3L407 177.8zM432.2 176.8L434.1 177.9L434.1 180.2L432.2 181.3L430.2 180.2L430.2 177.9zM455.2 169.5L463.4 174.3L463.4 183.8L455.2 188.6L447 183.8L447 174.3zM478.2 170.3L485.8 174.7L485.8 183.4L478.2 187.8L470.6 183.4L470.6 174.7zM501.3 174.3L505.4 176.7L505.4 181.4L501.3 183.8L497.1 181.4L497.1 176.7zM524.3 170.6L531.6 174.8L531.6 183.3L524.3 187.5L517 183.3L517 174.8zM547.3 175L550.8 177L550.8 181.1L547.3 183.1L543.8 181.1L543.8 177zM570.4 176.7L572.4 177.9L572.4 180.2L570.4 181.4L568.3 180.2L568.3 177.9zM593.4 176.4L595.7 177.7L595.7 180.4L593.4 181.7L591.1 180.4L591.1 177.7zM616.4 176.1L619 177.6L619 180.5L616.4 182L613.9 180.5L613.9 177.6zM639.5 175.8L642.3 177.4L642.3 180.7L639.5 182.3L636.7 180.7L636.7 177.4zM662.5 175.5L665.6 177.3L665.6 180.8L662.5 182.6L659.4 180.8L659.4 177.3zM328.5 195.5L331.5 197.2L331.5 200.8L328.5 202.5L325.4 200.8L325.4 197.2zM351.5 195.8L354.3 197.4L354.3 200.6L351.5 202.2L348.7 200.6L348.7 197.4zM374.6 196.1L377.1 197.5L377.1 200.5L374.6 201.9L372 200.5L372 197.5zM397.6 196.4L399.9 197.7L399.9 200.3L397.6 201.6L395.3 200.3L395.3 197.7zM420.6 196.7L422.7 197.8L422.7 200.2L420.6 201.3L418.6 200.2L418.6 197.8zM443.7 191L450.6 195L450.6 203L443.7 207L436.7 203L436.7 195zM466.7 188.9L475.5 193.9L475.5 204.1L466.7 209.1L457.9 204.1L457.9 193.9zM489.7 196.4L492 197.7L492 200.3L489.7 201.6L487.5 200.3L487.5 197.7zM512.8 192.3L518.6 195.7L518.6 202.3L512.8 205.7L507 202.3L507 195.7zM535.8 190.9L542.8 195L542.8 203L535.8 207.1L528.8 203L528.8 195zM558.8 196.1L561.4 197.5L561.4 200.5L558.8 201.9L556.3 200.5L556.3 197.5zM581.9 196.5L584 197.8L584 200.2L581.9 201.5L579.7 200.2L579.7 197.8zM604.9 196.2L607.3 197.6L607.3 200.4L604.9 201.8L602.5 200.4L602.5 197.6zM628 195.9L630.6 197.5L630.6 200.5L628 202.1L625.3 200.5L625.3 197.5zM651 195.6L653.9 197.3L653.9 200.7L651 202.4L648.1 200.7L648.1 197.3zM340 215.5L343 217.2L343 220.7L340 222.4L337.1 220.7L337.1 217.2zM363 215.8L365.7 217.4L365.7 220.5L363 222.1L360.3 220.5L360.3 217.4zM386.1 216.1L388.5 217.5L388.5 220.4L386.1 221.8L383.6 220.4L383.6 217.5zM409.1 216.4L411.3 217.7L411.3 220.2L409.1 221.5L406.9 220.2L406.9 217.7zM432.2 212.6L437.6 215.8L437.6 222.1L432.2 225.3L426.7 222.1L426.7 215.8zM455.2 208.5L464.3 213.7L464.3 224.2L455.2 229.4L446.1 224.2L446.1 213.7zM478.2 210.6L485.4 214.8L485.4 223.1L478.2 227.3L471 223.1L471 214.8zM501.3 212.4L507 215.7L507 222.2L501.3 225.5L495.6 222.2L495.6 215.7zM524.3 210.5L531.6 214.7L531.6 223.2L524.3 227.4L517 223.2L517 214.7zM547.3 211.6L553.7 215.3L553.7 222.6L547.3 226.3L540.9 222.6L540.9 215.3zM570.4 216.4L572.5 217.7L572.5 220.2L570.4 221.5L568.2 220.2L568.2 217.7zM593.4 216.3L595.7 217.6L595.7 220.3L593.4 221.6L591.1 220.3L591.1 217.6zM616.4 216L619 217.5L619 220.4L616.4 221.9L613.9 220.4L613.9 217.5zM639.5 215.7L642.3 217.3L642.3 220.6L639.5 222.2L636.7 220.6L636.7 217.3zM662.5 215.4L665.6 217.2L665.6 220.7L662.5 222.5L659.4 220.7L659.4 217.2zM328.5 235.3L331.6 237.1L331.6 240.7L328.5 242.5L325.4 240.7L325.4 237.1zM351.5 235.6L354.4 237.2L354.4 240.6L351.5 242.2L348.6 240.6L348.6 237.2zM374.6 235.9L377.2 237.4L377.2 240.4L374.6 241.9L371.9 240.4L371.9 237.4zM397.6 236.1L400 237.5L400 240.3L397.6 241.7L395.2 240.3L395.2 237.5zM420.6 234.3L424.6 236.6L424.6 241.2L420.6 243.5L416.6 241.2L416.6 236.6zM443.7 228.1L453 233.5L453 244.3L443.7 249.7L434.3 244.3L434.3 233.5zM466.7 229.4L475 234.1L475 243.7L466.7 248.4L458.4 243.7L458.4 234.1zM489.7 230.5L497 234.7L497 243.1L489.7 247.3L482.5 243.1L482.5 234.7zM512.8 231.1L519.6 235L519.6 242.8L512.8 246.7L506 242.8L506 235zM535.8 230.8L542.8 234.8L542.8 243L535.8 247L528.8 243L528.8 234.8zM558.8 232.6L564.3 235.8L564.3 242L558.8 245.2L553.4 242L553.4 235.8zM581.9 236.3L584.2 237.6L584.2 240.2L581.9 241.5L579.6 240.2L579.6 237.6zM604.9 236L607.4 237.4L607.4 240.4L604.9 241.8L602.4 240.4L602.4 237.4zM628 235.7L630.7 237.3L630.7 240.5L628 242.1L625.2 240.5L625.2 237.3zM651 235.4L654 237.2L654 240.6L651 242.4L648 240.6L648 237.2zM340 255.3L343.1 257.1L343.1 260.6L340 262.4L336.9 260.6L336.9 257.1zM363 255.6L365.9 257.2L365.9 260.5L363 262.1L360.2 260.5L360.2 257.2zM386.1 255.8L388.7 257.3L388.7 260.4L386.1 261.9L383.5 260.4L383.5 257.3zM409.1 255.5L412 257.2L412 260.5L409.1 262.2L406.2 260.5L406.2 257.2zM432.2 247.9L441.6 253.4L441.6 264.3L432.2 269.8L422.7 264.3L422.7 253.4zM455.2 249.4L463.3 254.1L463.3 263.6L455.2 268.3L447 263.6L447 254.1zM478.2 256.4L480.3 257.6L480.3 260.1L478.2 261.3L476.1 260.1L476.1 257.6zM501.3 256.5L503.3 257.7L503.3 260L501.3 261.2L499.2 260L499.2 257.7zM524.3 254.3L528.3 256.6L528.3 261.1L524.3 263.4L520.3 261.1L520.3 256.6zM547.3 251L554.1 254.9L554.1 262.8L547.3 266.7L540.6 262.8L540.6 254.9zM570.4 253.7L574.8 256.3L574.8 261.4L570.4 264L565.9 261.4L565.9 256.3zM593.4 256L595.9 257.4L595.9 260.3L593.4 261.7L590.9 260.3L590.9 257.4zM616.4 255.7L619.2 257.3L619.2 260.4L616.4 262L613.7 260.4L613.7 257.3zM639.5 255.4L642.4 257.1L642.4 260.6L639.5 262.3L636.5 260.6L636.5 257.1zM662.5 255.2L665.7 257L665.7 260.7L662.5 262.5L659.3 260.7L659.3 257zM328.5 275L331.8 276.9L331.8 280.7L328.5 282.6L325.2 280.7L325.2 276.9zM351.5 275.3L354.6 277L354.6 280.6L351.5 282.3L348.5 280.6L348.5 277zM374.6 275.5L377.4 277.2L377.4 280.4L374.6 282.1L371.7 280.4L371.7 277.2zM397.6 275.7L400.2 277.3L400.2 280.3L397.6 281.9L394.9 280.3L394.9 277.3zM420.6 271.5L427 275.1L427 282.5L420.6 286.1L414.3 282.5L414.3 275.1zM443.7 270.8L450.6 274.8L450.6 282.8L443.7 286.8L436.7 282.8L436.7 274.8zM466.7 275.6L469.5 277.2L469.5 280.4L466.7 282L463.9 280.4L463.9 277.2zM489.7 276.3L491.9 277.5L491.9 280.1L489.7 281.3L487.6 280.1L487.6 277.5zM512.8 276.3L515 277.5L515 280.1L512.8 281.3L510.6 280.1L510.6 277.5zM535.8 273.8L540.2 276.3L540.2 281.3L535.8 283.8L531.5 281.3L531.5 276.3zM558.8 272.9L563.9 275.9L563.9 281.7L558.8 284.7L553.8 281.7L553.8 275.9zM581.9 275.1L585 277L585 280.6L581.9 282.5L578.7 280.6L578.7 277zM604.9 275.6L607.7 277.2L607.7 280.4L604.9 282L602.2 280.4L602.2 277.2zM628 275.4L630.9 277.1L630.9 280.5L628 282.2L625 280.5L625 277.1zM651 275.1L654.2 277L654.2 280.6L651 282.5L647.8 280.6L647.8 277zM340 295L343.3 296.9L343.3 300.6L340 302.5L336.7 300.6L336.7 296.9zM363 295.2L366.1 297L366.1 300.5L363 302.3L360 300.5L360 297zM386.1 295.4L389 297.1L389 300.4L386.1 302.1L383.2 300.4L383.2 297.1zM409.1 295.6L411.8 297.2L411.8 300.3L409.1 301.9L406.4 300.3L406.4 297.2zM432.2 295.8L434.7 297.3L434.7 300.2L432.2 301.7L429.6 300.2L429.6 297.3zM455.2 295.9L457.7 297.3L457.7 300.2L455.2 301.6L452.7 300.2L452.7 297.3zM478.2 296L480.6 297.4L480.6 300.1L478.2 301.5L475.8 300.1L475.8 297.4zM501.3 296L503.6 297.4L503.6 300.1L501.3 301.5L498.9 300.1L498.9 297.4zM524.3 295.9L526.7 297.3L526.7 300.2L524.3 301.6L521.9 300.2L521.9 297.3zM547.3 295.8L549.8 297.3L549.8 300.2L547.3 301.7L544.8 300.2L544.8 297.3zM570.4 295.7L573 297.2L573 300.3L570.4 301.8L567.7 300.3L567.7 297.2zM593.4 295.5L596.2 297.1L596.2 300.4L593.4 302L590.6 300.4L590.6 297.1zM616.4 295.3L619.4 297L619.4 300.5L616.4 302.2L613.5 300.5L613.5 297zM639.5 295.1L642.7 296.9L642.7 300.6L639.5 302.4L636.3 300.6L636.3 296.9zM662.5 294.8L665.9 296.8L665.9 300.7L662.5 302.7L659.1 300.7L659.1 296.8zM328.5 314.6L332 316.7L332 320.7L328.5 322.8L325 320.7L325 316.7zM351.5 314.9L354.8 316.8L354.8 320.6L351.5 322.5L348.2 320.6L348.2 316.8zM374.6 315.1L377.7 316.9L377.7 320.5L374.6 322.3L371.4 320.5L371.4 316.9zM397.6 315.3L400.6 317L400.6 320.4L397.6 322.1L394.6 320.4L394.6 317zM420.6 315.4L423.5 317.1L423.5 320.3L420.6 322L417.8 320.3L417.8 317.1zM443.7 315.6L446.4 317.1L446.4 320.3L443.7 321.8L441 320.3L441 317.1zM466.7 315.7L469.3 317.2L469.3 320.2L466.7 321.7L464.1 320.2L464.1 317.2zM489.7 315.7L492.3 317.2L492.3 320.2L489.7 321.7L487.1 320.2L487.1 317.2zM512.8 315.7L515.4 317.2L515.4 320.2L512.8 321.7L510.2 320.2L510.2 317.2zM535.8 315.6L538.5 317.2L538.5 320.2L535.8 321.8L533.1 320.2L533.1 317.2zM558.8 315.5L561.6 317.1L561.6 320.3L558.8 321.9L556.1 320.3L556.1 317.1zM581.9 315.4L584.8 317L584.8 320.4L581.9 322L579 320.4L579 317zM604.9 315.2L608 316.9L608 320.5L604.9 322.2L601.9 320.5L601.9 316.9zM628 315L631.2 316.8L631.2 320.6L628 322.4L624.7 320.6L624.7 316.8zM651 314.8L654.4 316.7L654.4 320.7L651 322.6L647.6 320.7L647.6 316.7z"/>
+        <rect x="313.1" y="62.2" width="364.8" height="273.6" class="qg-stroke" stroke-width="1.5"/>
+
+        <!-- the panel, in Simple -->
+        <rect x="0" y="0" width="231" height="360" class="qg-paper"/>
+        </g>
+        <line x1="231" y1="1" x2="231" y2="359" class="ax-line"/>
+        <rect x="16" y="12" width="170" height="22" rx="6" class="ax-field"/>
+        <rect x="18" y="14" width="82" height="18" rx="4" class="ax-mark"/>
+        <text x="59" y="27" font-size="10" text-anchor="middle" class="ax-on-mark ax-b">Simple</text>
+        <text x="143" y="27" font-size="10" text-anchor="middle" class="qg-t-muted ax-b">Standard</text>
+
+        <text x="16" y="56" font-size="9" class="ax-head">IMAGE</text>
+        <rect x="16" y="63" width="104" height="22" rx="6" class="ax-field"/>
+        <path d="M27 79.5v-9m0 0-3 3m3-3 3 3" class="qg-thin"/>
+        <text x="75" y="78" font-size="10" text-anchor="middle" class="ax-b">Choose Image</text>
+
+        <text x="16" y="106" font-size="9" class="ax-head">REGION</text>
+        <rect x="16" y="113" width="56" height="22" rx="5" class="ax-field"/>
+        <text x="24" y="128" font-size="10.5" class="ax-mono">48</text>
+        <rect x="78" y="113" width="56" height="22" rx="5" class="ax-tint"/>
+        <text x="86" y="128" font-size="10.5" class="ax-mono qg-t-muted">36</text>
+        <rect x="140" y="113" width="66" height="22" rx="5" class="ax-field"/>
+        <text x="148" y="128" font-size="10">Inches</text>
+        <path d="M191 122.5l3 3 3-3" class="qg-thin"/>
+
+        <text x="16" y="156" font-size="9" class="ax-head">GRID</text>
+        <rect x="16" y="163" width="190" height="22" rx="6" class="ax-field"/>
+        <rect x="82" y="165" width="58" height="18" rx="4" class="ax-mark"/>
+        <text x="48" y="178" font-size="10" text-anchor="middle" class="qg-t-muted ax-b">Square</text>
+        <text x="111" y="178" font-size="10" text-anchor="middle" class="ax-on-mark ax-b">Hex</text>
+        <text x="174" y="178" font-size="10" text-anchor="middle" class="qg-t-muted ax-b">Triangle</text>
+        <rect x="16" y="191" width="50" height="22" rx="5" class="ax-field"/>
+        <text x="24" y="206" font-size="10.5" class="ax-mono">1.75</text>
+        <text x="72" y="206" font-size="10" class="qg-t-muted">in</text>
+
+        <text x="16" y="236" font-size="9" class="ax-head">SCALE</text>
+        <text x="16" y="254" font-size="10" class="qg-t-muted">Min</text>
+        <line x1="46" y1="250" x2="166" y2="250" class="ax-line" stroke-width="3"/>
+        <circle cx="58" cy="250" r="6" class="ax-mark"/>
+        <text x="204" y="254" font-size="10.5" text-anchor="end" class="ax-mono">0.10</text>
+        <text x="16" y="274" font-size="10" class="qg-t-muted">Max</text>
+        <line x1="46" y1="270" x2="166" y2="270" class="ax-line" stroke-width="3"/>
+        <circle cx="154" cy="270" r="6" class="ax-mark"/>
+        <text x="204" y="274" font-size="10.5" text-anchor="end" class="ax-mono">0.90</text>
+        <rect x="16" y="283" width="10" height="10" rx="2" class="ax-field"/>
+        <text x="32" y="292" font-size="10">Largest Where the Image Is Light</text>
+
+        <rect x="16" y="314" width="112" height="30" rx="6" class="ax-primary"/>
+        <text x="72" y="333" font-size="11" text-anchor="middle" class="ax-on-primary ax-b">Download SVG</text>
+        <rect x="134" y="314" width="72" height="30" rx="6" class="ax-field"/>
+        <text x="170" y="333" font-size="10.5" text-anchor="middle" class="ax-b">Copy SVG</text>
+        <!-- the window's outline, over everything -->
+        <rect x="0.5" y="0.5" width="759" height="359" rx="10" fill="none" class="ax-edge"/>
+
+        <g class="ax-callout" font-size="10.5" text-anchor="middle">
+          <circle cx="206" cy="23" r="9"/><text x="206" y="27">1</text>
+          <circle cx="206" cy="52" r="9"/><text x="206" y="56">2</text>
+          <circle cx="206" cy="102" r="9"/><text x="206" y="106">3</text>
+          <circle cx="206" cy="152" r="9"/><text x="206" y="156">4</text>
+          <circle cx="206" cy="232" r="9"/><text x="206" y="236">5</text>
+          <circle cx="128" cy="314" r="9"/><text x="128" y="318">6</text>
+          <circle cx="548" cy="19" r="9"/><text x="548" y="23">7</text>
+          <circle cx="678" cy="62" r="9"/><text x="678" y="66">8</text>
+        </g>
+      </svg>
+      </div>
+      <figcaption>The sample image, a soft letter A, as hexes: large where it's dark, small where it's light. The numbers match the list below.</figcaption>
+    </figure>
+    <ol class="ax-keys">
+      <li><b>Simple, Standard.</b> Simple shows the essentials and keeps the rest at their usual settings. Standard shows every setting (below), and keeps them for the next time you choose it.</li>
+      <li><b>Image.</b> <b>Choose Image</b>, or drop or paste one anywhere on the page: a PNG, JPG, WebP, GIF or SVG. It starts with a sample. Your image stays in this browser; nothing is uploaded.</li>
+      <li><b>Region.</b> The panel's width and units. In Simple the height follows the image's proportions. The SVG comes out at this size.</li>
+      <li><b>Grid, Cell Size.</b> Square, Hex or Triangle cells, as on the Parametric Grid. Cell Size is the length of a side.</li>
+      <li><b>Scale.</b> Each cell is scaled about its centre by the image under it: Max where it's darkest, Min where it's lightest. <b>Largest Where the Image Is Light</b> swaps them. A cell at 0 is left out.</li>
+      <li><b>Download SVG.</b> Saves the linework, named after the file name at the top. <b>Copy SVG</b> copies its code instead.</li>
+      <li><b>Image, Filled.</b> For the preview only: the image faintly under the cells, and the cells filled or as outlines. The pointer shows the image's brightness under it, with X and Y from the bottom left.</li>
+      <li><b>The region.</b> Its boundary and every cell, as the SVG will have them.</li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="standard">
+    <div class="qg-section-head"><h2 id="standard">In Standard</h2><p>Everything in Simple, and these.</p></div>
+    <ul class="qg-habits">
+      <li><b>Read.</b> What sizes the cells: the image's <b>Brightness</b> (how light it looks), its <b>Red</b>, <b>Green</b> or <b>Blue</b>, or its <b>Opacity</b>, where solid counts as dark and see-through as light, for a logo on a clear background.</li>
+      <li><b>Sample.</b> <b>Average</b> takes the whole cell into account, so fine detail blends smoothly. <b>Centre</b> reads the one point at the cell's centre, as Grasshopper's Image Sampler does.</li>
+      <li><b>Match the Image's Proportions.</b> Untick it to set the height yourself, then choose <b>Fill</b> (the image covers the region, centred, and the rest is cropped) or <b>Stretch</b>.</li>
+      <li><b>Edge Cells.</b> <b>Whole</b> keeps the cells that fit; <b>Clipped</b> fills the region and cuts the edge cells at its boundary.</li>
+      <li><b>Shape.</b> <b>The Cell</b>, or <b>A Circle</b>: the circle that fits in each cell, scaled the same way, for round holes or dots.</li>
+      <li><b>Tone.</b> <b>Black</b> and <b>White</b> are the values read as fully dark and fully light, so a washed-out photo can still reach Min and Max. Set them to the same value for two sizes only. <b>Midtones</b> lightens or darkens the greys between.</li>
+      <li><b>Sizes.</b> From 2 to 32: the cells come in that many sizes, evenly from Min to Max, such as the punches or drills you have. The panel lists each size and how many cells take it. Empty is any size.</li>
+      <li><b>Random Cull.</b> As on the Parametric Grid. <b>Start</b> leaves the largest cells alone: at 0.33, the cull works on the smallest 67%. <b>Cull</b> is the share of those taken out at random; the same <b>Seed</b> always takes out the same ones.</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="order">
+    <div class="qg-section-head"><h2 id="order">Make a Grid</h2><p>The usual order. The preview updates as you go.</p></div>
+    <ol class="qg-flow">
+      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="3" y="4" width="14" height="12" rx="1"/><path d="M3 13l4-4 3 3 2-2 5 5"/></svg></span><div><b>Open the Image</b><small>Choose one, or drop or paste it. High contrast reads best.</small></div></li>
+      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="3" y="5" width="14" height="10" rx="1"/></svg></span><div><b>Set the Region</b><small>The panel's width, in the units it will be made in.</small></div></li>
+      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 3h14v14H3zM3 10h14M10 3v14"/></svg></span><div><b>Choose the Grid</b><small>Square, Hex or Triangle, and the cell size. Smaller cells show more of the image.</small></div></li>
+      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="3" y="12" width="4" height="4"/><rect x="10" y="5" width="7" height="7"/></svg></span><div><b>Set the Scale</b><small>Min and Max for the smallest and largest cells, and which way round.</small></div></li>
+      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="6" cy="6" r="1.5"/><circle cx="14" cy="6" r="2.5"/><circle cx="6" cy="14" r="2.5"/><circle cx="14" cy="14" r="3.5"/></svg></span><div><b>Fine-Tune, If Wanted</b><small>In Standard: the tone, set sizes, circles and a random cull.</small></div></li>
+      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v10m0 0-4-4m4 4 4-4M4 16h12"/></svg></span><div><b>Download SVG</b><small>Into the project's folder, then import it into Rhino, CorelDRAW or Illustrator.</small></div></li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="habits">
+    <div class="qg-section-head"><h2 id="habits">Good to Know</h2></div>
+    <ul class="qg-habits">
+      <li><b>Full size.</b> The SVG is in the region's units, so it imports at its real size. Feet come out as inches and meters as centimeters, since SVG has neither.</li>
+      <li><b>Clean linework.</b> One closed shape per cell (a circle, with A Circle) and the boundary, with no fills, in groups named Region and Cells. With Sizes set, each size has its own group inside Cells, Size-1 the smallest, so you can select one size at a time.</li>
+      <li><b>Dark makes large.</b> As a halftone does: fill or cut the cells and the image appears. For holes lit from behind, where light should show the image, tick <b>Largest Where the Image Is Light</b>.</li>
+      <li><b>The same grid.</b> The cells are the Parametric Grid's: the same region, grid and cell size give the same cells in both tools.</li>
+      <li><b>Clipped edges.</b> A clipped cell's cut side lies on the boundary, so that line is there twice: delete one before cutting.</li>
+      <li><b>Settings stay.</b> Everything, the image too, is remembered in this browser. <b>Use the Sample</b> goes back to the sample image.</li>
+      <li><b>Beta.</b> It's new, so some of it may change.</li>
+    </ul>
+  </section>
+</div>

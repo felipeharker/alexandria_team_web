@@ -6,7 +6,8 @@
 // main and its files come from GitHub's API, into office/<commit>/. The build runs `node server/office.mjs` once,
 // so a deploy starts with the tools in place; the running gate then checks every two minutes, so a push to
 // alexandria_office shows up here without a hub deploy. If GitHub can't be reached, the last copy stays.
-// OFFICE_REPO (owner/name) points it at another repo, for trying it out.
+// OFFICE_REPO (owner/name) points it at another repo, for trying it out. OFFICE_DIR serves a local alexandria_office
+// checkout as it is instead, to try a branch on this computer before it's pushed: nothing is fetched or updated.
 //
 // The office's own render.yaml still sets its headers (the Site Plan's map servers are in its Content-Security-Policy):
 // its `/*` headers are read from the same download and sent with every office file.
@@ -17,6 +18,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { gunzipSync } from 'node:zlib';
 
 const REPO = process.env.OFFICE_REPO || 'felipeharker/alexandria_office';
+const LOCAL = process.env.OFFICE_DIR || '';
 const TOKEN = process.env.GITHUB_TOKEN || '';
 const BRANCH = 'main';
 const DIR = fileURLToPath(new URL('../office', import.meta.url));
@@ -91,7 +93,7 @@ function* untar(tar) {
 // The `/*` headers in the office's render.yaml: `- path: /*`, `name: ...`, then `value: ...` (comments allowed between).
 function readHeaders(yaml) {
 	const headers = {};
-	const entry = /-\s*path:\s*(\S+)[ \t]*\n\s*name:\s*([\w-]+)[ \t]*\n(?:\s*#[^\n]*\n)*\s*value:\s*([^\n]+)/g;
+	const entry = /-\s*path:\s*(\S+)[ \t]*\r?\n\s*name:\s*([\w-]+)[ \t]*\r?\n(?:\s*#[^\n]*\n)*\s*value:\s*([^\r\n]+)/g;
 	for (const [, path, name, raw] of yaml.matchAll(entry)) {
 		if (path !== '/*') continue;
 		const quoted = raw.match(/^(["'])(.*)\1/);
@@ -146,6 +148,13 @@ export async function refresh(log = console.log) {
 
 /** For the gate: serve the copy the build fetched, then keep it up to date. */
 export async function startOfficeSync(log = console.log) {
+	if (LOCAL) {
+		const folder = resolve(LOCAL);
+		const yaml = await readFile(join(folder, 'render.yaml'), 'utf8').catch(() => '');
+		current = { sha: 'local', root: join(folder, 'public'), headers: readHeaders(yaml) };
+		log(`office tools: ${folder}, as it is (OFFICE_DIR)`);
+		return;
+	}
 	await mkdir(DIR, { recursive: true });
 	const sha = (await readFile(join(DIR, 'HEAD'), 'utf8').catch(() => '')).trim();
 	if (/^[0-9a-f]{40}$/.test(sha)) await use(sha).catch(() => {});
