@@ -10,6 +10,8 @@ const borrowed: Record<string, string> = {
 	// Standards is out of the sidebar until it covers the office's standards beyond Rhino (user, 2026-11-05);
 	// it's part of the Alexandria Phoenix docs, which link to it.
 	'/docs/standards': '/docs/phoenix',
+	// The Sample Project is out of the sidebar (user, 2026-11-18); Your First Day links to it.
+	'/sample-project': '/start/first-day',
 };
 
 const trim = (path: string) => path.replace(/\/$/, '');

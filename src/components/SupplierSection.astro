@@ -1,0 +1,53 @@
+---
+// One section of a supplier page (wiki/suppliers/*.mdx): its tables from src/suppliers/sheets.json, each under its
+// name. A table is either written out there (columns and rows) or names a group of the supplier's chart
+// (src/suppliers/<data>.json), which SupplierChart.astro draws. Words between `backticks` are set as codes.
+import SupplierChart from './SupplierChart.astro';
+import sheets from '../suppliers/sheets.json';
+
+type Column = { key: string; label: string; mono?: boolean; end?: boolean };
+type Table = { title: string; note?: string; columns: (string | Column)[]; rows?: string[][]; chart?: string; prefix?: string };
+type Section = { title: string; note?: string; tables: Table[] };
+
+interface Props {
+	/** the supplier's key in sheets.json */
+	supplier: keyof typeof sheets;
+	/** the section's title there */
+	section: string;
+}
+const { supplier, section } = Astro.props;
+const sheet = sheets[supplier];
+const found = (sheet.sections as Section[]).find((s) => s.title === section);
+if (!found) throw new Error(`SupplierSection: no "${section}" for ${supplier} in src/suppliers/sheets.json`);
+
+const escape = (text: string) => text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const codes = (text: string) => escape(text).replace(/`([^`]+)`/g, '<code>$1</code>');
+---
+
+{found.note && <p class="ax-supplier-note not-content">{found.note}</p>}
+{
+	found.tables.map((table) => (
+		<>
+			{found.tables.length > 1 || table.title !== found.title ? <h3 class="ax-supplier-table not-content">{table.title}</h3> : null}
+			{table.note && <p class="ax-supplier-note not-content" set:html={codes(table.note)} />}
+			{table.chart ? (
+				<SupplierChart from={sheet.data} group={table.chart} columns={table.columns as Column[]} prefix={table.prefix} />
+			) : (
+				<div class="ax-chart not-content">
+					<div class="ax-chart-scroll">
+						<table>
+							<thead>
+								<tr>{(table.columns as string[]).map((column) => <th>{column}</th>)}</tr>
+							</thead>
+							<tbody>
+								{(table.rows ?? []).map((row) => (
+									<tr>{row.map((cell) => <td set:html={codes(cell)} />)}</tr>
+								))}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			)}
+		</>
+	))
+}

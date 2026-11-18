@@ -1,146 +1,30 @@
 ---
 title: Eastern Metal Supply
-description: The aluminum the office's signs are built from. Eastern Metal Supply's sheet, coil, sign frames and raceways, how a stock code reads, how we call the metal out, and its stock lists for sign work.
+description: "The aluminum of a sign: sign extrusions and sheet stock, with their stock codes."
 ---
 
-import SupplierChart from '../../../../components/SupplierChart.astro';
+import SupplierIntro from '../../../../components/SupplierIntro.astro';
+import SupplierSection from '../../../../components/SupplierSection.astro';
+import SupplierDocuments from '../../../../components/SupplierDocuments.astro';
 
-{/* One of the supplier pages, all with the same sections in the same order. The stock lists: tools/suppliers/extract.py → src/suppliers/eastern-metal-supply.json. The source documents live in alexandria_office (public/sources/suppliers/), served here at /sources/suppliers/. */}
+{/* One of the supplier pages: all tables, the same parts in the same order, and nothing written here. The words and the
+    small tables are in src/suppliers/sheets.json; the long charts are src/suppliers/*.json (tools/suppliers/extract.py);
+    tools/suppliers/sheets.py prints the same data as the PDF. */}
 
-## At a Glance
+<SupplierIntro supplier="eastern-metal-supply" />
 
-| | |
-|---|---|
-| **Supplier** | Eastern Metal Supply (EMS) |
-| **What It Is** | An aluminum distributor: sheet and plate, standard and custom extrusions, and a line of extrusions made for signs |
-| **We Use It For** | The metal of a sign: faces, backs, returns, backers, cabinets and raceways |
-| **A Code Looks Like** | `50-03-146`, a .063" x 48" x 96" sheet of 5052-H32 |
-| **Website** | [easternmetal.com](https://www.easternmetal.com/) |
+## Products
 
-## Product Lines
+<SupplierSection supplier="eastern-metal-supply" section="Products" />
 
-The catalog covers many markets, from patio rooms to boat trailers. These are the parts sign work draws on.
+## Sign Parts
 
-| Section | What's in It |
-|---|---|
-| Sheet and Plate | Mill finish sheet in 5052, 3003 and 6061; anodized and painted sheet; tread plate; ACM panels; channel letter coil |
-| Sign and Exhibit | Sign cabinet frames and retainers, the SIGNgineer cabinet system, flex face frames, raceways and wireways, mounting clips, posts and DOT sign hardware |
-| Standard Extrusions | Bar, rod, angle, channel, tees and zees; square, rectangular and round tube; pipe; I-beams; painted and anodized extrusions |
-| Services | Custom extrusions to a drawing, cutting, bending, welding, machining, anodizing and powder coating. Sheet can be bent from .025" to .100" thick, up to 48" wide and 312" long. |
+<SupplierSection supplier="eastern-metal-supply" section="Sign Parts" />
 
-### Sign Cabinet Frames
+## Sheet Stock
 
-Each frame is an extrusion 24' 6" long that makes the four sides of a cabinet. A *retainer* is the lip that holds the face in; *LED* frames take an ACM sheet or square tube inside to mount LEDs on.
+<SupplierSection supplier="eastern-metal-supply" section="Sheet Stock" />
 
-| Frame | With Fixed Retainer | Without Retainer |
-|---|---|---|
-| 4" | `24-63-200` (SF-4R) | `24-63-205` (SF-4) |
-| 6" | `24-63-260` | `24-63-255` |
-| 7" | `24-63-210` (SF-7R) | `24-63-215` (SF-7) |
-| 10" | `24-63-220` (SF-10R) | `24-63-225` (SF-10) |
-| 10" LED | `24-63-221` | `24-63-226` |
-| 12" | `24-63-230` (SF-12R) | `24-63-235` (SF-12) |
-| 12" LED | `24-63-231` | `24-63-239` |
-| 16" | | `24-63-290` (SF-16), for round steel poles up to 9" and square ones up to 10" |
+## Documents
 
-Others in the section: a 6" single face frame (`24-63-705`), a 6" tab mounted frame (`24-63-700`), a 9" single face frame (`24-63-280`) and an 8" stackable frame (`24-63-400`). The parts that go with them: the F-retainer (`24-63-251`), divider bars (`24-63-120`, `24-63-115`, `24-63-275`) and a piano hinge (`41-63-871`).
-
-**SIGNgineer** builds a cabinet of any width from two extrusions, square tube and flat sheet, with no welds showing: *Junior* for cabinets under 100 sq ft (`24-63-610` with retainer, `24-63-615` without), *Senior* for larger cabinets and flex faces (`24-63-600`, `24-63-605`).
-
-### Raceways
-
-| Raceway | Code | Goes With |
-|---|---|---|
-| EasyMount 6" face, 25' | `24-63-158` | Back wall bracket `24-63-159`, end cap `21-00-910`, power supply panel `24-63-161` |
-| Tab mounted LED, 3-1/2" x 5", 25' | `24-63-154` | Lid `24-63-163`, end cap `21-00-932`, tray `24-63-451F` |
-| Tab mounted LED, 4-1/2" x 4-1/2", 25' | `24-63-156` | Lid `24-63-157`, end cap `21-00-928`, tray `24-63-449F` |
-| Tab mounted LED, 4-1/2" x 7", 25' | `24-63-155` | Lid `24-63-157`, end cap `21-00-927`, tray `24-63-449F` |
-| Tab mounted, 7-1/4" x 7", 25' | `24-63-149` | Lid `24-63-150`, end cap `21-00-909`, tray `24-63-450F` |
-| RW-7, 7-1/4", 25' | `24-63-138` | Lid `24-63-150`, end cap `21-00-901` |
-| RW-3, 3" x 1-1/2", 20' | `24-63-125` | |
-| RW-4, 4" x 1", 20' | `24-63-140` | Lid `24-63-141` (mill order) |
-| RW-4A, 4" x 1-1/2", 20' | `24-63-265` | Lid `24-63-141` (mill order) |
-
-Tab mounted raceways hang on the mounting tab `24-63-148P`, rated for 220 lb down and 160 lb sideways per tab. The EasyMount raceway comes in two halves: the back goes on the wall, then the face, with its letters already on, drops in and locks.
-
-### Mounting
-
-- **EZ Clip,** a strip that mates with itself, to hang a cabinet or a panel and lift it off again: `40-63-008` with 3/8" of lift, `40-63-007` with 5/8", both 144" long. The 3/8" clip also comes cut and drilled at 2", 7-5/8" and 13-1/8".
-- **H-retainer** `24-63-160`, 1-3/4" by 16' 6", holds 1/4" sign faces.
-
-## Reading a Code
-
-- **Three parts, as in `24-63-230`.** The first is the product family: `50` and `51` are sheet, `49` is coil, `24` is sign extrusions, `10` is flat bar. The middle is usually the alloy, `61` for 6061 and `63` for 6063, or a finish, such as `WH` for white, `MB` for bronze and `CA` for clear anodized.
-- **Sheet sizes read thickness x width x length,** in inches: `.063 x 48 x 96` is a 4' x 8' sheet 1/16" thick. Coil reads thickness x width x length of the coil.
-- **Letters on the end** add to it: `PVC` is a protective film on one side, `W` is white.
-- **Alloy and temper,** as in `5052-H32`: the alloy is the metal's recipe and the temper how hard it has been worked. 5052 bends well and resists corrosion; 3003 is the softer general-purpose sheet; 6061-T6 is the structural one, and cracks if bent tight.
-- **Mill order** means it isn't stocked: the mill makes it to order, with a minimum quantity and a wait. **Special order** is ordered in for the job.
-
-## How We Use It
-
-- **On a detail,** metal is called out by thickness and part, as in *.063" ALUMINUM SIDEWALLS*, *.125" ALUMINUM FACE* and *1/8" ALUMINUM BACKER*. The stock lists below show which sizes those thicknesses come in, so a face or a backer can be laid out on a sheet that exists.
-- **Check the sheet before the size.** A backer wider than 60", or 72" in a few thicknesses, has a seam or needs plate. The list says which.
-- **Channel letter returns** are bent from coil, .040" thick and 5.3" wide, already painted white, bronze, red or black on the outside and white inside.
-- **Backs called out as painted white** can be cut from painted sheet, white on both sides, with no trip to the paint booth.
-- **Weight for an install** starts from the list too: the pounds per sheet, scaled to the part's area.
-- **Pricing** belongs in the [Material Library](/materials/), which lists a material's supplier, and the [Material Estimator](/estimator/). The catalog has no prices.
-
-## Finishes and Notes
-
-- **Mill finish** is bare aluminum, as rolled. It gets painted in [Matthews](/wiki/suppliers/matthews-paint/).
-- **Painted sheet** names two colors, front then back: *Bronze/White* is bronze on one side and white on the other. It comes with a PVC film over the paint.
-- **White isn't one white.** The Florida branch's white is Polar White; North Carolina's and Texas' is Bright White.
-- **Anodized sheet** is 5005 with a clear, bronze or extra dark anodized coat and a PVC film on one side.
-- **ACM** is two thin aluminum skins on a plastic core, flat and light, and it can be printed on directly. Three makes, by skin thickness: ValuMetal (.004"), EMS ACM (.006", matte) and PolyMetal (.008").
-- The catalog pages are dated 2023 to 2026. Stock and codes change, so confirm with the EMS sales desk before a code goes on an order.
-
-## The Stock Lists
-
-From the catalog's Sheet and Plate pages. Sizes are in inches, thickness x width x length, and weights in pounds per sheet.
-
-### 5052-H32 Mill Finish
-
-<SupplierChart from="eastern-metal-supply" group="5052-H32 Mill Finish" columns={[{ key: 'code', label: 'Stock Code', mono: true }, { key: 'size', label: 'Size', mono: true }, { key: 'weight', label: 'Lb per Sheet', end: true }]} />
-
-### 3003-H14 Mill Finish
-
-<SupplierChart from="eastern-metal-supply" group="3003-H14 Mill Finish" columns={[{ key: 'code', label: 'Stock Code', mono: true }, { key: 'size', label: 'Size', mono: true }, { key: 'weight', label: 'Lb per Sheet', end: true }]} />
-
-### 6061-T6 Mill Finish
-
-<SupplierChart from="eastern-metal-supply" group="6061-T6 Mill Finish" columns={[{ key: 'code', label: 'Stock Code', mono: true }, { key: 'size', label: 'Size', mono: true }, { key: 'weight', label: 'Lb per Sheet', end: true }]} />
-
-### Painted Sheet
-
-<SupplierChart from="eastern-metal-supply" group="Painted Sheet, with PVC" columns={[{ key: 'code', label: 'Stock Code', mono: true }, { key: 'finish', label: 'Front / Back' }, { key: 'size', label: 'Size', mono: true }, { key: 'weight', label: 'Lb per Sheet', end: true }, { key: 'note', label: 'Note' }]} />
-
-### Anodized Sheet
-
-<SupplierChart from="eastern-metal-supply" group="5005 Anodized, PVC One Side" columns={[{ key: 'code', label: 'Stock Code', mono: true }, { key: 'finish', label: 'Anodize' }, { key: 'size', label: 'Size', mono: true }, { key: 'weight', label: 'Lb per Sheet', end: true }]} />
-
-### ACM Panels
-
-<SupplierChart from="eastern-metal-supply" group="ACM Panels" columns={[{ key: 'code', label: 'Stock Code', mono: true }, { key: 'product', label: 'Make' }, { key: 'size', label: 'Size', mono: true }, { key: 'finish', label: 'Color' }, { key: 'note', label: 'Skin and Finish' }]} />
-
-### Channel Letter Coil
-
-<SupplierChart from="eastern-metal-supply" group="Channel Letter Coil" columns={[{ key: 'code', label: 'Stock Code', mono: true }, { key: 'finish', label: 'Outside / Inside' }, { key: 'size', label: 'Size', mono: true }]} />
-
-### Alodine Pretreated Sheet
-
-5052-H38 with a chemical conversion coat that helps paint hold.
-
-<SupplierChart from="eastern-metal-supply" group="5052-H38 Alodine Pretreated" columns={[{ key: 'code', label: 'Stock Code', mono: true }, { key: 'size', label: 'Size', mono: true }, { key: 'weight', label: 'Lb per Sheet', end: true }]} />
-
-### Tread Brite
-
-3003-H22/24 with a raised diamond pattern.
-
-<SupplierChart from="eastern-metal-supply" group="3003-H22/24 Tread Brite" columns={[{ key: 'code', label: 'Stock Code', mono: true }, { key: 'size', label: 'Size', mono: true }, { key: 'weight', label: 'Lb per Sheet', end: true }]} />
-
-## Sources
-
-<ul class="ax-links not-content">
-<li><a href="/sources/suppliers/eastern-metal-supply-catalog.txt"><b>EMS Aluminum Extrusions and Sheet Catalog</b><small>The whole catalog as text, every section and stock code. Search it with Ctrl+F for a shape or a code that isn't on this page.</small><span class="host">Text · 0.5 MB</span></a></li>
-<li><a href="https://www.easternmetal.com/" target="_blank" rel="noopener"><b>Eastern Metal Supply</b><small>The catalog with its drawings, the branches and their phone numbers.</small><span class="host">easternmetal.com</span></a></li>
-</ul>
+<SupplierDocuments supplier="eastern-metal-supply" />

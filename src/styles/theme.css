@@ -1134,3 +1134,69 @@ h1#_top,
 	display: grid;
 	place-items: center;
 }
+
+/* a supplier page (wiki/suppliers/*.mdx): a sentence, three facts and the PDF, then tables (SupplierIntro.astro,
+   SupplierSection.astro) */
+.ax-supplier {
+	margin-bottom: 2rem;
+}
+.ax-supplier-what {
+	margin: 0 0 1rem;
+	font-size: var(--sl-text-lg);
+	color: var(--sl-color-gray-2);
+}
+.ax-supplier-facts {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+	margin: 0 0 1.25rem;
+	border: 1px solid var(--ax-rule);
+	border-radius: var(--ax-radius);
+	overflow: hidden;
+	/* the rules between the cells, whatever the number of columns */
+	gap: 1px;
+	background: var(--ax-rule);
+}
+.ax-supplier-facts > div {
+	padding: 10px 14px 12px;
+	background: var(--sl-color-black);
+}
+.ax-supplier-facts dt {
+	font-size: 0.6875rem;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--sl-color-gray-3);
+}
+.ax-supplier-facts dd {
+	margin: 4px 0 0;
+	font-size: var(--sl-text-sm);
+	color: var(--sl-color-white);
+}
+.ax-supplier-facts dd a {
+	color: inherit;
+	text-underline-offset: 3px;
+}
+.ax-supplier-facts code,
+.ax-chart td code {
+	font-family: var(--sl-font-mono);
+	font-size: 0.8125rem;
+	color: var(--sl-color-white);
+	background: none;
+	padding: 0;
+	white-space: nowrap;
+}
+h3.ax-supplier-table {
+	margin: 1.5rem 0 0;
+	font-size: var(--sl-text-base);
+	font-weight: 600;
+	color: var(--sl-color-white);
+}
+.ax-supplier-note {
+	margin: 0.25rem 0 0;
+	font-size: var(--sl-text-sm);
+	color: var(--sl-color-gray-3);
+}
+.ax-supplier-note + .ax-chart,
+h3.ax-supplier-table + .ax-chart {
+	margin-top: 0.6rem;
+}

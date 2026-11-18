@@ -1,76 +1,26 @@
 ---
 title: Matthews Paint
-description: The paint the office's signs are sprayed with. Its product lines, how its color numbers read, how we call it out, and every color on the Matthews chart.
+description: "The paint on every painted sign part: its lines and its color chart."
 ---
 
-import SupplierChart from '../../../../components/SupplierChart.astro';
+import SupplierIntro from '../../../../components/SupplierIntro.astro';
+import SupplierSection from '../../../../components/SupplierSection.astro';
+import SupplierDocuments from '../../../../components/SupplierDocuments.astro';
 
-{/* One of the supplier pages, all with the same sections in the same order. The chart: tools/suppliers/extract.py → src/suppliers/matthews.json. The source documents live in alexandria_office (public/sources/suppliers/), served here at /sources/suppliers/. */}
+{/* One of the supplier pages: all tables, the same parts in the same order, and nothing written here. The words and the
+    small tables are in src/suppliers/sheets.json; the long charts are src/suppliers/*.json (tools/suppliers/extract.py);
+    tools/suppliers/sheets.py prints the same data as the PDF. */}
 
-## At a Glance
+<SupplierIntro supplier="matthews-paint" />
 
-| | |
-|---|---|
-| **Supplier** | Matthews Paint, a PPG brand |
-| **What It Is** | Acrylic polyurethane paint made for signs, sprayed on aluminum, acrylic and other sign materials |
-| **We Use It For** | Every painted part: returns, faces, backers, raceways, cabinets |
-| **A Code Looks Like** | `MP24846 Rally Red` |
-| **Website** | [matthewspaint.com](https://www.matthewspaint.com/) |
+## Products
 
-## Product Lines
+<SupplierSection supplier="matthews-paint" section="Products" />
 
-Matthews sells one paint system in a few versions. They take the same colors, so a color number is worth little without its line and gloss.
+## Colors
 
-| Line | What It Is |
-|---|---|
-| MAP (Matthews Acrylic Polyurethane) | The original line. |
-| Satin MAP, Satin VOC MAP | Satin versions, the second with less solvent. Codes on the chart beginning `SVOC` are this line. |
-| MAP-LV | Low VOC, in gloss and satin. |
-| MAP Ultra Low VOC | The lowest-solvent line, in gloss and satin. |
-| Clears | Clear coats over the color, one of them graffiti-resistant, and Super Satin Clear. |
-| Primers | Epoxy primers in gray, white and black, and a polyester primer surfacer. |
+<SupplierSection supplier="matthews-paint" section="Colors" />
 
-The office's own formulas, in the [Color Library](/colors/library/), say which line each one is mixed in: `SV Satin` for most, some `SV Matte` or `N Satin`.
+## Documents
 
-## Reading a Code
-
-- **`MP` and five digits** is a color formula: `MP24846` is Rally Red. Matthews gives a new MP number to every color it matches, so a brand color matched for one job has its own.
-- **Digits ending in `SP`** are colors Matthews mixes at the factory and sells ready to spray: `42204SP` Gloss Black, `41342SP` Brushed Aluminum. The Proseco metallics are `48101SP` to `48108SP`.
-- **LRV** is light reflectance value: how much light the color sends back, from 0 (black) to 100 (white). ADA signs need it: the letters and their background have to sit far apart in LRV to be read.
-
-## How We Use It
-
-- **On a detail,** a blank that reads *PAINTED ______* takes a Matthews color: the MP number, the name and the gloss, as in *PAINTED MP24846 RALLY RED, SATIN*. The [Typical Signage Types](/wiki/signage-types/) show where those blanks are.
-- **For a brand color** given as Pantone or Sherwin-Williams, look in the [Color Library](/colors/library/) first. If the office has mixed it before, the formula is there with its MP number.
-- **For a color nobody has matched,** the [Color Matcher](/colors/) finds the nearest colors and says when one of them has a Matthews formula on file. Otherwise the paint supplier matches it and sends back a new MP number.
-- **A raceway** is painted to match the wall behind it, so that color usually comes from the building. See [Sherwin-Williams](/wiki/suppliers/sherwin-williams/).
-
-## Finishes and Notes
-
-- The chart shows five gloss levels: **High Gloss, Semi-Gloss, Satin Gloss, Matte** and **Textured**. Satin is the office's usual, as most formulas in the Color Library are.
-- **Metallics** shift with the angle and the light, and a screen can't show that. Three of them, Brilliant Gold, Aztec Gold and Aztec Copper, are sprayed over a named base color.
-- The chart stars a few codes without saying why. Ask the paint supplier before ordering one.
-- Every swatch below is the chart's color as a screen shows it. Pick from a physical Matthews chart or a sprayed sample, never from this page.
-
-## The Chart
-
-From the Matthews color chart linked under Sources. LRV is as printed on the chart.
-
-### Standard Colors
-
-<SupplierChart from="matthews" group="Standard Colors" columns={[{ key: 'code', label: 'Code', mono: true }, { key: 'name', label: 'Name' }, { key: 'lrv', label: 'LRV', end: true }]} />
-
-### Metallic Selections
-
-<SupplierChart from="matthews" group="Metallic Selections" columns={[{ key: 'code', label: 'Code', mono: true }, { key: 'name', label: 'Name' }, { key: 'lrv', label: 'LRV', end: true }]} />
-
-### Proseco and Factory Mixed Colors
-
-<SupplierChart from="matthews" group="Proseco Collection and Other Factory Mixed Colors" columns={[{ key: 'code', label: 'Code', mono: true }, { key: 'name', label: 'Name' }, { key: 'lrv', label: 'LRV', end: true }, { key: 'note', label: 'Note' }]} />
-
-## Sources
-
-<ul class="ax-links not-content">
-<li><a href="/sources/suppliers/matthews-paint-color-chart.pdf"><b>Matthews Paint Color Chart</b><small>Four pages: standard colors, metallics, the Proseco collection and the gloss levels. A scan made by Bell Company, Inc., whose name is on each page.</small><span class="host">PDF · 3.9 MB</span></a></li>
-<li><a href="https://www.matthewspaint.com/" target="_blank" rel="noopener"><b>Matthews Paint</b><small>Product lines, technical data sheets and the color tools.</small><span class="host">matthewspaint.com</span></a></li>
-</ul>
+<SupplierDocuments supplier="matthews-paint" />

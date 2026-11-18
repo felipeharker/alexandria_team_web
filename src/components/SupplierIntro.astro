@@ -1,0 +1,23 @@
+---
+// The top of a supplier page (wiki/suppliers/*.mdx): what the supplier is in a sentence, three facts, and the
+// office's own sheet for it as a PDF. Everything comes from src/suppliers/sheets.json.
+import { LinkButton } from '@astrojs/starlight/components';
+import sheets from '../suppliers/sheets.json';
+
+interface Props {
+	/** the supplier's key in sheets.json, which is also its page's and its PDF's name */
+	supplier: keyof typeof sheets;
+}
+const { supplier } = Astro.props;
+const sheet = sheets[supplier];
+---
+
+<div class="ax-supplier not-content">
+	<p class="ax-supplier-what">{sheet.what}</p>
+	<dl class="ax-supplier-facts">
+		<div><dt>We Use It For</dt><dd>{sheet.use}</dd></div>
+		<div><dt>A Code Looks Like</dt><dd><code>{sheet.code}</code></dd></div>
+		<div><dt>Website</dt><dd><a href={sheet.site.href} target="_blank" rel="noopener">{sheet.site.label}</a></dd></div>
+	</dl>
+	<LinkButton href={`/wiki/suppliers/${supplier}.pdf`} icon="download" iconPlacement="start">Supplier Sheet {sheet.sheet} (PDF)</LinkButton>
+</div>
