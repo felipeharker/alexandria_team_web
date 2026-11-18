@@ -18,7 +18,7 @@ one (or ALEXANDRIA_PHOENIX) and the shared alexandria_packages folder, and write
   (the Material Estimator's, the Material Library's and the Color Matcher's) and alexandria_phoenix (the Grasshopper
   parameters, standards/parameters_template.csv), to download and to show on their pages.
 - public/sample-project/ and src/data/sample-project.json: the sample project's newest design
-  package and its previews (alexandria_testing_sample_project/Alexandria/web, made by its
+  package and its previews (alexandria_testing/alexandria_sample_project/Alexandria/web, made by its
   web/make_web.py), for the Sample Project page.
 - public/wiki/signage-types/DTL-NN.svg and .pdf, and src/data/signage-types.json: the sign detail
   library's drawings for the Typical Signage Types page, from alexandria_phoenix docs/details (printed by its
@@ -43,7 +43,7 @@ import zipfile
 HUB = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PHOENIX = os.environ.get("ALEXANDRIA_PHOENIX") or os.path.join(os.path.dirname(HUB), "alexandria_phoenix")
 OFFICE = os.path.join(os.path.dirname(HUB), "alexandria_office")
-SAMPLE = os.path.join(os.path.dirname(HUB), "alexandria_testing_sample_project", "Alexandria")
+SAMPLE = os.path.join(os.path.dirname(HUB), "alexandria_testing", "alexandria_sample_project", "Alexandria")
 TEMPLATES = [  # hub file, source
     ("material-sheet-template.csv", os.path.join(OFFICE, "public", "estimator", "material-sheet-template.csv")),
     ("color-list-template.csv", os.path.join(OFFICE, "public", "colors", "color-list-template.csv")),
