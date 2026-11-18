@@ -28,6 +28,10 @@ const sidebarSectionHighlight = `document.addEventListener('DOMContentLoaded', (
 	addEventListener('hashchange', mark);
 });`;
 
+// The tag on a category with nothing in it yet (Permitting): grey, where Beta, for a tool you can already use, is
+// green. theme.css draws both.
+const alpha = { text: 'Alpha', variant: 'note', class: 'ax-alpha' };
+
 export default defineConfig({
 	site: 'https://alexdesignlab.org',
 	redirects: {
@@ -80,8 +84,8 @@ export default defineConfig({
 				{
 					label: 'Quick Guides',
 					collapsed: true,
-					// The same groups as Tools below, in the same order, with a guide where Tools has the tool (user,
-					// 2026-11-18). Permitting has no tools yet, so no guides and no group here; add it with its first guide.
+					// The same groups as Tools below, in the same order and under the same names, with a guide where Tools
+					// has the tool (user, 2026-11-18). Change the two together.
 					items: [
 						{
 							label: 'Rhino/Grasshopper',
@@ -119,6 +123,8 @@ export default defineConfig({
 								{ label: 'Material Library', slug: 'materials/guide' },
 							],
 						},
+						// no guides yet: a plain entry with an Alpha tag, as in Tools, and its own short page
+						{ label: 'Permitting', slug: 'permitting/guide', badge: alpha, attrs: { class: 'ax-side-section' } },
 					],
 				},
 				// The tools, under one heading with a group per category, as on the home page (user, 2026-11-11 and
@@ -174,12 +180,9 @@ export default defineConfig({
 								{ label: 'Material Library', link: '/materials/', badge: 'Beta' },
 							],
 						},
-						{
-							label: 'Permitting',
-							collapsed: true,
-							// a category with no tools yet (user, 2026-11-12); its one entry is a placeholder page
-							items: [{ label: 'Under Development', slug: 'tools/permitting' }],
-						},
+						// A category with no tools yet (user, 2026-11-12): a plain entry with an Alpha tag and no group to
+						// open onto nothing (user, 2026-11-18), set like the group names beside it (ax-side-section).
+						{ label: 'Permitting', slug: 'tools/permitting', badge: alpha, attrs: { class: 'ax-side-section' } },
 					],
 				},
 				{
