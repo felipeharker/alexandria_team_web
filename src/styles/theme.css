@@ -1,7 +1,8 @@
 /* The Alexandria style: one plain look for the hub, the quick guides and the office tools.
 
-   Greys for everything, one green for buttons, and colour only where it codes something
-   (the toolbar groups in the guides). Inter for reading, IBM Plex Mono for commands and numbers.
+   Greys for everything, one green for buttons, one blue for what's under the pointer (a tool's card, a
+   sidebar entry), and colour otherwise only where it codes something (the toolbar groups in the guides).
+   Inter for reading, IBM Plex Mono for commands and numbers.
    The Material Estimator (alexandria_office/public/styles.css) uses the same values. */
 
 :root {
@@ -23,6 +24,9 @@
 	--ax-button: #8cba00; /* the one colour: buttons, and the Beta tag */
 	--ax-button-text: #131619;
 	--ax-button-soft: #222d0a; /* a wash of it behind the Beta tag */
+	--ax-hover: #6fb1f0; /* the blue of what's under the pointer (user, 2026-11-18): a card's edge and halo */
+	--ax-hover-text: #a9d0f7; /* words in it, in the sidebar */
+	--ax-hover-soft: #1b2d42; /* a wash of it behind them */
 	--ax-current: #2b3036; /* the current page in the sidebar */
 	--ax-tint: #1b1f24;
 	--ax-rule: #2b3036;
@@ -46,6 +50,9 @@
 	--ax-button: #4f7a00;
 	--ax-button-text: #ffffff;
 	--ax-button-soft: #edf5d6;
+	--ax-hover: #2c7bd0;
+	--ax-hover-text: #1d5fa8;
+	--ax-hover-soft: #e0edfb;
 	--ax-current: #e2e5e9;
 	--ax-tint: #f6f7f9;
 	--ax-rule: #e2e5e9;
@@ -90,6 +97,37 @@ header.header {
 	background: var(--ax-current);
 	color: var(--sl-color-white);
 	font-weight: 600;
+}
+/* under the pointer, or the keyboard's focus: a wash of blue with the words in it (user, 2026-11-18), on an entry
+   and on a group's name alike. The page you're on stays grey. */
+.sidebar-content a,
+.sidebar-content summary {
+	transition:
+		background-color 0.12s,
+		color 0.12s;
+}
+.sidebar-content summary {
+	border-radius: 6px;
+}
+.sidebar-content a:not([aria-current='page']):focus-visible,
+.sidebar-content summary:focus-visible {
+	background: var(--ax-hover-soft);
+	color: var(--ax-hover-text);
+}
+.sidebar-content summary:focus-visible .large,
+.sidebar-content a.ax-side-section:not([aria-current='page']):focus-visible > span:first-child {
+	color: var(--ax-hover-text);
+}
+@media (hover: hover) {
+	.sidebar-content a:not([aria-current='page']):hover,
+	.sidebar-content summary:hover {
+		background: var(--ax-hover-soft);
+		color: var(--ax-hover-text);
+	}
+	.sidebar-content summary:hover .large,
+	.sidebar-content a.ax-side-section:not([aria-current='page']):hover > span:first-child {
+		color: var(--ax-hover-text);
+	}
 }
 
 /* ---------------------------------------------------------------- type */
@@ -318,11 +356,17 @@ h1#_top,
 	border-radius: var(--ax-radius);
 	background: var(--sl-color-black);
 	overflow: hidden;
-	transition: border-color 0.15s;
+	transition:
+		border-color 0.15s,
+		box-shadow 0.15s;
 }
+/* under the pointer: a blue edge and a halo of it around the card (user, 2026-11-18) */
 .ax-tool:hover,
 .ax-tool:focus-within {
-	border-color: var(--sl-color-gray-4);
+	border-color: var(--ax-hover);
+	box-shadow:
+		0 0 0 3px color-mix(in srgb, var(--ax-hover) 22%, transparent),
+		0 0 26px 2px color-mix(in srgb, var(--ax-hover) 42%, transparent);
 }
 
 /* the drawing, on the tint */
