@@ -1,0 +1,22 @@
+---
+// Lines of text drawn in the Alexandria Etch single-line font (src/etchFont.ts), in the page's text colour: the
+// font's specimen on its download page.
+import { etchText } from '../etchFont';
+
+interface Props {
+	rows: string[];
+	height?: number; // the capitals', in px at the drawing's full width
+	label: string;
+}
+const { rows, height = 34, label } = Astro.props;
+const step = height * 1.7;
+const drawn = rows.map((row, i) => etchText(row, height, 2, height * 1.15 + i * step));
+const width = Math.ceil(Math.max(...drawn.map((row) => row.width)) + 4);
+const tall = Math.ceil(height * 1.15 + (rows.length - 1) * step + height * 0.3);
+---
+
+<div class="ax-etch not-content">
+	<svg viewBox={`0 0 ${width} ${tall}`} role="img" aria-label={label}>
+		{drawn.map((row) => <path d={row.d} />)}
+	</svg>
+</div>

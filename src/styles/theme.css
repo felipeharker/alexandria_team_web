@@ -1200,3 +1200,21 @@ h3.ax-supplier-table {
 h3.ax-supplier-table + .ax-chart {
 	margin-top: 0.6rem;
 }
+
+/* text drawn in the Alexandria Etch font (EtchSpecimen.astro): single lines, in the page's text colour */
+.ax-etch {
+	margin: 1rem 0 1.5rem;
+	overflow-x: auto;
+}
+.ax-etch svg {
+	display: block;
+	width: 100%;
+	min-width: 28rem;
+	max-width: 46rem;
+	height: auto;
+	fill: none;
+	stroke: var(--sl-color-white);
+	stroke-width: 1.3;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}

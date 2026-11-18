@@ -17,8 +17,8 @@ import release from '../../data/release.json';
 {/* Every tool gets the same card here, by category (user, 2026-11-11), each a section of its own, as in the
     sidebar, with a page each under /tools that its Details link opens: Rhino/Grasshopper Tools; Design Tools (the Site Plan, the Vectorizer,
     the Braille Lettering Designer and the Sign Package Maker, in beta); Parametric Tools (the Parametric Grid and the Image Grid, in beta,
-    split from Design Tools on 2026-11-17); Fabrication Tools (the Color Matcher, the Color Library, and the Material Estimator and
-    Material Library, both in beta). Add a new tool as a ToolCard in its category, with a drawing of what it makes in ToolArt.astro and the next sheet
+    split from Design Tools on 2026-11-17); Fabrication Tools (the Color Matcher, the Color Library, and the Material Estimator,
+    Material Library and Etch Text, all three in beta). Add a new tool as a ToolCard in its category, with a drawing of what it makes in ToolArt.astro and the next sheet
     number in its category (R, D, P or F). Since 2026-11-17 a card is mostly its drawing: keep its line short. Titles,
     labels and links are in Title Case. */}
 
@@ -55,6 +55,7 @@ import release from '../../data/release.json';
 <ToolCard title="Color Library" art="color-library" code="F-02" links={[{ label: 'Open', href: '/colors/library/' }, { label: 'Guide', href: '/colors/library/guide/' }]}>The office’s Matthews Paint formulas.</ToolCard>
 <ToolCard title="Material Estimator" badge="Beta" art="material-estimator" code="F-03" links={[{ label: 'Open', href: '/estimator/' }, { label: 'Guide', href: '/estimator/guide/' }]}>A project’s materials, priced by the unit.</ToolCard>
 <ToolCard title="Material Library" badge="Beta" art="material-library" code="F-04" links={[{ label: 'Open', href: '/materials/' }, { label: 'Guide', href: '/materials/guide/' }]}>The office’s stock materials, with prices.</ToolCard>
+<ToolCard title="Etch Text" badge="Beta" art="etch-text" code="F-05" links={[{ label: 'Open', href: '/etch-text/' }, { label: 'Guide', href: '/etch-text/guide/' }]}>A part label in single lines, to etch.</ToolCard>
 </div>
 </section>
 

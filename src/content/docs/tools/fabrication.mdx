@@ -1,13 +1,13 @@
 ---
 title: Fabrication Tools
-description: "Web tools for building it: matching colors to paint and vinyl, the office's paint formulas, its stock materials, and pricing them."
+description: "Web tools for building it: matching colors to paint and vinyl, the office's paint formulas, its stock materials, pricing them, and labels to etch on the parts."
 ---
 
 import HubCard from '../../../components/HubCard.astro';
 
 {/* One page per tool category (user, 2026-11-11), each the Overview in its sidebar group and the home section's Details link. */}
 
-Web tools for building it: matching colors to paint and vinyl, the office's paint formulas, its stock materials, and pricing them. They run in your browser, with nothing to install.
+Web tools for building it: matching colors to paint and vinyl, the office's paint formulas, its stock materials, pricing them, and labels to etch on the parts. They run in your browser, with nothing to install.
 
 ## Color Matcher
 
@@ -50,4 +50,16 @@ The office's stock materials, by category: what each one is, its thickness, fini
 <HubCard href="/materials/" title="Open the Material Library" meta="alexdesignlab.org/materials">Search by material, finish or supplier.<svg slot="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l9 4.5-9 4.5-9-4.5zM3 11.3l9 4.5 9-4.5v2.2l-9 4.5-9-4.5zM3 15.6l9 4.5 9-4.5v2.2l-9 4.5-9-4.5z"/></svg></HubCard>
 <HubCard href="/materials/guide/" title="Its Quick Guide" meta="Guide">A material's row, adding it to the Estimator, and the columns.<svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C6.5 4 9.5 4 12 5.5v14c-2.5-1.5-5.5-1.5-8 0zM20 5.5C17.5 4 14.5 4 12 5.5v14c2.5-1.5 5.5-1.5 8 0z"/></svg></HubCard>
 <HubCard href="/templates/material-library/" title="Its CSV Template" meta="Template">Material, Category, Thickness, Finish, Size, Unit, Unit Price, Supplier and Notes, with three examples.<svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M4 19h16"/></svg></HubCard>
+</div>
+
+## Etch Text
+
+<span class="ax-badge">Beta</span> New, and its DXF hasn't been run on the laser or the router yet.
+
+Type a part label, such as `A1` or `P1-1`, and download it in Alexandria Etch, the office's single-line font: every letter is one line down its middle, so the machine follows it once. The SVG and the DXF are at real size, in inches, and the DXF is on the `ETCH` layer, like the Fabrication Manager's.
+
+<div class="ax-grid not-content">
+<HubCard href="/etch-text/" title="Open Etch Text" meta="alexdesignlab.org/etch-text">Runs in your browser, with nothing to install.<svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19 9 5l5 14M6 14.5h6M17 8.5 20 6v13"/></svg></HubCard>
+<HubCard href="/etch-text/guide/" title="Its Quick Guide" meta="Guide">The text, its size, and which download to use.<svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C6.5 4 9.5 4 12 5.5v14c-2.5-1.5-5.5-1.5-8 0zM20 5.5C17.5 4 14.5 4 12 5.5v14c2.5-1.5 5.5-1.5 8 0z"/></svg></HubCard>
+<HubCard href="/wiki/downloads/etch-font/" title="The Font" meta="Download">Alexandria Etch for Rhino, CorelDRAW and laser software.<svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M4 19h16"/></svg></HubCard>
 </div>
