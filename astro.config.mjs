@@ -32,6 +32,18 @@ const sidebarSectionHighlight = `document.addEventListener('DOMContentLoaded', (
 // blue. theme.css draws both.
 const alpha = { text: 'Alpha', variant: 'note', class: 'ax-alpha' };
 
+// Also in every page's head: the top sections work as one accordion (user, 2026-11-18). Opening one closes the
+// others; the subsections inside it are already open (their groups below are `collapsed: false`).
+const sidebarAccordion = `document.addEventListener('DOMContentLoaded', () => {
+	const sections = [...document.querySelectorAll('.sidebar-content ul.top-level > li > details')];
+	for (const section of sections) {
+		section.addEventListener('toggle', () => {
+			if (!section.open) return;
+			for (const other of sections) if (other !== section) other.open = false;
+		});
+	}
+});`;
+
 export default defineConfig({
 	site: 'https://alexdesignlab.org',
 	redirects: {
@@ -52,14 +64,16 @@ export default defineConfig({
 			head: [
 				// Public for now, but not for search engines: it's the office's hub.
 				{ tag: 'meta', attrs: { name: 'robots', content: 'noindex, nofollow' } },
-				// The sidebar (user, 2026-11-11): every group starts collapsed, only the one holding this page opens, and
-				// this page's entry is highlighted. Every page has exactly one entry (src/routeData.ts covers the
+				// The sidebar (user, 2026-11-11): every top section starts collapsed, only the one holding this page opens,
+				// and this page's entry is highlighted. A section's subsections open with it (user, 2026-11-18). Every page has exactly one entry (src/routeData.ts covers the
 				// pages that have none). The scripts below are what Starlight can't do on the server.
 				// 1. Starlight reopens the groups opened by hand on the last page, from session storage: forget them.
 				{ tag: 'script', content: "try { sessionStorage.removeItem('sl-sidebar-state'); } catch {}" },
 				// 2. An entry for a section of a page (its address ends in #...) is highlighted while the address
 				//    shows that section; otherwise the page's own entry is.
 				{ tag: 'script', content: sidebarSectionHighlight },
+				// 3. The top sections are one accordion: opening one closes the others.
+				{ tag: 'script', content: sidebarAccordion },
 			],
 			routeMiddleware: './src/routeData.ts',
 			customCss: [
@@ -89,7 +103,7 @@ export default defineConfig({
 					items: [
 						{
 							label: 'Rhino/Grasshopper',
-							collapsed: true,
+							collapsed: false,
 							items: [
 								{ label: 'Rhino Tools', slug: 'rhino' },
 								{ label: 'Grasshopper Components', slug: 'grasshopper' },
@@ -97,7 +111,7 @@ export default defineConfig({
 						},
 						{
 							label: 'Design',
-							collapsed: true,
+							collapsed: false,
 							items: [
 								{ label: 'Site Plan', slug: 'site-plan/guide' },
 								{ label: 'Vectorizer', slug: 'vectorizer/guide' },
@@ -107,7 +121,7 @@ export default defineConfig({
 						},
 						{
 							label: 'Parametric',
-							collapsed: true,
+							collapsed: false,
 							items: [
 								{ label: 'Parametric Grid', slug: 'grid/guide' },
 								{ label: 'Image Grid', slug: 'image-grid/guide' },
@@ -115,7 +129,7 @@ export default defineConfig({
 						},
 						{
 							label: 'Fabrication',
-							collapsed: true,
+							collapsed: false,
 							items: [
 								{ label: 'Color Matcher', slug: 'colors/guide' },
 								{ label: 'Color Library', slug: 'colors/library/guide' },
@@ -137,7 +151,7 @@ export default defineConfig({
 					items: [
 						{
 							label: 'Rhino/Grasshopper',
-							collapsed: true,
+							collapsed: false,
 							items: [
 								{ label: 'Overview', slug: 'tools/rhino-grasshopper' },
 								{ label: 'Alexandria Tools', link: '/tools/rhino-grasshopper/#alexandria-tools' },
@@ -146,7 +160,7 @@ export default defineConfig({
 						},
 						{
 							label: 'Design',
-							collapsed: true,
+							collapsed: false,
 							items: [
 								{ label: 'Overview', slug: 'tools/design' },
 								{ label: 'Site Plan', link: '/site-plan/' },
@@ -158,7 +172,7 @@ export default defineConfig({
 						},
 						{
 							label: 'Parametric',
-							collapsed: true,
+							collapsed: false,
 							// split from Design Tools (user, 2026-11-17): grids of cells, each sized by a rule
 							items: [
 								{ label: 'Overview', slug: 'tools/parametric' },
@@ -169,7 +183,7 @@ export default defineConfig({
 						},
 						{
 							label: 'Fabrication',
-							collapsed: true,
+							collapsed: false,
 							items: [
 								{ label: 'Overview', slug: 'tools/fabrication' },
 								{ label: 'Color Matcher', link: '/colors/' },
@@ -185,58 +199,71 @@ export default defineConfig({
 						{ label: 'Permitting', slug: 'tools/permitting', badge: alpha, attrs: { class: 'ax-side-section' } },
 					],
 				},
-				{
-					// "CSV Templates" until 2026-11-17 (user): the pages keep their names, as each is still a CSV file
-					label: 'Templates',
-					collapsed: true,
-					items: [
-						{ label: 'Material Estimator', slug: 'templates/estimator' },
-						{ label: 'Material Library', slug: 'templates/material-library' },
-						{ label: 'Color Matcher', slug: 'templates/color-matcher' },
-						{ label: 'Grasshopper Parameters', slug: 'templates/grasshopper' },
-					],
-				},
-				{
-					label: 'Sample Project',
-					collapsed: true,
-					items: [{ label: 'Alexandria Design Lab', slug: 'sample-project' }],
-				},
+				// Everything that isn't starting out, a guide or a tool is a subsection of the Wiki (user, 2026-11-18): the
+				// reference pages by subject (Signage, Paint/Vinyl, Materials), then Templates, Documentation and External Ref.,
+				// which were top sections until then. The Sample Project left the sidebar the same day; its page is still there
+				// for Your First Day's link (src/routeData.ts).
 				{
 					label: 'Wiki',
 					collapsed: true,
 					items: [
-						{ label: 'Typical Signage Types', slug: 'wiki/signage-types' },
-						// One page per supplier, all with the same sections (wiki/suppliers/*.mdx): paint and colour first,
-						// then film, then metal. Their charts come from the suppliers' own documents (tools/suppliers/extract.py).
 						{
-							label: 'Suppliers',
-							collapsed: true,
+							label: 'Signage',
+							collapsed: false,
+							items: [
+								{ label: 'Typical Signage Types', slug: 'wiki/signage-types' },
+							],
+						},
+						{
+							// One page per supplier, all with the same sections (wiki/suppliers/*.mdx, from src/suppliers/sheets.json):
+							// paint and colour first, then film.
+							label: 'Paint/Vinyl',
+							collapsed: false,
 							items: [
 								{ label: 'Matthews Paint', slug: 'wiki/suppliers/matthews-paint' },
 								{ label: 'Sherwin-Williams', slug: 'wiki/suppliers/sherwin-williams' },
 								{ label: 'Pantone', slug: 'wiki/suppliers/pantone' },
 								{ label: '3M Films', slug: 'wiki/suppliers/3m' },
+							],
+						},
+						{
+							label: 'Materials',
+							collapsed: false,
+							items: [
 								{ label: 'Eastern Metal Supply', slug: 'wiki/suppliers/eastern-metal-supply' },
 							],
 						},
+						{
+							// "CSV Templates" until 2026-11-17 (user): the pages keep their names, as each is still a CSV file
+							label: 'Templates',
+							collapsed: false,
+							items: [
+								{ label: 'Material Estimator', slug: 'templates/estimator' },
+								{ label: 'Material Library', slug: 'templates/material-library' },
+								{ label: 'Color Matcher', slug: 'templates/color-matcher' },
+								{ label: 'Grasshopper Parameters', slug: 'templates/grasshopper' },
+							],
+						},
+						{
+							label: 'Documentation',
+							collapsed: false,
+							items: [
+								{ label: 'Install and Update', slug: 'docs/install' },
+								{ label: 'Alexandria Phoenix', slug: 'docs/phoenix' },
+								{ label: 'Office Tools', slug: 'docs/office-tools' },
+								{ label: 'System Architecture', slug: 'docs/architecture' },
+								// Standards (docs/standards, from STANDARDS.md) stays built for the Phoenix docs' links, but out of the
+								// sidebar until it covers the office's standards beyond the Rhino tools (user, 2026-11-05).
+							],
+						},
+						{
+							label: 'External Ref.',
+							collapsed: false,
+							items: [
+								{ label: 'Links', slug: 'reference/links' },
+							],
+						},
 					],
-				},
-				{
-					label: 'Documentation',
-					collapsed: true,
-					items: [
-						{ label: 'Install and Update', slug: 'docs/install' },
-						{ label: 'Alexandria Phoenix', slug: 'docs/phoenix' },
-						{ label: 'Office Tools', slug: 'docs/office-tools' },
-						{ label: 'System Architecture', slug: 'docs/architecture' },
-						// Standards (docs/standards, from STANDARDS.md) stays built for the Phoenix docs' links, but out of
-						// the sidebar until it covers the office's standards beyond the Rhino tools (user, 2026-11-05).
-					],
-				},
-				{
-					label: 'External Ref.',
-					collapsed: true,
-					items: [{ label: 'Links', slug: 'reference/links' }],
 				},
 			],
 		}),

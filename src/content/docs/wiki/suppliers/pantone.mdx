@@ -1,70 +1,26 @@
 ---
 title: Pantone
-description: The numbering system brand colors arrive in. Its libraries, how a Pantone number reads, how we turn one into paint and vinyl, and the Color Bridge chart with its CMYK builds.
+description: "The numbering system brand colors arrive in: its libraries and the Color Bridge chart."
 ---
 
-import SupplierChart from '../../../../components/SupplierChart.astro';
+import SupplierIntro from '../../../../components/SupplierIntro.astro';
+import SupplierSection from '../../../../components/SupplierSection.astro';
+import SupplierDocuments from '../../../../components/SupplierDocuments.astro';
 
-{/* One of the supplier pages, all with the same sections in the same order. The chart: tools/suppliers/extract.py → src/suppliers/pantone.json. The source documents live in alexandria_office (public/sources/suppliers/), served here at /sources/suppliers/. */}
+{/* One of the supplier pages: all tables, the same parts in the same order, and nothing written here. The words and the
+    small tables are in src/suppliers/sheets.json; the long charts are src/suppliers/*.json (tools/suppliers/extract.py);
+    tools/suppliers/sheets.py prints the same data as the PDF. */}
 
-## At a Glance
+<SupplierIntro supplier="pantone" />
 
-| | |
-|---|---|
-| **Supplier** | Pantone |
-| **What It Is** | The Pantone Matching System (PMS): a numbered library of ink colors that printers, brands and manufacturers all share |
-| **We Use It For** | Reading a client's brand colors, then matching paint and vinyl to them. We don't buy anything from Pantone but its guides. |
-| **A Code Looks Like** | `PANTONE 186 C` |
-| **Website** | [pantone.com](https://www.pantone.com/) |
+## Products
 
-## Product Lines
+<SupplierSection supplier="pantone" section="Products" />
 
-Pantone publishes the same colors in several libraries. The letters after the number say which one.
+## Colors
 
-| Library | Suffix | What It Is |
-|---|---|---|
-| Solid Coated | `C` | The spot ink printed on glossy coated paper. The one brand guides usually give, and the one sign work uses. |
-| Solid Uncoated | `U` | The same ink on plain uncoated paper. It looks duller and often lighter. |
-| Color Bridge Coated | `CP`, or `PC` on older charts | The closest four-color (CMYK) print of each solid color, beside the solid. For anything printed digitally. |
+<SupplierSection supplier="pantone" section="Colors" />
 
-The three charts under Sources are a Color Bridge chart with each color's CMYK build, a one-page chart of the same numbers for digital proofs, and the Solid Uncoated palette from a printer's artwork guide.
+## Documents
 
-## Reading a Code
-
-- **A number of three or four digits,** `100` to `7547` on these charts, or **a name** for the base inks: Yellow, Orange 021, Warm Red, Red 032, Rubine Red, Rhodamine Red, Purple, Violet, Blue 072, Reflex Blue, Process Blue, Green, Black, and the Cool Grays and Warm Grays 1 to 11.
-- **Then the library's letters.** `186 C` and `186 U` are one ink on two papers and don't look alike, so always write the letters.
-- **PMS** is the same thing: *PMS 186* means PANTONE 186, with the library left to guess. Ask which.
-- Charts shorten the names: *Pro.* is Process, *Wm* Warm, *Cl* Cool, *Rhod* Rhodamine.
-
-## How We Use It
-
-- **A brand color comes in as a Pantone number.** Take the coated (`C`) color unless the client's guide says otherwise.
-- **To paint it,** find it in the [Color Library](/colors/library/): the office's Matthews formulas are listed by the color they match, Pantone among them. See [Matthews Paint](/wiki/suppliers/matthews-paint/).
-- **To put it in vinyl,** the [3M Films](/wiki/suppliers/3m/) charts print a Pantone number beside the films 3M matched to one.
-- **For the nearest of everything,** the [Color Matcher](/colors/) takes a hex code and returns the closest Pantone Solid Coated, Sherwin-Williams and 3M colors.
-- **On a drawing,** write it in full, as in *PANTONE 186 C*, beside the paint or vinyl that stands in for it.
-
-## Finishes and Notes
-
-- Pantone colors are inks, so they have no gloss of their own. The paint or film that matches one brings the finish.
-- **The CMYK builds are for print.** They come close to the solid color and rarely reach it, bright oranges, greens and blues least of all. Don't choose paint from a CMYK print.
-- The Color Bridge chart here dates from 2005. Pantone has added and adjusted colors since, so check a number that isn't on it against a current guide.
-- Metallic, pastel and neon Pantone colors aren't on these charts.
-- Every swatch below is the chart's color as a screen shows it. Match to a current Pantone guide, never to this page.
-
-## The Chart
-
-The Color Bridge chart's colors in its own order, each with its four-color build as cyan / magenta / yellow / black percentages.
-
-### Color Bridge, Coated
-
-<SupplierChart from="pantone" group="Color Bridge, Coated" prefix="PANTONE " columns={[{ key: 'code', label: 'Color', mono: true }, { key: 'cmyk', label: 'C / M / Y / K', mono: true }]} />
-
-## Sources
-
-<ul class="ax-links not-content">
-<li><a href="/sources/suppliers/pantone-color-bridge-cmyk-pc.pdf"><b>Pantone Color Bridge CMYK PC</b><small>Fourteen pages, each color with its CMYK build. Pantone, 2005; this copy was passed on by a molding company and carries its mark.</small><span class="host">PDF · 0.6 MB</span></a></li>
-<li><a href="/sources/suppliers/pantone-cmyk-comp-chart.pdf"><b>Pantone Color Chart for CMYK Proofs</b><small>One page of the same numbers, for choosing colors on a digital CMYK printer.</small><span class="host">PDF · 0.2 MB</span></a></li>
-<li><a href="/sources/suppliers/pantone-solid-uncoated-palette.pdf"><b>Pantone Solid Uncoated Palette</b><small>A printer's artwork guide: what PMS means, and the uncoated palette.</small><span class="host">PDF · 2.0 MB</span></a></li>
-<li><a href="https://www.pantone.com/color-finder" target="_blank" rel="noopener"><b>Pantone Color Finder</b><small>Look up any Pantone number in the current libraries.</small><span class="host">pantone.com</span></a></li>
-</ul>
+<SupplierDocuments supplier="pantone" />

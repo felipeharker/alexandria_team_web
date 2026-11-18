@@ -1,0 +1,967 @@
+{
+	"matthews-paint": {
+		"name": "Matthews Paint",
+		"sheet": "S-01",
+		"data": "matthews",
+		"what": "Acrylic polyurethane paint made for signs, sprayed on aluminum, acrylic and other sign materials.",
+		"use": "Every painted part: returns, faces, backers, raceways, cabinets",
+		"code": "MP24846 Rally Red",
+		"site": {
+			"label": "matthewspaint.com",
+			"href": "https://www.matthewspaint.com/"
+		},
+		"sections": [
+			{
+				"title": "Products",
+				"tables": [
+					{
+						"title": "Paint Lines",
+						"columns": [
+							"Line",
+							"What It Is"
+						],
+						"rows": [
+							[
+								"MAP (Matthews Acrylic Polyurethane)",
+								"The original line."
+							],
+							[
+								"Satin MAP, Satin VOC MAP",
+								"Satin versions, the second with less solvent. Codes on the chart beginning `SVOC` are this line."
+							],
+							[
+								"MAP-LV",
+								"Low VOC, in gloss and satin."
+							],
+							[
+								"MAP Ultra Low VOC",
+								"The lowest-solvent line, in gloss and satin."
+							],
+							[
+								"Clears",
+								"Clear coats over the color, one of them graffiti-resistant, and Super Satin Clear."
+							],
+							[
+								"Primers",
+								"Epoxy primers in gray, white and black, and a polyester primer surfacer."
+							]
+						]
+					}
+				]
+			},
+			{
+				"title": "Colors",
+				"note": "Screen colors are approximate. Choose from real swatches. LRV is how much light a color reflects, from 0 to 100.",
+				"tables": [
+					{
+						"title": "Standard Colors",
+						"chart": "Standard Colors",
+						"columns": [
+							{
+								"key": "code",
+								"label": "Code",
+								"mono": true
+							},
+							{
+								"key": "name",
+								"label": "Name"
+							},
+							{
+								"key": "lrv",
+								"label": "LRV",
+								"end": true
+							}
+						]
+					},
+					{
+						"title": "Metallic Selections",
+						"chart": "Metallic Selections",
+						"columns": [
+							{
+								"key": "code",
+								"label": "Code",
+								"mono": true
+							},
+							{
+								"key": "name",
+								"label": "Name"
+							},
+							{
+								"key": "lrv",
+								"label": "LRV",
+								"end": true
+							}
+						]
+					},
+					{
+						"title": "Proseco and Factory Mixed Colors",
+						"chart": "Proseco Collection and Other Factory Mixed Colors",
+						"columns": [
+							{
+								"key": "code",
+								"label": "Code",
+								"mono": true
+							},
+							{
+								"key": "name",
+								"label": "Name"
+							},
+							{
+								"key": "lrv",
+								"label": "LRV",
+								"end": true
+							},
+							{
+								"key": "note",
+								"label": "Note"
+							}
+						]
+					}
+				]
+			}
+		],
+		"documents": [
+			{
+				"title": "Matthews Paint Color Chart",
+				"note": "Four pages: standard colors, metallics, the Proseco collection and the gloss levels. A scan made by Bell Company, Inc., whose name is on each page.",
+				"href": "/sources/suppliers/matthews-paint-color-chart.pdf",
+				"host": "PDF · 3.9 MB"
+			},
+			{
+				"title": "Matthews Paint",
+				"note": "Product lines, technical data sheets and the color tools.",
+				"href": "https://www.matthewspaint.com/",
+				"host": "matthewspaint.com"
+			}
+		]
+	},
+	"sherwin-williams": {
+		"name": "Sherwin-Williams",
+		"sheet": "S-02",
+		"data": "sherwin-williams",
+		"what": "Architectural paint. Its color numbers are how architects, landlords and brands name the colors of a building.",
+		"use": "Reading a wall, fascia or brand color, then matching sign paint to it. The sign itself is sprayed in Matthews Paint.",
+		"code": "SW 7069 Iron Ore",
+		"site": {
+			"label": "sherwin-williams.com",
+			"href": "https://www.sherwin-williams.com/"
+		},
+		"sections": [
+			{
+				"title": "Products",
+				"tables": [
+					{
+						"title": "Color Numbers",
+						"columns": [
+							"Numbers",
+							"What They Are"
+						],
+						"rows": [
+							[
+								"SW 0001 to SW 0080",
+								"Historic colors. They have no place on the store display, so no locator number."
+							],
+							[
+								"SW 6000 to SW 7757",
+								"The main ColorSnap collection, and most of what a building is specified in."
+							],
+							[
+								"SW 9001 to SW 9186",
+								"Colors added to the collection later."
+							],
+							[
+								"Some between SW 1015 and SW 2865, and SW 8917",
+								"Older and historic colors still on the list."
+							]
+						]
+					}
+				]
+			},
+			{
+				"title": "Colors",
+				"note": "Screen colors are approximate. Choose from real swatches. Locator is the color's place on the store display.",
+				"tables": [
+					{
+						"title": "ColorSnap Colors",
+						"chart": "ColorSnap Colors",
+						"columns": [
+							{
+								"key": "code",
+								"label": "Number",
+								"mono": true
+							},
+							{
+								"key": "name",
+								"label": "Name"
+							},
+							{
+								"key": "hex",
+								"label": "Hex",
+								"mono": true
+							},
+							{
+								"key": "locator",
+								"label": "Locator",
+								"mono": true
+							}
+						]
+					}
+				]
+			}
+		],
+		"documents": [
+			{
+				"title": "Sherwin-Williams ColorSnap Color Swatches",
+				"note": "Sixty-four pages: each color's number, name, locator number, RGB and hex.",
+				"href": "/sources/suppliers/sherwin-williams-colorsnap-swatches.pdf",
+				"host": "PDF · 0.4 MB"
+			},
+			{
+				"title": "Sherwin-Williams Colors",
+				"note": "Every current color, with its chip and its data.",
+				"href": "https://www.sherwin-williams.com/en-us/color",
+				"host": "sherwin-williams.com"
+			}
+		]
+	},
+	"pantone": {
+		"name": "Pantone",
+		"sheet": "S-03",
+		"data": "pantone",
+		"what": "The Pantone Matching System (PMS): a numbered library of ink colors that printers, brands and manufacturers all share.",
+		"use": "Reading a client's brand colors, then matching paint and vinyl to them. We don't buy anything from Pantone but its guides.",
+		"code": "PANTONE 186 C",
+		"site": {
+			"label": "pantone.com",
+			"href": "https://www.pantone.com/"
+		},
+		"sections": [
+			{
+				"title": "Products",
+				"tables": [
+					{
+						"title": "Libraries",
+						"columns": [
+							"Library",
+							"Suffix",
+							"What It Is"
+						],
+						"rows": [
+							[
+								"Solid Coated",
+								"`C`",
+								"The spot ink printed on glossy coated paper. The one brand guides usually give, and the one sign work uses."
+							],
+							[
+								"Solid Uncoated",
+								"`U`",
+								"The same ink on plain uncoated paper. It looks duller and often lighter."
+							],
+							[
+								"Color Bridge Coated",
+								"`CP`, or `PC` on older charts",
+								"The closest four-color (CMYK) print of each solid color, beside the solid. For anything printed digitally."
+							]
+						]
+					}
+				]
+			},
+			{
+				"title": "Colors",
+				"note": "Screen colors are approximate. Choose from real swatches. C / M / Y / K is the four-color print build of each solid color.",
+				"tables": [
+					{
+						"title": "Color Bridge, Coated",
+						"chart": "Color Bridge, Coated",
+						"columns": [
+							{
+								"key": "code",
+								"label": "Color",
+								"mono": true
+							},
+							{
+								"key": "cmyk",
+								"label": "C / M / Y / K",
+								"mono": true
+							}
+						],
+						"prefix": "PANTONE "
+					}
+				]
+			}
+		],
+		"documents": [
+			{
+				"title": "Pantone Color Bridge CMYK PC",
+				"note": "Fourteen pages, each color with its CMYK build. Pantone, 2005; this copy was passed on by a molding company and carries its mark.",
+				"href": "/sources/suppliers/pantone-color-bridge-cmyk-pc.pdf",
+				"host": "PDF · 0.6 MB"
+			},
+			{
+				"title": "Pantone Color Chart for CMYK Proofs",
+				"note": "One page of the same numbers, for choosing colors on a digital CMYK printer.",
+				"href": "/sources/suppliers/pantone-cmyk-comp-chart.pdf",
+				"host": "PDF · 0.2 MB"
+			},
+			{
+				"title": "Pantone Solid Uncoated Palette",
+				"note": "A printer's artwork guide: what PMS means, and the uncoated palette.",
+				"href": "/sources/suppliers/pantone-solid-uncoated-palette.pdf",
+				"host": "PDF · 2.0 MB"
+			},
+			{
+				"title": "Pantone Color Finder",
+				"note": "Look up any Pantone number in the current libraries.",
+				"href": "https://www.pantone.com/color-finder",
+				"host": "pantone.com"
+			}
+		]
+	},
+	"3m": {
+		"name": "3M Films",
+		"sheet": "S-04",
+		"data": "3m",
+		"what": "Colored vinyl film with adhesive on the back, cut to shape and applied to a sign face.",
+		"use": "Translucent film on lit acrylic faces and push-thru letters; opaque film for graphics that aren't lit from behind",
+		"code": "3630-33 Red",
+		"site": {
+			"label": "3m.com, Graphics and Signage",
+			"href": "https://www.3m.com/3M/en_US/graphics-signage-us/"
+		},
+		"sections": [
+			{
+				"title": "Products",
+				"tables": [
+					{
+						"title": "Film Series",
+						"columns": [
+							"Series",
+							"Family",
+							"What It Is"
+						],
+						"rows": [
+							[
+								"Scotchcal Translucent 3630",
+								"Translucent",
+								"The standard film for lit faces. Vinyl, 2 mil thick, with a clear permanent adhesive."
+							],
+							[
+								"Envision Translucent 3730",
+								"Translucent",
+								"Made for faces lit by LEDs. Its color numbers end in `L`."
+							],
+							[
+								"Scotchcal ElectroCut 7725",
+								"Opaque",
+								"Cut graphics with a permanent adhesive. Cuts and weeds down to 1/4\" letters."
+							],
+							[
+								"Scotchcal ElectroCut 7125",
+								"Opaque",
+								"Like 7725. Cuts and weeds down to 3/8\" letters."
+							],
+							[
+								"Controltac with Comply 180mC",
+								"Opaque",
+								"Slides into place before it's pressed down, and lets trapped air out. For large graphics and wraps."
+							],
+							[
+								"Scotchcal Series 50",
+								"Opaque",
+								"A separate, shorter color range with its own numbers."
+							],
+							[
+								"Fluorescent 7725SE",
+								"Opaque",
+								"Five fluorescent colors, in this series only."
+							]
+						]
+					}
+				]
+			},
+			{
+				"title": "Colors",
+				"note": "Screen colors are approximate. Choose from real swatches. Pantone is the match printed on 3M's chart, where there is one.",
+				"tables": [
+					{
+						"title": "Scotchcal Translucent 3630",
+						"chart": "Scotchcal Translucent 3630",
+						"columns": [
+							{
+								"key": "code",
+								"label": "Film",
+								"mono": true
+							},
+							{
+								"key": "name",
+								"label": "Name"
+							},
+							{
+								"key": "match",
+								"label": "Pantone"
+							}
+						]
+					},
+					{
+						"title": "Envision Translucent 3730",
+						"chart": "Envision Translucent 3730",
+						"columns": [
+							{
+								"key": "code",
+								"label": "Film",
+								"mono": true
+							},
+							{
+								"key": "name",
+								"label": "Name"
+							},
+							{
+								"key": "match",
+								"label": "Pantone"
+							}
+						]
+					},
+					{
+						"title": "Opaque 7725, 7125 and 180mC",
+						"chart": "7125, 7725 and 180mC",
+						"columns": [
+							{
+								"key": "code",
+								"label": "Color",
+								"mono": true
+							},
+							{
+								"key": "name",
+								"label": "Name"
+							},
+							{
+								"key": "match",
+								"label": "Pantone"
+							},
+							{
+								"key": "note",
+								"label": "Note"
+							}
+						],
+						"note": "Put the series before the color number, as in `7725-58`."
+					},
+					{
+						"title": "Opaque Series 50",
+						"chart": "Series 50",
+						"columns": [
+							{
+								"key": "code",
+								"label": "Film",
+								"mono": true
+							},
+							{
+								"key": "name",
+								"label": "Name"
+							},
+							{
+								"key": "match",
+								"label": "Pantone"
+							}
+						],
+						"prefix": "50-"
+					},
+					{
+						"title": "Fluorescent 7725SE",
+						"chart": "7725SE Fluorescent",
+						"columns": [
+							{
+								"key": "code",
+								"label": "Film",
+								"mono": true
+							},
+							{
+								"key": "name",
+								"label": "Name"
+							}
+						],
+						"prefix": "7725SE-"
+					}
+				]
+			}
+		],
+		"documents": [
+			{
+				"title": "3M Coloured Translucent Films",
+				"note": "The 3630 and 3730 poster, with each film's Pantone match. European edition, April 2017.",
+				"href": "/sources/suppliers/3m-translucent-films-3630-3730-poster.pdf",
+				"host": "PDF · 1.7 MB"
+			},
+			{
+				"title": "3M Opaque Graphic Films",
+				"note": "The 7725, 7125, 180mC, Series 50 and 7725SE poster. United States edition, April 2016.",
+				"href": "/sources/suppliers/3m-opaque-graphic-films-poster.pdf",
+				"host": "PDF · 0.2 MB"
+			},
+			{
+				"title": "3M Graphics and Signage",
+				"note": "Product bulletins, the current color cards and warranties.",
+				"href": "https://www.3m.com/3M/en_US/graphics-signage-us/",
+				"host": "3m.com"
+			}
+		]
+	},
+	"eastern-metal-supply": {
+		"name": "Eastern Metal Supply",
+		"sheet": "S-05",
+		"data": "eastern-metal-supply",
+		"what": "An aluminum distributor: sheet and plate, standard and custom extrusions, and a line of extrusions made for signs.",
+		"use": "The metal of a sign: faces, backs, returns, backers, cabinets and raceways",
+		"code": "50-03-146",
+		"site": {
+			"label": "easternmetal.com",
+			"href": "https://www.easternmetal.com/"
+		},
+		"sections": [
+			{
+				"title": "Products",
+				"tables": [
+					{
+						"title": "Catalog Sections",
+						"columns": [
+							"Section",
+							"What's in It"
+						],
+						"rows": [
+							[
+								"Sheet and Plate",
+								"Mill finish sheet in 5052, 3003 and 6061; anodized and painted sheet; tread plate; ACM panels; channel letter coil"
+							],
+							[
+								"Sign and Exhibit",
+								"Sign cabinet frames and retainers, the SIGNgineer cabinet system, flex face frames, raceways and wireways, mounting clips, posts and DOT sign hardware"
+							],
+							[
+								"Standard Extrusions",
+								"Bar, rod, angle, channel, tees and zees; square, rectangular and round tube; pipe; I-beams; painted and anodized extrusions"
+							],
+							[
+								"Services",
+								"Custom extrusions to a drawing, cutting, bending, welding, machining, anodizing and powder coating. Sheet can be bent from .025\" to .100\" thick, up to 48\" wide and 312\" long."
+							]
+						]
+					}
+				]
+			},
+			{
+				"title": "Sign Parts",
+				"tables": [
+					{
+						"title": "Sign Cabinet Frames",
+						"columns": [
+							"Frame",
+							"With Fixed Retainer",
+							"Without Retainer"
+						],
+						"rows": [
+							[
+								"4\"",
+								"`24-63-200` (SF-4R)",
+								"`24-63-205` (SF-4)"
+							],
+							[
+								"6\"",
+								"`24-63-260`",
+								"`24-63-255`"
+							],
+							[
+								"7\"",
+								"`24-63-210` (SF-7R)",
+								"`24-63-215` (SF-7)"
+							],
+							[
+								"10\"",
+								"`24-63-220` (SF-10R)",
+								"`24-63-225` (SF-10)"
+							],
+							[
+								"10\" LED",
+								"`24-63-221`",
+								"`24-63-226`"
+							],
+							[
+								"12\"",
+								"`24-63-230` (SF-12R)",
+								"`24-63-235` (SF-12)"
+							],
+							[
+								"12\" LED",
+								"`24-63-231`",
+								"`24-63-239`"
+							],
+							[
+								"16\"",
+								"",
+								"`24-63-290` (SF-16), for round steel poles up to 9\" and square ones up to 10\""
+							]
+						],
+						"note": "Each frame is an extrusion 24' 6\" long."
+					},
+					{
+						"title": "Other Frames and Parts",
+						"columns": [
+							"Part",
+							"Code"
+						],
+						"rows": [
+							[
+								"6\" single face frame",
+								"`24-63-705`"
+							],
+							[
+								"6\" tab mounted frame",
+								"`24-63-700`"
+							],
+							[
+								"9\" single face frame",
+								"`24-63-280`"
+							],
+							[
+								"8\" stackable frame",
+								"`24-63-400`"
+							],
+							[
+								"F-retainer",
+								"`24-63-251`"
+							],
+							[
+								"Divider bars",
+								"`24-63-120`, `24-63-115`, `24-63-275`"
+							],
+							[
+								"Piano hinge",
+								"`41-63-871`"
+							],
+							[
+								"SIGNgineer Junior, for cabinets under 100 sq ft",
+								"`24-63-610` with retainer, `24-63-615` without"
+							],
+							[
+								"SIGNgineer Senior, for larger cabinets and flex faces",
+								"`24-63-600`, `24-63-605`"
+							]
+						]
+					},
+					{
+						"title": "Raceways",
+						"columns": [
+							"Raceway",
+							"Code",
+							"Goes With"
+						],
+						"rows": [
+							[
+								"EasyMount 6\" face, 25'",
+								"`24-63-158`",
+								"Back wall bracket `24-63-159`, end cap `21-00-910`, power supply panel `24-63-161`"
+							],
+							[
+								"Tab mounted LED, 3-1/2\" x 5\", 25'",
+								"`24-63-154`",
+								"Lid `24-63-163`, end cap `21-00-932`, tray `24-63-451F`"
+							],
+							[
+								"Tab mounted LED, 4-1/2\" x 4-1/2\", 25'",
+								"`24-63-156`",
+								"Lid `24-63-157`, end cap `21-00-928`, tray `24-63-449F`"
+							],
+							[
+								"Tab mounted LED, 4-1/2\" x 7\", 25'",
+								"`24-63-155`",
+								"Lid `24-63-157`, end cap `21-00-927`, tray `24-63-449F`"
+							],
+							[
+								"Tab mounted, 7-1/4\" x 7\", 25'",
+								"`24-63-149`",
+								"Lid `24-63-150`, end cap `21-00-909`, tray `24-63-450F`"
+							],
+							[
+								"RW-7, 7-1/4\", 25'",
+								"`24-63-138`",
+								"Lid `24-63-150`, end cap `21-00-901`"
+							],
+							[
+								"RW-3, 3\" x 1-1/2\", 20'",
+								"`24-63-125`",
+								""
+							],
+							[
+								"RW-4, 4\" x 1\", 20'",
+								"`24-63-140`",
+								"Lid `24-63-141` (mill order)"
+							],
+							[
+								"RW-4A, 4\" x 1-1/2\", 20'",
+								"`24-63-265`",
+								"Lid `24-63-141` (mill order)"
+							]
+						]
+					},
+					{
+						"title": "Mounting",
+						"columns": [
+							"Part",
+							"Code",
+							"Notes"
+						],
+						"rows": [
+							[
+								"Raceway mounting tab",
+								"`24-63-148P`",
+								"Rated for 220 lb down and 160 lb sideways per tab"
+							],
+							[
+								"EZ Clip, 3/8\" of lift",
+								"`40-63-008`",
+								"144\" long. Also cut and drilled at 2\", 7-5/8\" and 13-1/8\"."
+							],
+							[
+								"EZ Clip, 5/8\" of lift",
+								"`40-63-007`",
+								"144\" long"
+							],
+							[
+								"H-retainer",
+								"`24-63-160`",
+								"1-3/4\" by 16' 6\". Holds 1/4\" sign faces."
+							]
+						]
+					}
+				]
+			},
+			{
+				"title": "Sheet Stock",
+				"note": "Sizes are in inches, thickness x width x length. Weights are pounds per sheet.",
+				"tables": [
+					{
+						"title": "5052-H32 Mill Finish",
+						"chart": "5052-H32 Mill Finish",
+						"columns": [
+							{
+								"key": "code",
+								"label": "Stock Code",
+								"mono": true
+							},
+							{
+								"key": "size",
+								"label": "Size",
+								"mono": true
+							},
+							{
+								"key": "weight",
+								"label": "Lb per Sheet",
+								"end": true
+							}
+						]
+					},
+					{
+						"title": "3003-H14 Mill Finish",
+						"chart": "3003-H14 Mill Finish",
+						"columns": [
+							{
+								"key": "code",
+								"label": "Stock Code",
+								"mono": true
+							},
+							{
+								"key": "size",
+								"label": "Size",
+								"mono": true
+							},
+							{
+								"key": "weight",
+								"label": "Lb per Sheet",
+								"end": true
+							}
+						]
+					},
+					{
+						"title": "6061-T6 Mill Finish",
+						"chart": "6061-T6 Mill Finish",
+						"columns": [
+							{
+								"key": "code",
+								"label": "Stock Code",
+								"mono": true
+							},
+							{
+								"key": "size",
+								"label": "Size",
+								"mono": true
+							},
+							{
+								"key": "weight",
+								"label": "Lb per Sheet",
+								"end": true
+							}
+						]
+					},
+					{
+						"title": "Painted Sheet",
+						"chart": "Painted Sheet, with PVC",
+						"columns": [
+							{
+								"key": "code",
+								"label": "Stock Code",
+								"mono": true
+							},
+							{
+								"key": "finish",
+								"label": "Front / Back"
+							},
+							{
+								"key": "size",
+								"label": "Size",
+								"mono": true
+							},
+							{
+								"key": "weight",
+								"label": "Lb per Sheet",
+								"end": true
+							},
+							{
+								"key": "note",
+								"label": "Note"
+							}
+						]
+					},
+					{
+						"title": "Anodized Sheet",
+						"chart": "5005 Anodized, PVC One Side",
+						"columns": [
+							{
+								"key": "code",
+								"label": "Stock Code",
+								"mono": true
+							},
+							{
+								"key": "finish",
+								"label": "Anodize"
+							},
+							{
+								"key": "size",
+								"label": "Size",
+								"mono": true
+							},
+							{
+								"key": "weight",
+								"label": "Lb per Sheet",
+								"end": true
+							}
+						]
+					},
+					{
+						"title": "ACM Panels",
+						"chart": "ACM Panels",
+						"columns": [
+							{
+								"key": "code",
+								"label": "Stock Code",
+								"mono": true
+							},
+							{
+								"key": "product",
+								"label": "Make"
+							},
+							{
+								"key": "size",
+								"label": "Size",
+								"mono": true
+							},
+							{
+								"key": "finish",
+								"label": "Color"
+							},
+							{
+								"key": "note",
+								"label": "Skin and Finish"
+							}
+						]
+					},
+					{
+						"title": "Channel Letter Coil",
+						"chart": "Channel Letter Coil",
+						"columns": [
+							{
+								"key": "code",
+								"label": "Stock Code",
+								"mono": true
+							},
+							{
+								"key": "finish",
+								"label": "Outside / Inside"
+							},
+							{
+								"key": "size",
+								"label": "Size",
+								"mono": true
+							}
+						]
+					},
+					{
+						"title": "Alodine Pretreated Sheet",
+						"chart": "5052-H38 Alodine Pretreated",
+						"columns": [
+							{
+								"key": "code",
+								"label": "Stock Code",
+								"mono": true
+							},
+							{
+								"key": "size",
+								"label": "Size",
+								"mono": true
+							},
+							{
+								"key": "weight",
+								"label": "Lb per Sheet",
+								"end": true
+							}
+						],
+						"note": "5052-H38 with a conversion coat that helps paint hold."
+					},
+					{
+						"title": "Tread Brite",
+						"chart": "3003-H22/24 Tread Brite",
+						"columns": [
+							{
+								"key": "code",
+								"label": "Stock Code",
+								"mono": true
+							},
+							{
+								"key": "size",
+								"label": "Size",
+								"mono": true
+							},
+							{
+								"key": "weight",
+								"label": "Lb per Sheet",
+								"end": true
+							}
+						],
+						"note": "3003-H22/24 with a raised diamond pattern."
+					}
+				]
+			}
+		],
+		"documents": [
+			{
+				"title": "EMS Aluminum Extrusions and Sheet Catalog",
+				"note": "The whole catalog as text, every section and stock code. Search it with Ctrl+F for a shape or a code that isn't on this page.",
+				"href": "/sources/suppliers/eastern-metal-supply-catalog.txt",
+				"host": "Text · 0.5 MB"
+			},
+			{
+				"title": "Eastern Metal Supply",
+				"note": "The catalog with its drawings, the branches and their phone numbers.",
+				"href": "https://www.easternmetal.com/",
+				"host": "easternmetal.com"
+			}
+		]
+	}
+}

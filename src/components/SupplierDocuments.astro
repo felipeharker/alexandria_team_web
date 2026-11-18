@@ -1,0 +1,35 @@
+---
+// The foot of a supplier page (wiki/suppliers/*.mdx): the office's sheet for the supplier first, then the
+// supplier's own documents it was made from (src/suppliers/sheets.json). Those live in alexandria_office
+// (public/sources/suppliers/), served here at /sources/suppliers/.
+import sheets from '../suppliers/sheets.json';
+
+interface Props {
+	/** the supplier's key in sheets.json */
+	supplier: keyof typeof sheets;
+}
+const { supplier } = Astro.props;
+const sheet = sheets[supplier];
+const outside = (href: string) => /^https?:/.test(href);
+---
+
+<ul class="ax-links not-content">
+	<li>
+		<a href={`/wiki/suppliers/${supplier}.pdf`}>
+			<b>{sheet.name}, Supplier Sheet {sheet.sheet}</b>
+			<small>The tables on this page in the Alexandria Design Lab standard, to print or send.</small>
+			<span class="host">PDF</span>
+		</a>
+	</li>
+	{
+		sheet.documents.map((document) => (
+			<li>
+				<a href={document.href} target={outside(document.href) ? '_blank' : undefined} rel={outside(document.href) ? 'noopener' : undefined}>
+					<b>{document.title}</b>
+					<small>{document.note}</small>
+					<span class="host">{document.host}</span>
+				</a>
+			</li>
+		))
+	}
+</ul>
