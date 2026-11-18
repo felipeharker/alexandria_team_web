@@ -7,7 +7,7 @@ import starlight from '@astrojs/starlight';
 // tools/sync.py writes everything under docs/, src/generated and src/data from alexandria_phoenix.
 // Every tool has a short address: /rhino, /grasshopper, /estimator/guide here, and /estimator, /materials (the
 // Material Library), /colors (the Color Matcher), /colors/library, /site-plan, /vectorizer, /grid (the Parametric Grid),
-// /image-grid (the Image Grid), /braille (the Braille Lettering Designer) and /sign-package (the Sign Package Maker) from the alexandria_office repo,
+// /image-grid (the Image Grid), /braille (the Braille Lettering Designer), /sign-package (the Sign Package Maker) and /etch-text (Etch Text) from the alexandria_office repo,
 // served beside these pages by server/gate.mjs.
 
 // Runs in every page's head (see the sidebar notes in `head` below): moves the sidebar's highlight to an
@@ -135,6 +135,7 @@ export default defineConfig({
 								{ label: 'Color Library', slug: 'colors/library/guide' },
 								{ label: 'Material Estimator', slug: 'estimator/guide' },
 								{ label: 'Material Library', slug: 'materials/guide' },
+								{ label: 'Etch Text', slug: 'etch-text/guide' },
 							],
 						},
 						// no guides yet: a plain entry with an Alpha tag, as in Tools, and its own short page
@@ -192,6 +193,8 @@ export default defineConfig({
 								{ label: 'Material Estimator', link: '/estimator/', badge: 'Beta' },
 								// still being filled in
 								{ label: 'Material Library', link: '/materials/', badge: 'Beta' },
+								// new, and its DXF hasn't been run on the laser or the router yet
+								{ label: 'Etch Text', link: '/etch-text/', badge: 'Beta' },
 							],
 						},
 						// A category with no tools yet (user, 2026-11-12): a plain entry with an Alpha tag and no group to
@@ -200,7 +203,7 @@ export default defineConfig({
 					],
 				},
 				// Everything that isn't starting out, a guide or a tool is a subsection of the Wiki (user, 2026-11-18): the
-				// reference pages by subject (Signage, Paint/Vinyl, Materials), then Templates, Documentation and External Ref.,
+				// reference pages by subject (Signage, Paint/Vinyl, Materials), then Templates, Downloads, Documentation and External Ref.,
 				// which were top sections until then. The Sample Project left the sidebar the same day; its page is still there
 				// for Your First Day's link (src/routeData.ts).
 				{
@@ -242,6 +245,15 @@ export default defineConfig({
 								{ label: 'Material Library', slug: 'templates/material-library' },
 								{ label: 'Color Matcher', slug: 'templates/color-matcher' },
 								{ label: 'Grasshopper Parameters', slug: 'templates/grasshopper' },
+							],
+						},
+						{
+							// Every file there is to download, in one place (user, 2026-11-18), and the office's own font
+							label: 'Downloads',
+							collapsed: false,
+							items: [
+								{ label: 'All Downloads', slug: 'wiki/downloads' },
+								{ label: 'Alexandria Etch Font', slug: 'wiki/downloads/etch-font' },
 							],
 						},
 						{

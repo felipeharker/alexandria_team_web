@@ -1,0 +1,48 @@
+<!-- The Etch Text quick guide, written for the hub in the quick guides' own classes (qg-…, from guides.css) and a few
+     of the hub's (ax-…, in theme.css). The tool itself is in the alexandria_office repo, at public/etch-text/, and
+     the font is alexandria_phoenix's etch_font/. -->
+<div class="qg-page">
+  <header>
+    <p class="qg-eyebrow">Office Tools &middot; Runs in Your Browser</p>
+    <p class="qg-lede">Type a part label, such as <i>A1</i> or <i>P1-1</i>, and download it in Alexandria Etch, the office's single-line font: every letter is one line down its middle, so a laser or router follows it once.</p>
+    <p class="qg-other"><a href="/etch-text/">Open Etch Text &rarr;</a></p>
+  </header>
+
+  <section aria-labelledby="order">
+    <div class="qg-section-head"><h2 id="order">Make a Label</h2><p>The usual order.</p></div>
+    <ol class="qg-flow">
+      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 5h12M4 10h12M4 15h7"/></svg></span><div><b>Type the Text</b><small>The label, one line of etching per line. Lower case is drawn as capitals.</small></div></li>
+      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v14M6 3h8M6 17h8"/></svg></span><div><b>Set the Letter Height</b><small>The capitals' height, baseline to top, in inches. It starts at 1/2 in.</small></div></li>
+      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 15 7 5l4 10M4.6 11.5h4.8M14 8l3-2v9"/></svg></span><div><b>Check the Preview</b><small>It shows the lines as they will be etched, between the baseline and the top of the capitals.</small></div></li>
+      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v10m0 0-4-4m4 4 4-4M4 16h12"/></svg></span><div><b>Download</b><small>DXF for the fab file, SVG for CorelDRAW, Illustrator or laser software.</small></div></li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="downloads">
+    <div class="qg-section-head"><h2 id="downloads">The Downloads</h2><p>All at real size, in inches.</p></div>
+    <div class="qg-table-scroll">
+      <table class="qg-parts">
+        <thead><tr><th>Button</th><th>What You Get</th><th>Use It For</th></tr></thead>
+        <tbody>
+          <tr><td>Download SVG</td><td>Single lines: one open path per stroke, arcs as true arcs</td><td>CorelDRAW, Illustrator, Rhino, laser software</td></tr>
+          <tr><td>Download DXF</td><td>The same lines as polylines on the <code>ETCH</code> layer, in blue</td><td>The fab file, beside the Fabrication Manager's DXF</td></tr>
+          <tr><td>Copy SVG</td><td>The SVG, on the clipboard</td><td>Pasting straight into a drawing</td></tr>
+          <tr><td>SVG as Text</td><td>The words kept as text, set in the Alexandria Etch font</td><td>Editing later, where the font is installed. Not for cutting</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="habits">
+    <div class="qg-section-head"><h2 id="habits">Good to Know</h2></div>
+    <ul class="qg-habits">
+      <li><b>Never fill it.</b> The letters are lines, not shapes. Give them a hairline outline and no fill.</li>
+      <li><b>The size is the letters' own.</b> The file is as wide and tall as the lines themselves, with no margin, so it lands where you place it.</li>
+      <li><b>Told apart.</b> The zero is slashed and the one has a flag, so <i>O</i> and <i>0</i>, and <i>I</i> and <i>1</i>, can't be mixed up on a part.</li>
+      <li><b>Not in the font?</b> A character it doesn't have is named in red under the text and left out.</li>
+      <li><b>How long it takes.</b> Under the buttons, the inches of etching are how far the tool travels with the beam or bit down.</li>
+      <li><b>In Rhino.</b> The font comes with a script that draws labels straight into a model. See <a href="/wiki/downloads/etch-font/">Alexandria Etch Font</a>.</li>
+      <li><b>It saves.</b> The text and sizes stay in this browser.</li>
+    </ul>
+  </section>
+</div>

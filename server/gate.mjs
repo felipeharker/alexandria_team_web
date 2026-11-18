@@ -31,7 +31,7 @@ const HUB = fileURLToPath(new URL('../dist', import.meta.url));
 const PORT = Number(process.env.PORT) || 10000;
 // the office tools, and `sources`: the suppliers' own documents the Wiki's supplier pages link to (kept in the
 // private alexandria_office repo, not this public one, as they are other people's documents)
-const OFFICE_TOOLS = new Set(['estimator', 'materials', 'colors', 'site-plan', 'vectorizer', 'grid', 'image-grid', 'braille', 'sign-package', 'sources']);
+const OFFICE_TOOLS = new Set(['estimator', 'materials', 'colors', 'site-plan', 'vectorizer', 'grid', 'image-grid', 'braille', 'sign-package', 'etch-text', 'sources']);
 const DAY = 24 * 60 * 60 * 1000;
 const SESSION_DAYS = 30;
 const SESSION_COOKIE = 'alexandria_session';

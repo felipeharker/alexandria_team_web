@@ -1,0 +1,45 @@
+---
+title: Alexandria Etch Font
+description: The office's single-line font for etching part labels, such as A1 or P1-1, on fabricated parts, and its files to download.
+---
+
+import { LinkButton } from '@astrojs/starlight/components';
+import EtchSpecimen from '../../../../components/EtchSpecimen.astro';
+
+{/* The font is made in alexandria_phoenix (etch_font/, by make_font.py). The files in public/downloads/etch-font/ are
+    copies of that folder's: copy them again when the font changes. The drawing below reads the copied JSON. */}
+
+The office's single-line font for etching part labels, such as `A1` or `P1-1`. Every letter is one line down its middle, made of straight lines and true arcs, so a laser or router follows it once.
+
+<EtchSpecimen rows={['ABCDEFGHIJKLM', 'NOPQRSTUVWXYZ', '0123456789', '- _ . , : ; / # + = * ( ) [ ] & %', 'P1-1  A12  B-07']} label="The Alexandria Etch font: the capitals A to Z, the numbers 0 to 9 with a slashed zero, the punctuation, and three sample labels, P1-1, A12 and B-07" />
+
+<LinkButton href="/downloads/etch-font/alexandria_etch_font.zip" download icon="download" iconPlacement="start">Download the Font</LinkButton>
+<LinkButton href="/etch-text/" variant="secondary">Open Etch Text</LinkButton>
+
+## Which One to Use
+
+| Where | Use | How |
+|---|---|---|
+| A browser | [Etch Text](/etch-text/) | Type the label, download an SVG or DXF at real size. Nothing to install. |
+| Rhino | `etch_text.py` | Run it, give the text, the height and a point. It draws the label as open curves on the current layer. |
+| Inkscape, laser software | `alexandria_etch.svg` | Load it as an SVG font (Hershey Text in Inkscape). |
+| CorelDRAW, Word, anything else | `AlexandriaEtch.ttf` | Install it and type. For previews and editable text only: see below. |
+
+## The Files
+
+| Download | What It Is |
+|---|---|
+| [alexandria_etch_font.zip](/downloads/etch-font/alexandria_etch_font.zip) | Everything below, with a README. |
+| [AlexandriaEtch.ttf](/downloads/etch-font/AlexandriaEtch.ttf) | The TrueType font. Also on the office drive, in `alexandria_packages`. |
+| [alexandria_etch.svg](/downloads/etch-font/alexandria_etch.svg) | The SVG font. |
+| [etch_text.py](/downloads/etch-font/etch_text.py) | The Rhino 8 script. Keep `alexandria_etch.json` beside it. |
+| [alexandria_etch.json](/downloads/etch-font/alexandria_etch.json) | The strokes the script reads. |
+| [alexandria_etch_specimen.pdf](/downloads/etch-font/alexandria_etch_specimen.pdf) | The specimen sheet. Printed at 100%, its sample labels are at real size. |
+
+## Good to Know
+
+- **Never fill it.** The letters are lines, not shapes: a hairline outline and no fill.
+- **The TrueType font isn't for cutting.** A TrueType font can't hold an open line, so it traces each stroke out and back, and a machine would pass twice. Cut from Etch Text's files or the Rhino script's curves.
+- **Rhino's own text won't single-line it.** Rhino only treats the fonts on its built-in list as single-line, so the script draws the letters itself.
+- **The height is the capitals'.** A 1/2 in label is 1/2 in from baseline to top.
+- **Told apart.** The zero is slashed and the one has a flag. Lower case draws as capitals.
