@@ -1218,3 +1218,8 @@ h3.ax-supplier-table + .ax-chart {
 	stroke-linecap: round;
 	stroke-linejoin: round;
 }
+
+/* All Downloads: the row a Downloads entry in the sidebar opens on, in the grey of the page you're on */
+.sl-markdown-content tr:has(> td > span[id]:target) > td {
+	background: var(--sl-color-gray-6);
+}

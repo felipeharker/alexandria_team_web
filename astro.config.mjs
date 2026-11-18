@@ -203,9 +203,9 @@ export default defineConfig({
 					],
 				},
 				// Everything that isn't starting out, a guide or a tool is a subsection of the Wiki (user, 2026-11-18): the
-				// reference pages by subject (Signage, Paint/Vinyl, Materials), then Templates, Downloads, Documentation and External Ref.,
+				// reference pages by subject (Signage, Paint/Vinyl, Materials), then Templates, Documentation and External Ref.,
 				// which were top sections until then. The Sample Project left the sidebar the same day; its page is still there
-				// for Your First Day's link (src/routeData.ts).
+				// for Your First Day's link (src/routeData.ts). Downloads left the Wiki for a section of its own, below, the same day.
 				{
 					label: 'Wiki',
 					collapsed: true,
@@ -248,15 +248,6 @@ export default defineConfig({
 							],
 						},
 						{
-							// Every file there is to download, in one place (user, 2026-11-18), and the office's own font
-							label: 'Downloads',
-							collapsed: false,
-							items: [
-								{ label: 'All Downloads', slug: 'wiki/downloads' },
-								{ label: 'Alexandria Etch Font', slug: 'wiki/downloads/etch-font' },
-							],
-						},
-						{
 							label: 'Documentation',
 							collapsed: false,
 							items: [
@@ -275,6 +266,32 @@ export default defineConfig({
 								{ label: 'Links', slug: 'reference/links' },
 							],
 						},
+					],
+				},
+				// Every file there is to download (user, 2026-11-18): the All Downloads page, then one entry per download, each
+				// opening on its row of that page (the ids in wiki/downloads/index.mdx). Add a row and an entry together.
+				// The Alexandria Etch Font page has no entry of its own: it borrows Alexandria Etch Font's (src/routeData.ts).
+				{
+					label: 'Downloads',
+					collapsed: true,
+					items: [
+						{ label: 'All Downloads', slug: 'wiki/downloads' },
+						{ label: 'Alexandria Release', link: '/wiki/downloads/#release' },
+						{ label: 'Alexandria Etch Font', link: '/wiki/downloads/#etch-font' },
+						{ label: 'Alexandria Etch TTF', link: '/wiki/downloads/#etch-font-file' },
+						{ label: 'Oswald', link: '/wiki/downloads/#oswald' },
+						{ label: 'Material Estimator Template', link: '/wiki/downloads/#estimator-template' },
+						{ label: 'Material Library Template', link: '/wiki/downloads/#material-library-template' },
+						{ label: 'Color Matcher Template', link: '/wiki/downloads/#color-matcher-template' },
+						{ label: 'Grasshopper Parameters Template', link: '/wiki/downloads/#grasshopper-template' },
+						{ label: 'Typical Signage Model', link: '/wiki/downloads/#signage-model' },
+						{ label: 'Sign Details', link: '/wiki/downloads/#sign-details' },
+						{ label: 'Sample Design Package', link: '/wiki/downloads/#sample-package' },
+						{ label: 'Matthews Paint Sheet', link: '/wiki/downloads/#matthews-paint' },
+						{ label: 'Sherwin-Williams Sheet', link: '/wiki/downloads/#sherwin-williams' },
+						{ label: 'Pantone Sheet', link: '/wiki/downloads/#pantone' },
+						{ label: '3M Films Sheet', link: '/wiki/downloads/#3m-films' },
+						{ label: 'Eastern Metal Supply Sheet', link: '/wiki/downloads/#eastern-metal-supply' },
 					],
 				},
 			],

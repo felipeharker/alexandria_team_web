@@ -1,13 +1,15 @@
 ---
 title: All Downloads
 description: "Every file there is to download, in one place: the Alexandria release, the fonts, the templates, the models and details, and the supplier sheets."
+# the sidebar entries after this one open on its own rows, so no Next
+next: false
 ---
 
 import release from '../../../../data/release.json';
 import signs from '../../../../data/signage-types.json';
 
 {/* Every downloadable file on the hub, as tables (user, 2026-11-18). When a page gains a file to download, add its row
-    here too. The release row reads src/data/release.json, which tools/sync.py writes. */}
+    here too, with an id on its first cell and an entry under Downloads in the sidebar (astro.config.mjs). The release row reads src/data/release.json, which tools/sync.py writes. */}
 
 Every file there is to download, in one place. The web tools need no download: they open from **Tools**.
 
@@ -15,7 +17,7 @@ Every file there is to download, in one place. The web tools need no download: t
 
 | Download | What It Is |
 |---|---|
-| <a href={release.url}>Alexandria {release.version}</a> (zip, {release.size} MB) | Both Rhino packages, the docs and quick guides as PDF, and the project template. See [Download](/start/download/) for the two ways to install. |
+| <span id="release"></span><a href={release.url}>Alexandria {release.version}</a> (zip, {release.size} MB) | Both Rhino packages, the docs and quick guides as PDF, and the project template. See [Download](/start/download/) for the two ways to install. |
 
 Office computers install from the office drive instead and update by themselves: see [Install and Update](/docs/install/).
 
@@ -23,18 +25,18 @@ Office computers install from the office drive instead and update by themselves:
 
 | Download | What It Is |
 |---|---|
-| [Alexandria Etch](/downloads/etch-font/alexandria_etch_font.zip) (zip) | The single-line font for etched part labels: the font files, the Rhino script and the specimen. See [Alexandria Etch Font](/wiki/downloads/etch-font/). |
-| [AlexandriaEtch.ttf](/downloads/etch-font/AlexandriaEtch.ttf) | Just the font file, to install in Windows. It's on the office drive too, in `alexandria_packages`. |
-| [Oswald](https://fonts.google.com/specimen/Oswald) (Google Fonts) | The typeface of every Alexandria drawing. Office computers already have it. |
+| <span id="etch-font"></span>[Alexandria Etch](/downloads/etch-font/alexandria_etch_font.zip) (zip) | The single-line font for etched part labels: the font files, the Rhino script and the specimen. See [Alexandria Etch Font](/wiki/downloads/etch-font/). |
+| <span id="etch-font-file"></span>[AlexandriaEtch.ttf](/downloads/etch-font/AlexandriaEtch.ttf) | Just the font file, to install in Windows. It's on the office drive too, in `alexandria_packages`. |
+| <span id="oswald"></span>[Oswald](https://fonts.google.com/specimen/Oswald) (Google Fonts) | The typeface of every Alexandria drawing. Office computers already have it. |
 
 ## Templates
 
 | Download | What It Is |
 |---|---|
-| [material-sheet-template.csv](/templates/material-sheet-template.csv) | A Material Estimator sheet. [Its columns](/templates/estimator/). |
-| [material-library-template.csv](/templates/material-library-template.csv) | Material Library rows. [Its columns](/templates/material-library/). |
-| [color-list-template.csv](/templates/color-list-template.csv) | A Color Matcher list. [Its columns](/templates/color-matcher/). |
-| [parameters-template.csv](/templates/parameters-template.csv) | Grasshopper parameters. [Its columns](/templates/grasshopper/). |
+| <span id="estimator-template"></span>[material-sheet-template.csv](/templates/material-sheet-template.csv) | A Material Estimator sheet. [Its columns](/templates/estimator/). |
+| <span id="material-library-template"></span>[material-library-template.csv](/templates/material-library-template.csv) | Material Library rows. [Its columns](/templates/material-library/). |
+| <span id="color-matcher-template"></span>[color-list-template.csv](/templates/color-list-template.csv) | A Color Matcher list. [Its columns](/templates/color-matcher/). |
+| <span id="grasshopper-template"></span>[parameters-template.csv](/templates/parameters-template.csv) | Grasshopper parameters. [Its columns](/templates/grasshopper/). |
 
 The Rhino project template comes inside the Alexandria zip, as `project_template`, and **Create Project** copies it for you.
 
@@ -42,16 +44,16 @@ The Rhino project template comes inside the Alexandria zip, as `project_template
 
 | Download | What It Is |
 |---|---|
-| [typical_signage_types.3dm](/wiki/signage-types/typical_signage_types.3dm) | A Rhino model of every sign type in [Typical Signage Types](/wiki/signage-types/). |
-| Sign details, {signs.details.length} sheets | Each type's detail as a PDF and an SVG, on [Typical Signage Types](/wiki/signage-types/). |
-| [Sample design package](/sample-project/DESIGN_ALEXANDRIA_DESIGN_LAB_v6.pdf) (PDF) | A finished design package, start to end. See the [Sample Project](/sample-project/). |
+| <span id="signage-model"></span>[typical_signage_types.3dm](/wiki/signage-types/typical_signage_types.3dm) | A Rhino model of every sign type in [Typical Signage Types](/wiki/signage-types/). |
+| <span id="sign-details"></span>Sign details, {signs.details.length} sheets | Each type's detail as a PDF and an SVG, on [Typical Signage Types](/wiki/signage-types/). |
+| <span id="sample-package"></span>[Sample design package](/sample-project/DESIGN_ALEXANDRIA_DESIGN_LAB_v6.pdf) (PDF) | A finished design package, start to end. See the [Sample Project](/sample-project/). |
 
 ## Supplier Sheets
 
 | Download | What It Is |
 |---|---|
-| [Matthews Paint](/wiki/suppliers/matthews-paint.pdf) (PDF) | Product lines and the color chart. [Its page](/wiki/suppliers/matthews-paint/). |
-| [Sherwin-Williams](/wiki/suppliers/sherwin-williams.pdf) (PDF) | Colors by number, with hex codes. [Its page](/wiki/suppliers/sherwin-williams/). |
-| [Pantone](/wiki/suppliers/pantone.pdf) (PDF) | Colors with their CMYK builds. [Its page](/wiki/suppliers/pantone/). |
-| [3M Films](/wiki/suppliers/3m.pdf) (PDF) | Film series and their colors. [Its page](/wiki/suppliers/3m/). |
-| [Eastern Metal Supply](/wiki/suppliers/eastern-metal-supply.pdf) (PDF) | Sign parts and sheet stock. [Its page](/wiki/suppliers/eastern-metal-supply/). |
+| <span id="matthews-paint"></span>[Matthews Paint](/wiki/suppliers/matthews-paint.pdf) (PDF) | Product lines and the color chart. [Its page](/wiki/suppliers/matthews-paint/). |
+| <span id="sherwin-williams"></span>[Sherwin-Williams](/wiki/suppliers/sherwin-williams.pdf) (PDF) | Colors by number, with hex codes. [Its page](/wiki/suppliers/sherwin-williams/). |
+| <span id="pantone"></span>[Pantone](/wiki/suppliers/pantone.pdf) (PDF) | Colors with their CMYK builds. [Its page](/wiki/suppliers/pantone/). |
+| <span id="3m-films"></span>[3M Films](/wiki/suppliers/3m.pdf) (PDF) | Film series and their colors. [Its page](/wiki/suppliers/3m/). |
+| <span id="eastern-metal-supply"></span>[Eastern Metal Supply](/wiki/suppliers/eastern-metal-supply.pdf) (PDF) | Sign parts and sheet stock. [Its page](/wiki/suppliers/eastern-metal-supply/). |
