@@ -13,7 +13,7 @@ const borrowed: Record<string, string> = {
 	// The Sample Project is out of the sidebar (user, 2026-11-18); Your First Day links to it.
 	'/sample-project': '/start/first-day',
 	// The Alexandria Etch Font page is out of the sidebar (user, 2026-11-18): Downloads has an entry per file, and
-	// the font's opens on its row of All Downloads, which links to the page.
+	// the font's (Fonts > Alexandria Etch) opens on its row of All Downloads, which links to the page.
 	'/wiki/downloads/etch-font': '/wiki/downloads/#etch-font',
 };
 

@@ -269,29 +269,63 @@ export default defineConfig({
 					],
 				},
 				// Every file there is to download (user, 2026-11-18): the All Downloads page, then one entry per download, each
-				// opening on its row of that page (the ids in wiki/downloads/index.mdx). Add a row and an entry together.
-				// The Alexandria Etch Font page has no entry of its own: it borrows Alexandria Etch Font's (src/routeData.ts).
+				// opening on its row of that page (the ids in wiki/downloads/index.mdx). The entries sit in subsections like
+				// the other sections' (user, 2026-11-18), one per table of that page, under the table's heading and in its
+				// order. Add a row and an entry together. All Downloads is set like the subsection names (ax-side-section).
+				// The Alexandria Etch Font page has no entry of its own: it borrows Alexandria Etch's (src/routeData.ts).
 				{
 					label: 'Downloads',
 					collapsed: true,
 					items: [
-						{ label: 'All Downloads', slug: 'wiki/downloads' },
-						{ label: 'Alexandria Release', link: '/wiki/downloads/#release' },
-						{ label: 'Alexandria Etch Font', link: '/wiki/downloads/#etch-font' },
-						{ label: 'Alexandria Etch TTF', link: '/wiki/downloads/#etch-font-file' },
-						{ label: 'Oswald', link: '/wiki/downloads/#oswald' },
-						{ label: 'Material Estimator Template', link: '/wiki/downloads/#estimator-template' },
-						{ label: 'Material Library Template', link: '/wiki/downloads/#material-library-template' },
-						{ label: 'Color Matcher Template', link: '/wiki/downloads/#color-matcher-template' },
-						{ label: 'Grasshopper Parameters Template', link: '/wiki/downloads/#grasshopper-template' },
-						{ label: 'Typical Signage Model', link: '/wiki/downloads/#signage-model' },
-						{ label: 'Sign Details', link: '/wiki/downloads/#sign-details' },
-						{ label: 'Sample Design Package', link: '/wiki/downloads/#sample-package' },
-						{ label: 'Matthews Paint Sheet', link: '/wiki/downloads/#matthews-paint' },
-						{ label: 'Sherwin-Williams Sheet', link: '/wiki/downloads/#sherwin-williams' },
-						{ label: 'Pantone Sheet', link: '/wiki/downloads/#pantone' },
-						{ label: '3M Films Sheet', link: '/wiki/downloads/#3m-films' },
-						{ label: 'Eastern Metal Supply Sheet', link: '/wiki/downloads/#eastern-metal-supply' },
+						{ label: 'All Downloads', slug: 'wiki/downloads', attrs: { class: 'ax-side-section' } },
+						{
+							label: 'Alexandria for Rhino',
+							collapsed: false,
+							items: [
+								{ label: 'Alexandria Release', link: '/wiki/downloads/#release' },
+							],
+						},
+						{
+							label: 'Fonts',
+							collapsed: false,
+							items: [
+								{ label: 'Alexandria Etch', link: '/wiki/downloads/#etch-font' },
+								{ label: 'Alexandria Etch TTF', link: '/wiki/downloads/#etch-font-file' },
+								{ label: 'Oswald', link: '/wiki/downloads/#oswald' },
+							],
+						},
+						{
+							// named as in the Wiki's Templates, whose pages give each file's columns
+							label: 'Templates',
+							collapsed: false,
+							items: [
+								{ label: 'Material Estimator', link: '/wiki/downloads/#estimator-template' },
+								{ label: 'Material Library', link: '/wiki/downloads/#material-library-template' },
+								{ label: 'Color Matcher', link: '/wiki/downloads/#color-matcher-template' },
+								{ label: 'Grasshopper Parameters', link: '/wiki/downloads/#grasshopper-template' },
+							],
+						},
+						{
+							label: 'Models and Details',
+							collapsed: false,
+							items: [
+								{ label: 'Typical Signage Model', link: '/wiki/downloads/#signage-model' },
+								{ label: 'Sign Details', link: '/wiki/downloads/#sign-details' },
+								{ label: 'Sample Design Package', link: '/wiki/downloads/#sample-package' },
+							],
+						},
+						{
+							// named as the suppliers' pages are in the Wiki
+							label: 'Supplier Sheets',
+							collapsed: false,
+							items: [
+								{ label: 'Matthews Paint', link: '/wiki/downloads/#matthews-paint' },
+								{ label: 'Sherwin-Williams', link: '/wiki/downloads/#sherwin-williams' },
+								{ label: 'Pantone', link: '/wiki/downloads/#pantone' },
+								{ label: '3M Films', link: '/wiki/downloads/#3m-films' },
+								{ label: 'Eastern Metal Supply', link: '/wiki/downloads/#eastern-metal-supply' },
+							],
+						},
 					],
 				},
 			],
