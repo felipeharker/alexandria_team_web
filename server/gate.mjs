@@ -228,12 +228,12 @@ async function sendFile(req, res, { file, info, headers }, status = 200) {
 const escape = (text) =>
 	String(text).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 
-// The hub's colours (src/styles/theme.css): greys, and its one green for the button.
+// The hub's colours (src/styles/theme.css): greys, and its one blue for the button.
 const STYLE = `
 	:root { color-scheme: dark; --bg: #131619; --panel: #1b1f24; --ink: #e7eaee; --soft: #9aa3ae; --rule: #2b3036;
-		--field: #131619; --button: #8cba00; --button-ink: #131619; --error: #ff8b85; }
+		--field: #131619; --button: #6fb1f0; --button-ink: #131619; --error: #ff8b85; }
 	@media (prefers-color-scheme: light) { :root { color-scheme: light; --bg: #f6f7f9; --panel: #ffffff; --ink: #1b1f24;
-		--soft: #5d6570; --rule: #e2e5e9; --field: #ffffff; --button: #4f7a00; --button-ink: #ffffff; --error: #b42318; } }
+		--soft: #5d6570; --rule: #e2e5e9; --field: #ffffff; --button: #1d5fa8; --button-ink: #ffffff; --error: #b42318; } }
 	* { box-sizing: border-box; }
 	body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 16px; background: var(--bg); color: var(--ink);
 		font: 16px/1.5 Inter, system-ui, -apple-system, 'Segoe UI', sans-serif; }

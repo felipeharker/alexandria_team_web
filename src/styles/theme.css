@@ -1,7 +1,8 @@
 /* The Alexandria style: one plain look for the hub, the quick guides and the office tools.
 
-   Greys for everything, one green for buttons, one blue for what's under the pointer (a tool's card, a
+   Greys for everything, one blue for buttons, the Beta tag and what's under the pointer (a tool's card, a
    sidebar entry), and colour otherwise only where it codes something (the toolbar groups in the guides).
+   The blue was a green until 2026-11-18 (user).
    Inter for reading, IBM Plex Mono for commands and numbers.
    The Material Estimator (alexandria_office/public/styles.css) uses the same values. */
 
@@ -21,10 +22,10 @@
 	--sl-color-accent-low: #22272d; /* Starlight's accent is grey: links, the current page, search */
 	--sl-color-accent: #9aa3ae;
 	--sl-color-accent-high: #e7eaee;
-	--ax-button: #8cba00; /* the one colour: buttons, and the Beta tag */
+	--ax-button: #6fb1f0; /* the one colour, a blue: buttons, and the Beta tag */
 	--ax-button-text: #131619;
-	--ax-button-soft: #222d0a; /* a wash of it behind the Beta tag */
-	--ax-hover: #6fb1f0; /* the blue of what's under the pointer (user, 2026-11-18): a card's edge and halo */
+	--ax-button-soft: #1b2d42; /* a wash of it behind the Beta tag */
+	--ax-hover: #6fb1f0; /* the same blue for what's under the pointer (user, 2026-11-18): a card's edge and halo */
 	--ax-hover-text: #a9d0f7; /* words in it, in the sidebar */
 	--ax-hover-soft: #1b2d42; /* a wash of it behind them */
 	--ax-current: #2b3036; /* the current page in the sidebar */
@@ -47,9 +48,9 @@
 	--sl-color-accent-low: #eceff2;
 	--sl-color-accent: #3a4048;
 	--sl-color-accent-high: #1b1f24;
-	--ax-button: #4f7a00;
+	--ax-button: #1d5fa8; /* deep enough for white words on it */
 	--ax-button-text: #ffffff;
-	--ax-button-soft: #edf5d6;
+	--ax-button-soft: #e0edfb;
 	--ax-hover: #2c7bd0;
 	--ax-hover-text: #1d5fa8;
 	--ax-hover-soft: #e0edfb;
@@ -89,7 +90,7 @@ header.header {
 	padding-block: 0.2em;
 	font-size: inherit;
 }
-/* the page you're on, in grey (no green highlights in the sidebar, user 2026-11-05), but a grey that
+/* the page you're on, in grey (not in the buttons' colour, user 2026-11-05), but a grey that
    stands off the sidebar: gray-6 is the sidebar's own background in the dark theme */
 .sidebar-content a[aria-current='page'],
 .sidebar-content a[aria-current='page']:hover,
@@ -487,7 +488,7 @@ h1#_top,
 	margin-left: 0;
 	margin-right: 4px;
 }
-/* "Alpha", for a category with nothing to use yet: the same bubble in grey, as the green is Beta's */
+/* "Alpha", for a category with nothing to use yet: the same bubble in grey, as the blue is Beta's */
 .sidebar-content .sl-badge.ax-alpha {
 	border-color: var(--sl-color-gray-4);
 	background: transparent;
@@ -765,7 +766,7 @@ h1#_top,
 	height: 20px;
 }
 
-/* the Material Estimator's diagram: greys, and its one green button */
+/* the Material Estimator's diagram: greys, and its one button in the buttons' colour */
 .qg-page svg.ax-est {
 	min-width: 640px;
 }

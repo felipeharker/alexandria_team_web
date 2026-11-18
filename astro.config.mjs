@@ -29,7 +29,7 @@ const sidebarSectionHighlight = `document.addEventListener('DOMContentLoaded', (
 });`;
 
 // The tag on a category with nothing in it yet (Permitting): grey, where Beta, for a tool you can already use, is
-// green. theme.css draws both.
+// blue. theme.css draws both.
 const alpha = { text: 'Alpha', variant: 'note', class: 'ax-alpha' };
 
 export default defineConfig({
