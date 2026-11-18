@@ -80,20 +80,45 @@ export default defineConfig({
 				{
 					label: 'Quick Guides',
 					collapsed: true,
-					// in the tool categories' order below
+					// The same groups as Tools below, in the same order, with a guide where Tools has the tool (user,
+					// 2026-11-18). Permitting has no tools yet, so no guides and no group here; add it with its first guide.
 					items: [
-						{ label: 'Rhino Tools', slug: 'rhino' },
-						{ label: 'Grasshopper Components', slug: 'grasshopper' },
-						{ label: 'Site Plan', slug: 'site-plan/guide' },
-						{ label: 'Vectorizer', slug: 'vectorizer/guide' },
-						{ label: 'Braille Lettering Designer', slug: 'braille/guide' },
-						{ label: 'Sign Package Maker', slug: 'sign-package/guide' },
-						{ label: 'Parametric Grid', slug: 'grid/guide' },
-						{ label: 'Image Grid', slug: 'image-grid/guide' },
-						{ label: 'Color Matcher', slug: 'colors/guide' },
-						{ label: 'Color Library', slug: 'colors/library/guide' },
-						{ label: 'Material Estimator', slug: 'estimator/guide' },
-						{ label: 'Material Library', slug: 'materials/guide' },
+						{
+							label: 'Rhino/Grasshopper',
+							collapsed: true,
+							items: [
+								{ label: 'Rhino Tools', slug: 'rhino' },
+								{ label: 'Grasshopper Components', slug: 'grasshopper' },
+							],
+						},
+						{
+							label: 'Design',
+							collapsed: true,
+							items: [
+								{ label: 'Site Plan', slug: 'site-plan/guide' },
+								{ label: 'Vectorizer', slug: 'vectorizer/guide' },
+								{ label: 'Braille Lettering Designer', slug: 'braille/guide' },
+								{ label: 'Sign Package Maker', slug: 'sign-package/guide' },
+							],
+						},
+						{
+							label: 'Parametric',
+							collapsed: true,
+							items: [
+								{ label: 'Parametric Grid', slug: 'grid/guide' },
+								{ label: 'Image Grid', slug: 'image-grid/guide' },
+							],
+						},
+						{
+							label: 'Fabrication',
+							collapsed: true,
+							items: [
+								{ label: 'Color Matcher', slug: 'colors/guide' },
+								{ label: 'Color Library', slug: 'colors/library/guide' },
+								{ label: 'Material Estimator', slug: 'estimator/guide' },
+								{ label: 'Material Library', slug: 'materials/guide' },
+							],
+						},
 					],
 				},
 				// The tools, under one heading with a group per category, as on the home page (user, 2026-11-11 and
