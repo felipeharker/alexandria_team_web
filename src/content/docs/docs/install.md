@@ -43,7 +43,7 @@ Once per computer.
 
 Once, after installing.
 
-Type `AlexandriaSetup` and press Enter. It adds **Alexandria Tools** as a tab of Rhino's toolbars, right after **Standard**, imports the display modes, and closes any older Alexandria toolbar. Drag the tab anywhere along the strip; it stays there through updates.
+Type `AlexandriaSetup` and press Enter. It adds **Alexandria Tools** as a tab of Rhino's toolbars, right after **Standard**, imports the display modes, adds the **Alexandria** template to *File > New*, and closes any older Alexandria toolbar. Drag the tab anywhere along the strip; it stays there through updates.
 
 `DM-WORKING`, `DM-AUTOCAD`, `DM-DIAGRAM` and `DM-DIAGRAM-SHADOW` are now in every viewport's display menu, and running `Grasshopper` shows the **Alexandria Phoenix** tab.
 
@@ -58,7 +58,8 @@ Type `AlexandriaSetup` and press Enter. It adds **Alexandria Tools** as a tab of
 | Apply Night Settings | `AlexandriaNightRender`, right click `AlexandriaNightRenderView` | Sets V-Ray to the dark night on a navy sky, where lit sign faces carry the image, with the custom lights back on. Right click, *Render Night and Save*: the same |
 | Standard Dimension | `AlexandriaDimension`, right click `AlexandriaLeader` | Left click: a dimension. Right click, *Standard Leader*: a leader with a dot. Both in the Alexandria annotation styles, filed under `DETAILS::ANNOTATIONS` |
 | Populate Detail | `AlexandriaPopulateDetail` | Adds the 2D drawing of a sign detail from the detail library to the model where you click |
-| Layout Manager | `AlexandriaLayoutManager` | One window for the design package: its pages, project and client details with the info page, drawings, details, colors and materials with the CMF page, renders, the PDF and the project facts |
+| Layout Manager | `AlexandriaLayoutManager` | One window for the design package: its pages, project and client details with the info page, drawings, details, colors and materials with the CMF page, images and renders, the PDF and the project facts |
+| Fabrication Manager | `AlexandriaFabricationManager` | The 1:1 cut linework for the fabricators: linework you select, copied flat into a fab area by material (aluminum, steel, acrylic, vinyl or other) and line type (cut, etch, score, fold), and a DXF per material |
 | Save as Rhino 7 | `AlexandriaSaveAsR7` | Saves a Rhino 7 copy next to your model as `<name>_r7.3dm`. You keep working in the original |
 | Save as Rhino 8 | `AlexandriaSaveAsR8` | Saves a Rhino 8 copy next to your model as `<name>_r8.3dm`. You keep working in the original |
 
@@ -70,7 +71,7 @@ The render buttons need V-Ray for Rhino. They set the sky as the background, and
 
 **Without them**, run `PackageManager`, open the **Updates** tab, click **Update** on each Alexandria package, then restart Rhino.
 
-After an update, restart Rhino and click **Alexandria Setup** once more. New buttons appear right away, the toolbar keeps its place, and the display modes update. With more than one Rhino open, close the others first: Rhino writes its toolbar back to the file when it closes, so the last one closed decides what opens next.
+After an update, restart Rhino and click **Alexandria Setup** once more. New buttons appear right away, the toolbar keeps its place, and the display modes and the **Alexandria** template update. With more than one Rhino open, close the others first: Rhino writes its toolbar back to the file when it closes, so the last one closed decides what opens next.
 
 **Updating from 1.6**, click **Alexandria Setup** once: the toolbar leaves its own row and becomes a tab after **Standard**, with its new button order.
 
@@ -124,7 +125,7 @@ The prompt tells Claude how Alexandria works, since it starts every chat knowing
 You're working inside Rhino 8 on sign design projects, with Alexandria Rhino Tools installed.
 
 - Do what's asked and stop. No renders, layouts, exports or extra options unless asked.
-- Use the Alexandria commands where they fit instead of rebuilding by hand (get_commands with filter "Alexandria" lists them): Populate Model, Set Material, Set Light, Populate Detail, Dimension, Leader, Layout Manager, Day/Night Render.
+- Use the Alexandria commands where they fit instead of rebuilding by hand (get_commands with filter "Alexandria" lists them): Populate Model, Set Material, Set Light, Populate Detail, Dimension, Leader, Layout Manager, Fabrication Manager, Day/Night Render.
 - Models are full size in inches, the sign at the origin facing -Y. Parts go on DESIGN sublayers, lit faces on DESIGN::ILLUMS, dimensions on DETAILS::ANNOTATIONS::DIMENSIONS, callouts on DETAILS::ANNOTATIONS::CALLOUTS.
 - If the model is saved in a project's models folder (`design_models`), read the project's BRIEF.md and .claude/CLAUDE.md (one folder up) before starting. The full spec is STANDARDS.md in the shared alexandria_packages folder; read only the part the task touches.
 - Don't save, close or overwrite files, or delete objects, unless asked.

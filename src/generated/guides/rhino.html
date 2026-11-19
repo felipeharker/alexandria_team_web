@@ -1,8 +1,8 @@
 <!-- Written by tools/sync.py from alexandria_phoenix/guides/src. Edit it there. -->
 <div class="qg-page">
   <header>
-    <p class="qg-eyebrow">Alexandria Rhino Tools 2.17 &middot; Rhino 8</p>
-    <p class="qg-lede">Thirteen buttons that take a sign from an empty model to a finished design package. Left click does the main job; a button with a ring has a second job on right click.</p>
+    <p class="qg-eyebrow">Alexandria Rhino Tools 2.19 &middot; Rhino 8</p>
+    <p class="qg-lede">Fourteen buttons that take a sign from an empty model to a finished design package and its fab files. Left click does the main job; a button with a ring has a second job on right click.</p>
   </header>
 
   <section aria-labelledby="toolbar">
@@ -28,6 +28,7 @@
       <div class="qg-group qg-g-layout"><div class="qg-group-name">Drawings &amp; Layout</div><div class="qg-buttons">
         <a class="qg-btn" href="#dimension"><div class="qg-tile qg-right"><img alt="" src="/guides/icons/standard_dimension.png"></div><span>Standard Dimension</span></a>
         <a class="qg-btn" href="#layout-manager"><div class="qg-tile"><img alt="" src="/guides/icons/layout_manager.png"></div><span>Layout Manager</span></a>
+        <a class="qg-btn" href="#fabrication-manager"><div class="qg-tile"><img alt="" src="/guides/icons/fabrication_manager.png"></div><span>Fabrication Manager</span></a>
       </div></div>
       <div class="qg-group qg-g-files"><div class="qg-group-name">Files</div><div class="qg-buttons">
         <a class="qg-btn" href="#save-as"><div class="qg-tile"><img alt="" src="/guides/icons/save_as_r7.png"></div><span>Save as Rhino 7</span></a>
@@ -47,7 +48,7 @@
       <li class="qg-g-render"><img alt="" src="/guides/icons/day_render.png"><div><b>Render</b><small>Right click Day, then Night: saves <code>day_#.jpg</code> and <code>night_#.jpg</code>.</small></div></li>
       <li class="qg-g-standard"><img alt="" src="/guides/icons/populate_detail.png"><div><b>Standard Drawings</b><small>Details and blocks from the libraries.</small></div></li>
       <li class="qg-g-layout"><img alt="" src="/guides/icons/standard_dimension.png"><div><b>Draw &amp; Dimension</b><small>Elevations flat in Top view, Standard Dimension.</small></div></li>
-      <li class="qg-g-layout"><img alt="" src="/guides/icons/layout_manager.png"><div><b>Lay Out Pages</b><small>Create Document, pages, drawings, details, renders.</small></div></li>
+      <li class="qg-g-layout"><img alt="" src="/guides/icons/layout_manager.png"><div><b>Lay Out Pages</b><small>Create Document, pages, drawings, details, images.</small></div></li>
       <li class="qg-g-layout"><img alt="" src="/guides/icons/layout_manager.png"><div><b>Export PDF</b><small><code>DESIGN_&lt;project&gt;_v#.pdf</code> in <code>design_package</code>.</small></div></li>
     </ol>
   </section>
@@ -56,13 +57,13 @@
     <div class="qg-section-head"><h2 id="buttons">The Buttons</h2><p>What each one does, in a line or two.</p></div>
     <div class="qg-cards">
       <article class="qg-card qg-g-project" id="setup"><div class="qg-tile"><img alt="" src="/guides/icons/setup.png"></div><div><h3>Alexandria Setup <span class="qg-mono">AlexandriaSetup</span></h3>
-        <dl><dt>Click</dt><dd>Adds the Alexandria Tools tab and installs the DM display modes. Run once after installing.</dd><dt>Right</dt><dd><b>Set Panels</b>: arranges the right-hand panels to the standard.</dd></dl></div></article>
+        <dl><dt>Click</dt><dd>Adds the Alexandria Tools tab, installs the DM display modes and puts the <b>Alexandria</b> template in <b>File &gt; New</b>. Run once after installing.</dd><dt>Right</dt><dd><b>Set Panels</b>: arranges the right-hand panels to the standard.</dd></dl></div></article>
       <article class="qg-card qg-g-project" id="create-project"><div class="qg-tile"><img alt="" src="/guides/icons/create_project.png"></div><div><h3>Create Project</h3>
         <dl><dt>Click</dt><dd>Name the project and choose a folder. Copies the project template there and saves your model as <code>&lt;project&gt;_model_v1.3dm</code>.</dd></dl>
         <p class="qg-tip">Never writes over an existing folder.</p></div></article>
       <article class="qg-card qg-g-model" id="populate-model"><div class="qg-tile"><img alt="" src="/guides/icons/populate_model.png"></div><div><h3>Populate Model</h3>
         <dl><dt>Click</dt><dd>Inches and tolerances, the <code>DESIGN</code> and <code>DETAILS</code> layers, the annotation styles, the render backdrop and the world light.</dd></dl>
-        <p class="qg-tip">Safe to click again: it only adds what's missing.</p></div></article>
+        <p class="qg-tip">Safe to click again: it only adds what's missing. A model started from the <b>Alexandria</b> template has all of it already, and the package's first pages.</p></div></article>
       <article class="qg-card qg-g-model" id="set-material"><div class="qg-tile"><img alt="" src="/guides/icons/set_material.png"></div><div><h3>Set Material</h3>
         <dl><dt>Click</dt><dd>Pick a parent layer. Each sublayer gets a plaster material in its layer colour: <code>MAT_1</code>, <code>MAT_2</code>&hellip;</dd></dl>
         <p class="qg-tip">Recolour a layer, click again, and its material follows.</p></div></article>
@@ -83,7 +84,9 @@
       <article class="qg-card qg-g-layout" id="dimension"><div class="qg-tile"><img alt="" src="/guides/icons/standard_dimension.png"></div><div><h3>Standard Dimension</h3>
         <dl><dt>Click</dt><dd>A dimension in the Alexandria style, on <code>DETAILS::ANNOTATIONS::DIMENSIONS</code>.</dd><dt>Right</dt><dd><b>Standard Leader</b>: a callout, on <code>&hellip;::CALLOUTS</code>.</dd></dl></div></article>
       <article class="qg-card qg-g-layout" id="layout-manager"><div class="qg-tile"><img alt="" src="/guides/icons/layout_manager.png"></div><div><h3>Layout Manager</h3>
-        <dl><dt>Click</dt><dd>One window for the whole design package: pages, project and client details, drawings, details, colors and materials, renders, the PDF and the project facts. See its parts below.</dd></dl></div></article>
+        <dl><dt>Click</dt><dd>One window for the whole design package: pages, project and client details, drawings, details, colors and materials, images and renders, the PDF and the project facts. See its parts below.</dd></dl></div></article>
+      <article class="qg-card qg-g-layout" id="fabrication-manager"><div class="qg-tile"><img alt="" src="/guides/icons/fabrication_manager.png"></div><div><h3>Fabrication Manager</h3>
+        <dl><dt>Click</dt><dd>The cut linework for the fab team, off the layouts. <b>Add Item</b>: name it, pick the material (aluminum, steel, acrylic, vinyl or other) and line type (cut, etch, score, fold), select curves, text or hatches. They're copied flat at 1:1 into the fab area where you clicked, a row per material, on <code>FAB::&hellip;</code>. <b>Add Linework</b> adds fold or etch lines to an item, lined up. <b>Export DXF</b> writes a file per material, in inches.</dd></dl></div></article>
       <article class="qg-card qg-g-files qg-wide" id="save-as"><div class="qg-tile"><img alt="" src="/guides/icons/save_as_r7.png"></div><div><h3>Save as Rhino 7 &middot; Save as Rhino 8</h3>
         <dl><dt>Click</dt><dd>Writes a copy next to the model as <code>&lt;name&gt;_r7.3dm</code> or <code>&lt;name&gt;_r8.3dm</code>. You keep working in the original.</dd></dl></div></article>
     </div>
@@ -152,9 +155,9 @@
           <tr><td>Project Details</td><td><span class="qg-pill">Edit Details</span><span class="qg-pill">Add Info Page</span></td><td>Project, client and revisions, set once. The <code>PROJECT INFO</code> page, after the title, shows them with the copyright and the sign-off.</td></tr>
           <tr><td>Drawings</td><td><span class="qg-pill">Add Drawing</span><span class="qg-pill">Edit Drawing</span><span class="qg-pill">Delete Drawing</span><span class="qg-pill">Place on Page</span><span class="qg-pill">Remove from Page</span></td><td>Save a selection as a drawing, then place it on a page at a scale. <i>Largest That Fits</i> picks the scale.</td></tr>
           <tr><td>Details</td><td><span class="qg-pill">Place on Page</span><span class="qg-pill">Remove from Page</span></td><td>Library details, straight onto a page.</td></tr>
+          <tr><td>Blocks</td><td><span class="qg-pill">Place on Page</span><span class="qg-pill">Remove from Page</span></td><td>Library blocks on a page: symbols at paper size, people, cars, trees and graphic scales at the scale of the drawing there.</td></tr>
           <tr><td>CMF</td><td><span class="qg-pill">Add Item</span><span class="qg-pill">Edit Item</span><span class="qg-pill">Remove Item</span><span class="qg-pill">Add CMF Page</span></td><td>Paint, vinyl, materials and electrical, each with a code (<code>P1</code>, <code>V1</code>&hellip;) and a swatch. The <code>COLORS, MATERIALS &amp; FINISHES</code> page lists them and follows every change.</td></tr>
-          <tr><td>Renders</td><td><span class="qg-pill">Set Render</span><span class="qg-pill">Clear Render</span></td><td>Give a page a render and a day or night sky.</td></tr>
-          <tr><td>Images</td><td><span class="qg-pill">Add Image</span><span class="qg-pill">Remove Image</span></td><td>Put an image from a file on a page: click two corners, or type @6,0 for 6" wide.</td></tr>
+          <tr><td>Images</td><td><span class="qg-pill">Add Image</span><span class="qg-pill">Remove Image</span></td><td>Pick a category. <i>Render</i> gives a page its render and a day or night sky. <i>Site Plan</i> or <i>Other</i> puts an image on a page: click two corners, or type @6,0 for 6" wide.</td></tr>
           <tr><td>Export</td><td><span class="qg-pill">Export PDF</span><span class="qg-pill">Export Facts</span></td><td>Every page, in order, to <code>DESIGN_&lt;project&gt;_v#.pdf</code>. The facts (client, paint, vinyl, electrical, details used) to <code>FACTS_&lt;project&gt;_v#.html</code>. Never overwrites.</td></tr>
         </tbody>
       </table>
