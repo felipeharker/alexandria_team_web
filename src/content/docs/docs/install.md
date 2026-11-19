@@ -45,11 +45,13 @@ Once, after installing.
 
 Type `AlexandriaSetup` and press Enter. It adds **Alexandria Tools** as a tab of Rhino's toolbars, right after **Standard**, imports the display modes, adds the **Alexandria** template to *File > New*, and closes any older Alexandria toolbar. Drag the tab anywhere along the strip; it stays there through updates.
 
+It also sets up the [Claude connectors](#claude-connectors) for Rhino and CorelDRAW. The first time, a window opens and shows what it installs; Rhino carries on meanwhile.
+
 `DM-WORKING`, `DM-AUTOCAD`, `DM-DIAGRAM` and `DM-DIAGRAM-SHADOW` are now in every viewport's display menu, and running `Grasshopper` shows the **Alexandria Phoenix** tab.
 
 | Button | Command | Does |
 |---|---|---|
-| Alexandria Setup | `AlexandriaSetup`, right click `AlexandriaSetPanels` | Adds this tab and installs the display modes. Right click, *Set Panels*: arranges Rhino's right-hand panels to the standard |
+| Alexandria Setup | `AlexandriaSetup`, right click `AlexandriaSetPanels` | Adds this tab, installs the display modes and sets up the Claude connectors. Right click, *Set Panels*: arranges Rhino's right-hand panels to the standard |
 | Create Project | `AlexandriaCreateProject` | Asks for a project name, then a folder. Copies the project template there and saves the open model in its models folder (`design_models`) as `<project>_model_v1.3dm` |
 | Populate Model | `AlexandriaPopulateModel` | Sets an empty model to inches and the standard tolerances, and adds the standard layers, the annotation styles, the render backdrop (wall, modeled ground, scale figure) and the world light |
 | Set Material | `AlexandriaSetMaterial` | Gives each sublayer of a layer you choose a plaster material in its display colour, `MAT_1`, `MAT_2` and on |
@@ -99,11 +101,29 @@ In the Package Manager's **Installed** tab, select the package, click **Uninstal
 - **The right-hand panels look different.** Rhino keeps them per version, so a new Rhino starts with its own. Right click **Alexandria Setup** to arrange them to the standard. Panels that aren't on the standard list close, and you can open them again from **Panels** in the menu.
 - **An `Alexandria…` command is unknown.** Alexandria Rhino Tools isn't installed or Rhino hasn't been restarted since.
 
+## Claude Connectors
+
+A connector (an MCP server) lets Claude work in a program on your PC: draw in the open Rhino model, or edit the document open in CorelDRAW. **Alexandria Setup** installs both and adds them to Claude, so there's nothing to do by hand. A PC without Rhino installs them from the `claude_connectors` folder in `alexandria_packages`, or from the hub's Downloads page: double-click **Install Claude Connectors**.
+
+| Connector | In Claude it's | What gets installed |
+|---|---|---|
+| Rhino | `rhino-mcp-platform` | McNeel's own **Rhino-MCP-Platform** package, into Rhino 8 from McNeel's server. Needs Rhino 8.19 or later |
+| CorelDRAW | `coreldraw-live` | A CorelDRAW server with its own Python, about 150 MB. Only on a PC that has CorelDRAW |
+
+Both are added to **Claude Desktop** and to **Claude Code**, whichever the PC has. After the first setup, quit Claude Desktop from its tray icon (right-click, **Quit**) and open it again; the two show under **Settings › Developer**. Restart Rhino too, to load the new package.
+
+- **Rhino.** Ask Claude to work in Rhino and it opens one if none is running.
+- **CorelDRAW.** Open the document in CorelDRAW first. Claude works in that document and never starts CorelDRAW by itself. Each change is one step of CorelDRAW's Undo.
+
+Setup leaves the rest of Claude's settings as they are: it backs the settings file up beside it before adding its two entries, and a connector of the same name that you set up yourself stays as it is. A Claude Desktop that already has McNeel's **Rhino MCP Platform** extension gets no second Rhino entry. Everything it installs is in `%USERPROFILE%\.alexandria\claude_connectors`, with `install.log`, which says what went wrong when something does.
+
+To take them out again, open PowerShell in the `claude_connectors` folder and run `powershell -ExecutionPolicy Bypass -File install.ps1 -Uninstall`.
+
 ## Claude in Rhino
 
 Optional. McNeel's **Rhino-MCP-Platform** package adds an AI chat panel to Rhino, where Claude works in the open model and can run the Alexandria commands. Rhino 9 has the panel built in, but Rhino 8 doesn't: there, `AIPanel` exists only once the package is installed. The package needs Rhino 8.19 or later, running on .NET 8, Rhino 8's default. Claude needs a Pro or Max plan, or a Team or Enterprise seat, and each person signs in with their own account.
 
-1. **Install the panel.** Run `PackageManager`, search for `Rhino-MCP-Platform` and install it. It's on McNeel's server, so it shows up without the Alexandria folder.
+1. **Install the panel.** **Alexandria Setup** has installed it already, with the [Claude connectors](#claude-connectors). If `AIPanel` is unknown after a restart, run `PackageManager`, search for `Rhino-MCP-Platform` and install it. It's on McNeel's server, so it shows up without the Alexandria folder.
 2. **Install Claude Code.** Open PowerShell and run:
 
    ```powershell

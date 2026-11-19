@@ -67,7 +67,7 @@ A Rhino 8 toolbar for drawing and rendering, from the Alexandria Rhino Tools pac
 
 | Group | Button | Does |
 |---|---|---|
-| Project | Alexandria Setup | Adds the Alexandria Tools tab, imports the DM display modes that ship in the package, adds the *Alexandria* template to *File > New*, a model already set up as Populate Model, Day Render and the Layout Manager's first pages leave it, and closes older Alexandria toolbars. Right click, *Set Panels*: arranges Rhino's right-hand panels to the standard, which Rhino doesn't carry over to a new version |
+| Project | Alexandria Setup | Adds the Alexandria Tools tab, imports the DM display modes that ship in the package, adds the *Alexandria* template to *File > New*, a model already set up as Populate Model, Day Render and the Layout Manager's first pages leave it, and closes older Alexandria toolbars. Sets up the Claude connectors (MCP) for Rhino and CorelDRAW, below. Right click, *Set Panels*: arranges Rhino's right-hand panels to the standard, which Rhino doesn't carry over to a new version |
 | | Create Project | Asks for a project name, then opens a folder browser. Copies the project template there as a folder of the project's name and saves the open model in its models folder, `design_models` as the template names it, as `<project>_model_v1.3dm`, spaces as underscores, where you carry on working in the new copy. The model's project name, on its project info page, becomes the project's. The file it came from stays as it was. Never writes over an existing folder |
 | Model | Populate Model | Sets a model up to the standard: inches and the standard tolerances if it's empty, the `DESIGN`, `DETAILS` and `FAB` layers, the Alexandria annotation styles, the render backdrop (a wall, a modeled ground and a scale figure, each on its `RENDER::` layer with its material) and the world light |
 | | Set Material | Lists the layers with sublayers and gives each sublayer of the one you choose a Rhino Plaster material in its display colour, named `MAT_1`, `MAT_2` and on in layer order, after any `MAT_#` another parent's sublayers have. Replaces any material the sublayer or its objects had; leaves `DESIGN::ILLUMS` alone |
@@ -83,6 +83,10 @@ A Rhino 8 toolbar for drawing and rendering, from the Alexandria Rhino Tools pac
 | | Save as Rhino 8 | Writes a Rhino 8 copy next to the model as `<name>_r8.3dm`. The open model keeps its own name and path |
 
 Each group's icons have their own colour: orange, green, gold, violet, blue and slate.
+
+### Claude Connectors
+
+Alexandria Setup also sets the PC up so Claude can work in Rhino and in CorelDRAW, with the installer in `claude_connectors/`: McNeel's Rhino-MCP-Platform package, installed into Rhino from McNeel's server; a CorelDRAW server with its own Python, where CorelDRAW is installed; and their entries in Claude Desktop's and Claude Code's settings, the rest of which it leaves as it is. Setup asks the installer whether anything is left to do, and only then opens its window, so a click on a PC that is set up costs a second. [INSTALL.md](/docs/install/#claude-connectors) covers it for whoever uses it, and [claude_connectors/README.md](claude_connectors/README.md) how it works.
 
 ### Layout Manager
 
@@ -145,13 +149,14 @@ Below the template, a showcase runs every component in its simplest form: one co
 src/<subcategory>/   one Python 3 script per component (the source of truth)
 icons/               24 px component icons
 toolbar/             one Python 3 script per Alexandria Tools button, its icons and the toolbar file
+claude_connectors/   the Claude connectors (MCP) for Rhino and CorelDRAW: the installer Alexandria Setup runs, and the CorelDRAW server it installs
 standards/           the Rhino files the tools draw from: layers, annotation styles, render assets, sign details and layouts (.3dm), the Rhino template made from them, and the DM display modes (.ini)
 tools/build.py       compiles src/ and toolbar/ into the two packages and installs them
 tools/make_icons.py  draws the icon set
 tools/make_toolbar.py       builds toolbar/alexandria_tools.rui
 tools/export_standards.py   exports the DM display modes from Rhino into standards/
 tools/make_template.py      makes standards/alexandria_template.3dm, the Rhino template, from the toolbar's own scripts (in Rhino 8)
-tools/release.py     copies the committed packages to the shared folder, run on push by .githooks/pre-push
+tools/release.py     copies the committed packages, the docs and the Claude connectors to the shared folder, run on push by .githooks/pre-push
 tools/make_site.py   writes the docs site's component reference, prints the overview PDF and runs make_guides.py
 tools/make_guides.py writes the two quick guides from guides/src/: standalone in guides/, and in site/guides/
 tools/make_pdfs.py   prints README, INSTALL, STANDARDS and the quick guides to docs/ as PDFs, for the release

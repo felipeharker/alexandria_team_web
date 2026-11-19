@@ -1,11 +1,11 @@
 {
-  "version": "2.19",
-  "rhino": "2.19.9820+21669",
-  "grasshopper": "2.19.9820+21667",
+  "version": "2.20",
+  "rhino": "2.20.9820+30318",
+  "grasshopper": "2.20.9820+30318",
   "date": "2026-11-19",
-  "size": 5.3,
-  "tag": "v2.19.9820-21669",
-  "url": "https://github.com/felipeharker/alexandria_team_web/releases/download/v2.19.9820-21669/alexandria_packages.zip",
+  "size": 5.6,
+  "tag": "v2.20.9820-30318",
+  "url": "https://github.com/felipeharker/alexandria_team_web/releases/download/v2.20.9820-30318/alexandria_packages.zip",
   "contents": [
     "AlexandriaEtch.ttf",
     "INSTALL.md",
@@ -14,13 +14,14 @@
     "README.pdf",
     "STANDARDS.md",
     "STANDARDS.pdf",
-    "alexandria grasshopper tools-2.19.9820+21667-rh8-any.yak",
-    "alexandria rhino tools-2.19.9820+21669-rh8-any.yak",
+    "alexandria grasshopper tools-2.20.9820+30318-rh8-any.yak",
+    "alexandria rhino tools-2.20.9820+30318-rh8-any.yak",
     "alexandria_phoenix_quick_guide.html",
     "alexandria_phoenix_quick_guide.pdf",
     "alexandria_template.3dm",
     "alexandria_tools_quick_guide.html",
     "alexandria_tools_quick_guide.pdf",
+    "claude_connectors/",
     "project_template/"
   ]
 }

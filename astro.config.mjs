@@ -286,6 +286,13 @@ export default defineConfig({
 							],
 						},
 						{
+							label: 'Claude',
+							collapsed: false,
+							items: [
+								{ label: 'Claude Connectors', link: '/wiki/downloads/#claude-connectors' },
+							],
+						},
+						{
 							label: 'Fonts',
 							collapsed: false,
 							items: [
