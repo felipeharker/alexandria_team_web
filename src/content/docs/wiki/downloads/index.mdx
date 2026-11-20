@@ -11,30 +11,30 @@ import signs from '../../../../data/signage-types.json';
 {/* Every downloadable file on the hub, as tables (user, 2026-11-18). When a page gains a file to download, add its row
     here too, with an id on its first cell and an entry under Downloads in the sidebar (astro.config.mjs). The release row reads src/data/release.json, which tools/sync.py writes. */}
 
-Every file there is to download, in one place. The web tools need no download: they open from **Tools**.
+The web tools need no download: they open from **Tools**.
 
 ## Alexandria for Rhino
 
 | Download | What It Is |
 |---|---|
-| <span id="release"></span><a href={release.url}>Alexandria {release.version}</a> (zip, {release.size} MB) | Both Rhino packages, the docs and quick guides as PDF, the Alexandria Rhino template and the project template. See [Download](/start/download/) for the two ways to install. |
+| <span id="release"></span><a href={release.url}>Alexandria {release.version}</a> (zip, {release.size} MB) | Both Rhino packages, the docs and the templates. [How to install](/start/download/). |
 
-Office computers install from the office drive instead and update by themselves: see [Install and Update](/docs/install/).
+On the office drive? [Install from there](/docs/install/) instead: it updates itself.
 
 ## Claude
 
 | Download | What It Is |
 |---|---|
-| <span id="claude-connectors"></span>[Claude connectors](/downloads/claude-connectors/alexandria_claude_connectors.zip) (zip) | Lets Claude work in Rhino and in CorelDRAW on your PC. Unzip it and double-click **Install Claude Connectors**: it installs what each needs and adds both to Claude Desktop and Claude Code. See [Claude Connectors](/docs/install/#claude-connectors). |
+| <span id="claude-connectors"></span>[Claude connectors](/downloads/claude-connectors/alexandria_claude_connectors.zip) (zip) | Lets Claude work in Rhino and CorelDRAW. Unzip it and double-click **Install Claude Connectors**. [More](/docs/install/#claude-connectors). |
 
-With Rhino you don't need this download: **Alexandria Setup** does the same. It's for a PC without Rhino, such as one that only runs CorelDRAW.
+Only for a PC without Rhino. With Rhino, **Alexandria Setup** does the same.
 
 ## Fonts
 
 | Download | What It Is |
 |---|---|
-| <span id="etch-font"></span>[Alexandria Etch](/downloads/etch-font/alexandria_etch_font.zip) (zip) | The single-line font for etched part labels: the font files, the Rhino script and the specimen. See [Alexandria Etch Font](/wiki/downloads/etch-font/). |
-| <span id="etch-font-file"></span>[AlexandriaEtch.ttf](/downloads/etch-font/AlexandriaEtch.ttf) | Just the font file, to install in Windows. It's on the office drive too, in `alexandria_packages`. |
+| <span id="etch-font"></span>[Alexandria Etch](/downloads/etch-font/alexandria_etch_font.zip) (zip) | The single-line font for etched part labels, with its Rhino script. [Its page](/wiki/downloads/etch-font/). |
+| <span id="etch-font-file"></span>[AlexandriaEtch.ttf](/downloads/etch-font/AlexandriaEtch.ttf) | Just the font file, to install in Windows. |
 | <span id="oswald"></span>[Oswald](https://fonts.google.com/specimen/Oswald) (Google Fonts) | The typeface of every Alexandria drawing. Office computers already have it. |
 
 ## Templates
@@ -46,7 +46,7 @@ With Rhino you don't need this download: **Alexandria Setup** does the same. It'
 | <span id="color-matcher-template"></span>[color-list-template.csv](/templates/color-list-template.csv) | A Color Matcher list. [Its columns](/templates/color-matcher/). |
 | <span id="grasshopper-template"></span>[parameters-template.csv](/templates/parameters-template.csv) | Grasshopper parameters. [Its columns](/templates/grasshopper/). |
 
-The Alexandria Rhino template, a model with the standards already in it, comes with the Rhino Tools package: **Alexandria Setup** adds it to **File › New** as **Alexandria**. The project template, the folders of a new project, comes inside the Alexandria zip as `project_template`, and **Create Project** copies it for you.
+The Rhino template and the project template come with the Rhino tools: **File › New › Alexandria**, and **Create Project**.
 
 ## Models and Details
 
@@ -54,7 +54,7 @@ The Alexandria Rhino template, a model with the standards already in it, comes w
 |---|---|
 | <span id="signage-model"></span>[typical_signage_types.3dm](/wiki/signage-types/typical_signage_types.3dm) | A Rhino model of every sign type in [Typical Signage Types](/wiki/signage-types/). |
 | <span id="sign-details"></span>Sign details, {signs.details.length} sheets | Each type's detail as a PDF and an SVG, on [Typical Signage Types](/wiki/signage-types/). |
-| <span id="sample-package"></span>[Sample design package](/sample-project/DESIGN_ALEXANDRIA_DESIGN_LAB_v6.pdf) (PDF) | A finished design package, start to end. See the [Sample Project](/sample-project/). |
+| <span id="sample-package"></span>[Sample design package](/sample-project/DESIGN_ALEXANDRIA_DESIGN_LAB_v6.pdf) (PDF) | A finished design package. [The Sample Project](/sample-project/). |
 
 ## Supplier Sheets
 

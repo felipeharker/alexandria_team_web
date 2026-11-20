@@ -3,12 +3,12 @@
 <div class="qg-page">
   <header>
     <p class="qg-eyebrow">Office Tools &middot; Runs in Your Browser</p>
-    <p class="qg-lede">Give it a hex code and it finds the nearest Sherwin-Williams, Pantone and 3M Scotchcal 3630 colors, each with a percent match, and says when the office already has a Matthews Paint formula for one. Lists move between people as CSV files.</p>
+    <p class="qg-lede">Give it a hex code and get the nearest Sherwin-Williams, Pantone and 3M vinyl colors, each with a percent match.</p>
     <p class="qg-other"><a href="/colors/">Open the Color Matcher &rarr;</a></p>
   </header>
 
   <section aria-labelledby="matcher">
-    <div class="qg-section-head"><h2 id="matcher">A Color and Its Matches</h2><p>One card per color: the color on the left, its three nearest matches from each library on the right.</p></div>
+    <div class="qg-section-head"><h2 id="matcher">A Color and Its Matches</h2></div>
     <figure class="qg-figure">
       <div class="qg-diagram-scroll">
       <svg class="ax-est" viewBox="0 0 760 250" role="img" aria-label="A color card: a red swatch with its name and hex code, then three columns of matches, Sherwin-Williams, Pantone and 3M, each with a swatch, a code, a percent match and a word for it">
@@ -69,97 +69,58 @@
         </g>
       </svg>
       </div>
-      <figcaption>Logo Red, #C8102E. The numbers match the list below.</figcaption>
+      <figcaption>Logo Red, #C8102E.</figcaption>
     </figure>
     <ol class="ax-keys">
-      <li><b>Swatch.</b> Click it to pick a color by eye.</li>
-      <li><b>Name and Hex.</b> Type a hex code, with or without the #; the matches follow as you type.</li>
-      <li><b>Best Match.</b> The nearest color in each library comes first, then the next two.</li>
-      <li><b>Match %.</b> How alike the two look, with a word for it.</li>
-      <li><b>Formula on File.</b> The office has a Matthews Paint formula for that color. Click it to open it in the Color Library.</li>
+      <li><b>Swatch.</b> Click to pick a color by eye.</li>
+      <li><b>Name and Hex.</b> Type a hex code. The matches follow as you type.</li>
+      <li><b>Best Match.</b> The nearest in each library, then the next two.</li>
+      <li><b>Match %.</b> How alike the two look.</li>
+      <li><b>Formula on File.</b> The office has a Matthews Paint formula for it. Click to open it.</li>
     </ol>
   </section>
 
   <section aria-labelledby="order">
-    <div class="qg-section-head"><h2 id="order">Match a Color</h2><p>The usual order.</p></div>
+    <div class="qg-section-head"><h2 id="order">Match a Color</h2></div>
     <ol class="qg-flow">
-      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4v12M4 10h12"/></svg></span><div><b>Add a Color</b><small>Name the project at the top, then a hex code from the logo file or brand guide, or one picked by eye.</small></div></li>
-      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10s2.5-5 7-5 7 5 7 5-2.5 5-7 5-7-5-7-5z"/><circle cx="10" cy="10" r="2"/></svg></span><div><b>Read the Matches</b><small>The best in each library, and how close it is.</small></div></li>
-      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 3h7l3 3v11H5z"/><path d="M8 10h4M8 13h4"/></svg></span><div><b>Check the Formula</b><small>Formula on File means paint can be mixed from a sheet the office already has.</small></div></li>
+      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4v12M4 10h12"/></svg></span><div><b>Add a Color</b><small>A hex code from the logo file or brand guide.</small></div></li>
+      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10s2.5-5 7-5 7 5 7 5-2.5 5-7 5-7-5-7-5z"/><circle cx="10" cy="10" r="2"/></svg></span><div><b>Read the Matches</b><small>The best in each library, and how close.</small></div></li>
+      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 3h7l3 3v11H5z"/><path d="M8 10h4M8 13h4"/></svg></span><div><b>Check the Formula</b><small>Formula on File means the office can mix it.</small></div></li>
       <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 13V3m0 0L6 7m4-4 4 4M4 16h12"/></svg></span><div><b>Export the CSV</b><small>Keep it with the project's files.</small></div></li>
     </ol>
   </section>
 
-  <section aria-labelledby="buttons">
-    <div class="qg-section-head"><h2 id="buttons">The Buttons</h2><p>What each one does.</p></div>
-    <div class="qg-cards">
-      <article class="qg-card qg-g-files"><div class="qg-tile"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4v12M4 10h12"/></svg></div><div><h3>Add Color</h3>
-        <dl><dt>Click</dt><dd>A new card, gray until you give it a hex code.</dd></dl></div></article>
-      <article class="qg-card qg-g-files"><div class="qg-tile"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 6h12M8 6V4h4v2M5.5 6l1 10.5h7l1-10.5"/></svg></div><div><h3>Remove</h3>
-        <dl><dt>Click</dt><dd>The bin under a color takes it off the list.</dd></dl>
-        <p class="qg-tip"><b>Undo</b>, in the message that follows, puts it back.</p></div></article>
-      <article class="qg-card qg-g-files"><div class="qg-tile"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v10m0 0-4-4m4 4 4-4M4 16h12"/></svg></div><div><h3>Import CSV</h3>
-        <dl><dt>Click</dt><dd>Pick a CSV with a Name and a Hex column, or drag one onto the page. With colors already listed, choose <b>Add to List</b> or <b>Replace List</b>.</dd></dl>
-        <p class="qg-tip">Rows without a valid hex code are skipped, and the message says which.</p></div></article>
-      <article class="qg-card qg-g-files"><div class="qg-tile"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 13V3m0 0L6 7m4-4 4 4M4 16h12"/></svg></div><div><h3>Export CSV</h3>
-        <dl><dt>Click</dt><dd>Downloads <code>&lt;project name&gt;.csv</code>: each color with its best match in each library and any formula on file.</dd></dl></div></article>
-      <article class="qg-card qg-g-files"><div class="qg-tile"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 16h3l8.5-8.5-3-3L4 13z"/></svg></div><div><h3>Project Name</h3>
-        <dl><dt>Type</dt><dd>In the top bar. It names the list and the CSV it exports, as in the Material Estimator.</dd></dl>
-        <p class="qg-tip">Importing a CSV to replace the list takes the file's name.</p></div></article>
-      <article class="qg-card qg-g-files qg-wide"><div class="qg-tile"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10h.01M10 10h.01M15 10h.01" stroke-width="3"/></svg></div><div><h3>More <span class="qg-mono">&middot;&middot;&middot;</span></h3>
-        <dl><dt>Template</dt><dd>The CSV template: a Name and a Hex column with three example colors.</dd>
-          <dt>Example</dt><dd>Loads three example colors to try things on. It asks before replacing yours.</dd>
-          <dt>Print</dt><dd>Prints the list with its matches, or saves it as a PDF from the print window.</dd>
-          <dt>Clear</dt><dd>Takes every color off the list, after asking.</dd></dl></div></article>
-    </div>
-  </section>
-
   <section aria-labelledby="reading">
-    <div class="qg-section-head"><h2 id="reading">Reading the Match</h2><p>Match = 100% less 2.5% for every unit of ΔE (CIEDE2000), the industry measure of how different two colors look.</p></div>
+    <div class="qg-section-head"><h2 id="reading">Reading the Match</h2><p>100% less 2.5% for every unit of ΔE (CIEDE2000).</p></div>
     <div class="qg-table-scroll">
       <table class="qg-parts ax-units">
         <thead><tr><th>Match</th><th>ΔE</th><th>What It Means</th></tr></thead>
         <tbody>
-          <tr><td>98% and up</td><td>1 or less</td><td><b>Indistinguishable.</b> The same color to the eye.</td></tr>
-          <tr><td>95%</td><td>up to 2</td><td><b>Very Close.</b> A difference only side by side.</td></tr>
-          <tr><td>90%</td><td>up to 4</td><td><b>Close.</b> Fine for most signs; check it against the brand guide.</td></tr>
-          <tr><td>80%</td><td>up to 8</td><td><b>Noticeable.</b> Visibly different; look for a better match or mix one.</td></tr>
-          <tr><td>Below 80%</td><td>over 8</td><td><b>Different.</b> Not a match.</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <section aria-labelledby="libraries">
-    <div class="qg-section-head"><h2 id="libraries">The Libraries</h2><p>Where each set of colors comes from.</p></div>
-    <div class="qg-table-scroll">
-      <table class="qg-parts">
-        <thead><tr><th>Library</th><th>Colors</th><th>From</th></tr></thead>
-        <tbody>
-          <tr><td>Sherwin-Williams</td><td>1,729</td><td>Sherwin-Williams' published colors, through PaintDB</td></tr>
-          <tr><td>Pantone Solid Coated</td><td>1,344</td><td>The PANTONE+ Solid Coated guide's Lab values; newer colors from third-party listings</td></tr>
-          <tr><td>3M Scotchcal 3630</td><td>78</td><td>3M's digital color card, which shows the film unlit, with 3M's matching Pantone</td></tr>
-        </tbody>
+            <tr><td>98% and up</td><td>1 or less</td><td><b>Indistinguishable.</b></td></tr>
+            <tr><td>95%</td><td>up to 2</td><td><b>Very Close.</b> Differs only side by side.</td></tr>
+            <tr><td>90%</td><td>up to 4</td><td><b>Close.</b> Fine for most signs.</td></tr>
+            <tr><td>80%</td><td>up to 8</td><td><b>Noticeable.</b> Look for a better match.</td></tr>
+            <tr><td>Below 80%</td><td>over 8</td><td><b>Different.</b> Not a match.</td></tr>
+          </tbody>
       </table>
     </div>
   </section>
 
   <section aria-labelledby="csv">
-    <div class="qg-section-head"><h2 id="csv">Sharing a List</h2><p>A CSV is the list: export it, keep it with the project, and anyone can import it.</p></div>
+    <div class="qg-section-head"><h2 id="csv">Sharing a List</h2><p>Export the CSV and anyone can import it.</p></div>
     <div class="qg-two">
       <figure class="qg-figure">
         <pre class="ax-code">Name,Hex,Notes
 Logo Red,#C8102E,Main logo color
 Logo Navy,#1B365D,
 Background Gray,#8A8279,Wall behind the sign</pre>
-        <figcaption>The template. Only <b>Hex</b> is needed; <i>Color</i>, <i>Code</i> or <i>Hex Code</i> work as its header too. <a href="/colors/color-list-template.csv">Download the template &rarr;</a></figcaption>
+        <figcaption>Only <b>Hex</b> is needed. <a href="/colors/color-list-template.csv">Download the template &rarr;</a></figcaption>
       </figure>
       <div>
-        <h3 class="ax-sub">The Export Has a Column For</h3>
+        <h3 class="ax-sub">The Export Adds</h3>
         <ul class="qg-habits">
-          <li>Each color's <b>Name</b> and <b>Hex</b>.</li>
-          <li>Its best <b>Sherwin-Williams</b>, <b>Pantone</b> and <b>3M 3630</b> match: code, name, hex and match %.</li>
-          <li>Any <b>Formula on File</b>, with its Matthews number and product line.</li>
+          <li>Each color's best <b>Sherwin-Williams</b>, <b>Pantone</b> and <b>3M 3630</b> match.</li>
+          <li>Any <b>Formula on File</b>.</li>
         </ul>
       </div>
     </div>
@@ -168,10 +129,9 @@ Background Gray,#8A8279,Wall behind the sign</pre>
   <section aria-labelledby="habits">
     <div class="qg-section-head"><h2 id="habits">Good to Know</h2></div>
     <ul class="qg-habits">
-      <li><b>Screens aren't paint.</b> Every swatch is an on-screen approximation. Check the match against a physical chip, a printed guide or a drawdown before ordering.</li>
-      <li><b>3M's colors are shown unlit.</b> A translucent film looks brighter on a lit sign face; 3M's matching Pantone is the better guide for that.</li>
-      <li><b>The list lives in this browser.</b> Another browser or computer starts empty; export a CSV to keep it.</li>
-      <li><b>From a formula to its matches.</b> In the <a href="/colors/library/">Color Library</a>, <b>Find Matches</b> on any formula adds its color here.</li>
+      <li><b>Screens aren't paint.</b> Check a match against a physical chip or a drawdown before ordering.</li>
+      <li><b>3M's colors are shown unlit.</b> A lit film looks brighter: go by 3M's matching Pantone.</li>
+      <li><b>The list lives in this browser.</b> Export a CSV to keep it.</li>
     </ul>
   </section>
 </div>

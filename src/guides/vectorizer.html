@@ -5,12 +5,12 @@
 <div class="qg-page">
   <header>
     <p class="qg-eyebrow">Office Tools &middot; Runs in Your Browser</p>
-    <p class="qg-lede">Turn a PNG or JPG, such as a client's logo, into an SVG of clean vector shapes, one layer per color: keep the colors you want, leave out the background, and set how closely the curves follow the image.</p>
+    <p class="qg-lede">Turn a PNG or JPG, such as a client's logo, into an SVG of clean vector shapes, one layer per color.</p>
     <p class="qg-other"><a href="/vectorizer/">Open the Vectorizer &rarr;</a></p>
   </header>
 
   <section aria-labelledby="screen">
-    <div class="qg-section-head"><h2 id="screen">The Screen</h2><p>Controls on the left, the preview on the right.</p></div>
+    <div class="qg-section-head"><h2 id="screen">The Screen</h2></div>
     <figure class="qg-figure">
       <div class="qg-diagram-scroll">
       <svg class="ax-est" viewBox="0 0 760 384" role="img" aria-label="The Vectorizer: on the left a Choose Image button, a Colors slider, a list of four colors with tick boxes and Omit buttons, the white one omitted, Keep a Color and Omit a Color buttons, a Precision slider, a Clean Geometry tick box and Download SVG and Copy SVG buttons; on the right the traced logo, a blue rounded square with a yellow triangle and a red circle, over a checkerboard where the omitted white was">
@@ -113,39 +113,38 @@
         </g>
       </svg>
       </div>
-      <figcaption>A logo traced with its white background omitted. The numbers match the list below.</figcaption>
+      <figcaption>A logo traced with its white background omitted.</figcaption>
     </figure>
     <ol class="ax-keys">
-      <li><b>Image.</b> Choose one, drop it on the page, or paste it with Ctrl+V. PNG, JPG, WebP or GIF. It stays in your browser: nothing is uploaded.</li>
-      <li><b>Colors.</b> How many colors to look for. The in-between shades along edges are left out, so you may get fewer.</li>
-      <li><b>The color list.</b> Ticked colors are kept. Untick one to merge it into the nearest kept color. <b>Omit</b> leaves a color empty, like the white background here.</li>
-      <li><b>Keep a Color, Omit a Color.</b> Press one, then click the image: the nearest color in the list is kept or omitted, or a new one is added.</li>
-      <li><b>Precision.</b> 1 gives fewer, smoother curves and ignores specks; 10 follows the image closely and keeps small detail. <b>Clean Geometry</b>, under it, makes nearly level and plumb edges exact and near-circles true circles: tick it for artwork drawn with a ruler and compass, leave it off for slanted or hand-drawn shapes.</li>
-      <li><b>Download SVG.</b> Saves the SVG, named after the file name at the top. <b>Copy SVG</b> copies its code instead.</li>
-      <li><b>Vector, Original, Outlines.</b> The trace, the image it came from, or the trace's outlines over a faint fill. Scroll to zoom, drag to pan.</li>
-      <li><b>The checkerboard.</b> Where nothing is drawn: omitted colors and transparent parts of the image.</li>
+      <li><b>Image.</b> Choose, drop or paste one. Nothing is uploaded.</li>
+      <li><b>Colors.</b> How many colors to look for.</li>
+      <li><b>The color list.</b> Untick a color to merge it into its neighbour. <b>Omit</b> leaves it empty, like the white background here.</li>
+      <li><b>Keep a Color, Omit a Color.</b> Press one, then click the image.</li>
+      <li><b>Precision.</b> Low for smoother curves, high for small detail. <b>Clean Geometry</b> squares up ruler-and-compass artwork.</li>
+      <li><b>Download SVG.</b> Or <b>Copy SVG</b> for its code.</li>
+      <li><b>Vector, Original, Outlines.</b> Three views. Scroll to zoom, drag to pan.</li>
+      <li><b>The checkerboard.</b> Where nothing is drawn.</li>
     </ol>
   </section>
 
   <section aria-labelledby="order">
-    <div class="qg-section-head"><h2 id="order">Trace an Image</h2><p>The usual order.</p></div>
+    <div class="qg-section-head"><h2 id="order">Trace an Image</h2></div>
     <ol class="qg-flow">
-      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 13V3m0 0L6 7m4-4 4 4M4 16h12"/></svg></span><div><b>Open the Image</b><small>The largest, cleanest file the client has: a small or heavily compressed JPG traces poorly.</small></div></li>
-      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 3l14 14"/><rect x="3" y="3" width="14" height="14" rx="2"/></svg></span><div><b>Omit the Background</b><small>Press Omit on the background's color, often white, so only the artwork is left.</small></div></li>
-      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg></span><div><b>Check the Colors</b><small>Untick extras, or raise Colors if one is missing. Keep a Color adds one you click on.</small></div></li>
-      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 15C6 5 14 15 17 5"/></svg></span><div><b>Set the Precision</b><small>Zoom in and switch to Outlines: lower it if the curves are lumpy, raise it if detail is lost. Tick Clean Geometry for squared-up, compass-drawn artwork.</small></div></li>
-      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v10m0 0-4-4m4 4 4-4M4 16h12"/></svg></span><div><b>Download SVG</b><small>Into the project's folder, then import it into Rhino or CorelDRAW and scale it to size.</small></div></li>
+      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 13V3m0 0L6 7m4-4 4 4M4 16h12"/></svg></span><div><b>Open the Image</b><small>The largest, cleanest file the client has.</small></div></li>
+      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 3l14 14"/><rect x="3" y="3" width="14" height="14" rx="2"/></svg></span><div><b>Omit the Background</b><small>Press Omit on its color, often white.</small></div></li>
+      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg></span><div><b>Check the Colors</b><small>Untick extras, or raise Colors if one is missing.</small></div></li>
+      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 15C6 5 14 15 17 5"/></svg></span><div><b>Set the Precision</b><small>Zoom in on Outlines: lower it if curves are lumpy, raise it if detail is lost.</small></div></li>
+      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v10m0 0-4-4m4 4 4-4M4 16h12"/></svg></span><div><b>Download SVG</b><small>Import it into Rhino or CorelDRAW and scale it to size.</small></div></li>
     </ol>
   </section>
 
   <section aria-labelledby="habits">
     <div class="qg-section-head"><h2 id="habits">Good to Know</h2></div>
     <ul class="qg-habits">
-      <li><b>One layer per color.</b> Each color is one compound path, and neighbouring colors share the same border, with no gaps or overlaps, so each can be cut as its own layer.</li>
-      <li><b>Sharp corners, straight edges.</b> Corners stay sharp and straight edges come out as true lines at every Precision. Edges land where the image's own soft edges put them, to within a small fraction of a pixel, even on a small logo, and thin lines and outlines keep their width.</li>
-      <li><b>Pixel size.</b> The SVG is the image's size in pixels. Scale it to the real size where you place it.</li>
-      <li><b>Text stays shapes.</b> Letters are traced as outlines, not type: retype them in the right font if they'll be edited.</li>
-      <li><b>Settings stay.</b> Colors, Precision and Clean Geometry are remembered in this browser for the next image.</li>
+      <li><b>One layer per color.</b> Neighbouring colors share a border, with no gaps or overlaps.</li>
+      <li><b>Pixel size.</b> Scale the SVG to its real size where you place it.</li>
+      <li><b>Text stays shapes.</b> Retype letters in the right font if they'll be edited.</li>
+      <li><b>Settings stay</b> in this browser.</li>
     </ul>
   </section>
 </div>

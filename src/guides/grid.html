@@ -6,12 +6,12 @@
 <div class="qg-page">
   <header>
     <p class="qg-eyebrow">Office Tools &middot; Runs in Your Browser</p>
-    <p class="qg-lede">Lay out a square, hex or triangle grid on a panel, scale its cells toward points and curves, and download the linework as an SVG at full size.</p>
+    <p class="qg-lede">A square, hex or triangle grid whose cells scale toward points and curves, as a full-size SVG.</p>
     <p class="qg-other"><a href="/grid/">Open the Parametric Grid &rarr;</a></p>
   </header>
 
   <section aria-labelledby="screen">
-    <div class="qg-section-head"><h2 id="screen">The Screen</h2><p>Controls on the left, the preview on the right.</p></div>
+    <div class="qg-section-head"><h2 id="screen">The Screen</h2></div>
     <figure class="qg-figure">
       <div class="qg-diagram-scroll">
       <svg class="ax-est" viewBox="0 0 760 360" role="img" aria-label="The Parametric Grid: on the left the Region's width, height and units, the Grid type with Hex chosen, the Cell Size and Edge Cells, the Min and Max scale sliders and Reach, the Attractors with Add Point and Add Curve buttons, and Download SVG and Copy SVG buttons; on the right a wide panel of hexagons that shrink toward two attractors, a point placed low on its left half and a curve across its upper right">
@@ -105,41 +105,41 @@
         </g>
       </svg>
       </div>
-      <figcaption>Hexes that shrink toward a point and a curve, each cell toward whichever is nearer. The numbers match the list below.</figcaption>
+      <figcaption>Hexes that shrink toward a point and a curve.</figcaption>
     </figure>
     <ol class="ax-keys">
-      <li><b>Region.</b> The panel's width, height and units. The SVG comes out at this size.</li>
-      <li><b>Grid.</b> Square, Hex or Triangle cells.</li>
-      <li><b>Cell Size, Edge Cells.</b> Cell Size is the length of a side. <b>Whole</b> keeps the cells that fit; <b>Clipped</b> fills the region and cuts the edge cells at its boundary.</li>
-      <li><b>Scale.</b> Each cell is scaled about its centre, from Min at the nearest attractor to Max at the Reach distance and beyond. Empty Reach means the farthest cell. <b>Largest at the Attractor</b> swaps them.</li>
-      <li><b>Attractors.</b> Points and curves, as many as you need. <b>Add Point</b> and <b>Add Curve</b> make your next click start a new one. Each is listed here: click one to select it, or <b>&times;</b> to remove it. The selected point's X and Y can be typed, from the region's bottom left corner; a curve is drawn <b>Straight</b> or <b>Smooth</b>.</li>
-      <li><b>Download SVG.</b> Saves the linework, named after the file name at the top. <b>Copy SVG</b> copies its code instead.</li>
-      <li><b>The attractors.</b> A click moves the selected point, or adds a point to the selected curve. Click another attractor to select it. On a curve, click the line to insert a point, drag to move one, double-click to remove one; double-click a point attractor to remove it.</li>
-      <li><b>The region.</b> Its boundary and every cell, as the SVG will have them. The pointer's X and Y show at the top right.</li>
+      <li><b>Region.</b> The panel's size and units. The SVG comes out at this size.</li>
+      <li><b>Grid.</b> Square, Hex or Triangle.</li>
+      <li><b>Cell Size, Edge Cells.</b> A side's length. <b>Whole</b> keeps the cells that fit; <b>Clipped</b> cuts them at the boundary.</li>
+      <li><b>Scale.</b> From Min at the attractor to Max at the Reach distance. <b>Largest at the Attractor</b> swaps them.</li>
+      <li><b>Attractors.</b> <b>Add Point</b> or <b>Add Curve</b>, then click the preview. Click one in the list to select it, <b>&times;</b> to remove it.</li>
+      <li><b>Download SVG.</b> Or <b>Copy SVG</b> for its code.</li>
+      <li><b>The attractors.</b> Click to move a point or extend a curve. Drag a curve's points; double-click to remove one.</li>
+      <li><b>The region.</b> Every cell, as the SVG will have them.</li>
     </ol>
   </section>
 
   <section aria-labelledby="order">
-    <div class="qg-section-head"><h2 id="order">Make a Grid</h2><p>The usual order. The preview updates as you go.</p></div>
+    <div class="qg-section-head"><h2 id="order">Make a Grid</h2><p>The preview updates as you go.</p></div>
     <ol class="qg-flow">
-      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="3" y="5" width="14" height="10" rx="1"/></svg></span><div><b>Set the Region</b><small>The panel's size, in the units it will be made in.</small></div></li>
-      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 3h14v14H3zM3 10h14M10 3v14"/></svg></span><div><b>Choose the Grid</b><small>Square, Hex or Triangle, the cell size, and Whole or Clipped.</small></div></li>
-      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6"/><circle cx="10" cy="10" r="1.5"/></svg></span><div><b>Place the Attractors</b><small>Click the preview to move the point. Add Point or Add Curve for more, and click out a curve's points.</small></div></li>
-      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="3" y="12" width="4" height="4"/><rect x="10" y="5" width="7" height="7"/></svg></span><div><b>Set the Scale</b><small>Min and Max for the smallest and largest cells, and Reach for how far the change spreads.</small></div></li>
-      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="3" y="3" width="5" height="5"/><rect x="12" y="3" width="5" height="5" stroke-dasharray="2 2"/><rect x="3" y="12" width="5" height="5" stroke-dasharray="2 2"/><rect x="12" y="12" width="5" height="5"/></svg></span><div><b>Cull, If Wanted</b><small>Random Cull takes a share of the farthest cells out at random, like Grasshopper's Random Reduce.</small></div></li>
-      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v10m0 0-4-4m4 4 4-4M4 16h12"/></svg></span><div><b>Download SVG</b><small>Into the project's folder, then import it into Rhino, CorelDRAW or Illustrator.</small></div></li>
+      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="3" y="5" width="14" height="10" rx="1"/></svg></span><div><b>Set the Region</b><small>The panel's size.</small></div></li>
+      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 3h14v14H3zM3 10h14M10 3v14"/></svg></span><div><b>Choose the Grid</b><small>Shape, cell size, and Whole or Clipped.</small></div></li>
+      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6"/><circle cx="10" cy="10" r="1.5"/></svg></span><div><b>Place the Attractors</b><small>Click the preview. Add Point or Add Curve for more.</small></div></li>
+      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="3" y="12" width="4" height="4"/><rect x="10" y="5" width="7" height="7"/></svg></span><div><b>Set the Scale</b><small>Min, Max and Reach.</small></div></li>
+      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="3" y="3" width="5" height="5"/><rect x="12" y="3" width="5" height="5" stroke-dasharray="2 2"/><rect x="3" y="12" width="5" height="5" stroke-dasharray="2 2"/><rect x="12" y="12" width="5" height="5"/></svg></span><div><b>Cull, If Wanted</b><small>Random Cull takes out a share of the farthest cells.</small></div></li>
+      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v10m0 0-4-4m4 4 4-4M4 16h12"/></svg></span><div><b>Download SVG</b><small>Then import it into Rhino or CorelDRAW.</small></div></li>
     </ol>
   </section>
 
   <section aria-labelledby="habits">
     <div class="qg-section-head"><h2 id="habits">Good to Know</h2></div>
     <ul class="qg-habits">
-      <li><b>Full size.</b> The SVG is in the region's units, so it imports at its real size. Feet come out as inches and meters as centimeters, since SVG has neither.</li>
-      <li><b>Several attractors.</b> Each cell takes its size from the attractor nearest to it, so two points make two pools of small cells, and a point beside a curve pulls the cells toward whichever is closer.</li>
-      <li><b>Clean linework.</b> One closed shape per cell and the boundary, with no fills, in groups named Region and Cells. Tick <b>Include the Attractors in the SVG</b> to add them too, in a group named Attractors.</li>
-      <li><b>Random Cull.</b> Both run from 0 to 1. <b>Start</b> leaves the cells nearest the attractors alone: at 0.33, the cull works on the farthest 67%. <b>Cull</b> is the share of those taken out at random. The same <b>Seed</b> always takes out the same cells, and they stay put while you move the attractors; change it for another pick.</li>
-      <li><b>Clipped edges.</b> A clipped cell's cut side lies on the boundary, so that line is there twice: delete one before cutting.</li>
-      <li><b>Settings stay.</b> Everything, the attractors too, is remembered in this browser.</li>
+      <li><b>Full size.</b> The SVG imports at its real size. Feet come out as inches, meters as centimeters.</li>
+      <li><b>Clean linework.</b> One closed shape per cell, with no fills.</li>
+      <li><b>Several attractors.</b> Each cell follows the nearest one.</li>
+      <li><b>Random Cull.</b> <b>Start</b> protects the nearest cells, <b>Cull</b> is the share taken out, and <b>Seed</b> changes which.</li>
+      <li><b>Clipped edges.</b> A cut side doubles the boundary line: delete one before cutting.</li>
+      <li><b>Settings stay</b> in this browser.</li>
     </ul>
   </section>
 </div>

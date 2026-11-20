@@ -7,42 +7,42 @@ import HubCard from '../../../components/HubCard.astro';
 
 {/* One page per tool category (user, 2026-11-11), each the Overview in its sidebar group and the home section's Details link. */}
 
-Web tools for the design package and its graphics. They run in your browser, with nothing to install.
+Web tools for the design package and its graphics.
 
 ## Site Plan
 
-Finds an address and draws the office's greyscale site plan around it: buildings, streets, parks and water from OpenStreetMap, in one standard style. Place the sign with a click, size a dashed circle around it with *SIGN LOCATION* inside (red, or a color of your own per sign), and export the map as a PNG for the design package, with a north arrow and scale bar.
+Finds an address and draws the office's greyscale site plan around it, with the sign's location circled, a north arrow and a scale bar. Exports a PNG.
 
 <div class="ax-grid not-content">
-<HubCard href="/site-plan/" title="Open the Site Plan" meta="alexdesignlab.org/site-plan">Runs in your browser, with nothing to install.<svg slot="icon" viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd"><path d="M12 2.5a9.5 9.5 0 1 0 0 19 9.5 9.5 0 0 0 0-19zm0 2a7.5 7.5 0 1 1 0 15 7.5 7.5 0 0 1 0-15zm0 4.5a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg></HubCard>
-<HubCard href="/site-plan/guide/" title="Its Quick Guide" meta="Guide">Finding the address, placing the sign, sizing the circle and the export.<svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C6.5 4 9.5 4 12 5.5v14c-2.5-1.5-5.5-1.5-8 0zM20 5.5C17.5 4 14.5 4 12 5.5v14c2.5-1.5 5.5-1.5 8 0z"/></svg></HubCard>
+<HubCard href="/site-plan/" title="Open the Site Plan" meta="alexdesignlab.org/site-plan"><svg slot="icon" viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd"><path d="M12 2.5a9.5 9.5 0 1 0 0 19 9.5 9.5 0 0 0 0-19zm0 2a7.5 7.5 0 1 1 0 15 7.5 7.5 0 0 1 0-15zm0 4.5a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg></HubCard>
+<HubCard href="/site-plan/guide/" title="Its Quick Guide" meta="Guide"><svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C6.5 4 9.5 4 12 5.5v14c-2.5-1.5-5.5-1.5-8 0zM20 5.5C17.5 4 14.5 4 12 5.5v14c2.5-1.5 5.5-1.5 8 0z"/></svg></HubCard>
 </div>
 
 ## Vectorizer
 
-Turns a PNG or JPG, such as a client's logo, into an SVG of clean vector shapes, one layer per color. Keep the colors you want, leave out the background, set the precision, and download the SVG for Rhino, CorelDRAW or fabrication. The image never leaves your browser.
+Turns a PNG or JPG, such as a client's logo, into an SVG of clean vector shapes, one layer per color.
 
 <div class="ax-grid not-content">
-<HubCard href="/vectorizer/" title="Open the Vectorizer" meta="alexdesignlab.org/vectorizer">Runs in your browser, with nothing to install.<svg slot="icon" viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd"><path d="M12 2.5l7 7-3 10H8l-3-10zM11.35 6.5h1.3v4.6h-1.3zM12 11.6a1.4 1.4 0 1 0 .01 0zM8 20.8h8v1.5H8z"/></svg></HubCard>
-<HubCard href="/vectorizer/guide/" title="Its Quick Guide" meta="Guide">Opening an image, choosing colors, setting the precision and the SVG.<svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C6.5 4 9.5 4 12 5.5v14c-2.5-1.5-5.5-1.5-8 0zM20 5.5C17.5 4 14.5 4 12 5.5v14c2.5-1.5 5.5-1.5 8 0z"/></svg></HubCard>
+<HubCard href="/vectorizer/" title="Open the Vectorizer" meta="alexdesignlab.org/vectorizer"><svg slot="icon" viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd"><path d="M12 2.5l7 7-3 10H8l-3-10zM11.35 6.5h1.3v4.6h-1.3zM12 11.6a1.4 1.4 0 1 0 .01 0zM8 20.8h8v1.5H8z"/></svg></HubCard>
+<HubCard href="/vectorizer/guide/" title="Its Quick Guide" meta="Guide"><svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C6.5 4 9.5 4 12 5.5v14c-2.5-1.5-5.5-1.5-8 0zM20 5.5C17.5 4 14.5 4 12 5.5v14c2.5-1.5 5.5-1.5 8 0z"/></svg></HubCard>
 </div>
 
 ## Braille Lettering Designer
 
-Type a sign's text and download its braille as an SVG: one circle per raised dot, in inches, at the ADA's sizes, to place below the raised lettering in Rhino, CorelDRAW or Illustrator. It writes contracted (Grade 2) braille, as ADA signs need, with liblouis, the braille translator screen readers use, or uncontracted (Grade 1).
+Turns a sign's text into Grade 2 braille, as ADA signs need, and saves the dots as a full-size SVG.
 
 <div class="ax-grid not-content">
-<HubCard href="/braille/" title="Open the Braille Lettering Designer" meta="alexdesignlab.org/braille">Runs in your browser, with nothing to install.<svg slot="icon" viewBox="0 0 24 24" fill="currentColor"><circle cx="8.5" cy="5.5" r="2.3"/><circle cx="8.5" cy="12" r="2.3"/><circle cx="8.5" cy="18.5" r="2.3"/><circle cx="15.5" cy="5.5" r="2.3"/><circle cx="15.5" cy="12" r="2.3"/><circle cx="15.5" cy="18.5" r="2.3"/></svg></HubCard>
-<HubCard href="/braille/guide/" title="Its Quick Guide" meta="Guide">The cells, Grade 2 for ADA, the ADA's sizes and the SVG.<svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C6.5 4 9.5 4 12 5.5v14c-2.5-1.5-5.5-1.5-8 0zM20 5.5C17.5 4 14.5 4 12 5.5v14c2.5-1.5 5.5-1.5 8 0z"/></svg></HubCard>
+<HubCard href="/braille/" title="Open the Braille Lettering Designer" meta="alexdesignlab.org/braille"><svg slot="icon" viewBox="0 0 24 24" fill="currentColor"><circle cx="8.5" cy="5.5" r="2.3"/><circle cx="8.5" cy="12" r="2.3"/><circle cx="8.5" cy="18.5" r="2.3"/><circle cx="15.5" cy="5.5" r="2.3"/><circle cx="15.5" cy="12" r="2.3"/><circle cx="15.5" cy="18.5" r="2.3"/></svg></HubCard>
+<HubCard href="/braille/guide/" title="Its Quick Guide" meta="Guide"><svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C6.5 4 9.5 4 12 5.5v14c-2.5-1.5-5.5-1.5-8 0zM20 5.5C17.5 4 14.5 4 12 5.5v14c2.5-1.5 5.5-1.5 8 0z"/></svg></HubCard>
 </div>
 
 ## Sign Package Maker
 
 <span class="ax-badge">Beta</span> New, so some of it may change.
 
-The design package without Rhino. It starts as the standard template, the title page, the project info, a design page and the CMF page, and takes your own drawings and images (SVG, PDF, PNG or JPG), the project's details and the colors and materials. A drawing needs no scale: type one real dimension and the rest fill in to match. Dimensions and callouts are drawn to the Alexandria standard, with nothing to set: the fonts, sizes, colors and line weights are the standard's. It exports the package as a PDF, named as the Layout Manager names it, and a drawing's linework at full size as a DXF, DWG or PDF.
+The standard sign package without Rhino: your own drawings, images and project details, with dimensions and callouts drawn to the standard. Exports the PDF, and a drawing's linework at full size.
 
 <div class="ax-grid not-content">
-<HubCard href="/sign-package/" title="Open the Sign Package Maker" meta="alexdesignlab.org/sign-package">Runs in your browser, with nothing to install.<svg slot="icon" viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd"><path d="M3 5h18v14H3zM5 7v10h14V7zM6.5 8.5h6v1.8h-6zM6.5 15h4v1h-4zM13.5 11.5h4v4.5h-4z"/></svg></HubCard>
-<HubCard href="/sign-package/guide/" title="Its Quick Guide" meta="Guide">The pages, the details, placing a drawing and giving it its real size, dimensions, callouts and the exports.<svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C6.5 4 9.5 4 12 5.5v14c-2.5-1.5-5.5-1.5-8 0zM20 5.5C17.5 4 14.5 4 12 5.5v14c2.5-1.5 5.5-1.5 8 0z"/></svg></HubCard>
+<HubCard href="/sign-package/" title="Open the Sign Package Maker" meta="alexdesignlab.org/sign-package"><svg slot="icon" viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd"><path d="M3 5h18v14H3zM5 7v10h14V7zM6.5 8.5h6v1.8h-6zM6.5 15h4v1h-4zM13.5 11.5h4v4.5h-4z"/></svg></HubCard>
+<HubCard href="/sign-package/guide/" title="Its Quick Guide" meta="Guide"><svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C6.5 4 9.5 4 12 5.5v14c-2.5-1.5-5.5-1.5-8 0zM20 5.5C17.5 4 14.5 4 12 5.5v14c2.5-1.5 5.5-1.5 8 0z"/></svg></HubCard>
 </div>

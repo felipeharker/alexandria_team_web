@@ -9,7 +9,7 @@ import project from '../../data/sample-project.json';
 
 {/* tools/sync.py copies the previews and the PDF from alexandria_testing/alexandria_sample_project/Alexandria/web (its make_web.py makes them). */}
 
-The **Alexandria Design Lab** is the office's test project: one halo-lit sign on the blank wall Populate Model brings, taken from an empty model to a finished design package with the Alexandria tools and nothing else. It shows what every Alexandria model starts from: the wall, the ground and a scale figure, with the sign designed on the wall. Alexandria is the client, so there are no real client or brand names in it. Use it to see what the tools make and what a finished package looks like.
+The office's test project: one halo-lit sign, taken from an empty model to a finished design package with the Alexandria tools alone.
 
 <LinkButton href={`/sample-project/${project.package}`} icon="document" iconPlacement="start">Open the Design Package</LinkButton>
 
@@ -27,14 +27,14 @@ The **Alexandria Design Lab** is the office's test project: one halo-lit sign on
 
 ## How It Was Made
 
-Claude built it in Rhino 8 by running the Alexandria toolbar's own scripts, as a test of the tools from start to finish, in the order the [Rhino Tools Quick Guide](/rhino/#order) gives:
+In the order the [Rhino Tools Quick Guide](/rhino/#order) gives:
 
 1. **Create Project** copied the project template and saved the model.
-2. **Populate Model** set the units and added the standard layers, the annotation styles, the wall, the ground, the scale figure and the world light. The letters were modeled on the wall, on their own DESIGN layer.
-3. **Set Light** made the halo behind each letter, and **Set Material** gave the letters their material.
-4. The sign elevation was drawn flat, below the wall, with the scale figure for scale.
-5. The **Layout Manager** made the package's pages and placed the sign elevation and the letter section, DTL-05, on them.
-6. **Render Day and Save** and **Render Night and Save** (a right click on the day and night buttons) made the two renders above, and the Layout Manager put them on their pages and exported the PDF.
+2. **Populate Model** added the layers, styles, wall, ground and scale figure. The letters were modeled on the wall.
+3. **Set Light** made the halo, and **Set Material** gave the letters their material.
+4. The sign elevation was drawn flat, below the wall.
+5. The **Layout Manager** made the pages and placed the elevation and the letter section, DTL-05.
+6. **Render Day and Save** and **Render Night and Save** made the two renders, and the Layout Manager exported the PDF.
 
 ## The Design Package
 
