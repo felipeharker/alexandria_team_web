@@ -1,0 +1,28 @@
+---
+title: Account Migration
+description: Each service Alexandria runs on, and whether its account has moved to the company email.
+# unlisted: in no menu and out of the hub's search. The table wants the width, so no table of contents.
+pagefind: false
+tableOfContents: false
+---
+
+import ManagementTable from '../../../components/ManagementTable.astro';
+
+{/* One of the management pages (see management/index.mdx): the table is alexandria_office's
+    public/management/accounts.csv, read in the browser. It was alexandria_management's accounts.html until 2026-11-20. */}
+
+[Management](/management/) › Moving each service from the personal email to the company email.
+
+<ManagementTable file="accounts.csv" done={{ column: 'Migrated', is: 'Y', label: 'moved to the company email' }} />
+
+## The Columns
+
+The file is [accounts.csv](/management/accounts.csv), one row per service, under [the CSV standard](/management/#the-csv-standard).
+
+| Column | What Goes in It |
+|---|---|
+| Service | The service's name, such as GitHub. A row without one is skipped. |
+| Description | What it is and what Alexandria uses it for, in a sentence or two. |
+| Current account | The account it's on now: `Personal`, `Company`, or a team's name. |
+| Migrated (Y/N) | `N` to start, `PARTIAL` while it's under way, `Y` once it has fully moved. The count above the table counts the `Y` rows. |
+| Notes | The plan, the date it moved, what still needs linking again. |

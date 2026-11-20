@@ -17,6 +17,9 @@ const borrowed: Record<string, string> = {
 	'/wiki/downloads/etch-font': '/wiki/downloads/#etch-font',
 };
 
+// The management pages (/management/ and the tables under it) are unlisted (user, 2026-11-20): they borrow no
+// entry, so nothing in the sidebar is highlighted or opened on them.
+
 const trim = (path: string) => path.replace(/\/$/, '');
 
 function links(entries: Entry[]): Extract<Entry, { type: 'link' }>[] {
