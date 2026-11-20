@@ -5,12 +5,12 @@
 <div class="qg-page">
   <header>
     <p class="qg-eyebrow">Office Tools &middot; Runs in Your Browser &middot; Beta</p>
-    <p class="qg-lede">Lay out a square, hex or triangle grid on a panel, size each cell by the image under it, and download the linework as an SVG at full size. Grasshopper's Image Sampler, without opening Grasshopper.</p>
+    <p class="qg-lede">A grid whose cells are sized by an image, like a halftone, as a full-size SVG.</p>
     <p class="qg-other"><a href="/image-grid/">Open the Image Grid &rarr;</a></p>
   </header>
 
   <section aria-labelledby="screen">
-    <div class="qg-section-head"><h2 id="screen">The Screen</h2><p>Controls on the left, the preview on the right. This is Simple.</p></div>
+    <div class="qg-section-head"><h2 id="screen">The Screen</h2><p>This is Simple.</p></div>
     <figure class="qg-figure">
       <div class="qg-diagram-scroll">
       <svg class="ax-est" viewBox="0 0 760 360" role="img" aria-label="The Image Grid in Simple: on the left Simple and Standard, Choose Image, the Region's width, its height following the image, and units, the Grid type with Hex chosen and the Cell Size, the Min and Max scale sliders, Largest Where the Image Is Light, and Download SVG and Copy SVG buttons; on the right a panel of filled hexagons, large where the sample image's letter A is dark and small where it's light, so the A shows in the grid">
@@ -96,56 +96,54 @@
         </g>
       </svg>
       </div>
-      <figcaption>The sample image, a soft letter A, as hexes: large where it's dark, small where it's light. The numbers match the list below.</figcaption>
+      <figcaption>The sample image as hexes: large where it's dark, small where it's light.</figcaption>
     </figure>
     <ol class="ax-keys">
-      <li><b>Simple, Standard.</b> Simple shows the essentials and keeps the rest at their usual settings. Standard shows every setting (below), and keeps them for the next time you choose it.</li>
-      <li><b>Image.</b> <b>Choose Image</b>, or drop or paste one anywhere on the page: a PNG, JPG, WebP, GIF or SVG. It starts with a sample. Your image stays in this browser; nothing is uploaded.</li>
-      <li><b>Region.</b> The panel's width and units. In Simple the height follows the image's proportions. The SVG comes out at this size.</li>
-      <li><b>Grid, Cell Size.</b> Square, Hex or Triangle cells, as on the Parametric Grid. Cell Size is the length of a side.</li>
-      <li><b>Scale.</b> Each cell is scaled about its centre by the image under it: Max where it's darkest, Min where it's lightest. <b>Largest Where the Image Is Light</b> swaps them. A cell at 0 is left out.</li>
-      <li><b>Download SVG.</b> Saves the linework, named after the file name at the top. <b>Copy SVG</b> copies its code instead.</li>
-      <li><b>Image, Filled.</b> For the preview only: the image faintly under the cells, and the cells filled or as outlines. The pointer shows the image's brightness under it, with X and Y from the bottom left.</li>
-      <li><b>The region.</b> Its boundary and every cell, as the SVG will have them.</li>
+      <li><b>Simple, Standard.</b> Simple shows the essentials. Standard shows every setting.</li>
+      <li><b>Image.</b> <b>Choose Image</b>, or drop or paste one. Nothing is uploaded.</li>
+      <li><b>Region.</b> The panel's width and units. The height follows the image.</li>
+      <li><b>Grid, Cell Size.</b> Square, Hex or Triangle, and a side's length.</li>
+      <li><b>Scale.</b> Max where the image is darkest, Min where it's lightest. <b>Largest Where the Image Is Light</b> swaps them.</li>
+      <li><b>Download SVG.</b> Or <b>Copy SVG</b> for its code.</li>
+      <li><b>Image, Filled.</b> Preview only: the image under the cells, and the cells filled or outlined.</li>
+      <li><b>The region.</b> Every cell, as the SVG will have them.</li>
     </ol>
   </section>
 
   <section aria-labelledby="standard">
     <div class="qg-section-head"><h2 id="standard">In Standard</h2><p>Everything in Simple, and these.</p></div>
     <ul class="qg-habits">
-      <li><b>Read.</b> What sizes the cells: the image's <b>Brightness</b> (how light it looks), its <b>Red</b>, <b>Green</b> or <b>Blue</b>, or its <b>Opacity</b>, where solid counts as dark and see-through as light, for a logo on a clear background.</li>
-      <li><b>Sample.</b> <b>Average</b> takes the whole cell into account, so fine detail blends smoothly. <b>Centre</b> reads the one point at the cell's centre, as Grasshopper's Image Sampler does.</li>
-      <li><b>Match the Image's Proportions.</b> Untick it to set the height yourself, then choose <b>Fill</b> (the image covers the region, centred, and the rest is cropped) or <b>Stretch</b>.</li>
-      <li><b>Edge Cells.</b> <b>Whole</b> keeps the cells that fit; <b>Clipped</b> fills the region and cuts the edge cells at its boundary.</li>
-      <li><b>Shape.</b> <b>The Cell</b>, or <b>A Circle</b>: the circle that fits in each cell, scaled the same way, for round holes or dots.</li>
-      <li><b>Tone.</b> <b>Black</b> and <b>White</b> are the values read as fully dark and fully light, so a washed-out photo can still reach Min and Max. Set them to the same value for two sizes only. <b>Midtones</b> lightens or darkens the greys between.</li>
-      <li><b>Sizes.</b> From 2 to 32: the cells come in that many sizes, evenly from Min to Max, such as the punches or drills you have. The panel lists each size and how many cells take it. Empty is any size.</li>
-      <li><b>Random Cull.</b> As on the Parametric Grid. <b>Start</b> leaves the largest cells alone: at 0.33, the cull works on the smallest 67%. <b>Cull</b> is the share of those taken out at random; the same <b>Seed</b> always takes out the same ones.</li>
+      <li><b>Read.</b> What sizes the cells: Brightness, Red, Green, Blue or Opacity.</li>
+      <li><b>Sample.</b> <b>Average</b> reads the whole cell; <b>Centre</b> reads one point.</li>
+      <li><b>Match the Image's Proportions.</b> Untick it to set the height, then <b>Fill</b> or <b>Stretch</b>.</li>
+      <li><b>Edge Cells.</b> <b>Whole</b> or <b>Clipped</b>.</li>
+      <li><b>Shape.</b> <b>The Cell</b>, or <b>A Circle</b> for round holes.</li>
+      <li><b>Tone.</b> <b>Black</b> and <b>White</b> set what reads as fully dark and light. <b>Midtones</b> shifts the greys between.</li>
+      <li><b>Sizes.</b> Limits the cells to a set number of sizes, for the punches or drills you have.</li>
+      <li><b>Random Cull.</b> Takes out a share of the smallest cells at random.</li>
     </ul>
   </section>
 
   <section aria-labelledby="order">
-    <div class="qg-section-head"><h2 id="order">Make a Grid</h2><p>The usual order. The preview updates as you go.</p></div>
+    <div class="qg-section-head"><h2 id="order">Make a Grid</h2></div>
     <ol class="qg-flow">
-      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="3" y="4" width="14" height="12" rx="1"/><path d="M3 13l4-4 3 3 2-2 5 5"/></svg></span><div><b>Open the Image</b><small>Choose one, or drop or paste it. High contrast reads best.</small></div></li>
-      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="3" y="5" width="14" height="10" rx="1"/></svg></span><div><b>Set the Region</b><small>The panel's width, in the units it will be made in.</small></div></li>
-      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 3h14v14H3zM3 10h14M10 3v14"/></svg></span><div><b>Choose the Grid</b><small>Square, Hex or Triangle, and the cell size. Smaller cells show more of the image.</small></div></li>
-      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="3" y="12" width="4" height="4"/><rect x="10" y="5" width="7" height="7"/></svg></span><div><b>Set the Scale</b><small>Min and Max for the smallest and largest cells, and which way round.</small></div></li>
-      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="6" cy="6" r="1.5"/><circle cx="14" cy="6" r="2.5"/><circle cx="6" cy="14" r="2.5"/><circle cx="14" cy="14" r="3.5"/></svg></span><div><b>Fine-Tune, If Wanted</b><small>In Standard: the tone, set sizes, circles and a random cull.</small></div></li>
-      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v10m0 0-4-4m4 4 4-4M4 16h12"/></svg></span><div><b>Download SVG</b><small>Into the project's folder, then import it into Rhino, CorelDRAW or Illustrator.</small></div></li>
+      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="3" y="4" width="14" height="12" rx="1"/><path d="M3 13l4-4 3 3 2-2 5 5"/></svg></span><div><b>Open the Image</b><small>High contrast reads best.</small></div></li>
+      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="3" y="5" width="14" height="10" rx="1"/></svg></span><div><b>Set the Region</b><small>The panel's width.</small></div></li>
+      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 3h14v14H3zM3 10h14M10 3v14"/></svg></span><div><b>Choose the Grid</b><small>Smaller cells show more of the image.</small></div></li>
+      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="3" y="12" width="4" height="4"/><rect x="10" y="5" width="7" height="7"/></svg></span><div><b>Set the Scale</b><small>Min, Max, and which way round.</small></div></li>
+      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="6" cy="6" r="1.5"/><circle cx="14" cy="6" r="2.5"/><circle cx="6" cy="14" r="2.5"/><circle cx="14" cy="14" r="3.5"/></svg></span><div><b>Fine-Tune, If Wanted</b><small>In Standard.</small></div></li>
+      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v10m0 0-4-4m4 4 4-4M4 16h12"/></svg></span><div><b>Download SVG</b><small>Then import it into Rhino or CorelDRAW.</small></div></li>
     </ol>
   </section>
 
   <section aria-labelledby="habits">
     <div class="qg-section-head"><h2 id="habits">Good to Know</h2></div>
     <ul class="qg-habits">
-      <li><b>Full size.</b> The SVG is in the region's units, so it imports at its real size. Feet come out as inches and meters as centimeters, since SVG has neither.</li>
-      <li><b>Clean linework.</b> One closed shape per cell (a circle, with A Circle) and the boundary, with no fills, in groups named Region and Cells. With Sizes set, each size has its own group inside Cells, Size-1 the smallest, so you can select one size at a time.</li>
-      <li><b>Dark makes large.</b> As a halftone does: fill or cut the cells and the image appears. For holes lit from behind, where light should show the image, tick <b>Largest Where the Image Is Light</b>.</li>
-      <li><b>The same grid.</b> The cells are the Parametric Grid's: the same region, grid and cell size give the same cells in both tools.</li>
-      <li><b>Clipped edges.</b> A clipped cell's cut side lies on the boundary, so that line is there twice: delete one before cutting.</li>
-      <li><b>Settings stay.</b> Everything, the image too, is remembered in this browser. <b>Use the Sample</b> goes back to the sample image.</li>
-      <li><b>Beta.</b> It's new, so some of it may change.</li>
+      <li><b>Full size.</b> The SVG imports at its real size. Feet come out as inches, meters as centimeters.</li>
+      <li><b>Dark makes large.</b> For holes lit from behind, tick <b>Largest Where the Image Is Light</b>.</li>
+      <li><b>One group per size.</b> With Sizes set, each size is its own group in the SVG.</li>
+      <li><b>Clipped edges.</b> A cut side doubles the boundary line: delete one before cutting.</li>
+      <li><b>Settings stay</b> in this browser, the image too.</li>
     </ul>
   </section>
 </div>

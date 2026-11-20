@@ -4,7 +4,7 @@
 <div class="qg-page">
   <header>
     <p class="qg-eyebrow">Office Tools &middot; Runs in Your Browser &middot; Beta</p>
-    <p class="qg-lede">The office's stock materials in one list: what each one is, its thickness, finish and size, how it's priced and who supplies it. Any of them goes onto a Material Estimator sheet in one click, already priced.</p>
+    <p class="qg-lede">The office's stock materials, with sizes and prices, ready to add to an Estimator sheet.</p>
     <p class="qg-other"><a href="/materials/">Open the Material Library &rarr;</a></p>
   </header>
 
@@ -34,13 +34,13 @@
         </g>
       </svg>
       </div>
-      <figcaption>A row, with the template's example material. The numbers match the list below.</figcaption>
+      <figcaption>A row.</figcaption>
     </figure>
     <ol class="ax-keys">
-      <li><b>Category.</b> Each one is a table of its own, and a button above to show only it.</li>
-      <li><b>The Material.</b> What it is, its thickness, finish and stock size.</li>
-      <li><b>Price.</b> Per pricing unit: <code>EA</code> for a sheet, <code>SF</code>, <code>LF</code> and the Estimator's other units.</li>
-      <li><b>Add to Estimator.</b> Opens the Material Estimator with the material on a new row, priced. Enter the quantity.</li>
+      <li><b>Category.</b> A table each, and a button to show only it.</li>
+      <li><b>The Material.</b> Its thickness, finish and stock size.</li>
+      <li><b>Price.</b> Per unit: <code>EA</code>, <code>SF</code>, <code>LF</code> and the Estimator's others.</li>
+      <li><b>Add to Estimator.</b> Adds it to a sheet, priced. Enter the quantity.</li>
     </ol>
   </section>
 
@@ -48,32 +48,16 @@
     <div class="qg-section-head"><h2 id="estimator">With the Estimator</h2><p>Two ways in.</p></div>
     <ol class="qg-flow">
       <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h10m0 0-4-4m4 4-4 4M17 4v12"/></svg></span><div><b>From the Library</b><small>Add to Estimator on any material.</small></div></li>
-      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 5h14v10H3z"/><path d="M6 10h8"/></svg></span><div><b>On the Sheet</b><small>Start typing in a row's Material field and pick from the list: its category, unit, price and notes fill in.</small></div></li>
+      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 5h14v10H3z"/><path d="M6 10h8"/></svg></span><div><b>On the Sheet</b><small>Type in a row's Material field and pick from the list.</small></div></li>
     </ol>
-  </section>
-
-  <section aria-labelledby="columns">
-    <div class="qg-section-head"><h2 id="columns">The Columns</h2><p>The library is a CSV file with these columns; the <a href="/templates/material-library/">CSV template</a> has three examples.</p></div>
-    <div class="qg-table-scroll">
-      <table class="qg-parts">
-        <tbody>
-          <tr><td>Material</td><td>What it is, such as <code>Cast Acrylic Sheet</code>. The only column needed.</td></tr>
-          <tr><td>Category</td><td>Groups the library: <code>Metals</code>, <code>Plastics</code>, <code>Vinyl</code>.</td></tr>
-          <tr><td>Thickness, Finish, Size</td><td>With their units: <code>0.25 in</code>, <code>Clear</code>, <code>4 ft x 8 ft</code>.</td></tr>
-          <tr><td>Unit, Unit Price</td><td>How it's priced, in the Estimator's units, and the dollars for one.</td></tr>
-          <tr><td>Supplier, Notes</td><td>Who it comes from, and anything else.</td></tr>
-        </tbody>
-      </table>
-    </div>
   </section>
 
   <section aria-labelledby="habits">
     <div class="qg-section-head"><h2 id="habits">Good to Know</h2></div>
     <ul class="qg-habits">
-      <li><b>Beta.</b> The library is still being filled in.</li>
+      <li><b>Beta.</b> Still being filled in.</li>
       <li><b>Prices are a guide.</b> Check them with the supplier before a quote.</li>
-      <li><b>On the sheet.</b> A library material is named by its material, thickness and finish; its size, supplier and notes go in the row's Notes.</li>
-      <li><b>A material to add?</b> Fill a row of the CSV template and send it in.</li>
+      <li><b>A material to add?</b> Fill a row of the <a href="/templates/material-library/">CSV template</a> and send it in.</li>
     </ul>
   </section>
 </div>

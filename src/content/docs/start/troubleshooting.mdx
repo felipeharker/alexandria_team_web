@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting
-description: The usual problems with the web tools, and with installing, updating and running the Rhino tools, and how to fix them.
+description: The usual problems, on the web and in Rhino, and their fixes.
 ---
 
 import { Content as Install } from '../../../generated/troubleshooting-install.md';
@@ -8,25 +8,43 @@ import { Content as Claude } from '../../../generated/troubleshooting-claude.md'
 
 ## The Web Tools
 
-- **My sheet, list or plan is gone.** The tools save in the browser you used. Another browser, another computer, a private window or clearing the browser's site data starts empty. Import the CSV you exported, or start again; from now on, export into the project's folder.
-- **A tool looks out of date or half drawn.** Reload the page to get the newest version.
-- **The Color Matcher says the libraries didn't load.** Reload the page; if it keeps happening, check the connection.
-- **An import skipped rows or filled in values.** The message after an import says which. Compare the file with the tool's [CSV template](/templates/estimator/): the Estimator needs a Material column, the Color Matcher a Hex column.
-- **The Site Plan finds nothing for an address.** Add the city and state, or zoom there yourself and click the map. The search allows one press a second.
-- **Part of the Site Plan's map is blank.** Its map comes from a free public service: move the map a little or reload. If it stays blank, try again later.
-- **The Site Plan's export fails.** Make the browser window smaller, or set the browser's zoom back to 100%, and export again.
-- **The Vectorizer's shapes are lumpy, or small details are missing.** Raise **Precision** for a closer fit, or lower it for smoother curves. Start from the largest, cleanest file the client has: a small or heavily compressed JPG traces poorly.
-- **The Vectorizer outlines shapes in an extra color, or misses one.** Untick the extra color so it merges into its neighbour, or raise **Colors** and trace again.
-- **The Braille Lettering Designer stays on "Loading the Grade 2 translator".** It loads once, the first time you use Grade 2: check the connection and reload. Grade 1 works without it.
-- **The braille has capital signs everywhere.** Type the text as it should read, *Restroom*, not *RESTROOM*: braille capitalizes only the start of a sentence, names and acronyms.
-- **The Sign Package Maker's title page isn't in Futura.** Futura Bk BT can't be sent with the tool, so it's read from your computer: under **Export**, press **Use Futura from This Computer** and allow it (Chrome or Edge). Until then the company name is in Jost, a close stand-in.
-- **A dimension in the Sign Package Maker reads X'-X" in red.** Its drawing has no real size yet. Click a dimension whose length you know, type it under **Real Length**, such as 21'-9", and press Enter: every other dimension on that drawing fills in to match. The drawing's **Overall Width** or **Overall Height**, under **Page**, does the same. A red dimension is left out of the PDF.
-- **A dimension in the Sign Package Maker reads slightly off.** Click on the drawing's own points: the pink square shows a point it has snapped to. A picture has only its corners and middles to snap to, so place an SVG or a PDF where the number matters.
-- **Edit Its Parts is greyed out in the Sign Package Maker.** The drawing has live text, pictures, gradients or masks in it, so it isn't all shapes. Save it again from CorelDRAW or Illustrator with its text as outlines (curves) and without them, and place that one. A picture has no parts at all: trace it in the Vectorizer first.
-- **AutoCAD asks to recover a DWG from the Sign Package Maker.** Export the **DXF** instead: it's the office's standard linework file, and holds the same lines.
-- **The Image Grid's cells barely change size.** The image is low in contrast. In **Standard**, under **Tone**, raise **Black** and lower **White** toward the image's darkest and lightest parts: the pointer on the preview reads the brightness under it.
-- **The Image Grid won't open an image.** Save it as a PNG or JPG and try again. An SVG needs a width and height of its own to open.
-- **A material isn't in the Estimator's list.** The list comes from the [Material Library](/materials/), which is still being filled in. Type the material in by hand for now.
+- **My work is gone.** The tools save only in the browser you used. Import the file you exported, and export into the project's folder from now on.
+- **A tool looks out of date or half drawn.** Reload the page.
+- **An import skipped rows.** The message after it says which. Compare the file with the tool's [CSV template](/templates/estimator/).
+
+### Site Plan
+
+- **Nothing found for an address.** Add the city and state, or zoom there and click the map.
+- **Part of the map is blank.** Move the map a little or reload. If it stays blank, try again later.
+- **The export fails.** Make the window smaller, or set the browser's zoom to 100%.
+
+### Vectorizer
+
+- **Lumpy shapes or missing detail.** Raise **Precision** for a closer fit, lower it for smoother curves. Start from the largest, cleanest file the client has.
+- **An extra color, or a missing one.** Untick the extra, or raise **Colors**.
+
+### Braille Lettering Designer
+
+- **Stuck on "Loading the Grade 2 translator".** Check the connection and reload. Grade 1 works without it.
+- **Capital signs everywhere.** Type *Restroom*, not *RESTROOM*.
+
+### Sign Package Maker
+
+- **A dimension reads X'-X" in red.** The drawing has no real size yet. Click a dimension you know and type its **Real Length**, such as 21'-9". The rest fill in.
+- **A dimension reads slightly off.** Click on the drawing's own points: a pink square shows the snap. For exact numbers, place an SVG or a PDF, not a picture.
+- **Edit Its Parts is greyed out.** The drawing has live text, pictures, gradients or masks. Save it with its text as outlines and place that. Trace a picture in the Vectorizer first.
+- **The title page isn't in Futura.** Under **Export**, press **Use Futura from This Computer** (Chrome or Edge).
+- **AutoCAD asks to recover a DWG.** Export the **DXF** instead.
+
+### Image Grid
+
+- **The cells barely change size.** The image is low in contrast. In **Standard**, under **Tone**, raise **Black** and lower **White**.
+- **An image won't open.** Save it as a PNG or JPG and try again.
+
+### Color Matcher and Material Estimator
+
+- **The Color Matcher's libraries didn't load.** Reload the page.
+- **A material isn't in the Estimator's list.** The [Material Library](/materials/) is still being filled in. Type it in by hand.
 
 ## Installing and the Toolbar
 
@@ -34,23 +52,23 @@ import { Content as Claude } from '../../../generated/troubleshooting-claude.md'
 
 ## Updating
 
-- **A new release hasn't arrived.** Rhino looks for updates only as it starts, so restart it, then restart once more to load the update. Without automatic updates, run `PackageManager`, open **Updates** and click **Update** on each Alexandria package.
-- **New buttons are missing after an update.** Click **Alexandria Setup** once. With more than one Rhino open, close the others first: the last Rhino to close decides what the toolbar looks like next time.
-- **A definition says "Input parameter chunk is missing".** It was saved before one of its components gained an input. Save it again and the message goes.
+- **A new release hasn't arrived.** Restart Rhino twice. Without automatic updates, run `PackageManager`, open **Updates** and click **Update** on each Alexandria package.
+- **New buttons are missing.** Click **Alexandria Setup**. Close any other Rhino windows first.
+- **"Input parameter chunk is missing".** Save the definition again.
 
-To see which version you have, open the **Installed** tab of the Package Manager and compare it with the newest release on [Download](/start/download/).
+Your version is on the Package Manager's **Installed** tab. The newest is on [Download](/start/download/).
 
 ## Installing from the Zip
 
-- **The packages don't show up in the search.** The sources value has to hold the full path of the folder with the `.yak` files in it, not a folder above it.
-- **An update never arrives.** Installs from the zip don't update by themselves. [Download](/start/download/) the new zip and replace the folder's contents with it.
+- **The packages don't show up in the search.** The sources value needs the full path of the folder that holds the `.yak` files.
+- **An update never arrives.** Zip installs don't update themselves. [Download](/start/download/) the new zip and replace the folder's contents.
 
 ## Claude in Rhino
 
-Setting it up is in [Install and Update](/docs/install/#claude-in-rhino); the steps below refer to it.
+The steps are in [Install and Update](/docs/install/#claude-in-rhino).
 
 <Claude />
 
 ## Still Stuck
 
-Ask the Alexandria team. Say what you clicked, what you expected and what happened, and include a screenshot of Rhino's command line.
+Ask the Alexandria team. Say what you clicked and what happened, with a screenshot of Rhino's command line.

@@ -334,6 +334,10 @@ h1#_top,
 	line-height: 1.45;
 	color: var(--sl-color-gray-3);
 }
+/* a card with no line under its title */
+.ax-card small:empty {
+	display: none;
+}
 .ax-card .meta {
 	display: block;
 	margin-top: 6px;

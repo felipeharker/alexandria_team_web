@@ -3,12 +3,12 @@
 <div class="qg-page">
   <header>
     <p class="qg-eyebrow">Office Tools &middot; Runs in Your Browser</p>
-    <p class="qg-lede">Price a project's materials like a spreadsheet. Each line has a pricing unit, a unit price and a quantity; the sheet totals them by line, by unit and by category. Sheets move between people as CSV files.</p>
+    <p class="qg-lede">Price a project's materials like a spreadsheet, and share the sheet as a CSV.</p>
     <p class="qg-other"><a href="/estimator/">Open the Material Estimator &rarr;</a></p>
   </header>
 
   <section aria-labelledby="sheet">
-    <div class="qg-section-head"><h2 id="sheet">The Sheet</h2><p>One window: the materials on the left, the totals on the right.</p></div>
+    <div class="qg-section-head"><h2 id="sheet">The Sheet</h2></div>
     <figure class="qg-figure">
       <div class="qg-diagram-scroll">
       <svg class="ax-est" viewBox="0 0 760 330" role="img" aria-label="The Material Estimator: a project name at the top, buttons to add, import and export, a table of materials with their units, prices, quantities and totals, and the project's totals on the right">
@@ -83,53 +83,30 @@
         </g>
       </svg>
       </div>
-      <figcaption>An example sheet. The numbers match the list below.</figcaption>
+      <figcaption>An example sheet.</figcaption>
     </figure>
     <ol class="ax-keys">
-      <li><b>Project Name.</b> Names the sheet and the CSV it exports.</li>
-      <li><b>Add Material.</b> A new line at the bottom.</li>
+      <li><b>Project Name.</b> Names the sheet and its CSV.</li>
+      <li><b>Add Material.</b> A new line.</li>
       <li><b>Import and Export CSV.</b> How sheets move between people.</li>
-      <li><b>More.</b> A blank template, an example sheet, print or save as PDF, and clear.</li>
-      <li><b>A Line.</b> Material, category, pricing unit, unit price and quantity; its total follows. Typing in the Material field lists the <a href="/materials/">Material Library</a>'s materials: pick one and its category, unit, price and notes fill in.</li>
-      <li><b>Totals.</b> The project's, then by pricing unit and by category, largest first.</li>
+      <li><b>More.</b> A template, an example, print and clear.</li>
+      <li><b>A Line.</b> Material, category, unit, price and quantity. Type in Material to pick from the <a href="/materials/">Material Library</a>, priced.</li>
+      <li><b>Totals.</b> The project's, then by unit and by category.</li>
     </ol>
   </section>
 
   <section aria-labelledby="order">
-    <div class="qg-section-head"><h2 id="order">Price a Project</h2><p>The usual order.</p></div>
+    <div class="qg-section-head"><h2 id="order">Price a Project</h2></div>
     <ol class="qg-flow">
-      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3.5 4.5h7l6 6-6 6-7-7z"/><circle cx="7.5" cy="8.5" r="1"/></svg></span><div><b>Name It</b><small>Type the project's name at the top. The CSV takes it.</small></div></li>
+      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3.5 4.5h7l6 6-6 6-7-7z"/><circle cx="7.5" cy="8.5" r="1"/></svg></span><div><b>Name It</b><small>The CSV takes the name.</small></div></li>
       <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4v12M4 10h12"/></svg></span><div><b>Add a Line per Material</b><small><strong>Add Material</strong>, or <code>Enter</code> on the last row.</small></div></li>
-      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 13.5 13.5 3l3.5 3.5L6.5 17zM6 10.5l1.5 1.5M8.5 8l1.5 1.5M11 5.5l1.5 1.5"/></svg></span><div><b>Price Each Line</b><small>Its pricing unit, unit price, and the quantity the project needs. A material picked from the Material Library comes priced.</small></div></li>
-      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 13V3m0 0L6 7m4-4 4 4M4 16h12"/></svg></span><div><b>Export the CSV</b><small>Keep it with the project's files, where teammates can import it.</small></div></li>
+      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 13.5 13.5 3l3.5 3.5L6.5 17zM6 10.5l1.5 1.5M8.5 8l1.5 1.5M11 5.5l1.5 1.5"/></svg></span><div><b>Price Each Line</b><small>Its unit, unit price and quantity.</small></div></li>
+      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 13V3m0 0L6 7m4-4 4 4M4 16h12"/></svg></span><div><b>Export the CSV</b><small>Keep it with the project's files.</small></div></li>
     </ol>
   </section>
 
-  <section aria-labelledby="buttons">
-    <div class="qg-section-head"><h2 id="buttons">The Buttons</h2><p>What each one does.</p></div>
-    <div class="qg-cards">
-      <article class="qg-card qg-g-files"><div class="qg-tile"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4v12M4 10h12"/></svg></div><div><h3>Add Material</h3>
-        <dl><dt>Click</dt><dd>A new line at the bottom, ready for the material's name.</dd></dl>
-        <p class="qg-tip"><code>Enter</code> on the last row does the same, and keeps the unit and category of the line above.</p></div></article>
-      <article class="qg-card qg-g-files"><div class="qg-tile"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 6h12M8 6V4h4v2M5.5 6l1 10.5h7l1-10.5"/></svg></div><div><h3>Remove</h3>
-        <dl><dt>Click</dt><dd>The bin at the end of a line removes it.</dd></dl>
-        <p class="qg-tip"><b>Undo</b>, in the message that follows, puts it back.</p></div></article>
-      <article class="qg-card qg-g-files"><div class="qg-tile"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v10m0 0-4-4m4 4 4-4M4 16h12"/></svg></div><div><h3>Import CSV</h3>
-        <dl><dt>Click</dt><dd>Pick a CSV, or drag one onto the page. With a sheet already open, choose <b>Add to Sheet</b> or <b>Replace Sheet</b>.</dd></dl>
-        <p class="qg-tip">The message after it lists anything it had to fill in.</p></div></article>
-      <article class="qg-card qg-g-files"><div class="qg-tile"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 13V3m0 0L6 7m4-4 4 4M4 16h12"/></svg></div><div><h3>Export CSV</h3>
-        <dl><dt>Click</dt><dd>Downloads the sheet as <code>&lt;project name&gt;.csv</code>.</dd></dl>
-        <p class="qg-tip">It opens in Excel and Google Sheets as it is.</p></div></article>
-      <article class="qg-card qg-g-files qg-wide"><div class="qg-tile"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10h.01M10 10h.01M15 10h.01" stroke-width="3"/></svg></div><div><h3>More <span class="qg-mono">&middot;&middot;&middot;</span></h3>
-        <dl><dt>Template</dt><dd>A blank CSV with the right columns, to fill in with Excel or Google Sheets and import.</dd>
-          <dt>Example</dt><dd>Loads a sample sheet to try things on. It asks before replacing yours.</dd>
-          <dt>Print</dt><dd>Prints the sheet, or saves it as a PDF from the print window.</dd>
-          <dt>Clear</dt><dd>Empties the sheet, after asking.</dd></dl></div></article>
-    </div>
-  </section>
-
   <section aria-labelledby="units">
-    <div class="qg-section-head"><h2 id="units">Pricing Units</h2><p>Line total = unit price &times; quantity, rounded to the cent.</p></div>
+    <div class="qg-section-head"><h2 id="units">Pricing Units</h2><p>Line total = unit price &times; quantity.</p></div>
     <div class="qg-table-scroll">
       <table class="qg-parts ax-units">
         <thead><tr><th>Code</th><th>Unit</th><th>Typical Use</th></tr></thead>
@@ -150,21 +127,20 @@
   </section>
 
   <section aria-labelledby="csv">
-    <div class="qg-section-head"><h2 id="csv">Sharing a Sheet</h2><p>A CSV file is the sheet: export it, keep it with the project, and anyone can import it.</p></div>
+    <div class="qg-section-head"><h2 id="csv">Sharing a Sheet</h2><p>Export the CSV and anyone can import it.</p></div>
     <div class="qg-two">
       <figure class="qg-figure">
         <pre class="ax-code">Material,Category,Unit,Unit Price,Quantity,Line Total,Notes
 Steel tube 4 x 4 x 1/4,Metals,LF,18.75,240,4500.00,A500 Gr. B
 Aluminum composite panel,Cladding,SF,14.20,1850,26270.00,PVDF
 Ready-mix concrete,Concrete,CY,165,42,6930.00,5% waste</pre>
-        <figcaption>Only <b>Material</b> is required. <b>Line Total</b> is there for people reading the file: import ignores it and works it out again.</figcaption>
+        <figcaption>Only <b>Material</b> is required.</figcaption>
       </figure>
       <div>
         <h3 class="ax-sub">Import Reads Most Spreadsheets as They Are</h3>
         <ul class="qg-habits">
-          <li><b>Headers:</b> <i>Item</i> or <i>Description</i>, <i>UOM</i>, <i>Price</i> or <i>Rate</i>, <i>Qty</i> and the like, in any order. Title rows above the header are skipped.</li>
-          <li><b>Units:</b> <i>sq ft</i>, <i>cu yd</i>, <i>linear feet</i>, <i>tons</i>, <i>each</i> and other spellings become the codes above. One it doesn't know, like <i>bag</i>, stays as written.</li>
-          <li><b>Numbers:</b> <code>$1,234.50</code> reads fine, and so do European files (<code>1.234,50</code>, semicolons) and tab-separated text.</li>
+          <li><b>Headers:</b> <i>Item</i>, <i>UOM</i>, <i>Price</i>, <i>Qty</i> and the like, in any order.</li>
+          <li><b>Units:</b> <i>sq ft</i>, <i>cu yd</i>, <i>each</i> and other spellings.</li>
           <li><b>Gaps:</b> a missing price or quantity becomes 0, a missing unit <code>EA</code>.</li>
         </ul>
       </div>
@@ -176,11 +152,9 @@ Ready-mix concrete,Concrete,CY,165,42,6930.00,5% waste</pre>
     <div class="qg-table-scroll">
       <table class="qg-parts ax-units">
         <tbody>
-          <tr><td>Enter</td><td>The same column on the next line. On the last line, a new line.</td></tr>
-          <tr><td>Shift + Enter</td><td>The same column on the line above.</td></tr>
-          <tr><td>Enter in the project name</td><td>Done with the name.</td></tr>
-          <tr><td>Esc</td><td>Closes the More menu.</td></tr>
-        </tbody>
+            <tr><td>Enter</td><td>The same column on the next line. On the last line, a new line.</td></tr>
+            <tr><td>Shift + Enter</td><td>The same column on the line above.</td></tr>
+          </tbody>
       </table>
     </div>
   </section>
@@ -188,11 +162,8 @@ Ready-mix concrete,Concrete,CY,165,42,6930.00,5% waste</pre>
   <section aria-labelledby="habits">
     <div class="qg-section-head"><h2 id="habits">Good to Know</h2></div>
     <ul class="qg-habits">
-      <li><b>The sheet lives in this browser.</b> It saves as you type, but another browser or computer starts empty, and clearing the browser's data clears it. Export a CSV to keep it.</li>
-      <li><b>From the Material Library.</b> Its <b>Add to Estimator</b> link opens the Estimator with that material on a new line, priced, named by its material, thickness and finish, with its size and supplier in the notes. <b>Material Library</b> in the top bar goes there. The library is in beta and still being filled in.</li>
-      <li><b>Nothing leaves your computer.</b> The Estimator has no server: CSV files are the only way a sheet goes anywhere.</li>
-      <li><b>Two tabs stay in step.</b> An edit in one shows up in the other.</li>
-      <li><b>Exports are safe in Excel.</b> A cell that starts with <code>=</code>, <code>+</code>, <code>-</code> or <code>@</code> gets a leading <code>'</code> so it stays text; import takes it off again.</li>
+      <li><b>The sheet lives in this browser.</b> Export a CSV to keep it.</li>
+      <li><b>From the Material Library.</b> <b>Add to Estimator</b> there adds the material here, priced.</li>
     </ul>
   </section>
 </div>

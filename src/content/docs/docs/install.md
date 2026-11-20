@@ -5,141 +5,142 @@ description: "Install the two Alexandria packages in Rhino 8, keep them updated,
 
 <!-- Written by tools/sync.py from alexandria_phoenix/INSTALL.md. Edit it there and run the sync, not this page. -->
 
-Alexandria comes as two packages for Rhino 8 on Windows, both installed from Rhino's Package Manager:
+Two packages for Rhino 8 on Windows, installed from Rhino's Package Manager.
 
 | Package | Adds |
 |---|---|
-| **Alexandria Rhino Tools** | The **Alexandria Tools** toolbar, its commands and the four `DM-…` display modes |
-| **Alexandria Grasshopper Tools** | The components on Grasshopper's **Alexandria Phoenix** tab |
+| **Alexandria Rhino Tools** | The **Alexandria Tools** toolbar and the four `DM-…` display modes |
+| **Alexandria Grasshopper Tools** | Grasshopper's **Alexandria Phoenix** tab |
 
-The packages live in the office's Alexandria packages folder, `\\aria-design\Aria Projects\ARIA LLC\12_Aria_Architectural Design Standards Files\alexandria_packages`, not on McNeel's public server, so only people who can open that folder can install them. On a machine with the office drive mapped as X:, it's `X:\ARIA LLC\12_Aria_Architectural Design Standards Files\alexandria_packages`; either path works, but the full one doesn't depend on the drive letter. Install one package or both. Alexandria annotations use the Oswald font, which every office machine already has.
+They install from the office's packages folder, so you need the office drive:
 
-Alexandria needs Rhino 8.
+```
+\\aria-design\Aria Projects\ARIA LLC\12_Aria_Architectural Design Standards Files\alexandria_packages
+```
 
 ## 1. Add the Alexandria Folder to the Package Manager
 
 Once per computer.
 
-1. Open `\\aria-design\Aria Projects\ARIA LLC\12_Aria_Architectural Design Standards Files\alexandria_packages` in File Explorer to check you can reach it. If Windows asks you to sign in, sign in and tick **Remember my credentials**.
-2. In Rhino, open **Tools › Options › Advanced** and type `PackageManager.Sources` in the search box.
-3. Double-click the value of `Rhino.Options.PackageManager.Sources`, select all of it, and paste this in its place:
+1. Open the folder above in File Explorer to check you can reach it. If Windows asks, sign in and tick **Remember my credentials**.
+2. In Rhino, open **Tools › Options › Advanced** and search for `PackageManager.Sources`.
+3. Double-click the value and replace all of it with:
 
    ```
    https://yak.rhino3d.com;\\aria-design\Aria Projects\ARIA LLC\12_Aria_Architectural Design Standards Files\alexandria_packages
    ```
 
-   That's McNeel's server, which Rhino uses by default, followed by the Alexandria folder. If the old value listed anything besides `https://yak.rhino3d.com`, add it back at the end, after another `;`.
+   If the old value listed anything besides `https://yak.rhino3d.com`, add it at the end after another `;`.
 4. Click **OK**.
 
 ## 2. Install the Packages
 
-1. Run `PackageManager` (**Tools › Package Manager**).
-2. Search for `Alexandria`. Both packages appear.
-3. Select **Alexandria Rhino Tools** and click **Install**. Do the same for **Alexandria Grasshopper Tools**.
-4. Tick **Automatically update packages when Rhino starts** at the bottom of the window, so updates arrive by themselves.
-5. Close every Rhino window and start Rhino again.
+1. Run `PackageManager` and search for `Alexandria`.
+2. Install **Alexandria Rhino Tools** and **Alexandria Grasshopper Tools**.
+3. Tick **Automatically update packages when Rhino starts**.
+4. Close every Rhino window and start Rhino again.
 
 ## 3. Run Alexandria Setup
 
-Once, after installing.
+Type `AlexandriaSetup` and press Enter. Once, after installing.
 
-Type `AlexandriaSetup` and press Enter. It adds **Alexandria Tools** as a tab of Rhino's toolbars, right after **Standard**, imports the display modes, adds the **Alexandria** template to *File > New*, and closes any older Alexandria toolbar. Drag the tab anywhere along the strip; it stays there through updates.
+You now have:
 
-It also sets up the [Claude connectors](#claude-connectors) for Rhino and CorelDRAW. The first time, a window opens and shows what it installs; Rhino carries on meanwhile.
+- The **Alexandria Tools** tab, after **Standard**. Drag it anywhere; it stays there.
+- The `DM-…` display modes in every viewport's display menu.
+- The **Alexandria** template in *File > New*.
+- The **Alexandria Phoenix** tab in Grasshopper.
+- The [Claude connectors](#claude-connectors) for Rhino and CorelDRAW. A window shows what it installs the first time.
 
-`DM-WORKING`, `DM-AUTOCAD`, `DM-DIAGRAM` and `DM-DIAGRAM-SHADOW` are now in every viewport's display menu, and running `Grasshopper` shows the **Alexandria Phoenix** tab.
+## The Buttons
+
+The quick guide shows how to use each one. The render buttons need V-Ray for Rhino.
 
 | Button | Command | Does |
 |---|---|---|
-| Alexandria Setup | `AlexandriaSetup`, right click `AlexandriaSetPanels` | Adds this tab, installs the display modes and sets up the Claude connectors. Right click, *Set Panels*: arranges Rhino's right-hand panels to the standard |
-| Create Project | `AlexandriaCreateProject` | Asks for a project name, then a folder. Copies the project template there and saves the open model in its models folder (`design_models`) as `<project>_model_v1.3dm` |
-| Populate Model | `AlexandriaPopulateModel` | Sets an empty model to inches and the standard tolerances, and adds the standard layers, the annotation styles, the render backdrop (wall, modeled ground, scale figure) and the world light |
-| Set Material | `AlexandriaSetMaterial` | Gives each sublayer of a layer you choose a plaster material in its display colour, `MAT_1`, `MAT_2` and on |
-| Set Light | `AlexandriaSetLight` | Makes the selected surfaces or solids a standard V-Ray mesh light, on its sublayer of `DESIGN::ILLUMS` |
-| Apply Day Settings | `AlexandriaDayRender`, right click `AlexandriaDayRenderView` | Sets V-Ray to the bright day on a light blue sky, with the custom lights off. Right click, *Render Day and Save*: then asks where to save, renders the active view and saves it |
-| Apply Night Settings | `AlexandriaNightRender`, right click `AlexandriaNightRenderView` | Sets V-Ray to the dark night on a navy sky, where lit sign faces carry the image, with the custom lights back on. Right click, *Render Night and Save*: the same |
-| Standard Dimension | `AlexandriaDimension`, right click `AlexandriaLeader` | Left click: a dimension. Right click, *Standard Leader*: a leader with a dot. Both in the Alexandria annotation styles, filed under `DETAILS::ANNOTATIONS` |
-| Populate Detail | `AlexandriaPopulateDetail` | Adds the 2D drawing of a sign detail from the detail library to the model where you click |
-| Layout Manager | `AlexandriaLayoutManager` | One window for the design package: its pages, project and client details with the info page, drawings, details, colors and materials with the CMF page, images and renders, the PDF and the project facts |
-| Fabrication Manager | `AlexandriaFabricationManager` | The 1:1 cut linework for the fabricators: linework you select, copied flat into a fab area by material (aluminum, steel, acrylic, vinyl or other) and line type (cut, etch, score, fold), and a DXF per material |
-| Save as Rhino 7 | `AlexandriaSaveAsR7` | Saves a Rhino 7 copy next to your model as `<name>_r7.3dm`. You keep working in the original |
-| Save as Rhino 8 | `AlexandriaSaveAsR8` | Saves a Rhino 8 copy next to your model as `<name>_r8.3dm`. You keep working in the original |
+| Alexandria Setup | `AlexandriaSetup`, right click `AlexandriaSetPanels` | Adds the tab, the display modes, the template and the Claude connectors. Right click arranges the right-hand panels |
+| Create Project | `AlexandriaCreateProject` | Copies the project template to a folder you pick and saves the model there as `<project>_model_v1.3dm` |
+| Populate Model | `AlexandriaPopulateModel` | Sets inches and tolerances, and adds the standard layers, annotation styles, wall, ground, scale figure and world light |
+| Set Material | `AlexandriaSetMaterial` | Gives each sublayer of a layer a plaster material in its colour |
+| Set Light | `AlexandriaSetLight` | Makes the selected surfaces or solids a standard V-Ray light, on `DESIGN::ILLUMS` |
+| Apply Day Settings | `AlexandriaDayRender`, right click `AlexandriaDayRenderView` | Sets V-Ray to the day sky, sign lights off. Right click renders the active view and saves it |
+| Apply Night Settings | `AlexandriaNightRender`, right click `AlexandriaNightRenderView` | Sets V-Ray to the night sky, sign lights on. Right click renders and saves |
+| Standard Dimension | `AlexandriaDimension`, right click `AlexandriaLeader` | A dimension in the Alexandria style. Right click draws a leader with a dot |
+| Populate Detail | `AlexandriaPopulateDetail` | Adds a sign detail from the library where you click |
+| Layout Manager | `AlexandriaLayoutManager` | The design package: pages, details, drawings, CMF, images and the PDF |
+| Fabrication Manager | `AlexandriaFabricationManager` | The 1:1 cut linework by material and line type, and a DXF per material |
+| Save as Rhino 7 | `AlexandriaSaveAsR7` | Saves a Rhino 7 copy beside the model as `<name>_r7.3dm` |
+| Save as Rhino 8 | `AlexandriaSaveAsR8` | Saves a Rhino 8 copy beside the model as `<name>_r8.3dm` |
 
-The render buttons need V-Ray for Rhino. They set the sky as the background, and V-Ray's world light, sun, ground plane, camera and image size, and switch the design's own lighting: every V-Ray light but the world light and the sun. Day turns it off and Night back on as you set it up, and lit faces stay in the render by day. They change no layers: hide the wall, ground and scale figure yourself to see more of the sky. Click **Populate Model** once in each new model, and again to bring an older model's layers and annotation styles up to the standard. Nothing needs installing for the annotation styles: Populate Model adds the Alexandria styles, and Standard Dimension adds any that are missing. The drawing standard behind them is in [STANDARDS.md](/docs/standards/#drawings).
+The drawing standard behind them is in [STANDARDS.md](/docs/standards/#drawings).
 
 ## Updating
 
-**With automatic updates on**, Rhino looks in the Alexandria folder each time it starts and installs any newer version it finds. Restart Rhino once more to load it.
+- **With automatic updates on,** Rhino installs a new version as it starts. Restart once more to load it.
+- **Without them,** run `PackageManager`, open **Updates**, click **Update** on each Alexandria package and restart Rhino.
+- **After any update,** click **Alexandria Setup** once. Close other Rhino windows first: the last one closed decides how the toolbar opens next.
 
-**Without them**, run `PackageManager`, open the **Updates** tab, click **Update** on each Alexandria package, then restart Rhino.
+Your version is on the Package Manager's **Installed** tab.
 
-After an update, restart Rhino and click **Alexandria Setup** once more. New buttons appear right away, the toolbar keeps its place, and the display modes and the **Alexandria** template update. With more than one Rhino open, close the others first: Rhino writes its toolbar back to the file when it closes, so the last one closed decides what opens next.
-
-**Updating from 1.6**, click **Alexandria Setup** once: the toolbar leaves its own row and becomes a tab after **Standard**, with its new button order.
-
-**Updating from 1.5 or earlier**, the toolbar disappears once: it now opens from Rhino's own UI folder instead of the package's, which changed at every update and lost the toolbar's place. Type `AlexandriaSetup` to bring it back for good. Grasshopper components already placed in definitions update by themselves. A definition saved before a component gained an input reports "Input parameter chunk is missing" once when it opens; save it again to clear the message.
-
-To see which version you have, look at the **Installed** tab of the Package Manager.
+Coming from 1.6 or earlier, type `AlexandriaSetup` once to bring the toolbar back as a tab. A definition that reports "Input parameter chunk is missing" needs saving once more.
 
 ## Moving from the Old Install
 
-Before the packages, the components came as a package named **Alexandria Phoenix**, and the toolbar was a file dragged onto Rhino.
+For a computer that still has the old **Alexandria Phoenix** package and the dragged-in toolbar.
 
-1. In the Package Manager's **Installed** tab, select **Alexandria Phoenix** and click **Uninstall**. Otherwise Grasshopper finds every component twice.
+1. In the Package Manager's **Installed** tab, uninstall **Alexandria Phoenix**. Otherwise Grasshopper finds every component twice.
 2. Install both packages as above and restart Rhino.
-3. Click **Alexandria Setup**. It closes the dragged-in toolbar and updates the display modes in place.
+3. Click **Alexandria Setup**.
 
 ## Uninstalling
 
-In the Package Manager's **Installed** tab, select the package, click **Uninstall** and restart Rhino. The display modes stay; delete them in **Tools › Options › View › Display Modes** if you no longer want them.
+In the Package Manager's **Installed** tab, select the package, click **Uninstall** and restart Rhino. To remove the display modes too, delete them in **Tools › Options › View › Display Modes**.
 
 ## If Something's Missing
 
-- **The packages don't show up in the search.** Check that File Explorer opens the folder, and that the sources value matches the one in step 1 exactly.
-- **The toolbar doesn't appear.** Type `AlexandriaSetup`. If it's open but hidden, run `Toolbar`, pick **Alexandria Tools** in the list of toolbar files and tick **Alexandria Tools**.
-- **The toolbar moved back.** With several Rhino windows open, each saves where the toolbars are when it closes, and the last one to close wins. Dock the toolbar in the Rhino you close last.
-- **The right-hand panels look different.** Rhino keeps them per version, so a new Rhino starts with its own. Right click **Alexandria Setup** to arrange them to the standard. Panels that aren't on the standard list close, and you can open them again from **Panels** in the menu.
-- **An `Alexandria…` command is unknown.** Alexandria Rhino Tools isn't installed or Rhino hasn't been restarted since.
+- **The packages don't show up in the search.** Check that File Explorer opens the folder, and that the sources value matches step 1 exactly.
+- **The toolbar doesn't appear.** Type `AlexandriaSetup`. If it's still hidden, run `Toolbar`, pick the **Alexandria Tools** file and tick **Alexandria Tools**.
+- **The toolbar moved back.** Dock it in the Rhino window you close last.
+- **The right-hand panels look different.** Right click **Alexandria Setup**. Panels it closes reopen from **Panels** in the menu.
+- **An `Alexandria…` command is unknown.** Install Alexandria Rhino Tools, then restart Rhino.
 
 ## Claude Connectors
 
-A connector (an MCP server) lets Claude work in a program on your PC: draw in the open Rhino model, or edit the document open in CorelDRAW. **Alexandria Setup** installs both and adds them to Claude, so there's nothing to do by hand. A PC without Rhino installs them from the `claude_connectors` folder in `alexandria_packages`, or from the hub's Downloads page: double-click **Install Claude Connectors**.
+A connector lets Claude work in a program on your PC: the open Rhino model, or the open CorelDRAW document. **Alexandria Setup** installs both, for Claude Desktop and Claude Code, with nothing to do by hand.
 
-| Connector | In Claude it's | What gets installed |
+| Connector | In Claude it's | Installs |
 |---|---|---|
-| Rhino | `rhino-mcp-platform` | McNeel's own **Rhino-MCP-Platform** package, into Rhino 8 from McNeel's server. Needs Rhino 8.19 or later |
-| CorelDRAW | `coreldraw-live` | A CorelDRAW server with its own Python, about 150 MB. Only on a PC that has CorelDRAW |
+| Rhino | `rhino-mcp-platform` | McNeel's **Rhino-MCP-Platform** package. Needs Rhino 8.19 or later |
+| CorelDRAW | `coreldraw-live` | A CorelDRAW server, about 150 MB. Only on a PC with CorelDRAW |
 
-Both are added to **Claude Desktop** and to **Claude Code**, whichever the PC has. After the first setup, quit Claude Desktop from its tray icon (right-click, **Quit**) and open it again; the two show under **Settings › Developer**. Restart Rhino too, to load the new package.
-
-- **Rhino.** Ask Claude to work in Rhino and it opens one if none is running.
-- **CorelDRAW.** Open the document in CorelDRAW first. Claude works in that document and never starts CorelDRAW by itself. Each change is one step of CorelDRAW's Undo.
-
-Setup leaves the rest of Claude's settings as they are: it backs the settings file up beside it before adding its two entries, and a connector of the same name that you set up yourself stays as it is. A Claude Desktop that already has McNeel's **Rhino MCP Platform** extension gets no second Rhino entry. Everything it installs is in `%USERPROFILE%\.alexandria\claude_connectors`, with `install.log`, which says what went wrong when something does.
-
-To take them out again, open PowerShell in the `claude_connectors` folder and run `powershell -ExecutionPolicy Bypass -File install.ps1 -Uninstall`.
+- **After the first setup,** quit Claude Desktop from its tray icon and open it again, and restart Rhino. The two show under **Settings › Developer**.
+- **Rhino.** Ask Claude to work in Rhino. It opens one if none is running.
+- **CorelDRAW.** Open the document first. Claude never starts CorelDRAW by itself.
+- **No Rhino on the PC?** Double-click **Install Claude Connectors** in the `claude_connectors` folder of `alexandria_packages`, or get it from the hub's Downloads page.
+- **Your Claude settings are safe.** Setup backs the settings file up and leaves connectors you set up yourself alone.
+- **Something went wrong?** See `install.log` in `%USERPROFILE%\.alexandria\claude_connectors`.
+- **To remove them,** open PowerShell in the `claude_connectors` folder and run `powershell -ExecutionPolicy Bypass -File install.ps1 -Uninstall`.
 
 ## Claude in Rhino
 
-Optional. McNeel's **Rhino-MCP-Platform** package adds an AI chat panel to Rhino, where Claude works in the open model and can run the Alexandria commands. Rhino 9 has the panel built in, but Rhino 8 doesn't: there, `AIPanel` exists only once the package is installed. The package needs Rhino 8.19 or later, running on .NET 8, Rhino 8's default. Claude needs a Pro or Max plan, or a Team or Enterprise seat, and each person signs in with their own account.
+Optional: a chat panel in Rhino where Claude works in the open model. It needs Rhino 8.19 or later and a paid Claude plan. Each person signs in with their own account.
 
-1. **Install the panel.** **Alexandria Setup** has installed it already, with the [Claude connectors](#claude-connectors). If `AIPanel` is unknown after a restart, run `PackageManager`, search for `Rhino-MCP-Platform` and install it. It's on McNeel's server, so it shows up without the Alexandria folder.
+1. **Check the panel.** Alexandria Setup has installed it. If `AIPanel` is unknown after a restart, run `PackageManager` and install `Rhino-MCP-Platform`.
 2. **Install Claude Code.** Open PowerShell and run:
 
    ```powershell
    irm https://claude.ai/install.ps1 | iex
    ```
 
-   This puts Claude Code in `%USERPROFILE%\.local\bin`, where the panel looks for it. The copy inside the Claude desktop app doesn't count: the panel doesn't find it.
+   It lands in `%USERPROFILE%\.local\bin`, where the panel looks for it. The copy inside the Claude desktop app doesn't count.
 3. **Restart Rhino.**
-4. **Sign in.** Type `AIPanel` to open the panel. In its chat box, type `/login` and press Enter, then sign in to Claude in the browser page that opens. Once per computer.
-5. **Set it up.** Type `/settings` in the panel to open **AI Settings**:
-   - **AI Agents:** select **Claude**, leave the model at its default and paste the prompt below into **Prompt**.
-   - **Tools:** untick `close_doc`, which closes the open model and drops unsaved changes.
-   - **MCP Servers** and **Loading:** leave them as they are.
+4. **Sign in.** Type `AIPanel`, then `/login` in its chat box, and sign in on the page that opens.
+5. **Set it up.** Type `/settings` in the panel:
+   - **AI Agents:** select **Claude** and paste the prompt below into **Prompt**.
+   - **Tools:** untick `close_doc`, which closes the model without saving.
    - Click **Save**.
 
-The prompt tells Claude how Alexandria works, since it starts every chat knowing only the open model:
+The prompt:
 
 ```
 You're working inside Rhino 8 on sign design projects, with Alexandria Rhino Tools installed.
@@ -154,11 +155,11 @@ You're working inside Rhino 8 on sign design projects, with Alexandria Rhino Too
 
 If it doesn't work:
 
-- **`AIPanel` is an unknown command.** The package isn't installed, or Rhino hasn't been restarted since. If it is installed and Rhino says it couldn't load it, update Rhino 8 (**Help › Check for Updates**), and run `SetDotNetRuntime` to check Rhino is on .NET 8 (*NETCore*), not .NET Framework.
-- **"Claude CLI not found. Install Claude Code."** Claude Code isn't in `%USERPROFILE%\.local\bin`, or Rhino hasn't been restarted since it was installed. Do step 2, then restart Rhino.
+- **`AIPanel` is an unknown command.** Install the package and restart Rhino. If Rhino can't load it, update Rhino 8 (**Help › Check for Updates**) and run `SetDotNetRuntime` to check it's on .NET 8 (*NETCore*).
+- **"Claude CLI not found. Install Claude Code."** Do step 2, then restart Rhino.
 - **Claude needs sign-in.** Type `/login` in the panel again.
 - **"No agent available."** In `/settings`, select **Claude** and tick **Enabled**.
 
 ## With a Copy of This Repo
 
-The repo's `dist/` folder holds the same two packages as the shared folder, as of the last commit. Adding your clone's `dist` folder to the sources instead of the shared folder works the same way, but updates arrive only when you pull.
+Add your clone's `dist` folder to the sources instead of the shared folder. Updates then arrive only when you pull.

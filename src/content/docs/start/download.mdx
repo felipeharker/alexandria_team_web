@@ -1,6 +1,6 @@
 ---
 title: Download
-description: The latest Alexandria release as a zip, and the two ways to install it.
+description: The latest Alexandria release, and how to install it.
 ---
 
 import { Tabs, TabItem, Steps, FileTree } from '@astrojs/starlight/components';
@@ -8,14 +8,12 @@ import ReleaseCard from '../../../components/ReleaseCard.astro';
 
 <ReleaseCard />
 
-The zip is an exact copy of the office's shared `alexandria_packages` folder: both packages, the docs as Markdown and PDF, the two quick guides, the Alexandria Rhino template and the project template.
-
-## Two Ways to Install
+## Install
 
 <Tabs>
 <TabItem label="From the Office Drive">
 
-**Use this one if you can.** Rhino installs from the shared folder and updates itself whenever a new release lands there, so you never need the zip. Follow [Install and Update](/docs/install/).
+The best way: Rhino updates itself. Follow [Install and Update](/docs/install/).
 
 </TabItem>
 <TabItem label="From the Zip">
@@ -25,13 +23,13 @@ For a computer that can't reach the office drive.
 <Steps>
 
 1. Download the zip and unzip it somewhere it can stay, like `Documents\alexandria_packages`.
-2. In Rhino, open **Tools › Options › Advanced** and search for `PackageManager.Sources`. Set its value to `https://yak.rhino3d.com;` followed by the full path of the unzipped folder, the one with the `.yak` files in it.
-3. Run `PackageManager`, search for `Alexandria`, install both packages, and restart Rhino.
+2. In Rhino, open **Tools › Options › Advanced** and search for `PackageManager.Sources`. Set it to `https://yak.rhino3d.com;` followed by the unzipped folder's full path.
+3. Run `PackageManager`, search for `Alexandria`, install both packages and restart Rhino.
 4. Type `AlexandriaSetup` and press Enter.
 
 </Steps>
 
-Installs from the zip don't update by themselves. For a new release, download the new zip, replace the folder's contents with it, and restart Rhino.
+To update, download the new zip, replace the folder's contents and restart Rhino.
 
 </TabItem>
 </Tabs>
@@ -41,14 +39,14 @@ Installs from the zip don't update by themselves. For a new release, download th
 <FileTree>
 
 - alexandria_packages/
-  - alexandria rhino tools-….yak the Alexandria Tools toolbar, its commands and the display modes
-  - alexandria grasshopper tools-….yak the Alexandria Phoenix tab in Grasshopper
+  - alexandria rhino tools-….yak the Rhino toolbar
+  - alexandria grasshopper tools-….yak the Grasshopper tab
   - alexandria_tools_quick_guide.html also .pdf
   - alexandria_phoenix_quick_guide.html also .pdf
-  - INSTALL.md also .pdf, as [Install and Update](/docs/install/)
-  - README.md also .pdf, as [Alexandria Phoenix](/docs/phoenix/)
-  - STANDARDS.md also .pdf, as [Standards](/docs/standards/)
-  - alexandria_template.3dm the Alexandria template, a model with the standards in it; Alexandria Setup adds it to **File › New**
-  - project_template/ what Create Project copies into a new project's folder
+  - INSTALL.md also .pdf
+  - README.md also .pdf
+  - STANDARDS.md also .pdf
+  - alexandria_template.3dm the Rhino template
+  - project_template/ copied by Create Project
 
 </FileTree>
