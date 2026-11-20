@@ -14,7 +14,8 @@
 // Addresses work as they did on the static site: the hub's pages first, then the office tools (/estimator,
 // /materials, /colors, /site-plan, /vectorizer, /grid, /image-grid, /braille, /sign-package) wherever the hub has no page,
 // so /estimator/guide stays the hub's. /sources comes from the office repo the same way: the suppliers' documents the
-// Wiki links to. Run it locally with `node --env-file=<file> server/gate.mjs` (PORT, HUB_USERS and
+// Wiki links to. /management is shared: its pages are the hub's (unlisted), and the CSV files they show
+// (/management/accounts.csv and the others) are the office repo's, as they hold the office's own records. Run it locally with `node --env-file=<file> server/gate.mjs` (PORT, HUB_USERS and
 // SESSION_SECRET in the file, and OFFICE_DIR=../alexandria_office to serve the office tools from that checkout).
 
 import { createHash, createHmac, timingSafeEqual } from 'node:crypto';
@@ -31,7 +32,9 @@ const HUB = fileURLToPath(new URL('../dist', import.meta.url));
 const PORT = Number(process.env.PORT) || 10000;
 // the office tools, and `sources`: the suppliers' own documents the Wiki's supplier pages link to (kept in the
 // private alexandria_office repo, not this public one, as they are other people's documents)
-const OFFICE_TOOLS = new Set(['estimator', 'materials', 'colors', 'site-plan', 'vectorizer', 'grid', 'image-grid', 'braille', 'sign-package', 'etch-text', 'sources']);
+// `management`: the CSV files behind the hub's unlisted management pages (src/content/docs/management/), private
+// for the same reason: they are the office's own records, and this repository is public
+const OFFICE_TOOLS = new Set(['estimator', 'materials', 'colors', 'site-plan', 'vectorizer', 'grid', 'image-grid', 'braille', 'sign-package', 'etch-text', 'sources', 'management']);
 const DAY = 24 * 60 * 60 * 1000;
 const SESSION_DAYS = 30;
 const SESSION_COOKIE = 'alexandria_session';

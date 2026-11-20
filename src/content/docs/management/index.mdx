@@ -1,0 +1,45 @@
+---
+title: Management
+description: "The office's management tables: the accounts, the project work and the roadmap."
+# unlisted: in no menu and out of the hub's search
+pagefind: false
+---
+
+{/* The management pages (user, 2026-11-20) are unlisted: none is in the sidebar (astro.config.mjs) or the search,
+    and nothing else on the hub links to them. Each is one CSV file from the private alexandria_office repo
+    (public/management/), shown by ManagementTable.astro. A new table gets a file there, a page here with its
+    columns, and a row in the table below. */}
+
+The tables Alexandria is run from. These pages are in no menu and not in search, so keep this address.
+
+| Page | What It Tracks | File |
+|---|---|---|
+| [Account Migration](/management/accounts/) | Each service Alexandria runs on, and whether its account has moved to the company email. | [accounts.csv](/management/accounts.csv) |
+| [Project Work and Assignments](/management/work/) | Who is on what, project by project, and when it's due. | [work.csv](/management/work.csv) |
+| [Development and Project Roadmap](/management/roadmap/) | What's being built and what's coming, with its dates. | [roadmap.csv](/management/roadmap.csv) |
+
+## The CSV Standard
+
+Each table is one CSV file, and its page shows the file as it is. Every file follows the same rules; each page lists its own columns.
+
+| Rule | What It Means |
+|---|---|
+| One file per table | A short lowercase name, such as `work.csv`, in `alexandria_office\public\management\`. |
+| A header row | The first row names the columns, spelled as the page's **The Columns** gives them. The page finds a column by its name, so the order can change. |
+| One row per item | A blank row is skipped. A cell holding a comma or a line break goes in quotes, which Excel does for you. |
+| The first column | Names the row: the service, the project or the item. A row needs one. |
+| Notes | Always the last column, for anything else. |
+| Dates | `2026-12-04`: year, month, day. Leave the cell empty when there's no date yet. If Excel rewrites one as `12/4/2026`, the page still reads it. |
+| Status | `Inbox`, `Later`, `Next`, `Doing`, `Waiting` or `Done`, as on the planning board. |
+| Priority | `Urgent`, `High`, `Normal` or `Low`, as on the planning board. |
+| People | First names. For two people, put `;` between them. |
+| Saving | In Excel, **CSV UTF-8 (Comma delimited)**, so every character survives. |
+| No secrets | Never a password, a key, a token or a recovery code, in any cell. They belong in a password manager. |
+
+A column that isn't in a page's list is still shown, as plain text, so a table can gain one whenever it's needed. Add it before Notes, and add it to the page's list.
+
+## Changing a Table
+
+1. Open the file in Excel, from `alexandria_office\public\management\`.
+2. Change it and save it, keeping the CSV format.
+3. Commit and push alexandria_office. The page shows the change within two minutes.

@@ -1,0 +1,32 @@
+---
+title: Development and Project Roadmap
+description: What's being built and what's coming, with its dates.
+# unlisted: in no menu and out of the hub's search. The table wants the width, so no table of contents.
+pagefind: false
+tableOfContents: false
+---
+
+import ManagementTable from '../../../components/ManagementTable.astro';
+
+{/* One of the management pages (see management/index.mdx): the table is alexandria_office's
+    public/management/roadmap.csv, read in the browser. Its Category, Subcategory, Status and Priority are the
+    planning board's (alexandria_management, planning/README.md). */}
+
+[Management](/management/) › What's being built and what's coming, with its dates.
+
+<ManagementTable file="roadmap.csv" done={{ column: 'Status', is: 'Done', label: 'done' }} tally="Status" />
+
+## The Columns
+
+The file is [roadmap.csv](/management/roadmap.csv), one row per tool, feature or project, under [the CSV standard](/management/#the-csv-standard). It's the long view; the day-to-day items stay on the planning board.
+
+| Column | What Goes in It |
+|---|---|
+| Item | `Subject: what changes`, as on the planning board, such as Site Plan: export to PDF. A row without one is skipped. |
+| Category | The broad part of the work: `Design Projects`, `Tools`, `R&D`, `Presentations`, `Standards` or `Training`. |
+| Subcategory | The narrower part inside it, such as `Rhino`, `Grasshopper`, `Web Tools` or `Hub` under Tools. |
+| Status | `Inbox`, `Later`, `Next`, `Doing`, `Waiting` or `Done`. |
+| Priority | `Urgent`, `High`, `Normal` or `Low`. |
+| Start | The date work starts or started, as `2026-12-04`. |
+| Target | A real deadline or a commitment, as `2026-12-04`, not a guess. Leave it empty until there is one. A date that has passed on an item that isn't `Done` is marked. |
+| Notes | Anything else: what it depends on, what's still open. |

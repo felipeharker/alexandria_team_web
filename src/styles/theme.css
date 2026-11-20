@@ -1,7 +1,8 @@
 /* The Alexandria style: one plain look for the hub, the quick guides and the office tools.
 
    Greys for everything, one blue for buttons, the Beta tag and what's under the pointer (a tool's card, a
-   sidebar entry), and colour otherwise only where it codes something (the toolbar groups in the guides).
+   sidebar entry), and colour otherwise only where it codes something (the toolbar groups in the guides, the state tags in a
+   management table).
    The blue was a green until 2026-11-18 (user).
    Inter for reading, IBM Plex Mono for commands and numbers.
    The Material Estimator (alexandria_office/public/styles.css) uses the same values. */
@@ -33,6 +34,11 @@
 	--ax-rule: #2b3036;
 	--ax-rule-strong: #3a4048;
 	--ax-radius: 8px;
+	/* the two colours that code a state in a management table's tags: done, and wants attention */
+	--ax-good: #7fcf9f;
+	--ax-good-soft: #17301f;
+	--ax-warn: #e6b566;
+	--ax-warn-soft: #33270f;
 }
 
 :root[data-theme='light'] {
@@ -58,6 +64,10 @@
 	--ax-tint: #f6f7f9;
 	--ax-rule: #e2e5e9;
 	--ax-rule-strong: #cdd2d8;
+	--ax-good: #1f6b3f;
+	--ax-good-soft: #e1f3e7;
+	--ax-warn: #8a5a00;
+	--ax-warn-soft: #fbefd6;
 }
 
 /* ---------------------------------------------------------------- frame */
@@ -1222,4 +1232,94 @@ h3.ax-supplier-table + .ax-chart {
 /* All Downloads: the row a Downloads entry in the sidebar opens on, in the grey of the page you're on */
 .sl-markdown-content tr:has(> td > span[id]:target) > td {
 	background: var(--sl-color-gray-6);
+}
+
+/* a management table (ManagementTable.astro, management/*.mdx): a CSV file in the supplier pages' table (.ax-chart),
+   with a count over it. Colour only codes a state here: a tag is green when it's done, amber when it wants
+   attention, and grey otherwise. The count's bar is grey. */
+:root:has(.ax-manage) {
+	--sl-content-width: 68rem;
+}
+.ax-manage {
+	margin-block: 1.25rem 2rem;
+}
+.ax-manage-progress {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 6px 12px;
+	margin-bottom: 1rem;
+	font-size: var(--sl-text-sm);
+	color: var(--sl-color-gray-2);
+}
+.ax-manage-bar {
+	flex: 0 1 16rem;
+	min-width: 8rem;
+	height: 8px;
+	border-radius: 4px;
+	background: var(--ax-rule);
+	overflow: hidden;
+}
+.ax-manage-bar span {
+	display: block;
+	height: 100%;
+	width: 0;
+	background: var(--sl-color-gray-3);
+}
+.ax-manage-note {
+	margin: 0;
+	font-size: var(--sl-text-sm);
+	color: var(--sl-color-gray-3);
+}
+.ax-manage .ax-chart {
+	margin-block: 0;
+}
+.ax-manage .ax-chart td {
+	vertical-align: top;
+	padding-block: 10px;
+	line-height: 1.5;
+}
+.ax-manage td.name {
+	font-weight: 600;
+	color: var(--sl-color-white);
+}
+.ax-manage td.wide {
+	min-width: 16rem;
+	white-space: pre-line;
+}
+.ax-manage td.date {
+	font-family: var(--sl-font-mono);
+	font-size: 0.8125rem;
+	white-space: nowrap;
+}
+.ax-manage td.late {
+	color: var(--ax-warn);
+	font-weight: 500;
+}
+.ax-tag {
+	display: inline-block;
+	padding: 1px 7px;
+	border: 1px solid var(--ax-rule-strong);
+	border-radius: 4px;
+	font-size: 0.68rem;
+	font-weight: 600;
+	line-height: 1.5;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	white-space: nowrap;
+	color: var(--sl-color-gray-3);
+}
+.ax-tag.active {
+	border-color: var(--sl-color-gray-3);
+	color: var(--sl-color-white);
+}
+.ax-tag.good {
+	border-color: var(--ax-good);
+	background: var(--ax-good-soft);
+	color: var(--ax-good);
+}
+.ax-tag.warn {
+	border-color: var(--ax-warn);
+	background: var(--ax-warn-soft);
+	color: var(--ax-warn);
 }

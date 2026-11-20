@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import sitemap from '@astrojs/sitemap';
 
 // The Alexandria hub: guides, the latest release, the office tools and the standards, in one place.
 // Pages are Markdown or MDX in src/content/docs; the sidebar below is the site's table of contents.
@@ -55,6 +56,8 @@ export default defineConfig({
 		'/tools': '/',
 	},
 	integrations: [
+		// Starlight would add the sitemap itself; it's added here to leave the unlisted management pages out of it.
+		sitemap({ filter: (page) => !new URL(page).pathname.startsWith('/management/') }),
 		starlight({
 			title: 'Alexandria',
 			description: 'Tools, guides and standards for Alexandria: the Rhino and Grasshopper tools and the office tools.',
@@ -84,6 +87,9 @@ export default defineConfig({
 				'./src/styles/guides.css',
 				'./src/styles/theme.css',
 			],
+			// Not in the sidebar on purpose (user, 2026-11-20): the management pages, src/content/docs/management/, which
+			// are unlisted. They are out of the search (`pagefind: false` in each) and the sitemap (above) too, and
+			// nothing links to them.
 			sidebar: [
 				{
 					label: 'Starting Out',
