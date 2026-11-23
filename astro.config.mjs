@@ -108,14 +108,6 @@ export default defineConfig({
 					// has the tool (user, 2026-11-18). Change the two together.
 					items: [
 						{
-							label: 'Rhino/Grasshopper',
-							collapsed: false,
-							items: [
-								{ label: 'Rhino Tools', slug: 'rhino' },
-								{ label: 'Grasshopper Components', slug: 'grasshopper' },
-							],
-						},
-						{
 							label: 'Design',
 							collapsed: false,
 							items: [
@@ -123,14 +115,6 @@ export default defineConfig({
 								{ label: 'Vectorizer', slug: 'vectorizer/guide' },
 								{ label: 'Braille Lettering Designer', slug: 'braille/guide' },
 								{ label: 'Sign Package Maker', slug: 'sign-package/guide' },
-							],
-						},
-						{
-							label: 'Parametric',
-							collapsed: false,
-							items: [
-								{ label: 'Parametric Grid', slug: 'grid/guide' },
-								{ label: 'Image Grid', slug: 'image-grid/guide' },
 							],
 						},
 						{
@@ -144,27 +128,34 @@ export default defineConfig({
 								{ label: 'Etch Text', slug: 'etch-text/guide' },
 							],
 						},
+						{
+							label: 'Parametric',
+							collapsed: false,
+							items: [
+								{ label: 'Parametric Grid', slug: 'grid/guide' },
+								{ label: 'Image Grid', slug: 'image-grid/guide' },
+							],
+						},
+						{
+							label: 'Rhino/Grasshopper',
+							collapsed: false,
+							items: [
+								{ label: 'Rhino Tools', slug: 'rhino' },
+								{ label: 'Grasshopper Components', slug: 'grasshopper' },
+							],
+						},
 						// no guides yet: a plain entry with an Alpha tag, as in Tools, and its own short page
 						{ label: 'Permitting', slug: 'permitting/guide', badge: alpha, attrs: { class: 'ax-side-section' } },
 					],
 				},
 				// The tools, under one heading with a group per category, as on the home page (user, 2026-11-11 and
-				// 2026-11-17). Each category opens with its page (tools/*.mdx, the home section's Details link). The web
+				// 2026-11-17), in the order Design, Fabrication, Parametric, Rhino/Grasshopper (user, 2026-11-23). Each category opens with its page (tools/*.mdx, the home section's Details link). The web
 				// tools open themselves; the Rhino and Grasshopper packages open on their sections of the category page,
 				// as their quick guides already have entries above and a page with two entries would open two groups.
 				{
 					label: 'Tools',
 					collapsed: true,
 					items: [
-						{
-							label: 'Rhino/Grasshopper',
-							collapsed: false,
-							items: [
-								{ label: 'Overview', slug: 'tools/rhino-grasshopper' },
-								{ label: 'Alexandria Tools', link: '/tools/rhino-grasshopper/#alexandria-tools' },
-								{ label: 'Alexandria Phoenix', link: '/tools/rhino-grasshopper/#alexandria-phoenix' },
-							],
-						},
 						{
 							label: 'Design',
 							collapsed: false,
@@ -175,17 +166,6 @@ export default defineConfig({
 								{ label: 'Braille Lettering Designer', link: '/braille/' },
 								// new, and its DWG hasn't been opened in AutoCAD yet
 								{ label: 'Sign Package Maker', link: '/sign-package/', badge: 'Beta' },
-							],
-						},
-						{
-							label: 'Parametric',
-							collapsed: false,
-							// split from Design Tools (user, 2026-11-17): grids of cells, each sized by a rule
-							items: [
-								{ label: 'Overview', slug: 'tools/parametric' },
-								{ label: 'Parametric Grid', link: '/grid/' },
-								// new
-								{ label: 'Image Grid', link: '/image-grid/', badge: 'Beta' },
 							],
 						},
 						{
@@ -201,6 +181,26 @@ export default defineConfig({
 								{ label: 'Material Library', link: '/materials/', badge: 'Beta' },
 								// new, and its DXF hasn't been run on the laser or the router yet
 								{ label: 'Etch Text', link: '/etch-text/', badge: 'Beta' },
+							],
+						},
+						{
+							label: 'Parametric',
+							collapsed: false,
+							// split from Design Tools (user, 2026-11-17): grids of cells, each sized by a rule
+							items: [
+								{ label: 'Overview', slug: 'tools/parametric' },
+								{ label: 'Parametric Grid', link: '/grid/' },
+								// new
+								{ label: 'Image Grid', link: '/image-grid/', badge: 'Beta' },
+							],
+						},
+						{
+							label: 'Rhino/Grasshopper',
+							collapsed: false,
+							items: [
+								{ label: 'Overview', slug: 'tools/rhino-grasshopper' },
+								{ label: 'Alexandria Tools', link: '/tools/rhino-grasshopper/#alexandria-tools' },
+								{ label: 'Alexandria Phoenix', link: '/tools/rhino-grasshopper/#alexandria-phoenix' },
 							],
 						},
 						// A category with no tools yet (user, 2026-11-12): a plain entry with an Alpha tag and no group to

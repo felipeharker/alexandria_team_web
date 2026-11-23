@@ -15,21 +15,13 @@ import ToolCard from '../../components/ToolCard.astro';
 import release from '../../data/release.json';
 
 {/* Every tool gets the same card here, by category (user, 2026-11-11), each a section of its own, as in the
-    sidebar, with a page each under /tools that its Details link opens: Rhino/Grasshopper Tools; Design Tools (the Site Plan, the Vectorizer,
+    sidebar, in the order Design, Fabrication, Parametric, Rhino/Grasshopper (user, 2026-11-23), with a page each under /tools that its Details link opens: Rhino/Grasshopper Tools; Design Tools (the Site Plan, the Vectorizer,
     the Braille Lettering Designer and the Sign Package Maker, in beta); Parametric Tools (the Parametric Grid and the Image Grid, in beta,
     split from Design Tools on 2026-11-17); Fabrication Tools (the Color Matcher, the Color Library, and the Material Estimator,
     Material Library and Etch Text, all three in beta). Add a new tool as a ToolCard in its category, with a drawing of what it makes in ToolArt.astro and the next sheet
     number in its category (R, D, P or F). Since 2026-11-23 a card is only its drawing, name, number and links, with no line
     of text (user: "graphics strong, words brief, no sentences"); Starting Out is icons and names. Titles,
     labels and links are in Title Case. */}
-
-<section class="ax-section not-content">
-<header><h2>Rhino/Grasshopper Tools</h2><a href="/tools/rhino-grasshopper/">Details →</a></header>
-<div class="ax-tools">
-<ToolCard title="Alexandria Tools" art="alexandria-tools" code="R-01" tag={release.version} links={[{ label: 'Download', href: '/start/download/' }, { label: 'Guide', href: '/rhino/' }]} />
-<ToolCard title="Alexandria Phoenix" art="alexandria-phoenix" code="R-02" tag={release.version} links={[{ label: 'Download', href: '/start/download/' }, { label: 'Guide', href: '/grasshopper/' }]} />
-</div>
-</section>
 
 <section class="ax-section not-content">
 <header><h2>Design Tools</h2><a href="/tools/design/">Details →</a></header>
@@ -42,6 +34,17 @@ import release from '../../data/release.json';
 </section>
 
 <section class="ax-section not-content">
+<header><h2>Fabrication Tools</h2><a href="/tools/fabrication/">Details →</a></header>
+<div class="ax-tools">
+<ToolCard title="Color Matcher" art="color-matcher" code="F-01" links={[{ label: 'Open', href: '/colors/' }, { label: 'Guide', href: '/colors/guide/' }]} />
+<ToolCard title="Color Library" art="color-library" code="F-02" links={[{ label: 'Open', href: '/colors/library/' }, { label: 'Guide', href: '/colors/library/guide/' }]} />
+<ToolCard title="Material Estimator" badge="Beta" art="material-estimator" code="F-03" links={[{ label: 'Open', href: '/estimator/' }, { label: 'Guide', href: '/estimator/guide/' }]} />
+<ToolCard title="Material Library" badge="Beta" art="material-library" code="F-04" links={[{ label: 'Open', href: '/materials/' }, { label: 'Guide', href: '/materials/guide/' }]} />
+<ToolCard title="Etch Text" badge="Beta" art="etch-text" code="F-05" links={[{ label: 'Open', href: '/etch-text/' }, { label: 'Guide', href: '/etch-text/guide/' }]} />
+</div>
+</section>
+
+<section class="ax-section not-content">
 <header><h2>Parametric Tools</h2><a href="/tools/parametric/">Details →</a></header>
 <div class="ax-tools">
 <ToolCard title="Parametric Grid" art="parametric-grid" code="P-01" links={[{ label: 'Open', href: '/grid/' }, { label: 'Guide', href: '/grid/guide/' }]} />
@@ -50,13 +53,10 @@ import release from '../../data/release.json';
 </section>
 
 <section class="ax-section not-content">
-<header><h2>Fabrication Tools</h2><a href="/tools/fabrication/">Details →</a></header>
+<header><h2>Rhino/Grasshopper Tools</h2><a href="/tools/rhino-grasshopper/">Details →</a></header>
 <div class="ax-tools">
-<ToolCard title="Color Matcher" art="color-matcher" code="F-01" links={[{ label: 'Open', href: '/colors/' }, { label: 'Guide', href: '/colors/guide/' }]} />
-<ToolCard title="Color Library" art="color-library" code="F-02" links={[{ label: 'Open', href: '/colors/library/' }, { label: 'Guide', href: '/colors/library/guide/' }]} />
-<ToolCard title="Material Estimator" badge="Beta" art="material-estimator" code="F-03" links={[{ label: 'Open', href: '/estimator/' }, { label: 'Guide', href: '/estimator/guide/' }]} />
-<ToolCard title="Material Library" badge="Beta" art="material-library" code="F-04" links={[{ label: 'Open', href: '/materials/' }, { label: 'Guide', href: '/materials/guide/' }]} />
-<ToolCard title="Etch Text" badge="Beta" art="etch-text" code="F-05" links={[{ label: 'Open', href: '/etch-text/' }, { label: 'Guide', href: '/etch-text/guide/' }]} />
+<ToolCard title="Alexandria Tools" art="alexandria-tools" code="R-01" tag={release.version} links={[{ label: 'Download', href: '/start/download/' }, { label: 'Guide', href: '/rhino/' }]} />
+<ToolCard title="Alexandria Phoenix" art="alexandria-phoenix" code="R-02" tag={release.version} links={[{ label: 'Download', href: '/start/download/' }, { label: 'Guide', href: '/grasshopper/' }]} />
 </div>
 </section>
 
