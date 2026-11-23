@@ -1,0 +1,63 @@
+---
+// The home page's index strip (2026-11-23), like a drawing set's sheet index: one cell per tool category with its
+// sheet letter, its name, how many tools it holds and a small line glyph. A cell jumps to its section below.
+// The glyphs are drawn here, one per sheet letter, on a 48 × 48 sheet in the hub's greys.
+import type { Category } from '../tools';
+
+interface Props {
+	categories: Category[];
+}
+const { categories } = Astro.props;
+const two = (n: number) => String(n).padStart(2, '0');
+
+// P: a field of dots that grow away from one corner, as the Parametric Grid's cells do from an attractor
+const dots: [number, number, number][] = [];
+for (let j = 0; j < 4; j++) for (let i = 0; i < 4; i++) dots.push([9 + i * 10, 9 + j * 10, 0.9 + 0.55 * (i + (3 - j))]);
+---
+
+<section class="ax-section ax-index-wrap not-content">
+	<nav class="ax-index" aria-label="Tool categories">
+		{
+			categories.map((c) => (
+				<a href={`#${c.id}`}>
+					<span class="ax-chip">{c.code}</span>
+					<b set:html={c.short.replace('/', '/<wbr>')} />
+					<small>
+						{two(c.tools.length)} {c.tools.length === 1 ? 'tool' : 'tools'}
+					</small>
+					<svg class="ax-glyph" viewBox="0 0 48 48" aria-hidden="true">
+						{c.code === 'D' && (
+							<>
+								<path d="M24 7 42 16 24 25 6 16Z" />
+								<path d="M6 24l18 9 18-9M6 32l18 9 18-9" />
+							</>
+						)}
+						{c.code === 'F' && (
+							<>
+								<path d="M24 8 41 16.5 24 25 7 16.5Z" />
+								<path d="M7 16.5v14L24 39l17-8.5v-14M24 25v14" />
+							</>
+						)}
+						{c.code === 'PM' && (
+							<>
+								<path d="M8 40V15h22v25M4 40h40" />
+								<path d="M13 21h12v8H13z" />
+								<path d="M37 15v25M34.5 15h5M34.5 40h5" />
+							</>
+						)}
+						{c.code === 'P' && dots.map(([x, y, r]) => <circle cx={x} cy={y} r={r} />)}
+						{c.code === 'R' && (
+							<>
+								<rect x="5" y="9" width="16" height="11" rx="2" />
+								<rect x="27" y="28" width="16" height="11" rx="2" />
+								<path d="M21 14.5C29 14.5 19 33.5 27 33.5" />
+								<circle class="dot" cx="21" cy="14.5" r="1.6" />
+								<circle class="dot" cx="27" cy="33.5" r="1.6" />
+							</>
+						)}
+					</svg>
+				</a>
+			))
+		}
+	</nav>
+</section>

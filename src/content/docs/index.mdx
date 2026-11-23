@@ -11,17 +11,18 @@ hero:
 
 import About from '../../components/About.astro';
 import HubCard from '../../components/HubCard.astro';
-import ToolCard from '../../components/ToolCard.astro';
-import release from '../../data/release.json';
+import ToolIndex from '../../components/ToolIndex.astro';
+import ToolSection from '../../components/ToolSection.astro';
+import { categories } from '../../tools';
 
-{/* Every tool gets the same card here, by category (user, 2026-11-11), each a section of its own, as in the
-    sidebar, in the order Design, Fabrication, Permitting, Parametric, Rhino/Grasshopper (user, 2026-11-23), with a page each under /tools that its Details link opens: Rhino/Grasshopper Tools; Design Tools (the Site Plan, the Vectorizer
-    and the Braille Lettering Designer); Parametric Tools (the Parametric Grid and the Image Grid, in beta,
-    split from Design Tools on 2026-11-17); Fabrication Tools (the Color Matcher, the Color Library, and the Material Estimator,
-    Material Library and Etch Text, all three in beta); Permitting Tools (Photo Elevation, in beta, its first, added 2026-11-23). Add a new tool as a ToolCard in its category, with a drawing of what it makes in ToolArt.astro and the next sheet
-    number in its category (R, D, P, F, or PM for Permitting). Since 2026-11-23 a card is only its drawing, name, number and links, with no line
-    of text (user: "graphics strong, words brief, no sentences"); Starting Out is icons and names. Titles,
-    labels and links are in Title Case. */}
+{/* The page, top to bottom: the index strip (a cell per tool category: sheet letter, name, count, glyph), About, a
+    section per category, Starting Out. The tools and their order are in src/tools.ts: every tool gets the same card
+    (user, 2026-11-11), by category, in the order Design, Fabrication, Permitting, Parametric, Rhino/Grasshopper (user, 2026-11-23),
+    each category with a page under /tools that its Details link opens. A card is only its sheet number, drawing, name
+    and links, with no line of text (user, 2026-11-23: "graphics strong, words brief, no sentences"); Starting Out is
+    icons and names. Titles, labels and links are in Title Case. */}
+
+<ToolIndex categories={categories} />
 
 {/* About (user, 2026-11-23): a few light sentences on what Alexandria is for, the one place on the home page where
     sentences are wanted, as wide as the tool sections, with a Dismiss button (About.astro). Everything else stays drawings
@@ -29,48 +30,7 @@ import release from '../../data/release.json';
 
 <About>Alexandria is the office's design lab: a growing set of tools for taking a sign from an empty model to a finished design package. The Rhino toolbar does the modeling and renders, and the web tools handle the rest, from site plans and braille to paint matches and pricing. The office's standards are built in, so every package comes out looking like ours without anyone setting it up by hand. If something's missing or could work better, tell the Alexandria team.</About>
 
-<section class="ax-section not-content">
-<header><h2>Design Tools</h2><a href="/tools/design/">Details →</a></header>
-<div class="ax-tools">
-<ToolCard title="Site Plan" art="site-plan" code="D-01" links={[{ label: 'Open', href: '/site-plan/' }, { label: 'Guide', href: '/site-plan/guide/' }]} />
-<ToolCard title="Vectorizer" art="vectorizer" code="D-02" links={[{ label: 'Open', href: '/vectorizer/' }, { label: 'Guide', href: '/vectorizer/guide/' }]} />
-<ToolCard title="Braille Lettering Designer" art="braille" code="D-03" links={[{ label: 'Open', href: '/braille/' }, { label: 'Guide', href: '/braille/guide/' }]} />
-</div>
-</section>
-
-<section class="ax-section not-content">
-<header><h2>Fabrication Tools</h2><a href="/tools/fabrication/">Details →</a></header>
-<div class="ax-tools">
-<ToolCard title="Color Matcher" art="color-matcher" code="F-01" links={[{ label: 'Open', href: '/colors/' }, { label: 'Guide', href: '/colors/guide/' }]} />
-<ToolCard title="Color Library" art="color-library" code="F-02" links={[{ label: 'Open', href: '/colors/library/' }, { label: 'Guide', href: '/colors/library/guide/' }]} />
-<ToolCard title="Material Estimator" badge="Beta" art="material-estimator" code="F-03" links={[{ label: 'Open', href: '/estimator/' }, { label: 'Guide', href: '/estimator/guide/' }]} />
-<ToolCard title="Material Library" badge="Beta" art="material-library" code="F-04" links={[{ label: 'Open', href: '/materials/' }, { label: 'Guide', href: '/materials/guide/' }]} />
-<ToolCard title="Etch Text" badge="Beta" art="etch-text" code="F-05" links={[{ label: 'Open', href: '/etch-text/' }, { label: 'Guide', href: '/etch-text/guide/' }]} />
-</div>
-</section>
-
-<section class="ax-section not-content">
-<header><h2>Permitting Tools</h2><a href="/tools/permitting/">Details →</a></header>
-<div class="ax-tools">
-<ToolCard title="Photo Elevation" badge="Beta" art="photo-elevation" code="PM-01" links={[{ label: 'Open', href: '/photo-elevation/' }, { label: 'Guide', href: '/photo-elevation/guide/' }]} />
-</div>
-</section>
-
-<section class="ax-section not-content">
-<header><h2>Parametric Tools</h2><a href="/tools/parametric/">Details →</a></header>
-<div class="ax-tools">
-<ToolCard title="Parametric Grid" art="parametric-grid" code="P-01" links={[{ label: 'Open', href: '/grid/' }, { label: 'Guide', href: '/grid/guide/' }]} />
-<ToolCard title="Image Grid" badge="Beta" art="image-grid" code="P-02" links={[{ label: 'Open', href: '/image-grid/' }, { label: 'Guide', href: '/image-grid/guide/' }]} />
-</div>
-</section>
-
-<section class="ax-section not-content">
-<header><h2>Rhino/Grasshopper Tools</h2><a href="/tools/rhino-grasshopper/">Details →</a></header>
-<div class="ax-tools">
-<ToolCard title="Alexandria Tools" art="alexandria-tools" code="R-01" tag={release.version} links={[{ label: 'Download', href: '/start/download/' }, { label: 'Guide', href: '/rhino/' }]} />
-<ToolCard title="Alexandria Phoenix" art="alexandria-phoenix" code="R-02" tag={release.version} links={[{ label: 'Download', href: '/start/download/' }, { label: 'Guide', href: '/grasshopper/' }]} />
-</div>
-</section>
+{categories.map((category) => <ToolSection category={category} />)}
 
 <section class="ax-section not-content">
 <header><h2>Starting Out</h2></header>

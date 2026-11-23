@@ -1,0 +1,24 @@
+---
+// A tool category on the home page (2026-11-23): its sheet letter as a chip, its name, how many tools it holds and the
+// way to its page, over a ruler the tool cards hang from, four to a row.
+import ToolCard from './ToolCard.astro';
+import type { Category } from '../tools';
+
+interface Props {
+	category: Category;
+}
+const { category: c } = Astro.props;
+const count = String(c.tools.length).padStart(2, '0');
+---
+
+<section class="ax-section not-content" id={c.id}>
+	<header>
+		<span class="ax-chip" aria-hidden="true">{c.code}</span>
+		<h2>{c.title}</h2>
+		<span class="ax-count">{count}</span>
+		<a href={c.href}>Details →</a>
+	</header>
+	<div class="ax-tools">
+		{c.tools.map((tool) => <ToolCard {...tool} />)}
+	</div>
+</section>

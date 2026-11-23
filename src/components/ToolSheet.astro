@@ -1,7 +1,8 @@
 ---
 // A tool on its category page (tools/*.mdx), under the tool's own `## Name` heading (user, 2026-11-23: graphics strong,
 // words brief, no sentences): the home card's drawing, a few facts as short label and value pairs, like a title block,
-// and its links, the first as a button. Its sheet number sits at the end of the links, as on the home card.
+// and its links, the first as a button, in one frame. Its sheet number and its tag sit on the frame's top line, as on
+// the home card.
 import ToolArt from './ToolArt.astro';
 
 interface Link {
@@ -22,9 +23,12 @@ const corner = badge ?? tag;
 ---
 
 <div class="ax-sheet not-content">
+	<div class="ax-sheet-head">
+		<span class="ax-tool-code">{code}</span>
+		{corner && <span class:list={['ax-badge', { 'ax-tag': !badge }]}>{corner}</span>}
+	</div>
 	<a class="ax-sheet-art" href={main.href} tabindex="-1" aria-hidden="true">
 		<ToolArt name={art} />
-		{corner && <span class:list={['ax-badge', { 'ax-tag': !badge }]}>{corner}</span>}
 	</a>
 	<div class="ax-sheet-text">
 		<dl>
@@ -40,7 +44,6 @@ const corner = badge ?? tag;
 		<nav>
 			<a class="sl-link-button primary" href={main.href}>{main.label}</a>
 			{more.map((link) => <a href={link.href}>{link.label} →</a>)}
-			<span class="ax-tool-code">{code}</span>
 		</nav>
 	</div>
 </div>

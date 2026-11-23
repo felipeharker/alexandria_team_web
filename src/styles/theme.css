@@ -4,7 +4,10 @@
    sidebar entry), and colour otherwise only where it codes something (the toolbar groups in the guides, the state tags in a
    management table).
    The blue was a green until 2026-11-18 (user).
-   Inter for reading, IBM Plex Mono for commands and numbers.
+   Inter for reading, IBM Plex Mono for commands, numbers and every small label.
+   Since 2026-11-23 (user: "more visually elegant", from a set of reference sites) the look is a drawing sheet's:
+   hairlines and joined cells in place of separate rounded boxes, small labels in mono capitals, a sheet letter in a
+   solid chip, a ruler under a section's name, and the blue kept for buttons, the Beta tag and what's under the pointer.
    The Material Estimator (alexandria_office/public/styles.css) uses the same values. */
 
 :root {
@@ -33,7 +36,7 @@
 	--ax-tint: #1b1f24;
 	--ax-rule: #2b3036;
 	--ax-rule-strong: #3a4048;
-	--ax-radius: 8px;
+	--ax-radius: 3px;
 	/* the two colours that code a state in a management table's tags: done, and wants attention */
 	--ax-good: #7fcf9f;
 	--ax-good-soft: #17301f;
@@ -92,7 +95,7 @@ header.header {
 	color: var(--sl-color-gray-3);
 }
 .sidebar-content a {
-	border-radius: 6px;
+	border-radius: var(--ax-radius);
 }
 /* a top entry that is a page, not a group (Quick Guides, Downloads): set like the group names beside it and on
    their line height, with no arrow as there's nothing to open */
@@ -106,6 +109,8 @@ header.header {
 .sidebar-content a[aria-current='page']:hover,
 .sidebar-content a[aria-current='page']:focus {
 	background: var(--ax-current);
+	/* a rule down its left edge, in the text's own colour */
+	box-shadow: inset 2px 0 0 var(--sl-color-white);
 	color: var(--sl-color-white);
 	font-weight: 600;
 }
@@ -118,7 +123,7 @@ header.header {
 		color 0.12s;
 }
 .sidebar-content summary {
-	border-radius: 6px;
+	border-radius: var(--ax-radius);
 }
 .sidebar-content a:not([aria-current='page']):focus-visible,
 .sidebar-content summary:focus-visible {
@@ -156,12 +161,19 @@ header.header {
 	margin-top: 0.35rem;
 }
 
+/* the line under a page's title is the same ruler a home section has: fine ticks hanging from it */
+.content-panel + .content-panel {
+	border-top-color: var(--ax-rule-strong);
+	background: repeating-linear-gradient(90deg, var(--ax-rule-strong) 0 1px, transparent 1px 8px) left top / 100% 5px
+		no-repeat;
+}
+
 /* ---------------------------------------------------------------- type */
 h1#_top,
 .hero h1 {
-	font-weight: 700;
-	letter-spacing: -0.02em;
-	line-height: 1.15;
+	font-weight: 600;
+	letter-spacing: -0.03em;
+	line-height: 1.1;
 }
 .sl-markdown-content :is(h2, h3, h4):not(:where(.not-content *)) {
 	letter-spacing: -0.01em;
@@ -246,10 +258,12 @@ h1#_top,
 	--sl-content-width: 64rem;
 }
 .hero {
-	padding-block: 2.5rem 1.5rem !important;
+	padding-block: 3rem 1.25rem !important;
 }
 .hero h1 {
-	font-size: clamp(2.25rem, 1.75rem + 2vw, 3rem);
+	font-size: clamp(2.75rem, 2rem + 3.2vw, 4.25rem);
+	letter-spacing: -0.045em;
+	line-height: 1;
 }
 .hero .tagline {
 	color: var(--sl-color-gray-3);
@@ -268,30 +282,144 @@ h1#_top,
 }
 
 .ax-section {
-	margin-top: 2.75rem;
+	margin-top: 3.5rem;
 }
+/* a section's name over a ruler: a line with fine ticks standing on it, which the section's cells hang from. A tool
+   category leads with its sheet letter in a chip and ends with its count and the way to its page. */
 .ax-section > header {
 	display: flex;
-	align-items: baseline;
-	justify-content: space-between;
-	gap: 1rem;
-	margin-bottom: 0.9rem;
+	align-items: center;
+	gap: 0.7rem;
+	margin-bottom: 1rem;
+	padding-bottom: 16px;
+	border-bottom: 1px solid var(--ax-rule-strong);
+	background: repeating-linear-gradient(90deg, var(--ax-rule-strong) 0 1px, transparent 1px 8px) left bottom / 100% 5px
+		no-repeat;
 }
 .ax-section > header h2 {
-	font-size: var(--sl-text-lg);
+	margin: 0 auto 0 0;
+	font-size: var(--sl-text-xl);
 	font-weight: 600;
-	letter-spacing: -0.01em;
-	margin: 0;
+	letter-spacing: -0.02em;
+	line-height: 1.2;
 	color: var(--sl-color-white);
 }
-.ax-section > header a {
-	font-size: var(--sl-text-sm);
+.ax-section > header a,
+.ax-count {
+	font-family: var(--sl-font-mono);
+	font-size: 0.6875rem;
+	font-weight: 500;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
 	color: var(--sl-color-gray-3);
 	text-decoration: none;
 	white-space: nowrap;
 }
-.ax-section > header a:hover {
+.ax-section > header a:hover,
+.ax-section > header a:focus-visible {
+	color: var(--ax-hover-text);
+}
+/* how many tools a category holds, boxed like a sheet count */
+.ax-count {
+	padding: 1px 6px;
+	border: 1px solid var(--ax-rule-strong);
+	border-radius: 2px;
+}
+/* a sheet letter (D, F, PM, P, R): the page's one solid mark, in the text's colour */
+.ax-chip {
+	flex: none;
+	display: inline-grid;
+	place-items: center;
+	min-width: 1.5rem;
+	height: 1.5rem;
+	padding: 0 0.3rem;
+	border-radius: 2px;
+	background: var(--sl-color-white);
+	color: var(--sl-color-black);
+	font-family: var(--sl-font-mono);
+	font-size: 0.75rem;
+	font-weight: 500;
+	line-height: 1;
+}
+
+/* the home page's index strip (ToolIndex.astro): a cell per tool category, joined by hairlines: the sheet letter, the
+   name, the count and a line glyph. A cell jumps to its section. */
+.ax-index-wrap {
+	margin-top: 0.5rem;
+}
+.ax-index {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(10.5rem, 1fr));
+	padding: 1px 0 0 1px;
+}
+.ax-index a {
+	position: relative;
+	display: grid;
+	grid-template-columns: auto minmax(0, 1fr) auto;
+	grid-template-areas:
+		'chip name glyph'
+		'chip count glyph';
+	align-items: center;
+	gap: 1px 12px;
+	margin: -1px 0 0 -1px;
+	padding: 14px 14px 14px 12px;
+	border: 1px solid var(--ax-rule-strong);
 	color: var(--sl-color-white);
+	text-decoration: none;
+	transition:
+		border-color 0.15s,
+		background-color 0.15s;
+}
+.ax-index .ax-chip {
+	grid-area: chip;
+}
+.ax-index b {
+	grid-area: name;
+	align-self: end;
+	font-size: var(--sl-text-sm);
+	font-weight: 600;
+	line-height: 1.25;
+}
+.ax-index small {
+	grid-area: count;
+	align-self: start;
+	font-family: var(--sl-font-mono);
+	font-size: 0.6875rem;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--sl-color-gray-3);
+}
+.ax-glyph {
+	grid-area: glyph;
+	width: 40px;
+	height: 40px;
+	fill: none;
+	stroke: var(--sl-color-gray-3);
+	stroke-width: 1.25;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	transition: stroke 0.15s;
+}
+.ax-glyph * {
+	vector-effect: non-scaling-stroke;
+}
+.ax-glyph .dot {
+	fill: var(--sl-color-gray-3);
+	stroke: none;
+}
+.ax-index a:hover,
+.ax-index a:focus-visible {
+	z-index: 1;
+	border-color: var(--ax-hover);
+	background: var(--ax-tint);
+}
+.ax-index a:hover .ax-glyph,
+.ax-index a:focus-visible .ax-glyph {
+	stroke: var(--sl-color-white);
+}
+/* a section opened from the strip stops clear of the header */
+.ax-section[id] {
+	scroll-margin-top: calc(var(--sl-nav-height) + 1rem);
 }
 
 .ax-grid {
@@ -321,7 +449,7 @@ h1#_top,
 .ax-card .tile {
 	width: 40px;
 	height: 40px;
-	border-radius: 8px;
+	border-radius: var(--ax-radius);
 	background: var(--ax-tint);
 	display: grid;
 	place-items: center;
@@ -398,14 +526,34 @@ h1#_top,
 @container (max-width: 28rem) {
 	.ax-quick { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
+/* joined cells hanging from the section's ruler, as the tool cards do: a line icon, bare, over the name */
+.ax-quick {
+	gap: 0;
+	margin-top: -1rem;
+	padding-left: 1px;
+}
 .ax-quick .ax-card {
+	position: relative;
 	grid-template-columns: minmax(0, 1fr);
-	gap: 10px;
-	align-content: start;
+	gap: 22px;
+	align-content: space-between;
 	min-height: 100%;
+	margin: -1px 0 0 -1px;
+	padding: 14px 12px 12px;
+	border-color: var(--ax-rule-strong);
+	border-radius: 0;
+}
+.ax-quick .ax-card .tile {
+	width: 22px;
+	height: 22px;
+	background: none;
+}
+.ax-quick .ax-card .tile svg {
+	stroke-width: 1.4;
 }
 .ax-quick .ax-card:hover,
 .ax-quick .ax-card:focus-visible {
+	z-index: 1;
 	border-color: var(--ax-hover);
 }
 .ax-quick .ax-card:hover .tile {
@@ -419,10 +567,12 @@ h1#_top,
 .ax-section {
 	container-type: inline-size;
 }
+/* since 2026-11-23 the cards are joined cells that hang from the section's ruler, sharing their hairlines */
 .ax-tools {
 	display: grid;
 	grid-template-columns: repeat(4, minmax(0, 1fr));
-	gap: 14px;
+	margin-top: -1rem; /* up to the ruler */
+	padding-left: 1px;
 }
 @container (max-width: 50rem) {
 	.ax-tools { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -434,29 +584,45 @@ h1#_top,
 	position: relative;
 	display: flex;
 	flex-direction: column;
-	border: 1px solid var(--ax-rule);
-	border-radius: var(--ax-radius);
+	margin: -1px 0 0 -1px;
+	border: 1px solid var(--ax-rule-strong);
 	background: var(--sl-color-black);
-	overflow: hidden;
 	transition:
 		border-color 0.15s,
 		box-shadow 0.15s;
 }
-/* under the pointer: a blue edge and a halo of it around the card (user, 2026-11-18) */
+/* under the pointer: a blue edge and a halo of it around the card (user, 2026-11-18), over its neighbours' edges */
 .ax-tool:hover,
 .ax-tool:focus-within {
+	z-index: 1;
 	border-color: var(--ax-hover);
 	box-shadow:
-		0 0 0 3px color-mix(in srgb, var(--ax-hover) 22%, transparent),
-		0 0 26px 2px color-mix(in srgb, var(--ax-hover) 42%, transparent);
+		0 0 0 3px color-mix(in srgb, var(--ax-hover) 20%, transparent),
+		0 0 22px 0 color-mix(in srgb, var(--ax-hover) 26%, transparent);
 }
 
-/* the drawing, on the tint */
+/* the card's top line, and a tool sheet's: the sheet number on the left, the Beta tag or the release on the right */
+.ax-tool-head,
+.ax-sheet-head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 8px;
+	min-height: 2.25rem;
+	padding: 0 12px;
+}
+.ax-tool-head .ax-badge,
+.ax-sheet-head .ax-badge {
+	margin: 0;
+}
+
+/* the drawing, on the tint, set in from the card's edges */
 .ax-tool-art {
 	position: relative;
+	margin: 0 12px;
 	aspect-ratio: 16 / 9;
+	border-radius: 2px;
 	background: var(--ax-tint);
-	border-bottom: 1px solid var(--ax-rule);
 	--art-ink: var(--sl-color-gray-1);
 	--art-line: var(--sl-color-gray-3);
 	--art-fine: var(--sl-color-gray-4);
@@ -486,10 +652,9 @@ h1#_top,
 .ax-art .txt.strong { fill: var(--art-ink); font-weight: 500; }
 .ax-art .code { fill: var(--art-ink); font-family: var(--sl-font-mono); font-size: 13px; font-weight: 500; }
 .ax-art .letters { fill: none; stroke: var(--art-line); stroke-width: 1.25; font-family: var(--sl-font); font-size: 34px; font-weight: 700; letter-spacing: 0.12em; }
-/* the sheet number, at the end of the links row, bottom right as in a title block */
+/* the sheet number, on the top line */
 .ax-tool-code {
 	flex: none;
-	margin-left: auto;
 	font-family: var(--sl-font-mono);
 	font-size: 0.7rem;
 	font-weight: 500;
@@ -503,7 +668,7 @@ h1#_top,
 	flex: 1;
 	flex-direction: column;
 	gap: 4px;
-	padding: 12px 14px 12px;
+	padding: 12px 12px 12px;
 }
 .ax-tool h3 {
 	margin: 0;
@@ -530,20 +695,6 @@ h1#_top,
 	outline: 2px solid var(--sl-color-white);
 	outline-offset: 2px;
 }
-.ax-tool-art .ax-badge,
-.ax-sheet-art .ax-badge {
-	position: absolute;
-	top: 10px;
-	right: 10px;
-	margin: 0;
-}
-/* room for the tag: the drawing sits a little lower and smaller */
-.ax-tool-art:has(.ax-badge) .ax-art,
-.ax-sheet-art:has(.ax-badge) .ax-art {
-	top: 30px;
-	height: calc(100% - 36px);
-}
-
 /* a tag for a tool still being built ("Beta"): a bubble in the accent, in the cards and the sidebar alike */
 .ax-badge,
 .sidebar-content .sl-badge.default,
@@ -552,11 +703,11 @@ h1#_top,
 	margin-left: 8px;
 	padding: 1px 6px;
 	border: 1px solid var(--ax-button);
-	border-radius: 4px;
+	border-radius: 2px;
 	background: var(--ax-button-soft);
-	font-family: var(--sl-font);
-	font-size: 0.68rem;
-	font-weight: 600;
+	font-family: var(--sl-font-mono);
+	font-size: 0.66rem;
+	font-weight: 500;
 	line-height: 1.4;
 	letter-spacing: 0.06em;
 	text-transform: uppercase;
@@ -583,7 +734,7 @@ h1#_top,
 }
 .ax-tool nav {
 	margin-top: auto;
-	padding-top: 10px;
+	padding-top: 8px;
 	display: flex;
 	flex-wrap: wrap;
 	gap: 4px 16px;
@@ -610,24 +761,24 @@ h1#_top,
 /* a tool in a list (Your First Day, ToolRow.astro): the card's drawing, small, beside its name and a line or two */
 .ax-tool-list {
 	display: grid;
-	gap: 10px;
 	margin-top: 1rem;
+	padding-top: 1px;
 }
 .ax-tool-row {
 	display: grid;
 	grid-template-columns: 9.5rem minmax(0, 1fr);
 	gap: 16px;
 	align-items: start;
+	margin-top: -1px; /* joined rows, sharing a hairline */
 	padding: 10px;
-	border: 1px solid var(--ax-rule);
-	border-radius: var(--ax-radius);
+	border: 1px solid var(--ax-rule-strong);
 	background: var(--sl-color-black);
 }
 .ax-tool-row-art {
 	position: relative;
 	display: block;
 	aspect-ratio: 16 / 9;
-	border-radius: 5px;
+	border-radius: 2px;
 	background: var(--ax-tint);
 	--art-ink: var(--sl-color-gray-1);
 	--art-line: var(--sl-color-gray-3);
@@ -673,21 +824,27 @@ h1#_top,
 	.ax-tool-row { grid-template-columns: 6.5rem minmax(0, 1fr); gap: 12px; }
 }
 
-/* a tool on its category page (ToolSheet.astro): the drawing beside a few facts and the links (user, 2026-11-23) */
+/* a tool on its category page (ToolSheet.astro): the drawing beside a few facts and the links (user, 2026-11-23), in
+   one frame with the sheet number and the tag on its top line */
 .ax-sheet {
 	display: grid;
 	grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
-	gap: 20px;
 	align-items: stretch;
 	margin-top: 0.9rem;
+	border: 1px solid var(--ax-rule-strong);
+	border-radius: var(--ax-radius);
+}
+.ax-sheet-head {
+	grid-column: 1 / -1;
+	border-bottom: 1px solid var(--ax-rule);
 }
 .ax-sheet-art {
 	position: relative;
 	display: block;
 	align-self: start;
+	margin: 12px;
 	aspect-ratio: 16 / 9;
-	border: 1px solid var(--ax-rule);
-	border-radius: var(--ax-radius);
+	border-radius: 2px;
 	background: var(--ax-tint);
 	transition:
 		border-color 0.15s,
@@ -699,19 +856,21 @@ h1#_top,
 	--art-paper: var(--sl-color-black);
 }
 .ax-sheet-art:hover {
-	border-color: var(--ax-hover);
-	box-shadow: 0 0 0 3px color-mix(in srgb, var(--ax-hover) 22%, transparent);
+	box-shadow:
+		0 0 0 1px var(--ax-hover),
+		0 0 0 4px color-mix(in srgb, var(--ax-hover) 20%, transparent);
 }
 .ax-sheet-text {
 	display: flex;
 	flex-direction: column;
 	min-width: 0;
+	padding: 5px 16px 14px;
+	border-left: 1px solid var(--ax-rule);
 }
 .ax-sheet dl {
 	display: grid;
 	grid-template-columns: max-content minmax(0, 1fr);
 	margin: 0;
-	border-top: 1px solid var(--ax-rule-strong);
 }
 .ax-sheet dt,
 .ax-sheet dd {
@@ -760,7 +919,8 @@ h1#_top,
 	text-underline-offset: 3px;
 }
 @media (max-width: 40rem) {
-	.ax-sheet { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+	.ax-sheet { grid-template-columns: minmax(0, 1fr); }
+	.ax-sheet-text { border-left: 0; border-top: 1px solid var(--ax-rule); }
 }
 
 /* the release card */
@@ -2089,4 +2249,23 @@ h3.ax-supplier-table + .ax-chart {
 .ax-dash td.late {
 	color: var(--ax-warn);
 	font-weight: 500;
+}
+
+/* ---------------------------------------------------------------- labels */
+/* Every small label is the same mono capitals, as on a drawing's title block (2026-11-23): the sidebar's section names,
+   a table's column heads, a fact's name, a tag. Each keeps the size and colour its own rule gives it. */
+.ax-eyebrow,
+.sidebar-content .group-label .large,
+.sidebar-content a.ax-side-section > span:first-child,
+.sl-markdown-content th:not(.not-content *),
+.ax-sheet dt,
+.ax-chart th,
+.ax-supplier-facts dt,
+.ax-dash-tile > span,
+.ax-tag,
+.sidebar-content .sl-badge.default,
+.sidebar-content .sl-badge.ax-alpha {
+	font-family: var(--sl-font-mono);
+	font-weight: 500;
+	letter-spacing: 0.06em;
 }

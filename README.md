@@ -14,6 +14,7 @@ Public for now, but kept out of search engines (`noindex` on every page and in `
 | `src/components/` | The release card, What's new, the hub's cards, and the wrapper the guides sit in. |
 | `src/guides/` | The web tools' quick guides, one HTML file each (see The Quick Guides below). |
 | `src/nav.ts` | The pages that have no sidebar entry, and the page that lists each (see The Sidebar below). |
+| `src/tools.ts` | The home page's tools, by category: its index strip and its sections are drawn from this list. |
 | `tools/sync.py` | Brings in everything that comes from `alexandria_phoenix` and the shared packages folder. |
 
 

@@ -1,8 +1,9 @@
 ---
 // One of the office's tools on the home page (user, 2026-11-17: more visual, less text). Every one gets the same card:
-// a drawing of what it makes (ToolArt), tagged Beta in its corner if it is, its name, its sheet number at the bottom right, as on a drawing set (R for Rhino/Grasshopper,
-// D for Design, P for Parametric, F for Fabrication, PM for Permitting) and its links; a line about it only if one is given (the home page
-// gives none since 2026-11-23). The whole card opens the first link; the others sit on top of it.
+// a top line with its sheet number, as on a drawing set (R for Rhino/Grasshopper, D for Design, P for Parametric,
+// F for Fabrication, PM for Permitting), and its Beta tag if it has one; a drawing of what it makes (ToolArt), the same size on every
+// card; its name and its links; a line about it only if one is given (the home page gives none since 2026-11-23).
+// The whole card opens the first link; the others sit on top of it.
 import ToolArt from './ToolArt.astro';
 
 interface Link {
@@ -25,10 +26,13 @@ const target = (link: Link) => (link.external ? { target: '_blank', rel: 'noopen
 ---
 
 <article class="ax-tool">
-	<div class="ax-tool-art">
-		<ToolArt name={art} />
+	<div class="ax-tool-head">
+		<span class="ax-tool-code">{code}</span>
 		{badge && <span class="ax-badge">{badge}</span>}
 		{!badge && tag && <span class="ax-badge ax-tag">{tag}</span>}
+	</div>
+	<div class="ax-tool-art">
+		<ToolArt name={art} />
 	</div>
 	<div class="ax-tool-text">
 		<h3>
@@ -45,7 +49,6 @@ const target = (link: Link) => (link.external ? { target: '_blank', rel: 'noopen
 					</a>
 				))
 			}
-			<span class="ax-tool-code">{code}</span>
 		</nav>
 	</div>
 </article>
