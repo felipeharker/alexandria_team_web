@@ -1,0 +1,67 @@
+---
+title: Alexandria Braille Font
+description: The office's braille font, at ADA sign sizes when set at 36 pt, and its files to download.
+---
+
+import { LinkButton } from '@astrojs/starlight/components';
+import BrailleSpecimen from '../../../../components/BrailleSpecimen.astro';
+
+{/* The font is made in alexandria_phoenix (braille_font/, by make_font.py). The files in public/downloads/braille-font/
+    are copies of that folder's: copy them again when the font changes. The drawing below reads the copied JSON. The
+    braille in it is Grade 2, as the Braille Lettering Designer gives it for the words beside it. */}
+
+Braille at ADA sign sizes · 36 pt · every dot a filled circle
+
+<BrailleSpecimen rows={[
+	{ print: 'restroom', braille: '⠗⠑⠌⠗⠕⠕⠍' },
+	{ print: 'women', braille: '⠺⠕⠍⠢' },
+	{ print: 'exit', braille: '⠑⠭⠊⠞' },
+	{ print: 'stair 2', braille: '⠌⠁⠊⠗⠀⠼⠃' },
+	{ print: 'room 101', braille: '⠗⠕⠕⠍⠀⠼⠁⠚⠁' },
+	{ print: 'conference room', braille: '⠒⠋⠻⠰⠑⠀⠗⠕⠕⠍' },
+]} label="The Alexandria Braille font: restroom, women, exit, stair 2, room 101 and conference room in Grade 2 braille, each dot a filled circle" />
+
+<LinkButton href="/downloads/braille-font/alexandria_braille_font.zip" download icon="download" iconPlacement="start">Download the Font</LinkButton>
+<LinkButton href="/braille/" variant="secondary">Open the Braille Lettering Designer</LinkButton>
+
+## How to Use It
+
+| Step | What |
+|---|---|
+| 1 · Translate | [Braille Lettering Designer](/braille/) · Grade 2 · copy the braille characters |
+| 2 · Paste | CorelDRAW, Illustrator, Word · font Alexandria Braille |
+| 3 · Size | 36 pt · lines 28.8 pt apart |
+| 4 · Curves | Convert to curves · one circle per dot |
+
+## Its Sizes at 36 pt
+
+| | Inches | ADA 703.3.1 |
+|---|---|---|
+| Dot diameter | 0.06 | 0.059 to 0.063 |
+| Dots apart in a cell | 0.1 | 0.09 to 0.1 |
+| Cells apart | 0.25 | 0.241 to 0.3 |
+| Lines apart | 0.4 | 0.395 to 0.4 |
+
+Centre to centre · the Braille Lettering Designer's sizes
+
+## What It Has
+
+| Typed or Pasted | Gives |
+|---|---|
+| Braille characters, `⠗⠑⠌` | Themselves · all 256, six and eight dots |
+| Space | A blank cell |
+| Letters, a to z | Each letter's cell, uncontracted · mock-ups only |
+| Numbers, punctuation | Nothing · translate them |
+
+Contractions, capitals and number signs are translation · a font can't add them
+
+## The Files
+
+| Download | What It Is |
+|---|---|
+| [alexandria_braille_font.zip](/downloads/braille-font/alexandria_braille_font.zip) | Everything below, with a README. |
+| [AlexandriaBraille.ttf](/downloads/braille-font/AlexandriaBraille.ttf) | The TrueType font. |
+| [alexandria_braille_specimen.pdf](/downloads/braille-font/alexandria_braille_specimen.pdf) | The specimen sheet · real size at 100%. |
+| [alexandria_braille.json](/downloads/braille-font/alexandria_braille.json) | The sizes the font is built from. |
+
+In Rhino · the Braille Lettering Designer's SVG, as before

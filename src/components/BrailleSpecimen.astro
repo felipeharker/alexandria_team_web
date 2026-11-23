@@ -1,0 +1,31 @@
+---
+// Lines of braille drawn as the Alexandria Braille font sets them (src/brailleFont.ts), a dot a circle, in the page's
+// text colour, each with its words beside it: the font's specimen on its download page.
+import { brailleText, brailleSizes } from '../brailleFont';
+
+interface Props {
+	rows: { print: string; braille: string }[];
+	label: string;
+}
+const { rows, label } = Astro.props;
+const scale = 100; // units to the inch
+const left = 150; // where the braille starts, after the words
+const step = brailleSizes.line * scale;
+const top = 12;
+const drawn = rows.map((row, i) => ({ print: row.print, y: top + i * step, ...brailleText(row.braille, scale, left, top + i * step) }));
+const width = Math.ceil(left + Math.max(...drawn.map((row) => row.width)) + 8);
+const tall = Math.ceil(top + (rows.length - 1) * step + 2 * brailleSizes.spacing * scale + 12);
+---
+
+<div class="ax-braille not-content">
+	<svg viewBox={`0 0 ${width} ${tall}`} role="img" aria-label={label}>
+		{
+			drawn.map((row) => (
+				<>
+					<text x="0" y={row.y + brailleSizes.spacing * scale + 3}>{row.print}</text>
+					{row.dots.map((dot) => <circle cx={dot.cx} cy={dot.cy} r={row.r} />)}
+				</>
+			))
+		}
+	</svg>
+</div>

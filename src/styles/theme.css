@@ -1779,6 +1779,29 @@ h3.ax-supplier-table + .ax-chart {
 	stroke-linejoin: round;
 }
 
+/* braille drawn as the Alexandria Braille font sets it (BrailleSpecimen.astro): dots in the page's text colour,
+   the words beside each line in the small mono capitals of every label */
+.ax-braille {
+	margin: 1rem 0 1.5rem;
+	overflow-x: auto;
+}
+.ax-braille svg {
+	display: block;
+	width: 100%;
+	min-width: 24rem;
+	max-width: 34rem;
+	height: auto;
+	fill: var(--sl-color-white);
+}
+.ax-braille text {
+	fill: var(--sl-color-gray-3);
+	font-family: var(--sl-font-mono);
+	font-size: 9.5px;
+	font-weight: 500;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+}
+
 /* All Downloads: the row a Downloads entry in the sidebar opens on, in the grey of the page you're on */
 .sl-markdown-content tr:has(> td > span[id]:target) > td {
 	background: var(--sl-color-gray-6);

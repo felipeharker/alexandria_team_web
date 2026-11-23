@@ -1,0 +1,15 @@
+{
+  "name": "Alexandria Braille",
+  "version": "1.0",
+  "note": "The source make_font.py builds AlexandriaBraille.ttf from. Sizes are inches, centre to centre, the Braille Lettering Designer's defaults. Set at point_size the font prints at these sizes; ada holds the range ADA 703.3.1 allows for each. letters are the dots of each letter's cell, uncontracted.",
+  "point_size": 36,
+  "units_per_em": 2000,
+  "inches": {"dot": 0.06, "spacing": 0.1, "cell": 0.25, "line": 0.4},
+  "ada": {"dot": [0.059, 0.063], "spacing": [0.09, 0.1], "cell": [0.241, 0.3], "line": [0.395, 0.4]},
+  "letters": {
+    "a": "1", "b": "12", "c": "14", "d": "145", "e": "15", "f": "124", "g": "1245", "h": "125", "i": "24",
+    "j": "245", "k": "13", "l": "123", "m": "134", "n": "1345", "o": "135", "p": "1234", "q": "12345",
+    "r": "1235", "s": "234", "t": "2345", "u": "136", "v": "1236", "w": "2456", "x": "1346", "y": "13456",
+    "z": "1356"
+  }
+}
