@@ -7,55 +7,56 @@ import { Steps } from '@astrojs/starlight/components';
 import ToolRow from '../../../components/ToolRow.astro';
 
 {/* By category, as on the home page and in the sidebar (user, 2026-11-17: "for visual ease of use"): Rhino/Grasshopper,
-    Design, Parametric and Fabrication, each tool a ToolRow with its home page drawing. Add a new tool to its category. */}
+    Design, Parametric and Fabrication, each tool a ToolRow with its home page drawing. Add a new tool to its category.
+    Since 2026-11-23 every line is a fragment, not a sentence (user: "graphics strong, words brief"). */}
 
-The **Rhino/Grasshopper** tools install once in Rhino 8. Everything else opens in a browser, with nothing to install.
+**Rhino/Grasshopper** installs once, in Rhino 8 · everything else opens in a browser, nothing to install
 
 ## Rhino/Grasshopper Tools
 
 <div class="ax-tool-list not-content">
-<ToolRow title="Alexandria Tools" art="alexandria-tools" href="/rhino/" guide="/rhino/">The Rhino toolbar, from an empty model to a finished design package.</ToolRow>
-<ToolRow title="Alexandria Phoenix" art="alexandria-phoenix" href="/grasshopper/" guide="/grasshopper/">Grasshopper components for patterns in a region.</ToolRow>
+<ToolRow title="Alexandria Tools" art="alexandria-tools" href="/rhino/" guide="/rhino/">Rhino toolbar · empty model to design package</ToolRow>
+<ToolRow title="Alexandria Phoenix" art="alexandria-phoenix" href="/grasshopper/" guide="/grasshopper/">Grasshopper · patterns in a region</ToolRow>
 </div>
 
 <Steps>
 
-1. **Install both packages.** Follow [Install and Update](/docs/install/), about ten minutes. No office drive? Use the [zip](/start/download/).
+1. **Install both packages** · [Install and Update](/docs/install/) · about ten minutes · no office drive: the [zip](/start/download/)
 
-2. **Run Alexandria Setup.** Type `AlexandriaSetup` in Rhino and press Enter.
+2. **`AlexandriaSetup`** in Rhino · Enter
 
-3. **Try a practice project.** Choose **File › New › Alexandria**, click **Create Project** and pick a scratch folder. The [Rhino guide](/rhino/) has every button in order, and the [Sample Project](/sample-project/) shows a finished package.
+3. **Practice** · **File › New › Alexandria** · **Create Project** in a scratch folder · every button: the [Rhino guide](/rhino/) · a finished package: the [Sample Project](/sample-project/)
 
 </Steps>
 
 ## Design Tools
 
 <div class="ax-tool-list not-content">
-<ToolRow title="Site Plan" art="site-plan" href="/site-plan/" guide="/site-plan/guide/">A greyscale site plan with the sign located.</ToolRow>
-<ToolRow title="Vectorizer" art="vectorizer" href="/vectorizer/" guide="/vectorizer/guide/">A PNG or JPG traced into clean vector shapes.</ToolRow>
-<ToolRow title="Braille Lettering Designer" art="braille" href="/braille/" guide="/braille/guide/">A sign’s braille as dots, at ADA sizes.</ToolRow>
-<ToolRow title="Sign Package Maker" art="sign-package" href="/sign-package/" guide="/sign-package/guide/" badge="Beta">The standard sign package, from your own drawings.</ToolRow>
+<ToolRow title="Site Plan" art="site-plan" href="/site-plan/" guide="/site-plan/guide/">Address to greyscale site plan · sign circled · north arrow · scale bar</ToolRow>
+<ToolRow title="Vectorizer" art="vectorizer" href="/vectorizer/" guide="/vectorizer/guide/">Logo PNG or JPG to SVG · a layer per color</ToolRow>
+<ToolRow title="Braille Lettering Designer" art="braille" href="/braille/" guide="/braille/guide/">Sign text to Grade 2 braille · full-size SVG · ADA sizes</ToolRow>
+<ToolRow title="Sign Package Maker" art="sign-package" href="/sign-package/" guide="/sign-package/guide/" badge="Beta">Your drawings to the standard sign package · PDF</ToolRow>
 </div>
 
 ## Parametric Tools
 
 <div class="ax-tool-list not-content">
-<ToolRow title="Parametric Grid" art="parametric-grid" href="/grid/" guide="/grid/guide/">Cells that scale toward points and curves.</ToolRow>
-<ToolRow title="Image Grid" art="image-grid" href="/image-grid/" guide="/image-grid/guide/" badge="Beta">Cells sized by an image, like a halftone.</ToolRow>
+<ToolRow title="Parametric Grid" art="parametric-grid" href="/grid/" guide="/grid/guide/">Cells that scale toward points and curves · full-size SVG</ToolRow>
+<ToolRow title="Image Grid" art="image-grid" href="/image-grid/" guide="/image-grid/guide/" badge="Beta">Cells sized by an image · halftone · full-size SVG</ToolRow>
 </div>
 
 ## Fabrication Tools
 
 <div class="ax-tool-list not-content">
-<ToolRow title="Color Matcher" art="color-matcher" href="/colors/" guide="/colors/guide/">Any hex code to its nearest paint and vinyl.</ToolRow>
-<ToolRow title="Color Library" art="color-library" href="/colors/library/" guide="/colors/library/guide/">The office’s Matthews Paint formulas.</ToolRow>
-<ToolRow title="Material Estimator" art="material-estimator" href="/estimator/" guide="/estimator/guide/" badge="Beta">A project’s materials, priced by the unit.</ToolRow>
-<ToolRow title="Material Library" art="material-library" href="/materials/" guide="/materials/guide/" badge="Beta">The office’s stock materials, with prices.</ToolRow>
-<ToolRow title="Etch Text" art="etch-text" href="/etch-text/" guide="/etch-text/guide/" badge="Beta">A part label in single lines, to etch.</ToolRow>
+<ToolRow title="Color Matcher" art="color-matcher" href="/colors/" guide="/colors/guide/">Hex to nearest Sherwin-Williams · Pantone · 3M vinyl</ToolRow>
+<ToolRow title="Color Library" art="color-library" href="/colors/library/" guide="/colors/library/guide/">The office's Matthews Paint formulas</ToolRow>
+<ToolRow title="Material Estimator" art="material-estimator" href="/estimator/" guide="/estimator/guide/" badge="Beta">Materials priced by the foot, yard or piece</ToolRow>
+<ToolRow title="Material Library" art="material-library" href="/materials/" guide="/materials/guide/" badge="Beta">Stock materials · sizes · prices · being filled in</ToolRow>
+<ToolRow title="Etch Text" art="etch-text" href="/etch-text/" guide="/etch-text/guide/" badge="Beta">Part label to single-line SVG or DXF · to etch</ToolRow>
 </div>
 
 ## Good to Know
 
-- **Export your work.** A web tool saves only in the browser you used. Name the project, then export into its folder.
-- **Updates are automatic.** Web tools on every visit, Rhino tools when Rhino starts. After a Rhino update, restart and click **Alexandria Setup**.
-- **Stuck?** See [Troubleshooting](/start/troubleshooting/), or ask the Alexandria team.
+- **Export your work** · saves in that browser only · name the project, then export into its folder
+- **Updates are automatic** · web tools: every visit · Rhino tools: at startup, then **Alexandria Setup** once more
+- **Stuck** · [Troubleshooting](/start/troubleshooting/) · or the Alexandria team

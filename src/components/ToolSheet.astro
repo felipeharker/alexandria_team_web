@@ -1,0 +1,46 @@
+---
+// A tool on its category page (tools/*.mdx), under the tool's own `## Name` heading (user, 2026-11-23: graphics strong,
+// words brief, no sentences): the home card's drawing, a few facts as short label and value pairs, like a title block,
+// and its links, the first as a button. Its sheet number sits at the end of the links, as on the home card.
+import ToolArt from './ToolArt.astro';
+
+interface Link {
+	label: string;
+	href: string;
+}
+interface Props {
+	art: string; // a drawing's name in ToolArt
+	code: string; // its sheet number, such as D-01
+	facts: [string, string][]; // [label, value], each a few words: ['In', 'PNG · JPG']
+	links: Link[]; // the first is the button
+	badge?: string; // "Beta", blue, in the drawing's corner
+	tag?: string; // a grey tag in the same corner, such as the release number
+}
+const { art, code, facts, links, badge, tag } = Astro.props;
+const [main, ...more] = links;
+const corner = badge ?? tag;
+---
+
+<div class="ax-sheet not-content">
+	<a class="ax-sheet-art" href={main.href} tabindex="-1" aria-hidden="true">
+		<ToolArt name={art} />
+		{corner && <span class:list={['ax-badge', { 'ax-tag': !badge }]}>{corner}</span>}
+	</a>
+	<div class="ax-sheet-text">
+		<dl>
+			{
+				facts.map(([label, value]) => (
+					<>
+						<dt>{label}</dt>
+						<dd>{value}</dd>
+					</>
+				))
+			}
+		</dl>
+		<nav>
+			<a class="sl-link-button primary" href={main.href}>{main.label}</a>
+			{more.map((link) => <a href={link.href}>{link.label} →</a>)}
+			<span class="ax-tool-code">{code}</span>
+		</nav>
+	</div>
+</div>

@@ -1,5 +1,5 @@
 ---
-// A card that goes somewhere: an icon, a title, a line about it, and a short note.
+// A card that goes somewhere: an icon, a title, and, if given, a line about it and a short note.
 interface Props {
 	href: string;
 	title: string;
@@ -8,6 +8,7 @@ interface Props {
 	external?: boolean;
 }
 const { href, title, icon, meta, external } = Astro.props;
+const hasText = Astro.slots.has('default');
 ---
 
 <a class="ax-card" href={href} {...(external ? { target: '_blank', rel: 'noopener' } : {})}>
@@ -16,7 +17,7 @@ const { href, title, icon, meta, external } = Astro.props;
 	</span>
 	<span>
 		<b>{title}</b>
-		<small><slot /></small>
+		{hasText && <small><slot /></small>}
 		{meta && <span class="meta">{meta}{external ? ' ↗' : ''}</span>}
 	</span>
 </a>

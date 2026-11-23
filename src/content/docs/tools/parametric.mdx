@@ -3,29 +3,28 @@ title: Parametric Tools
 description: "Web tools for patterned panels: grids of cells sized by points and curves, or by an image."
 ---
 
-import HubCard from '../../../components/HubCard.astro';
+import ToolSheet from '../../../components/ToolSheet.astro';
 
 {/* One page per tool category (user, 2026-11-11), each the Overview in its sidebar group and the home section's Details link.
-    Parametric Tools split from Design Tools on 2026-11-17, with the Parametric Grid and the new Image Grid. */}
+    Parametric Tools split from Design Tools on 2026-11-17, with the Parametric Grid and the new Image Grid. Since
+    2026-11-23 each tool is a ToolSheet: its drawing, a few facts of a few words each, and its links. No sentences. */}
 
-Web tools for patterned panels, saved as full-size linework.
+In the browser · nothing to install
 
 ## Parametric Grid
 
-A square, hex or triangle grid whose cells scale toward points and curves you place.
-
-<div class="ax-grid not-content">
-<HubCard href="/grid/" title="Open the Parametric Grid" meta="alexdesignlab.org/grid"><svg slot="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M4.1 4.1h2v2h-2zM10.1 3.6h3v3h-3zM16 3h4.2v4.2H16zM3.6 10.1h3v3h-3zM9.75 9.75h3.7v3.7h-3.7zM15.75 9.25h4.7v4.7h-4.7zM3 16h4.2v4.2H3zM9.25 15.75h4.7v4.7h-4.7zM15.4 15.4h5.4v5.4h-5.4z"/></svg></HubCard>
-<HubCard href="/grid/guide/" title="Its Quick Guide" meta="Guide"><svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C6.5 4 9.5 4 12 5.5v14c-2.5-1.5-5.5-1.5-8 0zM20 5.5C17.5 4 14.5 4 12 5.5v14c2.5-1.5 5.5-1.5 8 0z"/></svg></HubCard>
-</div>
+<ToolSheet art="parametric-grid" code="P-01" facts={[
+	['Grid', 'Square · hex · triangle'],
+	['Scale', 'Toward points and curves · Min to Max'],
+	['Cull', 'Random · away from the attractors'],
+	['Out', 'SVG · full size · a shape per cell'],
+]} links={[{ label: 'Open', href: '/grid/' }, { label: 'Guide', href: '/grid/guide/' }]} />
 
 ## Image Grid
 
-<span class="ax-badge">Beta</span> New, so some of it may change.
-
-The same grids, with each cell sized by an image's brightness, like a halftone.
-
-<div class="ax-grid not-content">
-<HubCard href="/image-grid/" title="Open the Image Grid" meta="alexdesignlab.org/image-grid"><svg slot="icon" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="5" r="0.9"/><circle cx="12" cy="5" r="1.45"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="12" r="1.45"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2.55"/><circle cx="5" cy="19" r="2"/><circle cx="12" cy="19" r="2.55"/><circle cx="19" cy="19" r="3.1"/></svg></HubCard>
-<HubCard href="/image-grid/guide/" title="Its Quick Guide" meta="Guide"><svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C6.5 4 9.5 4 12 5.5v14c-2.5-1.5-5.5-1.5-8 0zM20 5.5C17.5 4 14.5 4 12 5.5v14c2.5-1.5 5.5-1.5 8 0z"/></svg></HubCard>
-</div>
+<ToolSheet art="image-grid" code="P-02" badge="Beta" facts={[
+	['Grid', 'Square · hex · triangle'],
+	['Scale', 'By the image, like a halftone'],
+	['Modes', 'Simple · Standard'],
+	['Out', 'SVG · full size · a shape per cell'],
+]} links={[{ label: 'Open', href: '/image-grid/' }, { label: 'Guide', href: '/image-grid/guide/' }]} />

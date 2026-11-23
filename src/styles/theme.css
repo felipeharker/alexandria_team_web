@@ -345,6 +345,30 @@ h1#_top,
 	color: var(--sl-color-gray-4);
 }
 
+/* Starting Out on the home page: icon and name only, five to a row (user, 2026-11-23: no sentences) */
+.ax-quick {
+	grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+@container (max-width: 50rem) {
+	.ax-quick { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@container (max-width: 28rem) {
+	.ax-quick { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+.ax-quick .ax-card {
+	grid-template-columns: minmax(0, 1fr);
+	gap: 10px;
+	align-content: start;
+	min-height: 100%;
+}
+.ax-quick .ax-card:hover,
+.ax-quick .ax-card:focus-visible {
+	border-color: var(--ax-hover);
+}
+.ax-quick .ax-card:hover .tile {
+	color: var(--sl-color-white);
+}
+
 /* the home page's tools (user, 2026-11-17: more visual, less text): a card each, led by a line drawing of what the
    tool makes (ToolArt.astro), with its sheet number, its name, one line and its links. Every card is the same: the
    drawing above the words, four to a row, so a section of fewer leaves the rest of its row empty (user, 2026-11-17).
@@ -419,14 +443,10 @@ h1#_top,
 .ax-art .txt.strong { fill: var(--art-ink); font-weight: 500; }
 .ax-art .code { fill: var(--art-ink); font-family: var(--sl-font-mono); font-size: 13px; font-weight: 500; }
 .ax-art .letters { fill: none; stroke: var(--art-line); stroke-width: 1.25; font-family: var(--sl-font); font-size: 34px; font-weight: 700; letter-spacing: 0.12em; }
-.ax-tool-head {
-	display: flex;
-	align-items: baseline;
-	justify-content: space-between;
-	gap: 10px;
-}
+/* the sheet number, at the end of the links row, bottom right as in a title block */
 .ax-tool-code {
 	flex: none;
+	margin-left: auto;
 	font-family: var(--sl-font-mono);
 	font-size: 0.7rem;
 	font-weight: 500;
@@ -467,14 +487,16 @@ h1#_top,
 	outline: 2px solid var(--sl-color-white);
 	outline-offset: 2px;
 }
-.ax-tool-art .ax-badge {
+.ax-tool-art .ax-badge,
+.ax-sheet-art .ax-badge {
 	position: absolute;
 	top: 10px;
 	right: 10px;
 	margin: 0;
 }
 /* room for the tag: the drawing sits a little lower and smaller */
-.ax-tool-art:has(.ax-badge) .ax-art {
+.ax-tool-art:has(.ax-badge) .ax-art,
+.ax-sheet-art:has(.ax-badge) .ax-art {
 	top: 30px;
 	height: calc(100% - 36px);
 }
@@ -502,7 +524,9 @@ h1#_top,
 	margin-left: 0;
 	margin-right: 4px;
 }
-/* "Alpha", for a category with nothing to use yet: the same bubble in grey, as the blue is Beta's */
+/* "Alpha", for a category with nothing to use yet, and a tool card's release number: the same bubble in grey, as the
+   blue is Beta's */
+.ax-badge.ax-tag,
 .sidebar-content .sl-badge.ax-alpha {
 	border-color: var(--sl-color-gray-4);
 	background: transparent;
@@ -604,6 +628,96 @@ h1#_top,
 }
 @media (max-width: 34rem) {
 	.ax-tool-row { grid-template-columns: 6.5rem minmax(0, 1fr); gap: 12px; }
+}
+
+/* a tool on its category page (ToolSheet.astro): the drawing beside a few facts and the links (user, 2026-11-23) */
+.ax-sheet {
+	display: grid;
+	grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+	gap: 20px;
+	align-items: stretch;
+	margin-top: 0.9rem;
+}
+.ax-sheet-art {
+	position: relative;
+	display: block;
+	align-self: start;
+	aspect-ratio: 16 / 9;
+	border: 1px solid var(--ax-rule);
+	border-radius: var(--ax-radius);
+	background: var(--ax-tint);
+	transition:
+		border-color 0.15s,
+		box-shadow 0.15s;
+	--art-ink: var(--sl-color-gray-1);
+	--art-line: var(--sl-color-gray-3);
+	--art-fine: var(--sl-color-gray-4);
+	--art-tone: var(--sl-color-gray-5);
+	--art-paper: var(--sl-color-black);
+}
+.ax-sheet-art:hover {
+	border-color: var(--ax-hover);
+	box-shadow: 0 0 0 3px color-mix(in srgb, var(--ax-hover) 22%, transparent);
+}
+.ax-sheet-text {
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+}
+.ax-sheet dl {
+	display: grid;
+	grid-template-columns: max-content minmax(0, 1fr);
+	margin: 0;
+	border-top: 1px solid var(--ax-rule-strong);
+}
+.ax-sheet dt,
+.ax-sheet dd {
+	margin: 0;
+	padding: 7px 0;
+	border-bottom: 1px solid var(--ax-rule);
+}
+.ax-sheet dt {
+	padding-right: 18px;
+	font-size: 0.68rem;
+	font-weight: 600;
+	letter-spacing: 0.07em;
+	line-height: 1.9;
+	text-transform: uppercase;
+	color: var(--sl-color-gray-3);
+}
+.ax-sheet dd {
+	font-size: var(--sl-text-sm);
+	line-height: 1.45;
+	color: var(--sl-color-white);
+}
+.ax-sheet nav {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px 18px;
+	margin-top: auto;
+	padding-top: 14px;
+	font-size: var(--sl-text-sm);
+	font-weight: 600;
+}
+.ax-sheet nav .sl-link-button {
+	margin: 0;
+	text-decoration: none;
+	padding: 0.45rem 1rem;
+	font-size: var(--sl-text-sm);
+}
+.ax-sheet nav a:not(.sl-link-button) {
+	color: var(--sl-color-gray-2);
+	text-decoration: none;
+	white-space: nowrap;
+}
+.ax-sheet nav a:not(.sl-link-button):hover {
+	color: var(--sl-color-white);
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+@media (max-width: 40rem) {
+	.ax-sheet { grid-template-columns: minmax(0, 1fr); gap: 12px; }
 }
 
 /* the release card */

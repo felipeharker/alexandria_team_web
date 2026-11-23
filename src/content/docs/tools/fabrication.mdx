@@ -1,65 +1,55 @@
 ---
 title: Fabrication Tools
-description: "Web tools for building it: colors, paint, materials and part labels."
+description: "Web tools for building it: color matches, paint formulas, stock materials, pricing and etched labels."
 ---
 
-import HubCard from '../../../components/HubCard.astro';
+import ToolSheet from '../../../components/ToolSheet.astro';
 
-{/* One page per tool category (user, 2026-11-11), each the Overview in its sidebar group and the home section's Details link. */}
+{/* One page per tool category (user, 2026-11-11), each the Overview in its sidebar group and the home section's Details link.
+    Since 2026-11-23 each tool is a ToolSheet: its drawing, a few facts of a few words each, and its links. No sentences
+    (user: "graphics strong, words brief"); the detail is in each tool's quick guide. */}
 
-Web tools for building it: colors, paint, materials and part labels.
+In the browser · nothing to install
 
 ## Color Matcher
 
-Turns a hex code into its nearest Sherwin-Williams, Pantone and 3M vinyl colors, each with a percent match, and says when the office has a Matthews Paint formula for it.
-
-<div class="ax-grid not-content">
-<HubCard href="/colors/" title="Open the Color Matcher" meta="alexdesignlab.org/colors"><svg slot="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c3.4 4.3 6 7.7 6 10.7a6 6 0 0 1-12 0C6 10.7 8.6 7.3 12 3z"/></svg></HubCard>
-<HubCard href="/colors/guide/" title="Its Quick Guide" meta="Guide"><svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C6.5 4 9.5 4 12 5.5v14c-2.5-1.5-5.5-1.5-8 0zM20 5.5C17.5 4 14.5 4 12 5.5v14c2.5-1.5 5.5-1.5 8 0z"/></svg></HubCard>
-<HubCard href="/templates/color-matcher/" title="Its CSV Template" meta="Template"><svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M4 19h16"/></svg></HubCard>
-</div>
+<ToolSheet art="color-matcher" code="F-01" facts={[
+	['In', 'Hex code · CSV list'],
+	['Matches', 'Sherwin-Williams · Pantone · 3M 3630'],
+	['Score', '% match · Matthews formula, if on file'],
+	['Out', 'CSV'],
+]} links={[{ label: 'Open', href: '/colors/' }, { label: 'Guide', href: '/colors/guide/' }, { label: 'CSV Template', href: '/templates/color-matcher/' }]} />
 
 ## Color Library
 
-Every Matthews Paint formula the office has on file, with its colorants.
-
-<div class="ax-grid not-content">
-<HubCard href="/colors/library/" title="Open the Color Library" meta="alexdesignlab.org/colors/library"><svg slot="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M5 5h4v14H5zM10.5 5h4v14h-4zM16 6l3.7 1.5-4.4 11.3V6.9z"/></svg></HubCard>
-<HubCard href="/colors/library/guide/" title="Its Quick Guide" meta="Guide"><svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C6.5 4 9.5 4 12 5.5v14c-2.5-1.5-5.5-1.5-8 0zM20 5.5C17.5 4 14.5 4 12 5.5v14c2.5-1.5 5.5-1.5 8 0z"/></svg></HubCard>
-</div>
+<ToolSheet art="color-library" code="F-02" facts={[
+	['Formulas', "Matthews Paint · the office's file"],
+	['Systems', 'Sherwin-Williams · Pantone · Matthews · Benjamin Moore · Behr'],
+	['Shows', 'Colorants, grams per gallon'],
+	['Search', 'Code · name · Matthews number'],
+]} links={[{ label: 'Open', href: '/colors/library/' }, { label: 'Guide', href: '/colors/library/guide/' }]} />
 
 ## Material Estimator
 
-<span class="ax-badge">Beta</span> Still being built.
-
-Prices a project's materials by the foot, the yard or the piece. Sheets share as CSV files, which open in Excel.
-
-<div class="ax-grid not-content">
-<HubCard href="/estimator/" title="Open the Material Estimator" meta="alexdesignlab.org/estimator"><svg slot="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M4 3h16v3.5h-6v11h6V21H4v-3.5h6v-11H4z"/></svg></HubCard>
-<HubCard href="/estimator/guide/" title="Its Quick Guide" meta="Guide"><svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C6.5 4 9.5 4 12 5.5v14c-2.5-1.5-5.5-1.5-8 0zM20 5.5C17.5 4 14.5 4 12 5.5v14c2.5-1.5 5.5-1.5 8 0z"/></svg></HubCard>
-<HubCard href="/templates/estimator/" title="Its CSV Template" meta="Template"><svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M4 19h16"/></svg></HubCard>
-</div>
+<ToolSheet art="material-estimator" code="F-03" badge="Beta" facts={[
+	['Priced by', 'Linear ft · square ft · cubic yd · each'],
+	['Totals', 'By line · unit · category'],
+	['Share', 'CSV · opens in Excel'],
+]} links={[{ label: 'Open', href: '/estimator/' }, { label: 'Guide', href: '/estimator/guide/' }, { label: 'CSV Template', href: '/templates/estimator/' }]} />
 
 ## Material Library
 
-<span class="ax-badge">Beta</span> Still being filled in.
-
-The office's stock materials with their sizes and prices. **Add to Estimator** puts one on a sheet, priced.
-
-<div class="ax-grid not-content">
-<HubCard href="/materials/" title="Open the Material Library" meta="alexdesignlab.org/materials"><svg slot="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l9 4.5-9 4.5-9-4.5zM3 11.3l9 4.5 9-4.5v2.2l-9 4.5-9-4.5zM3 15.6l9 4.5 9-4.5v2.2l-9 4.5-9-4.5z"/></svg></HubCard>
-<HubCard href="/materials/guide/" title="Its Quick Guide" meta="Guide"><svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C6.5 4 9.5 4 12 5.5v14c-2.5-1.5-5.5-1.5-8 0zM20 5.5C17.5 4 14.5 4 12 5.5v14c2.5-1.5 5.5-1.5 8 0z"/></svg></HubCard>
-<HubCard href="/templates/material-library/" title="Its CSV Template" meta="Template"><svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M4 19h16"/></svg></HubCard>
-</div>
+<ToolSheet art="material-library" code="F-04" badge="Beta" facts={[
+	['Lists', 'Thickness · finish · size · price · supplier'],
+	['Sends to', 'Material Estimator'],
+	['Status', 'Being filled in'],
+]} links={[{ label: 'Open', href: '/materials/' }, { label: 'Guide', href: '/materials/guide/' }, { label: 'CSV Template', href: '/templates/material-library/' }]} />
 
 ## Etch Text
 
-<span class="ax-badge">Beta</span> Its DXF hasn't been run on a machine yet.
-
-Type a part label, such as `A1`, and download it as single lines for a laser or router, at real size.
-
-<div class="ax-grid not-content">
-<HubCard href="/etch-text/" title="Open Etch Text" meta="alexdesignlab.org/etch-text"><svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19 9 5l5 14M6 14.5h6M17 8.5 20 6v13"/></svg></HubCard>
-<HubCard href="/etch-text/guide/" title="Its Quick Guide" meta="Guide"><svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C6.5 4 9.5 4 12 5.5v14c-2.5-1.5-5.5-1.5-8 0zM20 5.5C17.5 4 14.5 4 12 5.5v14c2.5-1.5 5.5-1.5 8 0z"/></svg></HubCard>
-<HubCard href="/wiki/downloads/etch-font/" title="The Font" meta="Download"><svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M4 19h16"/></svg></HubCard>
-</div>
+<ToolSheet art="etch-text" code="F-05" badge="Beta" facts={[
+	['In', 'A part label: A1 · P1-1'],
+	['Font', 'Alexandria Etch · single line'],
+	['Out', 'SVG · DXF on ETCH · inches, full size'],
+	['Status', 'DXF not yet run on the laser or router'],
+]} links={[{ label: 'Open', href: '/etch-text/' }, { label: 'Guide', href: '/etch-text/guide/' }, { label: 'Font', href: '/wiki/downloads/etch-font/' }]} />

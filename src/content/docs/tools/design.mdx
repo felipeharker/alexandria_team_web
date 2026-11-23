@@ -1,48 +1,48 @@
 ---
 title: Design Tools
-description: "Web tools for the design package and its graphics: the site plan, a client's logo as vectors, braille, and the package itself."
+description: "Web tools for the design package: site plan, logo to vectors, braille, the package itself."
 ---
 
-import HubCard from '../../../components/HubCard.astro';
+import ToolSheet from '../../../components/ToolSheet.astro';
 
-{/* One page per tool category (user, 2026-11-11), each the Overview in its sidebar group and the home section's Details link. */}
+{/* One page per tool category (user, 2026-11-11), each the Overview in its sidebar group and the home section's Details link.
+    Since 2026-11-23 each tool is a ToolSheet: its drawing, a few facts of a few words each, and its links. No sentences
+    (user: "graphics strong, words brief"); the detail is in each tool's quick guide. */}
 
-Web tools for the design package and its graphics.
+In the browser · nothing to install
 
 ## Site Plan
 
-Finds an address and draws the office's greyscale site plan around it, with the sign's location circled, a north arrow and a scale bar. Exports a PNG.
-
-<div class="ax-grid not-content">
-<HubCard href="/site-plan/" title="Open the Site Plan" meta="alexdesignlab.org/site-plan"><svg slot="icon" viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd"><path d="M12 2.5a9.5 9.5 0 1 0 0 19 9.5 9.5 0 0 0 0-19zm0 2a7.5 7.5 0 1 1 0 15 7.5 7.5 0 0 1 0-15zm0 4.5a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg></HubCard>
-<HubCard href="/site-plan/guide/" title="Its Quick Guide" meta="Guide"><svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C6.5 4 9.5 4 12 5.5v14c-2.5-1.5-5.5-1.5-8 0zM20 5.5C17.5 4 14.5 4 12 5.5v14c2.5-1.5 5.5-1.5 8 0z"/></svg></HubCard>
-</div>
+<ToolSheet art="site-plan" code="D-01" facts={[
+	['In', 'An address'],
+	['Map', 'Greyscale · OpenStreetMap · office style'],
+	['Marks', 'Sign location circle · north arrow · scale bar'],
+	['Out', 'PNG, about 4,800 px'],
+]} links={[{ label: 'Open', href: '/site-plan/' }, { label: 'Guide', href: '/site-plan/guide/' }]} />
 
 ## Vectorizer
 
-Turns a PNG or JPG, such as a client's logo, into an SVG of clean vector shapes, one layer per color.
-
-<div class="ax-grid not-content">
-<HubCard href="/vectorizer/" title="Open the Vectorizer" meta="alexdesignlab.org/vectorizer"><svg slot="icon" viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd"><path d="M12 2.5l7 7-3 10H8l-3-10zM11.35 6.5h1.3v4.6h-1.3zM12 11.6a1.4 1.4 0 1 0 .01 0zM8 20.8h8v1.5H8z"/></svg></HubCard>
-<HubCard href="/vectorizer/guide/" title="Its Quick Guide" meta="Guide"><svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C6.5 4 9.5 4 12 5.5v14c-2.5-1.5-5.5-1.5-8 0zM20 5.5C17.5 4 14.5 4 12 5.5v14c2.5-1.5 5.5-1.5 8 0z"/></svg></HubCard>
-</div>
+<ToolSheet art="vectorizer" code="D-02" facts={[
+	['In', 'PNG · JPG, such as a client logo'],
+	['Out', 'SVG · a layer per color'],
+	['For', 'Rhino · CorelDRAW · fabrication'],
+	['Privacy', 'Stays in your browser'],
+]} links={[{ label: 'Open', href: '/vectorizer/' }, { label: 'Guide', href: '/vectorizer/guide/' }]} />
 
 ## Braille Lettering Designer
 
-Turns a sign's text into Grade 2 braille, as ADA signs need, and saves the dots as a full-size SVG.
-
-<div class="ax-grid not-content">
-<HubCard href="/braille/" title="Open the Braille Lettering Designer" meta="alexdesignlab.org/braille"><svg slot="icon" viewBox="0 0 24 24" fill="currentColor"><circle cx="8.5" cy="5.5" r="2.3"/><circle cx="8.5" cy="12" r="2.3"/><circle cx="8.5" cy="18.5" r="2.3"/><circle cx="15.5" cy="5.5" r="2.3"/><circle cx="15.5" cy="12" r="2.3"/><circle cx="15.5" cy="18.5" r="2.3"/></svg></HubCard>
-<HubCard href="/braille/guide/" title="Its Quick Guide" meta="Guide"><svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C6.5 4 9.5 4 12 5.5v14c-2.5-1.5-5.5-1.5-8 0zM20 5.5C17.5 4 14.5 4 12 5.5v14c2.5-1.5 5.5-1.5 8 0z"/></svg></HubCard>
-</div>
+<ToolSheet art="braille" code="D-03" facts={[
+	['In', 'Sign text'],
+	['Braille', 'Grade 2 (ADA) · Grade 1'],
+	['Sizes', 'ADA 703.3'],
+	['Out', 'SVG · a circle per dot · full size, inches'],
+]} links={[{ label: 'Open', href: '/braille/' }, { label: 'Guide', href: '/braille/guide/' }]} />
 
 ## Sign Package Maker
 
-<span class="ax-badge">Beta</span> New, so some of it may change.
-
-The standard sign package without Rhino: your own drawings, images and project details, with dimensions and callouts drawn to the standard. Exports the PDF, and a drawing's linework at full size.
-
-<div class="ax-grid not-content">
-<HubCard href="/sign-package/" title="Open the Sign Package Maker" meta="alexdesignlab.org/sign-package"><svg slot="icon" viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd"><path d="M3 5h18v14H3zM5 7v10h14V7zM6.5 8.5h6v1.8h-6zM6.5 15h4v1h-4zM13.5 11.5h4v4.5h-4z"/></svg></HubCard>
-<HubCard href="/sign-package/guide/" title="Its Quick Guide" meta="Guide"><svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C6.5 4 9.5 4 12 5.5v14c-2.5-1.5-5.5-1.5-8 0zM20 5.5C17.5 4 14.5 4 12 5.5v14c2.5-1.5 5.5-1.5 8 0z"/></svg></HubCard>
-</div>
+<ToolSheet art="sign-package" code="D-04" badge="Beta" facts={[
+	['In', 'Drawings (SVG · PDF · PNG · JPG) · project details · colors and materials'],
+	['Pages', 'Title · project info · design · CMF'],
+	['Standard', 'Dimensions · callouts · fonts, built in'],
+	['Out', 'Package PDF · linework DXF · DWG · PDF'],
+]} links={[{ label: 'Open', href: '/sign-package/' }, { label: 'Guide', href: '/sign-package/guide/' }]} />

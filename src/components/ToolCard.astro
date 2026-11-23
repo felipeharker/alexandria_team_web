@@ -1,8 +1,8 @@
 ---
 // One of the office's tools on the home page (user, 2026-11-17: more visual, less text). Every one gets the same card:
-// a drawing of what it makes (ToolArt), tagged Beta in its corner if it is, its name, its sheet number, as on a drawing set (R for Rhino/Grasshopper,
-// D for Design, P for Parametric, F for Fabrication), a line about it, and its links. The whole card opens the first
-// link; the others sit on top of it.
+// a drawing of what it makes (ToolArt), tagged Beta in its corner if it is, its name, its sheet number at the bottom right, as on a drawing set (R for Rhino/Grasshopper,
+// D for Design, P for Parametric, F for Fabrication) and its links; a line about it only if one is given (the home page
+// gives none since 2026-11-23). The whole card opens the first link; the others sit on top of it.
 import ToolArt from './ToolArt.astro';
 
 interface Link {
@@ -16,9 +16,11 @@ interface Props {
 	code: string; // its sheet number, such as D-01
 	links: Link[];
 	badge?: string; // a tag beside the title, such as "Beta" for a tool still being built
+	tag?: string; // a grey tag in the same corner, such as the release a download is at ("2.20")
 }
-const { title, art, code, links, badge } = Astro.props;
+const { title, art, code, links, badge, tag } = Astro.props;
 const [main, ...more] = links;
+const hasText = Astro.slots.has('default');
 const target = (link: Link) => (link.external ? { target: '_blank', rel: 'noopener' } : {});
 ---
 
@@ -26,15 +28,13 @@ const target = (link: Link) => (link.external ? { target: '_blank', rel: 'noopen
 	<div class="ax-tool-art">
 		<ToolArt name={art} />
 		{badge && <span class="ax-badge">{badge}</span>}
+		{!badge && tag && <span class="ax-badge ax-tag">{tag}</span>}
 	</div>
 	<div class="ax-tool-text">
-		<div class="ax-tool-head">
-			<h3>
-				<a class="ax-tool-main" href={main.href} {...target(main)}>{title}{badge && <span class="sr-only"> ({badge})</span>}</a>
-			</h3>
-			<span class="ax-tool-code">{code}</span>
-		</div>
-		<p><slot /></p>
+		<h3>
+			<a class="ax-tool-main" href={main.href} {...target(main)}>{title}{badge && <span class="sr-only"> ({badge})</span>}</a>
+		</h3>
+		{hasText && <p><slot /></p>}
 		<nav aria-label={title}>
 			<a href={main.href} {...target(main)} tabindex="-1" aria-hidden="true">{main.label} →</a>
 			{
@@ -45,6 +45,7 @@ const target = (link: Link) => (link.external ? { target: '_blank', rel: 'noopen
 					</a>
 				))
 			}
+			<span class="ax-tool-code">{code}</span>
 		</nav>
 	</div>
 </article>
