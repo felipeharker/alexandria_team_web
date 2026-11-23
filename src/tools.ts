@@ -53,9 +53,7 @@ export const categories: Category[] = [
 		tools: [
 			{ title: 'Color Matcher', art: 'color-matcher', code: 'F-01', links: web('/colors/') },
 			{ title: 'Color Library', art: 'color-library', code: 'F-02', links: web('/colors/library/') },
-			{ title: 'Material Estimator', art: 'material-estimator', code: 'F-03', badge: 'Beta', links: web('/estimator/') },
-			{ title: 'Material Library', art: 'material-library', code: 'F-04', badge: 'Beta', links: web('/materials/') },
-			{ title: 'Etch Text', art: 'etch-text', code: 'F-05', badge: 'Beta', links: web('/etch-text/') },
+			{ title: 'Etch Text', art: 'etch-text', code: 'F-03', badge: 'Beta', links: web('/etch-text/') },
 		],
 	},
 	{

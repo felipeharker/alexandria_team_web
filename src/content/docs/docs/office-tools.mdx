@@ -1,17 +1,15 @@
 ---
 title: Office Tools
-description: The web tools for the office's everyday work, the Material Estimator, Material Library, Color Matcher, Color Library, Site Plan, Vectorizer, Parametric Grid, Image Grid, Braille Lettering Designer, Etch Text and Photo Elevation, and how they save, share and get updated.
+description: The web tools for the office's everyday work, the Color Matcher, Color Library, Site Plan, Vectorizer, Parametric Grid, Image Grid, Braille Lettering Designer, Etch Text and Photo Elevation, and how they save, share and get updated.
 ---
 
 {/* Written by hand, unlike the Phoenix docs beside it, which tools/sync.py copies from alexandria_phoenix. The tools
     themselves are in the alexandria_office repository; keep this page in step when one changes. */}
 
-The office tools are eleven small web apps at alexdesignlab.org, for the work around a design rather than in Rhino: pricing materials, matching and mixing colors, drawing site plans, turning images into vectors, laying out patterns of cells from points, curves or an image, setting braille, lettering etched part labels and dimensioning a photo of a building for a permit. They open in any browser, on any computer or phone, with nothing to install and no account, and every visit gets the newest version. Each has a quick guide for its buttons, under [Quick Guides](/guides/); this page covers how they work underneath.
+The office tools are nine small web apps at alexdesignlab.org, for the work around a design rather than in Rhino: matching and mixing colors, drawing site plans, turning images into vectors, laying out patterns of cells from points, curves or an image, setting braille, lettering etched part labels and dimensioning a photo of a building for a permit. They open in any browser, on any computer or phone, with nothing to install and no account, and every visit gets the newest version. Each has a quick guide for its buttons, under [Quick Guides](/guides/); this page covers how they work underneath.
 
 | Tool | For | Saves | Shares As |
 |---|---|---|---|
-| [Material Estimator](/estimator/) | A project's material costs, by the foot, the yard or the piece | In your browser | CSV, which opens in Excel |
-| [Material Library](/materials/) | The office's stock materials, with sizes and prices, for the Estimator | Nothing to save | A row on an Estimator sheet |
 | [Color Matcher](/colors/) | The nearest Sherwin-Williams, Pantone and 3M vinyl colors to any hex code | In your browser | CSV |
 | [Color Library](/colors/library/) | The Matthews Paint formulas the office has on file | Nothing to save | A link to a formula |
 | [Site Plan](/site-plan/) | A greyscale site plan with the sign's location circled in red, a north arrow and a scale bar | In your browser | PNG, about 4,800 px across |
@@ -24,30 +22,9 @@ The office tools are eleven small web apps at alexdesignlab.org, for the work ar
 ## Saving and Sharing
 
 - **Your work saves as you go, in the browser you use.** It's per person and per browser: another browser, another computer, a private window or clearing the browser's site data starts empty. Nothing is kept on a server.
-- **Export to keep it.** A CSV or PNG saved with the project's files is the real record. Import a CSV to pick up where you left off, or to pass a sheet or a color list to someone else.
+- **Export to keep it.** A CSV or PNG saved with the project's files is the real record. Import a CSV to pick up where you left off, or to pass a color list to someone else.
 - **The project name at the top** names every export, so name it before you export.
-- **Start from a template.** The [Templates](/templates/estimator/) show the columns each tool reads, with a file to download.
-
-## Material Estimator
-
-A sheet of materials, one row each, priced by unit: the Estimator multiplies unit price by quantity and totals the sheet by line, by pricing unit and by category.
-
-| Unit | Priced By | Typical Use |
-|---|---|---|
-| `LF` | Linear foot | Extrusions, trim, pipe |
-| `SF` | Square foot | Panels, sheathing, roofing |
-| `SY` | Square yard | Carpet, geotextile |
-| `CF`, `CY` | Cubic foot, cubic yard | Grout and fill; concrete, gravel |
-| `EA` | Each | Anchors, fixtures |
-| `LB`, `TON` | Pound, ton | Fasteners; rebar, aggregate |
-| `GAL` | Gallon | Coatings, sealants |
-| `LS` | Lump sum | Allowances |
-
-Imports are forgiving: headers such as Item, Qty or UOM, units written out (sq ft, cubic yards), dollar signs and thousands separators all read correctly, and the import says what it had to fill in. **Print / Save as PDF** in the ⋯ menu prints the sheet for a submittal. A row's Material field lists the [Material Library](/materials/)'s materials: pick one and its category, unit, price and notes fill in. See its [quick guide](/estimator/guide/) and [CSV template](/templates/estimator/).
-
-## Material Library
-
-<span class="ax-badge">Beta</span> The office's stock materials, still being filled in, grouped by category: what each one is, its thickness, finish and size, its pricing unit and price, and its supplier. **Add to Estimator** opens the Material Estimator with that material on a new row, priced; on the sheet it's named by its material, thickness and finish, with its size and supplier in the Notes. Prices are a guide: check them with the supplier before a quote. The library is one CSV file in the office tools repository, with the columns of its [CSV template](/templates/material-library/). See its [quick guide](/materials/guide/).
+- **Start from a template.** The [Templates](/templates/) show the columns each tool reads, with a file to download.
 
 ## Color Matcher
 
@@ -144,15 +121,14 @@ See its [quick guide](/photo-elevation/guide/).
 
 ## Privacy
 
-The site is behind a sign-in: each person has a username and passcode, and a sign-in lasts 30 days on that browser. Beyond that the tools keep nothing on a server. The Color Matcher and Color Library load their color data from this site, and the Material Library and Estimator their materials. The Site Plan sends the address you search to [Nominatim](https://nominatim.openstreetmap.org/), OpenStreetMap's address search, and loads its map from [OpenFreeMap](https://openfreemap.org/). The Vectorizer traces images in your browser and never uploads them, as the Image Grid reads them and Photo Elevation straightens them, and the Braille Lettering Designer translates in your browser too. Nothing else leaves your browser. The site is also kept out of search engines.
+The site is behind a sign-in: each person has a username and passcode, and a sign-in lasts 30 days on that browser. Beyond that the tools keep nothing on a server. The Color Matcher and Color Library load their color data from this site. The Site Plan sends the address you search to [Nominatim](https://nominatim.openstreetmap.org/), OpenStreetMap's address search, and loads its map from [OpenFreeMap](https://openfreemap.org/). The Vectorizer traces images in your browser and never uploads them, as the Image Grid reads them and Photo Elevation straightens them, and the Braille Lettering Designer translates in your browser too. Nothing else leaves your browser. The site is also kept out of search engines.
 
 ## Changing a Tool
 
 The tools live in the private **alexandria_office** repository, one folder each under `public/`, and pushing its main branch puts a change live in a minute or two. [System Architecture](/docs/architecture/) shows how it connects to the rest.
 
-- **A tool's code or look:** its folder, `public/estimator/`, `public/materials/`, `public/colors/`, `public/site-plan/`, `public/vectorizer/`, `public/grid/`, `public/image-grid/` (which uses the Parametric Grid's cells and look, from `public/grid/`), `public/braille/` or `public/photo-elevation/`. They share the hub's style: greys, one green for buttons, Inter and IBM Plex Mono.
+- **A tool's code or look:** its folder, `public/colors/`, `public/site-plan/`, `public/vectorizer/`, `public/grid/`, `public/image-grid/` (which uses the Parametric Grid's cells and look, from `public/grid/`), `public/braille/` or `public/photo-elevation/`. They share the hub's style: greys, one green for buttons, Inter and IBM Plex Mono.
 - **The color libraries:** `tools/build_colors.py` rebuilds them. Add a formula sheet to `paint-formulas/`, named as above, then run it.
-- **The Material Library:** `public/materials/materials.csv`. Add rows with the template's columns and push.
 - **The site plan style:** `public/site-plan/map-style.json`, the standard the Site Plan loads, described in the repository's README.
 - **A new tool's address:** its folder's name also goes in `OFFICE_TOOLS` in this hub's `server/gate.mjs`, or the gate won't serve it.
 - **Quick guides and these pages:** in the hub's own repository, alexandria_team_web. The hub's copies of the CSV templates come across with its `tools/sync.py`.

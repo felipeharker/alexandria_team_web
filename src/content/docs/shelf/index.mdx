@@ -1,0 +1,41 @@
+---
+title: Shelf
+description: Tools taken off the site until they're ready for the team.
+# unlisted: in no menu and out of the hub's search
+pagefind: false
+---
+
+import ToolSheet from '../../../components/ToolSheet.astro';
+
+{/* The shelf (user, 2026-11-23) is unlisted, like the management pages: not in the sidebar (astro.config.mjs), the
+    search or the sitemap, and nothing else on the hub links to it or names its tools. Each tool here is still served by
+    the gate (server/gate.mjs, OFFICE_TOOLS) at its own address, and its guide is a page under /shelf/. To shelve a
+    tool: take its card (src/tools.ts), its sheet on its category page, its rows on Quick Guides and Your First Day,
+    and every other mention off the hub, move its guide's page here, and add its sheet below. To put one back, undo
+    that and take it off this page. The README's Off the Site has the list. */}
+
+Off the site · not ready for the team · in no menu or search, so keep this address
+
+## Sign Package Maker
+
+<ToolSheet art="sign-package" code="SH-01" tag="Shelved" facts={[
+	['Makes', 'The design package · PDF · linework at 1:1'],
+	['Was', 'Design Tools · beta'],
+	['Shelved', '2026-11-23'],
+]} links={[{ label: 'Open', href: '/sign-package/' }, { label: 'Guide', href: '/shelf/sign-package/' }]} />
+
+## Material Estimator
+
+<ToolSheet art="material-estimator" code="SH-02" tag="Shelved" facts={[
+	['Makes', "A project's material costs · CSV"],
+	['Was', 'Fabrication Tools · beta'],
+	['Shelved', '2026-11-23'],
+]} links={[{ label: 'Open', href: '/estimator/' }, { label: 'Guide', href: '/shelf/estimator/' }, { label: 'CSV Template', href: '/estimator/material-sheet-template.csv' }]} />
+
+## Material Library
+
+<ToolSheet art="material-library" code="SH-03" tag="Shelved" facts={[
+	['Lists', 'Stock materials · sizes · prices · suppliers'],
+	['Was', 'Fabrication Tools · beta · being filled in'],
+	['Shelved', '2026-11-23'],
+]} links={[{ label: 'Open', href: '/materials/' }, { label: 'Guide', href: '/shelf/materials/' }, { label: 'CSV Template', href: '/materials/material-library-template.csv' }]} />

@@ -6,8 +6,8 @@ import sitemap from '@astrojs/sitemap';
 // The Alexandria hub: guides, the latest release, the office tools and the standards, in one place.
 // Pages are Markdown or MDX in src/content/docs; the sidebar below is the site's menu.
 // tools/sync.py writes everything under docs/, src/generated and src/data from alexandria_phoenix.
-// Every tool has a short address: /rhino, /grasshopper, /estimator/guide here, and /estimator, /materials (the
-// Material Library), /colors (the Color Matcher), /colors/library, /site-plan, /vectorizer, /grid (the Parametric Grid),
+// Every tool has a short address: /rhino, /grasshopper, /colors/guide here, and /colors (the Color Matcher),
+// /colors/library, /site-plan, /vectorizer, /grid (the Parametric Grid),
 // /image-grid (the Image Grid), /braille (the Braille Lettering Designer), /etch-text (Etch Text) and /photo-elevation
 // (Photo Elevation) from the alexandria_office repo,
 // served beside these pages by server/gate.mjs.
@@ -18,13 +18,13 @@ export default defineConfig({
 		// the guides' first addresses, from the day the hub went up
 		'/guides/rhino-tools': '/rhino/',
 		'/guides/grasshopper-components': '/grasshopper/',
-		'/guides/material-estimator': '/estimator/guide/',
 		// the one page of all the tools, before it became a page per category (2026-11-11); home shows them all
 		'/tools': '/',
 	},
 	integrations: [
-		// Starlight would add the sitemap itself; it's added here to leave the unlisted management pages out of it.
-		sitemap({ filter: (page) => !new URL(page).pathname.startsWith('/management/') }),
+		// Starlight would add the sitemap itself; it's added here to leave the unlisted pages out of it: the
+		// management pages and the shelf.
+		sitemap({ filter: (page) => !/^\/(management|shelf)\//.test(new URL(page).pathname) }),
 		starlight({
 			title: 'Alexandria',
 			description: 'Tools, guides and standards for Alexandria: the Rhino and Grasshopper tools and the office tools.',
@@ -54,7 +54,8 @@ export default defineConfig({
 			// Before this there was an entry per tool, twice (Quick Guides and Tools), and one per download.
 			// Not in the sidebar on purpose (user, 2026-11-20): the management pages, src/content/docs/management/, which
 			// are unlisted. They are out of the search (`pagefind: false` in each) and the sitemap (above) too, and
-			// nothing links to them.
+			// nothing links to them. The shelf (user, 2026-11-23), src/content/docs/shelf/, is unlisted the same way: the
+			// tools taken off the site until they're ready, and their guides.
 			sidebar: [
 				{
 					label: 'Starting Out',

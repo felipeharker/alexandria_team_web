@@ -17,6 +17,8 @@ const parents: Parent[] = [
 	{ test: /^\/docs\/.+/, href: '/docs/', label: 'Documentation' },
 	// the Alexandria Etch Font page, which the font's row of Downloads links to
 	{ test: /^\/wiki\/downloads\/.+/, href: '/wiki/downloads/', label: 'Downloads' },
+	// a shelved tool's guide, back to the shelf (unlisted, so no sidebar entry lights up)
+	{ test: /^\/shelf\/.+/, href: '/shelf/', label: 'Shelf' },
 	// The Sample Project (out of the sidebar since 2026-11-18): Your First Day links to it.
 	{ test: /^\/sample-project$/, href: '/start/first-day/', label: 'Your First Day' },
 ];

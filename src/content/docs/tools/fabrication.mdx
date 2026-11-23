@@ -1,6 +1,6 @@
 ---
 title: Fabrication Tools
-description: "Web tools for building it: color matches, paint formulas, stock materials, pricing and etched labels."
+description: "Web tools for building it: color matches, paint formulas and etched labels."
 ---
 
 import ToolSheet from '../../../components/ToolSheet.astro';
@@ -29,25 +29,9 @@ In the browser · nothing to install
 	['Search', 'Code · name · Matthews number'],
 ]} links={[{ label: 'Open', href: '/colors/library/' }, { label: 'Guide', href: '/colors/library/guide/' }]} />
 
-## Material Estimator
-
-<ToolSheet art="material-estimator" code="F-03" badge="Beta" facts={[
-	['Priced by', 'Linear ft · square ft · cubic yd · each'],
-	['Totals', 'By line · unit · category'],
-	['Share', 'CSV · opens in Excel'],
-]} links={[{ label: 'Open', href: '/estimator/' }, { label: 'Guide', href: '/estimator/guide/' }, { label: 'CSV Template', href: '/templates/estimator/' }]} />
-
-## Material Library
-
-<ToolSheet art="material-library" code="F-04" badge="Beta" facts={[
-	['Lists', 'Thickness · finish · size · price · supplier'],
-	['Sends to', 'Material Estimator'],
-	['Status', 'Being filled in'],
-]} links={[{ label: 'Open', href: '/materials/' }, { label: 'Guide', href: '/materials/guide/' }, { label: 'CSV Template', href: '/templates/material-library/' }]} />
-
 ## Etch Text
 
-<ToolSheet art="etch-text" code="F-05" badge="Beta" facts={[
+<ToolSheet art="etch-text" code="F-03" badge="Beta" facts={[
 	['In', 'A part label: A1 · P1-1'],
 	['Font', 'Alexandria Etch · single line'],
 	['Out', 'SVG · DXF on ETCH · inches, full size'],
