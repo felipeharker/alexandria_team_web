@@ -1,7 +1,7 @@
 <!-- Written by tools/sync.py from alexandria_phoenix/guides/src. Edit it there. -->
 <div class="qg-page">
   <header>
-    <p class="qg-lede">The Rhino 8 toolbar: from an empty model to a design package and its fab files.</p>
+    <p class="qg-lede">The Rhino 8 toolbar: from an empty model to a render of the sign.</p>
   </header>
 
   <section aria-labelledby="toolbar">
@@ -26,8 +26,6 @@
       </div></div>
       <div class="qg-group qg-g-layout"><div class="qg-group-name">Drawings &amp; Layout</div><div class="qg-buttons">
         <a class="qg-btn" href="#dimension"><div class="qg-tile qg-right"><img alt="" src="/guides/icons/standard_dimension.png"></div><span>Standard Dimension</span></a>
-        <a class="qg-btn" href="#layout-manager"><div class="qg-tile"><img alt="" src="/guides/icons/layout_manager.png"></div><span>Layout Manager</span></a>
-        <a class="qg-btn" href="#fabrication-manager"><div class="qg-tile"><img alt="" src="/guides/icons/fabrication_manager.png"></div><span>Fabrication Manager</span></a>
       </div></div>
       <div class="qg-group qg-g-files"><div class="qg-group-name">Files</div><div class="qg-buttons">
         <a class="qg-btn" href="#save-as"><div class="qg-tile"><img alt="" src="/guides/icons/save_as_r7.png"></div><span>Save as Rhino 7</span></a>
@@ -38,16 +36,14 @@
   </section>
 
   <section aria-labelledby="order">
-    <div class="qg-section-head"><h2 id="order">From Model to Package</h2></div>
+    <div class="qg-section-head"><h2 id="order">From Model to Render</h2></div>
     <ol class="qg-flow">
       <li class="qg-g-project"><img alt="" src="/guides/icons/create_project.png"><div><b>Create Project</b><small><code>design_models</code> / <code>&lt;project&gt;_<wbr>model_v1.3dm</code></small></div></li>
       <li class="qg-g-model"><img alt="" src="/guides/icons/populate_model.png"><div><b>Populate Model</b><small>Skip it in a model from the Alexandria template.</small></div></li>
       <li class="qg-model-step"><div class="qg-shape"><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><rect x="3" y="6" width="16" height="10" rx="1" class="qg-stroke" stroke-width="1.6"/><path d="M7 16v3M15 16v3" class="qg-stroke" stroke-width="1.6"/></svg></div><div><b>Model the Sign</b><small>Full size, each part on a <code>DESIGN</code> sublayer.</small></div></li>
       <li class="qg-g-model"><img alt="" src="/guides/icons/set_light.png"><div><b>Materials and Light</b><small>Set Material on <code>DESIGN</code>, Set Light on the lit faces.</small></div></li>
-      <li class="qg-g-render"><img alt="" src="/guides/icons/day_render.png"><div><b>Render</b><small>One view for day and night. <code>design_renders</code> / <code>day_#</code> <code>night_#</code></small></div></li>
+      <li class="qg-g-render"><img alt="" src="/guides/icons/day_render.png"><div><b>Render</b><small>Set the look, then Render and Save. <code>design_renders</code> / <code>day_#</code> <code>night_#</code></small></div></li>
       <li class="qg-g-layout"><img alt="" src="/guides/icons/standard_dimension.png"><div><b>Draw and Dimension</b><small>Elevations and plans, flat in the Top view.</small></div></li>
-      <li class="qg-g-layout"><img alt="" src="/guides/icons/layout_manager.png"><div><b>Pages and PDF</b><small><code>design_package</code> / <code>DESIGN_<wbr>&lt;project&gt;_v#.pdf</code></small></div></li>
-      <li class="qg-g-layout"><img alt="" src="/guides/icons/fabrication_manager.png"><div><b>Fab Files</b><small><code>fabrication</code> / <code>FAB_&lt;project&gt;_<wbr>&lt;material&gt;_v#.dxf</code></small></div></li>
     </ol>
     <div class="qg-legend"><span>Save dialogs open in these folders of the project</span><span><code>#</code> is the next number there</span></div>
   </section>
@@ -113,8 +109,8 @@
           <div class="qg-light"><svg viewBox="0 0 120 90" aria-hidden="true"><rect x="0" y="0" width="16" height="90" class="qg-wall"/><rect x="34" y="18" width="46" height="54" class="qg-glow"/><path d="M86 30 l18 -8 M86 45 h20 M86 60 l18 8" style="stroke:var(--render)" stroke-width="2"/></svg><b>Push Through Body</b><small>Intensity 2 &middot; white &middot; a solid</small></div>
           <div class="qg-light"><svg viewBox="0 0 120 90" aria-hidden="true"><rect x="0" y="0" width="16" height="90" class="qg-wall"/><rect x="34" y="18" width="40" height="54" class="qg-paper" style="stroke:var(--ink)" stroke-width="2"/><rect x="74" y="18" width="6" height="54" fill="#2d2d30" style="stroke:var(--muted)" stroke-width="1"/><path d="M86 38 l12 -4 M86 52 l12 4" style="stroke:var(--muted)" stroke-width="2"/></svg><b>Push Through Face</b><small>Intensity 0.5 &middot; charcoal</small></div>
         </div></div></article>
-      <article class="qg-card qg-g-render qg-wide" id="render"><div class="qg-tiles"><div class="qg-tile"><img alt="" src="/guides/icons/day_render.png"></div><div class="qg-tile"><img alt="" src="/guides/icons/night_render.png"></div></div><div class="qg-split"><div><h3>Apply Day Settings &middot; Apply Night Settings</h3>
-        <dl><dt>Click</dt><dd>Sets V-Ray to the day or night look, at 4K. Layers stay as you leave them: hide the wall to put the sign on the sky.</dd><dt>Right</dt><dd><b>Render Day and Save</b> or <b>Render Night and Save</b> asks <b>Save with sky</b> (a JPEG with it, a transparent PNG without) and where to save, then renders the active view to one image.</dd></dl></div>
+      <article class="qg-card qg-g-render qg-wide" id="render"><div class="qg-tiles"><div class="qg-tile"><img alt="" src="/guides/icons/day_render.png"></div><div class="qg-tile"><img alt="" src="/guides/icons/night_render.png"></div><div class="qg-tile"><img alt="" src="/guides/icons/render_view.png"></div></div><div class="qg-split"><div><h3>Apply Day Settings &middot; Apply Night Settings &middot; Render and Save</h3>
+        <dl><dt>Day, Night</dt><dd>Sets V-Ray to the day or night look, at 4K. Layers stay as you leave them: hide the wall to put the sign on the sky.</dd><dt>Render and Save</dt><dd>Renders the active view. When it is done, asks <b>Save with sky</b> (a JPEG with it, a transparent PNG without) and where to save, at the next <code>day_#</code> or <code>night_#</code>.</dd></dl></div>
         <svg class="qg-draw" viewBox="0 0 340 112" role="img" aria-label="Day: light blue sky, the sign's lights down to daylight. Night: navy to mauve sky, the sign's lights on.">
           <defs>
             <linearGradient id="sky-day" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#69c5db"/><stop offset="0.5" stop-color="#c0e7f6"/><stop offset="1" stop-color="#ffffff"/></linearGradient>
@@ -147,55 +143,6 @@
           <circle cx="170" cy="70" r="2.6" class="qg-ink"/>
           <path d="M170 70 L236 38 h18" class="qg-stroke" stroke-width="1.2"/>
           <text x="260" y="42.5" font-size="12" class="qg-t-sheet">CALLOUT</text>
-        </svg></div></article>
-      <article class="qg-card qg-g-layout qg-wide" id="layout-manager"><div class="qg-tile"><img alt="" src="/guides/icons/layout_manager.png"></div><div><h3>Layout Manager</h3>
-        <dl><dt>Click</dt><dd>One window for the design package. Choose a part under <b>Manage</b>. Double click an entry for its main button.</dd></dl>
-        <div class="qg-table-scroll">
-          <table class="qg-parts">
-            <tbody>
-              <tr><td>Document</td><td><span class="qg-pill">Create Document</span><span class="qg-pill">Add Page</span><span class="qg-pill">Rename Page</span><span class="qg-pill">Remove Page</span></td><td>Starts with <code>TITLE</code> and <code>PAGE 1</code>. A page's name is its title.</td></tr>
-              <tr><td>Project Details</td><td><span class="qg-pill">Edit Details</span><span class="qg-pill">Add Info Page</span></td><td>Project, client and revisions, on the <code>PROJECT INFO</code> page.</td></tr>
-              <tr><td>Drawings</td><td><span class="qg-pill">Add Drawing</span><span class="qg-pill">Edit Drawing</span><span class="qg-pill">Delete Drawing</span><span class="qg-pill">Place on Page</span><span class="qg-pill">Remove from Page</span></td><td>A saved selection, placed as a Top view. <i>Largest That Fits</i> picks the scale.</td></tr>
-              <tr><td>Details &middot; Blocks</td><td><span class="qg-pill">Place on Page</span><span class="qg-pill">Remove from Page</span></td><td>From the libraries.</td></tr>
-              <tr><td>CMF</td><td><span class="qg-pill">Add Item</span><span class="qg-pill">Edit Item</span><span class="qg-pill">Remove Item</span><span class="qg-pill">Add CMF Page</span></td><td>Paint, vinyl, materials and electrical, each with a code (<code>P1</code>, <code>V1</code>, <code>M1</code>, <code>E1</code>) and a swatch.</td></tr>
-              <tr><td>Images</td><td><span class="qg-pill">Add Image</span><span class="qg-pill">Remove Image</span></td><td><i>Render</i> fills the page with a render over a day or night sky, which covers drawings there. <i>Site Plan</i> or <i>Other</i>: click two corners.</td></tr>
-              <tr><td>Export</td><td><span class="qg-pill">Export PDF</span><span class="qg-pill">Export Facts</span></td><td>Every page, and the project facts beside it as <code>FACTS_&lt;project&gt;_v#.html</code>.</td></tr>
-            </tbody>
-          </table>
-        </div></div></article>
-      <article class="qg-card qg-g-layout qg-wide" id="fabrication-manager"><div class="qg-tile"><img alt="" src="/guides/icons/fabrication_manager.png"></div><div class="qg-split"><div><h3>Fabrication Manager</h3>
-        <dl><dt>Click</dt><dd>The fab team's cut linework, copied flat out of the model at 1:1. Never on a layout.</dd></dl>
-        <div class="qg-table-scroll">
-          <table class="qg-parts">
-            <tbody>
-              <tr><td><span class="qg-pill">Add Item</span></td><td>Name, material and line type, then select curves, text or hatches.</td></tr>
-              <tr><td><span class="qg-pill">Add Linework</span></td><td>More lines for the item in another line type.</td></tr>
-              <tr><td><span class="qg-pill">Update Item</span></td><td>Copies it again after a design change. Edits to the old copies are lost.</td></tr>
-              <tr><td><span class="qg-pill">Export DXF</span></td><td>A file per material, in the model's units (inches), without the names.</td></tr>
-              <tr><td colspan="2"><span class="qg-pill">Set Location</span><span class="qg-pill">Edit Item</span><span class="qg-pill">Remove Item</span></td></tr>
-            </tbody>
-          </table>
-        </div></div>
-        <svg class="qg-draw" viewBox="0 0 340 226" role="img" aria-label="The fab area: a row per material, items left to right with their names above, linework colored by line type: Cut red, Etch blue, Score green, Fold magenta">
-          <rect x="0.5" y="0.5" width="339" height="225" rx="6" class="qg-tilef" style="stroke:var(--rule)"/>
-          <path d="M14 8 v12 M8 14 h12" stroke="#2a2f35" stroke-width="1.4"/>
-          <text x="26" y="18" font-size="10" class="qg-on-tile">Set Location</text>
-          <text x="14" y="42" font-size="12" class="qg-fab-name qg-t-sheet">ALUMINUM</text>
-          <text x="14" y="58" font-size="8" class="qg-fab-name qg-t-sheet">FACE PANEL</text>
-          <rect x="14" y="63" width="150" height="50" fill="none" stroke="#ff0000" stroke-width="1.2"/>
-          <path d="M34 63 v50 M144 63 v50" fill="none" stroke="#ff00ff" stroke-width="1.2"/>
-          <path d="M56 98 l10 -22 l10 22 M60 90 h12 M86 76 v22 h12 M108 76 v22 M108 76 h12 M108 87 h9 M108 98 h12" fill="none" stroke="#0000ff" stroke-width="1.2"/>
-          <text x="184" y="58" font-size="8" class="qg-fab-name qg-t-sheet">RETURN</text>
-          <rect x="184" y="63" width="96" height="26" fill="none" stroke="#ff0000" stroke-width="1.2"/>
-          <path d="M184 76 h96" fill="none" stroke="#00a000" stroke-width="1.2"/>
-          <text x="14" y="136" font-size="12" class="qg-fab-name qg-t-sheet">ACRYLIC</text>
-          <text x="14" y="152" font-size="8" class="qg-fab-name qg-t-sheet">LETTER</text>
-          <path d="M14 186 l14 -30 h10 l14 30 h-9 l-3 -7 h-14 l-3 7z M29 172 h8 l-4 -10z" fill="none" stroke="#ff0000" stroke-width="1.2"/>
-          <path d="M1 200 h338" stroke="#d9dce0" stroke-width="1"/>
-          <path d="M14 213 h20" stroke="#ff0000" stroke-width="2"/><text x="40" y="217" font-size="11" class="qg-on-tile">Cut</text>
-          <path d="M92 213 h20" stroke="#0000ff" stroke-width="2"/><text x="118" y="217" font-size="11" class="qg-on-tile">Etch</text>
-          <path d="M174 213 h20" stroke="#00a000" stroke-width="2"/><text x="200" y="217" font-size="11" class="qg-on-tile">Score</text>
-          <path d="M262 213 h20" stroke="#ff00ff" stroke-width="2"/><text x="288" y="217" font-size="11" class="qg-on-tile">Fold</text>
         </svg></div></article>
       <article class="qg-card qg-g-files qg-wide" id="save-as"><div class="qg-tiles"><div class="qg-tile"><img alt="" src="/guides/icons/save_as_r7.png"></div><div class="qg-tile"><img alt="" src="/guides/icons/save_as_r8.png"></div></div><div><h3>Save as Rhino 7 &middot; Save as Rhino 8</h3>
         <dl><dt>Click</dt><dd>Writes <code>&lt;name&gt;_r7.3dm</code> or <code>&lt;name&gt;_r8.3dm</code> next to the model, over any earlier copy. You keep working in the original.</dd></dl></div></article>

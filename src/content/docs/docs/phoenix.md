@@ -67,18 +67,17 @@ A Rhino 8 toolbar for drawing and rendering, from the Alexandria Rhino Tools pac
 
 | Group | Button | Does |
 |---|---|---|
-| Project | Alexandria Setup | Adds the Alexandria Tools tab, imports the DM display modes that ship in the package, adds the *Alexandria* template to *File > New*, a model already set up as Populate Model, Day Render and the Layout Manager's first pages leave it, and closes older Alexandria toolbars. Sets up the Claude connectors (MCP) for Rhino and CorelDRAW, below. Right click, *Set Panels*: arranges Rhino's right-hand panels to the standard, which Rhino doesn't carry over to a new version |
+| Project | Alexandria Setup | Adds the Alexandria Tools tab, imports the DM display modes that ship in the package, adds the *Alexandria* template to *File > New*, a model already set up as Populate Model, Day Render and the design package's first pages leave it, and closes older Alexandria toolbars. Sets up the Claude connectors (MCP) for Rhino and CorelDRAW, below. Right click, *Set Panels*: arranges Rhino's right-hand panels to the standard, which Rhino doesn't carry over to a new version |
 | | Create Project | Asks for a project name, then opens a folder browser. Copies the project template there as a folder of the project's name and saves the open model in its models folder, `design_models` as the template names it, as `<project>_model_v1.3dm`, spaces as underscores, where you carry on working in the new copy. The model's project name, on its project info page, becomes the project's. The file it came from stays as it was. Never writes over an existing folder |
 | Model | Populate Model | Sets a model up to the standard: inches and the standard tolerances if it's empty, the `DESIGN`, `DETAILS` and `FAB` layers, the Alexandria annotation styles, the render backdrop (a wall, a modeled ground and a scale figure, each on its `RENDER::` layer with its material) and the world light |
 | | Set Material | Lists the layers with sublayers and gives each sublayer of the one you choose a Rhino Plaster material in its display colour, named `MAT_1`, `MAT_2` and on in layer order, after any `MAT_#` another parent's sublayers have. Replaces any material the sublayer or its objects had; leaves `DESIGN::ILLUMS` alone |
 | | Set Light | Select surfaces, solids or meshes and choose a light: front lit channel, reverse lit channel, push through body or push through face. They become that type's V-Ray mesh light, shared by every object of the type, on its sublayer of `DESIGN::ILLUMS`, so the render settings switch them |
-| Render | Apply Day Settings | Sets V-Ray to the bright day: the light blue sky of the design package as the background, neutral light, the world light at 0.0625, the sun off and 4K output. Every custom V-Ray light goes off, and Set Light's mesh lights go down to daylight so their faces stay in the render, unlit. Right click, *Render Day and Save*: does this, asks whether to *Save with sky* (a JPEG with the sky, or else a PNG with a transparent background), then where to save the render, starting at the next `day_#` in the folder used last or the project's `design_renders`, then renders the active view and saves it there |
-| | Apply Night Settings | Sets V-Ray to the dark night: the navy to mauve sky of the design package as the background, the same world light and exposure, and neutral light at 5%, so lit sign faces carry the image. Every custom V-Ray light comes back on as it was set up. Right click, *Render Night and Save*: the same, as the next `night_#` |
+| Render | Apply Day Settings | Sets V-Ray to the bright day: the light blue sky of the design package as the background, neutral light, the world light at 0.0625, the sun off and 4K output. Every custom V-Ray light goes off, and Set Light's mesh lights go down to daylight so their faces stay in the render, unlit. The model remembers it as the look set last |
+| | Apply Night Settings | Sets V-Ray to the dark night: the navy to mauve sky of the design package as the background, the same world light and exposure, and neutral light at 5%, so lit sign faces carry the image. Every custom V-Ray light comes back on as it was set up. The model remembers it as the look set last |
+| | Render and Save | Renders the active model view with V-Ray as it is set up. When the render is done, a small window asks whether to *Save with sky* (a JPEG with the sky, or else a PNG with a transparent background), then a Save dialog starts in the folder used last or the project's `design_renders`, at the next `day_#` or `night_#` for the look set last (`render_#` if neither was set). Cancel leaves the image in V-Ray's frame buffer |
 | Standard drawings | Populate Detail | Lists the sign details in the detail library and adds the 2D drawing of the one you choose to the model where you click, grouped, on the `DETAILS::2D` and `DETAILS::ANNOTATIONS` layers in the Alexandria styles |
 | | Populate Block | Lists the blocks in the block library and adds the one you choose where you click: a north arrow, section indicator, numbered or lettered dot callout, graphic scale, person, car or tree. Symbols come in at paper size on a page and at the annotation scale in a model, as grouped linework whose text keeps its paper size, and a callout takes the next number or letter; people, cars, trees and graphic scales come in at true size as blocks |
 | Drawings and layout | Standard Dimension | Left click: a dimension in the Alexandria style, on `DETAILS::ANNOTATIONS::DIMENSIONS`. Right click, *Standard Leader*: a leader, on `DETAILS::ANNOTATIONS::CALLOUTS`. Adds any annotation styles the model lacks |
-| | Layout Manager | One window for the design package, below: pages, project details, drawings, details, colors and materials, images and renders, the PDF and the project facts |
-| | Fabrication Manager | The 1:1 cut linework for the fabricators, below: linework you select, copied flat into a fab area by material and line type, and exported to DXF |
 | Files | Save as Rhino 7 | Writes a Rhino 7 copy next to the model as `<name>_r7.3dm`. The open model keeps its own name and path |
 | | Save as Rhino 8 | Writes a Rhino 8 copy next to the model as `<name>_r8.3dm`. The open model keeps its own name and path |
 
@@ -87,6 +86,12 @@ Each group's icons have their own colour: orange, green, gold, violet, blue and 
 ### Claude Connectors
 
 Alexandria Setup also sets the PC up so Claude can work in Rhino and in CorelDRAW, with the installer in `claude_connectors/`: McNeel's Rhino-MCP-Platform package, installed into Rhino from McNeel's server; a CorelDRAW server with its own Python, where CorelDRAW is installed; and their entries in Claude Desktop's and Claude Code's settings, the rest of which it leaves as it is. Setup asks the installer whether anything is left to do, and only then opens its window, so a click on a PC that is set up costs a second. [INSTALL.md](/docs/install/#claude-connectors) covers it for whoever uses it, and [claude_connectors/README.md](claude_connectors/README.md) how it works.
+
+The render settings change V-Ray's environment, sun, camera and image size, and switch the design's own lighting: every V-Ray light but the world light and the sun. The sky is only ever the background: the objects in front of it get a neutral light, so it doesn't tint them. Only lights change: layers, objects and materials stay as you leave them, so show or hide the wall, ground and scale figure yourself. The drawing and render standards behind the buttons are in [STANDARDS.md](/docs/standards/#drawings).
+
+## Off the Toolbar
+
+The Layout Manager and the Fabrication Manager are off the Alexandria Tools toolbar and out of the released package since 2026-11-23, because they aren't ready for the team. Their scripts are in `dev_tools/`, on Felipe's private Alexandria Dev tab, until they are.
 
 ### Layout Manager
 
@@ -119,14 +124,13 @@ The cut linework for the fab team, apart from the design package and never on a 
 | *Remove Item* | Forgets it and deletes its copies |
 | *Export DXF* | A file per material in the folder you choose, the project's `fabrication` folder first: `FAB_<project>_<material>_v#.dxf`. R12 DXF, which every cutting program opens: closed polylines of lines and arcs, a layer per line type in its colour, in the model's units (inches) at 1:1, the linework at the origin, no labels |
 
-The render settings change V-Ray's environment, sun, camera and image size, and switch the design's own lighting: every V-Ray light but the world light and the sun. The sky is only ever the background: the objects in front of it get a neutral light, so it doesn't tint them. Only lights change: layers, objects and materials stay as you leave them, so show or hide the wall, ground and scale figure yourself. The drawing and render standards behind the buttons are in [STANDARDS.md](/docs/standards/#drawings).
-
 ## Repository
 
 ```
 src/<subcategory>/   one Python 3 script per component (the source of truth)
 icons/               24 px component icons
 toolbar/             one Python 3 script per Alexandria Tools button, its icons and the toolbar file
+dev_tools/           the private Alexandria Dev tab: the Standards Manager, and the Layout and Fabrication Managers while they're off the toolbar
 claude_connectors/   the Claude connectors (MCP) for Rhino and CorelDRAW: the installer Alexandria Setup runs, and the CorelDRAW server it installs
 standards/           the Rhino files the tools draw from: layers, annotation styles, render assets, sign details and layouts (.3dm), the Rhino template made from them, and the DM display modes (.ini)
 tools/build.py       compiles src/ and toolbar/ into the two packages and installs them

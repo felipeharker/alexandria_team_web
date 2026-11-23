@@ -63,12 +63,11 @@ The quick guide shows how to use each one. The render buttons need V-Ray for Rhi
 | Populate Model | `AlexandriaPopulateModel` | Sets inches and tolerances, and adds the standard layers, annotation styles, wall, ground, scale figure and world light |
 | Set Material | `AlexandriaSetMaterial` | Gives each sublayer of a layer a plaster material in its colour |
 | Set Light | `AlexandriaSetLight` | Makes the selected surfaces or solids a standard V-Ray light, on `DESIGN::ILLUMS` |
-| Apply Day Settings | `AlexandriaDayRender`, right click `AlexandriaDayRenderView` | Sets V-Ray to the day sky, sign lights off. Right click renders the active view and saves it |
-| Apply Night Settings | `AlexandriaNightRender`, right click `AlexandriaNightRenderView` | Sets V-Ray to the night sky, sign lights on. Right click renders and saves |
+| Apply Day Settings | `AlexandriaDayRender` | Sets V-Ray to the day sky, sign lights off |
+| Apply Night Settings | `AlexandriaNightRender` | Sets V-Ray to the night sky, sign lights on |
+| Render and Save | `AlexandriaRender` | Renders the active view, then asks where to save the image |
 | Standard Dimension | `AlexandriaDimension`, right click `AlexandriaLeader` | A dimension in the Alexandria style. Right click draws a leader with a dot |
 | Populate Detail | `AlexandriaPopulateDetail` | Adds a sign detail from the library where you click |
-| Layout Manager | `AlexandriaLayoutManager` | The design package: pages, details, drawings, CMF, images and the PDF |
-| Fabrication Manager | `AlexandriaFabricationManager` | The 1:1 cut linework by material and line type, and a DXF per material |
 | Save as Rhino 7 | `AlexandriaSaveAsR7` | Saves a Rhino 7 copy beside the model as `<name>_r7.3dm` |
 | Save as Rhino 8 | `AlexandriaSaveAsR8` | Saves a Rhino 8 copy beside the model as `<name>_r8.3dm` |
 
@@ -146,7 +145,7 @@ The prompt:
 You're working inside Rhino 8 on sign design projects, with Alexandria Rhino Tools installed.
 
 - Do what's asked and stop. No renders, layouts, exports or extra options unless asked.
-- Use the Alexandria commands where they fit instead of rebuilding by hand (get_commands with filter "Alexandria" lists them): Populate Model, Set Material, Set Light, Populate Detail, Dimension, Leader, Layout Manager, Fabrication Manager, Day/Night Render.
+- Use the Alexandria commands where they fit instead of rebuilding by hand (get_commands with filter "Alexandria" lists them): Populate Model, Set Material, Set Light, Populate Detail, Dimension, Leader, Day/Night Render.
 - Models are full size in inches, the sign at the origin facing -Y. Parts go on DESIGN sublayers, lit faces on DESIGN::ILLUMS, dimensions on DETAILS::ANNOTATIONS::DIMENSIONS, callouts on DETAILS::ANNOTATIONS::CALLOUTS.
 - If the model is saved in a project's models folder (`design_models`), read the project's BRIEF.md and .claude/CLAUDE.md (one folder up) before starting. The full spec is STANDARDS.md in the shared alexandria_packages folder; read only the part the task touches.
 - Don't save, close or overwrite files, or delete objects, unless asked.
