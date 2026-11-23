@@ -48,6 +48,13 @@ function cubic(p0: Pt, p1: Pt, p2: Pt, p3: Pt, steps = 24): Pt[] {
 let cells = '';
 let extra = '';
 
+// Photo Elevation: a wall seen at an angle, as a point (u across, v down) of it lands on the photo
+const wallAt = (u: number, v: number): Pt => [26 + 92 * u, 54 - 18 * u + (62 + 40 * u) * v];
+const wallPath = (u0: number, v0: number, u1: number, v1: number) =>
+	`M${[wallAt(u0, v0), wallAt(u1, v0), wallAt(u1, v1), wallAt(u0, v1)].map(([x, y]) => `${r1(x)} ${r1(y)}`).join('L')}z`;
+const wallLine = (a: Pt, b: Pt) => `M${r1(a[0])} ${r1(a[1])}L${r1(b[0])} ${r1(b[1])}`;
+const wallBays: Pt[] = [[0.08, 0.3], [0.39, 0.61], [0.7, 0.92]];
+
 if (name === 'parametric-grid') {
 	// hexes scaled by their distance to the nearest of a point and a curve, small at the attractors
 	const point: Pt = [104, 104];
@@ -328,6 +335,29 @@ const slabs = (() => {
 				<path class="dash" d={extra} />
 				<circle class="paper ln" cx="104" cy="104" r="7" />
 				<circle class="ink" cx="104" cy="104" r="2.2" />
+			</g>
+		)
+	}
+	{
+		name === 'photo-elevation' && (
+			<g>
+				{/* the photo: the wall at an angle, with the two level lines and the two plumb ones on it */}
+				<path class="paper ln" d={wallPath(0, 0, 1, 1)} />
+				<path class="tone" d={wallPath(0, 0.34, 1, 0.5)} />
+				<path class="ln" d={wallBays.map(([a, b]) => wallPath(a, 0.6, b, 0.92)).join('')} />
+				<path class="fine" stroke-dasharray="3 3" d={[wallLine(wallAt(-0.12, 0), wallAt(1.12, 0)), wallLine(wallAt(-0.12, 1), wallAt(1.12, 1)), wallLine(wallAt(0, -0.14), wallAt(0, 1.14)), wallLine(wallAt(1, -0.1), wallAt(1, 1.1))].join('')} />
+				<g class="paper ln">
+					{[wallAt(0, 0), wallAt(1, 0), wallAt(1, 1), wallAt(0, 1)].map(([x, y]) => <circle cx={r1(x)} cy={r1(y)} r="2.6" />)}
+				</g>
+				<path class="ln" d="M134 90H158M152 84l6 6-6 6" />
+				{/* the elevation: the same wall straight on, dimensioned */}
+				<rect class="paper ln" x="174" y="40" width="98" height="86" />
+				<rect class="tone" x="174.5" y="69" width="97" height="14" />
+				<path class="ln" d={wallBays.map(([a, b]) => `M${r1(174 + 98 * a)} 92H${r1(174 + 98 * b)}V119H${r1(174 + 98 * a)}z`).join('')} />
+				<path class="ln" d="M174 136V148M272 136V148M174 145H204M242 145H272" />
+				<text class="txt" x="223" y="148" text-anchor="middle">44'-0"</text>
+				<path class="ln" d="M280 40H292M280 126H292M289 40V75M289 91V126" />
+				<text class="txt" x="289" y="86" text-anchor="middle">20'</text>
 			</g>
 		)
 	}

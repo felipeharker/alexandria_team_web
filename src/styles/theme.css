@@ -94,7 +94,7 @@ header.header {
 .sidebar-content a {
 	border-radius: 6px;
 }
-/* a category with nothing under it yet (Permitting): a plain entry, set like the group names beside it and on
+/* a top entry that is a page, not a group (Quick Guides, Downloads): set like the group names beside it and on
    their line height, with no arrow as there's nothing to open */
 .sidebar-content a.ax-side-section {
 	padding-block: 0.2em;
@@ -970,13 +970,14 @@ h1#_top,
 	gap: 10px 18px;
 	font-size: 14px;
 }
-.qg-page .ax-keys li {
+/* the entries only: a detail listed under one is a plain bullet, with no number of its own */
+.qg-page .ax-keys > li {
 	counter-increment: key;
 	position: relative;
 	padding-left: 30px;
 	line-height: 1.5;
 }
-.qg-page .ax-keys li::before {
+.qg-page .ax-keys > li::before {
 	content: counter(key);
 	position: absolute;
 	left: 0;

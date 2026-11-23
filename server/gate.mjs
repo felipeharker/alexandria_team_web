@@ -36,7 +36,7 @@ const PORT = Number(process.env.PORT) || 10000;
 // for the same reason: they are the office's own records, and this repository is public
 // Not in the list, so not served: sign-package, the Sign Package Maker (user, 2026-11-23: not ready for the team).
 // It is still in alexandria_office's public/ folder; adding its name back here puts it back on the site.
-const OFFICE_TOOLS = new Set(['estimator', 'materials', 'colors', 'site-plan', 'vectorizer', 'grid', 'image-grid', 'braille', 'etch-text', 'sources', 'management']);
+const OFFICE_TOOLS = new Set(['estimator', 'materials', 'colors', 'site-plan', 'vectorizer', 'grid', 'image-grid', 'braille', 'etch-text', 'photo-elevation', 'sources', 'management']);
 const DAY = 24 * 60 * 60 * 1000;
 const SESSION_DAYS = 30;
 const SESSION_COOKIE = 'alexandria_session';

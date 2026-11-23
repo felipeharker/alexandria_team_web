@@ -1,6 +1,22 @@
 ---
 title: Permitting Tools
-description: Tools for permitting, in alpha.
+description: "Web tools for permit drawings: a photo of the building, straightened and dimensioned."
 ---
 
-<span class="ax-badge ax-tag">Alpha</span> Nothing to use yet
+import ToolSheet from '../../../components/ToolSheet.astro';
+
+{/* One page per tool category (user, 2026-11-11), each its category's entry in the sidebar and the home section's Details link.
+    Permitting was an Alpha entry with nothing in it until 2026-11-23, when Photo Elevation, its first tool, went in and
+    the category moved up to third. Each tool is a ToolSheet: its drawing, a few facts of a few words each, and its
+    links. No sentences. */}
+
+In the browser · nothing to install
+
+## Photo Elevation
+
+<ToolSheet art="photo-elevation" code="PM-01" badge="Beta" facts={[
+	['In', 'Screenshot · street view · survey photo'],
+	['Straighten', '2 level lines · 2 plumb lines'],
+	['Dimension', 'One real length · the rest follow · labels'],
+	['Out', 'PDF · PNG · Alexandria dimensions'],
+]} links={[{ label: 'Open', href: '/photo-elevation/' }, { label: 'Guide', href: '/photo-elevation/guide/' }]} />

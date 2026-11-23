@@ -8,12 +8,9 @@ import sitemap from '@astrojs/sitemap';
 // tools/sync.py writes everything under docs/, src/generated and src/data from alexandria_phoenix.
 // Every tool has a short address: /rhino, /grasshopper, /estimator/guide here, and /estimator, /materials (the
 // Material Library), /colors (the Color Matcher), /colors/library, /site-plan, /vectorizer, /grid (the Parametric Grid),
-// /image-grid (the Image Grid), /braille (the Braille Lettering Designer) and /etch-text (Etch Text) from the alexandria_office repo,
+// /image-grid (the Image Grid), /braille (the Braille Lettering Designer), /etch-text (Etch Text) and /photo-elevation
+// (Photo Elevation) from the alexandria_office repo,
 // served beside these pages by server/gate.mjs.
-
-// The tag on a category with nothing in it yet (Permitting): grey, where Beta, for a tool you can already use, is
-// blue. theme.css draws both.
-const alpha = { text: 'Alpha', variant: 'note', class: 'ax-alpha' };
 
 export default defineConfig({
 	site: 'https://alexdesignlab.org',
@@ -69,16 +66,17 @@ export default defineConfig({
 					],
 				},
 				// One entry per category, as on the home page and in its order (user, 2026-11-23). Each opens the category's
-				// page (tools/*.mdx), where every tool has its drawing, Open and Guide.
+				// page (tools/*.mdx), where every tool has its drawing, Open and Guide. Permitting is third since it got its
+				// first tool, Photo Elevation (user, 2026-11-23); until then it sat last with an Alpha tag (theme.css still
+				// has the tag, `ax-alpha`, for the next category that starts empty).
 				{
 					label: 'Tools',
 					items: [
 						{ label: 'Design', slug: 'tools/design' },
 						{ label: 'Fabrication', slug: 'tools/fabrication' },
+						{ label: 'Permitting', slug: 'tools/permitting' },
 						{ label: 'Parametric', slug: 'tools/parametric' },
 						{ label: 'Rhino/Grasshopper', slug: 'tools/rhino-grasshopper' },
-						// nothing to use yet
-						{ label: 'Permitting', slug: 'tools/permitting', badge: alpha },
 					],
 				},
 				// Every guide on one page (guides/index.mdx), by category. Set like the section names (ax-side-section).

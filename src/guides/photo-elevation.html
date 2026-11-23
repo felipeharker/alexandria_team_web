@@ -1,0 +1,172 @@
+<!-- The Photo Elevation quick guide. Every web tool's guide has this shape (Guide.astro has the markup's rules): a line and
+     the way in, the tool's screen drawn with numbered dots, one entry per dot under it (shown one at a time, on a click),
+     and the steps. This tool has two screens worth drawing, its Straighten step and its Dimension step, so the guide has
+     two drawings, each with its own entries and steps. The tool is in the alexandria_office repo, at
+     public/photo-elevation/: check the drawings and the entries against its index.html and photo-elevation.js when the
+     tool changes. Both drawings show the tool's own sample, a storefront 44'-0" wide and 20'-0" tall with a 7'-0" door.
+     The blue and the orange are the tool's: they tell the level lines from the plumb ones. -->
+<div class="qg-page">
+  <header class="ax-head">
+    <p class="qg-lede">A photo of a building in, a straightened elevation out, dimensioned from one real length: a PDF for the permit drawings.</p>
+    <a class="ax-open" href="/photo-elevation/">Open Photo Elevation</a>
+  </header>
+
+  <section class="ax-tour" aria-label="The Straighten step">
+    <figure class="qg-figure">
+      <div class="qg-diagram-scroll">
+      <svg class="ax-est" viewBox="0 0 760 480" role="img" aria-label="Photo Elevation's screen at the Straighten step. Top bar: the tool's name. Left panel: the steps Straighten, Crop and Dimension; Choose Photo; the key to the lines, two level and two plumb, and Reset Lines; the Sheet; Download PDF and PNG. Right: the photo of a storefront seen at an angle, with two blue lines along its roofline and its base and two orange lines up its corners, and the Fit button.">
+        <defs>
+          <clipPath id="qg-photo-elevation-window-1"><rect x="0.5" y="0.5" width="759" height="479" rx="10"/></clipPath>
+        </defs>
+        <g clip-path="url(#qg-photo-elevation-window-1)">
+          <rect width="760" height="480" class="ax-win" style="stroke: none"/>
+          <rect x="231" y="72" width="529" height="408" class="ax-tint" style="stroke: none"/>
+        </g>
+        <text x="16" y="21" font-size="10.5" class="qg-t-muted">Alexandria / <tspan class="ax-b" style="fill: var(--ink)">Photo Elevation</tspan></text>
+        <text x="744" y="21" font-size="9.5" text-anchor="end" class="qg-t-muted">Alexandria Home&#160;&#160;&#160;Quick Guide</text>
+        <line x1="0" y1="34" x2="760" y2="34" class="ax-line"/>
+        <line x1="231" y1="34" x2="231" y2="479" class="ax-line"/>
+
+        <g transform="translate(0 34)">
+          <line x1="231" y1="38" x2="760" y2="38" class="ax-line"/>
+          <text x="245" y="23" font-size="9.5" class="qg-t-muted">Drag the line ends onto the building &#183; scroll to zoom &#183; drag to pan</text>
+          <rect x="716" y="9" width="32" height="20" rx="5" class="ax-field"/><text x="732" y="23" font-size="9.5" text-anchor="middle" class="ax-b">Fit</text>
+          <!-- the photo, and the four lines on the building -->
+          <rect x="270" y="80" width="450" height="281" class="ax-win"/>
+          <rect x="270" y="258.6" width="450" height="102.4" style="fill: var(--rule); stroke: none"/>
+          <path d="M377.4 159.0L642.9 146.4L633.9 307.5L382.2 265.6z" class="ax-field"/>
+          <path d="M379.2 198.5L639.6 206.0L638.0 235.0L380.1 217.7z" class="ax-field"/>
+          <path d="M393.2 224.0L442.0 227.8L442.5 267.3L394.5 260.1zM453.6 228.7L502.5 232.5L501.9 276.3L453.9 269.0zM514.1 233.4L562.9 237.2L561.3 285.2L513.3 278.0zM574.5 238.1L623.4 242.0L620.7 294.2L572.7 286.9zM466.5 236.0L488.3 237.9L487.9 283.2L466.5 279.7z" class="ax-field"/>
+          <path d="M349.0 160.4L671.4 145.0" fill="none" stroke-width="0.8" style="stroke: #1d6fd1"/><path d="M388.1 158.5L632.3 146.9" fill="none" stroke-width="2.2" style="stroke: #1d6fd1"/><circle cx="388.1" cy="158.5" r="4" stroke-width="1.8" style="fill: var(--paper); stroke: #1d6fd1"/><circle cx="632.3" cy="146.9" r="4" stroke-width="1.8" style="fill: var(--paper); stroke: #1d6fd1"/><path d="M355.2 261.1L660.9 312.0" fill="none" stroke-width="0.8" style="stroke: #1d6fd1"/><path d="M392.3 267.3L623.9 305.9" fill="none" stroke-width="2.2" style="stroke: #1d6fd1"/><circle cx="392.3" cy="267.3" r="4" stroke-width="1.8" style="fill: var(--paper); stroke: #1d6fd1"/><circle cx="623.9" cy="305.9" r="4" stroke-width="1.8" style="fill: var(--paper); stroke: #1d6fd1"/><path d="M377.3 156.0L382.4 268.6" fill="none" stroke-width="0.8" style="stroke: #e8590c"/><path d="M377.9 169.7L381.7 255.0" fill="none" stroke-width="2.2" style="stroke: #e8590c"/><circle cx="377.9" cy="169.7" r="4" stroke-width="1.8" style="fill: var(--paper); stroke: #e8590c"/><circle cx="381.7" cy="255.0" r="4" stroke-width="1.8" style="fill: var(--paper); stroke: #e8590c"/><path d="M643.2 141.9L633.7 312.0" fill="none" stroke-width="0.8" style="stroke: #e8590c"/><path d="M642.0 162.5L634.8 291.4" fill="none" stroke-width="2.2" style="stroke: #e8590c"/><circle cx="642.0" cy="162.5" r="4" stroke-width="1.8" style="fill: var(--paper); stroke: #e8590c"/><circle cx="634.8" cy="291.4" r="4" stroke-width="1.8" style="fill: var(--paper); stroke: #e8590c"/>
+
+          <!-- the panel -->
+          <rect x="16" y="14" width="199" height="26" rx="6" class="ax-field"/><rect x="18" y="16" width="65" height="22" rx="4" class="ax-mark"/><text x="50.5" y="31" font-size="10" text-anchor="middle" class="ax-on-mark ax-b">Straighten</text><text x="115.5" y="31" font-size="10" text-anchor="middle" class="qg-t-muted ax-b">Crop</text><text x="181.5" y="31" font-size="10" text-anchor="middle" class="qg-t-muted ax-b">Dimension</text><text x="16" y="62" font-size="9" class="ax-head">PHOTO</text><rect x="16" y="68" width="98" height="26" rx="6" class="ax-field"/><text x="65" y="85" font-size="10" text-anchor="middle" class="ax-b">Choose Photo</text><text x="16" y="108" font-size="8.5" class="qg-t-muted">Sample Storefront &#183; 1600 &#215; 1000 px &#183;</text><text x="16" y="119" font-size="8.5" class="qg-t-muted">drop or paste another</text>
+          <text x="16" y="143" font-size="9" class="ax-head">STRAIGHTEN</text>
+          <path d="M16 155H32" fill="none" stroke-width="2.2" style="stroke: #1d6fd1"/>
+          <text x="38" y="158" font-size="8.5">2 level lines &#183; along the roofline,</text><text x="38" y="169" font-size="8.5">a sill, the ground</text>
+          <path d="M16 183H32" fill="none" stroke-width="2.2" style="stroke: #e8590c"/>
+          <text x="38" y="186" font-size="8.5">2 plumb lines &#183; up the corners,</text><text x="38" y="197" font-size="8.5">a door, a column</text>
+          <rect x="16" y="206" width="84" height="26" rx="6" class="ax-field"/><text x="58" y="223" font-size="10" text-anchor="middle" class="ax-b">Reset Lines</text>
+          <text x="16" y="256" font-size="9" class="ax-head">SHEET</text><rect x="16" y="262" width="199" height="24" rx="5" class="ax-field"/><text x="25" y="278" font-size="10">Tabloid &#183; 17 &#215; 11 in</text><path d="M199 272l4 4 4-4" fill="none" stroke-width="1.2" style="stroke: var(--muted)"/><rect x="16" y="300" width="140" height="28" rx="6" class="ax-primary"/><text x="86" y="318" font-size="10" text-anchor="middle" class="ax-on-primary ax-b">Download PDF</text><rect x="162" y="300" width="53" height="28" rx="6" class="ax-field"/><text x="188.5" y="318" font-size="10" text-anchor="middle" class="ax-b">PNG</text><text x="16" y="346" font-size="8.5" class="qg-t-muted">Tabloid &#183; 17 &#215; 11 in &#183; 0 dimensions</text>
+
+          <g class="ax-callout" font-size="10.5" text-anchor="middle">
+            <g data-key="1" data-box="10 8 211 38"><circle cx="215" cy="14" r="9"/><text x="215" y="18">1</text></g>
+            <g data-key="2" data-box="10 52 211 74"><circle cx="215" cy="62" r="9"/><text x="215" y="66">2</text></g>
+            <g data-key="3" data-box="349.4 132.4 321.5 40"><circle cx="510.2" cy="138.7" r="9"/><text x="510.2" y="142.7">3</text></g>
+            <g data-key="4" data-box="363.4 155.0 30 114.6"><circle cx="365.8" cy="212.3" r="9"/><text x="365.8" y="216.3">4</text></g>
+            <g data-key="5" data-box="708 3 48 32"><circle cx="708" cy="9" r="9"/><text x="708" y="13">5</text></g>
+          </g>
+        </g>
+        <rect x="0.5" y="0.5" width="759" height="479" rx="10" fill="none" class="ax-edge"/>
+      </svg>
+      </div>
+    </figure>
+    <ol class="ax-keys">
+      <li><b>Straighten &#183; Crop &#183; Dimension</b><p>The three steps, in order.</p>
+        <ul><li>Crop frames the straightened photo: around your four lines, until you drag the frame's edges.</li><li><b>Whole Photo</b> and <b>Around the Lines</b> set the frame back.</li></ul></li>
+      <li><b>Choose Photo</b><p>A screenshot, a street view image or a survey photo: chosen, dropped or pasted.</p>
+        <ul><li>It stays in your browser, with your work on it.</li><li>The tool opens on a sample, a storefront 44'-0" wide and 20'-0" tall with a 7'-0" door.</li></ul></li>
+      <li><b>Level Lines</b><p>The two blue lines: drag each end onto something level on the building, such as the roofline, a sill or the ground line.</p>
+        <ul><li>The end you drag is shown enlarged beside it.</li><li>One high and one low straightens best.</li></ul></li>
+      <li><b>Plumb Lines</b><p>The two orange lines: drag each end onto something plumb, such as a corner, a door's side or a column.</p>
+        <ul><li>One far left and one far right straightens best.</li><li><b>Reset Lines</b> puts all four back.</li></ul></li>
+      <li><b>Fit</b><p>Shows the whole photo again, after scrolling to zoom or dragging to pan.</p></li>
+    </ol>
+    <div class="qg-section-head"><h2 id="straighten">Straighten the Photo</h2></div>
+    <ol class="ax-steps">
+      <li>Open the photo <button type="button" class="ax-dot" data-key="2">2</button></li>
+      <li>Put the blue lines on two level edges <button type="button" class="ax-dot" data-key="3">3</button></li>
+      <li>Put the orange lines on two plumb edges <button type="button" class="ax-dot" data-key="4">4</button></li>
+      <li>Open Crop and tighten the frame, if it needs it <button type="button" class="ax-dot" data-key="1">1</button></li>
+    </ol>
+  </section>
+
+  <section class="ax-tour" aria-label="The Dimension step">
+    <figure class="qg-figure">
+      <div class="qg-diagram-scroll">
+      <svg class="ax-est" viewBox="0 0 760 480" role="img" aria-label="Photo Elevation's screen at the Dimension step. Left panel: the steps, with Dimension open; Choose Photo; the Dimensions list, Dimension 1 set at 7 feet, WIDTH OF BUILDING at 44 feet and HEIGHT OF BUILDING at 20 feet, selected; the Label and Real Length fields; the Sheet; Download PDF and PNG. Right: the sheet, with the storefront straightened and its three dimensions drawn, the height's label above its value.">
+        <defs>
+          <clipPath id="qg-photo-elevation-window-2"><rect x="0.5" y="0.5" width="759" height="479" rx="10"/></clipPath>
+        </defs>
+        <g clip-path="url(#qg-photo-elevation-window-2)">
+          <rect width="760" height="480" class="ax-win" style="stroke: none"/>
+          <rect x="231" y="72" width="529" height="408" class="ax-tint" style="stroke: none"/>
+        </g>
+        <text x="16" y="21" font-size="10.5" class="qg-t-muted">Alexandria / <tspan class="ax-b" style="fill: var(--ink)">Photo Elevation</tspan></text>
+        <text x="744" y="21" font-size="9.5" text-anchor="end" class="qg-t-muted">Alexandria Home&#160;&#160;&#160;Quick Guide</text>
+        <line x1="0" y1="34" x2="760" y2="34" class="ax-line"/>
+        <line x1="231" y1="34" x2="231" y2="479" class="ax-line"/>
+
+        <g transform="translate(0 34)">
+          <line x1="231" y1="38" x2="760" y2="38" class="ax-line"/>
+          <text x="245" y="23" font-size="9.5" class="qg-t-muted">Click two points, then where the dimension goes &#183; Esc cancels &#183; Delete removes</text>
+          <rect x="716" y="9" width="32" height="20" rx="5" class="ax-field"/><text x="732" y="23" font-size="9.5" text-anchor="middle" class="ax-b">Fit</text>
+          <!-- the sheet, the straightened photo and its dimensions -->
+          <rect x="260" y="62" width="470" height="304.1" class="ax-win"/>
+          <rect x="294.6" y="104.7" width="400.9" height="218.7" class="ax-tint" style="stroke: none"/>
+          <rect x="294.6" y="284.0" width="400.9" height="39.5" style="fill: var(--rule); stroke: none"/>
+          <rect x="329.0" y="139.0" width="332.7" height="150.9" class="ax-field"/>
+          <rect x="329.0" y="194.9" width="332.7" height="27.2" class="ax-field"/><rect x="345.7" y="229.6" width="63.2" height="49.8" class="ax-field"/><rect x="423.9" y="229.6" width="63.2" height="49.8" class="ax-field"/><rect x="502.1" y="229.6" width="63.2" height="49.8" class="ax-field"/><rect x="580.2" y="229.6" width="63.2" height="49.8" class="ax-field"/><rect x="440.5" y="237.1" width="28.3" height="52.8" class="ax-field"/>
+          <path fill="none" stroke-width="1" style="stroke: var(--muted)" d="M329.0 297.0V308.0M661.8 297.0V308.0M329.0 306.0H475.4M515.4 306.0H661.8"/><text x="495.4" y="309.0" font-size="8" text-anchor="middle" class="qg-t-muted ax-b">44'-0&quot;</text><text x="495.4" y="299.0" font-size="7" text-anchor="middle" class="qg-t-muted ax-b">WIDTH OF BUILDING</text><path fill="none" stroke-width="1" style="stroke: var(--muted)" d="M682.8 139.0H693.8M682.8 290.0H693.8M691.8 139.0V200.5M691.8 226.5V290.0"/><text x="691.8" y="211.5" font-size="7" text-anchor="middle" class="qg-t-muted ax-b">HEIGHT OF BUILDING</text><text x="691.8" y="221.5" font-size="8" text-anchor="middle" class="qg-t-muted ax-b">20'-0&quot;</text><path fill="none" stroke-width="1" style="stroke: var(--muted)" d="M475.8 237.1H486.8M475.8 290.0H486.8M484.8 237.1V256.5M484.8 270.5V290.0"/><text x="484.8" y="266.5" font-size="8" text-anchor="middle" class="qg-t-muted ax-b">7'-0&quot;</text><circle cx="661.8" cy="139.0" r="3.5" stroke-width="1.6" style="fill: var(--paper); stroke: var(--ink)"/><circle cx="661.8" cy="290.0" r="3.5" stroke-width="1.6" style="fill: var(--paper); stroke: var(--ink)"/>
+
+          <!-- the panel -->
+          <rect x="16" y="14" width="199" height="26" rx="6" class="ax-field"/><rect x="148" y="16" width="65" height="22" rx="4" class="ax-mark"/><text x="50.5" y="31" font-size="10" text-anchor="middle" class="qg-t-muted ax-b">Straighten</text><text x="115.5" y="31" font-size="10" text-anchor="middle" class="qg-t-muted ax-b">Crop</text><text x="181.5" y="31" font-size="10" text-anchor="middle" class="ax-on-mark ax-b">Dimension</text><text x="16" y="62" font-size="9" class="ax-head">PHOTO</text><rect x="16" y="68" width="98" height="26" rx="6" class="ax-field"/><text x="65" y="85" font-size="10" text-anchor="middle" class="ax-b">Choose Photo</text><text x="16" y="108" font-size="8.5" class="qg-t-muted">Sample Storefront &#183; 1600 &#215; 1000 px &#183;</text><text x="16" y="119" font-size="8.5" class="qg-t-muted">drop or paste another</text>
+          <text x="16" y="143" font-size="9" class="ax-head">DIMENSIONS</text>
+          <text x="24" y="166" font-size="9" class="ax-b">Dimension 1</text><text x="150" y="166" font-size="7" text-anchor="end" class="qg-t-muted ax-b">SET</text><text x="192" y="166" font-size="9" text-anchor="end" class="ax-mono qg-t-muted">7'-0&quot;</text><text x="204" y="166" font-size="10" text-anchor="middle" class="qg-t-muted">&#215;</text>
+          <text x="24" y="190" font-size="9" class="ax-b">WIDTH OF BUILDING</text><text x="192" y="190" font-size="9" text-anchor="end" class="ax-mono qg-t-muted">44'-0&quot;</text><text x="204" y="190" font-size="10" text-anchor="middle" class="qg-t-muted">&#215;</text>
+          <rect x="16" y="198" width="199" height="24" rx="6" class="ax-tint" style="stroke: var(--muted); stroke-width: 0.8"/><text x="24" y="214" font-size="9" class="ax-b">HEIGHT OF BUILDING</text><text x="192" y="214" font-size="9" text-anchor="end" class="ax-mono qg-t-muted">20'-0&quot;</text><text x="204" y="214" font-size="10" text-anchor="middle" class="qg-t-muted">&#215;</text>
+          <text x="16" y="238" font-size="8.5" class="qg-t-muted">Label</text>
+          <rect x="16" y="242" width="199" height="22" rx="5" class="ax-field"/><text x="24" y="257" font-size="10">HEIGHT OF BUILDING</text>
+          <text x="16" y="278" font-size="8.5" class="qg-t-muted">Real Length</text>
+          <rect x="16" y="282" width="199" height="22" rx="5" class="ax-field"/><text x="24" y="297" font-size="10" class="ax-mono qg-t-muted">24'-6&quot;</text>
+          <text x="16" y="318" font-size="8.5" class="qg-t-muted">1 real length set &#183; the rest follow</text>
+          <text x="16" y="342" font-size="9" class="ax-head">SHEET</text><rect x="16" y="348" width="199" height="24" rx="5" class="ax-field"/><text x="25" y="364" font-size="10">Tabloid &#183; 17 &#215; 11 in</text><path d="M199 358l4 4 4-4" fill="none" stroke-width="1.2" style="stroke: var(--muted)"/><rect x="16" y="386" width="140" height="28" rx="6" class="ax-primary"/><text x="86" y="404" font-size="10" text-anchor="middle" class="ax-on-primary ax-b">Download PDF</text><rect x="162" y="386" width="53" height="28" rx="6" class="ax-field"/><text x="188.5" y="404" font-size="10" text-anchor="middle" class="ax-b">PNG</text><text x="16" y="432" font-size="8.5" class="qg-t-muted">Tabloid &#183; 17 &#215; 11 in &#183; 3 dimensions</text>
+
+          <g class="ax-callout" font-size="10.5" text-anchor="middle">
+            <g data-key="1" data-box="256 58 478 312.1"><circle cx="272" cy="74" r="9"/><text x="272" y="78">1</text></g>
+            <g data-key="2" data-box="10 133 211 93"><circle cx="215" cy="143" r="9"/><text x="215" y="147">2</text></g>
+            <g data-key="3" data-box="10 228 211 40"><circle cx="215" cy="238" r="9"/><text x="215" y="242">3</text></g>
+            <g data-key="4" data-box="10 268 211 56"><circle cx="215" cy="278" r="9"/><text x="215" y="282">4</text></g>
+            <g data-key="5" data-box="10 332 211 46"><circle cx="215" cy="342" r="9"/><text x="215" y="346">5</text></g>
+            <g data-key="6" data-box="10 380 211 58"><circle cx="215" cy="386" r="9"/><text x="215" y="390">6</text></g>
+          </g>
+        </g>
+        <rect x="0.5" y="0.5" width="759" height="479" rx="10" fill="none" class="ax-edge"/>
+      </svg>
+      </div>
+    </figure>
+    <ol class="ax-keys">
+      <li><b>The Sheet</b><p>Click two points on the photo, then click where the dimension goes.</p>
+        <ul><li>Past the top or bottom of the two points it measures level; past their sides, plumb.</li><li>Its line sits 1/2" from the points or further, in steps of 1/4". Alt places it anywhere.</li><li>Click a dimension to select it, then drag its points or its line. Delete removes it.</li></ul></li>
+      <li><b>Dimensions</b><p>Every dimension and its length; <b>Set</b> marks one whose real length was typed.</p></li>
+      <li><b>Label</b><p>Text on the line above the value, in capitals, such as HEIGHT OF BUILDING.</p></li>
+      <li><b>Real Length</b><p>The selected dimension's true size, such as <code>24'-6"</code>: every other dimension is scaled from it.</p>
+        <ul><li>A number alone is inches.</li><li>The first dimension you draw asks for it.</li><li>On a photo taken at an angle, set one width and one height. Each way then takes its own scale, and the panel says when it wants both.</li></ul></li>
+      <li><b>Sheet</b><p>Tabloid, the design package's page, or Letter, turned to suit the photo.</p></li>
+      <li><b>Download PDF &#183; PNG</b><p>The sheet as shown.</p>
+        <ul><li>PDF: the photo as a picture, the dimensions as lines and text.</li><li>PNG: 200 dpi.</li></ul></li>
+    </ol>
+    <div class="qg-section-head"><h2 id="dimension">Dimension It</h2></div>
+    <ol class="ax-steps">
+      <li>Click two points, then where the dimension goes <button type="button" class="ax-dot" data-key="1">1</button></li>
+      <li>Type its real length <button type="button" class="ax-dot" data-key="4">4</button></li>
+      <li>Add the others, and label them <button type="button" class="ax-dot" data-key="1">1</button> <button type="button" class="ax-dot" data-key="3">3</button></li>
+      <li>Download the sheet <button type="button" class="ax-dot" data-key="6">6</button></li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="standard">
+    <div class="qg-section-head"><h2 id="standard">The Dimensions</h2></div>
+    <div class="qg-table-scroll">
+      <table class="qg-parts">
+        <thead><tr><th>Part</th><th>Alexandria Dimension</th></tr></thead>
+        <tbody>
+          <tr><td>Text</td><td>Oswald capitals, 1/8" high on the sheet</td></tr>
+          <tr><td>Lengths</td><td>Feet and inches to 1/16", such as <code>21'-9 1/2"</code></td></tr>
+          <tr><td>Lines</td><td>Grey, 0.25 mm, no arrowheads, extension lines 3/8" long</td></tr>
+          <tr><td>Spacing</td><td>1/2" from what's measured, and between stacked dimensions</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>

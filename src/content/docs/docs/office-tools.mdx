@@ -1,12 +1,12 @@
 ---
 title: Office Tools
-description: The web tools for the office's everyday work, the Material Estimator, Material Library, Color Matcher, Color Library, Site Plan, Vectorizer, Parametric Grid, Image Grid, Braille Lettering Designer and Etch Text, and how they save, share and get updated.
+description: The web tools for the office's everyday work, the Material Estimator, Material Library, Color Matcher, Color Library, Site Plan, Vectorizer, Parametric Grid, Image Grid, Braille Lettering Designer, Etch Text and Photo Elevation, and how they save, share and get updated.
 ---
 
 {/* Written by hand, unlike the Phoenix docs beside it, which tools/sync.py copies from alexandria_phoenix. The tools
     themselves are in the alexandria_office repository; keep this page in step when one changes. */}
 
-The office tools are ten small web apps at alexdesignlab.org, for the work around a design rather than in Rhino: pricing materials, matching and mixing colors, drawing site plans, turning images into vectors, laying out patterns of cells from points, curves or an image, setting braille and lettering etched part labels. They open in any browser, on any computer or phone, with nothing to install and no account, and every visit gets the newest version. Each has a quick guide for its buttons, under [Quick Guides](/guides/); this page covers how they work underneath.
+The office tools are eleven small web apps at alexdesignlab.org, for the work around a design rather than in Rhino: pricing materials, matching and mixing colors, drawing site plans, turning images into vectors, laying out patterns of cells from points, curves or an image, setting braille, lettering etched part labels and dimensioning a photo of a building for a permit. They open in any browser, on any computer or phone, with nothing to install and no account, and every visit gets the newest version. Each has a quick guide for its buttons, under [Quick Guides](/guides/); this page covers how they work underneath.
 
 | Tool | For | Saves | Shares As |
 |---|---|---|---|
@@ -19,6 +19,7 @@ The office tools are ten small web apps at alexdesignlab.org, for the work aroun
 | [Parametric Grid](/grid/) | A grid of cells that scale toward a point or a curve, as linework | In your browser | SVG, at full size |
 | [Image Grid](/image-grid/) | A grid of cells sized by an image's brightness, as linework | In your browser, the image too | SVG, at full size |
 | [Braille Lettering Designer](/braille/) | A sign's braille, as dots at the ADA's sizes | In your browser | SVG, in inches |
+| [Photo Elevation](/photo-elevation/) | A photo of a building, straightened and dimensioned, for permit drawings | In your browser, the photo too | PDF or PNG |
 
 ## Saving and Sharing
 
@@ -129,15 +130,27 @@ Type a sign's text, one braille line per line, and download it:
 
 Type the text as it should read, *Restroom* not *RESTROOM*: braille capitalizes only the start of a sentence, names and acronyms. See its [quick guide](/braille/guide/).
 
+## Photo Elevation
+
+<span class="ax-badge">Beta</span> The first permitting tool: a screenshot, a street view image or a site survey photo of a building becomes a dimensioned elevation on a sheet.
+
+- **Straighten:** four lines on the photo, two along edges that are level on the building and two up edges that are plumb. Where each pair would meet tells the tool how the wall is turned, and it redraws the photo as if seen straight on.
+- **Crop:** a frame on the straightened photo, set around the four lines until it's moved.
+- **Dimension:** two clicks and a third for where the dimension goes, level or plumb. One real length is typed, and every other dimension is scaled from it; each can carry a label above its value. On a photo taken at an angle the proportions can be a little off, so the tool asks for one width and one height, and then scales each way on its own.
+- **The dimensions** are *Alexandria Dimension*, as [Standards](/docs/standards/) has it: Oswald capitals 1/8" high on the sheet, feet and inches to 1/16", grey lines with no arrowheads.
+- **The sheet:** Tabloid, the design package's page, or Letter, as a PDF (the photo as a picture, the dimensions as lines and text) or a PNG.
+
+See its [quick guide](/photo-elevation/guide/).
+
 ## Privacy
 
-The site is behind a sign-in: each person has a username and passcode, and a sign-in lasts 30 days on that browser. Beyond that the tools keep nothing on a server. The Color Matcher and Color Library load their color data from this site, and the Material Library and Estimator their materials. The Site Plan sends the address you search to [Nominatim](https://nominatim.openstreetmap.org/), OpenStreetMap's address search, and loads its map from [OpenFreeMap](https://openfreemap.org/). The Vectorizer traces images in your browser and never uploads them, as the Image Grid reads them, and the Braille Lettering Designer translates in your browser too. Nothing else leaves your browser. The site is also kept out of search engines.
+The site is behind a sign-in: each person has a username and passcode, and a sign-in lasts 30 days on that browser. Beyond that the tools keep nothing on a server. The Color Matcher and Color Library load their color data from this site, and the Material Library and Estimator their materials. The Site Plan sends the address you search to [Nominatim](https://nominatim.openstreetmap.org/), OpenStreetMap's address search, and loads its map from [OpenFreeMap](https://openfreemap.org/). The Vectorizer traces images in your browser and never uploads them, as the Image Grid reads them and Photo Elevation straightens them, and the Braille Lettering Designer translates in your browser too. Nothing else leaves your browser. The site is also kept out of search engines.
 
 ## Changing a Tool
 
 The tools live in the private **alexandria_office** repository, one folder each under `public/`, and pushing its main branch puts a change live in a minute or two. [System Architecture](/docs/architecture/) shows how it connects to the rest.
 
-- **A tool's code or look:** its folder, `public/estimator/`, `public/materials/`, `public/colors/`, `public/site-plan/`, `public/vectorizer/`, `public/grid/`, `public/image-grid/` (which uses the Parametric Grid's cells and look, from `public/grid/`) or `public/braille/`. They share the hub's style: greys, one green for buttons, Inter and IBM Plex Mono.
+- **A tool's code or look:** its folder, `public/estimator/`, `public/materials/`, `public/colors/`, `public/site-plan/`, `public/vectorizer/`, `public/grid/`, `public/image-grid/` (which uses the Parametric Grid's cells and look, from `public/grid/`), `public/braille/` or `public/photo-elevation/`. They share the hub's style: greys, one green for buttons, Inter and IBM Plex Mono.
 - **The color libraries:** `tools/build_colors.py` rebuilds them. Add a formula sheet to `paint-formulas/`, named as above, then run it.
 - **The Material Library:** `public/materials/materials.csv`. Add rows with the template's columns and push.
 - **The site plan style:** `public/site-plan/map-style.json`, the standard the Site Plan loads, described in the repository's README.
