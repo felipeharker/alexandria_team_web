@@ -1,6 +1,19 @@
 ---
 // A quick guide inside a hub page: the guide's HTML (written by tools/sync.py, or the page's own
 // slot), kept out of Starlight's Markdown styles and laid out by guides.css.
+//
+// A web tool's guide is a drawing of its screen you can ask (user, 2026-11-23): numbered dots on the drawing, each
+// with its name under the pointer and what it does on a click, then a short list of steps. The guide's HTML holds it
+// all, so it reads without the script too:
+//
+//   <section class="ax-tour">
+//     <figure class="qg-figure"> … <svg> … <g class="ax-callout">
+//         <g data-key="1" data-box="x y w h"><circle …/><text …>1</text></g> …   data-box: the control it points at
+//     <ol class="ax-keys">
+//       <li><b>Its Name</b><p>One line.</p> … anything more: a list, a table … </li>   one per number, in order
+//   <ol class="ax-steps"><li>Do this <button class="ax-dot" data-key="1">1</button></li> …   a step can point at a dot
+//
+// The script below turns the list into one panel under the drawing, open on the dot that was clicked.
 interface Props {
 	html?: string;
 }
@@ -10,3 +23,132 @@ const { html } = Astro.props;
 <div class="not-content">
 	{html ? <Fragment set:html={html} /> : <div class="qg-page"><slot /></div>}
 </div>
+
+<script>
+	const SVG = 'http://www.w3.org/2000/svg';
+
+	function tour(root: HTMLElement) {
+		const figure = root.querySelector<HTMLElement>('.qg-figure');
+		const svg = figure?.querySelector('svg');
+		const list = root.querySelector<HTMLElement>('ol.ax-keys');
+		const callouts = svg?.querySelector('.ax-callout');
+		if (!figure || !svg || !list || !callouts) return () => {};
+
+		const items = [...list.children] as HTMLElement[];
+		const dots = [...callouts.querySelectorAll<SVGGElement>('[data-key]')];
+		const name = (n: number) => items[n - 1]?.querySelector('b')?.textContent?.trim() ?? '';
+		const line = (n: number) => items[n - 1]?.querySelector('p')?.textContent?.trim() ?? '';
+		let open = 0;
+
+		// the outline around the control a dot points at
+		const box = document.createElementNS(SVG, 'rect');
+		box.setAttribute('class', 'ax-tour-box');
+		box.setAttribute('rx', '5');
+		box.style.display = 'none';
+		callouts.before(box);
+		const outline = (n: number) => {
+			const at = dots.find((dot) => Number(dot.dataset.key) === n)?.dataset.box?.split(/[\s,]+/);
+			if (!at || at.length !== 4) return void (box.style.display = 'none');
+			['x', 'y', 'width', 'height'].forEach((attr, i) => box.setAttribute(attr, at[i]));
+			box.style.display = '';
+		};
+
+		// the name under the pointer
+		const tip = document.createElement('div');
+		tip.className = 'ax-tour-tip';
+		tip.hidden = true;
+		figure.append(tip);
+		const showTip = (dot: SVGGElement) => {
+			const n = Number(dot.dataset.key);
+			tip.replaceChildren(Object.assign(document.createElement('b'), { textContent: name(n) }));
+			if (line(n)) tip.append(Object.assign(document.createElement('span'), { textContent: line(n) }));
+			tip.hidden = false;
+			const frame = figure.getBoundingClientRect();
+			const at = dot.getBoundingClientRect();
+			const left = at.left + at.width / 2 - frame.left - tip.offsetWidth / 2;
+			const above = at.top - frame.top - tip.offsetHeight - 6;
+			tip.style.left = `${Math.max(6, Math.min(left, frame.width - tip.offsetWidth - 6))}px`;
+			tip.style.top = `${above < 6 ? at.bottom - frame.top + 6 : above}px`;
+			outline(n);
+		};
+		const hideTip = () => {
+			tip.hidden = true;
+			outline(open);
+		};
+
+		// the panel: the list's own entry, one at a time, with a way to the next one and a way out
+		const hint = document.createElement('p');
+		hint.className = 'ax-tour-hint';
+		hint.textContent = matchMedia('(hover: none)').matches
+			? 'Tap a number for what it does.'
+			: 'Point at a number for its name. Click it for more.';
+		list.before(hint);
+		const nav = document.createElement('div');
+		nav.className = 'ax-tour-nav';
+		const button = (label: string, text: string, to: () => void) => {
+			const made = Object.assign(document.createElement('button'), { type: 'button', textContent: text, title: label });
+			made.setAttribute('aria-label', label);
+			made.addEventListener('click', to);
+			nav.append(made);
+		};
+		button('Previous', '‹', () => show(open > 1 ? open - 1 : items.length));
+		button('Next', '›', () => show(open < items.length ? open + 1 : 1));
+		button('Close', '×', () => show(0));
+
+		function show(n: number, reveal = false) {
+			open = n === open && !reveal ? 0 : n;
+			items.forEach((item, i) => item.classList.toggle('is-open', i + 1 === open));
+			for (const dot of dots) {
+				const on = Number(dot.dataset.key) === open;
+				dot.classList.toggle('is-on', on);
+				dot.setAttribute('aria-expanded', String(on));
+			}
+			hint.hidden = open > 0;
+			if (open) items[open - 1].prepend(nav);
+			outline(open);
+			tip.hidden = true;
+			// from a step, bring the drawing into view; from a dot, the panel under it
+			if (open) (reveal ? figure : items[open - 1]).scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+		}
+
+		items.forEach((item, i) => item.setAttribute('data-n', String(i + 1)));
+		for (const dot of dots) {
+			const n = Number(dot.dataset.key);
+			// a larger target than the dot itself
+			const hit = document.createElementNS(SVG, 'circle');
+			const circle = dot.querySelector('circle');
+			hit.setAttribute('class', 'ax-hit');
+			hit.setAttribute('cx', circle?.getAttribute('cx') ?? '0');
+			hit.setAttribute('cy', circle?.getAttribute('cy') ?? '0');
+			hit.setAttribute('r', '16');
+			dot.prepend(hit);
+			dot.setAttribute('tabindex', '0');
+			dot.setAttribute('role', 'button');
+			dot.setAttribute('aria-label', `${n}: ${name(n)}`);
+			dot.setAttribute('aria-expanded', 'false');
+			dot.addEventListener('pointerenter', (event) => event.pointerType === 'mouse' && showTip(dot));
+			dot.addEventListener('pointerleave', hideTip);
+			dot.addEventListener('focus', () => dot.matches(':focus-visible') && showTip(dot));
+			dot.addEventListener('blur', hideTip);
+			dot.addEventListener('click', () => show(n));
+			dot.addEventListener('keydown', (event) => {
+				if (event.key === 'Enter' || event.key === ' ') {
+					event.preventDefault();
+					show(n);
+				} else if (event.key === 'Escape') show(0);
+			});
+		}
+		root.classList.add('is-live');
+		return (n: number) => show(n, true);
+	}
+
+	for (const page of document.querySelectorAll<HTMLElement>('.qg-page')) {
+		const tours = [...page.querySelectorAll<HTMLElement>('.ax-tour')].map((root) => ({ root, show: tour(root) }));
+		if (!tours.length) continue;
+		// a step's own dot opens that number on the drawing: the one in its section, or the page's first
+		for (const dot of page.querySelectorAll<HTMLElement>('button.ax-dot[data-key]')) {
+			const mine = tours.find((made) => made.root.contains(dot)) ?? tours[0];
+			dot.addEventListener('click', () => mine.show(Number(dot.dataset.key)));
+		}
+	}
+</script>

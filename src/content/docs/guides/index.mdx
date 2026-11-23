@@ -1,0 +1,48 @@
+---
+title: Quick Guides
+description: A quick guide for every Alexandria tool, by category.
+tableOfContents: false
+---
+
+import ToolCard from '../../../components/ToolCard.astro';
+import release from '../../../data/release.json';
+
+{/* Every quick guide, as the home page's cards in the home page's order, each opening its guide (user, 2026-11-23: the
+    sidebar has this one entry in place of one per guide). Add a tool's card here when its guide is written. src/nav.ts
+    sends every guide back here. */}
+
+<section class="ax-section not-content">
+<header><h2>Design</h2><a href="/tools/design/">Tools →</a></header>
+<div class="ax-tools">
+<ToolCard title="Site Plan" art="site-plan" code="D-01" links={[{ label: 'Guide', href: '/site-plan/guide/' }, { label: 'Open', href: '/site-plan/' }]} />
+<ToolCard title="Vectorizer" art="vectorizer" code="D-02" links={[{ label: 'Guide', href: '/vectorizer/guide/' }, { label: 'Open', href: '/vectorizer/' }]} />
+<ToolCard title="Braille Lettering Designer" art="braille" code="D-03" links={[{ label: 'Guide', href: '/braille/guide/' }, { label: 'Open', href: '/braille/' }]} />
+</div>
+</section>
+
+<section class="ax-section not-content">
+<header><h2>Fabrication</h2><a href="/tools/fabrication/">Tools →</a></header>
+<div class="ax-tools">
+<ToolCard title="Color Matcher" art="color-matcher" code="F-01" links={[{ label: 'Guide', href: '/colors/guide/' }, { label: 'Open', href: '/colors/' }]} />
+<ToolCard title="Color Library" art="color-library" code="F-02" links={[{ label: 'Guide', href: '/colors/library/guide/' }, { label: 'Open', href: '/colors/library/' }]} />
+<ToolCard title="Material Estimator" badge="Beta" art="material-estimator" code="F-03" links={[{ label: 'Guide', href: '/estimator/guide/' }, { label: 'Open', href: '/estimator/' }]} />
+<ToolCard title="Material Library" badge="Beta" art="material-library" code="F-04" links={[{ label: 'Guide', href: '/materials/guide/' }, { label: 'Open', href: '/materials/' }]} />
+<ToolCard title="Etch Text" badge="Beta" art="etch-text" code="F-05" links={[{ label: 'Guide', href: '/etch-text/guide/' }, { label: 'Open', href: '/etch-text/' }]} />
+</div>
+</section>
+
+<section class="ax-section not-content">
+<header><h2>Parametric</h2><a href="/tools/parametric/">Tools →</a></header>
+<div class="ax-tools">
+<ToolCard title="Parametric Grid" art="parametric-grid" code="P-01" links={[{ label: 'Guide', href: '/grid/guide/' }, { label: 'Open', href: '/grid/' }]} />
+<ToolCard title="Image Grid" badge="Beta" art="image-grid" code="P-02" links={[{ label: 'Guide', href: '/image-grid/guide/' }, { label: 'Open', href: '/image-grid/' }]} />
+</div>
+</section>
+
+<section class="ax-section not-content">
+<header><h2>Rhino/Grasshopper</h2><a href="/tools/rhino-grasshopper/">Tools →</a></header>
+<div class="ax-tools">
+<ToolCard title="Alexandria Tools" art="alexandria-tools" code="R-01" tag={release.version} links={[{ label: 'Guide', href: '/rhino/' }, { label: 'Download', href: '/start/download/' }]} />
+<ToolCard title="Alexandria Phoenix" art="alexandria-phoenix" code="R-02" tag={release.version} links={[{ label: 'Guide', href: '/grasshopper/' }, { label: 'Download', href: '/start/download/' }]} />
+</div>
+</section>

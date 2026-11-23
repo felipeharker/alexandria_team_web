@@ -1,137 +1,183 @@
-<!-- The Color Matcher quick guide, written for the hub in the quick guides' own classes (qg-…, from guides.css) and a few
-     of the hub's (ax-…, in theme.css). The app itself is in the alexandria_office repo, at public/colors/. -->
+<!-- The Color Matcher quick guide. Every web tool's guide has this shape (Guide.astro has the markup's rules): a line and
+     the way in, the tool's screen drawn with numbered dots, one entry per dot under it (shown one at a time, on a
+     click), and the steps. The classes are the quick guides' (qg-…, guides.css) and the hub's (ax-…, theme.css).
+     The tool is in the alexandria_office repo, at public/colors/: check the drawing and the entries against its
+     index.html, matcher.js and color-math.js when the tool changes. The swatches keep their own colors. -->
 <div class="qg-page">
-  <header>
-    <p class="qg-eyebrow">Office Tools &middot; Runs in Your Browser</p>
-    <p class="qg-lede">Give it a hex code and get the nearest Sherwin-Williams, Pantone and 3M vinyl colors, each with a percent match.</p>
-    <p class="qg-other"><a href="/colors/">Open the Color Matcher &rarr;</a></p>
+  <header class="ax-head">
+    <p class="qg-lede">A hex code in, the nearest Sherwin-Williams, Pantone and 3M vinyl colors out, each with a percent match.</p>
+    <a class="ax-open" href="/colors/">Open the Color Matcher</a>
   </header>
 
-  <section aria-labelledby="matcher">
-    <div class="qg-section-head"><h2 id="matcher">A Color and Its Matches</h2></div>
+  <section class="ax-tour" aria-label="The screen">
     <figure class="qg-figure">
       <div class="qg-diagram-scroll">
-      <svg class="ax-est" viewBox="0 0 760 250" role="img" aria-label="A color card: a red swatch with its name and hex code, then three columns of matches, Sherwin-Williams, Pantone and 3M, each with a swatch, a code, a percent match and a word for it">
-        <rect x="0.5" y="0.5" width="759" height="249" rx="10" class="ax-win"/>
-        <rect x="16" y="16" width="168" height="70" rx="6" fill="#C8102E"/>
-        <text x="16" y="106" font-size="9" class="ax-head">NAME</text>
-        <rect x="16" y="112" width="168" height="24" rx="5" class="ax-field"/>
-        <text x="24" y="128" font-size="11.5">Logo Red</text>
-        <text x="16" y="154" font-size="9" class="ax-head">HEX</text>
-        <rect x="16" y="160" width="168" height="24" rx="5" class="ax-field"/>
-        <text x="24" y="176" font-size="11.5" class="ax-mono">#C8102E</text>
-        <text x="16" y="206" font-size="10" class="qg-t-muted">Lab 43 / 66 / 38</text>
-        <line x1="200" y1="0.5" x2="200" y2="249.5" class="ax-line"/>
-        <line x1="386" y1="0.5" x2="386" y2="249.5" class="ax-line"/>
-        <line x1="572" y1="0.5" x2="572" y2="249.5" class="ax-line"/>
+      <svg class="ax-est" viewBox="0 0 760 358" role="img" aria-label="The Color Matcher's screen. Top bar: the project name, links, and the save status. Toolbar: Add Color, Import CSV, Export CSV and a menu. Below it, one color card: a swatch, Name and Hex fields, its Lab values and a trash icon, then three columns of matches, Sherwin-Williams, Pantone Solid Coated and 3M Scotchcal 3630, each with a percent and a word, and a Formula on File tag on two Pantone matches.">
+        <defs>
+          <clipPath id="qg-color-matcher-window"><rect x="0.5" y="0.5" width="759" height="357" rx="10"/></clipPath>
+        </defs>
+        <g clip-path="url(#qg-color-matcher-window)">
+          <rect width="760" height="358" class="ax-win" style="stroke: none"/>
+        </g>
+        <!-- the top bar -->
+        <text x="16" y="21" font-size="10.5" class="qg-t-muted">Alexandria / <tspan class="ax-b" style="fill: var(--ink)">Color Matcher</tspan></text>
+        <rect x="206" y="7" width="128" height="20" rx="5" class="ax-field"/>
+        <text x="214" y="20.5" font-size="10">Untitled Project</text>
+        <g font-size="9.5" class="qg-t-muted">
+          <text x="366" y="21">Alexandria Home</text><text x="462" y="21">Color Library</text><text x="547" y="21">Quick Guide</text>
+        </g>
+        <text x="724" y="21" font-size="9" text-anchor="end" class="qg-t-muted">Saved in This Browser</text>
+        <line x1="0" y1="34" x2="760" y2="34" class="ax-line"/>
+
+        <!-- the toolbar -->
+        <text x="16" y="62" font-size="15" class="ax-b">Colors</text>
+        <rect x="438" y="44" width="84" height="26" rx="6" class="ax-primary"/>
+        <text x="480" y="61" font-size="10.5" text-anchor="middle" class="ax-on-primary ax-b">Add Color</text>
+        <rect x="530" y="44" width="84" height="26" rx="6" class="ax-field"/>
+        <text x="572" y="61" font-size="10.5" text-anchor="middle" class="ax-b">Import CSV</text>
+        <rect x="622" y="44" width="84" height="26" rx="6" class="ax-field"/>
+        <text x="664" y="61" font-size="10.5" text-anchor="middle" class="ax-b">Export CSV</text>
+        <rect x="714" y="44" width="30" height="26" rx="6" class="ax-field"/>
+        <g class="ax-mark"><circle cx="722" cy="57" r="1.5"/><circle cx="729" cy="57" r="1.5"/><circle cx="736" cy="57" r="1.5"/></g>
+        <text x="16" y="92" font-size="9.5" class="qg-t-muted">Hex code or swatch &#183; saves in this browser &#183; <tspan class="ax-b">Export CSV</tspan> to keep</text>
+
+        <!-- the color card -->
+        <rect x="16" y="104" width="728" height="186" rx="8" class="ax-win"/>
+        <line x1="166" y1="104" x2="166" y2="290" class="ax-line"/>
+        <line x1="358" y1="104" x2="358" y2="290" class="ax-line"/>
+        <line x1="550" y1="104" x2="550" y2="290" class="ax-line"/>
+        <rect x="28" y="116" width="126" height="50" rx="6" fill="#C8102E"/>
+        <text x="28" y="182" font-size="9" class="ax-head">NAME</text>
+        <rect x="28" y="187" width="126" height="22" rx="5" class="ax-field"/>
+        <text x="36" y="202" font-size="10.5">Logo Red</text>
+        <text x="28" y="224" font-size="9" class="ax-head">HEX</text>
+        <rect x="28" y="229" width="126" height="22" rx="5" class="ax-field"/>
+        <text x="36" y="244" font-size="10.5" class="ax-mono">#C8102E</text>
+        <text x="28" y="276" font-size="10" class="qg-t-muted">Lab 43 / 66 / 38</text>
+        <path d="M4 6h12M8 6V4h4v2M5.5 6l1 10.5h7l1-10.5" transform="translate(134 260) scale(0.9)" fill="none" stroke-width="1.5" class="qg-stroke"/>
+
         <g font-size="9" class="ax-head">
-          <text x="214" y="26">SHERWIN-WILLIAMS</text><text x="400" y="26">PANTONE SOLID COATED</text><text x="586" y="26">3M SCOTCHCAL 3630</text>
+          <text x="178" y="122">SHERWIN-WILLIAMS</text><text x="370" y="122">PANTONE SOLID COATED</text><text x="562" y="122">3M SCOTCHCAL 3630</text>
         </g>
-        <g font-size="11">
-          <rect x="214" y="40" width="30" height="30" rx="5" fill="#BF2D32"/>
-          <text x="252" y="53" class="ax-b">SW 6868</text><text x="252" y="66" font-size="9.5" class="qg-t-muted">Real Red</text>
-          <text x="374" y="53" text-anchor="end" class="ax-b">94%</text><text x="374" y="66" font-size="9" text-anchor="end" class="qg-t-muted">Close</text>
-          <rect x="214" y="100" width="30" height="30" rx="5" fill="#C33A36"/>
-          <text x="252" y="113">SW 6869</text><text x="252" y="126" font-size="9.5" class="qg-t-muted">Stop</text>
-          <text x="374" y="113" text-anchor="end" class="ax-b">89%</text><text x="374" y="126" font-size="9" text-anchor="end" class="qg-t-muted">Noticeable</text>
-          <rect x="214" y="160" width="30" height="30" rx="5" fill="#AB2C34"/>
-          <text x="252" y="173">SW 6871</text><text x="252" y="186" font-size="9.5" class="qg-t-muted">Positive Red</text>
-          <text x="374" y="173" text-anchor="end" class="ax-b">87%</text><text x="374" y="186" font-size="9" text-anchor="end" class="qg-t-muted">Noticeable</text>
+        <rect x="176" y="132" width="24" height="24" rx="4" fill="#BF2D32"/>
+        <text x="208" y="141" font-size="9" class="ax-b">SW 6868 Real Red</text><text x="208" y="153" font-size="8" class="ax-mono qg-t-muted">#BF2D32</text>
+        <text x="348" y="141" font-size="10.5" text-anchor="end" class="ax-b">94%</text><text x="348" y="153" font-size="8" text-anchor="end" class="qg-t-muted">Close &#183; &#916;E 2.4</text>
+        <rect x="176" y="190" width="24" height="24" rx="4" fill="#C33A36"/>
+        <text x="208" y="199" font-size="9" class="ax-b">SW 6869 Stop</text><text x="208" y="211" font-size="8" class="ax-mono qg-t-muted">#C33A36</text>
+        <text x="348" y="199" font-size="10.5" text-anchor="end" class="ax-b">89%</text><text x="348" y="211" font-size="8" text-anchor="end" class="qg-t-muted">Noticeable &#183; &#916;E 4.4</text>
+        <rect x="176" y="248" width="24" height="24" rx="4" fill="#AD2C34"/>
+        <text x="208" y="257" font-size="9" class="ax-b">SW 6871 Positive Red</text><text x="208" y="269" font-size="8" class="ax-mono qg-t-muted">#AD2C34</text>
+        <text x="348" y="257" font-size="10.5" text-anchor="end" class="ax-b">87%</text><text x="348" y="269" font-size="8" text-anchor="end" class="qg-t-muted">Noticeable &#183; &#916;E 5.0</text>
+        <rect x="368" y="132" width="24" height="24" rx="4" fill="#CF122E"/>
+        <text x="400" y="141" font-size="9" class="ax-b">Pantone 186 C</text><text x="400" y="153" font-size="8" class="ax-mono qg-t-muted">#CF122E</text>
+        <text x="540" y="141" font-size="10.5" text-anchor="end" class="ax-b">96%</text><text x="540" y="153" font-size="8" text-anchor="end" class="qg-t-muted">Very Close &#183; &#916;E 1.8</text>
+        <rect x="361" y="162" width="186" height="15" rx="7.5" class="ax-field"/>
+        <text x="454" y="172.5" font-size="8" text-anchor="middle" class="ax-b">Formula on File &#183; MP 74163 &#183; SV Satin</text>
+        <rect x="368" y="190" width="24" height="24" rx="4" fill="#C0002F"/>
+        <text x="400" y="199" font-size="9" class="ax-b">Pantone 200 C</text><text x="400" y="211" font-size="8" class="ax-mono qg-t-muted">#C0002F</text>
+        <text x="540" y="199" font-size="10.5" text-anchor="end" class="ax-b">93%</text><text x="540" y="211" font-size="8" text-anchor="end" class="qg-t-muted">Close &#183; &#916;E 2.7</text>
+        <rect x="361" y="220" width="186" height="15" rx="7.5" class="ax-field"/>
+        <text x="454" y="230.5" font-size="8" text-anchor="middle" class="ax-b">Formula on File &#183; MP 75685 &#183; SV Satin</text>
+        <rect x="368" y="248" width="24" height="24" rx="4" fill="#B32A2F"/>
+        <text x="400" y="257" font-size="9" class="ax-b">Pantone 1805 C</text><text x="400" y="269" font-size="8" class="ax-mono qg-t-muted">#B32A2F</text>
+        <text x="540" y="257" font-size="10.5" text-anchor="end" class="ax-b">91%</text><text x="540" y="269" font-size="8" text-anchor="end" class="qg-t-muted">Close &#183; &#916;E 3.7</text>
+        <rect x="560" y="132" width="24" height="24" rx="4" fill="#DB1932"/>
+        <text x="592" y="141" font-size="9" class="ax-b">3630-33 Red</text><text x="592" y="153" font-size="8" class="ax-mono qg-t-muted">#DB1932&#8230;</text>
+        <text x="732" y="141" font-size="10.5" text-anchor="end" class="ax-b">89%</text><text x="732" y="153" font-size="8" text-anchor="end" class="qg-t-muted">Noticeable &#183; &#916;E 4.5</text>
+        <rect x="560" y="190" width="24" height="24" rx="4" fill="#B1402F"/>
+        <text x="592" y="199" font-size="9" class="ax-b">3630-73 Dark Red</text><text x="592" y="211" font-size="8" class="ax-mono qg-t-muted">#B1402F&#8230;</text>
+        <text x="732" y="199" font-size="10.5" text-anchor="end" class="ax-b">83%</text><text x="732" y="211" font-size="8" text-anchor="end" class="qg-t-muted">Noticeable &#183; &#916;E 7.0</text>
+        <rect x="560" y="248" width="24" height="24" rx="4" fill="#E71A34"/>
+        <text x="592" y="257" font-size="9" class="ax-b">3630-93 Fire Eng&#8230;</text><text x="592" y="269" font-size="8" class="ax-mono qg-t-muted">#E71A34</text>
+        <text x="732" y="257" font-size="10.5" text-anchor="end" class="ax-b">82%</text><text x="732" y="269" font-size="8" text-anchor="end" class="qg-t-muted">Noticeable &#183; &#916;E 7.2</text>
 
-          <rect x="400" y="40" width="30" height="30" rx="5" fill="#CF122E"/>
-          <text x="438" y="53" class="ax-b">Pantone 186 C</text><text x="438" y="66" font-size="9.5" class="ax-mono qg-t-muted">#CF122E</text>
-          <text x="560" y="53" text-anchor="end" class="ax-b">96%</text><text x="560" y="66" font-size="9" text-anchor="end" class="qg-t-muted">Very Close</text>
-          <rect x="438" y="74" width="104" height="16" rx="8" class="ax-field"/>
-          <text x="490" y="85.5" font-size="9" text-anchor="middle" class="ax-b">Formula on File</text>
-          <rect x="400" y="100" width="30" height="30" rx="5" fill="#C0002F"/>
-          <text x="438" y="113">Pantone 200 C</text><text x="438" y="126" font-size="9.5" class="ax-mono qg-t-muted">#C0002F</text>
-          <text x="560" y="113" text-anchor="end" class="ax-b">93%</text><text x="560" y="126" font-size="9" text-anchor="end" class="qg-t-muted">Close</text>
-          <rect x="400" y="160" width="30" height="30" rx="5" fill="#B32A2F"/>
-          <text x="438" y="173">Pantone 1805 C</text><text x="438" y="186" font-size="9.5" class="ax-mono qg-t-muted">#B32A2F</text>
-          <text x="560" y="173" text-anchor="end" class="ax-b">91%</text><text x="560" y="186" font-size="9" text-anchor="end" class="qg-t-muted">Close</text>
+        <!-- the footer -->
+        <text x="16" y="312" font-size="11" class="ax-b">How the Match Works</text>
+        <text x="16" y="328" font-size="9.5" class="qg-t-muted">100% less 2.5% per &#916;E (CIEDE2000) &#183; swatches approximate: check a physical swatch before ordering &#183;</text>
+        <text x="16" y="342" font-size="9.5" class="qg-t-muted"><tspan class="ax-b">Formula on File</tspan>: a Matthews Paint formula in the Color Library</text>
 
-          <rect x="586" y="40" width="30" height="30" rx="5" fill="#DB1932"/>
-          <text x="624" y="53" class="ax-b">3630-33</text><text x="624" y="66" font-size="9.5" class="qg-t-muted">Red</text>
-          <text x="746" y="53" text-anchor="end" class="ax-b">89%</text><text x="746" y="66" font-size="9" text-anchor="end" class="qg-t-muted">Noticeable</text>
-          <rect x="586" y="100" width="30" height="30" rx="5" fill="#B1402F"/>
-          <text x="624" y="113">3630-73</text><text x="624" y="126" font-size="9.5" class="qg-t-muted">Dark Red</text>
-          <text x="746" y="113" text-anchor="end" class="ax-b">83%</text><text x="746" y="126" font-size="9" text-anchor="end" class="qg-t-muted">Different</text>
-          <rect x="586" y="160" width="30" height="30" rx="5" fill="#E71A34"/>
-          <text x="624" y="173">3630-93</text><text x="624" y="186" font-size="9.5" class="qg-t-muted">Fire Engine Red</text>
-          <text x="746" y="173" text-anchor="end" class="ax-b">82%</text><text x="746" y="186" font-size="9" text-anchor="end" class="qg-t-muted">Different</text>
-        </g>
         <g class="ax-callout" font-size="10.5" text-anchor="middle">
-          <circle cx="184" cy="16" r="9"/><text x="184" y="20">1</text>
-          <circle cx="184" cy="160" r="9"/><text x="184" y="164">2</text>
-          <circle cx="214" cy="40" r="9"/><text x="214" y="44">3</text>
-          <circle cx="560" cy="34" r="9"/><text x="560" y="38">4</text>
-          <circle cx="438" cy="82" r="8"/><text x="438" y="85.8">5</text>
+          <g data-key="1" data-box="202 4 136 26"><circle cx="346" cy="17" r="9"/><text x="346" y="21">1</text></g>
+          <g data-key="2" data-box="434 40 184 34"><circle cx="438" cy="42" r="9"/><text x="438" y="46">2</text></g>
+          <g data-key="3" data-box="618 40 92 34"><circle cx="664" cy="74" r="9"/><text x="664" y="78">3</text></g>
+          <g data-key="4" data-box="710 40 38 34"><circle cx="744" cy="42" r="9"/><text x="744" y="46">4</text></g>
+          <g data-key="5" data-box="24 112 134 58"><circle cx="156" cy="114" r="9"/><text x="156" y="118">5</text></g>
+          <g data-key="6" data-box="24 178 134 78"><circle cx="156" cy="180" r="9"/><text x="156" y="184">6</text></g>
+          <g data-key="7" data-box="130 256 28 28"><circle cx="160" cy="262" r="9"/><text x="160" y="266">7</text></g>
+          <g data-key="8" data-box="166 104 578 186"><circle cx="738" cy="112" r="9"/><text x="738" y="116">8</text></g>
+          <g data-key="9" data-box="357 158 192 24"><circle cx="556" cy="168" r="9"/><text x="556" y="172">9</text></g>
+          <g data-key="10" data-box="612 6 118 22"><circle cx="740" cy="17" r="9"/><text x="740" y="21">10</text></g>
         </g>
+        <!-- the window's outline, over everything -->
+        <rect x="0.5" y="0.5" width="759" height="357" rx="10" fill="none" class="ax-edge"/>
       </svg>
       </div>
-      <figcaption>Logo Red, #C8102E.</figcaption>
     </figure>
     <ol class="ax-keys">
-      <li><b>Swatch.</b> Click to pick a color by eye.</li>
-      <li><b>Name and Hex.</b> Type a hex code. The matches follow as you type.</li>
-      <li><b>Best Match.</b> The nearest in each library, then the next two.</li>
-      <li><b>Match %.</b> How alike the two look.</li>
-      <li><b>Formula on File.</b> The office has a Matthews Paint formula for it. Click to open it.</li>
+      <li><b>Project Name</b><p>Names the list and its exported CSV file.</p></li>
+      <li><b>Add Color &#183; Import CSV</b><p>Add a color by hand, or load a list from a CSV.</p>
+        <ul><li>On a list that already has colors, Import asks Add to List or Replace List. Replace also takes the project name from the file.</li><li>Or drop a CSV anywhere on the page.</li><li>Find Matches in the Color Library adds its color here.</li></ul></li>
+      <li><b>Export CSV</b><p>Saves the list and each color's best matches as a CSV.</p>
+        <ul><li>Named after the project. The columns are listed below.</li></ul></li>
+      <li><b>&#8943;</b><p>Four more actions.</p>
+        <div class="qg-table-scroll"><table class="qg-parts"><tbody>
+          <tr><td>Download CSV Template</td><td>A sample list to fill in</td></tr>
+          <tr><td>Load Example Colors</td><td>Three colors, in place of the list</td></tr>
+          <tr><td>Print / Save as PDF</td><td>Prints the list with its matches</td></tr>
+          <tr><td>Clear List&#8230;</td><td>Removes every color, after asking</td></tr>
+        </tbody></table></div></li>
+      <li><b>Swatch</b><p>Click it to pick a color with the browser's color picker.</p></li>
+      <li><b>Name &#183; Hex</b><p>Type a hex code and the matches follow.</p>
+        <ul><li>3 or 6 digits, with or without #. A red border means it isn't a valid hex yet.</li><li>Lab is the color as the match reads it.</li></ul></li>
+      <li><b>Remove Color</b><p>Removes the color. Undo stays on screen for a few seconds.</p></li>
+      <li><b>Sherwin-Williams &#183; Pantone Solid Coated &#183; 3M Scotchcal 3630</b><p>Each library's three nearest colors, best first.</p>
+        <ul><li>Percent is 100 less 2.5 for every &#916;E. The word beside it is in the table below.</li><li>The small line is the hex and any note, such as a 3M color's Pantone code.</li><li>Screens are approximate: check a physical swatch before ordering.</li></ul></li>
+      <li><b>Formula on File</b><p>Opens that color's Matthews Paint formula in the Color Library.</p>
+        <ul><li>Only Sherwin-Williams and Pantone matches have one. A color with two formulas gets two tags.</li></ul></li>
+      <li><b>Saved in This Browser</b><p>The list autosaves here, and nowhere else.</p>
+        <ul><li>Export CSV to keep it or share it.</li><li>It reads Not Saved when the browser blocks storage.</li></ul></li>
     </ol>
   </section>
 
-  <section aria-labelledby="order">
-    <div class="qg-section-head"><h2 id="order">Match a Color</h2></div>
-    <ol class="qg-flow">
-      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4v12M4 10h12"/></svg></span><div><b>Add a Color</b><small>A hex code from the logo file or brand guide.</small></div></li>
-      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10s2.5-5 7-5 7 5 7 5-2.5 5-7 5-7-5-7-5z"/><circle cx="10" cy="10" r="2"/></svg></span><div><b>Read the Matches</b><small>The best in each library, and how close.</small></div></li>
-      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 3h7l3 3v11H5z"/><path d="M8 10h4M8 13h4"/></svg></span><div><b>Check the Formula</b><small>Formula on File means the office can mix it.</small></div></li>
-      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 13V3m0 0L6 7m4-4 4 4M4 16h12"/></svg></span><div><b>Export the CSV</b><small>Keep it with the project's files.</small></div></li>
+  <section aria-labelledby="steps">
+    <div class="qg-section-head"><h2 id="steps">Match a Color</h2></div>
+    <ol class="ax-steps">
+      <li>Add a color, or import a CSV list <button type="button" class="ax-dot" data-key="2">2</button></li>
+      <li>Type its hex code, or pick it by eye <button type="button" class="ax-dot" data-key="6">6</button> <button type="button" class="ax-dot" data-key="5">5</button></li>
+      <li>Read the percent and word in each column <button type="button" class="ax-dot" data-key="8">8</button></li>
+      <li>Open Formula on File where the office can mix it <button type="button" class="ax-dot" data-key="9">9</button></li>
+      <li>Export the CSV to keep the list <button type="button" class="ax-dot" data-key="3">3</button></li>
     </ol>
   </section>
 
   <section aria-labelledby="reading">
-    <div class="qg-section-head"><h2 id="reading">Reading the Match</h2><p>100% less 2.5% for every unit of ΔE (CIEDE2000).</p></div>
+    <div class="qg-section-head"><h2 id="reading">Reading a Match</h2></div>
     <div class="qg-table-scroll">
-      <table class="qg-parts ax-units">
-        <thead><tr><th>Match</th><th>ΔE</th><th>What It Means</th></tr></thead>
+      <table class="qg-parts">
+        <thead><tr><th>Word</th><th>&#916;E</th><th>To the Eye</th></tr></thead>
         <tbody>
-            <tr><td>98% and up</td><td>1 or less</td><td><b>Indistinguishable.</b></td></tr>
-            <tr><td>95%</td><td>up to 2</td><td><b>Very Close.</b> Differs only side by side.</td></tr>
-            <tr><td>90%</td><td>up to 4</td><td><b>Close.</b> Fine for most signs.</td></tr>
-            <tr><td>80%</td><td>up to 8</td><td><b>Noticeable.</b> Look for a better match.</td></tr>
-            <tr><td>Below 80%</td><td>over 8</td><td><b>Different.</b> Not a match.</td></tr>
-          </tbody>
+          <tr><td>Indistinguishable</td><td>1 or less</td><td>No difference</td></tr>
+          <tr><td>Very Close</td><td>Over 1, up to 2</td><td>Differs only side by side</td></tr>
+          <tr><td>Close</td><td>Over 2, up to 4</td><td>A slight difference</td></tr>
+          <tr><td>Noticeable</td><td>Over 4, up to 8</td><td>A clear difference</td></tr>
+          <tr><td>Different</td><td>Over 8</td><td>Not a match</td></tr>
+        </tbody>
       </table>
     </div>
   </section>
 
   <section aria-labelledby="csv">
-    <div class="qg-section-head"><h2 id="csv">Sharing a List</h2><p>Export the CSV and anyone can import it.</p></div>
-    <div class="qg-two">
-      <figure class="qg-figure">
-        <pre class="ax-code">Name,Hex,Notes
-Logo Red,#C8102E,Main logo color
-Logo Navy,#1B365D,
-Background Gray,#8A8279,Wall behind the sign</pre>
-        <figcaption>Only <b>Hex</b> is needed. <a href="/colors/color-list-template.csv">Download the template &rarr;</a></figcaption>
-      </figure>
-      <div>
-        <h3 class="ax-sub">The Export Adds</h3>
-        <ul class="qg-habits">
-          <li>Each color's best <b>Sherwin-Williams</b>, <b>Pantone</b> and <b>3M 3630</b> match.</li>
-          <li>Any <b>Formula on File</b>.</li>
-        </ul>
-      </div>
+    <div class="qg-section-head"><h2 id="csv">CSV Columns</h2></div>
+    <div class="qg-table-scroll">
+      <table class="qg-parts">
+        <thead><tr><th>Column</th><th>Import</th><th>Export</th></tr></thead>
+        <tbody>
+          <tr><td>Hex</td><td>Required</td><td>Yes</td></tr>
+          <tr><td>Name</td><td>Optional</td><td>Yes</td></tr>
+          <tr><td>Sherwin-Williams, Pantone, 3M 3630: code, name, hex, Match %</td><td>Ignored</td><td>Best match of each (Pantone has no name)</td></tr>
+          <tr><td>Formula on File</td><td>Ignored</td><td>Company, code, MP number and line</td></tr>
+        </tbody>
+      </table>
     </div>
-  </section>
-
-  <section aria-labelledby="habits">
-    <div class="qg-section-head"><h2 id="habits">Good to Know</h2></div>
-    <ul class="qg-habits">
-      <li><b>Screens aren't paint.</b> Check a match against a physical chip or a drawdown before ordering.</li>
-      <li><b>3M's colors are shown unlit.</b> A lit film looks brighter: go by 3M's matching Pantone.</li>
-      <li><b>The list lives in this browser.</b> Export a CSV to keep it.</li>
-    </ul>
   </section>
 </div>

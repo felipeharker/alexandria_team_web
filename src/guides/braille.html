@@ -1,92 +1,177 @@
-<!-- The Braille Lettering Designer quick guide, written for the hub in the quick guides' own classes (qg-…, from
-     guides.css) and a few of the hub's (ax-…, in theme.css). The tool itself is in the alexandria_office repo, at
-     public/braille/, and its braille rules are in that repo's README (Braille Lettering Designer). -->
+<!-- The Braille Lettering Designer quick guide. Every web tool's guide has this shape (Guide.astro has the markup's rules):
+     a line and the way in, the tool's screen drawn with numbered dots, one entry per dot under it (shown one at a time,
+     on a click), and the steps. The tool is in the alexandria_office repo, at public/braille/: check the drawing and the
+     entries against its index.html and braille.js when the tool changes. The braille in the drawing is Restroom in
+     Grade 2 at the tool's default sizes (0.06, 0.1, 0.25 and 0.4 in), drawn to scale at 220 px to the inch. -->
 <div class="qg-page">
-  <header>
-    <p class="qg-eyebrow">Office Tools &middot; Runs in Your Browser</p>
-    <p class="qg-lede">Type a sign's text and download its braille as an SVG, at ADA sizes.</p>
-    <p class="qg-other"><a href="/braille/">Open the Braille Lettering Designer &rarr;</a></p>
+  <header class="ax-head">
+    <p class="qg-lede">A sign's text in, its braille out: an SVG of dots at ADA sizes.</p>
+    <a class="ax-open" href="/braille/">Open the Braille Lettering Designer</a>
   </header>
 
-  <section aria-labelledby="cells">
-    <div class="qg-section-head"><h2 id="cells">The Braille</h2><p>Six places per cell; the dark ones are raised.</p></div>
+  <section class="ax-tour" aria-label="The screen">
     <figure class="qg-figure">
       <div class="qg-diagram-scroll">
-      <svg class="ax-est" viewBox="0 0 760 200" role="img" aria-label="Restroom in Grade 2 braille: eight cells, the first a capital sign and the fourth the sign for st, each cell's six places drawn with the raised dots dark, and the dot spacing of 0.1 inches and cell spacing of 0.25 inches marked below">
-        <rect x="0.5" y="0.5" width="759" height="199" rx="10" class="ax-win"/>
-        <text x="70" y="34" font-size="11" class="qg-t-muted">Restroom</text>
-        <circle cx="70" cy="66" r="8" class="ax-field"/><circle cx="70" cy="92" r="8" class="ax-field"/><circle cx="70" cy="118" r="8" class="ax-field"/>
-        <circle cx="96" cy="66" r="8" class="ax-field"/><circle cx="96" cy="92" r="8" class="ax-field"/><circle cx="96" cy="118" r="8" class="ax-mark"/>
-        <circle cx="142" cy="66" r="8" class="ax-mark"/><circle cx="142" cy="92" r="8" class="ax-mark"/><circle cx="142" cy="118" r="8" class="ax-mark"/>
-        <circle cx="168" cy="66" r="8" class="ax-field"/><circle cx="168" cy="92" r="8" class="ax-mark"/><circle cx="168" cy="118" r="8" class="ax-field"/>
-        <circle cx="214" cy="66" r="8" class="ax-mark"/><circle cx="214" cy="92" r="8" class="ax-field"/><circle cx="214" cy="118" r="8" class="ax-field"/>
-        <circle cx="240" cy="66" r="8" class="ax-field"/><circle cx="240" cy="92" r="8" class="ax-mark"/><circle cx="240" cy="118" r="8" class="ax-field"/>
-        <circle cx="286" cy="66" r="8" class="ax-field"/><circle cx="286" cy="92" r="8" class="ax-field"/><circle cx="286" cy="118" r="8" class="ax-mark"/>
-        <circle cx="312" cy="66" r="8" class="ax-mark"/><circle cx="312" cy="92" r="8" class="ax-field"/><circle cx="312" cy="118" r="8" class="ax-field"/>
-        <circle cx="358" cy="66" r="8" class="ax-mark"/><circle cx="358" cy="92" r="8" class="ax-mark"/><circle cx="358" cy="118" r="8" class="ax-mark"/>
-        <circle cx="384" cy="66" r="8" class="ax-field"/><circle cx="384" cy="92" r="8" class="ax-mark"/><circle cx="384" cy="118" r="8" class="ax-field"/>
-        <circle cx="430" cy="66" r="8" class="ax-mark"/><circle cx="430" cy="92" r="8" class="ax-field"/><circle cx="430" cy="118" r="8" class="ax-mark"/>
-        <circle cx="456" cy="66" r="8" class="ax-field"/><circle cx="456" cy="92" r="8" class="ax-mark"/><circle cx="456" cy="118" r="8" class="ax-field"/>
-        <circle cx="502" cy="66" r="8" class="ax-mark"/><circle cx="502" cy="92" r="8" class="ax-field"/><circle cx="502" cy="118" r="8" class="ax-mark"/>
-        <circle cx="528" cy="66" r="8" class="ax-field"/><circle cx="528" cy="92" r="8" class="ax-mark"/><circle cx="528" cy="118" r="8" class="ax-field"/>
-        <circle cx="574" cy="66" r="8" class="ax-mark"/><circle cx="574" cy="92" r="8" class="ax-field"/><circle cx="574" cy="118" r="8" class="ax-mark"/>
-        <circle cx="600" cy="66" r="8" class="ax-mark"/><circle cx="600" cy="92" r="8" class="ax-field"/><circle cx="600" cy="118" r="8" class="ax-field"/>
-        <!-- the dimensions, centre to centre -->
-        <g class="ax-line" stroke-width="1" fill="none">
-          <path d="M142 134v26M168 134v12M214 134v26"/>
-          <path d="M142 144h26M142 156h72"/>
+      <svg class="ax-est" viewBox="0 0 760 412" role="img" aria-label="The Braille Lettering Designer's screen. Top bar: the tool's name. Left panel: the Text box holding Restroom, the Grade 2 and Grade 1 buttons, the four Dimensions fields, Download SVG, Copy SVG and a line of counts. Right: the preview of Restroom in braille, raised dots dark and the unraised places faint, with the dot and cell spacing marked, and the Braille Characters below it as text.">
+        <defs>
+          <clipPath id="qg-braille-window"><rect x="0.5" y="0.5" width="759" height="411" rx="10"/></clipPath>
+        </defs>
+        <g clip-path="url(#qg-braille-window)">
+          <rect width="760" height="412" class="ax-win" style="stroke: none"/>
+          <rect x="231" y="72" width="529" height="262" class="ax-tint" style="stroke: none"/>
         </g>
-        <text x="176" y="148" font-size="10.5" class="ax-mono">0.1 in</text>
-        <text x="222" y="160" font-size="10.5" class="ax-mono">0.25 in</text>
-        <g class="ax-callout" font-size="10.5" text-anchor="middle">
-          <circle cx="83" cy="146" r="9"/><text x="83" y="150">1</text>
-          <circle cx="155" cy="38" r="9"/><text x="155" y="42">2</text>
-          <circle cx="306" cy="160" r="9"/><text x="306" y="164">3</text>
+        <!-- the top bar -->
+        <text x="16" y="21" font-size="10.5" class="qg-t-muted">Alexandria / <tspan class="ax-b" style="fill: var(--ink)">Braille Lettering Designer</tspan></text>
+        <text x="744" y="21" font-size="9.5" text-anchor="end" class="qg-t-muted">Alexandria Home&#160;&#160;&#160;Quick Guide</text>
+        <line x1="0" y1="34" x2="760" y2="34" class="ax-line"/>
+        <line x1="231" y1="34" x2="231" y2="411" class="ax-line"/>
+
+        <g transform="translate(0 34)">
+          <!-- the preview's bar, then the braille characters -->
+          <line x1="231" y1="38" x2="760" y2="38" class="ax-line"/>
+          <text x="245" y="23" font-size="10" class="qg-t-muted">Dark dots raised</text>
+          <line x1="231" y1="300" x2="760" y2="300" class="ax-line"/>
+          <text x="245" y="318" font-size="9" class="ax-head">BRAILLE CHARACTERS</text>
+          <text x="245" y="351" font-size="26" class="ax-mono">&#10272;&#10263;&#10257;&#10252;&#10263;&#10261;&#10261;&#10253;</text>
+          <!-- Restroom, to scale -->
+          <circle cx="291.6" cy="136.6" r="6.6" class="ax-field" opacity="0.7"/>
+          <circle cx="291.6" cy="158.6" r="6.6" class="ax-field" opacity="0.7"/>
+          <circle cx="291.6" cy="180.6" r="6.6" class="ax-field" opacity="0.7"/>
+          <circle cx="313.6" cy="136.6" r="6.6" class="ax-field" opacity="0.7"/>
+          <circle cx="313.6" cy="158.6" r="6.6" class="ax-field" opacity="0.7"/>
+          <circle cx="313.6" cy="180.6" r="6.6" class="ax-mark"/>
+          <circle cx="346.6" cy="136.6" r="6.6" class="ax-mark"/>
+          <circle cx="346.6" cy="158.6" r="6.6" class="ax-mark"/>
+          <circle cx="346.6" cy="180.6" r="6.6" class="ax-mark"/>
+          <circle cx="368.6" cy="136.6" r="6.6" class="ax-field" opacity="0.7"/>
+          <circle cx="368.6" cy="158.6" r="6.6" class="ax-mark"/>
+          <circle cx="368.6" cy="180.6" r="6.6" class="ax-field" opacity="0.7"/>
+          <circle cx="401.6" cy="136.6" r="6.6" class="ax-mark"/>
+          <circle cx="401.6" cy="158.6" r="6.6" class="ax-field" opacity="0.7"/>
+          <circle cx="401.6" cy="180.6" r="6.6" class="ax-field" opacity="0.7"/>
+          <circle cx="423.6" cy="136.6" r="6.6" class="ax-field" opacity="0.7"/>
+          <circle cx="423.6" cy="158.6" r="6.6" class="ax-mark"/>
+          <circle cx="423.6" cy="180.6" r="6.6" class="ax-field" opacity="0.7"/>
+          <circle cx="456.6" cy="136.6" r="6.6" class="ax-field" opacity="0.7"/>
+          <circle cx="456.6" cy="158.6" r="6.6" class="ax-field" opacity="0.7"/>
+          <circle cx="456.6" cy="180.6" r="6.6" class="ax-mark"/>
+          <circle cx="478.6" cy="136.6" r="6.6" class="ax-mark"/>
+          <circle cx="478.6" cy="158.6" r="6.6" class="ax-field" opacity="0.7"/>
+          <circle cx="478.6" cy="180.6" r="6.6" class="ax-field" opacity="0.7"/>
+          <circle cx="511.6" cy="136.6" r="6.6" class="ax-mark"/>
+          <circle cx="511.6" cy="158.6" r="6.6" class="ax-mark"/>
+          <circle cx="511.6" cy="180.6" r="6.6" class="ax-mark"/>
+          <circle cx="533.6" cy="136.6" r="6.6" class="ax-field" opacity="0.7"/>
+          <circle cx="533.6" cy="158.6" r="6.6" class="ax-mark"/>
+          <circle cx="533.6" cy="180.6" r="6.6" class="ax-field" opacity="0.7"/>
+          <circle cx="566.6" cy="136.6" r="6.6" class="ax-mark"/>
+          <circle cx="566.6" cy="158.6" r="6.6" class="ax-field" opacity="0.7"/>
+          <circle cx="566.6" cy="180.6" r="6.6" class="ax-mark"/>
+          <circle cx="588.6" cy="136.6" r="6.6" class="ax-field" opacity="0.7"/>
+          <circle cx="588.6" cy="158.6" r="6.6" class="ax-mark"/>
+          <circle cx="588.6" cy="180.6" r="6.6" class="ax-field" opacity="0.7"/>
+          <circle cx="621.6" cy="136.6" r="6.6" class="ax-mark"/>
+          <circle cx="621.6" cy="158.6" r="6.6" class="ax-field" opacity="0.7"/>
+          <circle cx="621.6" cy="180.6" r="6.6" class="ax-mark"/>
+          <circle cx="643.6" cy="136.6" r="6.6" class="ax-field" opacity="0.7"/>
+          <circle cx="643.6" cy="158.6" r="6.6" class="ax-mark"/>
+          <circle cx="643.6" cy="180.6" r="6.6" class="ax-field" opacity="0.7"/>
+          <circle cx="676.6" cy="136.6" r="6.6" class="ax-mark"/>
+          <circle cx="676.6" cy="158.6" r="6.6" class="ax-field" opacity="0.7"/>
+          <circle cx="676.6" cy="180.6" r="6.6" class="ax-mark"/>
+          <circle cx="698.6" cy="136.6" r="6.6" class="ax-mark"/>
+          <circle cx="698.6" cy="158.6" r="6.6" class="ax-field" opacity="0.7"/>
+          <circle cx="698.6" cy="180.6" r="6.6" class="ax-field" opacity="0.7"/>
+          <g class="ax-line" stroke-width="1" fill="none">
+            <path d="M291.6 178v22M313.6 178v10M346.6 178v22"/>
+            <path d="M291.6 187h22M291.6 199h55"/>
+          </g>
+          <text x="318.6" y="190" font-size="9" class="ax-mono">0.1 in</text>
+          <text x="351.6" y="202" font-size="9" class="ax-mono">0.25 in</text>
+
+          <!-- the panel -->
+          <text x="16" y="26" font-size="9" class="ax-head">TEXT</text>
+          <rect x="16" y="32" width="199" height="56" rx="6" class="ax-field"/>
+          <text x="25" y="50" font-size="11">Restroom</text>
+          <text x="16" y="102" font-size="8.5" class="qg-t-muted">As it should read &#183; <tspan font-style="italic">Restroom</tspan>, not <tspan font-style="italic">RESTROOM</tspan></text>
+
+          <text x="16" y="128" font-size="9" class="ax-head">BRAILLE</text>
+          <rect x="16" y="134" width="199" height="26" rx="6" class="ax-field"/>
+          <rect x="18" y="136" width="97" height="22" rx="4" class="ax-mark"/>
+          <text x="66" y="151" font-size="10" text-anchor="middle" class="ax-on-mark ax-b">Grade 2</text>
+          <text x="165" y="151" font-size="10" text-anchor="middle" class="qg-t-muted ax-b">Grade 1</text>
+          <text x="16" y="175" font-size="8.5" class="qg-t-muted">Contracted UEB &#183; what ADA signs need</text>
+
+          <text x="16" y="200" font-size="9" class="ax-head">DIMENSIONS</text>
+          <text x="16" y="215" font-size="8.5" class="qg-t-muted">Dot Diameter</text><text x="123" y="215" font-size="8.5" class="qg-t-muted">Dot Spacing</text>
+          <rect x="16" y="219" width="72" height="22" rx="5" class="ax-field"/><text x="24" y="234" font-size="10" class="ax-mono">0.06</text><text x="94" y="234" font-size="9" class="qg-t-muted">in</text>
+          <rect x="123" y="219" width="72" height="22" rx="5" class="ax-field"/><text x="131" y="234" font-size="10" class="ax-mono">0.1</text><text x="201" y="234" font-size="9" class="qg-t-muted">in</text>
+          <text x="16" y="256" font-size="8.5" class="qg-t-muted">Cell Spacing</text><text x="123" y="256" font-size="8.5" class="qg-t-muted">Line Spacing</text>
+          <rect x="16" y="260" width="72" height="22" rx="5" class="ax-field"/><text x="24" y="275" font-size="10" class="ax-mono">0.25</text><text x="94" y="275" font-size="9" class="qg-t-muted">in</text>
+          <rect x="123" y="260" width="72" height="22" rx="5" class="ax-field"/><text x="131" y="275" font-size="10" class="ax-mono">0.4</text><text x="201" y="275" font-size="9" class="qg-t-muted">in</text>
+          <text x="16" y="297" font-size="8.5" class="qg-t-muted">ADA 703.3.1 ranges &#183; centre to centre</text>
+
+          <rect x="16" y="311" width="122" height="28" rx="6" class="ax-primary"/>
+          <text x="77" y="329" font-size="10.5" text-anchor="middle" class="ax-on-primary ax-b">Download SVG</text>
+          <rect x="144" y="311" width="71" height="28" rx="6" class="ax-field"/>
+          <text x="179.5" y="329" font-size="10.5" text-anchor="middle" class="ax-b">Copy SVG</text>
+          <text x="16" y="355" font-size="8.5" class="qg-t-muted">1 line &#183; 8 cells &#183; 1.910 &#215; 0.260 in</text>
+
+          <g class="ax-callout" font-size="10.5" text-anchor="middle">
+            <g data-key="1" data-box="10 14 211 100"><circle cx="215" cy="32" r="9"/><text x="215" y="36">1</text></g>
+            <g data-key="2" data-box="10 118 211 68"><circle cx="215" cy="134" r="9"/><text x="215" y="138">2</text></g>
+            <g data-key="3" data-box="10 190 211 118"><circle cx="215" cy="206" r="9"/><text x="215" y="210">3</text></g>
+            <g data-key="4" data-box="10 307 211 54"><circle cx="215" cy="311" r="9"/><text x="215" y="315">4</text></g>
+            <g data-key="5" data-box="231 0 529 300"><circle cx="748" cy="52" r="9"/><text x="748" y="56">5</text></g>
+            <g data-key="6" data-box="231 300 529 76"><circle cx="748" cy="316" r="9"/><text x="748" y="320">6</text></g>
+          </g>
         </g>
+        <rect x="0.5" y="0.5" width="759" height="411" rx="10" fill="none" class="ax-edge"/>
       </svg>
       </div>
-      <figcaption><i>Restroom</i> in Grade 2 braille, as the preview draws it: <i>st</i> is one cell.</figcaption>
     </figure>
     <ol class="ax-keys">
-      <li><b>The Capital Sign.</b> Its own cell before a capital. Type <i>Restroom</i>, not <i>RESTROOM</i>.</li>
-      <li><b>A Cell.</b> Two columns of three places. The SVG has a circle per raised dot.</li>
-      <li><b>The Spacing.</b> Centre to centre.</li>
+      <li><b>Text</b><p>Each line of text is a line of braille.</p>
+        <ul><li>Type words as they should read: an all-capitals word gets extra capital signs.</li><li>Pasted Unicode braille is used cell for cell.</li><li>The text, grade and dimensions are remembered in this browser.</li></ul></li>
+      <li><b>Braille</b><p>Grade 2 is what ADA signs need. Grade 1 spells every word out.</p>
+        <div class="qg-table-scroll"><table class="qg-parts"><tbody>
+          <tr><td>Grade 2</td><td>Red <i>May not translate &#183; check:</i> names characters to check</td></tr>
+          <tr><td>Grade 1</td><td>Red <i>Left out, no braille:</i> names characters with no sign</td></tr>
+        </tbody></table></div></li>
+      <li><b>Dimensions</b><p>Four sizes in inches, center to center, starting at the ADA defaults.</p>
+        <ul><li>A value outside the ADA range turns red, and is still exported.</li><li><b>Reset to the ADA Defaults</b> appears once a value differs.</li></ul></li>
+      <li><b>Download SVG &#183; Copy SVG</b><p>The braille as a file, or its code on the clipboard.</p>
+        <ul><li>In inches, one filled circle per raised dot, no margin.</li><li>The file is named <i>Braille</i> and the first line, such as <i>Braille Restroom.svg</i>.</li><li>Greyed out with no text, and while Grade 2 loads.</li></ul></li>
+      <li><b>Dark dots raised</b><p>The braille as it will be made.</p>
+        <ul><li>The faint places are not raised, and are not in the SVG.</li></ul></li>
+      <li><b>Braille Characters</b><p>The same braille as selectable text.</p>
+        <ul><li>Copy it into a braille translator to read it back.</li></ul></li>
     </ol>
   </section>
 
-  <section aria-labelledby="order">
-    <div class="qg-section-head"><h2 id="order">Make the Braille</h2></div>
-    <ol class="qg-flow">
-      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 5h12M4 10h12M4 15h7"/></svg></span><div><b>Type the Text</b><small>Each line of text is a line of braille.</small></div></li>
-      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="7" cy="5" r="1.6"/><circle cx="7" cy="10" r="1.6"/><circle cx="13" cy="10" r="1.6"/><circle cx="7" cy="15" r="1.6"/></svg></span><div><b>Grade 2 for ADA</b><small>Already set. Grade 1 spells every word out.</small></div></li>
-      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h14M3 7v6M17 7v6"/></svg></span><div><b>Check the Dimensions</b><small>They start inside the ADA's ranges. A value outside is flagged.</small></div></li>
-      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v10m0 0-4-4m4 4 4-4M4 16h12"/></svg></span><div><b>Download SVG</b><small>Place it below the raised text, at full size.</small></div></li>
+  <section aria-labelledby="steps">
+    <div class="qg-section-head"><h2 id="steps">Make the Braille</h2></div>
+    <ol class="ax-steps">
+      <li>Type the sign's text as it should read <button type="button" class="ax-dot" data-key="1">1</button></li>
+      <li>Keep Grade 2 for an ADA sign <button type="button" class="ax-dot" data-key="2">2</button></li>
+      <li>Check that no dimension is red <button type="button" class="ax-dot" data-key="3">3</button></li>
+      <li>Check the dots, then the characters <button type="button" class="ax-dot" data-key="5">5</button> <button type="button" class="ax-dot" data-key="6">6</button></li>
+      <li>Download the SVG and place it on the sign <button type="button" class="ax-dot" data-key="4">4</button></li>
     </ol>
   </section>
 
   <section aria-labelledby="sizes">
-    <div class="qg-section-head"><h2 id="sizes">The ADA's Sizes</h2><p>2010 ADA Standards, 703.3.1, centre to centre.</p></div>
+    <div class="qg-section-head"><h2 id="sizes">The ADA's Sizes</h2></div>
     <div class="qg-table-scroll">
       <table class="qg-parts">
-        <thead><tr><th>Dimension</th><th>Range</th><th>The Tool's</th></tr></thead>
+        <thead><tr><th>Dimension</th><th>Measured</th><th>Range</th><th>Starts At</th></tr></thead>
         <tbody>
-          <tr><td>Dot Diameter</td><td>0.059 to 0.063 in, at the base</td><td>0.06 in</td></tr>
-          <tr><td>Dot Spacing</td><td>0.090 to 0.100 in, within a cell</td><td>0.1 in</td></tr>
-          <tr><td>Cell Spacing</td><td>0.241 to 0.300 in, between cells</td><td>0.25 in</td></tr>
-          <tr><td>Line Spacing</td><td>0.395 to 0.400 in, between lines</td><td>0.4 in</td></tr>
-          <tr><td>Dot Height</td><td>0.025 to 0.037 in, domed or rounded</td><td>For the fabrication drawings</td></tr>
+          <tr><td>Dot Diameter</td><td>Across a dot</td><td>0.059 to 0.063 in</td><td>0.06 in</td></tr>
+          <tr><td>Dot Spacing</td><td>Between dots in a cell</td><td>0.090 to 0.100 in</td><td>0.1 in</td></tr>
+          <tr><td>Cell Spacing</td><td>The same dot, cell to cell</td><td>0.241 to 0.300 in</td><td>0.25 in</td></tr>
+          <tr><td>Line Spacing</td><td>The same dot, line to line</td><td>0.395 to 0.400 in</td><td>0.4 in</td></tr>
         </tbody>
       </table>
     </div>
-  </section>
-
-  <section aria-labelledby="habits">
-    <div class="qg-section-head"><h2 id="habits">Good to Know</h2></div>
-    <ul class="qg-habits">
-      <li><b>Proof it.</b> Paste the <b>Braille Characters</b> under the preview into a braille translator to read them back.</li>
-      <li><b>Unusual characters?</b> One with no braille sign is named in red.</li>
-      <li><b>Where it goes.</b> Below the raised text, at least 3/8 in from it. Check the project's code.</li>
-      <li><b>It saves</b> in this browser.</li>
-    </ul>
   </section>
 </div>

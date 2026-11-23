@@ -1,0 +1,11 @@
+---
+// Starlight's page title, with a link back above it on a page that has no sidebar entry of its own (src/nav.ts):
+// a quick guide goes back to Quick Guides, a supplier to Suppliers, and so on.
+import Default from '@astrojs/starlight/components/PageTitle.astro';
+import { parentOf } from '../nav';
+
+const parent = parentOf(Astro.url.pathname);
+---
+
+{parent && <a class="ax-up" href={parent.href}>← {parent.label}</a>}
+<Default />

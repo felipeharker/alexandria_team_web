@@ -1,83 +1,114 @@
-<!-- The Color Library quick guide, written for the hub in the quick guides' own classes (qg-…, from guides.css) and a few
-     of the hub's (ax-…, in theme.css). The library itself is in the alexandria_office repo, at public/colors/library/. -->
+<!-- The Color Library quick guide. Every web tool's guide has this shape (Guide.astro has the markup's rules): a line and
+     the way in, the tool's screen drawn with numbered dots, one entry per dot under it (shown one at a time, on a
+     click), and the steps. The classes are the quick guides' (qg-…, guides.css) and the hub's (ax-…, theme.css).
+     The tool is in the alexandria_office repo, at public/colors/library/ (it shares ../colors.css): check the drawing
+     and the entries against its index.html and library.js when the tool changes. The swatches keep their own colors. -->
 <div class="qg-page">
-  <header>
-    <p class="qg-eyebrow">Office Tools &middot; Runs in Your Browser</p>
-    <p class="qg-lede">Every Matthews Paint formula the office has on file, with its colorants.</p>
-    <p class="qg-other"><a href="/colors/library/">Open the Color Library &rarr;</a></p>
+  <header class="ax-head">
+    <p class="qg-lede">The office's Matthews Paint formulas, searchable: a color code in, its colorants and grams per gallon out.</p>
+    <a class="ax-open" href="/colors/library/">Open the Color Library</a>
   </header>
 
-  <section aria-labelledby="entry">
-    <div class="qg-section-head"><h2 id="entry">A Formula</h2><p>Open a line for its recipe.</p></div>
+  <section class="ax-tour" aria-label="The screen">
     <figure class="qg-figure">
       <div class="qg-diagram-scroll">
-      <svg class="ax-est" viewBox="0 0 760 270" role="img" aria-label="An opened formula: Pantone 186 C with its swatch, its Matthews number and product line, a table of four colorants with grams per gallon and a total, and a Find Matches link">
-        <rect x="0.5" y="0.5" width="759" height="269" rx="10" class="ax-win"/>
-        <rect x="16" y="14" width="40" height="40" rx="6" fill="#CF122E"/>
-        <text x="70" y="31" font-size="13" class="ax-b">Pantone 186 C</text>
-        <text x="70" y="48" font-size="11" class="qg-t-muted">Pantone · #CF122E</text>
-        <text x="744" y="31" font-size="11" text-anchor="end" class="ax-mono ax-b">MP 74163</text>
-        <text x="744" y="48" font-size="10.5" text-anchor="end" class="qg-t-muted">SV Satin · v1.0</text>
-        <line x1="0.5" y1="68" x2="759.5" y2="68" class="ax-line"/>
-        <g font-size="9" class="ax-head"><text x="16" y="92">COLORANT</text><text x="120" y="92">NAME</text><text x="420" y="92" text-anchor="end">GRAMS PER GALLON</text></g>
-        <line x1="16" y1="99" x2="420" y2="99" class="ax-line"/>
-        <g font-size="11.5">
-          <text x="16" y="118" class="ax-mono">SV947SP</text><text x="120" y="118">Scarlet</text><text x="420" y="118" text-anchor="end" class="ax-mono">1,925.1</text>
-          <text x="16" y="142" class="ax-mono">SV914SP</text><text x="120" y="142">Dark Red</text><text x="420" y="142" text-anchor="end" class="ax-mono">1,836.0</text>
-          <text x="16" y="166" class="ax-mono">SV202SP</text><text x="120" y="166">White</text><text x="420" y="166" text-anchor="end" class="ax-mono">740.5</text>
-          <text x="16" y="190" class="ax-mono">SV923SP</text><text x="120" y="190">Black</text><text x="420" y="190" text-anchor="end" class="ax-mono">0.9</text>
-          <line x1="16" y1="198" x2="420" y2="198" class="ax-line"/>
-          <text x="16" y="216" class="ax-b">Total</text><text x="420" y="216" text-anchor="end" class="ax-mono ax-b">4,502.5</text>
+      <svg class="ax-est" viewBox="0 0 760 444" role="img" aria-label="The Color Library's screen. Top bar: links. Heading, then a search field, the filter pills All, Behr, Benjamin Moore, Matthews Paint, Pantone and Sherwin-Williams, and a count. Below, a list of formulas, one line each: Pantone 186 C in SV Matte, closed, and Pantone 186 C in SV Satin, open, showing a table of four colorants with grams per gallon and a total, a Find Matches link, and the date and file it was printed from.">
+        <defs>
+          <clipPath id="qg-color-library-window"><rect x="0.5" y="0.5" width="759" height="443" rx="10"/></clipPath>
+        </defs>
+        <g clip-path="url(#qg-color-library-window)">
+          <rect width="760" height="444" class="ax-win" style="stroke: none"/>
         </g>
-        <text x="16" y="248" font-size="11.5" class="ax-b">Find Matches →</text>
+        <!-- the top bar -->
+        <text x="16" y="21" font-size="10.5" class="qg-t-muted">Alexandria / <tspan class="ax-b" style="fill: var(--ink)">Color Library</tspan></text>
+        <text x="744" y="21" font-size="9.5" text-anchor="end" class="qg-t-muted">Alexandria Home&#160;&#160;&#160;Color Matcher&#160;&#160;&#160;Quick Guide</text>
+        <line x1="0" y1="34" x2="760" y2="34" class="ax-line"/>
+
+        <text x="16" y="62" font-size="15" class="ax-b">Color Library</text>
+        <text x="16" y="82" font-size="9.5" class="qg-t-muted">Open a formula for its colorants, grams per gallon &#183; swatches approximate</text>
+
+        <!-- the filter row -->
+        <rect x="16" y="96" width="190" height="24" rx="6" class="ax-field"/>
+        <text x="24" y="112" font-size="9.5">186 C</text>
+        <rect x="214" y="96" width="28" height="24" rx="12" class="ax-mark"/>
+        <text x="228" y="111.5" font-size="9.5" text-anchor="middle" class="ax-on-mark ax-b">All</text>
+        <rect x="248" y="96" width="38" height="24" rx="12" class="ax-field"/>
+        <text x="267" y="111.5" font-size="9.5" text-anchor="middle" class="ax-b">Behr</text>
+        <rect x="292" y="96" width="86" height="24" rx="12" class="ax-field"/>
+        <text x="335" y="111.5" font-size="9.5" text-anchor="middle" class="ax-b">Benjamin Moore</text>
+        <rect x="384" y="96" width="82" height="24" rx="12" class="ax-field"/>
+        <text x="425" y="111.5" font-size="9.5" text-anchor="middle" class="ax-b">Matthews Paint</text>
+        <rect x="472" y="96" width="52" height="24" rx="12" class="ax-field"/>
+        <text x="498" y="111.5" font-size="9.5" text-anchor="middle" class="ax-b">Pantone</text>
+        <rect x="530" y="96" width="92" height="24" rx="12" class="ax-field"/>
+        <text x="576" y="111.5" font-size="9.5" text-anchor="middle" class="ax-b">Sherwin-Williams</text>
+        <text x="744" y="111.5" font-size="9.5" text-anchor="end" class="qg-t-muted">2 of 96 Formulas</text>
+
+        <!-- the list -->
+        <rect x="16" y="134" width="728" height="302" rx="8" class="ax-win"/>
+        <rect x="32" y="144" width="36" height="36" rx="5" fill="#CF122E"/>
+        <text x="80" y="158" font-size="12" class="ax-b">Pantone 186 C</text>
+        <text x="80" y="173" font-size="9.5" class="qg-t-muted">Pantone &#183; #CF122E</text>
+        <text x="728" y="158" font-size="10.5" text-anchor="end" class="ax-mono ax-b">MP 74163</text>
+        <text x="728" y="173" font-size="9.5" text-anchor="end" class="qg-t-muted">SV Matte &#183; v1.0</text>
+        <line x1="16" y1="190" x2="744" y2="190" class="ax-line"/>
+        <rect x="32" y="200" width="36" height="36" rx="5" fill="#CF122E"/>
+        <text x="80" y="214" font-size="12" class="ax-b">Pantone 186 C</text>
+        <text x="80" y="229" font-size="9.5" class="qg-t-muted">Pantone &#183; #CF122E</text>
+        <text x="728" y="214" font-size="10.5" text-anchor="end" class="ax-mono ax-b">MP 74163</text>
+        <text x="728" y="229" font-size="9.5" text-anchor="end" class="qg-t-muted">SV Satin &#183; v1.0</text>
+
+        <g font-size="9" class="ax-head"><text x="32" y="266">COLORANT</text><text x="140" y="266">NAME</text><text x="440" y="266" text-anchor="end">GRAMS PER GALLON</text></g>
+        <line x1="32" y1="272" x2="440" y2="272" class="ax-line"/>
+        <g font-size="11">
+          <text x="32" y="291" class="ax-mono">SV947SP</text><text x="140" y="291">Scarlet</text><text x="440" y="291" text-anchor="end" class="ax-mono">1,925.1</text>
+          <text x="32" y="311" class="ax-mono">SV914SP</text><text x="140" y="311">Dark Red</text><text x="440" y="311" text-anchor="end" class="ax-mono">1,836.0</text>
+          <text x="32" y="331" class="ax-mono">SV202SP</text><text x="140" y="331">White</text><text x="440" y="331" text-anchor="end" class="ax-mono">740.5</text>
+          <text x="32" y="351" class="ax-mono">SV923SP</text><text x="140" y="351">Black</text><text x="440" y="351" text-anchor="end" class="ax-mono">0.9</text>
+          <line x1="32" y1="359" x2="440" y2="359" class="ax-line"/>
+          <text x="32" y="377" class="ax-b">Total</text><text x="440" y="377" text-anchor="end" class="ax-mono ax-b">4,502.5</text>
+        </g>
+        <text x="32" y="402" font-size="11" class="ax-b">Find Matches &#8594;</text>
+        <text x="32" y="424" font-size="9" class="qg-t-muted">Printed April 29, 2024 &#183; Pantone_186-C_SV-Satin.pdf</text>
+
         <g class="ax-callout" font-size="10.5" text-anchor="middle">
-          <circle cx="56" cy="14" r="9"/><text x="56" y="18">1</text>
-          <circle cx="190" cy="27" r="9"/><text x="190" y="31">2</text>
-          <circle cx="652" cy="27" r="9"/><text x="652" y="31">3</text>
-          <circle cx="440" cy="114" r="9"/><text x="440" y="118">4</text>
-          <circle cx="130" cy="244" r="9"/><text x="130" y="248">5</text>
+          <g data-key="1" data-box="12 92 198 32"><circle cx="202" cy="98" r="9"/><text x="202" y="102">1</text></g>
+          <g data-key="2" data-box="210 92 416 32"><circle cx="630" cy="98" r="9"/><text x="630" y="102">2</text></g>
+          <g data-key="3" data-box="16 192 400 50"><circle cx="30" cy="200" r="9"/><text x="30" y="204">3</text></g>
+          <g data-key="4" data-box="600 196 134 40"><circle cx="740" cy="198" r="9"/><text x="740" y="202">4</text></g>
+          <g data-key="5" data-box="26 254 420 130"><circle cx="458" cy="262" r="9"/><text x="458" y="266">5</text></g>
+          <g data-key="6" data-box="28 388 96 20"><circle cx="132" cy="396" r="9"/><text x="132" y="400">6</text></g>
+          <g data-key="7" data-box="28 414 250 16"><circle cx="290" cy="422" r="9"/><text x="290" y="426">7</text></g>
         </g>
+        <!-- the window's outline, over everything -->
+        <rect x="0.5" y="0.5" width="759" height="443" rx="10" fill="none" class="ax-edge"/>
       </svg>
       </div>
-      <figcaption>Pantone 186 C, opened.</figcaption>
     </figure>
     <ol class="ax-keys">
-      <li><b>Swatch.</b> An on-screen approximation. Striped means no source lists the color.</li>
-      <li><b>Code and Name.</b> The color the formula mixes.</li>
-      <li><b>MP Number.</b> Matthews Paint's number for the formula.</li>
-      <li><b>Colorants.</b> Grams per gallon, largest first.</li>
-      <li><b>Find Matches.</b> Opens the Color Matcher with this color.</li>
+      <li><b>Search Code, Name or MP Number</b><p>Narrows the list as you type.</p>
+        <ul><li>Also matches the color system, such as Pantone.</li></ul></li>
+      <li><b>The Color Systems</b><p>Shows one color system's formulas, or all of them.</p>
+        <ul><li>The count at right is the formulas shown out of all on file.</li></ul></li>
+      <li><b>A Formula</b><p>One line per formula. Click to open or close it.</p>
+        <ul><li>The swatch is approximate, and striped when no color is on file.</li><li>The small line is the color system and its hex.</li></ul></li>
+      <li><b>MP Number</b><p>The Matthews Paint formula number, with its product line and version.</p>
+        <ul><li>A color has a formula for each line: 186 C has SV Matte and SV Satin, as two lines.</li></ul></li>
+      <li><b>Colorant &#183; Name &#183; Grams per Gallon</b><p>What goes into a gallon of paint, with the total.</p></li>
+      <li><b>Find Matches &#8594;</b><p>Opens the Color Matcher with this color added.</p>
+        <ul><li>Missing when the formula has no swatch.</li></ul></li>
+      <li><b>Printed</b><p>The date the formula was printed and its PDF's file name.</p></li>
     </ol>
   </section>
 
-  <section aria-labelledby="order">
-    <div class="qg-section-head"><h2 id="order">Find a Formula</h2></div>
-    <ol class="qg-flow">
-      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 5h14M6 10h8M8.5 15h3"/></svg></span><div><b>Pick a System</b><small>Or All.</small></div></li>
-      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="5"/><path d="M13 13l4 4"/></svg></span><div><b>Search</b><small>By code, name or MP number.</small></div></li>
-      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 3h7l3 3v11H5z"/><path d="M8 10h4M8 13h4"/></svg></span><div><b>Open It</b><small>Its colorants, with a total.</small></div></li>
-      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3c3 4 5 6.5 5 9a5 5 0 0 1-10 0c0-2.5 2-5 5-9z"/></svg></span><div><b>Find Matches</b><small>Its nearest Sherwin-Williams, Pantone and 3M colors.</small></div></li>
+  <section aria-labelledby="steps">
+    <div class="qg-section-head"><h2 id="steps">Find a Formula</h2></div>
+    <ol class="ax-steps">
+      <li>Pick a color system, or leave All <button type="button" class="ax-dot" data-key="2">2</button></li>
+      <li>Search by code, name or MP number <button type="button" class="ax-dot" data-key="1">1</button></li>
+      <li>Open the formula's line <button type="button" class="ax-dot" data-key="3">3</button></li>
+      <li>Read the colorants and grams per gallon <button type="button" class="ax-dot" data-key="5">5</button></li>
+      <li>Find Matches to see its nearest colors <button type="button" class="ax-dot" data-key="6">6</button></li>
     </ol>
-  </section>
-
-  <section aria-labelledby="reading">
-    <div class="qg-section-head"><h2 id="reading">Reading a Formula</h2></div>
-    <div class="qg-table-scroll">
-      <table class="qg-parts">
-        <tbody>
-            <tr><td>MP Number</td><td>Quote it when ordering.</td></tr>
-            <tr><td>Product Line</td><td>The paint it's for, such as <code>SV Satin</code>. A color can have one formula per line.</td></tr>
-            <tr><td>Grams per Gallon</td><td>For a quart divide by 4, for a pint by 8.</td></tr>
-          </tbody>
-      </table>
-    </div>
-  </section>
-
-  <section aria-labelledby="habits">
-    <div class="qg-section-head"><h2 id="habits">Good to Know</h2></div>
-    <ul class="qg-habits">
-      <li><b>Check a drawdown.</b> Check a sample against the brand color before a full batch.</li>
-      <li><b>From a color to its formula.</b> In the <a href="/colors/">Color Matcher</a>, <b>Formula on File</b> links here.</li>
-    </ul>
   </section>
 </div>

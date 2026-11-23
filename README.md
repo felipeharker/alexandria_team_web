@@ -12,11 +12,18 @@ Public for now, but kept out of search engines (`noindex` on every page and in `
 | `astro.config.mjs` | The sidebar, the site's title and the stylesheets. |
 | `src/styles/theme.css` | The Alexandria style: colours, type and every `ax-` part (cards, the release card, What's new, link lists). |
 | `src/components/` | The release card, What's new, the hub's cards, and the wrapper the guides sit in. |
-| `src/guides/` | Guides written for the hub (the Material Estimator's). |
+| `src/guides/` | The web tools' quick guides, one HTML file each (see The Quick Guides below). |
+| `src/nav.ts` | The pages that have no sidebar entry, and the page that lists each (see The Sidebar below). |
 | `tools/sync.py` | Brings in everything that comes from `alexandria_phoenix` and the shared packages folder. |
 
 
 Everything is at alexdesignlab.org, one short address per tool: `/rhino`, `/grasshopper`, `/estimator` (the app) and `/estimator/guide`. `render.yaml` publishes the one Render service, `alexandria-gate`. The office tools live in the alexandria_office repo; the gate fetches them, so they still deploy from their own repo.
+
+**The sidebar** (2026-11-23) holds sections, not single things: sixteen entries, all in view. An entry is a page, and a page that holds several things lists them itself: a tool category lists its tools (`tools/*.mdx`), Quick Guides every guide (`guides/index.mdx`), Suppliers the suppliers, Templates the templates, Documentation the documents, Downloads every file. So a new tool, guide, supplier, template or download is added to its page, never to the sidebar. The pages under those have no entry of their own: `src/nav.ts` names the page that lists each, `src/routeData.ts` highlights that page's entry, and `src/components/PageTitle.astro` puts a link back to it above the title.
+
+**The quick guides.** A web tool's guide (`src/guides/<tool>.html`, shown by `Guide.astro`) is a drawing of the tool's screen with numbered dots: point at a dot for the control's name, click it for what it does, in a panel that opens under the drawing; then a short list of steps, each with the dots it uses. `src/guides/vectorizer.html` is the pattern and `Guide.astro`'s top comment has the markup's rules. The drawing shows the tool as it is, label for label, so check a guide against its tool's `index.html` (in alexandria_office) whenever the tool changes. Words are kept few: one line per dot, a fact said once, no tips lists. The Rhino and Grasshopper guides come from alexandria_phoenix through `tools/sync.py` and stay static, as they also ship as files and PDFs.
+
+**Off the site:** the Sign Package Maker (2026-11-23, not ready for the team). It stays in alexandria_office, but `server/gate.mjs` leaves `sign-package` out of `OFFICE_TOOLS`, so it isn't served, and its card, guide page and What's New entries are gone. Its guide's source is still `src/guides/sign-package.html`. alexandria_office's README says how to put it back.
 
 **Sign-in (2026-11-12).** `server/gate.mjs` is the hub behind a username and passcode: the `alexandria-gate` web service in `render.yaml` (Starter, always on) serves `dist/` and the office tools to the people in its `HUB_USERS` setting, and only its sign-in page to anyone else. People sign in once at `/signin` and stay signed in on that browser for 30 days (`/signout` ends it); the cookie is signed with `SESSION_SECRET`, which Render generates. The office tools come from the private alexandria_office repo through `server/office.mjs`, which reads it with `GITHUB_TOKEN` (read-only, that repo only) at build time and then every two minutes, so a push there still shows up on its own. Both settings live in the service's Environment on Render, never in this repo. To add or remove someone, edit `HUB_USERS` there (`name:passcode, name:passcode`) and save.
 
@@ -58,4 +65,4 @@ office tools then come from that checkout as it is, on whatever branch it's on, 
 
 ## Add a page
 
-Add a `.md` or `.mdx` file under `src/content/docs/` with a `title` and `description` at the top, then add it to the sidebar in `astro.config.mjs`. A future Standards section goes in `src/content/docs/standards/`, one page per topic, with screenshots in `src/assets/`.
+Add a `.md` or `.mdx` file under `src/content/docs/` with a `title` and `description` at the top, then list it on the page of the section it belongs to (see The Sidebar above), and give it that page as its parent in `src/nav.ts`. Only a new section goes in the sidebar in `astro.config.mjs`. A future Standards section goes in `src/content/docs/standards/`, one page per topic, with screenshots in `src/assets/`.

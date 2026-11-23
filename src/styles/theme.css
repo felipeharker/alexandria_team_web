@@ -141,6 +141,21 @@ header.header {
 	}
 }
 
+/* the link back above a page's title, on a page the sidebar has no entry for (PageTitle.astro) */
+.ax-up {
+	display: inline-block;
+	font-size: var(--sl-text-sm);
+	color: var(--sl-color-gray-3);
+	text-decoration: none;
+}
+.ax-up:hover,
+.ax-up:focus-visible {
+	color: var(--ax-hover-text);
+}
+.ax-up + h1 {
+	margin-top: 0.35rem;
+}
+
 /* ---------------------------------------------------------------- type */
 h1#_top,
 .hero h1 {
@@ -940,8 +955,9 @@ h1#_top,
 .qg-page svg .ax-mono { font-family: var(--font-mono); }
 .qg-page svg .ax-total { font-weight: 700; }
 .qg-page svg .ax-head { font-weight: 600; letter-spacing: 0.08em; fill: var(--muted); }
-.qg-page svg .ax-callout circle { fill: var(--ink); }
-.qg-page svg .ax-callout text { fill: var(--paper); font-weight: 700; }
+/* the numbered dots are the site's blue (user, 2026-11-23), on the drawing, in the list and in the steps */
+.qg-page svg .ax-callout circle { fill: var(--ax-button); }
+.qg-page svg .ax-callout text { fill: var(--ax-button-text); font-weight: 700; }
 
 /* the numbered list under a diagram */
 .qg-page .ax-keys {
@@ -968,8 +984,8 @@ h1#_top,
 	width: 20px;
 	height: 20px;
 	border-radius: 50%;
-	background: var(--ink);
-	color: var(--paper);
+	background: var(--ax-button);
+	color: var(--ax-button-text);
 	font-size: 11px;
 	font-weight: 700;
 	display: grid;
@@ -1000,6 +1016,233 @@ h1#_top,
 }
 @container qg (max-width: 640px) {
 	.qg-page .ax-keys { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ---- a guide's screen you can ask (Guide.astro): numbered dots on the drawing, each with its name under the pointer
+   and a panel on a click, then a short list of steps. Without the script the list under the drawing shows whole. */
+.qg-page > header.ax-head {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px 24px;
+}
+.qg-page > header.ax-head .qg-lede {
+	margin: 0;
+	font-size: 16px;
+}
+/* the way into the tool, beside the guide's one line */
+.qg-page .ax-open {
+	flex: none;
+	padding: 8px 16px;
+	border-radius: var(--ax-radius);
+	background: var(--ax-button);
+	color: var(--ax-button-text);
+	font-size: 14px;
+	font-weight: 600;
+	text-decoration: none;
+}
+.qg-page .ax-open:hover {
+	filter: brightness(1.08);
+}
+.qg-page .ax-tour {
+	gap: 10px;
+}
+.qg-page .ax-tour .qg-figure {
+	position: relative;
+	margin: 0;
+}
+.qg-page svg .ax-callout [data-key] {
+	cursor: pointer;
+	outline: none;
+}
+.qg-page svg .ax-callout .ax-hit {
+	fill: transparent;
+}
+/* a ring in the page's colour, so a dot stands off whatever it sits on (a map, a swatch) */
+.qg-page svg .ax-callout [data-key] circle:not(.ax-hit) {
+	stroke: var(--paper);
+	stroke-width: 1.5;
+}
+/* under the pointer, or open: the dot turned inside out */
+.qg-page svg .ax-callout [data-key]:hover circle:not(.ax-hit),
+.qg-page svg .ax-callout [data-key]:focus-visible circle:not(.ax-hit),
+.qg-page svg .ax-callout [data-key].is-on circle:not(.ax-hit) {
+	fill: var(--paper);
+	stroke: var(--ax-button);
+	stroke-width: 2.5;
+}
+.qg-page svg .ax-callout [data-key]:hover text,
+.qg-page svg .ax-callout [data-key]:focus-visible text,
+.qg-page svg .ax-callout [data-key].is-on text {
+	fill: var(--ax-hover-text);
+}
+.qg-page svg .ax-tour-box {
+	fill: var(--ax-button);
+	fill-opacity: 0.1;
+	stroke: var(--ax-button);
+	stroke-width: 1.5;
+	pointer-events: none;
+}
+.qg-page .ax-tour-tip {
+	position: absolute;
+	z-index: 2;
+	max-width: 17rem;
+	padding: 6px 10px;
+	border-radius: 6px;
+	background: var(--ink);
+	color: var(--paper);
+	font-size: 13px;
+	line-height: 1.35;
+	pointer-events: none;
+}
+.qg-page .ax-tour-tip b {
+	display: block;
+}
+.qg-page .ax-tour-hint {
+	font-size: 13px;
+	color: var(--muted);
+}
+.qg-page .ax-tour.is-live .ax-keys {
+	display: block;
+}
+.qg-page .ax-tour.is-live .ax-keys > li {
+	display: none;
+}
+.qg-page .ax-tour.is-live .ax-keys > li.is-open {
+	display: grid;
+	gap: 6px;
+	padding: 14px 16px 16px 52px;
+	border: 1px solid var(--ax-button);
+	border-radius: 10px;
+	background: var(--paper);
+	font-size: 14px;
+}
+.qg-page .ax-tour.is-live .ax-keys > li::before {
+	content: attr(data-n);
+	left: 16px;
+	top: 14px;
+	width: 24px;
+	height: 24px;
+	font-size: 12px;
+	background: var(--ax-button);
+	color: var(--ax-button-text);
+}
+.qg-page .ax-keys > li > b {
+	font-size: 15px;
+}
+.qg-page .ax-tour.is-live .ax-keys > li.is-open > b {
+	line-height: 24px;
+	padding-right: 96px;
+}
+.qg-page .ax-keys > li > p {
+	color: var(--muted);
+}
+.qg-page .ax-keys > li ul {
+	margin: 0;
+	padding-left: 18px;
+	display: grid;
+	gap: 3px;
+}
+.qg-page .ax-keys > li .qg-parts {
+	font-size: 13.5px;
+}
+.qg-page .ax-keys > li .qg-parts td {
+	padding-block: 6px;
+}
+.qg-page .ax-tour-nav {
+	position: absolute;
+	top: 12px;
+	right: 12px;
+	display: flex;
+	gap: 4px;
+}
+.qg-page .ax-tour-nav button {
+	width: 28px;
+	height: 28px;
+	border: 1px solid var(--rule);
+	border-radius: 6px;
+	background: var(--paper);
+	color: var(--ink);
+	font: inherit;
+	font-size: 16px;
+	line-height: 1;
+	cursor: pointer;
+}
+.qg-page .ax-tour-nav button:hover,
+.qg-page .ax-tour-nav button:focus-visible {
+	border-color: var(--ax-button);
+	color: var(--ax-hover-text);
+}
+/* the steps: one line each; a step's dot opens that number on the drawing */
+.qg-page .ax-steps {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	counter-reset: step;
+	display: grid;
+	gap: 0;
+	max-width: 46rem;
+	font-size: 15px;
+}
+.qg-page .ax-steps > li {
+	counter-increment: step;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 4px 8px;
+	padding: 9px 0;
+	border-bottom: 1px solid var(--rule);
+}
+.qg-page .ax-steps > li::before {
+	content: counter(step);
+	flex: none;
+	width: 1.6em;
+	font-family: var(--font-mono);
+	font-size: 13px;
+	color: var(--muted);
+}
+.qg-page .ax-dot {
+	flex: none;
+	width: 20px;
+	height: 20px;
+	padding: 0;
+	border: 0;
+	border-radius: 50%;
+	background: var(--ax-button);
+	color: var(--ax-button-text);
+	font: inherit;
+	font-size: 11px;
+	font-weight: 700;
+	line-height: 20px;
+	text-align: center;
+	cursor: pointer;
+}
+.qg-page .ax-dot:hover,
+.qg-page .ax-dot:focus-visible {
+	background: var(--paper);
+	color: var(--ax-hover-text);
+	box-shadow: 0 0 0 2px var(--ax-button);
+	outline: none;
+}
+.qg-page kbd {
+	font-family: var(--font-mono);
+	font-size: 0.82em;
+	padding: 1px 5px;
+	border: 1px solid var(--rule);
+	border-bottom-width: 2px;
+	border-radius: 4px;
+	background: var(--paper);
+	white-space: nowrap;
+}
+@media print {
+	.qg-page .ax-tour.is-live .ax-keys > li {
+		display: block;
+	}
+	.qg-page .ax-tour-nav,
+	.qg-page .ax-tour-hint {
+		display: none;
+	}
 }
 
 /* the sample project: two renders side by side, then the package's pages */

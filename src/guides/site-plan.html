@@ -1,21 +1,21 @@
-<!-- The Site Plan quick guide, written for the hub in the quick guides' own classes (qg-…, from guides.css) and a few
-     of the hub's (ax-…, in theme.css). The tool itself is in the alexandria_office repo, at public/site-plan/, and its
-     map style standard is public/site-plan/map-style.json, described in that repo's README (Site Plan). The diagram's
-     map greys and red are the tool's own, so they stay the same in light and dark. -->
+<!-- The Site Plan quick guide. Every web tool's guide has this shape (Guide.astro has the markup's rules): a line and
+     the way in, the tool's screen drawn with numbered dots, one entry per dot under it (shown one at a time, on a
+     click), and the steps. The classes are the quick guides' (qg-…, guides.css) and the hub's (ax-…, theme.css).
+     The tool is in the alexandria_office repo, at public/site-plan/: check the drawing and the entries against its
+     index.html and site-plan.js when the tool changes. The map's greys and the red circle are the tool's own, so they
+     stay the same in light and dark. -->
 <div class="qg-page">
-  <header>
-    <p class="qg-eyebrow">Office Tools &middot; Runs in Your Browser</p>
-    <p class="qg-lede">A greyscale site plan with the sign's location circled, ready for the design package.</p>
-    <p class="qg-other"><a href="/site-plan/">Open the Site Plan &rarr;</a></p>
+  <header class="ax-head">
+    <p class="qg-lede">An address in, a greyscale site plan out: a PNG with the sign's location circled.</p>
+    <a class="ax-open" href="/site-plan/">Open the Site Plan</a>
   </header>
 
-  <section aria-labelledby="screen">
-    <div class="qg-section-head"><h2 id="screen">The Screen</h2></div>
+  <section class="ax-tour" aria-label="The screen">
     <figure class="qg-figure">
       <div class="qg-diagram-scroll">
-      <svg class="ax-est" viewBox="0 0 760 360" role="img" aria-label="The Site Plan: on the left an address search, the sign's location and coordinates, a circle radius slider in feet, a Highlight Buildings button, Street Names and Shadows checkboxes and an Export PNG button; on the right a light grey map of city blocks with edged white streets, soft shadows, one dark highlighted building, a dashed red circle labelled SIGN LOCATION, and a north arrow and scale bar bottom left">
+      <svg class="ax-est" viewBox="0 0 760 520" role="img" aria-label="The Site Plan's screen. Top bar: Alexandria / Site Plan, the Project Name field, the Alexandria Home and Quick Guide links and the save status. Left panel: Address search, Signs with one row and Add Sign, Label, Circle Color, Circle Radius, Highlight Buildings and the Street Names, Shadows, North Arrow and Scale Bar checkboxes, then Export PNG. Right: a light grey map of city blocks with one dark highlighted building, a dashed red circle labelled SIGN LOCATION, zoom buttons, and the north arrow and scale bar bottom left.">
         <defs>
-          <clipPath id="qg-site-plan-window"><rect x="0.5" y="0.5" width="759" height="359" rx="10"/></clipPath>
+          <clipPath id="qg-site-plan-window"><rect x="0.5" y="0.5" width="759" height="519" rx="10"/></clipPath>
           <g id="qg-site-plan-buildings">
             <rect x="241" y="12" width="40" height="86"/><rect x="287" y="12" width="33" height="40"/><rect x="287" y="58" width="33" height="40"/>
             <rect x="352" y="12" width="70" height="44"/><rect x="430" y="12" width="80" height="86"/><rect x="352" y="62" width="70" height="36"/>
@@ -27,118 +27,167 @@
             <rect x="241" y="252" width="79" height="66"/><rect x="352" y="252" width="158" height="30"/><rect x="352" y="288" width="96" height="30"/>
             <rect x="702" y="252" width="47" height="66"/>
             <rect x="556" y="262" width="34" height="22"/>
+            <rect x="241" y="372" width="79" height="100"/><rect x="352" y="372" width="70" height="100"/><rect x="430" y="372" width="80" height="44"/>
+            <rect x="542" y="372" width="128" height="100"/><rect x="702" y="372" width="47" height="60"/>
           </g>
         </defs>
         <g clip-path="url(#qg-site-plan-window)">
-        <!-- the map, in the tool's own greys: land, a park, edged streets, shadows, buildings, one highlighted -->
-        <rect x="231" y="0" width="529" height="360" fill="#efefef"/>
-        <rect x="532" y="242" width="148" height="118" fill="#e4e4e4"/>
-        <g fill="#d0d0d0">
-          <rect x="231" y="109" width="529" height="14"/><rect x="231" y="229" width="529" height="14"/>
-          <rect x="329" y="0" width="14" height="360"/><rect x="519" y="0" width="14" height="360"/><rect x="679" y="0" width="14" height="360"/>
-        </g>
-        <g fill="#ffffff">
-          <rect x="231" y="110" width="529" height="12"/><rect x="231" y="230" width="529" height="12"/>
-          <rect x="330" y="0" width="12" height="360"/><rect x="520" y="0" width="12" height="360"/><rect x="680" y="0" width="12" height="360"/>
-        </g>
-        <use href="#qg-site-plan-buildings" transform="translate(2 2)" fill="#000000" fill-opacity="0.06"/>
-        <use href="#qg-site-plan-buildings" transform="translate(4 4)" fill="#000000" fill-opacity="0.05"/>
-        <use href="#qg-site-plan-buildings" fill="#d7d7d7" stroke="#c6c6c6" stroke-width="0.6"/>
-        <rect x="436" y="186" width="74" height="34" fill="#8f8f8f" stroke="#7d7d7d" stroke-width="0.6"/>
-        <!-- the sign's location -->
-        <circle cx="430" cy="176" r="62" fill="none" stroke="#ff0000" stroke-width="2" stroke-dasharray="8 5"/>
-        <text x="430" y="181" font-size="13" text-anchor="middle" fill="#ff0000" letter-spacing="0.8" style="font-family: 'Oswald Variable', Oswald, sans-serif; font-weight: 500">SIGN LOCATION</text>
-        <!-- map controls -->
-        <rect x="729" y="10" width="20" height="38" rx="4" fill="#ffffff" stroke="#cdd2d8"/>
-        <path d="M735 19h8M739 15v8M735 39h8" stroke="#1b1f24" stroke-width="1.4"/>
-        <!-- the north arrow and the scale bar, on their white plate -->
-        <rect x="241" y="312" width="132" height="38" rx="3" fill="#ffffff"/>
-        <g fill="#1a1a1a" style="font-family: 'Oswald Variable', Oswald, sans-serif; font-weight: 500">
-          <text x="252" y="324" font-size="9" text-anchor="middle">N</text>
-          <path d="M252 327l-5 16 5-3.5z"/>
-          <path d="M252 327l5 16-5-3.5z" fill="#ffffff" stroke="#1a1a1a" stroke-width="0.8"/>
-          <rect x="266" y="339" width="21" height="4"/><rect x="308" y="339" width="21" height="4"/>
-          <rect x="266" y="339" width="84" height="4" fill="none" stroke="#1a1a1a" stroke-width="0.8"/>
-          <g font-size="7.5" text-anchor="middle"><text x="266" y="335">0</text><text x="308" y="335">100</text><text x="350" y="335">200</text></g>
-          <text x="354" y="343" font-size="7.5">FT</text>
-        </g>
-        <text x="749" y="350" font-size="8.5" fill="#5d6570" text-anchor="end">© OpenStreetMap</text>
+          <rect width="760" height="520" class="ax-win" style="stroke: none"/>
+          <g transform="translate(0 34)">
+            <!-- the map, in the tool's own greys: land, a park, edged streets, buildings, one highlighted -->
+            <rect x="231" y="0" width="529" height="486" fill="#efefef"/>
+            <rect x="532" y="242" width="148" height="98" fill="#e4e4e4"/>
+            <g fill="#d0d0d0">
+              <rect x="231" y="109" width="529" height="14"/><rect x="231" y="229" width="529" height="14"/><rect x="231" y="349" width="529" height="14"/>
+              <rect x="329" y="0" width="14" height="486"/><rect x="519" y="0" width="14" height="486"/><rect x="679" y="0" width="14" height="486"/>
+            </g>
+            <g fill="#ffffff">
+              <rect x="231" y="110" width="529" height="12"/><rect x="231" y="230" width="529" height="12"/><rect x="231" y="350" width="529" height="12"/>
+              <rect x="330" y="0" width="12" height="486"/><rect x="520" y="0" width="12" height="486"/><rect x="680" y="0" width="12" height="486"/>
+            </g>
+            <use href="#qg-site-plan-buildings" fill="#d7d7d7" stroke="#c6c6c6" stroke-width="0.6"/>
+            <rect x="436" y="186" width="74" height="34" fill="#8f8f8f" stroke="#7d7d7d" stroke-width="0.6"/>
+            <!-- the sign's location -->
+            <circle cx="430" cy="176" r="62" fill="none" stroke="#ff0000" stroke-width="2" stroke-dasharray="8 5"/>
+            <text x="430" y="181" font-size="13" text-anchor="middle" letter-spacing="0.8" style="fill: #ff0000; font-family: 'Oswald Variable', Oswald, sans-serif; font-weight: 500">SIGN LOCATION</text>
+            <!-- MapLibre's own controls: zoom buttons and the compact credit -->
+            <rect x="729" y="10" width="20" height="38" rx="4" fill="#ffffff" stroke="#cdd2d8"/>
+            <path d="M735 19h8M739 15v8M735 39h8" stroke="#1b1f24" stroke-width="1.4"/>
+            <circle cx="738" cy="470" r="8" fill="#ffffff" stroke="#cdd2d8"/>
+            <text x="738" y="474" font-size="10.5" text-anchor="middle" font-style="fill: #5d6570; italic">i</text>
+            <!-- the north arrow and the scale bar, on their white plate -->
+            <rect x="243" y="422" width="150" height="52" rx="4" fill="#ffffff"/>
+            <g fill="#1a1a1a" style="font-family: 'Oswald Variable', Oswald, sans-serif; font-weight: 500">
+              <text x="258" y="441" font-size="10" text-anchor="middle">N</text>
+              <path d="M258 445l-7 21 7-5z"/>
+              <path d="M258 445l7 21-7-5z" fill="#ffffff" stroke="#1a1a1a" stroke-width="0.8"/>
+              <rect x="279" y="461" width="21" height="5"/><rect x="321" y="461" width="21" height="5"/>
+              <rect x="279" y="461" width="84" height="5" fill="none" stroke="#1a1a1a" stroke-width="0.8"/>
+              <g font-size="8" text-anchor="middle"><text x="279" y="457">0</text><text x="321" y="457">50</text><text x="363" y="457">100</text></g>
+              <text x="368" y="466" font-size="8">FT</text>
+            </g>
 
-        <!-- the panel -->
-        <rect x="0" y="0" width="231" height="360" class="ax-win" style="stroke: none"/>
-        </g>
-        <line x1="231" y1="1" x2="231" y2="359" class="ax-line"/>
-        <text x="16" y="28" font-size="9" class="ax-head">ADDRESS</text>
-        <rect x="16" y="36" width="140" height="26" rx="5" class="ax-field"/>
-        <text x="24" y="53" font-size="11">Union Station, Denver</text>
-        <rect x="162" y="36" width="44" height="26" rx="5" class="ax-field"/>
-        <text x="184" y="53" font-size="10.5" text-anchor="middle" class="ax-b">Search</text>
-        <text x="16" y="88" font-size="9" class="ax-head">SIGNS</text>
-        <text x="16" y="106" font-size="11">1701 Wynkoop Street, Denver</text>
-        <text x="16" y="121" font-size="10" class="ax-mono">39.753228, -105.000094</text>
-        <text x="16" y="148" font-size="9" class="ax-head">CIRCLE RADIUS</text>
-        <line x1="16" y1="166" x2="136" y2="166" class="ax-line" stroke-width="3"/>
-        <circle cx="52" cy="166" r="6" class="ax-mark"/>
-        <rect x="146" y="155" width="40" height="22" rx="4" class="ax-field"/>
-        <text x="180" y="170" font-size="10.5" text-anchor="end" class="ax-mono">100</text>
-        <text x="192" y="170" font-size="10" class="qg-t-muted">ft</text>
-        <text x="16" y="200" font-size="9" class="ax-head">BUILDINGS</text>
-        <rect x="16" y="208" width="190" height="26" rx="5" class="ax-field"/>
-        <text x="111" y="225" font-size="10.5" text-anchor="middle" class="ax-b">Highlight Buildings</text>
-        <text x="16" y="250" font-size="10" class="qg-t-muted">1 building highlighted.</text>
-        <rect x="16" y="266" width="12" height="12" rx="2" class="ax-field"/>
-        <text x="36" y="276" font-size="11">Street Names</text>
-        <rect x="16" y="286" width="12" height="12" rx="2" class="ax-mark"/>
-        <path d="M19 292l2.2 2.2 4-4.4" fill="none" stroke-width="1.6" class="ax-on-primary" style="stroke: var(--paper); fill: none"/>
-        <text x="36" y="296" font-size="11">Shadows</text>
-        <rect x="16" y="314" width="190" height="30" rx="6" class="ax-primary"/>
-        <text x="111" y="333" font-size="11" text-anchor="middle" class="ax-on-primary ax-b">Export PNG</text>
-        <!-- the window's outline, over the map -->
-        <rect x="0.5" y="0.5" width="759" height="359" rx="10" fill="none" class="ax-edge"/>
+            <!-- the panel -->
+            <rect x="0" y="0" width="231" height="486" class="ax-win" style="stroke: none"/>
+            <text x="16" y="20" font-size="9" class="ax-head">ADDRESS</text>
+            <rect x="16" y="28" width="140" height="24" rx="5" class="ax-field"/>
+            <text x="24" y="44" font-size="10.5">Union Station, Denver</text>
+            <rect x="162" y="28" width="53" height="24" rx="5" class="ax-field"/>
+            <text x="188" y="44" font-size="10.5" text-anchor="middle" class="ax-b">Search</text>
 
-        <g class="ax-callout" font-size="10.5" text-anchor="middle">
-          <circle cx="206" cy="36" r="9"/><text x="206" y="40">1</text>
-          <circle cx="214" cy="100" r="9"/><text x="214" y="104">2</text>
-          <circle cx="214" cy="166" r="9"/><text x="214" y="170">3</text>
-          <circle cx="206" cy="208" r="9"/><text x="206" y="212">4</text>
-          <circle cx="150" cy="286" r="9"/><text x="150" y="290">5</text>
-          <circle cx="206" cy="314" r="9"/><text x="206" y="318">6</text>
-          <circle cx="474" cy="132" r="9"/><text x="474" y="136">7</text>
+            <text x="16" y="72" font-size="9" class="ax-head">SIGNS</text>
+            <rect x="16" y="78" width="199" height="32" rx="5" class="ax-tint"/>
+            <circle cx="28" cy="94" r="7" fill="none" stroke="#ff0000" stroke-width="1.5"/>
+            <text x="28" y="97" font-size="8.5" text-anchor="middle" class="ax-b">1</text>
+            <text x="42" y="92" font-size="9.5">1701 Wynkoop Street, Denver</text>
+            <text x="42" y="104" font-size="8.5" class="ax-mono qg-t-muted">39.753228, -105.000094</text>
+            <path d="M200 90l8 8M208 90l-8 8" class="qg-stroke" fill="none" stroke-width="1.4"/>
+            <text x="16" y="124" font-size="8.5" class="qg-t-muted">Click the map to move it</text>
+            <rect x="16" y="130" width="64" height="22" rx="5" class="ax-field"/>
+            <text x="48" y="145" font-size="10" text-anchor="middle" class="ax-b">Add Sign</text>
+
+            <text x="16" y="174" font-size="9" class="ax-head">LABEL</text>
+            <rect x="16" y="180" width="199" height="22" rx="5" class="ax-field"/>
+            <text x="24" y="195" font-size="10.5">SIGN LOCATION</text>
+
+            <text x="16" y="224" font-size="9" class="ax-head">CIRCLE COLOR</text>
+            <rect x="16" y="230" width="22" height="22" rx="4" fill="#ff0000"/>
+            <rect x="44" y="230" width="76" height="22" rx="5" class="ax-field"/>
+            <text x="52" y="245" font-size="10.5" class="ax-mono">#FF0000</text>
+
+            <text x="16" y="274" font-size="9" class="ax-head">CIRCLE RADIUS</text>
+            <line x1="16" y1="294" x2="150" y2="294" class="ax-line" stroke-width="3"/>
+            <circle cx="28" cy="294" r="6" class="ax-mark"/>
+            <rect x="158" y="283" width="36" height="22" rx="4" class="ax-field"/>
+            <text x="188" y="298" font-size="10.5" text-anchor="end" class="ax-mono">100</text>
+            <text x="200" y="298" font-size="10" class="qg-t-muted">ft</text>
+
+            <text x="16" y="324" font-size="9" class="ax-head">BUILDINGS</text>
+            <rect x="16" y="330" width="199" height="24" rx="5" class="ax-field"/>
+            <text x="115" y="346" font-size="10.5" text-anchor="middle" class="ax-b">Highlight Buildings</text>
+            <text x="16" y="368" font-size="8.5" class="qg-t-muted">1 building highlighted</text>
+            <text x="215" y="368" font-size="8.5" text-anchor="end" class="ax-b">Clear</text>
+
+            <rect x="16" y="378" width="12" height="12" rx="2" class="ax-field"/>
+            <text x="36" y="388" font-size="10.5">Street Names</text>
+            <rect x="16" y="394" width="12" height="12" rx="2" class="ax-field"/>
+            <text x="36" y="404" font-size="10.5">Shadows</text>
+            <rect x="16" y="410" width="12" height="12" rx="2" class="ax-mark"/>
+            <text x="36" y="420" font-size="10.5">North Arrow</text>
+            <rect x="16" y="426" width="12" height="12" rx="2" class="ax-mark"/>
+            <text x="36" y="436" font-size="10.5">Scale Bar</text>
+            <g fill="none" stroke-width="1.5" style="stroke: var(--paper)">
+              <path d="M19 416l2.2 2.2 4-4.4"/><path d="M19 432l2.2 2.2 4-4.4"/>
+            </g>
+
+            <rect x="16" y="446" width="199" height="26" rx="6" class="ax-primary"/>
+            <text x="115" y="463" font-size="11" text-anchor="middle" class="ax-on-primary ax-b">Export PNG</text>
+            <text x="16" y="483" font-size="7.5" class="qg-t-muted">Exports what the map shows &#183; zoom and pan to frame it first</text>
+          </g>
+        </g>
+        <line x1="231" y1="35" x2="231" y2="519" class="ax-line"/>
+
+        <!-- the top bar -->
+        <rect x="14" y="8" width="18" height="18" rx="4" class="ax-mark"/>
+        <circle cx="23" cy="17" r="5" fill="none" class="ax-on-mark" stroke-width="1.2" style="stroke: var(--paper)"/>
+        <text x="40" y="21" font-size="10.5" class="qg-t-muted">Alexandria / <tspan class="ax-b" style="fill: var(--ink)">Site Plan</tspan></text>
+        <rect x="150" y="7" width="250" height="20" rx="5" class="ax-field"/>
+        <text x="158" y="20.5" font-size="10.5" class="ax-b">Untitled Project</text>
+        <text x="744" y="21" font-size="9.5" text-anchor="end" class="qg-t-muted">Alexandria Home&#160;&#160;&#160;Quick Guide&#160;&#160;&#160;Autosaves in This Browser</text>
+        <line x1="0" y1="34" x2="760" y2="34" class="ax-line"/>
+        <!-- the window's outline, over everything -->
+        <rect x="0.5" y="0.5" width="759" height="519" rx="10" fill="none" class="ax-edge"/>
+
+        <g transform="translate(0 34)">
+          <g class="ax-callout" font-size="10.5" text-anchor="middle">
+            <g data-key="1" data-box="10 14 212 44"><circle cx="215" cy="26" r="9"/><text x="215" y="30">1</text></g>
+            <g data-key="2" data-box="10 62 212 96"><circle cx="215" cy="70" r="9"/><text x="215" y="74">2</text></g>
+            <g data-key="3" data-box="231 0 529 486"><circle cx="492" cy="176" r="9"/><text x="492" y="180">3</text></g>
+            <g data-key="4" data-box="10 164 212 44"><circle cx="215" cy="172" r="9"/><text x="215" y="176">4</text></g>
+            <g data-key="5" data-box="10 214 212 44"><circle cx="215" cy="222" r="9"/><text x="215" y="226">5</text></g>
+            <g data-key="6" data-box="10 264 212 46"><circle cx="215" cy="274" r="9"/><text x="215" y="278">6</text></g>
+            <g data-key="7" data-box="10 314 212 62"><circle cx="215" cy="322" r="9"/><text x="215" y="326">7</text></g>
+            <g data-key="8" data-box="10 374 212 68"><circle cx="215" cy="388" r="9"/><text x="215" y="392">8</text></g>
+            <g data-key="9" data-box="146 -30 262 28"><circle cx="408" cy="-17" r="9"/><text x="408" y="-13">9</text></g>
+            <g data-key="10" data-box="10 442 212 46"><circle cx="215" cy="446" r="9"/><text x="215" y="450">10</text></g>
+          </g>
         </g>
       </svg>
       </div>
-      <figcaption>A site plan in progress.</figcaption>
     </figure>
     <ol class="ax-keys">
-      <li><b>Address.</b> Type it and press Search.</li>
-      <li><b>Signs.</b> One line per sign. <b>Add Sign</b> places another; &times; removes one.</li>
-      <li><b>Circle Radius.</b> In feet. <b>Label</b> and <b>Circle Color</b> are above it.</li>
-      <li><b>Highlight Buildings.</b> Press it, click buildings to darken them, then <b>Done</b>.</li>
-      <li><b>Street Names, Shadows.</b> Off for the plain look. <b>North Arrow</b> and <b>Scale Bar</b> are below them.</li>
-      <li><b>Export PNG.</b> Saves the map as you see it.</li>
-      <li><b>The Circle.</b> One per sign, with its label inside.</li>
+      <li><b>Address</b><p>Type a street, city and state, then press Search.</p>
+        <ul><li>The first match is placed and zoomed to. Up to 5 matches list below: pick another to correct it.</li><li>Nothing found? Add the city and state, or click the map.</li></ul></li>
+      <li><b>Signs</b><p>One row per sign, with its address and coordinates.</p>
+        <ul><li>A search or a map click moves the selected sign. Add Sign makes the next one add another; <kbd>Esc</kbd> cancels.</li><li>Click a row to select it. &#215; removes it.</li><li>New signs start with the last label, color and radius used.</li></ul></li>
+      <li><b>Map</b><p>Click to place or move the sign. Scroll to zoom, drag to pan.</p>
+        <ul><li>Buildings show from zoom 13, street names from 14. Zoom in to pick one.</li><li>The map never rotates: north is always up.</li><li>Click another sign's center or label to select it.</li></ul></li>
+      <li><b>Label</b><p>Text inside the selected sign's circle, up to 40 characters.</p>
+        <ul><li>Capitals only. It starts as SIGN LOCATION: clear it for none.</li><li>A long label shrinks to fit the circle.</li></ul></li>
+      <li><b>Circle Color</b><p>Colors the selected sign's circle and label.</p>
+        <ul><li>Pick a color, or type a hex code like #FF0000.</li><li>Reset to Red shows once it isn't red.</li></ul></li>
+      <li><b>Circle Radius</b><p>The selected circle's size, in feet. It starts at 100.</p>
+        <ul><li>The slider runs 10 to 1000. Type 5 to 5000 in the box.</li></ul></li>
+      <li><b>Highlight Buildings</b><p>Click buildings to darken them. Click one again to undo.</p>
+        <ul><li>The button reads Done while on: press it or <kbd>Esc</kbd> to finish. Clear removes them all.</li></ul></li>
+      <li><b>Street Names &#183; Shadows &#183; North Arrow &#183; Scale Bar</b><p>What the plan shows besides the map.</p>
+        <ul><li>North Arrow and Scale Bar start on, bottom left. Street Names and Shadows start off.</li><li>The scale bar reads in feet, then in miles past one.</li></ul></li>
+      <li><b>Project Name</b><p>Names the export. It starts as Untitled Project.</p>
+        <ul><li>Everything autosaves in this browser, the map view too. The status beside the links says so.</li></ul></li>
+      <li><b>Export PNG</b><p>Downloads the map exactly as framed on screen.</p>
+        <ul><li>One file, <i>Project Name Site Plan.png</i>, 4,800 px wide. It lands in your browser's downloads.</li><li>Zoom buttons are left out. The OpenStreetMap credit is added bottom right.</li></ul></li>
     </ol>
   </section>
 
-  <section aria-labelledby="order">
-    <div class="qg-section-head"><h2 id="order">Make a Site Plan</h2></div>
-    <ol class="qg-flow">
-      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="5"/><path d="M13 13l4 4"/></svg></span><div><b>Find the Address</b><small>Street, city and state.</small></div></li>
-      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s5-5 5-9a5 5 0 0 0-10 0c0 4 5 9 5 9z"/><circle cx="10" cy="8" r="1.6"/></svg></span><div><b>Place the Sign</b><small>Click the map where the sign really goes.</small></div></li>
-      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="7" stroke-dasharray="3 2"/><path d="M10 10h7"/></svg></span><div><b>Size the Circle</b><small>Big enough to read, small enough to point at one building.</small></div></li>
-      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 16V7l6-3 6 3v9z"/><path d="M8 16v-4h4v4"/></svg></span><div><b>Highlight the Building</b><small>If it helps.</small></div></li>
-      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 7V3h4M13 3h4v4M17 13v4h-4M7 17H3v-4"/></svg></span><div><b>Frame It</b><small>Zoom and pan: the export is the map as you see it.</small></div></li>
-      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v10m0 0-4-4m4 4 4-4M4 16h12"/></svg></span><div><b>Export PNG</b><small>Into the project's folder.</small></div></li>
+  <section aria-labelledby="steps">
+    <div class="qg-section-head"><h2 id="steps">Make a Site Plan</h2></div>
+    <ol class="ax-steps">
+      <li>Search the address, or click the map where the sign goes <button type="button" class="ax-dot" data-key="1">1</button> <button type="button" class="ax-dot" data-key="3">3</button></li>
+      <li>Add Sign for each extra location <button type="button" class="ax-dot" data-key="2">2</button></li>
+      <li>Set the label, color and radius <button type="button" class="ax-dot" data-key="4">4</button> <button type="button" class="ax-dot" data-key="5">5</button> <button type="button" class="ax-dot" data-key="6">6</button></li>
+      <li>Darken the client's building <button type="button" class="ax-dot" data-key="7">7</button></li>
+      <li>Choose street names, shadows, arrow and scale <button type="button" class="ax-dot" data-key="8">8</button></li>
+      <li>Zoom and pan to frame it, name the project, export <button type="button" class="ax-dot" data-key="3">3</button> <button type="button" class="ax-dot" data-key="9">9</button> <button type="button" class="ax-dot" data-key="10">10</button></li>
     </ol>
-  </section>
-
-  <section aria-labelledby="habits">
-    <div class="qg-section-head"><h2 id="habits">Good to Know</h2></div>
-    <ul class="qg-habits">
-      <li><b>Check the footprints.</b> OpenStreetMap can miss a new building. Compare with the architect's site plan.</li>
-      <li><b>Keep the credit.</b> Leave <i>&copy; OpenStreetMap contributors</i> on the page.</li>
-      <li><b>Nothing found?</b> Add the city and state, or click the map.</li>
-      <li><b>It saves</b> in this browser.</li>
-    </ul>
   </section>
 </div>

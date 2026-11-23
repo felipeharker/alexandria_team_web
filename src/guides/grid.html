@@ -1,145 +1,164 @@
-<!-- The Parametric Grid quick guide, written for the hub in the quick guides' own classes (qg-…, from guides.css) and a
-     few of the hub's (ax-…, in theme.css). The tool itself is in the alexandria_office repo, at public/grid/, and is
-     described in that repo's README (Parametric Grid). The cells in the diagram come from the tool's own geometry.js:
-     a 96 × 48 in region of 5 in hexes, Min 0.15 and Max 0.9, with two attractors: a point at X 30, Y 18, and a smooth
-     curve through X 58 Y 44, X 68 Y 32, X 80 Y 30 and X 92 Y 10. -->
+<!-- The Parametric Grid quick guide. Same shape as the Vectorizer's (Guide.astro has the markup's rules): a line and the way in, the
+     tool's screen drawn with numbered dots, one entry per dot under it (shown one at a time, on a click), and the steps.
+     The tool is in the alexandria_office repo, at public/grid/: check the drawing and the entries against its
+     index.html and JS when the tool changes. The cells in the drawing are the tool's own geometry, run at its defaults. -->
 <div class="qg-page">
-  <header>
-    <p class="qg-eyebrow">Office Tools &middot; Runs in Your Browser</p>
-    <p class="qg-lede">A square, hex or triangle grid whose cells scale toward points and curves, as a full-size SVG.</p>
-    <p class="qg-other"><a href="/grid/">Open the Parametric Grid &rarr;</a></p>
+  <header class="ax-head">
+    <p class="qg-lede">A region and some attractors in, a hex, square or triangle grid whose cells scale toward them out: an SVG at full size.</p>
+    <a class="ax-open" href="/grid/">Open the Parametric Grid</a>
   </header>
 
-  <section aria-labelledby="screen">
-    <div class="qg-section-head"><h2 id="screen">The Screen</h2></div>
+  <section class="ax-tour" aria-label="The screen">
     <figure class="qg-figure">
       <div class="qg-diagram-scroll">
-      <svg class="ax-est" viewBox="0 0 760 360" role="img" aria-label="The Parametric Grid: on the left the Region's width, height and units, the Grid type with Hex chosen, the Cell Size and Edge Cells, the Min and Max scale sliders and Reach, the Attractors with Add Point and Add Curve buttons, and Download SVG and Copy SVG buttons; on the right a wide panel of hexagons that shrink toward two attractors, a point placed low on its left half and a curve across its upper right">
+      <svg class="ax-est" viewBox="0 0 760 738" role="img" aria-label="The Parametric Grid screen. Top bar: the file name. Left panel: Region with Width 48, Height 96 and Units; Grid with Square, Hex and Triangle, Cell Size and Edge Cells; Scale with Min, Max, Largest at the Attractor and Reach; Random Cull with Start, Cull and Seed; the Attractors list with X and Y fields and Add Point and Add Curve; Include the Attractors in the SVG; Download SVG and Copy SVG. Right: the preview bar and a tall region of hexagons that shrink toward a point at its middle.">
         <defs>
-          <clipPath id="qg-grid-window"><rect x="0.5" y="0.5" width="759" height="359" rx="10"/></clipPath>
+          <clipPath id="qg-grid-window"><rect x="0.5" y="0.5" width="759" height="737" rx="10"/></clipPath>
         </defs>
         <g clip-path="url(#qg-grid-window)">
-        <!-- the preview: the region, its cells and the attractor -->
-        <rect x="231" y="38" width="529" height="322" class="ax-tint"/>
-        <rect x="231" y="0" width="529" height="38" class="qg-paper"/>
-        <line x1="231" y1="38" x2="760" y2="38" class="ax-line"/>
-        <text x="245" y="23" font-size="10" class="qg-t-muted">Click or drag to move Point 1.</text>
-        <text x="746" y="23" font-size="10" text-anchor="end" class="ax-mono qg-t-muted">X 30   Y 18 in</text>
-        <rect x="255" y="78.8" width="481" height="240.5" class="qg-paper"/>
-        <path class="qg-stroke" stroke-width="1" d="M278.5 82.6L298.1 93.8L298.1 116.4L278.5 127.7L259 116.4L259 93.8zM321.9 85.5L338.9 95.3L338.9 114.9L321.9 124.7L305 114.9L305 95.3zM365.3 87.5L380.5 96.3L380.5 113.9L365.3 122.7L350.1 113.9L350.1 96.3zM408.7 88.2L423.4 96.7L423.4 113.6L408.7 122L394.1 113.6L394.1 96.7zM452.1 91.4L464 98.3L464 111.9L452.1 118.8L440.3 111.9L440.3 98.3zM495.5 96L503.4 100.6L503.4 109.7L495.5 114.2L487.6 109.7L487.6 100.6zM538.9 100.4L543 102.7L543 107.5L538.9 109.8L534.8 107.5L534.8 102.7zM582.3 98.6L587.9 101.9L587.9 108.4L582.3 111.6L576.6 108.4L576.6 101.9zM625.7 95.2L634.3 100.1L634.3 110.1L625.7 115L617.1 110.1L617.1 100.1zM669.1 94.6L678.2 99.9L678.2 110.4L669.1 115.6L660 110.4L660 99.9zM712.5 92.3L723.5 98.7L723.5 111.5L712.5 117.9L701.4 111.5L701.4 98.7zM300.2 124.5L316 133.6L316 151.8L300.2 160.9L284.5 151.8L284.5 133.6zM343.6 127.7L356.6 135.2L356.6 150.2L343.6 157.7L330.6 150.2L330.6 135.2zM387 129.6L398.4 136.1L398.4 149.2L387 155.8L375.7 149.2L375.7 136.1zM430.4 129.4L441.9 136L441.9 149.3L430.4 156L418.9 149.3L418.9 136zM473.8 130L484.8 136.3L484.8 149L473.8 155.4L462.8 149L462.8 136.3zM517.2 133.7L524.9 138.2L524.9 147.2L517.2 151.6L509.4 147.2L509.4 138.2zM560.6 137.5L565.1 140.1L565.1 145.3L560.6 147.9L556.1 145.3L556.1 140.1zM604 137L608.9 139.8L608.9 145.5L604 148.4L599.1 145.5L599.1 139.8zM647.4 136.6L652.6 139.7L652.6 145.7L647.4 148.7L642.1 145.7L642.1 139.7zM690.8 134.4L697.9 138.6L697.9 146.8L690.8 150.9L683.6 146.8L683.6 138.6zM278.5 162.1L294.3 171.2L294.3 189.3L278.5 198.4L262.8 189.3L262.8 171.2zM321.9 166.3L334.1 173.3L334.1 187.3L321.9 194.3L309.8 187.3L309.8 173.3zM365.3 169.8L374.4 175L374.4 185.5L365.3 190.7L356.3 185.5L356.3 175zM408.7 171.3L416.5 175.8L416.5 184.7L408.7 189.2L401 184.7L401 175.8zM452.1 169.3L461.6 174.8L461.6 185.7L452.1 191.2L442.6 185.7L442.6 174.8zM495.5 167.2L506.8 173.7L506.8 186.8L495.5 193.4L484.2 186.8L484.2 173.7zM538.9 170.8L547.1 175.5L547.1 185L538.9 189.7L530.7 185L530.7 175.5zM582.3 173.8L587.8 177L587.8 183.5L582.3 186.7L576.7 183.5L576.7 177zM625.7 174.7L630.5 177.5L630.5 183L625.7 185.8L620.9 183L620.9 177.5zM669.1 176.4L672.4 178.3L672.4 182.2L669.1 184.1L665.7 182.2L665.7 178.3zM712.5 172.6L719.1 176.4L719.1 184.1L712.5 188L705.8 184.1L705.8 176.4zM300.2 202.9L313.2 210.4L313.2 225.3L300.2 232.8L287.3 225.3L287.3 210.4zM343.6 207.4L352.6 212.6L352.6 223L343.6 228.2L334.6 223L334.6 212.6zM387 211.8L392.2 214.8L392.2 220.9L387 223.9L381.8 220.9L381.8 214.8zM430.4 211.2L436.2 214.5L436.2 221.2L430.4 224.5L424.6 221.2L424.6 214.5zM473.8 206.7L483.4 212.3L483.4 223.4L473.8 229L464.2 223.4L464.2 212.3zM517.2 204L529.2 210.9L529.2 224.8L517.2 231.7L505.2 224.8L505.2 210.9zM560.6 206.8L570.1 212.3L570.1 223.3L560.6 228.9L551 223.3L551 212.3zM604 208.2L612.3 213L612.3 222.6L604 227.4L595.7 222.6L595.7 213zM647.4 210.1L654.1 214L654.1 221.7L647.4 225.6L640.6 221.7L640.6 214zM690.8 214L694.1 215.9L694.1 219.8L690.8 221.7L687.4 219.8L687.4 215.9zM278.5 237.9L293.7 246.7L293.7 264.2L278.5 272.9L263.4 264.2L263.4 246.7zM321.9 242.4L333.2 248.9L333.2 261.9L321.9 268.4L310.7 261.9L310.7 248.9zM365.3 246.6L373 251L373 259.8L365.3 264.2L357.7 259.8L357.7 251zM408.7 248.8L414.4 252.1L414.4 258.7L408.7 262L403 258.7L403 252.1zM452.1 246L460.3 250.7L460.3 260.1L452.1 264.9L443.9 260.1L443.9 250.7zM495.5 241.7L507.4 248.6L507.4 262.3L495.5 269.1L483.6 262.3L483.6 248.6zM538.9 239.8L552.4 247.6L552.4 263.2L538.9 271L525.4 263.2L525.4 247.6zM582.3 241.5L594.3 248.5L594.3 262.4L582.3 269.3L570.2 262.4L570.2 248.5zM625.7 243.8L635.7 249.6L635.7 261.2L625.7 267.1L615.6 261.2L615.6 249.6zM669.1 247.9L675.5 251.7L675.5 259.2L669.1 262.9L662.6 259.2L662.6 251.7zM712.5 251.3L716 253.3L716 257.5L712.5 259.6L708.9 257.5L708.9 253.3zM300.2 276.2L314.8 284.6L314.8 301.4L300.2 309.8L285.7 301.4L285.7 284.6zM343.6 279.8L355 286.4L355 299.6L343.6 306.2L332.2 299.6L332.2 286.4zM387 282.2L396.4 287.6L396.4 298.4L387 303.8L377.7 298.4L377.7 287.6zM430.4 282L440 287.5L440 298.5L430.4 304L420.9 298.5L420.9 287.5zM473.8 279.3L485.7 286.2L485.7 299.8L473.8 306.7L462 299.8L462 286.2zM517.2 275.6L532.3 284.3L532.3 301.7L517.2 310.4L502.1 301.7L502.1 284.3zM560.6 274.6L576.5 283.8L576.5 302.2L560.6 311.3L544.7 302.2L544.7 283.8zM604 277.6L617.3 285.3L617.3 300.7L604 308.4L590.6 300.7L590.6 285.3zM647.4 281.7L657.2 287.3L657.2 298.7L647.4 304.3L637.6 298.7L637.6 287.3zM690.8 285.6L697.2 289.3L697.2 296.7L690.8 300.4L684.3 296.7L684.3 289.3z"/>
-        <rect x="255" y="78.8" width="481" height="240.5" class="qg-stroke" stroke-width="1.5"/>
-        <!-- the curve, not selected: dashed, with lighter handles -->
-        <path d="M545.6 98.8C562.3 118.9 575.8 147.6 595.7 159C613.3 169 638.1 156.9 655.8 169C680.4 185.7 695.9 235.8 716 269.2" class="ax-dash" stroke-width="1.25"/>
-        <g class="qg-thin" stroke-width="1.25">
-          <rect x="541.6" y="94.8" width="8" height="8" class="qg-paper"/><rect x="591.7" y="155" width="8" height="8" class="qg-paper"/>
-          <rect x="651.8" y="165" width="8" height="8" class="qg-paper"/><rect x="712" y="265.2" width="8" height="8" class="qg-paper"/>
+          <rect width="760" height="738" class="ax-win" style="stroke: none"/>
+          <rect x="231" y="72" width="529" height="666" class="ax-tint"/>
         </g>
-        <!-- the point, selected -->
-        <circle cx="405.3" cy="229.1" r="7" class="qg-paper"/>
-        <circle cx="405.3" cy="229.1" r="7" class="qg-stroke" stroke-width="1.5"/>
-        <circle cx="405.3" cy="229.1" r="2" class="ax-mark"/>
+        <!-- the top bar -->
+        <text x="16" y="21" font-size="10.5" class="qg-t-muted">Alexandria / <tspan class="ax-b" style="fill: var(--ink)">Parametric Grid</tspan></text>
+        <rect x="250" y="7" width="176" height="20" rx="5" class="ax-field"/>
+        <text x="258" y="20.5" font-size="10">Grid</text>
+        <text x="744" y="21" font-size="9.5" text-anchor="end" class="qg-t-muted">Alexandria Home&#160;&#160;&#160;Quick Guide</text>
+        <line x1="0" y1="34" x2="760" y2="34" class="ax-line"/>
+        <line x1="231" y1="34" x2="231" y2="737" class="ax-line"/>
 
-        <!-- the panel -->
-        <rect x="0" y="0" width="231" height="360" class="qg-paper"/>
+        <!-- everything under the top bar, measured from its lower edge -->
+        <g transform="translate(0 34)">
+          <line x1="231" y1="38" x2="760" y2="38" class="ax-line"/>
+          <rect x="345" y="70" width="301" height="602" class="qg-paper"/>
+          <path class="qg-stroke" stroke-width="1" d="M365.2 71.9L379.8 80.3L379.8 97.3L365.2 105.7L350.5 97.3L350.5 80.3zM397.7 72.4L412 80.6L412 97L397.7 105.2L383.5 97L383.5 80.6zM430.3 72.8L444.2 80.8L444.2 96.8L430.3 104.8L416.4 96.8L416.4 80.8zM462.9 73L476.6 80.9L476.6 96.7L462.9 104.6L449.2 96.7L449.2 80.9zM495.5 73.1L509.1 81L509.1 96.7L495.5 104.5L481.9 96.7L481.9 81zM528.1 73L541.8 80.9L541.8 96.7L528.1 104.6L514.4 96.7L514.4 80.9zM560.7 72.8L574.6 80.8L574.6 96.8L560.7 104.8L546.8 96.8L546.8 80.8zM593.3 72.4L607.5 80.6L607.5 97L593.3 105.2L579 97L579 80.6zM625.8 71.9L640.5 80.3L640.5 97.3L625.8 105.7L611.2 97.3L611.2 80.3zM381.5 101.5L394.9 109.3L394.9 124.8L381.5 132.6L368 124.8L368 109.3zM414 102L427.1 109.5L427.1 124.6L414 132.1L401 124.6L401 109.5zM446.6 102.3L459.4 109.7L459.4 124.4L446.6 131.8L433.9 124.4L433.9 109.7zM479.2 102.5L491.8 109.8L491.8 124.3L479.2 131.6L466.6 124.3L466.6 109.8zM511.8 102.5L524.4 109.8L524.4 124.3L511.8 131.6L499.2 124.3L499.2 109.8zM544.4 102.3L557.1 109.7L557.1 124.4L544.4 131.8L531.6 124.4L531.6 109.7zM577 102L590 109.5L590 124.6L577 132.1L563.9 124.6L563.9 109.5zM609.5 101.5L623 109.3L623 124.8L609.5 132.6L596.1 124.8L596.1 109.3zM365.2 130.4L378 137.8L378 152.7L365.2 160.1L352.3 152.7L352.3 137.8zM397.7 131.1L410 138.2L410 152.3L397.7 159.4L385.5 152.3L385.5 138.2zM430.3 131.5L442.2 138.4L442.2 152.1L430.3 159L418.5 152.1L418.5 138.4zM462.9 131.8L474.5 138.5L474.5 152L462.9 158.7L451.3 152L451.3 138.5zM495.5 131.9L507 138.6L507 151.9L495.5 158.6L484 151.9L484 138.6zM528.1 131.8L539.7 138.5L539.7 152L528.1 158.7L516.5 152L516.5 138.5zM560.7 131.5L572.5 138.4L572.5 152.1L560.7 159L548.8 152.1L548.8 138.4zM593.3 131.1L605.5 138.2L605.5 152.3L593.3 159.4L581 152.3L581 138.2zM625.8 130.4L638.7 137.8L638.7 152.7L625.8 160.1L613 152.7L613 137.8zM381.5 160L393.1 166.8L393.1 180.2L381.5 186.9L369.8 180.2L369.8 166.8zM414 160.7L425.1 167.1L425.1 179.9L414 186.3L402.9 179.9L402.9 167.1zM446.6 161.1L457.3 167.3L457.3 179.7L446.6 185.9L435.9 179.7L435.9 167.3zM479.2 161.3L489.7 167.4L489.7 179.5L479.2 185.6L468.7 179.5L468.7 167.4zM511.8 161.3L522.3 167.4L522.3 179.5L511.8 185.6L501.3 179.5L501.3 167.4zM544.4 161.1L555.1 167.3L555.1 179.7L544.4 185.9L533.7 179.7L533.7 167.3zM577 160.7L588.1 167.1L588.1 179.9L577 186.3L565.9 179.9L565.9 167.1zM609.5 160L621.2 166.8L621.2 180.2L609.5 186.9L597.9 180.2L597.9 166.8zM365.2 188.9L376.3 195.3L376.3 208.1L365.2 214.5L354.1 208.1L354.1 195.3zM397.7 189.6L408.2 195.7L408.2 207.7L397.7 213.7L387.3 207.7L387.3 195.7zM430.3 190.2L440.2 196L440.2 207.4L430.3 213.1L420.4 207.4L420.4 196zM462.9 190.6L472.5 196.2L472.5 207.2L462.9 212.8L453.3 207.2L453.3 196.2zM495.5 190.8L505 196.2L505 207.2L495.5 212.6L486 207.2L486 196.2zM528.1 190.6L537.7 196.2L537.7 207.2L528.1 212.8L518.5 207.2L518.5 196.2zM560.7 190.2L570.6 196L570.6 207.4L560.7 213.1L550.8 207.4L550.8 196zM593.3 189.6L603.7 195.7L603.7 207.7L593.3 213.7L582.8 207.7L582.8 195.7zM625.8 188.9L636.9 195.3L636.9 208.1L625.8 214.5L614.7 208.1L614.7 195.3zM381.5 218.5L391.4 224.2L391.4 235.6L381.5 241.4L371.5 235.6L371.5 224.2zM414 219.2L423.3 224.6L423.3 235.2L414 240.6L404.8 235.2L404.8 224.6zM446.6 219.8L455.4 224.9L455.4 235L446.6 240L437.9 235L437.9 224.9zM479.2 220.1L487.7 225L487.7 234.8L479.2 239.7L470.7 234.8L470.7 225zM511.8 220.1L520.3 225L520.3 234.8L511.8 239.7L503.3 234.8L503.3 225zM544.4 219.8L553.1 224.9L553.1 235L544.4 240L535.6 235L535.6 224.9zM577 219.2L586.2 224.6L586.2 235.2L577 240.6L567.7 235.2L567.7 224.6zM609.5 218.5L619.5 224.2L619.5 235.6L609.5 241.4L599.6 235.6L599.6 224.2zM365.2 247.1L374.7 252.6L374.7 263.7L365.2 269.2L355.6 263.7L355.6 252.6zM397.7 248L406.5 253.1L406.5 263.2L397.7 268.2L389 263.2L389 253.1zM430.3 248.8L438.4 253.5L438.4 262.8L430.3 267.4L422.3 262.8L422.3 253.5zM462.9 249.4L470.5 253.8L470.5 262.5L462.9 266.9L455.3 262.5L455.3 253.8zM495.5 249.6L502.9 253.9L502.9 262.4L495.5 266.7L488.1 262.4L488.1 253.9zM528.1 249.4L535.7 253.8L535.7 262.5L528.1 266.9L520.5 262.5L520.5 253.8zM560.7 248.8L568.7 253.5L568.7 262.8L560.7 267.4L552.6 262.8L552.6 253.5zM593.3 248L602 253.1L602 263.2L593.3 268.2L584.5 263.2L584.5 253.1zM625.8 247.1L635.4 252.6L635.4 263.7L625.8 269.2L616.3 263.7L616.3 252.6zM381.5 276.6L389.9 281.5L389.9 291.2L381.5 296.1L373 291.2L373 281.5zM414 277.6L421.6 282L421.6 290.7L414 295.1L406.5 290.7L406.5 282zM446.6 278.4L453.5 282.4L453.5 290.3L446.6 294.2L439.8 290.3L439.8 282.4zM479.2 278.9L485.6 282.6L485.6 290.1L479.2 293.8L472.8 290.1L472.8 282.6zM511.8 278.9L518.2 282.6L518.2 290.1L511.8 293.8L505.4 290.1L505.4 282.6zM544.4 278.4L551.2 282.4L551.2 290.3L544.4 294.2L537.5 290.3L537.5 282.4zM577 277.6L584.5 282L584.5 290.7L577 295.1L569.4 290.7L569.4 282zM609.5 276.6L618 281.5L618 291.2L609.5 296.1L601.1 291.2L601.1 281.5zM365.2 304.8L373.6 309.7L373.6 319.5L365.2 324.3L356.7 319.5L356.7 309.7zM397.7 306L405.1 310.3L405.1 318.8L397.7 323.1L390.3 318.8L390.3 310.3zM430.3 307.1L436.8 310.9L436.8 318.3L430.3 322L423.9 318.3L423.9 310.9zM462.9 308L468.6 311.3L468.6 317.8L462.9 321.1L457.3 317.8L457.3 311.3zM495.5 308.4L500.8 311.5L500.8 317.6L495.5 320.7L490.2 317.6L490.2 311.5zM528.1 308L533.7 311.3L533.7 317.8L528.1 321.1L522.4 317.8L522.4 311.3zM560.7 307.1L567.1 310.9L567.1 318.3L560.7 322L554.2 318.3L554.2 310.9zM593.3 306L600.7 310.3L600.7 318.8L593.3 323.1L585.9 318.8L585.9 310.3zM625.8 304.8L634.3 309.7L634.3 319.5L625.8 324.3L617.4 319.5L617.4 309.7zM381.5 334L389 338.4L389 347.2L381.5 351.5L373.9 347.2L373.9 338.4zM414 335.4L420.5 339.1L420.5 346.5L414 350.2L407.6 346.5L407.6 339.1zM446.6 336.6L452 339.7L452 345.9L446.6 348.9L441.3 345.9L441.3 339.7zM479.2 337.6L483.7 340.2L483.7 345.4L479.2 347.9L474.8 345.4L474.8 340.2zM511.8 337.6L516.2 340.2L516.2 345.4L511.8 347.9L507.3 345.4L507.3 340.2zM544.4 336.6L549.7 339.7L549.7 345.9L544.4 348.9L539 345.9L539 339.7zM577 335.4L583.4 339.1L583.4 346.5L577 350.2L570.5 346.5L570.5 339.1zM609.5 334L617.1 338.4L617.1 347.2L609.5 351.5L602 347.2L602 338.4zM365.2 361.7L373.2 366.4L373.2 375.6L365.2 380.3L357.1 375.6L357.1 366.4zM397.7 363.1L404.6 367L404.6 375L397.7 378.9L390.9 375L390.9 367zM430.3 364.5L436 367.7L436 374.3L430.3 377.5L424.7 374.3L424.7 367.7zM462.9 365.9L467.4 368.4L467.4 373.6L462.9 376.1L458.5 373.6L458.5 368.4zM495.5 367.2L498.8 369.1L498.8 372.9L495.5 374.8L492.2 372.9L492.2 369.1zM528.1 365.9L532.5 368.4L532.5 373.6L528.1 376.1L523.6 373.6L523.6 368.4zM560.7 364.5L566.3 367.7L566.3 374.3L560.7 377.5L555 374.3L555 367.7zM593.3 363.1L600.1 367L600.1 375L593.3 378.9L586.4 375L586.4 367zM625.8 361.7L633.9 366.4L633.9 375.6L625.8 380.3L617.8 375.6L617.8 366.4zM381.5 390.5L389 394.8L389 403.6L381.5 408L373.9 403.6L373.9 394.8zM414 391.8L420.5 395.5L420.5 402.9L414 406.6L407.6 402.9L407.6 395.5zM446.6 393.1L452 396.1L452 402.3L446.6 405.4L441.3 402.3L441.3 396.1zM479.2 394.1L483.7 396.6L483.7 401.8L479.2 404.4L474.8 401.8L474.8 396.6zM511.8 394.1L516.2 396.6L516.2 401.8L511.8 404.4L507.3 401.8L507.3 396.6zM544.4 393.1L549.7 396.1L549.7 402.3L544.4 405.4L539 402.3L539 396.1zM577 391.8L583.4 395.5L583.4 402.9L577 406.6L570.5 402.9L570.5 395.5zM609.5 390.5L617.1 394.8L617.1 403.6L609.5 408L602 403.6L602 394.8zM365.2 417.7L373.6 422.5L373.6 432.3L365.2 437.2L356.7 432.3L356.7 422.5zM397.7 418.9L405.1 423.2L405.1 431.7L397.7 436L390.3 431.7L390.3 423.2zM430.3 420L436.8 423.7L436.8 431.1L430.3 434.9L423.9 431.1L423.9 423.7zM462.9 420.9L468.6 424.2L468.6 430.7L462.9 434L457.3 430.7L457.3 424.2zM495.5 421.3L500.8 424.4L500.8 430.5L495.5 433.6L490.2 430.5L490.2 424.4zM528.1 420.9L533.7 424.2L533.7 430.7L528.1 434L522.4 430.7L522.4 424.2zM560.7 420L567.1 423.7L567.1 431.1L560.7 434.9L554.2 431.1L554.2 423.7zM593.3 418.9L600.7 423.2L600.7 431.7L593.3 436L585.9 431.7L585.9 423.2zM625.8 417.7L634.3 422.5L634.3 432.3L625.8 437.2L617.4 432.3L617.4 422.5zM381.5 445.9L389.9 450.8L389.9 460.5L381.5 465.4L373 460.5L373 450.8zM414 446.9L421.6 451.3L421.6 460L414 464.4L406.5 460L406.5 451.3zM446.6 447.8L453.5 451.7L453.5 459.6L446.6 463.6L439.8 459.6L439.8 451.7zM479.2 448.2L485.6 451.9L485.6 459.4L479.2 463.1L472.8 459.4L472.8 451.9zM511.8 448.2L518.2 451.9L518.2 459.4L511.8 463.1L505.4 459.4L505.4 451.9zM544.4 447.8L551.2 451.7L551.2 459.6L544.4 463.6L537.5 459.6L537.5 451.7zM577 446.9L584.5 451.3L584.5 460L577 464.4L569.4 460L569.4 451.3zM609.5 445.9L618 450.8L618 460.5L609.5 465.4L601.1 460.5L601.1 450.8zM365.2 472.8L374.7 478.3L374.7 489.4L365.2 494.9L355.6 489.4L355.6 478.3zM397.7 473.8L406.5 478.8L406.5 488.9L397.7 494L389 488.9L389 478.8zM430.3 474.6L438.4 479.2L438.4 488.5L430.3 493.2L422.3 488.5L422.3 479.2zM462.9 475.1L470.5 479.5L470.5 488.2L462.9 492.6L455.3 488.2L455.3 479.5zM495.5 475.3L502.9 479.6L502.9 488.1L495.5 492.4L488.1 488.1L488.1 479.6zM528.1 475.1L535.7 479.5L535.7 488.2L528.1 492.6L520.5 488.2L520.5 479.5zM560.7 474.6L568.7 479.2L568.7 488.5L560.7 493.2L552.6 488.5L552.6 479.2zM593.3 473.8L602 478.8L602 488.9L593.3 494L584.5 488.9L584.5 478.8zM625.8 472.8L635.4 478.3L635.4 489.4L625.8 494.9L616.3 489.4L616.3 478.3zM381.5 500.6L391.4 506.4L391.4 517.8L381.5 523.5L371.5 517.8L371.5 506.4zM414 501.4L423.3 506.8L423.3 517.4L414 522.8L404.8 517.4L404.8 506.8zM446.6 502L455.4 507L455.4 517.1L446.6 522.2L437.9 517.1L437.9 507zM479.2 502.3L487.7 507.2L487.7 517L479.2 521.9L470.7 517L470.7 507.2zM511.8 502.3L520.3 507.2L520.3 517L511.8 521.9L503.3 517L503.3 507.2zM544.4 502L553.1 507L553.1 517.1L544.4 522.2L535.6 517.1L535.6 507zM577 501.4L586.2 506.8L586.2 517.4L577 522.8L567.7 517.4L567.7 506.8zM609.5 500.6L619.5 506.4L619.5 517.8L609.5 523.5L599.6 517.8L599.6 506.4zM365.2 527.5L376.3 533.9L376.3 546.7L365.2 553.1L354.1 546.7L354.1 533.9zM397.7 528.3L408.2 534.3L408.2 546.3L397.7 552.4L387.3 546.3L387.3 534.3zM430.3 528.9L440.2 534.6L440.2 546L430.3 551.8L420.4 546L420.4 534.6zM462.9 529.2L472.5 534.8L472.5 545.8L462.9 551.4L453.3 545.8L453.3 534.8zM495.5 529.4L505 534.8L505 545.8L495.5 551.2L486 545.8L486 534.8zM528.1 529.2L537.7 534.8L537.7 545.8L528.1 551.4L518.5 545.8L518.5 534.8zM560.7 528.9L570.6 534.6L570.6 546L560.7 551.8L550.8 546L550.8 534.6zM593.3 528.3L603.7 534.3L603.7 546.3L593.3 552.4L582.8 546.3L582.8 534.3zM625.8 527.5L636.9 533.9L636.9 546.7L625.8 553.1L614.7 546.7L614.7 533.9zM381.5 555.1L393.1 561.8L393.1 575.2L381.5 582L369.8 575.2L369.8 561.8zM414 555.7L425.1 562.1L425.1 574.9L414 581.3L402.9 574.9L402.9 562.1zM446.6 556.1L457.3 562.3L457.3 574.7L446.6 580.9L435.9 574.7L435.9 562.3zM479.2 556.4L489.7 562.5L489.7 574.6L479.2 580.7L468.7 574.6L468.7 562.5zM511.8 556.4L522.3 562.5L522.3 574.6L511.8 580.7L501.3 574.6L501.3 562.5zM544.4 556.1L555.1 562.3L555.1 574.7L544.4 580.9L533.7 574.7L533.7 562.3zM577 555.7L588.1 562.1L588.1 574.9L577 581.3L565.9 574.9L565.9 562.1zM609.5 555.1L621.2 561.8L621.2 575.2L609.5 582L597.9 575.2L597.9 561.8zM365.2 581.9L378 589.3L378 604.2L365.2 611.6L352.3 604.2L352.3 589.3zM397.7 582.6L410 589.7L410 603.8L397.7 610.9L385.5 603.8L385.5 589.7zM430.3 583L442.2 589.9L442.2 603.6L430.3 610.5L418.5 603.6L418.5 589.9zM462.9 583.3L474.5 590L474.5 603.5L462.9 610.2L451.3 603.5L451.3 590zM495.5 583.4L507 590.1L507 603.4L495.5 610.1L484 603.4L484 590.1zM528.1 583.3L539.7 590L539.7 603.5L528.1 610.2L516.5 603.5L516.5 590zM560.7 583L572.5 589.9L572.5 603.6L560.7 610.5L548.8 603.6L548.8 589.9zM593.3 582.6L605.5 589.7L605.5 603.8L593.3 610.9L581 603.8L581 589.7zM625.8 581.9L638.7 589.3L638.7 604.2L625.8 611.6L613 604.2L613 589.3zM381.5 609.4L394.9 617.2L394.9 632.7L381.5 640.5L368 632.7L368 617.2zM414 609.9L427.1 617.4L427.1 632.5L414 640L401 632.5L401 617.4zM446.6 610.2L459.4 617.6L459.4 632.3L446.6 639.7L433.9 632.3L433.9 617.6zM479.2 610.4L491.8 617.7L491.8 632.2L479.2 639.5L466.6 632.2L466.6 617.7zM511.8 610.4L524.4 617.7L524.4 632.2L511.8 639.5L499.2 632.2L499.2 617.7zM544.4 610.2L557.1 617.6L557.1 632.3L544.4 639.7L531.6 632.3L531.6 617.6zM577 609.9L590 617.4L590 632.5L577 640L563.9 632.5L563.9 617.4zM609.5 609.4L623 617.2L623 632.7L609.5 640.5L596.1 632.7L596.1 617.2zM365.2 636.3L379.8 644.7L379.8 661.7L365.2 670.1L350.5 661.7L350.5 644.7zM397.7 636.8L412 645L412 661.4L397.7 669.6L383.5 661.4L383.5 645zM430.3 637.2L444.2 645.2L444.2 661.2L430.3 669.2L416.4 661.2L416.4 645.2zM462.9 637.4L476.6 645.3L476.6 661.1L462.9 669L449.2 661.1L449.2 645.3zM495.5 637.5L509.1 645.3L509.1 661L495.5 668.9L481.9 661L481.9 645.3zM528.1 637.4L541.8 645.3L541.8 661.1L528.1 669L514.4 661.1L514.4 645.3zM560.7 637.2L574.6 645.2L574.6 661.2L560.7 669.2L546.8 661.2L546.8 645.2zM593.3 636.8L607.5 645L607.5 661.4L593.3 669.6L579 661.4L579 645zM625.8 636.3L640.5 644.7L640.5 661.7L625.8 670.1L611.2 661.7L611.2 644.7z"/>
+          <rect x="345" y="70" width="301" height="602" class="qg-stroke" stroke-width="1.5"/>
+          <circle cx="495.5" cy="371" r="7" class="qg-paper"/><circle cx="495.5" cy="371" r="7" class="qg-stroke" stroke-width="1.5"/><circle cx="495.5" cy="371" r="2" class="ax-mark"/>
+          <text x="245" y="23" font-size="10" class="qg-t-muted">Click or drag to place the point</text>
+          <text x="746" y="23" font-size="10" class="ax-mono qg-t-muted" text-anchor="end">X 24   Y 48 in</text>
+          <text x="16" y="22" font-size="9" class="ax-head">REGION</text>
+          <text x="16" y="40" font-size="8.5" class="qg-t-muted">Width</text>
+          <text x="78" y="40" font-size="8.5" class="qg-t-muted">Height</text>
+          <text x="140" y="40" font-size="8.5" class="qg-t-muted">Units</text>
+          <rect x="16" y="44" width="56" height="22" rx="5" class="ax-field"/><text x="24" y="58.8" font-size="10.5" class="ax-mono">48</text>
+          <rect x="78" y="44" width="56" height="22" rx="5" class="ax-field"/><text x="86" y="58.8" font-size="10.5" class="ax-mono">96</text>
+          <rect x="140" y="44" width="66" height="22" rx="5" class="ax-field"/><text x="148" y="58.8" font-size="10.5">Inches</text>
+          <path d="M191 53.5l3 3 3-3" class="qg-thin" fill="none"/>
+          <text x="16" y="90" font-size="9" class="ax-head">GRID</text>
+          <rect x="16" y="98" width="190" height="22" rx="6" class="ax-field"/><rect x="80" y="100" width="62" height="18" rx="4" class="ax-mark"/><text x="49" y="112.5" font-size="10" class="qg-t-muted ax-b" text-anchor="middle">Square</text><text x="111" y="112.5" font-size="10" class="ax-on-mark ax-b" text-anchor="middle">Hex</text><text x="173" y="112.5" font-size="10" class="qg-t-muted ax-b" text-anchor="middle">Triangle</text>
+          <text x="16" y="138" font-size="8.5" class="qg-t-muted">Cell Size</text>
+          <text x="96" y="138" font-size="8.5" class="qg-t-muted">Edge Cells</text>
+          <rect x="16" y="142" width="50" height="22" rx="5" class="ax-field"/><text x="24" y="156.8" font-size="10.5" class="ax-mono">3</text>
+          <text x="72" y="157" font-size="10" class="qg-t-muted">in</text>
+          <rect x="96" y="142" width="110" height="22" rx="6" class="ax-field"/><rect x="98" y="144" width="53" height="18" rx="4" class="ax-mark"/><text x="124.5" y="156.5" font-size="10" class="ax-on-mark ax-b" text-anchor="middle">Whole</text><text x="177.5" y="156.5" font-size="10" class="qg-t-muted ax-b" text-anchor="middle">Clipped</text>
+          <text x="16" y="180" font-size="8" class="qg-t-muted">Whole: cells that fit &#183; Clipped: cut at the edge</text>
+          <text x="16" y="198" font-size="9" class="ax-head">SCALE</text>
+          <text x="16" y="218" font-size="10" class="qg-t-muted">Min</text><line x1="46" y1="214" x2="160" y2="214" class="ax-line" stroke-width="3"/><circle cx="68.8" cy="214" r="6" class="ax-mark"/><rect x="168" y="204" width="38" height="20" rx="5" class="ax-field"/><text x="174" y="217.8" font-size="9.5" class="ax-mono">0.20</text>
+          <text x="16" y="240" font-size="10" class="qg-t-muted">Max</text><line x1="46" y1="236" x2="160" y2="236" class="ax-line" stroke-width="3"/><circle cx="148.6" cy="236" r="6" class="ax-mark"/><rect x="168" y="226" width="38" height="20" rx="5" class="ax-field"/><text x="174" y="239.8" font-size="9.5" class="ax-mono">0.90</text>
+          <rect x="16" y="250" width="11" height="11" rx="2" class="ax-field"/><text x="34" y="259" font-size="10">Largest at the Attractor</text>
+          <text x="16" y="282" font-size="8.5" class="qg-t-muted">Reach</text>
+          <rect x="16" y="286" width="60" height="22" rx="5" class="ax-field"/><text x="24" y="300.8" font-size="10.5" class="qg-t-muted">Auto</text>
+          <text x="82" y="301" font-size="10" class="qg-t-muted">in</text>
+          <text x="16" y="322" font-size="8" class="qg-t-muted">Min at the attractor &#8594; Max at Reach &#183;</text><text x="16" y="331.5" font-size="8" class="qg-t-muted">empty Reach: the farthest cell</text>
+          <text x="16" y="352" font-size="9" class="ax-head">RANDOM CULL</text>
+          <text x="16" y="372" font-size="10" class="qg-t-muted">Start</text><line x1="46" y1="368" x2="160" y2="368" class="ax-line" stroke-width="3"/><circle cx="46" cy="368" r="6" class="ax-mark"/><rect x="168" y="358" width="38" height="20" rx="5" class="ax-field"/><text x="174" y="371.8" font-size="9.5" class="ax-mono">0.00</text>
+          <text x="16" y="394" font-size="10" class="qg-t-muted">Cull</text><line x1="46" y1="390" x2="160" y2="390" class="ax-line" stroke-width="3"/><circle cx="46" cy="390" r="6" class="ax-mark"/><rect x="168" y="380" width="38" height="20" rx="5" class="ax-field"/><text x="174" y="393.8" font-size="9.5" class="ax-mono">0.00</text>
+          <text x="16" y="412" font-size="8.5" class="qg-t-muted">Seed</text>
+          <rect x="16" y="416" width="50" height="22" rx="5" class="ax-field"/><text x="24" y="430.8" font-size="10.5" class="ax-mono">1</text>
+          <text x="16" y="452" font-size="8" class="qg-t-muted">Start: cells nearest the attractors kept &#183;</text><text x="16" y="461.5" font-size="8" class="qg-t-muted">Cull: share taken out &#183; Seed: which</text>
+          <text x="16" y="484" font-size="9" class="ax-head">ATTRACTORS</text>
+          <rect x="16" y="490" width="190" height="24" rx="5" class="ax-field"/><rect x="16" y="490" width="190" height="24" rx="5" fill="none" class="ax-edge" stroke-width="1.5"/><circle cx="28" cy="502" r="4.5" fill="none" class="qg-stroke" stroke-width="1.2"/><circle cx="28" cy="502" r="1.2" class="ax-mark"/><text x="40" y="506" font-size="10" class="ax-b">Point 1</text><text x="150" y="506" font-size="8" class="ax-mono qg-t-muted" text-anchor="end">X 24  Y 48</text><path d="M193 497l8 10M201 497l-8 10" class="qg-thin" fill="none"/>
+          <text x="16" y="532" font-size="8.5" class="qg-t-muted">X</text>
+          <text x="116" y="532" font-size="8.5" class="qg-t-muted">Y</text>
+          <rect x="16" y="536" width="90" height="22" rx="5" class="ax-field"/><text x="24" y="550.8" font-size="10.5" class="ax-mono">24</text>
+          <text x="92" y="551" font-size="10" class="qg-t-muted">in</text>
+          <rect x="116" y="536" width="90" height="22" rx="5" class="ax-field"/><text x="124" y="550.8" font-size="10.5" class="ax-mono">48</text>
+          <text x="192" y="551" font-size="10" class="qg-t-muted">in</text>
+          <rect x="16" y="568" width="92" height="22" rx="5" class="ax-field"/><text x="62" y="582.8" font-size="10.5" class="ax-b" text-anchor="middle">Add Point</text>
+          <rect x="114" y="568" width="92" height="22" rx="5" class="ax-field"/><text x="160" y="582.8" font-size="10.5" class="ax-b" text-anchor="middle">Add Curve</text>
+          <text x="16" y="606" font-size="8" class="qg-t-muted">X, Y from the region&#8217;s bottom left corner</text>
+          <rect x="16" y="620" width="11" height="11" rx="2" class="ax-field"/><text x="34" y="629" font-size="10">Include the Attractors in the SVG</text>
+          <rect x="16" y="642" width="112" height="30" rx="6" class="ax-primary"/><text x="72" y="661" font-size="11" class="ax-on-primary ax-b" text-anchor="middle">Download SVG</text>
+          <rect x="134" y="642" width="72" height="30" rx="6" class="ax-field"/><text x="170" y="660.8" font-size="10.5" class="ax-b" text-anchor="middle">Copy SVG</text>
+          <text x="16" y="690" font-size="8.5" class="qg-t-muted">179 cells &#183; 48 &#215; 96 in &#183; reach 49.57 in</text>
+
+          <g class="ax-callout" font-size="10.5" text-anchor="middle">
+            <g data-key="1" data-box="246 -30 184 26"><circle cx="436" cy="-17" r="9"/><text x="436" y="-13">1</text></g>
+            <g data-key="2" data-box="10 6 202 64"><circle cx="212" cy="16" r="9"/><text x="212" y="20">2</text></g>
+            <g data-key="3" data-box="10 76 202 106"><circle cx="212" cy="84" r="9"/><text x="212" y="88">3</text></g>
+            <g data-key="4" data-box="10 184 202 156"><circle cx="212" cy="192" r="9"/><text x="212" y="196">4</text></g>
+            <g data-key="5" data-box="10 340 202 128"><circle cx="212" cy="346" r="9"/><text x="212" y="350">5</text></g>
+            <g data-key="6" data-box="10 472 202 144"><circle cx="212" cy="478" r="9"/><text x="212" y="482">6</text></g>
+            <g data-key="7" data-box="10 612 202 82"><circle cx="216" cy="636" r="9"/><text x="216" y="640">7</text></g>
+            <g data-key="8" data-box="231 0 529 704"><circle cx="742" cy="56" r="9"/><text x="742" y="60">8</text></g>
+          </g>
         </g>
-        <line x1="231" y1="1" x2="231" y2="359" class="ax-line"/>
-        <text x="16" y="26" font-size="9" class="ax-head">REGION</text>
-        <rect x="16" y="34" width="56" height="24" rx="5" class="ax-field"/>
-        <text x="24" y="50" font-size="10.5" class="ax-mono">96</text>
-        <rect x="78" y="34" width="56" height="24" rx="5" class="ax-field"/>
-        <text x="86" y="50" font-size="10.5" class="ax-mono">48</text>
-        <rect x="140" y="34" width="66" height="24" rx="5" class="ax-field"/>
-        <text x="148" y="50" font-size="10">Inches</text>
-        <path d="M191 44.5l3 3 3-3" class="qg-thin"/>
-
-        <text x="16" y="82" font-size="9" class="ax-head">GRID</text>
-        <rect x="16" y="90" width="190" height="22" rx="6" class="ax-field"/>
-        <rect x="82" y="92" width="58" height="18" rx="4" class="ax-mark"/>
-        <text x="48" y="105" font-size="10" text-anchor="middle" class="qg-t-muted ax-b">Square</text>
-        <text x="111" y="105" font-size="10" text-anchor="middle" class="ax-on-mark ax-b">Hex</text>
-        <text x="174" y="105" font-size="10" text-anchor="middle" class="qg-t-muted ax-b">Triangle</text>
-        <rect x="16" y="120" width="50" height="22" rx="5" class="ax-field"/>
-        <text x="24" y="135" font-size="10.5" class="ax-mono">5</text>
-        <text x="72" y="135" font-size="10" class="qg-t-muted">in</text>
-        <rect x="96" y="120" width="110" height="22" rx="6" class="ax-field"/>
-        <rect x="98" y="122" width="52" height="18" rx="4" class="ax-mark"/>
-        <text x="124" y="135" font-size="10" text-anchor="middle" class="ax-on-mark ax-b">Whole</text>
-        <text x="178" y="135" font-size="10" text-anchor="middle" class="qg-t-muted ax-b">Clipped</text>
-
-        <text x="16" y="166" font-size="9" class="ax-head">SCALE</text>
-        <text x="16" y="184" font-size="10" class="qg-t-muted">Min</text>
-        <line x1="46" y1="180" x2="166" y2="180" class="ax-line" stroke-width="3"/>
-        <circle cx="64" cy="180" r="6" class="ax-mark"/>
-        <text x="204" y="184" font-size="10.5" text-anchor="end" class="ax-mono">0.15</text>
-        <text x="16" y="204" font-size="10" class="qg-t-muted">Max</text>
-        <line x1="46" y1="200" x2="166" y2="200" class="ax-line" stroke-width="3"/>
-        <circle cx="154" cy="200" r="6" class="ax-mark"/>
-        <text x="204" y="204" font-size="10.5" text-anchor="end" class="ax-mono">0.9</text>
-        <text x="16" y="229" font-size="10" class="qg-t-muted">Reach</text>
-        <rect x="56" y="214" width="60" height="22" rx="5" class="ax-field"/>
-        <text x="64" y="229" font-size="10" class="ax-mono qg-t-muted">Auto</text>
-        <text x="122" y="229" font-size="10" class="qg-t-muted">in</text>
-
-        <text x="16" y="260" font-size="9" class="ax-head">ATTRACTORS</text>
-        <rect x="16" y="268" width="92" height="22" rx="6" class="ax-field"/>
-        <text x="62" y="283" font-size="10" text-anchor="middle" class="ax-b">Add Point</text>
-        <rect x="114" y="268" width="92" height="22" rx="6" class="ax-field"/>
-        <text x="160" y="283" font-size="10" text-anchor="middle" class="ax-b">Add Curve</text>
-
-        <rect x="16" y="310" width="112" height="30" rx="6" class="ax-primary"/>
-        <text x="72" y="329" font-size="11" text-anchor="middle" class="ax-on-primary ax-b">Download SVG</text>
-        <rect x="134" y="310" width="72" height="30" rx="6" class="ax-field"/>
-        <text x="170" y="329" font-size="10.5" text-anchor="middle" class="ax-b">Copy SVG</text>
         <!-- the window's outline, over everything -->
-        <rect x="0.5" y="0.5" width="759" height="359" rx="10" fill="none" class="ax-edge"/>
-
-        <g class="ax-callout" font-size="10.5" text-anchor="middle">
-          <circle cx="206" cy="22" r="9"/><text x="206" y="26">1</text>
-          <circle cx="206" cy="78" r="9"/><text x="206" y="82">2</text>
-          <circle cx="206" cy="120" r="9"/><text x="206" y="124">3</text>
-          <circle cx="206" cy="162" r="9"/><text x="206" y="166">4</text>
-          <circle cx="206" cy="256" r="9"/><text x="206" y="260">5</text>
-          <circle cx="128" cy="310" r="9"/><text x="128" y="314">6</text>
-          <circle cx="422" cy="212" r="9"/><text x="422" y="216">7</text>
-          <circle cx="736" cy="79" r="9"/><text x="736" y="83">8</text>
-        </g>
+        <rect x="0.5" y="0.5" width="759" height="737" rx="10" fill="none" class="ax-edge"/>
       </svg>
       </div>
-      <figcaption>Hexes that shrink toward a point and a curve.</figcaption>
     </figure>
     <ol class="ax-keys">
-      <li><b>Region.</b> The panel's size and units. The SVG comes out at this size.</li>
-      <li><b>Grid.</b> Square, Hex or Triangle.</li>
-      <li><b>Cell Size, Edge Cells.</b> A side's length. <b>Whole</b> keeps the cells that fit; <b>Clipped</b> cuts them at the boundary.</li>
-      <li><b>Scale.</b> From Min at the attractor to Max at the Reach distance. <b>Largest at the Attractor</b> swaps them.</li>
-      <li><b>Attractors.</b> <b>Add Point</b> or <b>Add Curve</b>, then click the preview. Click one in the list to select it, <b>&times;</b> to remove it.</li>
-      <li><b>Download SVG.</b> Or <b>Copy SVG</b> for its code.</li>
-      <li><b>The attractors.</b> Click to move a point or extend a curve. Drag a curve's points; double-click to remove one.</li>
-      <li><b>The region.</b> Every cell, as the SVG will have them.</li>
+      <li><b>File Name</b><p>Names the download.</p>
+        <ul><li>It starts as Grid. Everything you set is kept in this browser.</li></ul></li>
+      <li><b>Region</b><p>The size of the area the grid fills.</p>
+        <ul><li>Units: Inches, Feet, Millimeters, Centimeters or Meters.</li><li>Resizing keeps each attractor at the same place on the region.</li></ul></li>
+      <li><b>Grid &#183; Cell Size &#183; Edge Cells</b><p>The cell shape, its side length, and the border.</p>
+        <div class="qg-table-scroll"><table class="qg-parts"><tbody>
+          <tr><td>Cell Size</td><td>A side&#8217;s length, in the region&#8217;s units</td></tr>
+          <tr><td>Whole</td><td>Only the cells that fit</td></tr>
+          <tr><td>Clipped</td><td>Cells cut at the border. The cut sides double the outline.</td></tr>
+        </tbody></table></div></li>
+      <li><b>Scale</b><p>Min at the nearest attractor, growing to Max at Reach.</p>
+        <div class="qg-table-scroll"><table class="qg-parts"><tbody>
+          <tr><td>Min &#183; Max</td><td>A share of the full cell, 0 to 1. Min never passes Max.</td></tr>
+          <tr><td>Scale 0</td><td>The cell is left out</td></tr>
+          <tr><td>Largest at the Attractor</td><td>Swaps them: Max at the attractor</td></tr>
+          <tr><td>Reach</td><td>Distance where the far size is reached. Empty is Auto, the farthest cell.</td></tr>
+        </tbody></table></div></li>
+      <li><b>Random Cull</b><p>Takes out a share of the cells at random.</p>
+        <div class="qg-table-scroll"><table class="qg-parts"><tbody>
+          <tr><td>Start</td><td>0 to 1. The share of cells nearest the attractors that are kept.</td></tr>
+          <tr><td>Cull</td><td>0 to 1. The share of the rest taken out.</td></tr>
+          <tr><td>Seed</td><td>Which ones. A new number picks a new set.</td></tr>
+        </tbody></table></div></li>
+      <li><b>Attractors</b><p>The points and curves the cell sizes follow. Up to 50.</p>
+        <div class="qg-table-scroll"><table class="qg-parts"><tbody>
+          <tr><td>Point 1, Curve 1&#8230;</td><td>Click one to select it. &#215; removes it.</td></tr>
+          <tr><td>X &#183; Y</td><td>Place the selected point, from the region&#8217;s bottom left corner.</td></tr>
+          <tr><td>Straight &#183; Smooth</td><td>A selected curve: lines between its points, or a curve through them.</td></tr>
+          <tr><td>Add Point &#183; Add Curve</td><td>Then click the preview. Press again, or <kbd>Esc</kbd>, to cancel.</td></tr>
+          <tr><td>No attractors</td><td>Every cell at Max</td></tr>
+        </tbody></table></div></li>
+      <li><b>Download SVG &#183; Copy SVG</b><p>The file, or its code on the clipboard.</p>
+        <div class="qg-table-scroll"><table class="qg-parts"><tbody>
+          <tr><td>Include the Attractors in the SVG</td><td>Adds an Attractors group: a small circle per point, a line per curve</td></tr>
+          <tr><td>Output</td><td>Real size: feet come out as inches, meters as centimeters. Groups Region and Cells, no fills, hairline black.</td></tr>
+          <tr><td>The stats line</td><td>Cells, region size, reach, and how many were culled</td></tr>
+          <tr><td>Over 30,000 cells</td><td>Nothing is drawn. Use larger cells or a smaller region.</td></tr>
+        </tbody></table></div></li>
+      <li><b>The Preview</b><p>Place and move attractors here. The readout gives X and Y.</p>
+        <div class="qg-table-scroll"><table class="qg-parts"><tbody>
+          <tr><td>Click or drag a handle</td><td>Moves it. Clicking another attractor selects it.</td></tr>
+          <tr><td>Click empty space</td><td>Moves the selected point, or adds a point to the end of the selected curve</td></tr>
+          <tr><td>Click on the selected curve</td><td>Inserts a point there</td></tr>
+          <tr><td>Double-click a handle</td><td>Removes that point</td></tr>
+          <tr><td><kbd>Delete</kbd> <kbd>Backspace</kbd></td><td>Removes the selected point</td></tr>
+          <tr><td><kbd>Esc</kbd></td><td>Cancels Add Point or Add Curve</td></tr>
+          <tr><td>Undo, zoom, pan</td><td>None</td></tr>
+        </tbody></table></div></li>
     </ol>
   </section>
 
-  <section aria-labelledby="order">
-    <div class="qg-section-head"><h2 id="order">Make a Grid</h2><p>The preview updates as you go.</p></div>
-    <ol class="qg-flow">
-      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="3" y="5" width="14" height="10" rx="1"/></svg></span><div><b>Set the Region</b><small>The panel's size.</small></div></li>
-      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 3h14v14H3zM3 10h14M10 3v14"/></svg></span><div><b>Choose the Grid</b><small>Shape, cell size, and Whole or Clipped.</small></div></li>
-      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6"/><circle cx="10" cy="10" r="1.5"/></svg></span><div><b>Place the Attractors</b><small>Click the preview. Add Point or Add Curve for more.</small></div></li>
-      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="3" y="12" width="4" height="4"/><rect x="10" y="5" width="7" height="7"/></svg></span><div><b>Set the Scale</b><small>Min, Max and Reach.</small></div></li>
-      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="3" y="3" width="5" height="5"/><rect x="12" y="3" width="5" height="5" stroke-dasharray="2 2"/><rect x="3" y="12" width="5" height="5" stroke-dasharray="2 2"/><rect x="12" y="12" width="5" height="5"/></svg></span><div><b>Cull, If Wanted</b><small>Random Cull takes out a share of the farthest cells.</small></div></li>
-      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v10m0 0-4-4m4 4 4-4M4 16h12"/></svg></span><div><b>Download SVG</b><small>Then import it into Rhino or CorelDRAW.</small></div></li>
+  <section aria-labelledby="steps">
+    <div class="qg-section-head"><h2 id="steps">Make a Grid</h2></div>
+    <ol class="ax-steps">
+      <li>Set the region&#8217;s size and units <button type="button" class="ax-dot" data-key="2">2</button></li>
+      <li>Choose the grid shape and cell size <button type="button" class="ax-dot" data-key="3">3</button></li>
+      <li>Place the attractors on the preview <button type="button" class="ax-dot" data-key="6">6</button> <button type="button" class="ax-dot" data-key="8">8</button></li>
+      <li>Set Min and Max <button type="button" class="ax-dot" data-key="4">4</button></li>
+      <li>Cull some cells, if wanted <button type="button" class="ax-dot" data-key="5">5</button></li>
+      <li>Download the SVG, then open it in Rhino or CorelDRAW <button type="button" class="ax-dot" data-key="7">7</button></li>
     </ol>
-  </section>
-
-  <section aria-labelledby="habits">
-    <div class="qg-section-head"><h2 id="habits">Good to Know</h2></div>
-    <ul class="qg-habits">
-      <li><b>Full size.</b> The SVG imports at its real size. Feet come out as inches, meters as centimeters.</li>
-      <li><b>Clean linework.</b> One closed shape per cell, with no fills.</li>
-      <li><b>Several attractors.</b> Each cell follows the nearest one.</li>
-      <li><b>Random Cull.</b> <b>Start</b> protects the nearest cells, <b>Cull</b> is the share taken out, and <b>Seed</b> changes which.</li>
-      <li><b>Clipped edges.</b> A cut side doubles the boundary line: delete one before cutting.</li>
-      <li><b>Settings stay</b> in this browser.</li>
-    </ul>
   </section>
 </div>

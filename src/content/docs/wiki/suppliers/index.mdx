@@ -1,0 +1,27 @@
+---
+title: Suppliers
+description: The suppliers of the office's paint, film and metal, each with its products, colors and documents.
+tableOfContents: false
+---
+
+import sheets from '../../../../suppliers/sheets.json';
+
+{/* The page the sidebar's Suppliers entry opens (user, 2026-11-23): one row per supplier page, by what it supplies.
+    Each row's name, line and sheet number come from src/suppliers/sheets.json. A new supplier is a slug in a list
+    below. */}
+
+export const groups = [
+	['Paint and Vinyl', ['matthews-paint', 'sherwin-williams', 'pantone', '3m']],
+	['Materials', ['eastern-metal-supply']],
+];
+
+{groups.map(([name, slugs]) => (
+	<section class="ax-section not-content">
+		<header><h2>{name}</h2></header>
+		<ul class="ax-links">
+			{slugs.map((slug) => (
+				<li><a href={`/wiki/suppliers/${slug}/`}><b>{sheets[slug].name}</b><small>{sheets[slug].what}</small><span class="host">{sheets[slug].sheet}</span></a></li>
+			))}
+		</ul>
+	</section>
+))}

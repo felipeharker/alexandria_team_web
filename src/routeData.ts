@@ -1,36 +1,20 @@
-// Starlight route middleware (astro.config.mjs `routeMiddleware`): every page should have one sidebar entry to
-// highlight and one group to open (user, 2026-11-11). A page that isn't in the sidebar on purpose borrows the
-// entry of the page it belongs with.
+// Starlight route middleware (astro.config.mjs `routeMiddleware`): every page has one sidebar entry to highlight
+// (user, 2026-11-11). A page with no entry of its own, such as a quick guide or a supplier, highlights the entry of
+// the page that lists it (src/nav.ts).
 import { defineRouteMiddleware } from '@astrojs/starlight/route-data';
+import { parentOf, trim } from './nav';
 
 type Entry = { type: 'link'; href: string; isCurrent: boolean } | { type: 'group'; entries: Entry[] };
-
-// a page left out of the sidebar → the sidebar entry that stands for it
-const borrowed: Record<string, string> = {
-	// Standards is out of the sidebar until it covers the office's standards beyond Rhino (user, 2026-11-05);
-	// it's part of the Alexandria Phoenix docs, which link to it.
-	'/docs/standards': '/docs/phoenix',
-	// The Sample Project is out of the sidebar (user, 2026-11-18); Your First Day links to it.
-	'/sample-project': '/start/first-day',
-	// The Alexandria Etch Font page is out of the sidebar (user, 2026-11-18): Downloads has an entry per file, and
-	// the font's (Fonts > Alexandria Etch) opens on its row of All Downloads, which links to the page.
-	'/wiki/downloads/etch-font': '/wiki/downloads/#etch-font',
-};
-
-// The management pages (/management/ and the tables under it) are unlisted (user, 2026-11-20): they borrow no
-// entry, so nothing in the sidebar is highlighted or opened on them.
-
-const trim = (path: string) => path.replace(/\/$/, '');
 
 function links(entries: Entry[]): Extract<Entry, { type: 'link' }>[] {
 	return entries.flatMap((entry) => (entry.type === 'link' ? [entry] : links(entry.entries)));
 }
 
 export const onRequest = defineRouteMiddleware((context) => {
-	const owner = borrowed[trim(context.url.pathname)];
-	if (!owner) return;
+	const parent = parentOf(context.url.pathname);
+	if (!parent) return;
 	const all = links(context.locals.starlightRoute.sidebar as Entry[]);
-	const entry = all.find((link) => trim(link.href) === owner);
+	const entry = all.find((link) => trim(link.href) === trim(parent.href));
 	if (!entry) return;
 	for (const link of all) link.isCurrent = false;
 	entry.isCurrent = true;

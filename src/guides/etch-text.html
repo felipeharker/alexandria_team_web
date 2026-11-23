@@ -1,46 +1,124 @@
-<!-- The Etch Text quick guide, written for the hub in the quick guides' own classes (qg-…, from guides.css) and a few
-     of the hub's (ax-…, in theme.css). The tool itself is in the alexandria_office repo, at public/etch-text/, and
-     the font is alexandria_phoenix's etch_font/. -->
+<!-- The Etch Text quick guide. Every web tool's guide has this shape (Guide.astro has the markup's rules): a line and the
+     way in, the tool's screen drawn with numbered dots, one entry per dot under it (shown one at a time, on a click),
+     and the steps. The tool is in the alexandria_office repo, at public/etch-text/: check the drawing and the entries
+     against its index.html, etch-text.js and etch-font.js when the tool changes. The font is alexandria_phoenix's
+     etch_font/. The label in the drawing is the tool's own P1-1 at its defaults, drawn to scale (300 px to the inch). -->
 <div class="qg-page">
-  <header>
-    <p class="qg-eyebrow">Office Tools &middot; Runs in Your Browser</p>
-    <p class="qg-lede">Type a part label, such as <i>A1</i>, and download it as single lines for a laser or router to follow once.</p>
-    <p class="qg-other"><a href="/etch-text/">Open Etch Text &rarr;</a></p>
+  <header class="ax-head">
+    <p class="qg-lede">A part label in, single lines out: an SVG or DXF at real size for a laser or router to follow once.</p>
+    <a class="ax-open" href="/etch-text/">Open Etch Text</a>
   </header>
 
-  <section aria-labelledby="order">
-    <div class="qg-section-head"><h2 id="order">Make a Label</h2></div>
-    <ol class="qg-flow">
-      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 5h12M4 10h12M4 15h7"/></svg></span><div><b>Type the Text</b><small>Lower case is drawn as capitals.</small></div></li>
-      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v14M6 3h8M6 17h8"/></svg></span><div><b>Set the Letter Height</b><small>In inches. It starts at 1/2 in.</small></div></li>
-      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 15 7 5l4 10M4.6 11.5h4.8M14 8l3-2v9"/></svg></span><div><b>Check the Preview</b><small>The lines as they will be etched.</small></div></li>
-      <li class="qg-g-files"><span class="ax-shape"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v10m0 0-4-4m4 4 4-4M4 16h12"/></svg></span><div><b>Download</b><small>DXF for the fab file, SVG for CorelDRAW or laser software.</small></div></li>
+  <section class="ax-tour" aria-label="The screen">
+    <figure class="qg-figure">
+      <div class="qg-diagram-scroll">
+      <svg class="ax-est" viewBox="0 0 760 480" role="img" aria-label="Etch Text's screen. Top bar: the tool's name. Left panel: the Text box holding P1-1, the Size fields Letter Height, Letter Spacing and Line Spacing, the Align buttons Left, Center and Right, the buttons Download SVG, Download DXF, Copy SVG and SVG as Text, and a line of counts. Right: the preview of P1-1 as single lines, with a dashed line at its baseline and another at the top of the capitals.">
+        <defs>
+          <clipPath id="qg-etch-text-window"><rect x="0.5" y="0.5" width="759" height="479" rx="10"/></clipPath>
+        </defs>
+        <g clip-path="url(#qg-etch-text-window)">
+          <rect width="760" height="480" class="ax-win" style="stroke: none"/>
+          <rect x="231" y="72" width="529" height="408" class="ax-tint" style="stroke: none"/>
+        </g>
+        <text x="16" y="21" font-size="10.5" class="qg-t-muted">Alexandria / <tspan class="ax-b" style="fill: var(--ink)">Etch Text</tspan></text>
+        <text x="744" y="21" font-size="9.5" text-anchor="end" class="qg-t-muted">Alexandria Home&#160;&#160;&#160;Quick Guide</text>
+        <line x1="0" y1="34" x2="760" y2="34" class="ax-line"/>
+        <line x1="231" y1="34" x2="231" y2="479" class="ax-line"/>
+
+        <g transform="translate(0 34)">
+          <!-- the preview -->
+          <line x1="231" y1="38" x2="760" y2="38" class="ax-line"/>
+          <text x="245" y="23" font-size="10" class="qg-t-muted">Dashed: baseline &#183; top of the capitals</text>
+          <g class="ax-dash" stroke-width="1" fill="none">
+            <path d="M295.0 154.0H695.5M295.0 304.0H695.5"/>
+          </g>
+          <g fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="stroke: var(--ink)">
+            <path d="M307.0 304.0L307.0 154.0L355.0 154.0A40.5 40.5 0 0 1 395.5 194.5A40.5 40.5 0 0 1 355.0 235.0L307.0 235.0"/><path d="M434.5 190.0L473.5 154.0L473.5 304.0"/><path d="M512.5 236.5L566.5 236.5"/><path d="M605.5 190.0L644.5 154.0L644.5 304.0"/>
+          </g>
+
+          <!-- the panel -->
+          <text x="16" y="26" font-size="9" class="ax-head">TEXT</text>
+          <rect x="16" y="32" width="199" height="52" rx="6" class="ax-field"/>
+          <text x="25" y="50" font-size="11">P1-1</text>
+          <text x="16" y="98" font-size="8.5" class="qg-t-muted">Lower case drawn as capitals</text>
+
+          <text x="16" y="122" font-size="9" class="ax-head">SIZE</text>
+          <text x="16" y="138" font-size="8.5" class="qg-t-muted">Letter Height</text><text x="123" y="138" font-size="8.5" class="qg-t-muted">Letter Spacing</text>
+          <rect x="16" y="142" width="72" height="22" rx="5" class="ax-field"/><text x="24" y="157" font-size="10" class="ax-mono">0.5</text><text x="94" y="157" font-size="9" class="qg-t-muted">in</text>
+          <rect x="123" y="142" width="72" height="22" rx="5" class="ax-field"/><text x="131" y="157" font-size="10" class="ax-mono">0</text><text x="201" y="157" font-size="9" class="qg-t-muted">in</text>
+          <text x="16" y="178" font-size="8.5" class="qg-t-muted">Line Spacing</text>
+          <rect x="16" y="182" width="72" height="22" rx="5" class="ax-field"/><text x="24" y="197" font-size="10" class="ax-mono">1.6</text><text x="94" y="197" font-size="9" class="qg-t-muted">&#215;</text>
+          <text x="16" y="220" font-size="8.5" class="qg-t-muted">Height: the capitals'</text>
+          <text x="16" y="231" font-size="8.5" class="qg-t-muted">Line Spacing: in letter heights</text>
+
+          <text x="16" y="254" font-size="9" class="ax-head">ALIGN</text>
+          <rect x="16" y="260" width="199" height="26" rx="6" class="ax-field"/>
+          <rect x="18" y="262" width="63" height="22" rx="4" class="ax-mark"/>
+          <text x="49.5" y="277" font-size="10" text-anchor="middle" class="ax-on-mark ax-b">Left</text>
+          <text x="115.5" y="277" font-size="10" text-anchor="middle" class="qg-t-muted ax-b">Center</text>
+          <text x="181.5" y="277" font-size="10" text-anchor="middle" class="qg-t-muted ax-b">Right</text>
+
+          <rect x="16" y="300" width="97" height="28" rx="6" class="ax-primary"/>
+          <text x="64.5" y="318" font-size="10" text-anchor="middle" class="ax-on-primary ax-b">Download SVG</text>
+          <rect x="118" y="300" width="97" height="28" rx="6" class="ax-field"/>
+          <text x="166.5" y="318" font-size="10" text-anchor="middle" class="ax-b">Download DXF</text>
+          <rect x="16" y="334" width="97" height="28" rx="6" class="ax-field"/>
+          <text x="64.5" y="352" font-size="10" text-anchor="middle" class="ax-b">Copy SVG</text>
+          <rect x="118" y="334" width="97" height="28" rx="6" class="ax-field"/>
+          <text x="166.5" y="352" font-size="10" text-anchor="middle" class="ax-b">SVG as Text</text>
+          <text x="16" y="380" font-size="8.5" class="qg-t-muted">Single lines &#183; real size, inches &#183;</text>
+          <text x="16" y="391" font-size="8.5" class="qg-t-muted"><tspan class="ax-b">SVG as Text</tspan> needs the Alexandria</text>
+          <text x="16" y="402" font-size="8.5" class="qg-t-muted">Etch font</text>
+          <text x="16" y="420" font-size="8.5" class="qg-t-muted">1 line &#183; 4 strokes &#183; 1.125 &#215; 0.500 in</text>
+          <text x="16" y="431" font-size="8.5" class="qg-t-muted">&#183; 2.8 in of etching</text>
+
+          <g class="ax-callout" font-size="10.5" text-anchor="middle">
+            <g data-key="1" data-box="10 14 211 96"><circle cx="215" cy="32" r="9"/><text x="215" y="36">1</text></g>
+            <g data-key="2" data-box="10 112 211 128"><circle cx="215" cy="122" r="9"/><text x="215" y="126">2</text></g>
+            <g data-key="3" data-box="10 244 211 46"><circle cx="215" cy="254" r="9"/><text x="215" y="258">3</text></g>
+            <g data-key="4" data-box="231 0 529 445"><circle cx="748" cy="52" r="9"/><text x="748" y="56">4</text></g>
+            <g data-key="5" data-box="10 296 211 142"><circle cx="215" cy="300" r="9"/><text x="215" y="304">5</text></g>
+          </g>
+        </g>
+        <rect x="0.5" y="0.5" width="759" height="479" rx="10" fill="none" class="ax-edge"/>
+      </svg>
+      </div>
+    </figure>
+    <ol class="ax-keys">
+      <li><b>Text</b><p>Each line of text is a line of etching.</p>
+        <ul><li>Lower case is drawn as capitals.</li><li>The font has 61 characters: 0-9, A-Z and common punctuation. A missing one is named in red and left out, its space kept.</li><li>The text, sizes and alignment are remembered in this browser.</li></ul></li>
+      <li><b>Size</b><p>Letter Height and Letter Spacing in inches, Line Spacing in letter heights.</p>
+        <ul><li>Starts at 0.5 in, 0 in and 1.6 &#215;. <b>Reset the Size</b> appears once one changes.</li><li>Height is the capitals'. A negative Letter Spacing pulls letters together.</li><li>Line Spacing is baseline to baseline.</li></ul></li>
+      <li><b>Align</b><p>Where shorter lines sit against the longest.</p></li>
+      <li><b>Dashed: baseline &#183; top of the capitals</b><p>The lines as they will be etched, with two guides per line.</p>
+        <ul><li>The guides are not in the files.</li></ul></li>
+      <li><b>Download SVG &#183; Download DXF &#183; Copy SVG &#183; SVG as Text</b><p>Four ways out, all at real size in inches.</p>
+        <ul><li>Files are named <i>Etch</i> and the first line, such as <i>Etch P1-1.svg</i>.</li><li>The line under them gives strokes, size and inches of etching.</li><li>Greyed out until there is text to etch.</li></ul></li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="steps">
+    <div class="qg-section-head"><h2 id="steps">Make a Label</h2></div>
+    <ol class="ax-steps">
+      <li>Type the label <button type="button" class="ax-dot" data-key="1">1</button></li>
+      <li>Set the letter height, and the spacing for more than one line <button type="button" class="ax-dot" data-key="2">2</button> <button type="button" class="ax-dot" data-key="3">3</button></li>
+      <li>Check the lines against the guides <button type="button" class="ax-dot" data-key="4">4</button></li>
+      <li>Download the file the machine or drawing needs <button type="button" class="ax-dot" data-key="5">5</button></li>
     </ol>
   </section>
 
   <section aria-labelledby="downloads">
-    <div class="qg-section-head"><h2 id="downloads">The Downloads</h2><p>All at real size, in inches.</p></div>
+    <div class="qg-section-head"><h2 id="downloads">The Downloads</h2></div>
     <div class="qg-table-scroll">
       <table class="qg-parts">
         <thead><tr><th>Button</th><th>What You Get</th><th>Use It For</th></tr></thead>
         <tbody>
-            <tr><td>Download SVG</td><td>Single open paths</td><td>CorelDRAW, Illustrator, Rhino, laser software</td></tr>
-            <tr><td>Download DXF</td><td>Polylines on the <code>ETCH</code> layer</td><td>The fab file</td></tr>
-            <tr><td>Copy SVG</td><td>The SVG, on the clipboard</td><td>Pasting into a drawing</td></tr>
-            <tr><td>SVG as Text</td><td>Editable text in the Alexandria Etch font</td><td>Editing later. Not for cutting</td></tr>
-          </tbody>
+          <tr><td>Download SVG</td><td>Single lines, no margin</td><td>CorelDRAW, Illustrator, Rhino, laser software</td></tr>
+          <tr><td>Download DXF</td><td>R12, inches, no margin, on the <code>ETCH</code> layer, blue</td><td>The fab file</td></tr>
+          <tr><td>Copy SVG</td><td>The same SVG, on the clipboard</td><td>Pasting into a drawing</td></tr>
+          <tr><td>SVG as Text</td><td>The label as text, with space above and below, in the Alexandria Etch font</td><td>Editing the wording later. It shows only where the <a href="/wiki/downloads/etch-font/">font</a> is installed</td></tr>
+        </tbody>
       </table>
     </div>
-  </section>
-
-  <section aria-labelledby="habits">
-    <div class="qg-section-head"><h2 id="habits">Good to Know</h2></div>
-    <ul class="qg-habits">
-      <li><b>Never fill it.</b> Give the lines a hairline outline and no fill.</li>
-      <li><b>No margin.</b> The file is exactly the letters' size.</li>
-      <li><b>Not in the font?</b> A missing character is named in red and left out.</li>
-      <li><b>In Rhino.</b> A script draws labels straight into a model. See <a href="/wiki/downloads/etch-font/">Alexandria Etch Font</a>.</li>
-      <li><b>It saves</b> in this browser.</li>
-    </ul>
   </section>
 </div>
