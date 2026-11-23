@@ -38,7 +38,7 @@ const PORT = Number(process.env.PORT) || 10000;
 // the Material Estimator and the Material Library. They are served, so the unlisted /shelf page can open them, but
 // no other page, menu, search or guide on the hub names them. To put one back on the site, give it its card and its
 // pages again (README, Off the Site); to stop serving one, take its name out of this list.
-const OFFICE_TOOLS = new Set(['sign-package', 'estimator', 'materials', 'colors', 'site-plan', 'vectorizer', 'grid', 'image-grid', 'braille', 'etch-text', 'photo-elevation', 'sources', 'management']);
+const OFFICE_TOOLS = new Set(['sign-package', 'estimator', 'materials', 'colors', 'site-plan', 'vectorizer', 'grid', 'image-grid', 'braille', 'etch-text', 'photo-elevation', 'sources', 'management', 'shared']);
 const DAY = 24 * 60 * 60 * 1000;
 const SESSION_DAYS = 30;
 const SESSION_COOKIE = 'alexandria_session';
@@ -239,8 +239,8 @@ const escape = (text) =>
 const STYLE = `
 	:root { color-scheme: dark; --bg: #131619; --panel: #1b1f24; --ink: #e7eaee; --soft: #9aa3ae; --rule: #2b3036;
 		--field: #131619; --button: #6fb1f0; --button-ink: #131619; --error: #ff8b85; }
-	@media (prefers-color-scheme: light) { :root { color-scheme: light; --bg: #f6f7f9; --panel: #ffffff; --ink: #1b1f24;
-		--soft: #5d6570; --rule: #e2e5e9; --field: #ffffff; --button: #1d5fa8; --button-ink: #ffffff; --error: #b42318; } }
+	:root[data-theme='light'] { color-scheme: light; --bg: #f6f7f9; --panel: #ffffff; --ink: #1b1f24;
+		--soft: #5d6570; --rule: #e2e5e9; --field: #ffffff; --button: #1d5fa8; --button-ink: #ffffff; --error: #b42318; }
 	* { box-sizing: border-box; }
 	body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 16px; background: var(--bg); color: var(--ink);
 		font: 16px/1.5 Inter, system-ui, -apple-system, 'Segoe UI', sans-serif; }
@@ -260,10 +260,20 @@ const STYLE = `
 	.note { margin-top: 1rem; font-size: 0.8125rem; }
 `;
 
+// Light or dark as chosen in the hub's menu, which Starlight saves in the browser as starlight-theme; the system's when
+// that is Auto or was never set. The office tools read the same key (alexandria_office, public/shared/theme.js).
+const THEME = `(() => {
+	let chosen = '';
+	try { chosen = localStorage.getItem('starlight-theme'); } catch {}
+	const light = chosen === 'light' || (chosen !== 'dark' && matchMedia('(prefers-color-scheme: light)').matches);
+	document.documentElement.dataset.theme = light ? 'light' : 'dark';
+})();`;
+
 const page = (title, body) => `<!doctype html>
 <html lang="en">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>${THEME}</script>
 <meta name="robots" content="noindex, nofollow">
 <title>${title}</title>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
