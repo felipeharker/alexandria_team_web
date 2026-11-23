@@ -121,28 +121,6 @@ The cut linework for the fab team, apart from the design package and never on a 
 
 The render settings change V-Ray's environment, sun, camera and image size, and switch the design's own lighting: every V-Ray light but the world light and the sun. The sky is only ever the background: the objects in front of it get a neutral light, so it doesn't tint them. Only lights change: layers, objects and materials stay as you leave them, so show or hide the wall, ground and scale figure yourself. The drawing and render standards behind the buttons are in [STANDARDS.md](/docs/standards/#drawings).
 
-## Master Definition
-
-`alexandria_phoenix_master_v1.0.gh` with `alexandria_phoenix_master_v1.0.3dm` is the template definition. Along the top it runs a 144 × 96 in region through Square Grid, Curve Remap, Scale by Values and Percent Cull to a Material Preview, and is laid out the way every Phoenix definition should be. See [STANDARDS.md](/docs/standards/).
-
-Below the template, a showcase runs every component in its simplest form: one column per section of the Phoenix tab, in tab order, and one titled row per sample, chained to whatever the sample needs. Each sample works on its own named tile in the `.3dm`, laid out in the same columns, so every preview lands on its own. The section headers and row titles are scribbles, the one exception to the no-scribbles rule, because the showcase is a catalogue rather than a working definition.
-
-| Column | Rows |
-|---|---|
-| Grid | All seven grids, each on its own region |
-| Voronoi | Hex Grid → Attractor Seeds · Hex Grid → Jitter Seeds · Scatter Seeds, each → Voronoi in Region |
-| Geometry | Region Trim · Plane Bounds |
-| Remap | Layer Geometry → Point Remap + Image Remap → Blend Values → Value Remap → Step Values → Scale by Values |
-| Transform | Random Values → Rotate by Values · Offset by Values |
-| Cull | Random Values → Percent Cull |
-| Pattern | Lattice Pattern · Voronoi Pattern |
-| Fabricate | Lattice → Fold Cells → Unfold → Bake to Layer · Panel Tabs → Frame Slots |
-| Display | Material Preview |
-| Document | Layer Geometry · Export Parameters + Apply Parameters |
-| Utility | Feet Inches |
-
-`alexandria_phoenix_master_parameters.csv` holds the canvas's inputs in two sections, `Default` and `Dense`: set Section and press Apply to switch between them. `alexandria_phoenix_master_image.png` is the picture Image Remap reads, and Bake writes the unfolded sheet onto the `Cut` and `Score` layers. The master is a live canvas that evolves with use; the scripts in `src/` are the source of truth.
-
 ## Repository
 
 ```
@@ -166,7 +144,6 @@ guides/              the Rhino toolbar and Grasshopper component quick guides, o
 docs/                the PDFs the release puts in the shared folder beside the Markdown, for anyone without a Markdown viewer
 overview/            the printed overview, printed to site/downloads/alexandria_phoenix_overview.pdf
 dist/                the latest build of both Yak packages
-alexandria_phoenix_master_*   the master definition, its parameters CSV and the Image Remap picture
 grasshopper_definitions/     studies built to the standard, each .gh with its .3dm (voronoi_studies, modifier_studies)
 project_template/    what Create Project copies for a new design project, with its brief, its notes for Claude and the layout template's pages
 ```
