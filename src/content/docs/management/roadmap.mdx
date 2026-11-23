@@ -18,7 +18,7 @@ import ManagementTable from '../../../components/ManagementTable.astro';
 
 ## The Columns
 
-The file is [roadmap.csv](/management/roadmap.csv), one row per tool, feature or project, under [the CSV standard](/management/#the-csv-standard). It's the long view; the day-to-day items stay on the planning board.
+The file is [roadmap.csv](/management/roadmap.csv), one row per tool, feature or project, under [the CSV standard](/management/#the-csv-standard). It's the long view; the day-to-day items stay on the planning board. Board leads, the file follows: a row with an Issue takes its fields from the board.
 
 | Column | What Goes in It |
 |---|---|
@@ -29,4 +29,6 @@ The file is [roadmap.csv](/management/roadmap.csv), one row per tool, feature or
 | Priority | `Urgent`, `High`, `Normal` or `Low`. |
 | Start | The date work starts or started, as `2026-12-04`. |
 | Target | A real deadline or a commitment, as `2026-12-04`, not a guess. Leave it empty until there is one. A date that has passed on an item that isn't `Done` is marked. |
+| Parent | A sub-task's parent: the parent's Item, exactly · empty at the top · the row folds under it, and the parent gets a dashboard. |
+| Issue | The board item, as `#8` · the row then follows the board: Status, Priority, Category, Subcategory, Start, Target and Parent come from Project 14 through `python planning/sync_roadmap.py` (alexandria_management) · a sub-issue on the board gets its own row · empty for a row not on the board. |
 | Notes | Anything else: what it depends on, what's still open. |

@@ -8,7 +8,10 @@
 // The table shows whatever columns the file has, in the file's order, and finds the ones it treats specially by
 // their header (the management pages give each file's columns, and /management/ the rules they share):
 // the first column names the row; Status, Priority, Current account and Migrated are shown as tags; Start, Due and
-// Target are dates; Description and Notes get room to wrap.
+// Target are dates; Issue links to the planning board; Description and Notes get room to wrap.
+//
+// Parents and sub-tasks (src/management.ts): the rows under a parent are folded under it, with its progress and a
+// link to its dashboard (ManagementDashboard.astro), so the table stays short as the work grows.
 interface Props {
 	/** the file's name in alexandria_office's public/management/, such as accounts.csv */
 	file: string;
@@ -33,11 +36,14 @@ const { file, done, tally = '' } = Astro.props;
 		<output></output>
 	</div>
 	<div class="ax-chart" hidden>
-		<label class="ax-chart-find">
-			<span>Find</span>
-			<input type="search" placeholder="Any word in a row" autocomplete="off" spellcheck="false" />
-			<output aria-live="polite"></output>
-		</label>
+		<div class="ax-manage-tools">
+			<label class="ax-chart-find">
+				<span>Find</span>
+				<input type="search" placeholder="Any word in a row" autocomplete="off" spellcheck="false" />
+				<output aria-live="polite"></output>
+			</label>
+			<button type="button" class="ax-manage-all" hidden>Unfold all</button>
+		</div>
 		<div class="ax-chart-scroll">
 			<table>
 				<thead><tr></tr></thead>
@@ -49,151 +55,107 @@ const { file, done, tally = '' } = Astro.props;
 </div>
 
 <script>
-	// Rows of cells from CSV text: commas (or semicolons, if that's what the header row uses), "quoted" cells that
-	// may hold commas, line breaks and "" for a quote. Blank rows are dropped.
-	function parseCsv(text: string): string[][] {
-		const firstLine = text.slice(0, text.search(/[\r\n]|$/));
-		const comma = !firstLine.includes(',') && firstLine.includes(';') ? ';' : ',';
-		const rows: string[][] = [];
-		let row: string[] = [];
-		let cell = '';
-		let quoted = false;
-		for (let i = 0; i < text.length; i++) {
-			const c = text[i];
-			if (quoted) {
-				if (c !== '"') cell += c;
-				else if (text[i + 1] === '"') (cell += '"'), i++;
-				else quoted = false;
-			} else if (c === '"' && cell === '') quoted = true;
-			else if (c === comma) (row.push(cell), (cell = ''));
-			else if (c === '\n' || c === '\r') {
-				if (c === '\r' && text[i + 1] === '\n') i++;
-				row.push(cell);
-				rows.push(row);
-				row = [];
-				cell = '';
-			} else cell += c;
-		}
-		if (cell !== '' || row.length) (row.push(cell), rows.push(row));
-		return rows.map((cells) => cells.map((value) => value.trim())).filter((cells) => cells.some(Boolean));
-	}
-
-	// The file's text: UTF-8 (with or without Excel's mark at the start), or Excel's older plain "CSV" save.
-	function decode(bytes: ArrayBuffer): string {
-		try {
-			return new TextDecoder('utf-8', { fatal: true }).decode(bytes);
-		} catch {
-			return new TextDecoder('windows-1252').decode(bytes);
-		}
-	}
-
-	// A date as the standard writes it, 2026-12-04, also when Excel has rewritten it as 12/4/2026.
-	function isoDate(value: string): string {
-		const us = value.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
-		return us ? `${us[3]}-${us[1].padStart(2, '0')}-${us[2].padStart(2, '0')}` : value;
-	}
-
-	const TAGS = /^(status|priority|current account|migrated\b.*)$/;
-	const DATES = /^(start|due|target|date)$/;
-	const WIDE = /^(description|notes)$/;
-	const GOOD = /^(y|yes|done|company|shipped|complete|completed)$/;
-	const WARN = /^(n|no|personal|waiting|blocked|on hold|urgent)$/;
-	const ACTIVE = /^(doing|in progress|partial|high)$/;
-	const tone = (value: string) => {
-		const v = value.toLowerCase();
-		return GOOD.test(v) ? 'good' : WARN.test(v) ? 'warn' : ACTIVE.test(v) ? 'active' : '';
-	};
+	import { load, rowElement, headerCells, nameCell, descendants, isLate, type Row, type Table } from '../management';
 
 	async function show(box: HTMLElement) {
 		const note = box.querySelector<HTMLElement>('.ax-manage-note')!;
 		const chart = box.querySelector<HTMLElement>('.ax-chart')!;
 		const { file = '', doneColumn = '', doneIs = '', doneLabel = '', tally = '' } = box.dataset;
-		let rows: string[][];
+		let table: Table;
 		try {
-			const res = await fetch(`/management/${file}`, { cache: 'no-store' });
-			if (!res.ok) throw new Error(String(res.status));
-			rows = parseCsv(decode(await res.arrayBuffer()).replace(/^﻿/, ''));
-			if (!rows.length) throw new Error('empty');
+			table = await load(file);
 		} catch {
 			note.textContent = `${file} couldn’t be read. Refresh the page; if it stays like this, the file is missing or empty.`;
 			return;
 		}
-		const columns = rows[0];
-		const body = rows.slice(1).map((cells) => columns.map((_, i) => cells[i] ?? ''));
-		const keys = columns.map((column) => column.toLowerCase());
-		const at = (name: string) => keys.findIndex((key) => key === name.toLowerCase() || key.startsWith(`${name.toLowerCase()} `));
-		const doneAt = at(doneColumn);
-		const isDone = (cells: string[]) => doneAt >= 0 && cells[doneAt].toLowerCase().startsWith(doneIs.toLowerCase());
-		const today = new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+		const doneAt = table.at(doneColumn);
+		const counted = (row: Row) => doneAt >= 0 && row.cells[doneAt].toLowerCase().startsWith(doneIs.toLowerCase());
 
-		const head = box.querySelector('thead tr')!;
-		for (const column of columns) head.append(Object.assign(document.createElement('th'), { textContent: column }));
+		box.querySelector('thead tr')!.append(...headerCells(table));
 
+		// the rows, each parent followed by its sub-tasks, which start folded
 		const tbody = box.querySelector('tbody')!;
-		const trs: HTMLTableRowElement[] = [];
-		for (const cells of body) {
-			const tr = document.createElement('tr');
-			tr.dataset.find = cells.join(' ').toLowerCase();
-			cells.forEach((value, i) => {
-				const td = document.createElement('td');
-				if (i === 0) td.className = 'name';
-				else if (WIDE.test(keys[i])) td.className = 'wide';
-				if (TAGS.test(keys[i]) && value) {
-					const tag = Object.assign(document.createElement('span'), { textContent: value });
-					tag.className = `ax-tag ${tone(value)}`.trim();
-					td.append(tag);
-				} else if (DATES.test(keys[i])) {
-					const date = isoDate(value);
-					td.className = 'date';
-					td.textContent = date;
-					// past its Due or Target and not done yet
-					if (/^(due|target)$/.test(keys[i]) && /^\d{4}-\d\d-\d\d$/.test(date) && date < today && !isDone(cells)) {
-						td.classList.add('late');
-						td.title = 'Past this date';
-					}
-				} else td.textContent = value;
-				tr.append(td);
+		const element = new Map<Row, HTMLTableRowElement>();
+		const open = new Set<Row>();
+		const add = (row: Row) => {
+			const tr = rowElement(table, row, (td) => {
+				let fold: HTMLButtonElement | undefined;
+				if (row.children.length) {
+					fold = Object.assign(document.createElement('button'), { type: 'button', className: 'ax-manage-fold' });
+					fold.setAttribute('aria-expanded', 'false');
+					fold.setAttribute('aria-label', `Sub-tasks of ${row.name}`);
+					fold.addEventListener('click', () => {
+						open.has(row) ? open.delete(row) : open.add(row);
+						refresh();
+					});
+				}
+				// a project's own rows don't repeat its name
+				td.append(nameCell(table, row, row.parent?.group ? '' : row.name, fold));
 			});
+			tr.dataset.find = row.cells.join(' ').toLowerCase();
+			element.set(row, tr);
 			tbody.append(tr);
-			trs.push(tr);
-		}
+			row.children.forEach(add);
+		};
+		table.top.forEach(add);
+		const parents = [...element.keys()].filter((row) => row.children.length);
 
-		// the count over the table: "3 of 11 moved to the company email", then the other values of the tally column
+		// the count over the table: "3 of 11 done", then the other values of the tally column, then how many are late
 		const progress = box.querySelector<HTMLElement>('.ax-manage-progress')!;
-		const total = body.length;
-		const finished = body.filter(isDone).length;
+		const total = table.rows.length;
+		const finished = table.rows.filter(counted).length;
 		let words = `${finished} of ${total} ${doneLabel}`;
-		const tallyAt = tally ? at(tally) : -1;
+		const tallyAt = tally ? table.at(tally) : -1;
 		if (tallyAt >= 0) {
 			const counts = new Map<string, number>();
-			for (const cells of body) {
-				const value = cells[tallyAt];
-				if (value && !isDone(cells)) counts.set(value, (counts.get(value) ?? 0) + 1);
+			for (const row of table.rows) {
+				const value = row.cells[tallyAt];
+				if (value && !counted(row)) counts.set(value, (counts.get(value) ?? 0) + 1);
 			}
 			// in the order the work moves, then anything else as the file has it
 			const order = ['doing', 'next', 'waiting', 'later', 'inbox'];
 			const place = (value: string) => (order.indexOf(value.toLowerCase()) + 1 || order.length + 1);
 			for (const [value, count] of [...counts].sort((a, b) => place(a[0]) - place(b[0]))) words += ` · ${count} ${value.toLowerCase()}`;
 		}
+		const late = table.rows.filter((row) => isLate(table, row)).length;
+		if (late) words += ` · ${late} late`;
+		if (parents.length) words += ` · ${parents.length} ${parents.length === 1 ? 'parent' : 'parents'}`;
 		progress.querySelector('output')!.textContent = words;
 		progress.querySelector<HTMLElement>('.ax-manage-bar span')!.style.width = total ? `${(finished / total) * 100}%` : '0';
 		progress.hidden = false;
 
-		// the Find box, as on a supplier's chart: the rows holding every word typed
+		// what shows: a row whose parents are all unfolded; while something is typed in Find, the rows holding every
+		// word typed, with the parents they sit under
 		const input = box.querySelector('input')!;
 		const count = box.querySelector('.ax-chart-find output')!;
 		const all = `${total} ${total === 1 ? 'row' : 'rows'}`;
-		count.textContent = all;
-		input.addEventListener('input', () => {
+		function refresh() {
 			const typed = input.value.toLowerCase().split(/\s+/).filter(Boolean);
+			const hit = (row: Row) => typed.every((word) => (element.get(row)!.dataset.find || '').includes(word));
 			let shown = 0;
-			for (const tr of trs) {
-				const hit = typed.every((word) => (tr.dataset.find || '').includes(word));
-				tr.hidden = !hit;
-				if (hit) shown += 1;
+			for (const [row, tr] of element) {
+				let visible: boolean;
+				if (typed.length) visible = hit(row) || descendants(row).some(hit);
+				else {
+					visible = true;
+					for (let up = row.parent; up; up = up.parent) if (!open.has(up)) visible = false;
+				}
+				tr.hidden = !visible;
+				if (visible && !row.group) shown += 1;
 			}
+			for (const [row, tr] of element) tr.querySelector('.ax-manage-fold')?.setAttribute('aria-expanded', String(open.has(row)));
+			allButton.textContent = parents.every((row) => open.has(row)) ? 'Fold all' : 'Unfold all';
 			count.textContent = typed.length ? `${shown} of ${total}` : all;
+		}
+		const allButton = box.querySelector<HTMLButtonElement>('.ax-manage-all')!;
+		allButton.hidden = !parents.length;
+		allButton.addEventListener('click', () => {
+			const unfold = !parents.every((row) => open.has(row));
+			for (const row of parents) unfold ? open.add(row) : open.delete(row);
+			refresh();
 		});
+		input.addEventListener('input', refresh);
+		refresh();
 
 		chart.hidden = false;
 		note.hidden = true;

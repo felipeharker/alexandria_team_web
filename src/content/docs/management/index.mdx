@@ -8,7 +8,8 @@ pagefind: false
 {/* The management pages (user, 2026-11-20) are unlisted: none is in the sidebar (astro.config.mjs) or the search,
     and nothing else on the hub links to them. Each is one CSV file from the private alexandria_office repo
     (public/management/), shown by ManagementTable.astro. A new table gets a file there, a page here with its
-    columns, and a row in the table below. */}
+    columns, and a row in the table below. Parents and sub-tasks: src/management.ts; a parent's dashboard is
+    dashboard.mdx (ManagementDashboard.astro). */}
 
 The tables Alexandria is run from. These pages are in no menu and not in search, so keep this address.
 
@@ -33,10 +34,22 @@ Each table is one CSV file, and its page shows the file as it is. Every file fol
 | Status | `Inbox`, `Later`, `Next`, `Doing`, `Waiting` or `Done`, as on the planning board. |
 | Priority | `Urgent`, `High`, `Normal` or `Low`, as on the planning board. |
 | People | First names. For two people, put `;` between them. |
+| Parent | A sub-task's parent: the parent row's first column, spelled as in its row · empty at the top · see [Parents and Dashboards](#parents-and-dashboards). |
+| Issue | The planning board's item, as `#8` · links to it. |
 | Saving | In Excel, **CSV UTF-8 (Comma delimited)**, so every character survives. |
 | No secrets | Never a password, a key, a token or a recovery code, in any cell. They belong in a password manager. |
 
 A column that isn't in a page's list is still shown, as plain text, so a table can gain one whenever it's needed. Add it before Notes, and add it to the page's list.
+
+## Parents and Dashboards
+
+| Part | What It Does |
+|---|---|
+| Sub-tasks | Rows under a parent · folded under its row · **Unfold all** opens every parent · Find opens the ones it finds. |
+| With a Parent column | Roadmap · a row sits under the row it names · any depth. |
+| Without one | Project Work · rows sharing a first column fold under it, from two rows · the project row rolls them up: status, priority, earliest start, latest due, people. |
+| Dashboard | **Dashboard ›** on a parent's row · `/management/dashboard/?roadmap=<item>` · done · late · start · end · status bar · timeline · sub-task list. |
+| The board | Roadmap rows with an Issue follow Project 14 · status, priority, dates, parents · its sub-issues get rows · run `python planning/sync_roadmap.py` in alexandria_management, then push alexandria_office. |
 
 ## Changing a Table
 
