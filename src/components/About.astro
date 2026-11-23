@@ -1,0 +1,28 @@
+---
+// The home page's About (user, 2026-11-23): a few light sentences under a heading like the tool sections', as wide as
+// they are, with a Dismiss button under the text. Dismissing hides it in that browser from then on (localStorage); the
+// script runs right after the section, so a dismissed About never shows, even for a moment. Without storage (a
+// private window, blocked site data) the button still hides it until the page is reloaded.
+---
+
+<section class="ax-section ax-about not-content" id="about">
+	<header><h2>About</h2></header>
+	<p><slot /></p>
+	<button type="button" class="ax-about-dismiss">Dismiss</button>
+</section>
+<script is:inline>
+	(() => {
+		const key = 'ax-about-dismissed';
+		const about = document.getElementById('about');
+		if (!about) return;
+		try {
+			if (localStorage.getItem(key) === '1') about.hidden = true;
+		} catch {}
+		about.querySelector('.ax-about-dismiss')?.addEventListener('click', () => {
+			about.hidden = true;
+			try {
+				localStorage.setItem(key, '1');
+			} catch {}
+		});
+	})();
+</script>

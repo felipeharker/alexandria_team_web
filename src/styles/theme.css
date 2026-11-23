@@ -345,13 +345,32 @@ h1#_top,
 	color: var(--sl-color-gray-4);
 }
 
-/* About on the home page: a few light sentences, the home page's one paragraph (user, 2026-11-23) */
-.ax-about {
-	max-width: 64ch;
+/* About on the home page (About.astro): a few light sentences, the home page's one paragraph, as wide as the tool
+   sections, and a Dismiss button under them (user, 2026-11-23) */
+.ax-about p {
 	margin: 0;
 	font-size: var(--sl-text-base);
 	line-height: 1.65;
 	color: var(--sl-color-gray-2);
+}
+.ax-about[hidden] {
+	display: none;
+}
+.ax-about-dismiss {
+	margin-top: 10px;
+	padding: 0;
+	border: 0;
+	background: none;
+	font: inherit;
+	font-size: var(--sl-text-sm);
+	color: var(--sl-color-gray-3);
+	cursor: pointer;
+}
+.ax-about-dismiss:hover,
+.ax-about-dismiss:focus-visible {
+	color: var(--sl-color-white);
+	text-decoration: underline;
+	text-underline-offset: 3px;
 }
 
 /* Starting Out on the home page: icon and name only, five to a row (user, 2026-11-23: no sentences) */

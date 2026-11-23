@@ -9,6 +9,7 @@ hero:
       link: /start/first-day/
 ---
 
+import About from '../../components/About.astro';
 import HubCard from '../../components/HubCard.astro';
 import ToolCard from '../../components/ToolCard.astro';
 import release from '../../data/release.json';
@@ -23,12 +24,10 @@ import release from '../../data/release.json';
     labels and links are in Title Case. */}
 
 {/* About (user, 2026-11-23): a few light sentences on what Alexandria is for, the one place on the home page where
-    sentences are wanted. Everything else stays drawings and labels. */}
+    sentences are wanted, as wide as the tool sections, with a Dismiss button (About.astro). Everything else stays drawings
+    and labels. */}
 
-<section class="ax-section not-content">
-<header><h2>About</h2></header>
-<p class="ax-about">Alexandria is the office's design lab: a growing set of tools for taking a sign from an empty model to a finished design package. The Rhino toolbar does the modeling, renders and layout, and the web tools handle the rest, from site plans and braille to paint matches and pricing. The office's standards are built in, so every package comes out looking like ours without anyone setting it up by hand. If something's missing or could work better, tell the Alexandria team.</p>
-</section>
+<About>Alexandria is the office's design lab: a growing set of tools for taking a sign from an empty model to a finished design package. The Rhino toolbar does the modeling, renders and layout, and the web tools handle the rest, from site plans and braille to paint matches and pricing. The office's standards are built in, so every package comes out looking like ours without anyone setting it up by hand. If something's missing or could work better, tell the Alexandria team.</About>
 
 <section class="ax-section not-content">
 <header><h2>Design Tools</h2><a href="/tools/design/">Details →</a></header>
