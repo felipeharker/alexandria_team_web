@@ -345,6 +345,15 @@ h1#_top,
 	color: var(--sl-color-gray-4);
 }
 
+/* About on the home page: a few light sentences, the home page's one paragraph (user, 2026-11-23) */
+.ax-about {
+	max-width: 64ch;
+	margin: 0;
+	font-size: var(--sl-text-base);
+	line-height: 1.65;
+	color: var(--sl-color-gray-2);
+}
+
 /* Starting Out on the home page: icon and name only, five to a row (user, 2026-11-23: no sentences) */
 .ax-quick {
 	grid-template-columns: repeat(5, minmax(0, 1fr));
