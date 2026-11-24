@@ -1,58 +1,18 @@
 ---
 title: Management
-description: "The office's management tables: the accounts, the project work and the roadmap."
+description: "The boards Alexandria is run from: the development roadmap, the design projects and the accounts."
 # unlisted: in no menu and out of the hub's search
 pagefind: false
 ---
 
-{/* The management pages (user, 2026-11-20) are unlisted: none is in the sidebar (astro.config.mjs) or the search,
-    and nothing else on the hub links to them. Each is one CSV file from the private alexandria_office repo
-    (public/management/), shown by ManagementTable.astro. A new table gets a file there, a page here with its
-    columns, and a row in the table below. Parents and sub-tasks: src/management.ts; a parent's dashboard is
-    dashboard.mdx (ManagementDashboard.astro). */}
+{/* Unlisted (user, 2026-11-20): not in the sidebar (astro.config.mjs) or the search, and nothing else on the hub
+    links here. Since 2026-11-24 the tables are GitHub Projects, edited on GitHub (alexandria_management,
+    planning/README.md); this page only links to them. They were CSV files shown here until then. */}
 
-The tables Alexandria is run from. These pages are in no menu and not in search, so keep this address.
+The boards Alexandria is run from · on GitHub · edit them there.
 
-| Page | What It Tracks | File |
-|---|---|---|
-| [Account Migration](/management/accounts/) | Each service Alexandria runs on, and whether its account has moved to the company email. | [accounts.csv](/management/accounts.csv) |
-| [Project Work and Assignments](/management/work/) | Who is on what, project by project, and when it's due. | [work.csv](/management/work.csv) |
-| [Development and Project Roadmap](/management/roadmap/) | What's being built and what's coming, with its dates. | [roadmap.csv](/management/roadmap.csv) |
-
-## The CSV Standard
-
-Each table is one CSV file, and its page shows the file as it is. Every file follows the same rules; each page lists its own columns.
-
-| Rule | What It Means |
+| Board | What's on it |
 |---|---|
-| One file per table | A short lowercase name, such as `work.csv`, in `alexandria_office\public\management\`. |
-| A header row | The first row names the columns, spelled as the page's **The Columns** gives them. The page finds a column by its name, so the order can change. |
-| One row per item | A blank row is skipped. A cell holding a comma or a line break goes in quotes, which Excel does for you. |
-| The first column | Names the row: the service, the project or the item. A row needs one. |
-| Notes | Always the last column, for anything else. |
-| Dates | `2026-12-04`: year, month, day. Leave the cell empty when there's no date yet. If Excel rewrites one as `12/4/2026`, the page still reads it. |
-| Status | `Inbox`, `Later`, `Next`, `Doing`, `Waiting` or `Done`, as on the planning board. |
-| Priority | `Urgent`, `High`, `Normal` or `Low`, as on the planning board. |
-| People | First names. For two people, put `;` between them. |
-| Parent | A sub-task's parent: the parent row's first column, spelled as in its row · empty at the top · see [Parents and Dashboards](#parents-and-dashboards). |
-| Issue | The planning board's item, as `#8` · links to it. |
-| Saving | In Excel, **CSV UTF-8 (Comma delimited)**, so every character survives. |
-| No secrets | Never a password, a key, a token or a recovery code, in any cell. They belong in a password manager. |
-
-A column that isn't in a page's list is still shown, as plain text, so a table can gain one whenever it's needed. Add it before Notes, and add it to the page's list.
-
-## Parents and Dashboards
-
-| Part | What It Does |
-|---|---|
-| Sub-tasks | Rows under a parent · folded under its row · **Unfold all** opens every parent · Find opens the ones it finds. |
-| With a Parent column | Roadmap · a row sits under the row it names · any depth. |
-| Without one | Project Work · rows sharing a first column fold under it, from two rows · the project row rolls them up: status, priority, earliest start, latest due, people. |
-| Dashboard | **Dashboard ›** on a parent's row · `/management/dashboard/?roadmap=<item>` · done · late · start · end · status bar · timeline · sub-task list. |
-| The board | Roadmap rows with an Issue follow Project 14 · status, priority, dates, parents · its sub-issues get rows · run `python planning/sync_roadmap.py` in alexandria_management, then push alexandria_office. |
-
-## Changing a Table
-
-1. Open the file in Excel, from `alexandria_office\public\management\`.
-2. Change it and save it, keeping the CSV format.
-3. Commit and push alexandria_office. The page shows the change within two minutes.
+| [Development Roadmap](https://github.com/users/felipeharker/projects/14) | Tools · standards · R&D · training · presentations |
+| [Design Projects](https://github.com/users/felipeharker/projects/17) | Client and office jobs · who's on them · when they're due |
+| [Accounts](https://github.com/users/felipeharker/projects/18) | Each service · its account · migrated or not |
