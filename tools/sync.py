@@ -32,7 +32,8 @@ one (or ALEXANDRIA_PHOENIX) and the shared alexandria_packages folder, and write
 - release/alexandria_packages.zip: the shared folder, zipped as it is (not committed).
 
 --publish uploads the zip to a release on GitHub named after the Rhino Tools package's
-version, which is what the Download button links to. Commit and push the rest so
+version, which is what the Download button links to. If that release is already there with
+a different zip (the shared folder gained a file, with the same packages), its zip is replaced. Commit and push the rest so
 Render rebuilds the site.
 """
 import argparse
@@ -334,7 +335,15 @@ def release():
 def publish(facts, zipped):
     exists = subprocess.run(["gh", "release", "view", facts["tag"], "--repo", REPO], capture_output=True).returncode == 0
     if exists:
-        print("publish: %s is already on GitHub" % facts["tag"])
+        # the same packages, but the folder around them may have changed (a font or a guide added since): the zip on
+        # GitHub is replaced when it isn't the size of the one just made
+        sizes = subprocess.run(["gh", "release", "view", facts["tag"], "--repo", REPO, "--json", "assets", "--jq",
+                                '.assets[] | select(.name == "%s") | .size' % ASSET], capture_output=True, text=True).stdout.split()
+        if sizes == [str(os.path.getsize(zipped))]:
+            print("publish: %s is already on GitHub" % facts["tag"])
+            return
+        subprocess.run(["gh", "release", "upload", facts["tag"], zipped, "--repo", REPO, "--clobber"], check=True)
+        print("publish: %s was on GitHub with an older zip, now replaced" % facts["tag"])
         return
     subprocess.run(["gh", "release", "create", facts["tag"], zipped, "--repo", REPO, "--title",
                     "Alexandria %s" % facts["version"], "--notes",
