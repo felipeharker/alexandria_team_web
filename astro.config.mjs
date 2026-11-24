@@ -23,7 +23,7 @@ export default defineConfig({
 	},
 	integrations: [
 		// Starlight would add the sitemap itself; it's added here to leave the unlisted pages out of it: the
-		// management page and the shelf.
+		// management pages and the shelf.
 		sitemap({ filter: (page) => !/^\/(management|shelf)\//.test(new URL(page).pathname) }),
 		starlight({
 			title: 'Alexandria',
@@ -52,9 +52,9 @@ export default defineConfig({
 			// templates, Documentation the documents, Downloads every file. The pages under those (a guide, a supplier, a
 			// template) have no entry of their own: src/routeData.ts highlights the entry of the page that lists them.
 			// Before this there was an entry per tool, twice (Quick Guides and Tools), and one per download.
-			// Not in the sidebar on purpose (user, 2026-11-20): the management page, src/content/docs/management/, which
-			// is unlisted. It is out of the search (`pagefind: false`) and the sitemap (above) too, and
-			// nothing links to it. The shelf (user, 2026-11-23), src/content/docs/shelf/, is unlisted the same way: the
+			// Not in the sidebar on purpose (user, 2026-11-20): the management pages, src/content/docs/management/, which
+			// are unlisted. They are out of the search (`pagefind: false` in each) and the sitemap (above) too, and
+			// nothing links to them. The shelf (user, 2026-11-23), src/content/docs/shelf/, is unlisted the same way: the
 			// tools taken off the site until they're ready, and their guides.
 			sidebar: [
 				{

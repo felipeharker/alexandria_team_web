@@ -1,0 +1,32 @@
+---
+title: Project Work and Assignments
+description: Who is on what, project by project, and when it's due.
+# unlisted: in no menu and out of the hub's search. The table wants the width, so no table of contents.
+pagefind: false
+tableOfContents: false
+---
+
+import ManagementTable from '../../../components/ManagementTable.astro';
+
+{/* One of the management pages (see management/index.mdx): the table is the Alexandria · Design Projects board
+    (Project 17), read through the gate (server/boards.mjs). A CSV until 2026-11-24. */}
+
+[Management](/management/) › Who is on what, project by project, and when it's due · [Edit on GitHub ›](https://github.com/users/felipeharker/projects/17)
+
+<ManagementTable file="work.csv" done={{ column: 'Status', is: 'Done', label: 'done' }} tally="Status" />
+
+## The Columns
+
+From the [Alexandria · Design Projects](https://github.com/users/felipeharker/projects/17) board · a job is a parent issue · each piece of work is a sub-issue of it · edit them there · shows here within two minutes.
+
+| Column | On the Board |
+|---|---|
+| Project | The job: the parent issue's title · its pieces fold under one project row with its progress and **Dashboard ›** · a job with no sub-issues is a row of its own. |
+| Work | The sub-issue's title, such as Design package, Permit drawings or Fabrication drawings. |
+| Assigned to | **Assigned to**: a first name. |
+| Status | `Inbox`, `Later`, `Next`, `Doing`, `Waiting` or `Done`. For `Waiting`, say on whom in Notes. |
+| Priority | `Urgent`, `High`, `Normal` or `Low`. |
+| Start | The date the work starts. |
+| Due | **Due** · a date that has passed on work that isn't `Done` is marked. |
+| Issue | The issue, as `#8` · links to it. |
+| Notes | **Notes**: what it's waiting on, where the files are. |

@@ -7,6 +7,8 @@
 # server/office.mjs, at build time and then every two minutes, so a push there shows up without a hub deploy. A hub
 # page wins over an office tool at the same address, so /colors/guide stays the hub's.
 # /sources (the suppliers' documents the Wiki's supplier pages link to) is served from alexandria_office too.
+# The CSV files under /management, which the hub's unlisted management pages show, are made from the GitHub boards
+# (server/boards.mjs), with BOARDS_TOKEN.
 #
 # Until 2026-11-12 the hub was a public static site, alexandria-hub, with rewrites to the alexandria-office static
 # site. Both are retired (suspended on Render, out of this file); nothing here points at them any more.
@@ -30,5 +32,7 @@ services:
         sync: false                # `name:passcode, name:passcode`; edit there to add or remove someone
       - key: GITHUB_TOKEN
         sync: false                # fine-grained, alexandria_office only, Contents read-only; expires 2027-11-12
+      - key: BOARDS_TOKEN
+        sync: false                # classic, read:project + repo: reads the three boards for /management
       - key: SESSION_SECRET
         generateValue: true        # Render makes it once; it signs the 30-day sign-ins

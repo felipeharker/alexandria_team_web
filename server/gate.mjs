@@ -14,7 +14,8 @@
 // Addresses work as they did on the static site: the hub's pages first, then the office tools (/colors,
 // /site-plan, /vectorizer, /grid, /image-grid, /braille, /etch-text) wherever the hub has no page,
 // so /colors/guide stays the hub's. /sources comes from the office repo the same way: the suppliers' documents the
-// Wiki links to. Run it locally with `node --env-file=<file> server/gate.mjs` (PORT, HUB_USERS and
+// Wiki links to. /management is shared: its pages are the hub's (unlisted), and the CSV files they show
+// (/management/accounts.csv and the others) are made from the GitHub boards they're edited on (boards.mjs). Run it locally with `node --env-file=<file> server/gate.mjs` (PORT, HUB_USERS and
 // SESSION_SECRET in the file, and OFFICE_DIR=../alexandria_office to serve the office tools from that checkout).
 
 import { createHash, createHmac, timingSafeEqual } from 'node:crypto';
@@ -25,6 +26,7 @@ import { extname, join, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { promisify } from 'node:util';
 import { brotliCompress, constants as zlib, gzip } from 'node:zlib';
+import { boardCsv } from './boards.mjs';
 import { office, startOfficeSync } from './office.mjs';
 
 const HUB = fileURLToPath(new URL('../dist', import.meta.url));
@@ -382,6 +384,17 @@ async function handle(req, res) {
 		path = '\0';
 	}
 	if (path.includes('\0')) return sendNote(res, 400, 'Bad Address', 'That address isn’t one this site understands.');
+
+	const board = path.match(/^\/management\/([a-z]+)\.csv$/);
+	if (board) {
+		const csv = await boardCsv(board[1]).catch((error) => error);
+		if (typeof csv === 'string') {
+			const body = Buffer.from(csv);
+			res.writeHead(200, { 'Content-Type': 'text/csv; charset=utf-8', 'Cache-Control': 'no-store', 'Content-Length': body.length });
+			return res.end(req.method === 'HEAD' ? undefined : body);
+		}
+		if (csv) return sendNote(res, 503, 'Board Unavailable', 'The board couldn’t be read from GitHub. Try again in a minute.');
+	}
 
 	const hit = await route(path);
 	if (hit?.redirect) return res.writeHead(301, { Location: `${url.pathname}/${url.search}` }).end();

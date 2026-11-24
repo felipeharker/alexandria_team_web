@@ -1,0 +1,164 @@
+---
+// A management table (management/*.mdx): one GitHub board shown as a table, in the hub's own table (.ax-chart, as
+// the supplier pages'). The board is edited on GitHub; the gate reads it (server/boards.mjs) and serves it as CSV at
+// /management/<file> to people who are signed in, so nobody needs a GitHub sign-in to look. The page reads it each
+// time it opens, and an edit on GitHub shows up within two minutes.
+//
+// The table shows whatever columns the file has, in the file's order, and finds the ones it treats specially by
+// their header (the management pages give each file's columns, and /management/ the rules they share):
+// the first column names the row; Status, Priority, Current account and Migrated are shown as tags; Start, Due and
+// Target are dates; Issue links to the planning board; Description and Notes get room to wrap.
+//
+// Parents and sub-tasks (src/management.ts): the rows under a parent are folded under it, with its progress and a
+// link to its dashboard (ManagementDashboard.astro), so the table stays short as the work grows.
+interface Props {
+	/** the table's file at /management/, such as accounts.csv (server/boards.mjs makes it from its board) */
+	file: string;
+	/** what's counted over the table: the rows whose `column` starts with `is`, as "3 of 11 <label>" */
+	done: { column: string; is: string; label: string };
+	/** also count the rows by this column's other values, such as Status */
+	tally?: string;
+}
+const { file, done, tally = '' } = Astro.props;
+---
+
+<div
+	class="ax-manage not-content"
+	data-file={file}
+	data-done-column={done.column}
+	data-done-is={done.is}
+	data-done-label={done.label}
+	data-tally={tally}
+>
+	<div class="ax-manage-progress" hidden>
+		<div class="ax-manage-bar"><span></span></div>
+		<output></output>
+	</div>
+	<div class="ax-chart" hidden>
+		<div class="ax-manage-tools">
+			<label class="ax-chart-find">
+				<span>Find</span>
+				<input type="search" placeholder="Any word in a row" autocomplete="off" spellcheck="false" />
+				<output aria-live="polite"></output>
+			</label>
+			<button type="button" class="ax-manage-all" hidden>Unfold all</button>
+		</div>
+		<div class="ax-chart-scroll">
+			<table>
+				<thead><tr></tr></thead>
+				<tbody></tbody>
+			</table>
+		</div>
+	</div>
+	<p class="ax-manage-note" role="status">Loading the table…</p>
+</div>
+
+<script>
+	import { load, rowElement, headerCells, nameCell, descendants, isLate, type Row, type Table } from '../management';
+
+	async function show(box: HTMLElement) {
+		const note = box.querySelector<HTMLElement>('.ax-manage-note')!;
+		const chart = box.querySelector<HTMLElement>('.ax-chart')!;
+		const { file = '', doneColumn = '', doneIs = '', doneLabel = '', tally = '' } = box.dataset;
+		let table: Table;
+		try {
+			table = await load(file);
+		} catch {
+			note.textContent = `The board couldn’t be read. Refresh the page; if it stays like this, GitHub is unreachable or the gate has no BOARDS_TOKEN.`;
+			return;
+		}
+		const doneAt = table.at(doneColumn);
+		const counted = (row: Row) => doneAt >= 0 && row.cells[doneAt].toLowerCase().startsWith(doneIs.toLowerCase());
+
+		box.querySelector('thead tr')!.append(...headerCells(table));
+
+		// the rows, each parent followed by its sub-tasks, which start folded
+		const tbody = box.querySelector('tbody')!;
+		const element = new Map<Row, HTMLTableRowElement>();
+		const open = new Set<Row>();
+		const add = (row: Row) => {
+			const tr = rowElement(table, row, (td) => {
+				let fold: HTMLButtonElement | undefined;
+				if (row.children.length) {
+					fold = Object.assign(document.createElement('button'), { type: 'button', className: 'ax-manage-fold' });
+					fold.setAttribute('aria-expanded', 'false');
+					fold.setAttribute('aria-label', `Sub-tasks of ${row.name}`);
+					fold.addEventListener('click', () => {
+						open.has(row) ? open.delete(row) : open.add(row);
+						refresh();
+					});
+				}
+				// a project's own rows don't repeat its name
+				td.append(nameCell(table, row, row.parent?.group ? '' : row.name, fold));
+			});
+			tr.dataset.find = row.cells.join(' ').toLowerCase();
+			element.set(row, tr);
+			tbody.append(tr);
+			row.children.forEach(add);
+		};
+		table.top.forEach(add);
+		const parents = [...element.keys()].filter((row) => row.children.length);
+
+		// the count over the table: "3 of 11 done", then the other values of the tally column, then how many are late
+		const progress = box.querySelector<HTMLElement>('.ax-manage-progress')!;
+		const total = table.rows.length;
+		const finished = table.rows.filter(counted).length;
+		let words = `${finished} of ${total} ${doneLabel}`;
+		const tallyAt = tally ? table.at(tally) : -1;
+		if (tallyAt >= 0) {
+			const counts = new Map<string, number>();
+			for (const row of table.rows) {
+				const value = row.cells[tallyAt];
+				if (value && !counted(row)) counts.set(value, (counts.get(value) ?? 0) + 1);
+			}
+			// in the order the work moves, then anything else as the file has it
+			const order = ['doing', 'next', 'waiting', 'later', 'inbox'];
+			const place = (value: string) => (order.indexOf(value.toLowerCase()) + 1 || order.length + 1);
+			for (const [value, count] of [...counts].sort((a, b) => place(a[0]) - place(b[0]))) words += ` · ${count} ${value.toLowerCase()}`;
+		}
+		const late = table.rows.filter((row) => isLate(table, row)).length;
+		if (late) words += ` · ${late} late`;
+		if (parents.length) words += ` · ${parents.length} ${parents.length === 1 ? 'parent' : 'parents'}`;
+		progress.querySelector('output')!.textContent = words;
+		progress.querySelector<HTMLElement>('.ax-manage-bar span')!.style.width = total ? `${(finished / total) * 100}%` : '0';
+		progress.hidden = false;
+
+		// what shows: a row whose parents are all unfolded; while something is typed in Find, the rows holding every
+		// word typed, with the parents they sit under
+		const input = box.querySelector('input')!;
+		const count = box.querySelector('.ax-chart-find output')!;
+		const all = `${total} ${total === 1 ? 'row' : 'rows'}`;
+		function refresh() {
+			const typed = input.value.toLowerCase().split(/\s+/).filter(Boolean);
+			const hit = (row: Row) => typed.every((word) => (element.get(row)!.dataset.find || '').includes(word));
+			let shown = 0;
+			for (const [row, tr] of element) {
+				let visible: boolean;
+				if (typed.length) visible = hit(row) || descendants(row).some(hit);
+				else {
+					visible = true;
+					for (let up = row.parent; up; up = up.parent) if (!open.has(up)) visible = false;
+				}
+				tr.hidden = !visible;
+				if (visible && !row.group) shown += 1;
+			}
+			for (const [row, tr] of element) tr.querySelector('.ax-manage-fold')?.setAttribute('aria-expanded', String(open.has(row)));
+			allButton.textContent = parents.every((row) => open.has(row)) ? 'Fold all' : 'Unfold all';
+			count.textContent = typed.length ? `${shown} of ${total}` : all;
+		}
+		const allButton = box.querySelector<HTMLButtonElement>('.ax-manage-all')!;
+		allButton.hidden = !parents.length;
+		allButton.addEventListener('click', () => {
+			const unfold = !parents.every((row) => open.has(row));
+			for (const row of parents) unfold ? open.add(row) : open.delete(row);
+			refresh();
+		});
+		input.addEventListener('input', refresh);
+		refresh();
+
+		chart.hidden = false;
+		note.hidden = true;
+	}
+
+	for (const box of document.querySelectorAll<HTMLElement>('.ax-manage')) show(box);
+</script>

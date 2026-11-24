@@ -1,7 +1,8 @@
 /* The Alexandria style: one plain look for the hub, the quick guides and the office tools.
 
    Greys for everything, one blue for buttons, the Beta tag and what's under the pointer (a tool's card, a
-   sidebar entry), and colour otherwise only where it codes something (the toolbar groups in the guides).
+   sidebar entry), and colour otherwise only where it codes something (the toolbar groups in the guides, the state tags in a
+   management table).
    The blue was a green until 2026-11-18 (user).
    Inter for reading, IBM Plex Mono for commands, numbers and every small label.
    Since 2026-11-23 (user: "more visually elegant", from a set of reference sites) the look is a drawing sheet's:
@@ -36,6 +37,11 @@
 	--ax-rule: #2b3036;
 	--ax-rule-strong: #3a4048;
 	--ax-radius: 3px;
+	/* the two colours that code a state in a management table's tags: done, and wants attention */
+	--ax-good: #7fcf9f;
+	--ax-good-soft: #17301f;
+	--ax-warn: #e6b566;
+	--ax-warn-soft: #33270f;
 }
 
 :root[data-theme='light'] {
@@ -61,6 +67,10 @@
 	--ax-tint: #f6f7f9;
 	--ax-rule: #e2e5e9;
 	--ax-rule-strong: #cdd2d8;
+	--ax-good: #1f6b3f;
+	--ax-good-soft: #e1f3e7;
+	--ax-warn: #8a5a00;
+	--ax-warn-soft: #fbefd6;
 }
 
 /* ---------------------------------------------------------------- frame */
@@ -1797,7 +1807,68 @@ h3.ax-supplier-table + .ax-chart {
 	background: var(--sl-color-gray-6);
 }
 
-/* a grey tag: a tool card's release number and a tool sheet's corner (with .ax-badge, above) */
+/* a management table (ManagementTable.astro, management/*.mdx): a CSV file in the supplier pages' table (.ax-chart),
+   with a count over it. Colour only codes a state here: a tag is green when it's done, amber when it wants
+   attention, and grey otherwise. The count's bar is grey. */
+:root:has(.ax-manage) {
+	--sl-content-width: 68rem;
+}
+.ax-manage {
+	margin-block: 1.25rem 2rem;
+}
+.ax-manage-progress {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 6px 12px;
+	margin-bottom: 1rem;
+	font-size: var(--sl-text-sm);
+	color: var(--sl-color-gray-2);
+}
+.ax-manage-bar {
+	flex: 0 1 16rem;
+	min-width: 8rem;
+	height: 8px;
+	border-radius: 4px;
+	background: var(--ax-rule);
+	overflow: hidden;
+}
+.ax-manage-bar span {
+	display: block;
+	height: 100%;
+	width: 0;
+	background: var(--sl-color-gray-3);
+}
+.ax-manage-note {
+	margin: 0;
+	font-size: var(--sl-text-sm);
+	color: var(--sl-color-gray-3);
+}
+.ax-manage .ax-chart {
+	margin-block: 0;
+}
+.ax-manage .ax-chart td {
+	vertical-align: top;
+	padding-block: 10px;
+	line-height: 1.5;
+}
+.ax-manage td.name {
+	font-weight: 600;
+	color: var(--sl-color-white);
+}
+.ax-manage td.wide {
+	min-width: 16rem;
+	white-space: pre-line;
+}
+.ax-manage td.date {
+	font-family: var(--sl-font-mono);
+	font-size: 0.8125rem;
+	white-space: nowrap;
+}
+.ax-manage td.late {
+	color: var(--ax-warn);
+	font-weight: 500;
+}
 .ax-tag {
 	display: inline-block;
 	padding: 1px 7px;
@@ -1811,6 +1882,397 @@ h3.ax-supplier-table + .ax-chart {
 	white-space: nowrap;
 	color: var(--sl-color-gray-3);
 }
+.ax-tag.active {
+	border-color: var(--sl-color-gray-3);
+	color: var(--sl-color-white);
+}
+.ax-tag.good {
+	border-color: var(--ax-good);
+	background: var(--ax-good-soft);
+	color: var(--ax-good);
+}
+.ax-tag.warn {
+	border-color: var(--ax-warn);
+	background: var(--ax-warn-soft);
+	color: var(--ax-warn);
+}
+
+/* parents and sub-tasks in a management table (src/management.ts): a parent's rows fold under it, behind a
+   chevron, with its progress drawn small and a link to its dashboard */
+.ax-manage-tools {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 8px 16px;
+	margin-bottom: 8px;
+}
+.ax-manage-tools .ax-chart-find {
+	flex: 1 1 20rem;
+	margin: 0;
+}
+.ax-manage-all {
+	font: inherit;
+	font-size: var(--sl-text-xs);
+	color: var(--sl-color-gray-2);
+	background: transparent;
+	border: 1px solid var(--ax-rule-strong);
+	border-radius: 6px;
+	padding: 4px 10px;
+	cursor: pointer;
+}
+.ax-manage-all:hover {
+	border-color: var(--sl-color-gray-3);
+}
+:is(.ax-manage, .ax-dash) td.name {
+	min-width: 13rem;
+}
+.ax-manage-cell {
+	display: flex;
+	align-items: flex-start;
+	gap: 8px;
+}
+.ax-manage-cell > .ax-manage-fold {
+	flex: none;
+	margin-top: 1px;
+}
+.ax-manage-meta {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	margin-top: 4px;
+}
+:is(.ax-manage, .ax-dash) tr.child td.name {
+	position: relative;
+	padding-left: calc(12px + var(--depth, 1) * 1.4rem);
+	font-weight: 500;
+	color: var(--sl-color-gray-2);
+}
+:is(.ax-manage, .ax-dash) tr.child td.name::before {
+	/* the tree's corner, under the parent's chevron */
+	content: '';
+	position: absolute;
+	left: calc(20px + (var(--depth, 1) - 1) * 1.4rem);
+	top: 0;
+	height: 1.3rem;
+	width: 0.55rem;
+	border-left: 1px solid var(--ax-rule-strong);
+	border-bottom: 1px solid var(--ax-rule-strong);
+}
+:is(.ax-manage, .ax-dash) td.same {
+	color: var(--sl-color-gray-4);
+}
+.ax-manage tr.group td.name {
+	color: var(--sl-color-white);
+}
+.ax-manage-fold {
+	display: inline-grid;
+	place-items: center;
+	width: 1.25rem;
+	height: 1.25rem;
+	padding: 0;
+	vertical-align: -3px;
+	background: transparent;
+	border: 1px solid var(--ax-rule-strong);
+	border-radius: 4px;
+	color: var(--sl-color-gray-3);
+	cursor: pointer;
+}
+.ax-manage-fold::before {
+	content: '';
+	width: 0.4rem;
+	height: 0.4rem;
+	border-right: 1.5px solid currentColor;
+	border-bottom: 1.5px solid currentColor;
+	transform: translateX(-1px) rotate(-45deg);
+	transition: transform 0.15s;
+}
+.ax-manage-fold[aria-expanded='true']::before {
+	transform: translateY(-1px) rotate(45deg);
+}
+.ax-manage-fold:hover {
+	border-color: var(--ax-hover);
+	color: var(--ax-hover-text);
+}
+.ax-manage-mini {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	font-family: var(--sl-font-mono);
+	font-size: 0.75rem;
+	font-weight: 400;
+	color: var(--sl-color-gray-3);
+	white-space: nowrap;
+}
+.ax-manage-mini i {
+	display: block;
+	width: 2.75rem;
+	height: 5px;
+	border-radius: 3px;
+	background: var(--ax-rule);
+	overflow: hidden;
+}
+.ax-manage-mini b {
+	display: block;
+	height: 100%;
+	background: var(--ax-good);
+}
+.ax-manage-dash {
+	font-size: var(--sl-text-xs);
+	font-weight: 500;
+	white-space: nowrap;
+	color: var(--sl-color-gray-2);
+}
+.ax-manage-dash::after {
+	content: ' ›';
+}
+.ax-manage-dash:hover {
+	color: var(--ax-hover-text);
+}
+.ax-manage-orphan {
+	font-size: var(--sl-text-xs);
+	font-weight: 500;
+	color: var(--ax-warn);
+	cursor: help;
+}
+:is(.ax-manage, .ax-dash) td.issue a {
+	font-family: var(--sl-font-mono);
+	font-size: 0.8125rem;
+	color: var(--sl-color-gray-2);
+}
+
+/* a parent's dashboard (ManagementDashboard.astro): where it sits, tiles, the status bar, the timeline, the
+   sub-tasks. Colour codes status only, as the tags do: done green, waiting and late amber, doing white, the rest
+   grey. Its table is a management table's. */
+:root:has(.ax-dash) {
+	--sl-content-width: 68rem;
+}
+.ax-dash {
+	--s-done: var(--ax-good);
+	--s-doing: var(--sl-color-gray-2);
+	--s-waiting: var(--ax-warn);
+	--s-next: var(--sl-color-gray-4);
+	--s-later: var(--sl-color-gray-5);
+	--s-inbox: var(--ax-rule-strong);
+	margin-block: 0.5rem 2rem;
+	font-size: var(--sl-text-sm);
+}
+.ax-dash > * + * {
+	margin-top: 1.25rem;
+}
+.ax-dash .ax-eyebrow {
+	margin-bottom: 0.5rem;
+}
+.ax-dash-path {
+	margin: 0;
+	color: var(--sl-color-gray-3);
+}
+.ax-dash-path a {
+	color: var(--sl-color-gray-2);
+}
+.ax-dash-head {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px 12px;
+	color: var(--sl-color-gray-3);
+}
+.ax-dash > .ax-dash-head {
+	margin-top: 0.75rem;
+}
+.ax-dash-people {
+	font-weight: 500;
+	color: var(--sl-color-gray-2);
+}
+.ax-dash-notes {
+	flex-basis: 100%;
+}
+.ax-dash-tiles {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 9rem), 1fr));
+	gap: 10px;
+}
+.ax-dash-tile {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	min-width: 0;
+	padding: 12px 14px;
+	border: 1px solid var(--ax-rule);
+	border-radius: var(--ax-radius);
+	background: var(--ax-tint);
+}
+.ax-dash-tile > span {
+	font-size: 0.6875rem;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--sl-color-gray-3);
+}
+.ax-dash-tile b {
+	font-size: 1.6rem;
+	font-weight: 600;
+	line-height: 1.2;
+	font-variant-numeric: tabular-nums;
+	color: var(--sl-color-white);
+}
+.ax-dash-tile.date b {
+	padding-block: 0.4rem 0.2rem;
+	font-family: var(--sl-font-mono);
+	font-size: 1.05rem;
+	font-weight: 500;
+}
+.ax-dash-tile small {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	font-size: var(--sl-text-xs);
+	color: var(--sl-color-gray-3);
+}
+.ax-dash-tile.late :is(b, small) {
+	color: var(--ax-warn);
+}
+.ax-dash-tile .ax-manage-mini {
+	order: 3;
+	margin-top: 4px;
+}
+.ax-dash-tile .ax-manage-mini i {
+	width: 100%;
+	height: 6px;
+}
+.ax-dash-tile small {
+	order: 4;
+}
+.ax-dash-stack {
+	display: flex;
+	gap: 2px;
+	height: 14px;
+	border-radius: 4px;
+	overflow: hidden;
+}
+.ax-dash-stack i {
+	flex: 1 1 0;
+	background: var(--s-inbox);
+}
+.ax-dash-legend {
+	margin: 6px 0 0;
+	font-size: var(--sl-text-xs);
+	color: var(--sl-color-gray-3);
+}
+.ax-dash-legend span {
+	display: inline-block;
+	width: 8px;
+	height: 8px;
+	margin-right: 5px;
+	border-radius: 2px;
+	background: var(--s-inbox);
+}
+.ax-dash .s-done { background: var(--s-done); }
+.ax-dash .s-doing { background: var(--s-doing); }
+.ax-dash .s-waiting { background: var(--s-waiting); }
+.ax-dash .s-next { background: var(--s-next); }
+.ax-dash .s-later { background: var(--s-later); }
+.ax-dash-lanes {
+	--name: min(16rem, 38%);
+	position: relative;
+	padding-top: 1.1rem;
+	border-top: 1px solid var(--ax-rule);
+}
+.ax-dash-lane {
+	display: grid;
+	grid-template-columns: var(--name) 1fr;
+	align-items: center;
+	min-height: 1.75rem;
+	border-bottom: 1px solid var(--ax-rule);
+}
+.ax-dash-lane > span {
+	overflow: hidden;
+	padding: 3px 10px 3px calc(var(--depth, 0) * 1rem);
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	color: var(--sl-color-gray-2);
+}
+.ax-dash-track {
+	position: relative;
+	align-self: stretch;
+}
+.ax-dash-track i {
+	position: absolute;
+	top: 50%;
+	min-width: 4px;
+	height: 8px;
+	margin-top: -4px;
+	border-radius: 2px;
+	background: var(--s-next);
+}
+.ax-dash-track i.point {
+	width: 9px;
+	height: 9px;
+	min-width: 0;
+	margin: -4.5px 0 0 -4.5px;
+	border-radius: 1px;
+	transform: rotate(45deg);
+}
+.ax-dash-track i.doing { background: var(--s-doing); }
+.ax-dash-track i.done { background: var(--s-done); }
+.ax-dash-track i.late { background: var(--ax-warn); }
+.ax-dash-line {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: calc(var(--name) + (100% - var(--name)) * var(--at, 0));
+	border-left: 1px dashed var(--sl-color-gray-3);
+	pointer-events: none;
+}
+.ax-dash-line.end {
+	border-left: 1px solid var(--sl-color-gray-4);
+}
+.ax-dash-line span {
+	position: absolute;
+	top: 0;
+	left: 4px;
+	font-size: 0.6875rem;
+	line-height: 1;
+	white-space: nowrap;
+	color: var(--sl-color-gray-3);
+}
+.ax-dash-line.flip span {
+	left: auto;
+	right: 4px;
+}
+.ax-dash-axis {
+	display: grid;
+	grid-template-columns: min(16rem, 38%) 1fr auto;
+	padding-top: 4px;
+	font-family: var(--sl-font-mono);
+	font-size: 0.75rem;
+	color: var(--sl-color-gray-3);
+}
+.ax-dash .ax-chart {
+	margin-block: 0;
+}
+.ax-dash .ax-chart td {
+	vertical-align: top;
+	padding-block: 10px;
+	line-height: 1.5;
+}
+.ax-dash td.name {
+	font-weight: 600;
+	color: var(--sl-color-white);
+}
+.ax-dash td.wide {
+	min-width: 16rem;
+	white-space: pre-line;
+}
+.ax-dash td.date {
+	font-family: var(--sl-font-mono);
+	font-size: 0.8125rem;
+	white-space: nowrap;
+}
+.ax-dash td.late {
+	color: var(--ax-warn);
+	font-weight: 500;
+}
 
 /* ---------------------------------------------------------------- labels */
 /* Every small label is the same mono capitals, as on a drawing's title block (2026-11-23): the sidebar's section names,
@@ -1822,6 +2284,7 @@ h3.ax-supplier-table + .ax-chart {
 .ax-sheet dt,
 .ax-chart th,
 .ax-supplier-facts dt,
+.ax-dash-tile > span,
 .ax-tag,
 .sidebar-content .sl-badge.default,
 .sidebar-content .sl-badge.ax-alpha {

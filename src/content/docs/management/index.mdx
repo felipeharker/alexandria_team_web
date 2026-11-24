@@ -1,18 +1,32 @@
 ---
 title: Management
-description: "The boards Alexandria is run from: the development roadmap, the design projects and the accounts."
+description: "The office's management tables, from the GitHub boards: the accounts, the project work and the roadmap."
 # unlisted: in no menu and out of the hub's search
 pagefind: false
 ---
 
-{/* Unlisted (user, 2026-11-20): not in the sidebar (astro.config.mjs) or the search, and nothing else on the hub
-    links here. Since 2026-11-24 the tables are GitHub Projects, edited on GitHub (alexandria_management,
-    planning/README.md); this page only links to them. They were CSV files shown here until then. */}
+{/* The management pages (user, 2026-11-20) are unlisted: none is in the sidebar (astro.config.mjs) or the search,
+    and nothing else on the hub links to them. Since 2026-11-24 each table is a GitHub board, edited on GitHub
+    (alexandria_management, planning/README.md); the gate reads it (server/boards.mjs) and serves it as CSV, so
+    the pages need no GitHub sign-in. ManagementTable.astro shows it. A new table gets a board, an entry in
+    boards.mjs, a page here with its columns, and a row in the table below. Parents and sub-tasks:
+    src/management.ts; a parent's dashboard is dashboard.mdx (ManagementDashboard.astro). */}
 
-The boards Alexandria is run from · on GitHub · edit them there.
+The tables Alexandria is run from · read from the GitHub boards · edit them on GitHub · a change shows here within two minutes. These pages are in no menu and not in search, so keep this address.
 
-| Board | What's on it |
+| Page | What It Tracks | Edit On |
+|---|---|---|
+| [Account Migration](/management/accounts/) | Each service Alexandria runs on, and whether its account has moved to the R&D managed team. | [Alexandria · Accounts](https://github.com/users/felipeharker/projects/18) |
+| [Project Work and Assignments](/management/work/) | Who is on what, project by project, and when it's due. | [Alexandria · Design Projects](https://github.com/users/felipeharker/projects/17) |
+| [Development and Project Roadmap](/management/roadmap/) | What's being built and what's coming, with its dates. | [Alexandria · Development Roadmap](https://github.com/users/felipeharker/projects/14) |
+
+No passwords, keys, tokens or recovery codes on any board.
+
+## Parents and Dashboards
+
+| Part | What It Does |
 |---|---|
-| [Development Roadmap](https://github.com/users/felipeharker/projects/14) | Tools · standards · R&D · training · presentations |
-| [Design Projects](https://github.com/users/felipeharker/projects/17) | Client and office jobs · who's on them · when they're due |
-| [Accounts](https://github.com/users/felipeharker/projects/18) | Each service · its account · migrated or not |
+| Sub-tasks | Rows under a parent · folded under its row · **Unfold all** opens every parent · Find opens the ones it finds. |
+| Roadmap | A sub-issue sits under its parent issue · any depth. |
+| Project Work | A job's sub-issues fold under the job, from two · the project row rolls them up: status, priority, earliest start, latest due, people. |
+| Dashboard | **Dashboard ›** on a parent's row · `/management/dashboard/?roadmap=<item>` · done · late · start · end · status bar · timeline · sub-task list. |

@@ -23,8 +23,8 @@ const parents: Parent[] = [
 	{ test: /^\/sample-project$/, href: '/start/first-day/', label: 'Your First Day' },
 ];
 
-// The management page (/management/, links to the GitHub boards) is unlisted (user, 2026-11-20): it has no
-// parent, so nothing in the sidebar is highlighted on it.
+// The management pages (/management/ and the tables under it) are unlisted (user, 2026-11-20): they have no
+// parent, so nothing in the sidebar is highlighted on them.
 
 export const trim = (path: string) => path.replace(/\/$/, '');
 

@@ -1,0 +1,200 @@
+---
+// A parent's dashboard (management/dashboard.mdx, Felipe 2026-11-23): one parent of a management table and every
+// row under it, read in the browser from the same CSV file as its table. The address names the file and the
+// parent: /management/dashboard/?roadmap=sign-package-maker-out-of-beta is roadmap.csv's row of that name (see
+// src/management.ts for parents, groups and slugs). It shows, top to bottom: where it sits, its tags and notes;
+// done, late, start and end; the sub-tasks by status; a timeline of their dates; the sub-tasks as a table.
+// Words are labels and fragments only; colour codes status, as the tags do.
+---
+
+<div class="ax-dash not-content">
+	<p class="ax-manage-note" role="status">Loading the dashboard…</p>
+</div>
+
+<script>
+	import {
+		load, rowElement, headerCells, nameCell, mini, dashboard, descendants, status, isDone, isLate, start, end, days, today,
+		tone, STATUSES, ISSUES, TAGS, DATES, type Row, type Table,
+	} from '../management';
+
+	const PAGES: Record<string, string> = { roadmap: 'Roadmap', work: 'Project Work', accounts: 'Account Migration' };
+	const el = <K extends keyof HTMLElementTagNameMap>(tag: K, className = '', text = '') =>
+		Object.assign(document.createElement(tag), { className, textContent: text });
+	const plural = (n: number, one: string, many = `${one}s`) => `${n} ${n === 1 ? one : many}`;
+
+	async function show(box: HTMLElement) {
+		const note = box.querySelector<HTMLElement>('.ax-manage-note')!;
+		const [key = '', wanted = ''] = [...new URLSearchParams(location.search)][0] ?? [];
+		const link = (href: string, text: string) => Object.assign(el('a', '', text), { href });
+		const home = () => link('/management/', 'Management');
+		const back = () => link(`/management/${key}/`, PAGES[key] ?? key);
+		if (!/^[a-z0-9_-]+$/.test(key) || !wanted) {
+			note.replaceChildren('No parent in the address · open one from its table on ', home());
+			return;
+		}
+		let table: Table;
+		try {
+			table = await load(`${key}.csv`);
+		} catch {
+			note.replaceChildren(`${key}.csv couldn’t be read · refresh, or back to `, back());
+			return;
+		}
+		const all = [...table.top.filter((row) => row.group), ...table.rows];
+		const parent = all.find((row) => row.slug === wanted && row.children.length) ?? all.find((row) => row.slug === wanted);
+		if (!parent) {
+			note.replaceChildren(`No row “${wanted}” in ${key}.csv · back to `, back());
+			return;
+		}
+		const under = descendants(parent);
+		const label = (row: Row) => (row.parent?.group ? row.cells[1] || row.name : row.name);
+		const cell = (row: Row, name: string) => {
+			const i = table.at(name);
+			return i >= 0 ? row.cells[i] : '';
+		};
+		document.title = `${parent.name} · Dashboard`;
+		const h1 = document.querySelector('h1#_top') ?? document.querySelector('h1');
+		if (h1) h1.textContent = parent.name;
+
+		// where it sits: Management › Roadmap › Tools · Hub · Board #8
+		const path = el('p', 'ax-dash-path');
+		path.append(home(), ' › ', back());
+		const above: Row[] = [];
+		for (let up = parent.parent; up && !up.group; up = up.parent) above.unshift(up);
+		for (const up of above) path.append(' › ', link(dashboard(table, up), up.name));
+		const facts = [cell(parent, 'category'), cell(parent, 'subcategory')].filter(Boolean);
+		if (facts.length) path.append(` › ${facts.join(' · ')}`);
+		const issue = cell(parent, 'issue').replace('#', '');
+		if (/^\d+$/.test(issue)) path.append(' · ', link(`${ISSUES}${issue}`, `Board #${issue}`));
+
+		// its own tags, who is on it, its notes
+		const head = el('div', 'ax-dash-head');
+		for (const value of [status(table, parent), cell(parent, 'priority')].filter(Boolean)) head.append(el('span', `ax-tag ${tone(value)}`.trim(), value));
+		const people = cell(parent, 'assigned to');
+		if (people) head.append(el('span', 'ax-dash-people', people.split(';').map((p) => p.trim()).join(' · ')));
+		const notes = cell(parent, 'notes');
+		if (notes) head.append(el('span', 'ax-dash-notes', notes));
+
+		// done · late · start · end
+		const done = under.filter((row) => isDone(table, row)).length;
+		const late = under.filter((row) => isLate(table, row));
+		const starts = [parent, ...under].map((row) => start(table, row)).filter(Boolean).sort();
+		const ends = [parent, ...under].map((row) => end(table, row)).filter(Boolean).sort();
+		const first = start(table, parent) || starts[0] || '';
+		const last = end(table, parent) || ends.at(-1) || '';
+		const endName = table.columns.find((column) => /^(due|target)$/i.test(column)) ?? 'Target';
+		const tiles = el('div', 'ax-dash-tiles');
+		const tile = (name: string, value: string, sub = '', className = '') => {
+			const t = el('div', `ax-dash-tile ${className}`.trim());
+			t.append(el('span', '', name), el('b', '', value));
+			if (sub) t.append(el('small', '', sub));
+			tiles.append(t);
+			return t;
+		};
+		const doneBar = mini(table, parent);
+		doneBar.lastChild?.remove(); // the tile says it already
+		tile('Done', `${done}/${under.length}`, under.length ? `${Math.round((done / under.length) * 100)}%` : 'no sub-tasks').append(doneBar);
+		tile('Late', String(late.length), late.length ? late.map(label).join(' · ') : 'none', late.length ? 'late' : '');
+		const since = first ? days(first, today) : 0;
+		tile('Start', first || '—', !first ? 'no date' : since > 0 ? `${plural(since, 'day')} in` : since === 0 ? 'today' : `in ${plural(-since, 'day')}`, 'date');
+		const left = last ? days(today, last) : 0;
+		const parentDone = isDone(table, parent) || (parent.group && done === under.length);
+		tile(endName, last || '—', !last ? 'no date' : parentDone ? 'done' : left > 0 ? `${plural(left, 'day')} left` : left === 0 ? 'today' : `${plural(-left, 'day')} late`, `date ${last && !parentDone && left < 0 ? 'late' : ''}`);
+
+		// the sub-tasks by status: one bar, a part per status in the order the work moves
+		const counts = new Map<string, number>();
+		for (const row of under) {
+			const value = status(table, row) || 'No status';
+			counts.set(value, (counts.get(value) ?? 0) + 1);
+		}
+		const order = (value: string) => (STATUSES.findIndex((s) => s.toLowerCase() === value.toLowerCase()) + 1 || STATUSES.length + 1);
+		const sorted = [...counts].sort((a, b) => order(a[0]) - order(b[0]));
+		const bar = el('div', 'ax-dash-status');
+		const stack = el('div', 'ax-dash-stack');
+		for (const [value, count] of sorted) {
+			const part = el('i', `s-${value.toLowerCase().replace(/\s+/g, '-')}`);
+			part.style.flexGrow = String(count);
+			part.title = `${count} ${value.toLowerCase()}`;
+			stack.append(part);
+		}
+		const legend = el('p', 'ax-dash-legend');
+		sorted.forEach(([value, count], i) => {
+			if (i) legend.append(' · ');
+			const key = el('span', `s-${value.toLowerCase().replace(/\s+/g, '-')}`);
+			legend.append(key, `${count} ${value.toLowerCase()}`);
+		});
+		bar.append(stack, legend);
+
+		// the timeline: a lane per sub-task with a date, from its start to its due date or target; today and the
+		// parent's own end drawn across
+		const dated = under.filter((row) => start(table, row) || end(table, row));
+		const time = el('div', 'ax-dash-time');
+		if (dated.length) {
+			const span = [...starts, ...ends, today].sort();
+			const lo = span[0];
+			const hi = span.at(-1)! > lo ? span.at(-1)! : new Date(Date.parse(lo) + 86400000).toISOString().slice(0, 10);
+			const share = (date: string) => days(lo, date) / days(lo, hi);
+			const at = (date: string) => `${share(date) * 100}%`;
+			const lanes = el('div', 'ax-dash-lanes');
+			for (const row of dated) {
+				const lane = el('div', 'ax-dash-lane');
+				lane.style.setProperty('--depth', String(row.depth - parent.depth - 1));
+				const track = el('div', 'ax-dash-track');
+				const a = start(table, row);
+				const b = end(table, row);
+				const mark = el('i', isDone(table, row) ? 'done' : isLate(table, row) ? 'late' : status(table, row).toLowerCase() === 'doing' ? 'doing' : '');
+				if (a && b && b >= a) (mark.style.left = at(a)), (mark.style.width = `calc(${at(b)} - ${at(a)})`);
+				else (mark.classList.add('point'), (mark.style.left = at(b || a)));
+				mark.title = [a && `start ${a}`, b && `${endName.toLowerCase()} ${b}`].filter(Boolean).join(' · ');
+				track.append(mark);
+				lane.append(el('span', '', label(row)), track);
+				lanes.append(lane);
+			}
+			const line = (date: string, className: string, text: string) => {
+				// near the right end, the label goes on the line's left
+				const l = el('div', `ax-dash-line ${className}${share(date) > 0.85 ? ' flip' : ''}`);
+				l.style.setProperty('--at', String(share(date)));
+				l.append(el('span', '', text));
+				lanes.append(l);
+			};
+			line(today, 'today', 'today');
+			if (last && last !== today) line(last, 'end', endName.toLowerCase());
+			const axis = el('div', 'ax-dash-axis');
+			axis.append(el('span'), el('span', '', lo), el('span', '', hi));
+			time.append(el('p', 'ax-eyebrow', 'Timeline'), lanes, axis);
+		}
+		const undated = under.length - dated.length;
+		if (dated.length && undated) time.append(el('p', 'ax-dash-legend', `${plural(undated, 'sub-task')} without dates`));
+
+		// the sub-tasks themselves, nested as in the table, a project's own name left out
+		const list = el('div', 'ax-chart');
+		// left out: a project's own name, a column every sub-task leaves empty, and a plain column (not a tag or a
+		// date) every sub-task shares with the parent, such as Category
+		const hide = new Set<number>(parent.group ? [0] : []);
+		table.keys.forEach((key, i) => {
+			if (!i) return;
+			const empty = under.every((row) => !row.cells[i]);
+			const shared = !parent.group && !TAGS.test(key) && !DATES.test(key) && under.every((row) => row.cells[i] === parent.cells[i]);
+			if (empty || shared) hide.add(i);
+		});
+		const scroll = el('div', 'ax-chart-scroll');
+		const t = el('table');
+		const headRow = el('tr');
+		headRow.append(...headerCells(table, hide));
+		t.append(el('thead'), el('tbody'));
+		t.tHead!.append(headRow);
+		for (const row of under) {
+			t.tBodies[0].append(
+				rowElement(table, row, (td) => td.append(nameCell(table, row, row.name)), row.depth - parent.depth - 1, hide),
+			);
+		}
+		scroll.append(t);
+		list.append(scroll);
+
+		box.append(path, head, tiles);
+		if (under.length) box.append(bar, time, el('p', 'ax-eyebrow', `Sub-tasks · ${under.length}`), list);
+		else box.append(el('p', 'ax-manage-note', 'No sub-tasks yet · add rows with this Item as their Parent'));
+		note.remove();
+	}
+
+	for (const box of document.querySelectorAll<HTMLElement>('.ax-dash')) show(box);
+</script>

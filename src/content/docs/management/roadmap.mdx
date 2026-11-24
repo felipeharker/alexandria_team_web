@@ -1,0 +1,34 @@
+---
+title: Development and Project Roadmap
+description: What's being built and what's coming, with its dates.
+# unlisted: in no menu and out of the hub's search. The table wants the width, so no table of contents.
+pagefind: false
+tableOfContents: false
+---
+
+import ManagementTable from '../../../components/ManagementTable.astro';
+
+{/* One of the management pages (see management/index.mdx): the table is the Alexandria · Development Roadmap
+    board (Project 14), read through the gate (server/boards.mjs). Its fields: alexandria_management,
+    planning/README.md. A CSV synced from the board until 2026-11-24. */}
+
+[Management](/management/) › What's being built and what's coming, with its dates · [Edit on GitHub ›](https://github.com/users/felipeharker/projects/14)
+
+<ManagementTable file="roadmap.csv" done={{ column: 'Status', is: 'Done', label: 'done' }} tally="Status" />
+
+## The Columns
+
+From the [Alexandria · Development Roadmap](https://github.com/users/felipeharker/projects/14) board · one row per issue · edit it there · shows here within two minutes.
+
+| Column | On the Board |
+|---|---|
+| Item | The issue's title: `Subject: what changes`, such as Site Plan: export to PDF. |
+| Category | `Tools`, `R&D`, `Presentations`, `Standards` or `Training`. |
+| Subcategory | The narrower part inside it, such as `Rhino`, `Grasshopper`, `Web Tools` or `Hub` under Tools. |
+| Status | `Inbox`, `Later`, `Next`, `Doing`, `Waiting` or `Done`. |
+| Priority | `Urgent`, `High`, `Normal` or `Low`. |
+| Start | The date work starts or started. |
+| Target | A real deadline or a commitment, not a guess · a date that has passed on an item that isn't `Done` is marked. |
+| Parent | The parent issue · the row folds under it, and the parent gets a dashboard. |
+| Issue | The issue, as `#8` · links to it. |
+| Notes | **Notes**: what it depends on, what's still open. |

@@ -1,0 +1,28 @@
+---
+title: Account Migration
+description: Each service Alexandria runs on, and whether its account has moved to the R&D managed team.
+# unlisted: in no menu and out of the hub's search. The table wants the width, so no table of contents.
+pagefind: false
+tableOfContents: false
+---
+
+import ManagementTable from '../../../components/ManagementTable.astro';
+
+{/* One of the management pages (see management/index.mdx): the table is the Alexandria · Accounts board
+    (Project 18), read through the gate (server/boards.mjs). A CSV until 2026-11-24. */}
+
+[Management](/management/) › Moving each service to the R&D managed team · [Edit on GitHub ›](https://github.com/users/felipeharker/projects/18)
+
+<ManagementTable file="accounts.csv" done={{ column: 'Status', is: 'Migrated', label: 'migrated' }} />
+
+## The Columns
+
+From the [Alexandria · Accounts](https://github.com/users/felipeharker/projects/18) board · one item per service · edit it there · shows here within two minutes.
+
+| Column | On the Board |
+|---|---|
+| Service | The item's title, such as GitHub. |
+| Description | What it is and what Alexandria uses it for. |
+| Current account | **Account**: `Personal` or `R&D managed team`. |
+| Status | `Not migrated`, `Partial` or `Migrated`. The count above the table counts `Migrated`. |
+| Notes | The plan, the date it moved, what still needs linking again. |
