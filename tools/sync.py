@@ -27,7 +27,7 @@ one (or ALEXANDRIA_PHOENIX) and the shared alexandria_packages folder, and write
   tools/make_details.py in Rhino), each PDF turned into an SVG with PyMuPDF. The page's renders and Rhino
   model in that folder are made here, by tools/render_signs.py and tools/sign_types/make_model.py.
 - public/downloads/claude-connectors/alexandria_claude_connectors.zip: alexandria_phoenix's
-  claude_connectors/ folder, the installer of the Claude connectors (MCP) for Rhino and CorelDRAW,
+  claude_connectors/ folder, the installer of the Claude connectors (MCP) for Rhino, CorelDRAW and SquareCoil,
   for the Downloads page. The same bytes for the same files, so it changes only when they do.
 - release/alexandria_packages.zip: the shared folder, zipped as it is (not committed).
 
@@ -57,7 +57,7 @@ TEMPLATES = [  # hub file, source
 REPO = "felipeharker/alexandria_team_web"  # where the zip is published
 ASSET = "alexandria_packages.zip"
 SKIP = {"desktop.ini", "thumbs.db", ".ds_store"}
-CONNECTORS = "claude_connectors"  # in alexandria_phoenix: the Claude connectors' installer and the CorelDRAW server
+CONNECTORS = "claude_connectors"  # in alexandria_phoenix: the Claude connectors' installer and the CorelDRAW and SquareCoil servers
 CONNECTORS_ZIP = "public/downloads/claude-connectors/alexandria_claude_connectors.zip"
 CONNECTORS_SKIP = {".venv", "logs", "__pycache__"}  # what running the CorelDRAW server from the repo leaves behind
 

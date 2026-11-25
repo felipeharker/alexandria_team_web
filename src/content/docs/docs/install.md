@@ -28,7 +28,7 @@ It installs both packages in Rhino 8, sets Rhino to keep them up to date, then s
 - The `DM-…` display modes in every viewport's display menu.
 - The **Alexandria** template in *File > New*.
 - The **Alexandria Phoenix** tab in Grasshopper.
-- The [Claude connectors](#claude-connectors) for Rhino and CorelDRAW. A window shows what it installs the first time.
+- The [Claude connectors](#claude-connectors) for Rhino, CorelDRAW and SquareCoil. A window shows what it installs the first time, and asks for your SquareCoil login.
 
 It needs no administrator rights. Run it again whenever something looks wrong: it only does what's missing.
 
@@ -84,20 +84,22 @@ In the Package Manager's **Installed** tab, select the package, click **Uninstal
 
 ## Claude Connectors
 
-A connector lets Claude work in a program on your PC: the open Rhino model, or the open CorelDRAW document. **Alexandria Setup** installs both, for Claude Desktop and Claude Code, with nothing to do by hand.
+A connector lets Claude work in a program or system: the open Rhino model, the open CorelDRAW document, or Aria's design requests in SquareCoil. **Alexandria Setup** installs them for Claude Desktop and Claude Code. **Install Connectors**, beside it on the toolbar, lists them with where each stands, so you can pick which to install or update, or click **Install / Update All**.
 
 | Connector | In Claude it's | Installs |
 |---|---|---|
 | Rhino | `rhino-mcp-platform` | McNeel's **Rhino-MCP-Platform** package. Needs Rhino 8.19 or later |
 | CorelDRAW | `coreldraw-live` | A CorelDRAW server, about 150 MB. Only on a PC with CorelDRAW |
+| SquareCoil | `squarecoil` | A small server that reads the design request lists (In Progress, Next Job, On Hold), read-only. Asks for your own SquareCoil login once |
 
-- **After the first setup,** quit Claude Desktop from its tray icon and open it again, and restart Rhino. The two show under **Settings › Developer**.
+- **After the first setup,** quit Claude Desktop from its tray icon and open it again, and restart Rhino. They show under **Settings › Developer**.
 - **Rhino.** Ask Claude to work in Rhino. It opens one if none is running.
 - **CorelDRAW.** Open the document first. Claude never starts CorelDRAW by itself.
+- **SquareCoil.** Ask Claude what's due, what's assigned to someone, or what's overdue. Everyone signs in with their own SquareCoil login, which goes to Windows Credential Manager, never a file. Leave the username empty to skip it; **Install Connectors** asks again. If your SquareCoil password changes, run `python squarecoil.py login` in `%USERPROFILE%\.alexandria\claude_connectors\squarecoil`.
 - **No Rhino on the PC?** Double-click **Install Claude Connectors** in the `claude_connectors` folder of `alexandria_packages`, or get it from the hub's Downloads page.
 - **Your Claude settings are safe.** Setup backs the settings file up and leaves connectors you set up yourself alone.
 - **Something went wrong?** See `install.log` in `%USERPROFILE%\.alexandria\claude_connectors`.
-- **To remove them,** open PowerShell in the `claude_connectors` folder and run `powershell -ExecutionPolicy Bypass -File install.ps1 -Uninstall`.
+- **To remove them,** open PowerShell in the `claude_connectors` folder and run `powershell -ExecutionPolicy Bypass -File install.ps1 -Uninstall`. It takes the SquareCoil login out of Credential Manager too.
 
 ## Claude in Rhino
 
