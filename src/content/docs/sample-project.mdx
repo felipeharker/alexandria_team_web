@@ -9,8 +9,6 @@ import project from '../../data/sample-project.json';
 
 {/* tools/sync.py copies the previews and the PDF from alexandria_testing/alexandria_sample_project/Alexandria/web (its make_web.py makes them). */}
 
-The office's test project: one halo-lit sign, taken from an empty model to a finished design package with the Alexandria tools alone.
-
 <LinkButton href={`/sample-project/${project.package}`} icon="document" iconPlacement="start">Open the Design Package</LinkButton>
 
 <SampleProject part="renders" />
@@ -27,8 +25,6 @@ The office's test project: one halo-lit sign, taken from an empty model to a fin
 
 ## How It Was Made
 
-In the order the [Rhino Tools Quick Guide](/rhino/#order) gives:
-
 1. **Create Project** copied the project template and saved the model.
 2. **Populate Model** added the layers, styles, wall, ground and scale figure. The letters were modeled on the wall.
 3. **Set Light** made the halo, and **Set Material** gave the letters their material.
@@ -39,7 +35,5 @@ In the order the [Rhino Tools Quick Guide](/rhino/#order) gives:
 The Layout Manager is off the team's toolbar until it's ready, so only Felipe's Rhino has it for now.
 
 ## The Design Package
-
-{project.pages.length} pages at {project.page_size}, exported as <code>{project.package}</code>. Click a page to open it in the PDF.
 
 <SampleProject part="pages" />

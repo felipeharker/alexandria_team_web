@@ -9,8 +9,6 @@ import EtchSpecimen from '../../../../components/EtchSpecimen.astro';
 {/* The font is made in alexandria_phoenix (etch_font/, by make_font.py). The files in public/downloads/etch-font/ are
     copies of that folder's: copy them again when the font changes. The drawing below reads the copied JSON. */}
 
-The office's single-line font for etching part labels, such as `A1`. Every letter is one line, so a laser or router follows it once.
-
 <EtchSpecimen rows={['ABCDEFGHIJKLM', 'NOPQRSTUVWXYZ', '0123456789', '- _ . , : ; / # + = * ( ) [ ] & %', 'P1-1  A12  B-07']} label="The Alexandria Etch font: the capitals A to Z, the numbers 0 to 9 with a slashed zero, the punctuation, and three sample labels, P1-1, A12 and B-07" />
 
 <LinkButton href="/downloads/etch-font/alexandria_etch_font.zip" download icon="download" iconPlacement="start">Download the Font</LinkButton>
@@ -35,9 +33,3 @@ The office's single-line font for etching part labels, such as `A1`. Every lette
 | [etch_text.py](/downloads/etch-font/etch_text.py) | The Rhino 8 script. Keep `alexandria_etch.json` beside it. |
 | [alexandria_etch.json](/downloads/etch-font/alexandria_etch.json) | The strokes the script reads. |
 | [alexandria_etch_specimen.pdf](/downloads/etch-font/alexandria_etch_specimen.pdf) | The specimen sheet. |
-
-## Good to Know
-
-- **Never fill it.** Give the lines a hairline outline and no fill.
-- **Don't cut from the TrueType font.** It traces each stroke out and back, so a machine would pass twice. Cut from Etch Text's files or the Rhino script's curves.
-- **The height is the capitals'.** Lower case draws as capitals.

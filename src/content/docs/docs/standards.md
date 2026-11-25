@@ -5,8 +5,6 @@ description: "How components, definitions, drawings, projects and the toolbar ar
 
 <!-- Written by tools/sync.py from alexandria_phoenix/STANDARDS.md. Edit it there and run the sync, not this page. -->
 
-How components and definitions are written. Keep it this way unless the standard itself changes.
-
 ## Components
 
 **One file per component**, `src/<subcategory>/<snake_name>.py`. The folder name is the ribbon subcategory (`src/grid` → *Grid*).

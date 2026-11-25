@@ -1,5 +1,5 @@
 ---
-// The top of a supplier page (wiki/suppliers/*.mdx): what the supplier is in a sentence, three facts, and the
+// The top of a supplier page (wiki/suppliers/*.mdx): three facts, and the
 // office's own sheet for it as a PDF. Everything comes from src/suppliers/sheets.json.
 import { LinkButton } from '@astrojs/starlight/components';
 import sheets from '../suppliers/sheets.json';
@@ -13,7 +13,6 @@ const sheet = sheets[supplier];
 ---
 
 <div class="ax-supplier not-content">
-	<p class="ax-supplier-what">{sheet.what}</p>
 	<dl class="ax-supplier-facts">
 		<div><dt>We Use It For</dt><dd>{sheet.use}</dd></div>
 		<div><dt>A Code Looks Like</dt><dd><code>{sheet.code}</code></dd></div>

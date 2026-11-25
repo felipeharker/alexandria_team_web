@@ -1188,11 +1188,7 @@ h1#_top,
 	justify-content: space-between;
 	gap: 12px 24px;
 }
-.qg-page > header.ax-head .qg-lede {
-	margin: 0;
-	font-size: 16px;
-}
-/* the way into the tool, beside the guide's one line */
+/* the way into the tool */
 .qg-page .ax-open {
 	flex: none;
 	padding: 8px 16px;
@@ -1699,11 +1695,6 @@ h1#_top,
    SupplierSection.astro) */
 .ax-supplier {
 	margin-bottom: 2rem;
-}
-.ax-supplier-what {
-	margin: 0 0 1rem;
-	font-size: var(--sl-text-lg);
-	color: var(--sl-color-gray-2);
 }
 .ax-supplier-facts {
 	display: grid;

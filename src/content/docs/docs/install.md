@@ -5,8 +5,6 @@ description: "Install the two Alexandria packages in Rhino 8, keep them updated,
 
 <!-- Written by tools/sync.py from alexandria_phoenix/INSTALL.md. Edit it there and run the sync, not this page. -->
 
-Two packages for Rhino 8 on Windows, installed from Rhino's Package Manager.
-
 | Package | Adds |
 |---|---|
 | **Alexandria Rhino Tools** | The **Alexandria Tools** toolbar and the four `DM-…` display modes |

@@ -12,7 +12,6 @@ version: '2.21'
 A new button beside **Alexandria Setup**. It lists the Claude connectors, Rhino, CorelDRAW and SquareCoil, with where each stands on your PC.
 
 - **Tick the ones to install or update,** or click **Install / Update All**.
-- **A window opens** and shows what it installs.
 - **Afterwards,** quit Claude Desktop from its tray icon and open it again.
 
 ### SquareCoil
