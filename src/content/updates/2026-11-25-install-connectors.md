@@ -22,4 +22,4 @@ Claude can now read Aria's design requests: In Progress, Next Job and On Hold. A
 - **Read-only.** Claude changes nothing in SquareCoil.
 - **Skipped it?** Leave the username empty to skip; **Install Connectors** asks again.
 
-[Claude Connectors](/docs/install/#claude-connectors) has the details.
+[Claude Connectors](/docs/install/#connectors-for-claude-and-grok) has the details.

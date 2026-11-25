@@ -16,4 +16,4 @@ Claude could read the design request lists. Now it reads any project.
 
 Still read-only, and still your own login. SquareCoil's activity log shows the project tabs Claude opened under your name, the same as when you open them yourself.
 
-[Claude Connectors](/docs/install/#claude-connectors) has the details.
+[Claude Connectors](/docs/install/#connectors-for-claude-and-grok) has the details.

@@ -27,7 +27,7 @@ one (or ALEXANDRIA_PHOENIX) and the shared alexandria_packages folder, and write
   tools/make_details.py in Rhino), each PDF turned into an SVG with PyMuPDF. The page's renders and Rhino
   model in that folder are made here, by tools/render_signs.py and tools/sign_types/make_model.py.
 - public/downloads/claude-connectors/alexandria_claude_connectors.zip: alexandria_phoenix's
-  claude_connectors/ folder, the installer of the Claude connectors (MCP) for Rhino, CorelDRAW and SquareCoil,
+  claude_connectors/ folder, the installer of the servers Alexandria's plugins start in Claude and Grok (MCP) for Rhino, CorelDRAW and SquareCoil,
   for the Downloads page. The same bytes for the same files, so it changes only when they do.
 - public/install/Install Alexandria Tools.cmd: alexandria_phoenix's installer/ launcher, for the unlisted
   /install/ page. Downloaded on its own, it runs the installer in the shared folder.
@@ -59,7 +59,7 @@ TEMPLATES = [  # hub file, source
 REPO = "felipeharker/alexandria_team_web"  # where the zip is published
 ASSET = "alexandria_packages.zip"
 SKIP = {"desktop.ini", "thumbs.db", ".ds_store"}
-CONNECTORS = "claude_connectors"  # in alexandria_phoenix: the Claude connectors' installer and the CorelDRAW and SquareCoil servers
+CONNECTORS = "claude_connectors"  # in alexandria_phoenix: the connectors' installer and the CorelDRAW and SquareCoil servers
 CONNECTORS_ZIP = "public/downloads/claude-connectors/alexandria_claude_connectors.zip"
 LAUNCHER = "installer/Install Alexandria Tools.cmd"  # in alexandria_phoenix; on its own it runs the shared folder's installer
 LAUNCHER_COPY = "public/install/Install Alexandria Tools.cmd"  # the unlisted /install/ page's download

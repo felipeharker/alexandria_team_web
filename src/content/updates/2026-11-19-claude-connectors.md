@@ -16,7 +16,7 @@ A connector lets Claude work in a program on your PC: the open Rhino model, or t
 - **CorelDRAW:** open your document first. Claude never starts CorelDRAW by itself.
 - **Afterwards,** quit Claude Desktop from its tray icon and open it again.
 
-[Claude Connectors](/docs/install/#claude-connectors) has the details.
+[Claude Connectors](/docs/install/#connectors-for-claude-and-grok) has the details.
 
 ### Without Rhino
 

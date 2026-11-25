@@ -7,9 +7,10 @@ tableOfContents: false
 import { LinkButton, Steps } from '@astrojs/starlight/components';
 
 {/* Written by hand (user, 2026-11-25), like office-tools.mdx: the three connectors the team installs, for both
-    services. The installer's own detail is install.md's Claude Connectors section, which tools/sync.py writes. The
-    connectors are edited in alexandria_management's agent_connectors/, whose README is the map; the Grok links are the
-    team marketplace's. */}
+    services. Both get them as Alexandria's plugins, which only start the servers Alexandria Setup puts on the PC; since
+    2.22 the installer writes nothing into Claude's settings. The installer's own detail is install.md's Connectors for
+    Claude and Grok section, which tools/sync.py writes. The connectors are edited in alexandria_management's
+    agent_connectors/, whose README is the map; the Grok links are the team marketplace's. */}
 
 | Connector | Reaches | Try |
 |---|---|---|
@@ -21,17 +22,17 @@ import { LinkButton, Steps } from '@astrojs/starlight/components';
 
 <Steps>
 
-1. **Alexandria Setup** on Rhino's Alexandria Tools tab installs all three. **Install Connectors**, beside it, installs or updates one at a time. No Rhino on the PC: [Claude connectors](/wiki/downloads/#claude-connectors) is the same installer.
+1. **Alexandria Setup** on Rhino's Alexandria Tools tab installs what all three run on your PC. **Install Connectors**, beside it, installs or updates one at a time. No Rhino on the PC: [Claude connectors](/wiki/downloads/#claude-connectors) is the same installer.
 
 2. Type your own SquareCoil login when it asks, once.
 
-3. Quit Claude Desktop from its tray icon and open it again.
+3. Set up before 2.22? Each connector may show twice in Claude. Run **Install Connectors** once, then quit Claude Desktop from its tray icon and open it again.
 
 </Steps>
 
 ## Claude
 
-Ready. The three are on for every team account, in Claude Desktop and Claude Code.
+Ready. The three are on for every team account, in Claude Desktop and Claude Code, as plugins. Nothing to add.
 
 ## Grok
 
