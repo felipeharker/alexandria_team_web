@@ -43,7 +43,7 @@ import { Content as Claude } from '../../../generated/troubleshooting-claude.md'
 
 ## Updating
 
-- **A new release hasn't arrived.** Restart Rhino twice. Without automatic updates, run `PackageManager`, open **Updates** and click **Update** on each Alexandria package.
+- **A new release hasn't arrived.** Restart Rhino twice. Still old? Double-click **Install Alexandria Tools** in `alexandria_packages`: it updates the packages and turns automatic updates back on.
 - **New buttons are missing.** Click **Alexandria Setup**. Close any other Rhino windows first.
 - **"Input parameter chunk is missing".** Save the definition again.
 
@@ -51,8 +51,8 @@ Your version is on the Package Manager's **Installed** tab. The newest is on [Do
 
 ## Installing from the Zip
 
-- **The packages don't show up in the search.** The sources value needs the full path of the folder that holds the `.yak` files.
-- **An update never arrives.** Zip installs don't update themselves. [Download](/start/download/) the new zip and replace the folder's contents.
+- **The installer can't find the packages.** Run **Install Alexandria Tools** from the unzipped folder, not from inside the zip.
+- **An update never arrives.** [Download](/start/download/) the new zip and unzip it over the same folder; Rhino installs it as it starts. Installed some other way? Run **Install Alexandria Tools** once from that folder.
 
 ## Claude in Rhino
 

@@ -13,7 +13,9 @@ import ReleaseCard from '../../../components/ReleaseCard.astro';
 <Tabs>
 <TabItem label="From the Office Drive">
 
-**Best** · updates itself with each release · [Install and Update](/docs/install/)
+**Best** · updates itself with each release
+
+Double-click **Install Alexandria Tools** in `alexandria_packages` · close Rhino when it asks · [Install and Update](/docs/install/)
 
 </TabItem>
 <TabItem label="From the Zip">
@@ -23,13 +25,11 @@ Off the office drive
 <Steps>
 
 1. **Unzip** somewhere it can stay · `Documents\alexandria_packages`
-2. **Tools › Options › Advanced** · `PackageManager.Sources` · set to `https://yak.rhino3d.com;` + the unzipped folder's full path
-3. **`PackageManager`** · search `Alexandria` · install both · restart Rhino
-4. **`AlexandriaSetup`** · Enter
+2. **Install Alexandria Tools** · double-click it in that folder · close Rhino when it asks
 
 </Steps>
 
-To update · new zip · replace the folder · restart Rhino
+To update · unzip the new zip over the folder · Rhino installs it as it starts
 
 </TabItem>
 </Tabs>
@@ -39,6 +39,8 @@ To update · new zip · replace the folder · restart Rhino
 <FileTree>
 
 - alexandria_packages/
+  - Install Alexandria Tools.cmd installs, repairs, turns on updates
+  - installer/ what it runs
   - alexandria rhino tools-….yak the Rhino toolbar
   - alexandria grasshopper tools-….yak the Grasshopper tab
   - alexandria_tools_quick_guide.html also .pdf

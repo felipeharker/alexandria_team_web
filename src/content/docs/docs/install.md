@@ -12,39 +12,17 @@ Two packages for Rhino 8 on Windows, installed from Rhino's Package Manager.
 | **Alexandria Rhino Tools** | The **Alexandria Tools** toolbar and the four `DM-…` display modes |
 | **Alexandria Grasshopper Tools** | Grasshopper's **Alexandria Phoenix** tab |
 
-They install from the office's packages folder, so you need the office drive:
+## Install
 
-```
-\\aria-design\Aria Projects\ARIA LLC\12_Aria_Architectural Design Standards Files\alexandria_packages
-```
-
-## 1. Add the Alexandria Folder to the Package Manager
-
-Once per computer.
-
-1. Open the folder above in File Explorer to check you can reach it. If Windows asks, sign in and tick **Remember my credentials**.
-2. In Rhino, open **Tools › Options › Advanced** and search for `PackageManager.Sources`.
-3. Double-click the value and replace all of it with:
+1. Open the office's packages folder in File Explorer. If Windows asks, sign in and tick **Remember my credentials**.
 
    ```
-   https://yak.rhino3d.com;\\aria-design\Aria Projects\ARIA LLC\12_Aria_Architectural Design Standards Files\alexandria_packages
+   \\aria-design\Aria Projects\ARIA LLC\12_Aria_Architectural Design Standards Files\alexandria_packages
    ```
 
-   If the old value listed anything besides `https://yak.rhino3d.com`, add it at the end after another `;`.
-4. Click **OK**.
+2. Double-click **Install Alexandria Tools**. Close Rhino when it asks.
 
-## 2. Install the Packages
-
-1. Run `PackageManager` and search for `Alexandria`.
-2. Install **Alexandria Rhino Tools** and **Alexandria Grasshopper Tools**.
-3. Tick **Automatically update packages when Rhino starts**.
-4. Close every Rhino window and start Rhino again.
-
-## 3. Run Alexandria Setup
-
-Type `AlexandriaSetup` and press Enter. Once, after installing.
-
-You now have:
+It installs both packages in Rhino 8, sets Rhino to keep them up to date, then starts Rhino and runs **Alexandria Setup**. You now have:
 
 - The **Alexandria Tools** tab, after **Standard**. Drag it anywhere; it stays there.
 - The `DM-…` display modes in every viewport's display menu.
@@ -52,44 +30,44 @@ You now have:
 - The **Alexandria Phoenix** tab in Grasshopper.
 - The [Claude connectors](#claude-connectors) for Rhino and CorelDRAW. A window shows what it installs the first time.
 
-## The Buttons
+It needs no administrator rights. Run it again whenever something looks wrong: it only does what's missing.
 
-The quick guide shows how to use each one. The render buttons need V-Ray for Rhino.
+## One Copy, from the Package Manager
 
-| Button | Command | Does |
-|---|---|---|
-| Alexandria Setup | `AlexandriaSetup`, right click `AlexandriaSetPanels` | Adds the tab, the display modes, the template and the Claude connectors. Right click arranges the right-hand panels |
-| Create Project | `AlexandriaCreateProject` | Copies the project template to a folder you pick and saves the model there as `<project>_model_v1.3dm` |
-| Populate Model | `AlexandriaPopulateModel` | Sets inches and tolerances, and adds the standard layers, annotation styles, wall, ground, scale figure and world light |
-| Set Material | `AlexandriaSetMaterial` | Gives each sublayer of a layer a plaster material in its colour |
-| Set Light | `AlexandriaSetLight` | Makes the selected surfaces or solids a standard V-Ray light, on `DESIGN::ILLUMS` |
-| Apply Day Settings | `AlexandriaDayRender` | Sets V-Ray to the day sky, sign lights off |
-| Apply Night Settings | `AlexandriaNightRender` | Sets V-Ray to the night sky, sign lights on |
-| Render and Save | `AlexandriaRender` | Renders the active view, then asks where to save the image |
-| Standard Dimension | `AlexandriaDimension`, right click `AlexandriaLeader` | A dimension in the Alexandria style. Right click draws a leader with a dot |
-| Populate Detail | `AlexandriaPopulateDetail` | Adds a sign detail from the library where you click |
-| Save as Rhino 7 | `AlexandriaSaveAsR7` | Saves a Rhino 7 copy beside the model as `<name>_r7.3dm` |
-| Save as Rhino 8 | `AlexandriaSaveAsR8` | Saves a Rhino 8 copy beside the model as `<name>_r8.3dm` |
+The installer leaves exactly one copy of each package, the Package Manager's, whichever way the tools got onto the PC. It takes away:
 
-The drawing standard behind them is in [STANDARDS.md](/docs/standards/#drawings).
+| Found | Why it goes |
+|---|---|
+| The old **Alexandria Phoenix** package | Grasshopper finds every component twice |
+| A dragged-in `Alexandria Rhino Tools.rhp` | Rhino loads that file instead of the package, and it never updates |
+| A dragged-in Alexandria `.gha` in Grasshopper's Libraries folder | Components twice, never updated |
+| The old drag-in toolbar, `alexandria_tools.rui` | Replaced by the package's toolbar tab |
+
+Nothing is deleted: files go to `%USERPROFILE%\.alexandria\rhino_tools\backup`, with the log, `install.log`, beside it. A package installed for all users, in `ProgramData`, needs an administrator to uninstall; the installer says so.
 
 ## Updating
 
-- **With automatic updates on,** Rhino installs a new version as it starts. Restart once more to load it.
-- **Without them,** run `PackageManager`, open **Updates**, click **Update** on each Alexandria package and restart Rhino.
-- **After any update,** click **Alexandria Setup** once. Close other Rhino windows first: the last one closed decides how the toolbar opens next.
+Rhino updates the packages itself. About 10 seconds after it starts, it installs a newer release from the packages folder; the next start loads it. Your version is on the Package Manager's **Installed** tab.
 
-Your version is on the Package Manager's **Installed** tab.
+- **After an update,** click **Alexandria Setup** once if a button or display mode changed. Close other Rhino windows first: the last one closed decides how the toolbar opens next.
+- **Every package updates this way,** not only Alexandria's: that's the Package Manager's *Automatically update packages when Rhino starts*, on unless someone unticked it. The installer ticks it again.
+- **Off the office drive,** Rhino can't see the folder, so the update waits until you're back.
 
 Coming from 1.6 or earlier, type `AlexandriaSetup` once to bring the toolbar back as a tab. A definition that reports "Input parameter chunk is missing" needs saving once more.
 
-## Moving from the Old Install
+## Installing by Hand
 
-For a computer that still has the old **Alexandria Phoenix** package and the dragged-in toolbar.
+If the installer can't run:
 
-1. In the Package Manager's **Installed** tab, uninstall **Alexandria Phoenix**. Otherwise Grasshopper finds every component twice.
-2. Install both packages as above and restart Rhino.
-3. Click **Alexandria Setup**.
+1. In Rhino, open **Tools › Options › Advanced**, search for `PackageManager.Sources`, and set it to:
+
+   ```
+   https://yak.rhino3d.com;\\aria-design\Aria Projects\ARIA LLC\12_Aria_Architectural Design Standards Files\alexandria_packages
+   ```
+
+   If the old value listed anything besides `https://yak.rhino3d.com`, add it at the end after another `;`.
+2. Run `PackageManager`, search for `Alexandria` and install **Alexandria Rhino Tools** and **Alexandria Grasshopper Tools**. In the Package Manager, uninstall **Alexandria Phoenix** if it's there.
+3. Tick **Automatically update packages when Rhino starts**, restart Rhino and type `AlexandriaSetup`.
 
 ## Uninstalling
 
@@ -97,11 +75,12 @@ In the Package Manager's **Installed** tab, select the package, click **Uninstal
 
 ## If Something's Missing
 
-- **The packages don't show up in the search.** Check that File Explorer opens the folder, and that the sources value matches step 1 exactly.
+- **Anything at all.** Double-click **Install Alexandria Tools** again: it finds what's missing or doubled and puts it right.
+- **The installer can't find the packages.** Open the folder in File Explorer first, and sign in if Windows asks.
 - **The toolbar doesn't appear.** Type `AlexandriaSetup`. If it's still hidden, run `Toolbar`, pick the **Alexandria Tools** file and tick **Alexandria Tools**.
 - **The toolbar moved back.** Dock it in the Rhino window you close last.
 - **The right-hand panels look different.** Right click **Alexandria Setup**. Panels it closes reopen from **Panels** in the menu.
-- **An `Alexandria…` command is unknown.** Install Alexandria Rhino Tools, then restart Rhino.
+- **An `Alexandria…` command is unknown.** Run the installer, then restart Rhino.
 
 ## Claude Connectors
 

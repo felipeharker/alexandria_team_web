@@ -54,7 +54,7 @@ Components that do the same job share the same inputs and outputs: any grid feed
 
 ## Install
 
-Two packages, installed from the Package Manager of Rhino 8 out of the office's shared Alexandria packages folder. **[INSTALL.md](/docs/install/)** covers installing, updating and moving from the old install.
+Two packages for Rhino 8, installed from the Package Manager out of the office's shared Alexandria packages folder. Double-click **Install Alexandria Tools** there: it installs both, takes away any other copy (the old package, a dragged-in plug-in or toolbar), makes sure Rhino updates them from that folder and runs Alexandria Setup. Run it again to repair an install. **[INSTALL.md](/docs/install/)** covers installing, updating and installing by hand.
 
 | Package | Adds |
 |---|---|
@@ -132,6 +132,7 @@ icons/               24 px component icons
 toolbar/             one Python 3 script per Alexandria Tools button, its icons and the toolbar file
 dev_tools/           the private Alexandria Dev tab: the Standards Manager, and the Layout and Fabrication Managers while they're off the toolbar
 claude_connectors/   the Claude connectors (MCP) for Rhino and CorelDRAW: the installer Alexandria Setup runs, and the CorelDRAW server it installs
+installer/           Install Alexandria Tools: installs or repairs both packages on a PC so Rhino updates them from the shared folder
 standards/           the Rhino files the tools draw from: layers, annotation styles, render assets, sign details and layouts (.3dm), the Rhino template made from them, and the DM display modes (.ini)
 tools/build.py       compiles src/ and toolbar/ into the two packages and installs them
 tools/make_icons.py  draws the icon set

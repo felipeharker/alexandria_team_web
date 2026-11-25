@@ -11,6 +11,7 @@
     "AlexandriaEtch.ttf",
     "INSTALL.md",
     "INSTALL.pdf",
+    "Install Alexandria Tools.cmd",
     "README.md",
     "README.pdf",
     "STANDARDS.md",
@@ -23,6 +24,7 @@
     "alexandria_tools_quick_guide.html",
     "alexandria_tools_quick_guide.pdf",
     "claude_connectors/",
+    "installer/",
     "project_template/"
   ]
 }
