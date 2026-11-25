@@ -1,6 +1,6 @@
 ---
 title: The Connectors Come from the Plugins
-date: 2026-11-25T18:00
+date: 2026-11-25T16:40
 area: Rhino and Grasshopper
 version: '2.22'
 ---
