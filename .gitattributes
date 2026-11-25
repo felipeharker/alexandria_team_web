@@ -1,0 +1,2 @@
+# A .cmd keeps the CRLF it was written with: Render checks out on Linux, and cmd wants CRLF
+*.cmd -text

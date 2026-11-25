@@ -23,8 +23,8 @@ export default defineConfig({
 	},
 	integrations: [
 		// Starlight would add the sitemap itself; it's added here to leave the unlisted pages out of it: the
-		// management pages and the shelf.
-		sitemap({ filter: (page) => !/^\/(management|shelf)\//.test(new URL(page).pathname) }),
+		// management pages, the shelf and the installer's download page.
+		sitemap({ filter: (page) => !/^\/(management|shelf|install)\//.test(new URL(page).pathname) }),
 		starlight({
 			title: 'Alexandria',
 			description: 'Tools, guides and standards for Alexandria: the Rhino and Grasshopper tools and the office tools.',
@@ -55,7 +55,8 @@ export default defineConfig({
 			// Not in the sidebar on purpose (user, 2026-11-20): the management pages, src/content/docs/management/, which
 			// are unlisted. They are out of the search (`pagefind: false` in each) and the sitemap (above) too, and
 			// nothing links to them. The shelf (user, 2026-11-23), src/content/docs/shelf/, is unlisted the same way: the
-			// tools taken off the site until they're ready, and their guides.
+			// tools taken off the site until they're ready, and their guides. So is /install/ (user, 2026-11-25),
+			// src/content/docs/install.mdx, where Install Alexandria Tools downloads on its own.
 			sidebar: [
 				{
 					label: 'Starting Out',

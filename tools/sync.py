@@ -29,6 +29,8 @@ one (or ALEXANDRIA_PHOENIX) and the shared alexandria_packages folder, and write
 - public/downloads/claude-connectors/alexandria_claude_connectors.zip: alexandria_phoenix's
   claude_connectors/ folder, the installer of the Claude connectors (MCP) for Rhino, CorelDRAW and SquareCoil,
   for the Downloads page. The same bytes for the same files, so it changes only when they do.
+- public/install/Install Alexandria Tools.cmd: alexandria_phoenix's installer/ launcher, for the unlisted
+  /install/ page. Downloaded on its own, it runs the installer in the shared folder.
 - release/alexandria_packages.zip: the shared folder, zipped as it is (not committed).
 
 --publish uploads the zip to a release on GitHub named after the Rhino Tools package's
@@ -59,6 +61,8 @@ ASSET = "alexandria_packages.zip"
 SKIP = {"desktop.ini", "thumbs.db", ".ds_store"}
 CONNECTORS = "claude_connectors"  # in alexandria_phoenix: the Claude connectors' installer and the CorelDRAW and SquareCoil servers
 CONNECTORS_ZIP = "public/downloads/claude-connectors/alexandria_claude_connectors.zip"
+LAUNCHER = "installer/Install Alexandria Tools.cmd"  # in alexandria_phoenix; on its own it runs the shared folder's installer
+LAUNCHER_COPY = "public/install/Install Alexandria Tools.cmd"  # the unlisted /install/ page's download
 CONNECTORS_SKIP = {".venv", "logs", "__pycache__"}  # what running the CorelDRAW server from the repo leaves behind
 
 DOCS = [  # source in alexandria_phoenix, hub page, title, description
@@ -351,6 +355,20 @@ def publish(facts, zipped):
                     % (facts["rhino"], facts["grasshopper"])], check=True)
 
 
+def launcher():
+    """Copies Install Alexandria Tools.cmd to the unlisted /install/ page: downloaded with nothing beside it, it runs
+    the installer in the office's shared folder, so nobody has to find that folder."""
+    with open(os.path.join(PHOENIX, *LAUNCHER.split("/")), "rb") as f:
+        data = f.read().replace(b"\r\n", b"\n").replace(b"\n", b"\r\n")  # cmd wants CRLF, whatever the checkout gave
+    if b"\\\\aria-design\\" not in data:
+        raise SystemExit("sync: %s doesn't point at the shared folder, so it can't run on its own" % LAUNCHER)
+    target = os.path.join(HUB, *LAUNCHER_COPY.split("/"))
+    os.makedirs(os.path.dirname(target), exist_ok=True)
+    with open(target, "wb") as f:
+        f.write(data)
+    print("wrote " + LAUNCHER_COPY)
+
+
 def connectors():
     """Zips alexandria_phoenix's claude_connectors/ for the Downloads page: unzip, then double-click Install
     Claude Connectors. Every entry carries the same date, so the zip changes only when a file does."""
@@ -465,6 +483,7 @@ def main():
     sample_project()
     signage_types()
     connectors()
+    launcher()
     facts, zipped = release()
     if args.publish:
         publish(facts, zipped)

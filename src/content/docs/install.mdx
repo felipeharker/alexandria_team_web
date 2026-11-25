@@ -1,0 +1,29 @@
+---
+title: Install Alexandria Tools
+description: One file to download and run. It installs the Alexandria tools from the office drive.
+# unlisted: in no menu and out of the hub's search
+pagefind: false
+---
+
+import { LinkButton, Steps } from '@astrojs/starlight/components';
+
+{/* Unlisted (user, 2026-11-25), like the shelf and the management pages: not in the sidebar (astro.config.mjs), the
+    search or the sitemap, and nothing else on the hub links to it. The file is alexandria_phoenix's
+    installer/Install Alexandria Tools.cmd, copied here by tools/sync.py (public/install/). With no installer beside
+    it, it runs the one in the office's shared alexandria_packages folder, so nobody has to find that folder. */}
+
+On the office network or the VPN · Rhino 8 · no administrator needed
+
+<LinkButton href="/install/Install%20Alexandria%20Tools.cmd" download="Install Alexandria Tools.cmd" icon="download" iconPlacement="start">Install Alexandria Tools</LinkButton>
+
+<Steps>
+
+1. **Download** · the browser may ask to keep it: **Keep**
+2. **Double-click it** in Downloads · Windows may ask first: **More info**, then **Run anyway**
+3. **Close Rhino** when it asks · it installs both packages and starts Rhino for **Alexandria Setup**
+
+</Steps>
+
+Run it again whenever something looks wrong · it only does what's missing · Rhino then updates itself with each release
+
+Off the office network · [Download](/start/download/) the zip instead
