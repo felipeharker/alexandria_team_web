@@ -1,0 +1,51 @@
+---
+title: AI Connectors
+description: The three connectors that let Claude and Grok work in SquareCoil, Rhino and CorelDRAW, and how to get them in each.
+tableOfContents: false
+---
+
+import { LinkButton, Steps } from '@astrojs/starlight/components';
+
+{/* Written by hand (user, 2026-11-25), like office-tools.mdx: the three connectors the team installs, for both
+    services. The installer's own detail is install.md's Claude Connectors section, which tools/sync.py writes. The
+    connectors are edited in alexandria_management's agent_connectors/, whose README is the map; the Grok links are the
+    team marketplace's. Which link is which plugin isn't known here, so they're numbered: name them when it is. */}
+
+| Connector | Reaches | Try |
+|---|---|---|
+| SquareCoil | Projects, design requests and customers, as your own login sees them. Read-only | *What's due this week?* |
+| Rhino/Grasshopper | The open Rhino 8 model and the Grasshopper canvas | *Put every sign face on its own layer.* |
+| CorelDRAW | The open CorelDRAW document | *List the fonts on this page.* |
+
+## On Your PC
+
+<Steps>
+
+1. **Alexandria Setup** on Rhino's Alexandria Tools tab installs all three. **Install Connectors**, beside it, installs or updates one at a time. No Rhino on the PC: [Claude connectors](/wiki/downloads/#claude-connectors) is the same installer.
+
+2. Type your own SquareCoil login when it asks, once.
+
+3. Quit Claude Desktop from its tray icon and open it again.
+
+</Steps>
+
+## Claude
+
+Ready. The three are on for every team account, in Claude Desktop and Claude Code.
+
+## Grok
+
+Add each of the three from the team marketplace:
+
+<div class="not-content">
+<LinkButton href="https://cursor.com/grok-bot/link/v1/plugin/add?id=91463383" variant="secondary" target="_blank" rel="noopener">Add Plugin 1</LinkButton>
+<LinkButton href="https://cursor.com/grok-bot/link/v1/plugin/add?id=91463384" variant="secondary" target="_blank" rel="noopener">Add Plugin 2</LinkButton>
+<LinkButton href="https://cursor.com/grok-bot/link/v1/plugin/add?id=91463385" variant="secondary" target="_blank" rel="noopener">Add Plugin 3</LinkButton>
+</div>
+
+## Good to Know
+
+| | |
+|---|---|
+| Names | Connector, MCP and plugin mean the same thing |
+| Something off | Tell Felipe, who opens an issue for it |

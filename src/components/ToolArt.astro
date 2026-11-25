@@ -203,6 +203,55 @@ const slabs = (() => {
 		)
 	}
 	{
+		// The AI connectors (Your First Day): a typed request on the left, joined to what the connector reaches
+		name.startsWith('connector-') && (
+			<g>
+				<rect class="paper ln" x="22" y="64" width="108" height="52" />
+				<rect class="tone" x="34" y="78" width="70" height="5" />
+				<rect class="tone" x="34" y="90" width="44" height="5" />
+				<rect class="ink" x="82" y="88" width="3" height="9" />
+				<path class="ln" d="M130 90H152" />
+				<circle class="ink" cx="160" cy="90" r="5" />
+				<path class="dash" d="M168 90H190" />
+				{name === 'connector-squarecoil' && (
+					<g>
+						<rect class="paper ln" x="194" y="40" width="104" height="100" />
+						<path class="fine" d="M194 65H298M194 90H298M194 115H298" />
+						{[0, 1, 2, 3].map((row) => (
+							<g>
+								<rect class={row === 1 ? 'ink' : 'tone'} x="204" y={48 + 25 * row} width="9" height="9" />
+								<rect class={row === 1 ? 'ink' : 'tone'} x="220" y={50 + 25 * row} width={[58, 66, 40, 52][row]} height="5" />
+							</g>
+						))}
+					</g>
+				)}
+				{name === 'connector-rhino' && (
+					<g>
+						<line class="fine" x1="188" y1="132" x2="300" y2="132" />
+						<polygon class="paper ln" points="198,72 216,54 288,54 270,72" />
+						<polygon class="tone ln" points="270,72 288,54 288,114 270,132" />
+						<rect class="paper ln" x="198" y="72" width="72" height="60" />
+						<rect class="ink" x="210" y="86" width="14" height="14" />
+						<rect class="tone" x="230" y="88" width="30" height="5" />
+						<rect class="tone" x="210" y="110" width="50" height="4" />
+					</g>
+				)}
+				{name === 'connector-corel' && (
+					<g>
+						<rect class="paper ln" x="202" y="34" width="88" height="112" />
+						<circle class="tone ln" cx="228" cy="66" r="14" />
+						<path class="ln" d="M216 128C232 84 256 124 276 78" />
+						<path class="fine" d="M216 128L232 100M276 78L262 106" />
+						<rect class="ink" x="213" y="125" width="6" height="6" />
+						<rect class="ink" x="273" y="75" width="6" height="6" />
+						<circle class="ink" cx="232" cy="100" r="2.5" />
+						<circle class="ink" cx="262" cy="106" r="2.5" />
+					</g>
+				)}
+			</g>
+		)
+	}
+	{
 		name === 'site-plan' && (
 			<g>
 				<g class="tone">
