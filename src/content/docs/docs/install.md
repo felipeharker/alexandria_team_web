@@ -94,7 +94,7 @@ A connector lets Claude or Grok work in a program or system: the open Rhino mode
 - **Rhino.** Ask Claude to work in Rhino. It opens one if none is running.
 - **CorelDRAW.** Open the document first. Claude never starts CorelDRAW by itself.
 - **SquareCoil.** Ask Claude what's due, what's assigned to someone, or what's overdue. Everyone signs in with their own SquareCoil login, which goes to Windows Credential Manager, never a file. Leave the username empty to skip it; **Install Connectors** asks again. If your SquareCoil password changes, run `python squarecoil.py login` in `%USERPROFILE%\.alexandria\claude_connectors\squarecoil`.
-- **No Rhino on the PC?** Double-click **Install Claude Connectors** in the `claude_connectors` folder of `alexandria_packages`, or get it from the hub's Downloads page.
+- **No Rhino on the PC?** Double-click **Install AI Connectors** in the `claude_connectors` folder of `alexandria_packages`, or get it from the hub's Downloads page.
 - **Set up by 2.21 or earlier?** Setup also added the connectors to Claude's own settings then, which beside the plugins shows each one twice. Setup and **Install Connectors** now take those entries out, backing the settings file up first and leaving connectors you set up yourself alone. Then quit Claude Desktop from its tray icon and open it again.
 - **Something went wrong?** See `install.log` in `%USERPROFILE%\.alexandria\claude_connectors`.
 - **To remove them,** open PowerShell in the `claude_connectors` folder and run `powershell -ExecutionPolicy Bypass -File install.ps1 -Uninstall`. It takes the SquareCoil login out of Credential Manager too. The plugins stay in Claude and Grok, and say their server is missing.

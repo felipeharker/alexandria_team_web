@@ -20,4 +20,4 @@ A connector lets Claude work in a program on your PC: the open Rhino model, or t
 
 ### Without Rhino
 
-Get **Claude connectors** from [All Downloads](/wiki/downloads/#claude-connectors), unzip it and double-click **Install Claude Connectors**.
+Get **AI connectors** from [All Downloads](/wiki/downloads/#ai-connectors), unzip it and double-click **Install AI Connectors**.

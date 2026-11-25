@@ -26,7 +26,7 @@ one (or ALEXANDRIA_PHOENIX) and the shared alexandria_packages folder, and write
   library's drawings for the Typical Signage Types page, from alexandria_phoenix docs/details (printed by its
   tools/make_details.py in Rhino), each PDF turned into an SVG with PyMuPDF. The page's renders and Rhino
   model in that folder are made here, by tools/render_signs.py and tools/sign_types/make_model.py.
-- public/downloads/claude-connectors/alexandria_claude_connectors.zip: alexandria_phoenix's
+- public/downloads/ai-connectors/alexandria_ai_connectors.zip: alexandria_phoenix's
   claude_connectors/ folder, the installer of the servers Alexandria's plugins start in Claude and Grok (MCP) for Rhino, CorelDRAW and SquareCoil,
   for the Downloads page. The same bytes for the same files, so it changes only when they do.
 - public/install/Install Alexandria Tools.cmd: alexandria_phoenix's installer/ launcher, for the unlisted
@@ -60,7 +60,8 @@ REPO = "felipeharker/alexandria_team_web"  # where the zip is published
 ASSET = "alexandria_packages.zip"
 SKIP = {"desktop.ini", "thumbs.db", ".ds_store"}
 CONNECTORS = "claude_connectors"  # in alexandria_phoenix: the connectors' installer and the CorelDRAW and SquareCoil servers
-CONNECTORS_ZIP = "public/downloads/claude-connectors/alexandria_claude_connectors.zip"
+CONNECTORS_ZIP = "public/downloads/ai-connectors/alexandria_ai_connectors.zip"
+CONNECTORS_FOLDER = "alexandria_ai_connectors"  # the folder the zip opens to: named for both Claude and Grok (user, 2026-11-25)
 LAUNCHER = "installer/Install Alexandria Tools.cmd"  # in alexandria_phoenix; on its own it runs the shared folder's installer
 LAUNCHER_COPY = "public/install/Install Alexandria Tools.cmd"  # the unlisted /install/ page's download
 CONNECTORS_SKIP = {".venv", "logs", "__pycache__"}  # what running the CorelDRAW server from the repo leaves behind
@@ -371,10 +372,10 @@ def launcher():
 
 def connectors():
     """Zips alexandria_phoenix's claude_connectors/ for the Downloads page: unzip, then double-click Install
-    Claude Connectors. Every entry carries the same date, so the zip changes only when a file does."""
+    AI Connectors. Every entry carries the same date, so the zip changes only when a file does."""
     source = os.path.join(PHOENIX, CONNECTORS)
     if not os.path.isfile(os.path.join(source, "install.ps1")):
-        raise SystemExit("sync: no Claude connectors at " + source)
+        raise SystemExit("sync: no connectors at " + source)
     target = os.path.join(HUB, *CONNECTORS_ZIP.split("/"))
     os.makedirs(os.path.dirname(target), exist_ok=True)
     count = 0
@@ -387,7 +388,7 @@ def connectors():
                     data = f.read()
                 if name.endswith(".cmd"):  # cmd wants CRLF, whatever the checkout gave
                     data = data.replace(b"\r\n", b"\n").replace(b"\n", b"\r\n")
-                entry = zipfile.ZipInfo(CONNECTORS + "/" + os.path.relpath(path, source).replace(os.sep, "/"),
+                entry = zipfile.ZipInfo(CONNECTORS_FOLDER + "/" + os.path.relpath(path, source).replace(os.sep, "/"),
                                         date_time=(2026, 1, 1, 0, 0, 0))
                 entry.compress_type = zipfile.ZIP_DEFLATED
                 entry.external_attr = 0o644 << 16

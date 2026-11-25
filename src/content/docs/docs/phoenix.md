@@ -140,7 +140,7 @@ tools/make_icons.py  draws the icon set
 tools/make_toolbar.py       builds toolbar/alexandria_tools.rui
 tools/export_standards.py   exports the DM display modes from Rhino into standards/
 tools/make_template.py      makes standards/alexandria_template.3dm, the Rhino template, from the toolbar's own scripts (in Rhino 8)
-tools/release.py     copies the committed packages, the docs and the Claude connectors to the shared folder, run on push by .githooks/pre-push
+tools/release.py     copies the committed packages, the docs and the connectors to the shared folder, run on push by .githooks/pre-push
 tools/make_site.py   writes the docs site's component reference, prints the overview PDF and runs make_guides.py
 tools/make_guides.py writes the two quick guides from guides/src/: standalone in guides/, and in site/guides/
 tools/make_pdfs.py   prints README, INSTALL, STANDARDS and the quick guides to docs/ as PDFs, for the release
