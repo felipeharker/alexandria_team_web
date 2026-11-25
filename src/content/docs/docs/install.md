@@ -88,7 +88,7 @@ A connector lets Claude work in a program or system: the open Rhino model, the o
 |---|---|---|
 | Rhino | `rhino-mcp-platform` | McNeel's **Rhino-MCP-Platform** package. Needs Rhino 8.19 or later |
 | CorelDRAW | `coreldraw-live` | A CorelDRAW server, about 150 MB. Only on a PC with CorelDRAW |
-| SquareCoil | `squarecoil` | A small server that reads the design request lists (In Progress, Next Job, On Hold), read-only. Asks for your own SquareCoil login once |
+| SquareCoil | `squarecoil` | A small server that reads the design request lists, any project (found by number, name, address or customer) with its notes, designs, tasks and files, and the customers, read-only. Asks for your own SquareCoil login once |
 
 - **After the first setup,** quit Claude Desktop from its tray icon and open it again, and restart Rhino. They show under **Settings › Developer**.
 - **Rhino.** Ask Claude to work in Rhino. It opens one if none is running.
